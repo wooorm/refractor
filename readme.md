@@ -299,9 +299,9 @@ these custom built syntaxes will work with `refractor`.
 
 [codecov-badge]: https://img.shields.io/codecov/c/github/wooorm/refractor.svg
 
-[codecov]: https://www.npmjs.com/package/refractor/tutorial
+[codecov]: https://codecov.io/github/wooorm/refractor
 
-[npm]: https://docs.npmjs.com/cli/install
+[npm]: https://www.npmjs.com/package/refractor/tutorial
 
 [license]: LICENSE
 
