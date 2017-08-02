@@ -1,10 +1,9 @@
 'use strict';
-var markup = require('./markup.js');
+
 module.exports = markdown;
 markdown.displayName = 'markdown';
 markdown.aliases = [];
 function markdown(Prism) {
-  Prism.register(markup);
   Prism.languages.markdown = Prism.languages.extend('markup', {});
   Prism.languages.insertBefore('markdown', 'prolog', {
     blockquote: {

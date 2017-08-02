@@ -1,10 +1,9 @@
 'use strict';
-var clike = require('./clike.js');
+
 module.exports = processing;
 processing.displayName = 'processing';
 processing.aliases = [];
 function processing(Prism) {
-  Prism.register(clike);
   Prism.languages.processing = Prism.languages.extend('clike', {
     keyword: /\b(?:break|catch|case|class|continue|default|else|extends|final|for|if|implements|import|new|null|private|public|return|static|super|switch|this|try|void|while)\b/,
     operator: /<[<=]?|>[>=]?|&&?|\|\|?|[%?]|[!=+\-*\/]=?/

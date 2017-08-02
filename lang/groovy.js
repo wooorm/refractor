@@ -1,10 +1,9 @@
 'use strict';
-var clike = require('./clike.js');
+
 module.exports = groovy;
 groovy.displayName = 'groovy';
 groovy.aliases = [];
 function groovy(Prism) {
-  Prism.register(clike);
   Prism.languages.groovy = Prism.languages.extend('clike', {
     keyword: /\b(as|def|in|abstract|assert|boolean|break|byte|case|catch|char|class|const|continue|default|do|double|else|enum|extends|final|finally|float|for|goto|if|implements|import|instanceof|int|interface|long|native|new|package|private|protected|public|return|short|static|strictfp|super|switch|synchronized|this|throw|throws|trait|transient|try|void|volatile|while)\b/,
     string: [

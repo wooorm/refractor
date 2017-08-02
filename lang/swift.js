@@ -1,10 +1,9 @@
 'use strict';
-var clike = require('./clike.js');
+
 module.exports = swift;
 swift.displayName = 'swift';
 swift.aliases = [];
 function swift(Prism) {
-  Prism.register(clike);
   // issues: nested multiline comments
   Prism.languages.swift = Prism.languages.extend('clike', {
     string: {

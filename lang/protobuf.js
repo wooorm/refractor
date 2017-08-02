@@ -1,10 +1,9 @@
 'use strict';
-var clike = require('./clike.js');
+
 module.exports = protobuf;
 protobuf.displayName = 'protobuf';
 protobuf.aliases = [];
 function protobuf(Prism) {
-  Prism.register(clike);
   Prism.languages.protobuf = Prism.languages.extend('clike', {
     keyword: /\b(package|import|message|enum)\b/,
     builtin: /\b(required|repeated|optional|reserved)\b/,

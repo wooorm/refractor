@@ -1,10 +1,9 @@
 'use strict';
-var markup = require('./markup.js');
+
 module.exports = handlebars;
 handlebars.displayName = 'handlebars';
 handlebars.aliases = [];
 function handlebars(Prism) {
-  Prism.register(markup);
   (function(Prism) {
     var handlebars_pattern = /\{\{\{[\w\W]+?\}\}\}|\{\{[\w\W]+?\}\}/g;
     Prism.languages.handlebars = Prism.languages.extend('markup', {

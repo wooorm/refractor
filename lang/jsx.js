@@ -1,12 +1,9 @@
 'use strict';
-var markup = require('./markup.js');
-var javascript = require('./javascript.js');
+
 module.exports = jsx;
 jsx.displayName = 'jsx';
 jsx.aliases = [];
 function jsx(Prism) {
-  Prism.register(markup);
-  Prism.register(javascript);
   (function(Prism) {
     var javascript = Prism.util.clone(Prism.languages.javascript);
     Prism.languages.jsx = Prism.languages.extend('markup', javascript);

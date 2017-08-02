@@ -1,10 +1,9 @@
 'use strict';
-var clike = require('./clike.js');
+
 module.exports = dart;
 dart.displayName = 'dart';
 dart.aliases = [];
 function dart(Prism) {
-  Prism.register(clike);
   Prism.languages.dart = Prism.languages.extend('clike', {
     string: [/r?("""|''')[\s\S]*?\1/, /r?("|')(\\?.)*?\1/],
     keyword: [

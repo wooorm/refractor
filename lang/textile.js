@@ -1,10 +1,9 @@
 'use strict';
-var markup = require('./markup.js');
+
 module.exports = textile;
 textile.displayName = 'textile';
 textile.aliases = [];
 function textile(Prism) {
-  Prism.register(markup);
   (function(Prism) {
     // We don't allow for pipes inside parentheses
     // to not break table pattern |(. foo |). bar |

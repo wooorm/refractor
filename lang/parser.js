@@ -1,10 +1,9 @@
 'use strict';
-var markup = require('./markup.js');
+
 module.exports = parser;
 parser.displayName = 'parser';
 parser.aliases = [];
 function parser(Prism) {
-  Prism.register(markup);
   Prism.languages.parser = Prism.languages.extend('markup', {
     keyword: {
       pattern: /(^|[^^])(?:\^(?:case|eval|for|if|switch|throw)\b|@(?:BASE|CLASS|GET(?:_DEFAULT)?|OPTIONS|SET_DEFAULT|USE)\b)/,

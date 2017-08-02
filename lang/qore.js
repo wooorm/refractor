@@ -1,10 +1,9 @@
 'use strict';
-var clike = require('./clike.js');
+
 module.exports = qore;
 qore.displayName = 'qore';
 qore.aliases = [];
 function qore(Prism) {
-  Prism.register(clike);
   Prism.languages.qore = Prism.languages.extend('clike', {
     comment: {
       pattern: /(^|[^\\])(?:\/\*[\w\W]*?\*\/|(?:\/\/|#).*)/,

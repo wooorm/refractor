@@ -1,10 +1,9 @@
 'use strict';
-var clike = require('./clike.js');
+
 module.exports = fsharp;
 fsharp.displayName = 'fsharp';
 fsharp.aliases = [];
 function fsharp(Prism) {
-  Prism.register(clike);
   Prism.languages.fsharp = Prism.languages.extend('clike', {
     comment: [
       {

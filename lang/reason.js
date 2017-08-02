@@ -1,10 +1,9 @@
 'use strict';
-var clike = require('./clike.js');
+
 module.exports = reason;
 reason.displayName = 'reason';
 reason.aliases = [];
 function reason(Prism) {
-  Prism.register(clike);
   Prism.languages.reason = Prism.languages.extend('clike', {
     comment: {
       pattern: /(^|[^\\])\/\*[\w\W]*?\*\//,

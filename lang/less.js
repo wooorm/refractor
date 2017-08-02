@@ -1,10 +1,9 @@
 'use strict';
-var css = require('./css.js');
+
 module.exports = less;
 less.displayName = 'less';
 less.aliases = [];
 function less(Prism) {
-  Prism.register(css);
   /* FIXME :
 :extend() is not handled specifically : its highlighting is buggy.
 Mixin usage must be inside a ruleset to be highlighted.

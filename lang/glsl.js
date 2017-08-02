@@ -1,10 +1,9 @@
 'use strict';
-var clike = require('./clike.js');
+
 module.exports = glsl;
 glsl.displayName = 'glsl';
 glsl.aliases = [];
 function glsl(Prism) {
-  Prism.register(clike);
   Prism.languages.glsl = Prism.languages.extend('clike', {
     comment: [/\/\*[\w\W]*?\*\//, /\/\/(?:\\(?:\r\n|[\s\S])|.)*/],
     number: /\b(?:0x[\da-f]+|(?:\.\d+|\d+\.?\d*)(?:e[+-]?\d+)?)[ulf]*\b/i,

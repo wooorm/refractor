@@ -1,10 +1,9 @@
 'use strict';
-var css = require('./css.js');
+
 module.exports = scss;
 scss.displayName = 'scss';
 scss.aliases = [];
 function scss(Prism) {
-  Prism.register(css);
   Prism.languages.scss = Prism.languages.extend('css', {
     comment: {
       pattern: /(^|[^\\])(?:\/\*[\w\W]*?\*\/|\/\/.*)/,

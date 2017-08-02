@@ -12,6 +12,7 @@ var unique = require('array-unique');
 var diff = require('arr-diff');
 var trim = require('trim-lines');
 var prettier = require('prettier');
+var bundled = require('./bundled');
 
 var root = path.join('node_modules', 'prismjs', 'components');
 var extendRegex = /languages\.extend\('([^']+)'/g;
@@ -54,7 +55,7 @@ function generate(name, callback) {
     deps = findAll(doc, extendRegex).concat(findAll(doc, cloneRegex));
     aliases = unique(findAll(doc, aliasRegex));
 
-    deps = diff(unique(deps), [id]);
+    deps = diff(unique(deps), bundled.map(base).concat([id]));
 
     fs.writeFile(out, prettier.format(
       [
@@ -86,8 +87,11 @@ function register(lang) {
 }
 
 function name(fp) {
-  var base = path.basename(fp, '.js');
-  return base.slice('prism-'.length);
+  return base(fp).slice('prism-'.length);
+}
+
+function base(fp) {
+  return path.basename(fp, '.js');
 }
 
 function minified(name) {

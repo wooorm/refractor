@@ -1,10 +1,9 @@
 'use strict';
-var css = require('./css.js');
+
 module.exports = sass;
 sass.displayName = 'sass';
 sass.aliases = [];
 function sass(Prism) {
-  Prism.register(css);
   (function(Prism) {
     Prism.languages.sass = Prism.languages.extend('css', {
       // Sass comments don't need to be closed, only indented

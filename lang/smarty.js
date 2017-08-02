@@ -1,10 +1,9 @@
 'use strict';
-var markup = require('./markup.js');
+
 module.exports = smarty;
 smarty.displayName = 'smarty';
 smarty.aliases = [];
 function smarty(Prism) {
-  Prism.register(markup);
   /* TODO
 Add support for variables inside double quoted strings
 Add support for {php}

@@ -1,10 +1,9 @@
 'use strict';
-var clike = require('./clike.js');
+
 module.exports = kotlin;
 kotlin.displayName = 'kotlin';
 kotlin.aliases = [];
 function kotlin(Prism) {
-  Prism.register(clike);
   (function(Prism) {
     Prism.languages.kotlin = Prism.languages.extend('clike', {
       keyword: {

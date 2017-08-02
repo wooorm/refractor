@@ -1,10 +1,9 @@
 'use strict';
-var markup = require('./markup.js');
+
 module.exports = aspnet;
 aspnet.displayName = 'aspnet';
 aspnet.aliases = [];
 function aspnet(Prism) {
-  Prism.register(markup);
   Prism.languages.aspnet = Prism.languages.extend('markup', {
     'page-directive tag': {
       pattern: /<%\s*@.*%>/i,

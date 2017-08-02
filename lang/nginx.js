@@ -1,10 +1,9 @@
 'use strict';
-var clike = require('./clike.js');
+
 module.exports = nginx;
 nginx.displayName = 'nginx';
 nginx.aliases = [];
 function nginx(Prism) {
-  Prism.register(clike);
   Prism.languages.nginx = Prism.languages.extend('clike', {
     comment: {
       pattern: /(^|[^"{\\])#.*/,

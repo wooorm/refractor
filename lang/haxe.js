@@ -1,10 +1,9 @@
 'use strict';
-var clike = require('./clike.js');
+
 module.exports = haxe;
 haxe.displayName = 'haxe';
 haxe.aliases = [];
 function haxe(Prism) {
-  Prism.register(clike);
   Prism.languages.haxe = Prism.languages.extend('clike', {
     // Strings can be multi-line
     string: {

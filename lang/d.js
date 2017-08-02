@@ -1,10 +1,9 @@
 'use strict';
-var clike = require('./clike.js');
+
 module.exports = d;
 d.displayName = 'd';
 d.aliases = [];
 function d(Prism) {
-  Prism.register(clike);
   Prism.languages.d = Prism.languages.extend('clike', {
     string: [
       // r"", x""

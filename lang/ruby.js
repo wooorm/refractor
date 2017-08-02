@@ -1,10 +1,9 @@
 'use strict';
-var clike = require('./clike.js');
+
 module.exports = ruby;
 ruby.displayName = 'ruby';
 ruby.aliases = [];
 function ruby(Prism) {
-  Prism.register(clike);
   /**
 * Original by Samuel Flores
 *

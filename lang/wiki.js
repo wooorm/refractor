@@ -1,10 +1,9 @@
 'use strict';
-var markup = require('./markup.js');
+
 module.exports = wiki;
 wiki.displayName = 'wiki';
 wiki.aliases = [];
 function wiki(Prism) {
-  Prism.register(markup);
   Prism.languages.wiki = Prism.languages.extend('markup', {
     'block-comment': {
       pattern: /(^|[^\\])\/\*[\w\W]*?\*\//,

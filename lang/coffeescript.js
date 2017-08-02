@@ -1,10 +1,9 @@
 'use strict';
-var javascript = require('./javascript.js');
+
 module.exports = coffeescript;
 coffeescript.displayName = 'coffeescript';
 coffeescript.aliases = [];
 function coffeescript(Prism) {
-  Prism.register(javascript);
   (function(Prism) {
     // Ignore comments starting with { to privilege string interpolation highlighting
     var comment = /#(?!\{).+/,
