@@ -1,0 +1,92 @@
+{
+  "name": "refractor",
+  "version": "0.0.0",
+  "description": "Lightweight, robust, elegant virtual syntax highlighting using Prism",
+  "license": "MIT",
+  "keywords": [
+    "syntax",
+    "code",
+    "ast",
+    "virtual",
+    "dom",
+    "highlight",
+    "highlighting",
+    "prism"
+  ],
+  "repository": "wooorm/refractor",
+  "bugs": "https://github.com/wooorm/refractor/issues",
+  "author": "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)",
+  "contributors": [
+    "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)"
+  ],
+  "files": [
+    "index.js",
+    "core.js",
+    "lang"
+  ],
+  "dependencies": {
+    "prismjs": "~1.6.0"
+  },
+  "devDependencies": {
+    "alpha-sort": "^2.0.1",
+    "arr-diff": "^4.0.0",
+    "array-unique": "^0.3.2",
+    "async": "^2.5.0",
+    "bail": "^1.0.2",
+    "browserify": "^14.0.0",
+    "chalk": "^2.0.0",
+    "detab": "^2.0.0",
+    "esmangle": "^1.0.0",
+    "hastscript": "^3.1.0",
+    "is-hidden": "^1.1.0",
+    "mdast-zone": "^3.0.1",
+    "not": "^0.1.0",
+    "nyc": "^11.0.0",
+    "prettier": "^1.5.0",
+    "rehype": "5.0.0",
+    "remark-cli": "^4.0.0",
+    "remark-preset-wooorm": "^3.0.0",
+    "tape": "^4.0.0",
+    "trim-lines": "^1.1.0",
+    "unist-builder": "^1.0.2",
+    "unist-util-remove-position": "^1.1.0",
+    "xo": "^0.18.0"
+  },
+  "scripts": {
+    "build-generate": "node script/languages && node script/list",
+    "build-md": "remark . -qfo",
+    "build-bundle": "browserify index.js --bare -s refractor > refractor.js",
+    "build-mangle": "esmangle refractor.js > refractor.min.js",
+    "build": "npm run build-generate && npm run build-md && npm run build-bundle && npm run build-mangle",
+    "lint": "xo",
+    "test-api": "node test",
+    "test-coverage": "nyc --reporter lcov tape test/index.js",
+    "test": "npm run build && npm run lint && npm run test-coverage"
+  },
+  "nyc": {
+    "check-coverage": true,
+    "lines": 100,
+    "functions": 100,
+    "branches": 100,
+    "exclude": [
+      "lang/*.js"
+    ]
+  },
+  "xo": {
+    "space": true,
+    "esnext": false,
+    "rules": {
+      "unicorn/prefer-type-error": "off"
+    },
+    "ignores": [
+      "lang/*.js",
+      "refractor.js"
+    ]
+  },
+  "remarkConfig": {
+    "plugins": [
+      "preset-wooorm",
+      "./script/support"
+    ]
+  }
+}

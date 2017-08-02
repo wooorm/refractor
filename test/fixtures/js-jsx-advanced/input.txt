@@ -1,0 +1,28 @@
+import React from 'react';
+
+import {
+  Alert,
+  Button,
+} from 'bootstrap-styled';
+
+export default class AlertDismissExample extends React.Component {
+
+  state = {
+    visible: true,
+  };
+
+  onDismiss = () => {
+    this.setState({ visible: false });
+  };
+
+  render() {
+    return (
+      <div>
+        <Alert color="info" isOpen={this.state.visible} toggle={this.onDismiss}>
+          I am an alert and I can be dismissed!
+        </Alert>
+        <Button className="btn btn-primary" onClick={this.resetCloseAlert}>Reset alert</Button>
+      <div>
+    )
+  }
+}

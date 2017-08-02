@@ -1,0 +1,22 @@
+language: node_js
+node_js:
+- '4.0'
+- '8.0'
+after_script: bash <(curl -s https://codecov.io/bash)
+deploy:
+  - provider: npm
+    email: tituswormer@gmail.com
+    api_key:
+      secure: B0ZiauJ9MMDTktd3jWewguqDvDw769cV+BQn1zYctCZKazPBSFBVghEBp4XRdoZbDnNYlE+z4Rac4vpA02LrMokuMt+dcDgvOcm4AsPPUuJiFItWvRiATOBId2UzXBGzcld7CPfl0rYZwzI6qBjWkbK52MwgbKWdqKjJ0yG5OZmByG8VED02FpxTD0kfvQV+McI44tndhgyIsQHyD3ivxjxWEwnF/M2PgAXFSOqX6z47Nl04WWKhiXcLjy+0oLEWg4Rvjfl1jVNB+swN9/ZrC7V8CfenBo9z+FbuHLR6BYidWhPg3bi1UqvN1bfONA7d4hWQWrDVKW5b3qW0oroZj8k26Cn2KbuBjuOjB4/g7XPQWPq0l/fqsiqA32qdkE7FHourftoTkFMv56YqEDp5fMK2ioBGmRiJfwl2AcdkFyA5pGjs/C2yObSO59cu4yGeyhOSRDZ9HmSa8uDWRD3nlesST6MTmYt1J0+OsDtECEMJ9E87z4x7cAAwLCoxJhqNppDT7zDwxBWaNJW6dPUm8zz/WWInajXojR8tW3UarURIJVDk4lny+lKY4G+ePWdIZguFHzUNmRAGQiVF8cBkRNKA/1o3uUP/5RTeJcGT+vQVywGSRkWGwqDmnz81odUoFSityg20A/n6g/wkwLxJZnblzq/eGUoEKjqlHJ0cvio=
+    on:
+      tags: true
+      node: '8.0'
+  - provider: releases
+    api_key:
+      secure: iuNBBlbV4ETEU4mTX4JSZKC2dYezIUDoMe8r4zu1sKoVP6hxs4xoFa8Xy5nGr+QjIhOGmPnNOv/cGYUeZoDLSdWNRiliVzg0OMUSBVaxkAQHKtEssBPJNXNWMhP7APXgu2Iq5Jb5jqYk/igrot7q1KBTqRJKZmaa5iamU1Hn+sVMovhU5qHy4eZFwExy/oQaSuhnT967UerA05L56Rn0KQRpf3rMeT9rnaeAQNOosyY5agQWGN2JfHyBcf+DSCETqJB6DlDIpDkIulyYH8vT0MAjoV08+HRBM+lopq8CyJs4FpAKNiWJcjSLEiQBQtIPAfeG2AZlpYphNBlXqwIO9WQLsSeWWxwtMpDeJ+sIgkxBjOV2nKCrc5g90s28wMC0x9gDCuxpSAolFv8kW6gDiIdGWyh1VJE2ch4EZxUZ+/J19PJPCAWJOSEKig3g20PsPwJ6wCG0n3cTB+QY7994pPN4oQZEvLrcDmylfd2go9dyjBvuGYUIaoTfUVHHsYN42gM8KR0EfYqh71sUqvPZaXbR/vhFHn4Bdm6kVK6/n8be5IGWRi5cthblEfVR8reVqBVPvqHnET7yszKu51HoUMKncD1akVNmlpXjg9GCNPqYsaY8cRTh0S2RJj9hwcD1tCN4e7rOzH52lAsK/tYxt24A/yQB5psyubMxRZCnGq8=
+    file:
+      - "refractor.js"
+      - "refractor.min.js"
+    on:
+      tags: true
+      node: '8.0'
