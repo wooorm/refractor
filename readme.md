@@ -101,7 +101,7 @@ Yields:
 ### `refractor.highlight(value, language)`
 
 Parse `value` (`string`) according to the `language` ([name or alias][syntax])
-grammar.
+syntax.
 
 ###### Returns
 
@@ -133,11 +133,12 @@ Yields:
 
 ## Browser
 
-I do not suggest using the pre-built files or requiring `refractor` in
-the browser as that would include a 250kb (90kb GZipped) file.
+I do not suggest using the [pre-bundled][releases] files or requiring
+`refractor` itself in the browser as that would include a 250kb (90kb GZipped)
+of code.
 
-Instead, require `refractor/core.js`, and include only the used
-highlighters.  For example:
+Instead require `refractor/core.js` and include only the needed syntaxes.
+For example:
 
 ```js
 var refractor = require('refractor/core.js');
@@ -180,24 +181,24 @@ code (7.62kb with GZip).
 
 ## Plugins
 
-`refractor` does not support Prism plugins.  Prism is built using global
-variables instead of a module format.  All the syntaxes below are custom made
-to work with CommonJS so you can `require` just what you want to make things
-work.  Additionally, Prism plugins often deal with the real DOM instead of the
-tokens created by Prism, making them hard to get to work in virtual DOMs.
+`refractor` does not support Prism plugins:
+
+1.  Prism plugins often deal with the DOM, not Prism tokens
+2.  Prism is made using global variables instead of a module format, so all
+    syntaxes below are custom built to work so you can `require` just what you
+    need.
 
 ## Syntaxes
 
-All syntaxes are included if you `require('refractor')`.  Checked items are
-always included in the core (`refractor/core.js`), but unchecked items are not
-and must be `require`d and [`register`][register]ed if `core.js` is used.
+All syntaxes are included if you `require('refractor')`.  If you’re using
+`refractor/core.js`, checked syntaxes are always included, but unchecked
+syntaxes are not and must be `require`d and [`register`][register]ed.
 
 Unlike in Prism, `cssExtras` and `phpExtras` are camel-cased instead of
 dash-cased.
 
-Prism syntaxes are built to work with global variables and without module
-format.  All below syntaxes are custom made to work with CommonJS.  Only
-these custom built syntaxes will work with `refractor`.
+Only these custom built syntaxes will work with `refractor` because Prism’s own
+syntaxes are made to work with global variables and are not requirable.
 
 <!--support start-->
 
@@ -347,6 +348,8 @@ these custom built syntaxes will work with `refractor`.
 [license]: LICENSE
 
 [author]: http://wooorm.com
+
+[releases]: https://github.com/wooorm/refractor/releases
 
 [rehype]: https://github.com/wooorm/rehype
 
