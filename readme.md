@@ -37,9 +37,9 @@ npm install
 
 ```javascript
 var refractor = require('refractor');
+var nodes = refractor.highlight('"use strict";', 'js');
 
-var result = refractor.highlight('"use strict";', 'js');
-console.dir(result, {depth: null});
+console.log(nodes);
 ```
 
 Yields:
@@ -59,7 +59,7 @@ Or, stringified with [rehype][]:
 
 ```js
 var rehype = require('rehype');
-var html = rehype().stringify({type: 'root', children: result}).toString();
+var html = rehype().stringify({type: 'root', children: nodes}).toString();
 
 console.log(html);
 ```
@@ -79,14 +79,57 @@ Yields:
 
 Register a [syntax][].  Needed in the browser.
 
+###### Example
+
+```js
+var refractor = require('refractor/core.js');
+
+refractor.register(require('refractor/lang/markdown.js'));
+
+console.log(refractor.highlight('*Emphasis*', 'markdown'));
+```
+
+Yields:
+
+```js
+[ { type: 'element',
+    tagName: 'span',
+    properties: [Object],
+    children: [Array] } ]
+```
+
 ### `refractor.highlight(value, language)`
 
-Parse `value` (`string`) according to the [`language` (name or alias)][syntax]
+Parse `value` (`string`) according to the `language` ([name or alias][syntax])
 grammar.
 
 ###### Returns
 
 Virtual nodes representing the highlighted value ([`Array.<Node>`][node]).
+
+###### Example
+
+```js
+var refractor = require('refractor/core.js');
+
+console.log(refractor.highlight('em { color: red }', 'css'));
+```
+
+Yields:
+
+```js
+[ { type: 'element',
+    tagName: 'span',
+    properties: [Object],
+    children: [Array] },
+  { type: 'text', value: ' ' },
+  // ...
+  { type: 'text', value: ' red ' },
+  { type: 'element',
+    tagName: 'span',
+    properties: [Object],
+    children: [Array] } ]
+```
 
 ## Browser
 
@@ -98,12 +141,10 @@ highlighters.  For example:
 
 ```js
 var refractor = require('refractor/core.js');
-var jsx = require('refractor/lang/jsx.js');
 
-refractor.register(jsx);
+refractor.register(require('refractor/lang/jsx.js'));
 
-var result = refractor.highlight('<Dropdown primary />', 'jsx');
-console.dir(result, {depth: null});
+console.log(refractor.highlight('<Dropdown primary />', 'jsx'));
 ```
 
 Yields:
@@ -148,8 +189,8 @@ tokens created by Prism, making them hard to get to work in virtual DOMs.
 ## Syntaxes
 
 All syntaxes are included if you `require('refractor')`.  Checked items are
-always included in the core (`core.js`), but unchecked items are not and must
-be `require`d and [`register`][register]ed if `core.js` is used.
+always included in the core (`refractor/core.js`), but unchecked items are not
+and must be `require`d and [`register`][register]ed if `core.js` is used.
 
 Unlike in Prism, `cssExtras` and `phpExtras` are camel-cased instead of
 dash-cased.
