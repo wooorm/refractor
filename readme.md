@@ -329,7 +329,7 @@ these custom built syntaxes will work with `refractor`.
 
 [hljs]: https://github.com/isagalaev/highlight.js
 
-[node]: https://github.com/syntax-tree/hast#nodes
+[node]: https://github.com/syntax-tree/hast#ast
 
 [syntax]: #syntaxes
 
