@@ -77,7 +77,7 @@ Yields:
 
 ### `refractor.register(syntax)`
 
-Register a [syntax][].  Needed in the browser.
+Register a [syntax][].  Needed if you’re using [`refractor/core.js`][browser].
 
 ###### Example
 
