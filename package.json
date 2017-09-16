@@ -25,8 +25,8 @@
     "lang"
   ],
   "dependencies": {
-    "prismjs": "~1.6.0",
-    "hastscript": "^3.1.0"
+    "hastscript": "^3.1.0",
+    "prismjs": "~1.6.0"
   },
   "devDependencies": {
     "alpha-sort": "^2.0.1",
