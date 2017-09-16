@@ -13,7 +13,7 @@ A comment before a mixin usage prevents the latter to be properly highlighted.
 */
   Prism.languages.less = Prism.languages.extend('css', {
     comment: [
-      /\/\*[\w\W]*?\*\//,
+      /\/\*[\s\S]*?\*\//,
       {
         pattern: /(^|[^\\])\/\/.*/,
         lookbehind: true

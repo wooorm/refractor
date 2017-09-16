@@ -6,7 +6,10 @@ scheme.aliases = [];
 function scheme(Prism) {
   Prism.languages.scheme = {
     comment: /;.*/,
-    string: /"(?:[^"\\\r\n]|\\.)*?"|'[^('\s]*/,
+    string: {
+      pattern: /"(?:[^"\\\r\n]|\\.)*?"|'[^('\s]*/,
+      greedy: true
+    },
     keyword: {
       pattern: /(\()(?:define(?:-syntax|-library|-values)?|(?:case-)?lambda|let(?:\*|rec)?(?:-values)?|else|if|cond|begin|delay(?:-force)?|parameterize|guard|set!|(?:quasi-)?quote|syntax-rules)/,
       lookbehind: true
@@ -16,7 +19,7 @@ function scheme(Prism) {
       lookbehind: true
     },
     number: {
-      pattern: /(\s|\))[-+]?[0-9]*\.?[0-9]+(?:\s*[-+]\s*[0-9]*\.?[0-9]+i)?\b/,
+      pattern: /(\s|\))[-+]?\d*\.?\d+(?:\s*[-+]\s*\d*\.?\d+i)?\b/,
       lookbehind: true
     },
     boolean: /#[tf]/,

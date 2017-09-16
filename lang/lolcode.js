@@ -11,7 +11,8 @@ function lolcode(Prism) {
       inside: {
         variable: /:\{[^}]+\}/,
         symbol: [/:\([a-f\d]+\)/i, /:\[[^\]]+\]/, /:[)>o":]/]
-      }
+      },
+      greedy: true
     },
     number: /(-|\b)\d*\.?\d+/,
     symbol: {

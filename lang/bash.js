@@ -9,12 +9,12 @@ function bash(Prism) {
       variable: [
         // Arithmetic Environment
         {
-          pattern: /\$?\(\([\w\W]+?\)\)/,
+          pattern: /\$?\(\([\s\S]+?\)\)/,
           inside: {
             // If there is a $ sign at the beginning highlight $(( and )) as variable
             variable: [
               {
-                pattern: /(^\$\(\([\w\W]+)\)\)/,
+                pattern: /(^\$\(\([\s\S]+)\)\)/,
                 lookbehind: true
               },
               /^\$\(\(/

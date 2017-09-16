@@ -20,7 +20,10 @@ function inform7(Prism) {
         }
       }
     },
-    comment: /\[[^\]]+\]/,
+    comment: {
+      pattern: /\[[^\]]+\]/,
+      greedy: true
+    },
     title: {
       pattern: /^[ \t]*(?:volume|book|part(?! of)|chapter|section|table)\b.+/im,
       alias: 'important'

@@ -9,7 +9,10 @@ function makefile(Prism) {
       pattern: /(^|[^\\])#(?:\\(?:\r\n|[\s\S])|.)*/,
       lookbehind: true
     },
-    string: /(["'])(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,
+    string: {
+      pattern: /(["'])(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,
+      greedy: true
+    },
     // Built-in target names
     builtin: /\.[A-Z][^:#=\s]+(?=\s*:(?!=))/,
     // Targets

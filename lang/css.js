@@ -5,7 +5,7 @@ css.displayName = 'css';
 css.aliases = [];
 function css(Prism) {
   Prism.languages.css = {
-    comment: /\/\*[\w\W]*?\*\//,
+    comment: /\/\*[\s\S]*?\*\//,
     atrule: {
       pattern: /@[\w-]+?.*?(;|(?=\s*\{))/i,
       inside: {
@@ -13,10 +13,10 @@ function css(Prism) {
         // See rest below
       }
     },
-    url: /url\((?:(["'])(\\(?:\r\n|[\w\W])|(?!\1)[^\\\r\n])*\1|.*?)\)/i,
+    url: /url\((?:(["'])(\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1|.*?)\)/i,
     selector: /[^\{\}\s][^\{\};]*?(?=\s*\{)/,
     string: {
-      pattern: /("|')(\\(?:\r\n|[\w\W])|(?!\1)[^\\\r\n])*\1/,
+      pattern: /("|')(\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,
       greedy: true
     },
     property: /(\b|\B)[\w-]+(?=\s*:)/i,
@@ -30,7 +30,7 @@ function css(Prism) {
   if (Prism.languages.markup) {
     Prism.languages.insertBefore('markup', 'tag', {
       style: {
-        pattern: /(<style[\w\W]*?>)[\w\W]*?(?=<\/style>)/i,
+        pattern: /(<style[\s\S]*?>)[\s\S]*?(?=<\/style>)/i,
         lookbehind: true,
         inside: Prism.languages.css,
         alias: 'language-css'

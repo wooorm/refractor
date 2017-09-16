@@ -42,6 +42,7 @@ function parser(Prism) {
     expression: {
       // Allow for 3 levels of depth
       pattern: /(^|[^^])\((?:[^()]|\((?:[^()]|\((?:[^()])*\))*\))*\)/,
+      greedy: true,
       lookbehind: true,
       inside: {
         string: {

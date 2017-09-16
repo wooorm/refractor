@@ -10,7 +10,10 @@ function go(Prism) {
     boolean: /\b(_|iota|nil|true|false)\b/,
     operator: /[*\/%^!=]=?|\+[=+]?|-[=-]?|\|[=|]?|&(?:=|&|\^=?)?|>(?:>=?|=)?|<(?:<=?|=|-)?|:=|\.\.\./,
     number: /\b(-?(0x[a-f\d]+|(\d+\.?\d*|\.\d+)(e[-+]?\d+)?)i?)\b/i,
-    string: /("|'|`)(\\?.|\r|\n)*?\1/
+    string: {
+      pattern: /("|'|`)(\\?.|\r|\n)*?\1/,
+      greedy: true
+    }
   });
   delete Prism.languages.go['class-name'];
 }

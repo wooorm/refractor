@@ -18,12 +18,14 @@ function elixir(Prism) {
       {
         // ~s"""foo""", ~s'''foo''', ~s/foo/, ~s|foo|, ~s"foo", ~s'foo', ~s(foo), ~s[foo], ~s{foo}, ~s<foo>
         pattern: /~[cCsSwW](?:("""|'''|[\/|"'])(?:\\.|(?!\1)[^\\])+\1|\((?:\\\)|[^)])+\)|\[(?:\\\]|[^\]])+\]|\{(?:\\\}|#\{[^}]+\}|[^}])+\}|<(?:\\>|[^>])+>)[csa]?/,
+        greedy: true,
         inside: {
           // See interpolation below
         }
       },
       {
         pattern: /("""|''')[\s\S]*?\1/,
+        greedy: true,
         inside: {
           // See interpolation below
         }
@@ -31,6 +33,7 @@ function elixir(Prism) {
       {
         // Multi-line strings are allowed
         pattern: /("|')(?:\\[\s\S]|(?!\1)[^\\])*\1/,
+        greedy: true,
         inside: {
           // See interpolation below
         }

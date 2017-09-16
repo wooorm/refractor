@@ -5,7 +5,7 @@ Useful for virtual DOMs and non-HTML things.  Perfect for [React][], [VDOM][],
 and others.
 
 `refractor` is built to work with all syntaxes supported by [Prism][],
-that’s [120 languages][names] (as of [prism@1.6.0][prismjs]) (and all
+that’s [124 languages][names] (as of [prism@1.6.0][prismjs]) (and all
 7 [themes][themes]).
 
 Want to use [`highlight.js`][hljs] instead?  Try [`lowlight`][lowlight]!
@@ -231,7 +231,8 @@ syntaxes are made to work with global variables and are not requirable.
 *   [ ] [`d`](https://github.com/wooorm/refractor/blob/master/lang/d.js)
 *   [ ] [`dart`](https://github.com/wooorm/refractor/blob/master/lang/dart.js)
 *   [ ] [`diff`](https://github.com/wooorm/refractor/blob/master/lang/diff.js)
-*   [ ] [`docker`](https://github.com/wooorm/refractor/blob/master/lang/docker.js)
+*   [ ] [`django`](https://github.com/wooorm/refractor/blob/master/lang/django.js) — alias: `jinja2`
+*   [ ] [`docker`](https://github.com/wooorm/refractor/blob/master/lang/docker.js) — alias: `dockerfile`
 *   [ ] [`eiffel`](https://github.com/wooorm/refractor/blob/master/lang/eiffel.js)
 *   [ ] [`elixir`](https://github.com/wooorm/refractor/blob/master/lang/elixir.js)
 *   [ ] [`erlang`](https://github.com/wooorm/refractor/blob/master/lang/erlang.js)
@@ -271,6 +272,7 @@ syntaxes are made to work with global variables and are not requirable.
 *   [ ] [`mel`](https://github.com/wooorm/refractor/blob/master/lang/mel.js)
 *   [ ] [`mizar`](https://github.com/wooorm/refractor/blob/master/lang/mizar.js)
 *   [ ] [`monkey`](https://github.com/wooorm/refractor/blob/master/lang/monkey.js)
+*   [ ] [`n4js`](https://github.com/wooorm/refractor/blob/master/lang/n4js.js)
 *   [ ] [`nasm`](https://github.com/wooorm/refractor/blob/master/lang/nasm.js)
 *   [ ] [`nginx`](https://github.com/wooorm/refractor/blob/master/lang/nginx.js)
 *   [ ] [`nim`](https://github.com/wooorm/refractor/blob/master/lang/nim.js)
@@ -297,6 +299,7 @@ syntaxes are made to work with global variables and are not requirable.
 *   [ ] [`qore`](https://github.com/wooorm/refractor/blob/master/lang/qore.js)
 *   [ ] [`r`](https://github.com/wooorm/refractor/blob/master/lang/r.js)
 *   [ ] [`reason`](https://github.com/wooorm/refractor/blob/master/lang/reason.js)
+*   [ ] [`renpy`](https://github.com/wooorm/refractor/blob/master/lang/renpy.js)
 *   [ ] [`rest`](https://github.com/wooorm/refractor/blob/master/lang/rest.js)
 *   [ ] [`rip`](https://github.com/wooorm/refractor/blob/master/lang/rip.js)
 *   [ ] [`roboconf`](https://github.com/wooorm/refractor/blob/master/lang/roboconf.js)
@@ -316,6 +319,7 @@ syntaxes are made to work with global variables and are not requirable.
 *   [ ] [`textile`](https://github.com/wooorm/refractor/blob/master/lang/textile.js)
 *   [ ] [`twig`](https://github.com/wooorm/refractor/blob/master/lang/twig.js)
 *   [ ] [`typescript`](https://github.com/wooorm/refractor/blob/master/lang/typescript.js) — alias: `ts`
+*   [ ] [`vbnet`](https://github.com/wooorm/refractor/blob/master/lang/vbnet.js)
 *   [ ] [`verilog`](https://github.com/wooorm/refractor/blob/master/lang/verilog.js)
 *   [ ] [`vhdl`](https://github.com/wooorm/refractor/blob/master/lang/vhdl.js)
 *   [ ] [`vim`](https://github.com/wooorm/refractor/blob/master/lang/vim.js)

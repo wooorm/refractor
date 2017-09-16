@@ -8,6 +8,7 @@ function mel(Prism) {
     comment: /\/\/.*/,
     code: {
       pattern: /`(?:\\.|[^\\`\r\n])*`/,
+      greedy: true,
       alias: 'italic',
       inside: {
         delimiter: {
@@ -17,7 +18,10 @@ function mel(Prism) {
         // See rest below
       }
     },
-    string: /"(?:\\.|[^\\"\r\n])*"/,
+    string: {
+      pattern: /"(?:\\.|[^\\"\r\n])*"/,
+      greedy: true
+    },
     variable: /\$\w+/,
     number: /(?:\b|-)(?:0x[\da-fA-F]+|\d+\.?\d*)/,
     flag: {

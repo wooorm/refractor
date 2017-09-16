@@ -6,7 +6,10 @@ erlang.aliases = [];
 function erlang(Prism) {
   Prism.languages.erlang = {
     comment: /%.+/,
-    string: /"(?:\\?.)*?"/,
+    string: {
+      pattern: /"(?:\\?.)*?"/,
+      greedy: true
+    },
     'quoted-function': {
       pattern: /'(?:\\.|[^'\\])+'(?=\()/,
       alias: 'function'

@@ -6,7 +6,10 @@ apl.aliases = [];
 function apl(Prism) {
   Prism.languages.apl = {
     comment: /(?:⍝|#[! ]).*$/m,
-    string: /'(?:[^'\r\n]|'')*'/,
+    string: {
+      pattern: /'(?:[^'\r\n]|'')*'/,
+      greedy: true
+    },
     number: /¯?(?:\d*\.?\d+(?:e[+¯]?\d+)?|¯|∞)(?:j¯?(?:\d*\.?\d+(?:e[\+¯]?\d+)?|¯|∞))?/i,
     statement: /:[A-Z][a-z][A-Za-z]*\b/,
     'system-function': {
@@ -14,13 +17,13 @@ function apl(Prism) {
       alias: 'function'
     },
     constant: /[⍬⌾#⎕⍞]/,
-    function: /[-+×÷⌈⌊∣|⍳⍸?*⍟○!⌹<≤=>≥≠≡≢∊⍷∪∩~∨∧⍱⍲⍴,⍪⌽⊖⍉↑↓⊂⊃⌷⍋⍒⊤⊥⍕⍎⊣⊢⍁⍂≈⍯↗¤→]/,
+    function: /[-+×÷⌈⌊∣|⍳⍸?*⍟○!⌹<≤=>≥≠≡≢∊⍷∪∩~∨∧⍱⍲⍴,⍪⌽⊖⍉↑↓⊂⊃⊆⊇⌷⍋⍒⊤⊥⍕⍎⊣⊢⍁⍂≈⍯↗¤→]/,
     'monadic-operator': {
       pattern: /[\\\/⌿⍀¨⍨⌶&∥]/,
       alias: 'operator'
     },
     'dyadic-operator': {
-      pattern: /[.⍣⍠⍤∘⌸]/,
+      pattern: /[.⍣⍠⍤∘⌸@⌺]/,
       alias: 'operator'
     },
     assignment: {

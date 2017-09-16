@@ -7,10 +7,24 @@ function jsx(Prism) {
   (function(Prism) {
     var javascript = Prism.util.clone(Prism.languages.javascript);
     Prism.languages.jsx = Prism.languages.extend('markup', javascript);
-    Prism.languages.jsx.tag.pattern = /<\/?[\w\.:-]+\s*(?:\s+[\w\.:-]+(?:=(?:("|')(\\?[\w\W])*?\1|[^\s'">=]+|(\{[\w\W]*?\})))?\s*)*\/?>/i;
+    Prism.languages.jsx.tag.pattern = /<\/?[\w\.:-]+\s*(?:\s+(?:[\w\.:-]+(?:=(?:("|')(\\?[\s\S])*?\1|[^\s'">=]+|(\{[\s\S]*?\})))?|\{\.{3}\w+\}))*\s*\/?>/i;
     Prism.languages.jsx.tag.inside[
       'attr-value'
-    ].pattern = /=[^\{](?:('|")[\w\W]*?(\1)|[^\s>]+)/i;
+    ].pattern = /=(?!\{)(?:('|")[\s\S]*?(\1)|[^\s>]+)/i;
+    Prism.languages.insertBefore(
+      'inside',
+      'attr-name',
+      {
+        spread: {
+          pattern: /\{\.{3}\w+\}/,
+          inside: {
+            punctuation: /\{|\}|\./,
+            'attr-value': /\w+/
+          }
+        }
+      },
+      Prism.languages.jsx.tag
+    );
     var jsxExpression = Prism.util.clone(Prism.languages.jsx);
     delete jsxExpression.punctuation;
     jsxExpression = Prism.languages.insertBefore(

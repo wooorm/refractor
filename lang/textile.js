@@ -260,7 +260,7 @@ function textile(Prism) {
       mark: Prism.util.clone(Prism.languages.textile['phrase'].inside['mark'])
     };
     // Only allow alpha-numeric HTML tags, not XML tags
-    Prism.languages.textile.tag.pattern = /<\/?(?!\d)[a-z0-9]+(?:\s+[^\s>\/=]+(?:=(?:("|')(?:\\\1|\\?(?!\1)[\w\W])*\1|[^\s'">=]+))?)*\s*\/?>/i;
+    Prism.languages.textile.tag.pattern = /<\/?(?!\d)[a-z0-9]+(?:\s+[^\s>\/=]+(?:=(?:("|')(?:\\\1|\\?(?!\1)[\s\S])*\1|[^\s'">=]+))?)*\s*\/?>/i;
     // Allow some nesting
     Prism.languages.textile['phrase'].inside['inline'].inside[
       'bold'

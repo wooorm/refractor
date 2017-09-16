@@ -7,7 +7,10 @@ function stylus(Prism) {
   (function(Prism) {
     var inside = {
       url: /url\((["']?).*?\1\)/i,
-      string: /("|')(?:[^\\\r\n]|\\(?:\r\n|[\s\S]))*?\1/,
+      string: {
+        pattern: /("|')(?:[^\\\r\n]|\\(?:\r\n|[\s\S]))*?\1/,
+        greedy: true
+      },
       interpolation: null, // See below
       func: null, // See below
       important: /\B!(?:important|optional)\b/i,
@@ -39,7 +42,7 @@ function stylus(Prism) {
     };
     Prism.languages.stylus = {
       comment: {
-        pattern: /(^|[^\\])(\/\*[\w\W]*?\*\/|\/\/.*)/,
+        pattern: /(^|[^\\])(\/\*[\s\S]*?\*\/|\/\/.*)/,
         lookbehind: true
       },
       'atrule-declaration': {

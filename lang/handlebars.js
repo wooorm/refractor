@@ -5,7 +5,7 @@ handlebars.displayName = 'handlebars';
 handlebars.aliases = [];
 function handlebars(Prism) {
   (function(Prism) {
-    var handlebars_pattern = /\{\{\{[\w\W]+?\}\}\}|\{\{[\w\W]+?\}\}/g;
+    var handlebars_pattern = /\{\{\{[\s\S]+?\}\}\}|\{\{[\s\S]+?\}\}/g;
     Prism.languages.handlebars = Prism.languages.extend('markup', {
       handlebars: {
         pattern: handlebars_pattern,
@@ -26,7 +26,7 @@ function handlebars(Prism) {
             pattern: /\[[^\]]+\]/,
             inside: {
               punctuation: /\[|\]/,
-              variable: /[\w\W]+/
+              variable: /[\s\S]+/
             }
           },
           punctuation: /[!"#%&'()*+,.\/;<=>@\[\\\]^`{|}~]/,
@@ -38,7 +38,7 @@ function handlebars(Prism) {
     // surround markup
     Prism.languages.insertBefore('handlebars', 'tag', {
       'handlebars-comment': {
-        pattern: /\{\{![\w\W]*?\}\}/,
+        pattern: /\{\{![\s\S]*?\}\}/,
         alias: ['handlebars', 'comment']
       }
     });
@@ -51,8 +51,12 @@ function handlebars(Prism) {
       env.tokenStack = [];
       env.backupCode = env.code;
       env.code = env.code.replace(handlebars_pattern, function(match) {
-        env.tokenStack.push(match);
-        return '___HANDLEBARS' + env.tokenStack.length + '___';
+        var i = env.tokenStack.length;
+        // Check for existing strings
+        while (env.backupCode.indexOf('___HANDLEBARS' + i + '___') !== -1) ++i;
+        // Create a sparse array
+        env.tokenStack[i] = match;
+        return '___HANDLEBARS' + i + '___';
       });
     });
     // Restore env.code for other plugins (e.g. line-numbers)
@@ -68,10 +72,16 @@ function handlebars(Prism) {
       if (env.language !== 'handlebars') {
         return;
       }
-      for (var i = 0, t; (t = env.tokenStack[i]); i++) {
+      for (
+        var i = 0, keys = Object.keys(env.tokenStack);
+        i < keys.length;
+        ++i
+      ) {
+        var k = keys[i];
+        var t = env.tokenStack[k];
         // The replace prevents $$, $&, $`, $', $n, $nn from being interpreted as special patterns
         env.highlightedCode = env.highlightedCode.replace(
-          '___HANDLEBARS' + (i + 1) + '___',
+          '___HANDLEBARS' + k + '___',
           Prism.highlight(t, env.grammar, 'handlebars').replace(/\$/g, '$$$$')
         );
       }

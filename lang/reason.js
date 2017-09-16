@@ -6,7 +6,7 @@ reason.aliases = [];
 function reason(Prism) {
   Prism.languages.reason = Prism.languages.extend('clike', {
     comment: {
-      pattern: /(^|[^\\])\/\*[\w\W]*?\*\//,
+      pattern: /(^|[^\\])\/\*[\s\S]*?\*\//,
       lookbehind: true
     },
     string: {

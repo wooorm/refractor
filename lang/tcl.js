@@ -9,7 +9,10 @@ function tcl(Prism) {
       pattern: /(^|[^\\])#.*/,
       lookbehind: true
     },
-    string: /"(?:[^"\\\r\n]|\\(?:\r\n|[\s\S]))*"/,
+    string: {
+      pattern: /"(?:[^"\\\r\n]|\\(?:\r\n|[\s\S]))*"/,
+      greedy: true
+    },
     variable: [
       {
         pattern: /(\$)(?:::)?(?:[a-zA-Z0-9]+::)*[a-zA-Z0-9_]+/,

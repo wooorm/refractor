@@ -6,11 +6,12 @@ sql.aliases = [];
 function sql(Prism) {
   Prism.languages.sql = {
     comment: {
-      pattern: /(^|[^\\])(?:\/\*[\w\W]*?\*\/|(?:--|\/\/|#).*)/,
+      pattern: /(^|[^\\])(?:\/\*[\s\S]*?\*\/|(?:--|\/\/|#).*)/,
       lookbehind: true
     },
     string: {
       pattern: /(^|[^@\\])("|')(?:\\?[\s\S])*?\2/,
+      greedy: true,
       lookbehind: true
     },
     variable: /@[\w.$]+|@("|'|`)(?:\\?[\s\S])+?\1/,

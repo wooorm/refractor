@@ -5,8 +5,11 @@ verilog.displayName = 'verilog';
 verilog.aliases = [];
 function verilog(Prism) {
   Prism.languages.verilog = {
-    comment: /\/\/.*|\/\*[\w\W]*?\*\//,
-    string: /"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"/,
+    comment: /\/\/.*|\/\*[\s\S]*?\*\//,
+    string: {
+      pattern: /"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"/,
+      greedy: true
+    },
     // support for any kernel function (ex: $display())
     property: /\B\$\w+\b/,
     // support for user defined constants (ex: `define)
