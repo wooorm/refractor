@@ -25,6 +25,7 @@
     "lang"
   ],
   "dependencies": {
+    "hastscript": "^3.1.0",
     "prismjs": "~1.6.0"
   },
   "devDependencies": {
@@ -37,7 +38,6 @@
     "chalk": "^2.0.0",
     "detab": "^2.0.0",
     "esmangle": "^1.0.0",
-    "hastscript": "^3.1.0",
     "is-hidden": "^1.1.0",
     "mdast-zone": "^3.0.1",
     "not": "^0.1.0",
