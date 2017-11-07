@@ -1,6 +1,13 @@
 'use strict';
 
+/* global window */
+
 var restore = capture();
+
+/* istanbul ignore next - Don't allow Prism to run on page load in browser. */
+var ctx = typeof window === 'undefined' ? {} : window;
+
+ctx.Prism = {manual: true};
 
 /* Load all stuff in `prism.js` itself, except for
  * `prism-file-highlight.js`.
