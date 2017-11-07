@@ -3,9 +3,14 @@
 var restore = capture();
 
 /* Don't allow Prism to run on page load. */
-if (typeof window !== 'undefined') {
-  window.Prism = {manual: true};
-}
+/* eslint-disable no-negated-condition */
+/* global window, WorkerGlobalScope, self */
+/* istanbul ignore next */
+var _self = (typeof window !== 'undefined') ? window : (
+  (typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope) ? self : {}
+);
+/* eslint-enable no-negated-condition */
+_self.Prism = {manual: true};
 
 /* Load all stuff in `prism.js` itself, except for
  * `prism-file-highlight.js`.
