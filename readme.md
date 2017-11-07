@@ -7,7 +7,7 @@ and others.
 <!--count start-->
 
 `refractor` is built to work with all syntaxes supported by [Prism][],
-that’s [127 languages][names] (as of [prism@1.8.0][prismjs]) and all
+that’s [126 languages][names] (as of [prism@1.8.0][prismjs]) and all
 7 [themes][].
 
 <!--count end-->
@@ -258,7 +258,6 @@ syntaxes are made to work with global variables and are not requirable.
 *   [ ] [`inform7`](https://github.com/wooorm/refractor/blob/master/lang/inform7.js)
 *   [ ] [`ini`](https://github.com/wooorm/refractor/blob/master/lang/ini.js)
 *   [ ] [`j`](https://github.com/wooorm/refractor/blob/master/lang/j.js)
-*   [ ] [`jade`](https://github.com/wooorm/refractor/blob/master/lang/jade.js)
 *   [ ] [`java`](https://github.com/wooorm/refractor/blob/master/lang/java.js)
 *   [ ] [`jolie`](https://github.com/wooorm/refractor/blob/master/lang/jolie.js)
 *   [ ] [`json`](https://github.com/wooorm/refractor/blob/master/lang/json.js) — alias: `jsonp`

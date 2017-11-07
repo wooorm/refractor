@@ -52,7 +52,6 @@ refractor.register(require('./lang/icon.js'));
 refractor.register(require('./lang/inform7.js'));
 refractor.register(require('./lang/ini.js'));
 refractor.register(require('./lang/j.js'));
-refractor.register(require('./lang/jade.js'));
 refractor.register(require('./lang/java.js'));
 refractor.register(require('./lang/jolie.js'));
 refractor.register(require('./lang/json.js'));
