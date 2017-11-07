@@ -2,6 +2,11 @@
 
 var restore = capture();
 
+/* Don't allow Prism to run on page load. */
+if (typeof window !== 'undefined') {
+  window.Prism = {manual: true};
+}
+
 /* Load all stuff in `prism.js` itself, except for
  * `prism-file-highlight.js`.
  * The wrapped non-leaky grammars are loaded instead of
@@ -12,8 +17,6 @@ var markup = require('./lang/markup');
 var css = require('./lang/css');
 var clike = require('./lang/clike');
 var js = require('./lang/javascript');
-
-Prism.manual = true;
 
 restore();
 
