@@ -13,6 +13,8 @@ var css = require('./lang/css');
 var clike = require('./lang/clike');
 var js = require('./lang/javascript');
 
+Prism.manual = true;
+
 restore();
 
 var own = {}.hasOwnProperty;
