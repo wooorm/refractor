@@ -7,15 +7,15 @@ function erlang(Prism) {
   Prism.languages.erlang = {
     comment: /%.+/,
     string: {
-      pattern: /"(?:\\?.)*?"/,
+      pattern: /"(?:\\.|[^\\"\r\n])*"/,
       greedy: true
     },
     'quoted-function': {
-      pattern: /'(?:\\.|[^'\\])+'(?=\()/,
+      pattern: /'(?:\\.|[^\\'\r\n])+'(?=\()/,
       alias: 'function'
     },
     'quoted-atom': {
-      pattern: /'(?:\\.|[^'\\])+'/,
+      pattern: /'(?:\\.|[^\\'\r\n])+'/,
       alias: 'atom'
     },
     boolean: /\b(?:true|false)\b/,

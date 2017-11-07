@@ -7,7 +7,7 @@ function d(Prism) {
   Prism.languages.d = Prism.languages.extend('clike', {
     string: [
       // r"", x""
-      /\b[rx]"(\\.|[^\\"])*"[cwd]?/,
+      /\b[rx]"(?:\\[\s\S]|[^\\"])*"[cwd]?/,
       // q"[]", q"()", q"<>", q"{}"
       /\bq"(?:\[[\s\S]*?\]|\([\s\S]*?\)|<[\s\S]*?>|\{[\s\S]*?\})"/,
       // q"IDENT
@@ -18,7 +18,7 @@ function d(Prism) {
       /\bq"(.)[\s\S]*?\1"/,
       // Characters
       /'(?:\\'|\\?[^']+)'/,
-      /(["`])(\\.|(?!\1)[^\\])*\1[cwd]?/
+      /(["`])(?:\\[\s\S]|(?!\1)[^\\])*\1[cwd]?/
     ],
     number: [
       // The lookbehind and the negative look-ahead try to prevent bad highlighting of the .. operator
@@ -46,7 +46,7 @@ function d(Prism) {
   Prism.languages.insertBefore('d', 'comment', {
     'token-string': {
       // Allow one level of nesting
-      pattern: /\bq\{(?:|\{[^}]*\}|[^}])*\}/,
+      pattern: /\bq\{(?:\{[^}]*\}|[^}])*\}/,
       alias: 'string'
     }
   });

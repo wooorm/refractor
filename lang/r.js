@@ -7,7 +7,7 @@ function r(Prism) {
   Prism.languages.r = {
     comment: /#.*/,
     string: {
-      pattern: /(['"])(?:\\?.)*?\1/,
+      pattern: /(['"])(?:\\.|(?!\1)[^\\\r\n])*\1/,
       greedy: true
     },
     'percent-operator': {

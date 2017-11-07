@@ -10,7 +10,7 @@ function reason(Prism) {
       lookbehind: true
     },
     string: {
-      pattern: /"(\\(?:\r\n|[\s\S])|[^\\\r\n"])*"/,
+      pattern: /"(?:\\(?:\r\n|[\s\S])|[^\\\r\n"])*"/,
       greedy: true
     },
     // 'class-name' must be matched *after* 'constructor' defined below
@@ -20,7 +20,7 @@ function reason(Prism) {
   });
   Prism.languages.insertBefore('reason', 'class-name', {
     character: {
-      pattern: /'(?:\\x[\da-f]{2}|\\o[0-3][0-7][0-7]|\\\d{3}|\\.|[^'])'/,
+      pattern: /'(?:\\x[\da-f]{2}|\\o[0-3][0-7][0-7]|\\\d{3}|\\.|[^'\\\r\n])'/,
       alias: 'string'
     },
     constructor: {

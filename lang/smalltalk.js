@@ -9,7 +9,7 @@ function smalltalk(Prism) {
     string: /'(?:''|[^'])+'/,
     symbol: /#[\da-z]+|#(?:-|([+\/\\*~<>=@%|&?!])\1?)|#(?=\()/i,
     'block-arguments': {
-      pattern: /(\[\s*):[^\[|]*?\|/,
+      pattern: /(\[\s*):[^\[|]*\|/,
       lookbehind: true,
       inside: {
         variable: /:[\da-z]+/i,

@@ -5,20 +5,20 @@ groovy.displayName = 'groovy';
 groovy.aliases = [];
 function groovy(Prism) {
   Prism.languages.groovy = Prism.languages.extend('clike', {
-    keyword: /\b(as|def|in|abstract|assert|boolean|break|byte|case|catch|char|class|const|continue|default|do|double|else|enum|extends|final|finally|float|for|goto|if|implements|import|instanceof|int|interface|long|native|new|package|private|protected|public|return|short|static|strictfp|super|switch|synchronized|this|throw|throws|trait|transient|try|void|volatile|while)\b/,
+    keyword: /\b(?:as|def|in|abstract|assert|boolean|break|byte|case|catch|char|class|const|continue|default|do|double|else|enum|extends|final|finally|float|for|goto|if|implements|import|instanceof|int|interface|long|native|new|package|private|protected|public|return|short|static|strictfp|super|switch|synchronized|this|throw|throws|trait|transient|try|void|volatile|while)\b/,
     string: [
       {
-        pattern: /("""|''')[\s\S]*?\1|(\$\/)(\$\/\$|[\s\S])*?\/\$/,
+        pattern: /("""|''')[\s\S]*?\1|(?:\$\/)(?:\$\/\$|[\s\S])*?\/\$/,
         greedy: true
       },
       {
-        pattern: /("|'|\/)(?:\\?.)*?\1/,
+        pattern: /(["'\/])(?:\\.|(?!\1)[^\\\r\n])*\1/,
         greedy: true
       }
     ],
     number: /\b(?:0b[01_]+|0x[\da-f_]+(?:\.[\da-f_p\-]+)?|[\d_]+(?:\.[\d_]+)?(?:e[+-]?[\d]+)?)[glidf]?\b/i,
     operator: {
-      pattern: /(^|[^.])(~|==?~?|\?[.:]?|\*(?:[.=]|\*=?)?|\.[@&]|\.\.<|\.{1,2}(?!\.)|-[-=>]?|\+[+=]?|!=?|<(?:<=?|=>?)?|>(?:>>?=?|=)?|&[&=]?|\|[|=]?|\/=?|\^=?|%=?)/,
+      pattern: /(^|[^.])(?:~|==?~?|\?[.:]?|\*(?:[.=]|\*=?)?|\.[@&]|\.\.<|\.{1,2}(?!\.)|-[-=>]?|\+[+=]?|!=?|<(?:<=?|=>?)?|>(?:>>?=?|=)?|&[&=]?|\|[|=]?|\/=?|\^=?|%=?)/,
       lookbehind: true
     },
     punctuation: /\.+|[{}[\];(),:$]/
@@ -30,7 +30,7 @@ function groovy(Prism) {
     }
   });
   Prism.languages.insertBefore('groovy', 'punctuation', {
-    'spock-block': /\b(setup|given|when|then|and|cleanup|expect|where):/
+    'spock-block': /\b(?:setup|given|when|then|and|cleanup|expect|where):/
   });
   Prism.languages.insertBefore('groovy', 'function', {
     annotation: {
@@ -44,9 +44,9 @@ function groovy(Prism) {
     if (env.language === 'groovy' && env.type === 'string') {
       var delimiter = env.content[0];
       if (delimiter != "'") {
-        var pattern = /([^\\])(\$(\{.*?\}|[\w\.]+))/;
+        var pattern = /([^\\])(?:\$(?:\{.*?\}|[\w.]+))/;
         if (delimiter === '$') {
-          pattern = /([^\$])(\$(\{.*?\}|[\w\.]+))/;
+          pattern = /([^\$])(?:\$(?:\{.*?\}|[\w.]+))/;
         }
         // To prevent double HTML-encoding we have to decode env.content first
         env.content = env.content.replace(/&lt;/g, '<').replace(/&amp;/g, '&');

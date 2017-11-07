@@ -5,13 +5,16 @@ json.displayName = 'json';
 json.aliases = ['jsonp'];
 function json(Prism) {
   Prism.languages.json = {
-    property: /"(?:\\.|[^\\"])*"(?=\s*:)/gi,
-    string: /"(?!:)(?:\\.|[^\\"])*"(?!:)/g,
-    number: /\b-?(0x[\dA-Fa-f]+|\d*\.?\d+([Ee][+-]?\d+)?)\b/g,
-    punctuation: /[{}[\]);,]/g,
+    property: /"(?:\\.|[^\\"\r\n])*"(?=\s*:)/i,
+    string: {
+      pattern: /"(?:\\.|[^\\"\r\n])*"(?!\s*:)/,
+      greedy: true
+    },
+    number: /\b-?(?:0x[\dA-Fa-f]+|\d*\.?\d+(?:[Ee][+-]?\d+)?)\b/,
+    punctuation: /[{}[\]);,]/,
     operator: /:/g,
-    boolean: /\b(true|false)\b/gi,
-    null: /\bnull\b/gi
+    boolean: /\b(?:true|false)\b/i,
+    null: /\bnull\b/i
   };
   Prism.languages.jsonp = Prism.languages.json;
 }

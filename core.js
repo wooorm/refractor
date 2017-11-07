@@ -94,10 +94,6 @@ function stringify(value, language, parent) {
     parent: parent
   };
 
-  if (env.type === 'comment') {
-    env.attributes.spellcheck = 'true';
-  }
-
   if (value.alias) {
     env.classes = env.classes.concat(value.alias);
   }

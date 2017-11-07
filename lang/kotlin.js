@@ -24,7 +24,7 @@ function kotlin(Prism) {
     delete Prism.languages.kotlin['class-name'];
     Prism.languages.insertBefore('kotlin', 'string', {
       'raw-string': {
-        pattern: /(["'])\1\1[\s\S]*?\1{3}/,
+        pattern: /("""|''')[\s\S]*?\1/,
         alias: 'string'
         // See interpolation below
       }

@@ -12,7 +12,7 @@ function django(Prism) {
       greedy: true,
       inside: {
         string: {
-          pattern: /("|')(?:\\\\|\\?[^\\\r\n])*?\1/,
+          pattern: /("|')(?:\\.|(?!\1)[^\\\r\n])*\1/,
           greedy: true
         },
         keyword: /\b(?:\||load|verbatim|widthratio|ssi|firstof|for|url|ifchanged|csrf_token|lorem|ifnotequal|autoescape|now|templatetag|debug|cycle|ifequal|regroup|comment|filter|endfilter|if|spaceless|with|extends|block|include|else|empty|endif|endfor|as|endblock|endautoescape|endverbatim|trans|endtrans|[Tt]rue|[Ff]alse|[Nn]one|in|is|static|macro|endmacro|call|endcall|set|endset|raw|endraw)\b/,
@@ -28,7 +28,7 @@ function django(Prism) {
     comment: /(?:<!--|{#)[\s\S]*?(?:#}|-->)/
   });
   // Updated html tag pattern to allow template tags inside html tags
-  Prism.languages.django.tag.pattern = /<\/?(?!\d)[^\s>\/=$<]+(?:\s+[^\s>\/=]+(?:=(?:("|')(?:\\\1|\\?(?!\1)[\s\S])*\1|[^>=]+))?)*\s*\/?>/i;
+  Prism.languages.django.tag.pattern = /<\/?(?!\d)[^\s>\/=$<]+(?:\s+[^\s>\/=]+(?:=(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^>=]+))?)*\s*\/?>/i;
   Prism.languages.insertBefore('django', 'entity', _django_template);
   Prism.languages.insertBefore(
     'inside',

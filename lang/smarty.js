@@ -21,7 +21,7 @@ Add support for {php}
             pattern: /^\{|\}$/i,
             alias: 'punctuation'
           },
-          string: /(["'])(?:\\?.)*?\1/,
+          string: /(["'])(?:\\.|(?!\1)[^\\\r\n])*\1/,
           number: /\b-?(?:0x[\dA-Fa-f]+|\d*\.?\d+(?:[Ee][-+]?\d+)?)\b/,
           variable: [
             /\$(?!\d)\w+/,
@@ -54,7 +54,7 @@ Add support for {php}
               operator: /=/
             }
           },
-          punctuation: [/[\[\]().,:`]|\->/],
+          punctuation: [/[\[\]().,:`]|->/],
           operator: [
             /[+\-*\/%]|==?=?|[!<>]=?|&&|\|\|?/,
             /\bis\s+(?:not\s+)?(?:div|even|odd)(?:\s+by)?\b/,

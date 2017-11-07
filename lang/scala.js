@@ -13,7 +13,7 @@ function scala(Prism) {
         greedy: true
       },
       {
-        pattern: /("|')(?:\\\\|\\?[^\\\r\n])*?\1/,
+        pattern: /("|')(?:\\.|(?!\1)[^\\\r\n])*\1/,
         greedy: true
       }
     ],

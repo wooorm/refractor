@@ -52,7 +52,7 @@ function markdown(Prism) {
       // ---
       // * * *
       // -----------
-      pattern: /(^\s*)([*-])([\t ]*\2){2,}(?=\s*$)/m,
+      pattern: /(^\s*)([*-])(?:[\t ]*\2){2,}(?=\s*$)/m,
       lookbehind: true,
       alias: 'punctuation'
     },

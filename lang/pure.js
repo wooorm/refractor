@@ -7,8 +7,20 @@ function pure(Prism) {
   Prism.register(c);
   (function(Prism) {
     Prism.languages.pure = {
+      comment: [
+        {
+          pattern: /(^|[^\\])\/\*[\s\S]*?\*\//,
+          lookbehind: true
+        },
+        {
+          pattern: /(^|[^\\:])\/\/.*/,
+          lookbehind: true
+        },
+        /#!.+/
+      ],
       'inline-lang': {
         pattern: /%<[\s\S]+?%>/,
+        greedy: true,
         inside: {
           lang: {
             pattern: /(^%< *)-\*-.+?-\*-/,
@@ -21,18 +33,6 @@ function pure(Prism) {
           }
         }
       },
-      comment: [
-        {
-          pattern: /(^|[^\\])\/\*[\s\S]*?\*\//,
-          greedy: true,
-          lookbehind: true
-        },
-        {
-          pattern: /(^|[^\\:])\/\/.*/,
-          lookbehind: true
-        },
-        /#!.+/
-      ],
       string: {
         pattern: /"(?:\\.|[^"\\\r\n])*"/,
         greedy: true

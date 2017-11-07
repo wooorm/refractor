@@ -8,7 +8,7 @@ function stylus(Prism) {
     var inside = {
       url: /url\((["']?).*?\1\)/i,
       string: {
-        pattern: /("|')(?:[^\\\r\n]|\\(?:\r\n|[\s\S]))*?\1/,
+        pattern: /("|')(?:(?!\1)[^\\\r\n]|\\(?:\r\n|[\s\S]))*\1/,
         greedy: true
       },
       interpolation: null, // See below

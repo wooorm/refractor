@@ -11,7 +11,7 @@ function oz(Prism) {
       greedy: true
     },
     atom: {
-      pattern: /'(?:[^'\\]|\\.)*'/,
+      pattern: /'(?:[^'\\]|\\[\s\S])*'/,
       greedy: true,
       alias: 'builtin'
     },

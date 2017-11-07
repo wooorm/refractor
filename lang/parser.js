@@ -10,7 +10,7 @@ function parser(Prism) {
       lookbehind: true
     },
     variable: {
-      pattern: /(^|[^^])\B\$(?:\w+|(?=[.\{]))(?:(?:\.|::?)\w+)*(?:\.|::?)?/,
+      pattern: /(^|[^^])\B\$(?:\w+|(?=[.{]))(?:(?:\.|::?)\w+)*(?:\.|::?)?/,
       lookbehind: true,
       inside: {
         punctuation: /\.|:+/

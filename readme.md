@@ -5,7 +5,7 @@ Useful for virtual DOMs and non-HTML things.  Perfect for [React][], [VDOM][],
 and others.
 
 `refractor` is built to work with all syntaxes supported by [Prism][],
-that’s [124 languages][names] (as of [prism@1.6.0][prismjs]) (and all
+that’s [126 languages][names] (as of [prism@1.8.0][prismjs]) (and all
 7 [themes][themes]).
 
 Want to use [`highlight.js`][hljs] instead?  Try [`lowlight`][lowlight]!
@@ -212,6 +212,7 @@ syntaxes are made to work with global variables and are not requirable.
 *   [ ] [`apacheconf`](https://github.com/wooorm/refractor/blob/master/lang/apacheconf.js)
 *   [ ] [`apl`](https://github.com/wooorm/refractor/blob/master/lang/apl.js)
 *   [ ] [`applescript`](https://github.com/wooorm/refractor/blob/master/lang/applescript.js)
+*   [ ] [`arduino`](https://github.com/wooorm/refractor/blob/master/lang/arduino.js)
 *   [ ] [`asciidoc`](https://github.com/wooorm/refractor/blob/master/lang/asciidoc.js)
 *   [ ] [`aspnet`](https://github.com/wooorm/refractor/blob/master/lang/aspnet.js)
 *   [ ] [`autohotkey`](https://github.com/wooorm/refractor/blob/master/lang/autohotkey.js)
@@ -280,6 +281,7 @@ syntaxes are made to work with global variables and are not requirable.
 *   [ ] [`nsis`](https://github.com/wooorm/refractor/blob/master/lang/nsis.js)
 *   [ ] [`objectivec`](https://github.com/wooorm/refractor/blob/master/lang/objectivec.js)
 *   [ ] [`ocaml`](https://github.com/wooorm/refractor/blob/master/lang/ocaml.js)
+*   [ ] [`opencl`](https://github.com/wooorm/refractor/blob/master/lang/opencl.js)
 *   [ ] [`oz`](https://github.com/wooorm/refractor/blob/master/lang/oz.js)
 *   [ ] [`parigp`](https://github.com/wooorm/refractor/blob/master/lang/parigp.js)
 *   [ ] [`parser`](https://github.com/wooorm/refractor/blob/master/lang/parser.js)
@@ -292,6 +294,7 @@ syntaxes are made to work with global variables and are not requirable.
 *   [ ] [`prolog`](https://github.com/wooorm/refractor/blob/master/lang/prolog.js)
 *   [ ] [`properties`](https://github.com/wooorm/refractor/blob/master/lang/properties.js)
 *   [ ] [`protobuf`](https://github.com/wooorm/refractor/blob/master/lang/protobuf.js)
+*   [ ] [`pug`](https://github.com/wooorm/refractor/blob/master/lang/pug.js)
 *   [ ] [`puppet`](https://github.com/wooorm/refractor/blob/master/lang/puppet.js)
 *   [ ] [`pure`](https://github.com/wooorm/refractor/blob/master/lang/pure.js)
 *   [ ] [`python`](https://github.com/wooorm/refractor/blob/master/lang/python.js)

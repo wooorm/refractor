@@ -5,19 +5,19 @@ php.displayName = 'php';
 php.aliases = [];
 function php(Prism) {
   /**
-* Original by Aaron Harun: http://aahacreative.com/2012/07/31/php-syntax-highlighting-prism/
-* Modified by Miles Johnson: http://milesj.me
-*
-* Supports the following:
-*      - Extends clike syntax
-*      - Support for PHP 5.3+ (namespaces, traits, generators, etc)
-*      - Smarter constant and function matching
-*
-* Adds the following new token classes:
-*      constant, delimiter, variable, function, package
-*/
+   * Original by Aaron Harun: http://aahacreative.com/2012/07/31/php-syntax-highlighting-prism/
+   * Modified by Miles Johnson: http://milesj.me
+   *
+   * Supports the following:
+   *      - Extends clike syntax
+   *      - Support for PHP 5.3+ (namespaces, traits, generators, etc)
+   *      - Smarter constant and function matching
+   *
+   * Adds the following new token classes:
+   *      constant, delimiter, variable, function, package
+   */
   Prism.languages.php = Prism.languages.extend('clike', {
-    keyword: /\b(and|or|xor|array|as|break|case|cfunction|class|const|continue|declare|default|die|do|else|elseif|enddeclare|endfor|endforeach|endif|endswitch|endwhile|extends|for|foreach|function|include|include_once|global|if|new|return|static|switch|use|require|require_once|var|while|abstract|interface|public|implements|private|protected|parent|throw|null|echo|print|trait|namespace|final|yield|goto|instanceof|finally|try|catch)\b/i,
+    keyword: /\b(?:and|or|xor|array|as|break|case|cfunction|class|const|continue|declare|default|die|do|else|elseif|enddeclare|endfor|endforeach|endif|endswitch|endwhile|extends|for|foreach|function|include|include_once|global|if|new|return|static|switch|use|require|require_once|var|while|abstract|interface|public|implements|private|protected|parent|throw|null|echo|print|trait|namespace|final|yield|goto|instanceof|finally|try|catch)\b/i,
     constant: /\b[A-Z0-9_]{2,}\b/,
     comment: {
       pattern: /(^|[^\\])(?:\/\*[\s\S]*?\*\/|\/\/.*)/,

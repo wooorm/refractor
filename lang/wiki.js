@@ -49,7 +49,7 @@ function wiki(Prism) {
       // FIXME Nested structures should be handled
       // {{formatnum:{{#expr:{{{3}}}}}}}
       /\{{3}.+?\}{3}/,
-      /\{\{.+?}}/
+      /\{\{.+?\}\}/
     ],
     symbol: [/^#redirect/im, /~{3,5}/],
     // Handle table attrs:

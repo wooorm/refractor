@@ -11,7 +11,7 @@ function applescript(Prism) {
       /--.+/,
       /#.+/
     ],
-    string: /"(?:\\?.)*?"/,
+    string: /"(?:\\.|[^"\\\r\n])*"/,
     number: /\b-?\d*\.?\d+([Ee]-?\d+)?\b/,
     operator: [
       /[&=≠≤≥*+\-\/÷^]|[<>]=?/,
