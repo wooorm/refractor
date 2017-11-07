@@ -86,6 +86,7 @@
   "remarkConfig": {
     "plugins": [
       "preset-wooorm",
+      "./script/count",
       "./script/support"
     ]
   }

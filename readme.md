@@ -4,9 +4,13 @@ Lightweight, robust, elegant virtual syntax highlighting using [Prism][].
 Useful for virtual DOMs and non-HTML things.  Perfect for [React][], [VDOM][],
 and others.
 
+<!--count start-->
+
 `refractor` is built to work with all syntaxes supported by [Prism][],
-that’s [126 languages][names] (as of [prism@1.8.0][prismjs]) (and all
-7 [themes][themes]).
+that’s [127 languages][names] (as of [prism@1.8.0][prismjs]) and all
+7 [themes][].
+
+<!--count end-->
 
 Want to use [`highlight.js`][hljs] instead?  Try [`lowlight`][lowlight]!
 
