@@ -146,8 +146,7 @@ Check if a [syntax][] has been registered and return syntax if it has.
 var refractor = require('refractor/core.js');
 
 refractor.register(require('refractor/lang/markdown.js'));
-refractor.syntax("markdown");
-if (markdown) {
+if (refractor.syntax("markdown")) {
   console.log(refractor.highlight('*Emphasis*', 'markdown'));  
 }
 ```
