@@ -38,6 +38,9 @@ npm install
 
 [Usage in the browser »][browser]
 
+> Note: Prism depends on [`clipboard.js`][clipboard], but that code isn’t
+> included when running refractor.
+
 ## Usage
 
 ```javascript
@@ -402,6 +405,8 @@ syntaxes are made to work with global variables and are not requirable.
 [prism]: https://github.com/PrismJS/prism
 
 [prismjs]: https://www.npmjs.com/package/prismjs
+
+[clipboard]: https://github.com/zenorocha/clipboard.js
 
 [lowlight]: https://github.com/wooorm/lowlight
 
