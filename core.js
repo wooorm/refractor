@@ -38,6 +38,7 @@ module.exports = refract;
 /* Create. */
 refract.highlight = highlight;
 refract.register = register;
+refractor.getLanguage = getLanguage;
 
 /* Register bundled grammars. */
 register(markup);
@@ -78,6 +79,15 @@ function highlight(value, name, language) {
   syntax = refract.languages[name];
 
   return sup.call(this, value, syntax, language);
+}
+
+function getLanguage(language) {
+  if (typeof language !== 'string') {
+    throw new Error('Expected `string` for `language`, got `' + language + '`');
+  }
+  if (refract.languages[language]) {
+    return refract.languages[language];
+  }
 }
 
 function stringify(value, language, parent) {
