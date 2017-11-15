@@ -21,6 +21,7 @@ Want to use [`highlight.js`][hljs] instead?  Try [`lowlight`][lowlight]!
 *   [API](#api)
     *   [refractor.register(syntax)](#refractorregistersyntax)
     *   [refractor.highlight(value, language)](#refractorhighlightvalue-language)
+    *   [refractor.registered(language)](#refractorregisteredlanguage)
 *   [Browser](#browser)
 *   [Plugins](#plugins)
 *   [Syntaxes](#syntaxes)
@@ -133,6 +134,29 @@ Yields:
     tagName: 'span',
     properties: [Object],
     children: [Array] } ]
+```
+
+### `refractor.registered(language)`
+
+Check if a `language` ([name or alias][syntax]) is registered.
+
+###### Example
+
+```js
+var refractor = require('refractor/core.js');
+
+console.log(refractor.registered('markdown'));
+
+refractor.register(require('refractor/lang/markdown.js'));
+
+console.log(refractor.registered('markdown'));
+```
+
+Yields:
+
+```js
+false
+true
 ```
 
 ## Browser

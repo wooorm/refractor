@@ -156,6 +156,30 @@ test('.register(grammar)', function (t) {
   t.end();
 });
 
+test('.registered(language)', function (t) {
+  t.throws(
+    function () {
+      refractor.registered();
+    },
+    /Expected `string` for `language`, got `undefined`/,
+    'should throw when not given a `language`'
+  );
+
+  t.equal(
+    refractor.registered('notalanguage'),
+    false,
+    'should return false when `language` is not registered'
+  );
+
+  t.equal(
+    refractor.registered('markdown'),
+    true,
+    'should return true when `language` is registered'
+  );
+
+  t.end();
+});
+
 test('fixtures', function (t) {
   var root = path.join(__dirname, 'fixtures');
   var processor = rehype().use({settings: {fragment: true}});
