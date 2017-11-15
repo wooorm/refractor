@@ -53,7 +53,6 @@ function register(grammar) {
   if (typeof grammar !== 'function' || !grammar.displayName) {
     throw new Error('Expected `function` for `grammar`, got `' + grammar + '`');
   }
-
   /* Do not duplicate registrations. */
   if (refract.languages[grammar.displayName] === undefined) {
     grammar(refract);
