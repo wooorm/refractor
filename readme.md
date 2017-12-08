@@ -389,7 +389,7 @@ syntaxes are made to work with global variables and are not requirable.
 
 [releases]: https://github.com/wooorm/refractor/releases
 
-[rehype]: https://github.com/wooorm/rehype
+[rehype]: https://github.com/rehypejs/rehype
 
 [names]: http://prismjs.com/#languages-list
 
@@ -399,7 +399,7 @@ syntaxes are made to work with global variables and are not requirable.
 
 [vdom]: https://github.com/Matt-Esch/virtual-dom
 
-[to-hyperscript]: https://github.com/wooorm/hast-to-hyperscript
+[to-hyperscript]: https://github.com/syntax-tree/hast-to-hyperscript
 
 [browser]: #browser
 
