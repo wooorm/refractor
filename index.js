@@ -35,6 +35,7 @@ refractor.register(require('./lang/docker.js'));
 refractor.register(require('./lang/eiffel.js'));
 refractor.register(require('./lang/elixir.js'));
 refractor.register(require('./lang/erlang.js'));
+refractor.register(require('./lang/flow.js'));
 refractor.register(require('./lang/fortran.js'));
 refractor.register(require('./lang/fsharp.js'));
 refractor.register(require('./lang/gherkin.js'));

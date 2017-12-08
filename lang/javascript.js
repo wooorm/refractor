@@ -8,7 +8,7 @@ function javascript(Prism) {
     keyword: /\b(?:as|async|await|break|case|catch|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally|for|from|function|get|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|set|static|super|switch|this|throw|try|typeof|var|void|while|with|yield)\b/,
     number: /\b-?(?:0[xX][\dA-Fa-f]+|0[bB][01]+|0[oO][0-7]+|\d*\.?\d+(?:[Ee][+-]?\d+)?|NaN|Infinity)\b/,
     // Allow for all non-ASCII characters (See http://stackoverflow.com/a/2008444)
-    function: /[_$a-zA-Z\xA0-\uFFFF][_$a-zA-Z0-9\xA0-\uFFFF]*(?=\s*\()/i,
+    function: /[_$a-z\xA0-\uFFFF][$\w\xA0-\uFFFF]*(?=\s*\()/i,
     operator: /-[-=]?|\+[+=]?|!=?=?|<<?=?|>>?>?=?|=(?:==?|>)?|&[&=]?|\|[|=]?|\*\*?=?|\/=?|~|\^=?|%=?|\?|\.{3}/
   });
   Prism.languages.insertBefore('javascript', 'keyword', {
@@ -19,7 +19,7 @@ function javascript(Prism) {
     },
     // This must be declared before keyword because we use "function" inside the look-forward
     'function-variable': {
-      pattern: /[_$a-zA-Z\xA0-\uFFFF][_$a-zA-Z0-9\xA0-\uFFFF]*(?=\s*=\s*(?:function\b|(?:\([^()]*\)|[_$a-zA-Z\xA0-\uFFFF][_$a-zA-Z0-9\xA0-\uFFFF]*)\s*=>))/i,
+      pattern: /[_$a-z\xA0-\uFFFF][$\w\xA0-\uFFFF]*(?=\s*=\s*(?:function\b|(?:\([^()]*\)|[_$a-z\xA0-\uFFFF][$\w\xA0-\uFFFF]*)\s*=>))/i,
       alias: 'function'
     }
   });
@@ -48,7 +48,8 @@ function javascript(Prism) {
         pattern: /(<script[\s\S]*?>)[\s\S]*?(?=<\/script>)/i,
         lookbehind: true,
         inside: Prism.languages.javascript,
-        alias: 'language-javascript'
+        alias: 'language-javascript',
+        greedy: true
       }
     });
   }

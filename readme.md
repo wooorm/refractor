@@ -7,7 +7,7 @@ and others.
 <!--count start-->
 
 `refractor` is built to work with all syntaxes supported by [Prism][],
-that’s [126 languages][names] (as of [prism@1.8.0][prismjs]) and all
+that’s [127 languages][names] (as of [prism@1.9.0][prismjs]) and all
 7 [themes][].
 
 <!--count end-->
@@ -268,6 +268,7 @@ syntaxes are made to work with global variables and are not requirable.
 *   [ ] [`eiffel`](https://github.com/wooorm/refractor/blob/master/lang/eiffel.js)
 *   [ ] [`elixir`](https://github.com/wooorm/refractor/blob/master/lang/elixir.js)
 *   [ ] [`erlang`](https://github.com/wooorm/refractor/blob/master/lang/erlang.js)
+*   [ ] [`flow`](https://github.com/wooorm/refractor/blob/master/lang/flow.js)
 *   [ ] [`fortran`](https://github.com/wooorm/refractor/blob/master/lang/fortran.js)
 *   [ ] [`fsharp`](https://github.com/wooorm/refractor/blob/master/lang/fsharp.js)
 *   [ ] [`gherkin`](https://github.com/wooorm/refractor/blob/master/lang/gherkin.js)
