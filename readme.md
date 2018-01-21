@@ -7,7 +7,7 @@ and others.
 <!--count start-->
 
 `refractor` is built to work with all syntaxes supported by [Prism][],
-that’s [127 languages][names] (as of [prism@1.9.0][prismjs]) and all
+that’s [132 languages][names] (as of [prism@1.10.0][prismjs]) and all
 7 [themes][].
 
 <!--count end-->
@@ -245,6 +245,7 @@ syntaxes are made to work with global variables and are not requirable.
 *   [ ] [`applescript`](https://github.com/wooorm/refractor/blob/master/lang/applescript.js)
 *   [ ] [`arduino`](https://github.com/wooorm/refractor/blob/master/lang/arduino.js)
 *   [ ] [`asciidoc`](https://github.com/wooorm/refractor/blob/master/lang/asciidoc.js)
+*   [ ] [`asm6502`](https://github.com/wooorm/refractor/blob/master/lang/asm6502.js)
 *   [ ] [`aspnet`](https://github.com/wooorm/refractor/blob/master/lang/aspnet.js)
 *   [ ] [`autohotkey`](https://github.com/wooorm/refractor/blob/master/lang/autohotkey.js)
 *   [ ] [`autoit`](https://github.com/wooorm/refractor/blob/master/lang/autoit.js)
@@ -267,6 +268,7 @@ syntaxes are made to work with global variables and are not requirable.
 *   [ ] [`docker`](https://github.com/wooorm/refractor/blob/master/lang/docker.js) — alias: `dockerfile`
 *   [ ] [`eiffel`](https://github.com/wooorm/refractor/blob/master/lang/eiffel.js)
 *   [ ] [`elixir`](https://github.com/wooorm/refractor/blob/master/lang/elixir.js)
+*   [ ] [`elm`](https://github.com/wooorm/refractor/blob/master/lang/elm.js)
 *   [ ] [`erlang`](https://github.com/wooorm/refractor/blob/master/lang/erlang.js)
 *   [ ] [`flow`](https://github.com/wooorm/refractor/blob/master/lang/flow.js)
 *   [ ] [`fortran`](https://github.com/wooorm/refractor/blob/master/lang/fortran.js)
@@ -282,9 +284,11 @@ syntaxes are made to work with global variables and are not requirable.
 *   [ ] [`haskell`](https://github.com/wooorm/refractor/blob/master/lang/haskell.js)
 *   [ ] [`haxe`](https://github.com/wooorm/refractor/blob/master/lang/haxe.js)
 *   [ ] [`http`](https://github.com/wooorm/refractor/blob/master/lang/http.js)
+*   [ ] [`ichigojam`](https://github.com/wooorm/refractor/blob/master/lang/ichigojam.js)
 *   [ ] [`icon`](https://github.com/wooorm/refractor/blob/master/lang/icon.js)
 *   [ ] [`inform7`](https://github.com/wooorm/refractor/blob/master/lang/inform7.js)
 *   [ ] [`ini`](https://github.com/wooorm/refractor/blob/master/lang/ini.js)
+*   [ ] [`io`](https://github.com/wooorm/refractor/blob/master/lang/io.js)
 *   [ ] [`j`](https://github.com/wooorm/refractor/blob/master/lang/j.js)
 *   [ ] [`java`](https://github.com/wooorm/refractor/blob/master/lang/java.js)
 *   [ ] [`jolie`](https://github.com/wooorm/refractor/blob/master/lang/jolie.js)
@@ -358,6 +362,7 @@ syntaxes are made to work with global variables and are not requirable.
 *   [ ] [`vhdl`](https://github.com/wooorm/refractor/blob/master/lang/vhdl.js)
 *   [ ] [`vim`](https://github.com/wooorm/refractor/blob/master/lang/vim.js)
 *   [ ] [`wiki`](https://github.com/wooorm/refractor/blob/master/lang/wiki.js)
+*   [ ] [`xeora`](https://github.com/wooorm/refractor/blob/master/lang/xeora.js) — alias: `xeoracube`
 *   [ ] [`xojo`](https://github.com/wooorm/refractor/blob/master/lang/xojo.js)
 *   [ ] [`yaml`](https://github.com/wooorm/refractor/blob/master/lang/yaml.js)
 
