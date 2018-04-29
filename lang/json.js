@@ -10,7 +10,7 @@ function json(Prism) {
       pattern: /"(?:\\.|[^\\"\r\n])*"(?!\s*:)/,
       greedy: true
     },
-    number: /\b-?(?:0x[\dA-Fa-f]+|\d*\.?\d+(?:[Ee][+-]?\d+)?)\b/,
+    number: /\b0x[\dA-Fa-f]+\b|(?:\b\d+\.?\d*|\B\.\d+)(?:[Ee][+-]?\d+)?/,
     punctuation: /[{}[\]);,]/,
     operator: /:/g,
     boolean: /\b(?:true|false)\b/i,

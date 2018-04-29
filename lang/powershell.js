@@ -21,7 +21,8 @@ function powershell(Prism) {
         greedy: true,
         inside: {
           function: {
-            pattern: /[^`]\$\(.*?\)/,
+            pattern: /(^|[^`])\$\(.*?\)/,
+            lookbehind: true,
             // Populated at end of file
             inside: {}
           }
@@ -33,7 +34,8 @@ function powershell(Prism) {
       }
     ],
     // Matches name spaces as well as casts, attribute decorators. Force starting with letter to avoid matching array indices
-    namespace: /\[[a-z][\s\S]*?\]/i,
+    // Supports two levels of nested brackets (e.g. `[OutputType([System.Collections.Generic.List[int]])]`)
+    namespace: /\[[a-z](?:\[(?:\[[^\]]*]|[^\[\]])*]|[^\[\]])*]/i,
     boolean: /\$(?:true|false)\b/i,
     variable: /\$\w+\b/i,
     // Cmdlets and aliases. Aliases should come last, otherwise "write" gets preferred over "write-host" for example
@@ -56,7 +58,6 @@ function powershell(Prism) {
     Prism.languages.powershell.boolean
   Prism.languages.powershell.string[0].inside.variable =
     Prism.languages.powershell.variable
-  Prism.languages.powershell.string[0].inside.function.inside = Prism.util.clone(
+  Prism.languages.powershell.string[0].inside.function.inside =
     Prism.languages.powershell
-  )
 }

@@ -20,7 +20,11 @@ function erlang(Prism) {
     },
     boolean: /\b(?:true|false)\b/,
     keyword: /\b(?:fun|when|case|of|end|if|receive|after|try|catch)\b/,
-    number: [/\$\\?./, /\d+#[a-z0-9]+/i, /(?:\b|-)\d*\.?\d+([Ee][+-]?\d+)?\b/],
+    number: [
+      /\$\\?./,
+      /\d+#[a-z0-9]+/i,
+      /(?:\b\d+\.?\d*|\B\.\d+)(?:e[+-]?\d+)?/i
+    ],
     function: /\b[a-z][\w@]*(?=\()/,
     variable: {
       // Look-behind is used to prevent wrong highlighting of atoms containing "@"

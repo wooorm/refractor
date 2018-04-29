@@ -17,6 +17,7 @@ var root = path.join('node_modules', 'prismjs', 'components')
 var extendRegex = /languages\.extend\('([^']+)'/g
 var cloneRegex = /Prism\.util\.clone\(Prism\.languages\.([^[)]+)(?:\)|\[)/g
 var aliasRegex = /Prism\.languages\.([\w]+) = Prism\.languages\.[\w]+;/g
+var prefix = 'refractor-'
 
 fs.readdir(root, ondir)
 
@@ -25,6 +26,7 @@ function ondir(err, paths) {
 
   paths = paths
     .filter(not(hidden))
+    .filter(not(index))
     .map(name)
     .filter(not(minified))
     .filter(not(core))
@@ -75,11 +77,11 @@ function generate(name, callback) {
 }
 
 function load(lang) {
-  return 'var ' + camelcase(lang) + " = require('./" + lang + ".js');"
+  return 'var ' + camelcase(prefix + lang) + " = require('./" + lang + ".js');"
 }
 
 function register(lang) {
-  return '  Prism.register(' + camelcase(lang) + ');'
+  return '  Prism.register(' + camelcase(prefix + lang) + ');'
 }
 
 function name(fp) {
@@ -115,4 +117,8 @@ function findAll(doc, re) {
   }
 
   return result
+}
+
+function index(fp) {
+  return fp === 'index.js'
 }

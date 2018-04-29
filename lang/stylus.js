@@ -31,13 +31,19 @@ function stylus(Prism) {
     inside['interpolation'] = {
       pattern: /\{[^\r\n}:]+\}/,
       alias: 'variable',
-      inside: Prism.util.clone(inside)
+      inside: {
+        delimiter: {
+          pattern: /^{|}$/,
+          alias: 'punctuation'
+        },
+        rest: inside
+      }
     }
     inside['func'] = {
       pattern: /[\w-]+\([^)]*\).*/,
       inside: {
         function: /^[^(]+/,
-        rest: Prism.util.clone(inside)
+        rest: inside
       }
     }
     Prism.languages.stylus = {

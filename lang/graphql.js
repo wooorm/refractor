@@ -10,7 +10,7 @@ function graphql(Prism) {
       pattern: /"(?:\\.|[^\\"\r\n])*"/,
       greedy: true
     },
-    number: /(?:\B-|\b)\d+(?:\.\d+)?(?:[eE][+-]?\d+)?\b/,
+    number: /(?:\B-|\b)\d+(?:\.\d+)?(?:e[+-]?\d+)?\b/i,
     boolean: /\b(?:true|false)\b/,
     variable: /\$[a-z_]\w*/i,
     directive: {

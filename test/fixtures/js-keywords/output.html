@@ -8,6 +8,6 @@
   <span class="token punctuation">}</span>
   <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">&#x3C;</span> classes<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">checkCondition</span><span class="token punctuation">(</span>classes<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">===</span> undefined<span class="token punctuation">)</span>
-      <span class="token keyword">return</span> <span class="token regex">/\d+[\s/]/g</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> <span class="token operator">/</span>\d<span class="token operator">+</span><span class="token punctuation">[</span>\s<span class="token operator">/</span><span class="token punctuation">]</span><span class="token operator">/</span>g<span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>

@@ -38,9 +38,9 @@ Support inline asm ?
     ],
     number: [
       // Hexadecimal, octal and binary
-      /[+-]?(?:[&%]\d+|\$[a-f\d]+)/i,
+      /(?:[&%]\d+|\$[a-f\d]+)/i,
       // Decimal
-      /([+-]|\b)\d+(?:\.\d+)?(?:e[+-]?\d+)?/i
+      /\b\d+(?:\.\d+)?(?:e[+-]?\d+)?/i
     ],
     operator: [
       /\.\.|\*\*|:=|<[<=>]?|>[>=]?|[+\-*\/]=?|[@^=]/i,

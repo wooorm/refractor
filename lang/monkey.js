@@ -6,7 +6,16 @@ monkey.aliases = []
 function monkey(Prism) {
   Prism.languages.monkey = {
     string: /"[^"\r\n]*"/,
-    comment: [/^#Rem\s+[\s\S]*?^#End/im, /'.+/],
+    comment: [
+      {
+        pattern: /^#Rem\s+[\s\S]*?^#End/im,
+        greedy: true
+      },
+      {
+        pattern: /'.+/,
+        greedy: true
+      }
+    ],
     preprocessor: {
       pattern: /(^[ \t]*)#.+/m,
       lookbehind: true,

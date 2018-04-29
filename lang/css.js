@@ -24,9 +24,7 @@ function css(Prism) {
     function: /[-a-z0-9]+(?=\()/i,
     punctuation: /[(){};:]/
   }
-  Prism.languages.css['atrule'].inside.rest = Prism.util.clone(
-    Prism.languages.css
-  )
+  Prism.languages.css['atrule'].inside.rest = Prism.languages.css
   if (Prism.languages.markup) {
     Prism.languages.insertBefore('markup', 'tag', {
       style: {

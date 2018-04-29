@@ -16,7 +16,7 @@ function asm6502(Prism) {
       alias: 'property'
     },
     hexnumber: {
-      pattern: /#?\$[\da-fA-F]{2,4}/,
+      pattern: /#?\$[\da-f]{2,4}/i,
       alias: 'string'
     },
     binarynumber: {
@@ -28,7 +28,7 @@ function asm6502(Prism) {
       alias: 'string'
     },
     register: {
-      pattern: /\b[xyaXYA]\b/,
+      pattern: /\b[xya]\b/i,
       alias: 'variable'
     }
   }

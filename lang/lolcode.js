@@ -14,7 +14,7 @@ function lolcode(Prism) {
       },
       greedy: true
     },
-    number: /(?:-|\b)\d*\.?\d+/,
+    number: /(?:\B-)?(?:\b\d+\.?\d*|\B\.\d+)/,
     symbol: {
       pattern: /(^|\s)(?:A )?(?:YARN|NUMBR|NUMBAR|TROOF|BUKKIT|NOOB)(?=\s|,|$)/,
       lookbehind: true,

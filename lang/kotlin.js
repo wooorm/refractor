@@ -49,7 +49,7 @@ function kotlin(Prism) {
             pattern: /^\$\{|\}$/,
             alias: 'variable'
           },
-          rest: Prism.util.clone(Prism.languages.kotlin)
+          rest: Prism.languages.kotlin
         }
       },
       {

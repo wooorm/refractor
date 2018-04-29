@@ -3,12 +3,15 @@
 var fs = require('fs')
 var path = require('path')
 var Prism = require('prismjs')
+var loadLanguages = require('prismjs/components/index.js')
 var test = require('tape')
 var not = require('not')
 var hidden = require('is-hidden')
 var rehype = require('rehype')
 var remove = require('unist-util-remove-position')
 var refractor = require('..')
+
+loadLanguages()
 
 var read = fs.readFileSync
 var join = path.join
@@ -196,7 +199,7 @@ test('fixtures', function(t) {
     var lang = name.split('-')[0]
     var grammar = refractor.languages[lang]
     var baseline = processor
-      .processSync(Prism.highlight(input, grammar))
+      .processSync(Prism.highlight(input, grammar, lang))
       .toString()
     var tree = refractor.highlight(input, lang)
     var node = processor.parse(output)
@@ -205,8 +208,12 @@ test('fixtures', function(t) {
 
     t.test(name, function(st) {
       st.plan(2)
-      st.deepEqual(tree, node.children, 'should process')
-      st.equal(output, baseline, 'should compile as Prism')
+      st.equal(baseline, output, 'Prism should compile to the fixture')
+      st.deepEqual(
+        tree,
+        node.children,
+        'Refractor should create a tree matching the fixture'
+      )
     })
   }
 

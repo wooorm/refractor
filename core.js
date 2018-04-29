@@ -60,9 +60,8 @@ function register(grammar) {
   }
 }
 
-function highlight(value, name, language) {
+function highlight(value, name) {
   var sup = Prism.highlight
-  var syntax
 
   if (typeof value !== 'string') {
     throw new Error('Expected `string` for `value`, got `' + value + '`')
@@ -76,9 +75,7 @@ function highlight(value, name, language) {
     throw new Error('Unknown language: `' + name + '` is not registered')
   }
 
-  syntax = refract.languages[name]
-
-  return sup.call(this, value, syntax, language)
+  return sup.call(this, value, refract.languages[name], name)
 }
 
 function registered(language) {

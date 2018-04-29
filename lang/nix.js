@@ -42,7 +42,6 @@ function nix(Prism) {
     operator: /[=!<>]=?|\+\+?|\|\||&&|\/\/|->?|[?@]/,
     punctuation: /[{}()[\].,:;]/
   }
-  Prism.languages.nix.string.inside.interpolation.inside.rest = Prism.util.clone(
+  Prism.languages.nix.string.inside.interpolation.inside.rest =
     Prism.languages.nix
-  )
 }

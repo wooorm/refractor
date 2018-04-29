@@ -22,6 +22,7 @@ function puppet(Prism) {
         {
           pattern: /(@\(([^"\r\n\/):]+)(?:\/[nrts$uL]*)?\).*(?:\r?\n|\r))(?:.*(?:\r?\n|\r))*?[ \t]*\|?[ \t]*-?[ \t]*\2/,
           lookbehind: true,
+          greedy: true,
           alias: 'string',
           inside: {
             // Matches the end tag
@@ -43,12 +44,14 @@ function puppet(Prism) {
       'multiline-comment': {
         pattern: /(^|[^\\])\/\*[\s\S]*?\*\//,
         lookbehind: true,
+        greedy: true,
         alias: 'comment'
       },
       regex: {
         // Must be prefixed with the keyword "node" or a non-word char
         pattern: /((?:\bnode\s+|[~=\(\[\{,]\s*|[=+]>\s*|^\s*))\/(?:[^\/\\]|\\[\s\S])+\/(?:[imx]+\b|\B)/,
         lookbehind: true,
+        greedy: true,
         inside: {
           // Extended regexes must have the x flag. They can contain single-line comments.
           'extended-regex': {
@@ -61,11 +64,13 @@ function puppet(Prism) {
       },
       comment: {
         pattern: /(^|[^\\])#.*/,
-        lookbehind: true
+        lookbehind: true,
+        greedy: true
       },
       string: {
         // Allow for one nested level of double quotes inside interpolation
         pattern: /(["'])(?:\$\{(?:[^'"}]|(["'])(?:(?!\2)[^\\]|\\[\s\S])*\2)+\}|(?!\1)[^\\]|\\[\s\S])*\1/,
+        greedy: true,
         inside: {
           'double-quoted': {
             pattern: /^"[\s\S]*"$/,
@@ -119,7 +124,7 @@ function puppet(Prism) {
             pattern: /^\$/,
             alias: 'variable'
           },
-          rest: Prism.util.clone(Prism.languages.puppet)
+          rest: Prism.languages.puppet
         }
       },
       {

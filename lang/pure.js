@@ -1,10 +1,10 @@
 'use strict'
-var c = require('./c.js')
+var refractorC = require('./c.js')
 module.exports = pure
 pure.displayName = 'pure'
 pure.aliases = []
 function pure(Prism) {
-  Prism.register(c)
+  Prism.register(refractorC)
   ;(function(Prism) {
     Prism.languages.pure = {
       comment: [

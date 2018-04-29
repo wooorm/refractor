@@ -29,7 +29,7 @@
   ],
   "dependencies": {
     "hastscript": "^3.1.0",
-    "prismjs": "~1.10.0"
+    "prismjs": "~1.14.0"
   },
   "devDependencies": {
     "alpha-sort": "^2.0.1",
