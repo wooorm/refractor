@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = apacheconf;
-apacheconf.displayName = 'apacheconf';
-apacheconf.aliases = [];
+module.exports = apacheconf
+apacheconf.displayName = 'apacheconf'
+apacheconf.aliases = []
 function apacheconf(Prism) {
   Prism.languages.apacheconf = {
     comment: /#.*/,
@@ -50,5 +50,5 @@ function apacheconf(Prism) {
     },
     variable: /[$%]\{?(?:\w\.?[-+:]?)+\}?/,
     regex: /\^?.*\$|\^.*\$?/
-  };
+  }
 }

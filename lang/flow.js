@@ -1,11 +1,11 @@
-'use strict';
+'use strict'
 
-module.exports = flow;
-flow.displayName = 'flow';
-flow.aliases = [];
+module.exports = flow
+flow.displayName = 'flow'
+flow.aliases = []
 function flow(Prism) {
-  (function(Prism) {
-    Prism.languages.flow = Prism.languages.extend('javascript', {});
+  ;(function(Prism) {
+    Prism.languages.flow = Prism.languages.extend('javascript', {})
     Prism.languages.insertBefore('flow', 'keyword', {
       type: [
         {
@@ -13,18 +13,18 @@ function flow(Prism) {
           alias: 'tag'
         }
       ]
-    });
+    })
     Prism.languages.flow[
       'function-variable'
-    ].pattern = /[_$a-z\xA0-\uFFFF][$\w\xA0-\uFFFF]*(?=\s*=\s*(?:function\b|(?:\([^()]*\)(?:\s*:\s*\w+)?|[_$a-z\xA0-\uFFFF][$\w\xA0-\uFFFF]*)\s*=>))/i;
+    ].pattern = /[_$a-z\xA0-\uFFFF][$\w\xA0-\uFFFF]*(?=\s*=\s*(?:function\b|(?:\([^()]*\)(?:\s*:\s*\w+)?|[_$a-z\xA0-\uFFFF][$\w\xA0-\uFFFF]*)\s*=>))/i
     Prism.languages.insertBefore('flow', 'operator', {
       'flow-punctuation': {
         pattern: /\{\||\|\}/,
         alias: 'punctuation'
       }
-    });
+    })
     if (Prism.util.type(Prism.languages.flow.keyword) !== 'Array') {
-      Prism.languages.flow.keyword = [Prism.languages.flow.keyword];
+      Prism.languages.flow.keyword = [Prism.languages.flow.keyword]
     }
     Prism.languages.flow.keyword.unshift(
       {
@@ -35,6 +35,6 @@ function flow(Prism) {
         pattern: /(^|[^$]\B)\$(?:await|Diff|Exact|Keys|ObjMap|PropertyType|Shape|Record|Supertype|Subtype|Enum)\b(?!\$)/,
         lookbehind: true
       }
-    );
-  })(Prism);
+    )
+  })(Prism)
 }

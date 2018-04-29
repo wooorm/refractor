@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = ada;
-ada.displayName = 'ada';
-ada.aliases = [];
+module.exports = ada
+ada.displayName = 'ada'
+ada.aliases = []
 function ada(Prism) {
   Prism.languages.ada = {
     comment: /--.*/,
@@ -22,5 +22,5 @@ function ada(Prism) {
     punctuation: /\.\.?|[,;():]/,
     char: /'.'/,
     variable: /\b[a-z](?:[_a-z\d])*\b/i
-  };
+  }
 }

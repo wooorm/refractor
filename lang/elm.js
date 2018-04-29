@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = elm;
-elm.displayName = 'elm';
-elm.aliases = [];
+module.exports = elm
+elm.displayName = 'elm'
+elm.aliases = []
 function elm(Prism) {
   Prism.languages.elm = {
     comment: /--.*|{-[\s\S]*?-}/,
@@ -47,5 +47,5 @@ function elm(Prism) {
     hvariable: /\b(?:[A-Z]\w*\.)*[a-z]\w*\b/,
     constant: /\b(?:[A-Z]\w*\.)*[A-Z]\w*\b/,
     punctuation: /[{}[\]|(),.:]/
-  };
+  }
 }

@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = ruby;
-ruby.displayName = 'ruby';
-ruby.aliases = [];
+module.exports = ruby
+ruby.displayName = 'ruby'
+ruby.aliases = []
 function ruby(Prism) {
   /**
    * Original by Samuel Flores
@@ -10,14 +10,14 @@ function ruby(Prism) {
    * Adds the following new token classes:
    *      constant, builtin, variable, symbol, regex
    */
-  (function(Prism) {
+  ;(function(Prism) {
     Prism.languages.ruby = Prism.languages.extend('clike', {
       comment: [
         /#(?!\{[^\r\n]*?\}).*/,
         /^=begin(?:\r?\n|\r)(?:.*(?:\r?\n|\r))*?=end/m
       ],
       keyword: /\b(?:alias|and|BEGIN|begin|break|case|class|def|define_method|defined|do|each|else|elsif|END|end|ensure|false|for|if|in|module|new|next|nil|not|or|raise|redo|require|rescue|retry|return|self|super|then|throw|true|undef|unless|until|when|while|yield)\b/
-    });
+    })
     var interpolation = {
       pattern: /#\{[^}]+\}/,
       inside: {
@@ -27,7 +27,7 @@ function ruby(Prism) {
         },
         rest: Prism.util.clone(Prism.languages.ruby)
       }
-    };
+    }
     Prism.languages.insertBefore('ruby', 'keyword', {
       regex: [
         {
@@ -74,11 +74,11 @@ function ruby(Prism) {
       ],
       variable: /[@$]+[a-zA-Z_]\w*(?:[?!]|\b)/,
       symbol: /:[a-zA-Z_]\w*(?:[?!]|\b)/
-    });
+    })
     Prism.languages.insertBefore('ruby', 'number', {
       builtin: /\b(?:Array|Bignum|Binding|Class|Continuation|Dir|Exception|FalseClass|File|Stat|Fixnum|Float|Hash|Integer|IO|MatchData|Method|Module|NilClass|Numeric|Object|Proc|Range|Regexp|String|Struct|TMS|Symbol|ThreadGroup|Thread|Time|TrueClass)\b/,
       constant: /\b[A-Z]\w*(?:[?!]|\b)/
-    });
+    })
     Prism.languages.ruby.string = [
       {
         pattern: /%[qQiIwWxs]?([^a-zA-Z0-9\s{(\[<])(?:(?!\1)[^\\]|\\[\s\S])*\1/,
@@ -123,6 +123,6 @@ function ruby(Prism) {
           interpolation: interpolation
         }
       }
-    ];
-  })(Prism);
+    ]
+  })(Prism)
 }

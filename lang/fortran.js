@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = fortran;
-fortran.displayName = 'fortran';
-fortran.aliases = [];
+module.exports = fortran
+fortran.displayName = 'fortran'
+fortran.aliases = []
 function fortran(Prism) {
   Prism.languages.fortran = {
     'quoted-number': {
@@ -40,5 +40,5 @@ function fortran(Prism) {
       }
     ],
     punctuation: /\(\/|\/\)|[(),;:&]/
-  };
+  }
 }

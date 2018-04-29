@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = pascal;
-pascal.displayName = 'pascal';
-pascal.aliases = [];
+module.exports = pascal
+pascal.displayName = 'pascal'
+pascal.aliases = []
 function pascal(Prism) {
   // Based on Free Pascal
   /* TODO
@@ -50,5 +50,5 @@ Support inline asm ?
       }
     ],
     punctuation: /\(\.|\.\)|[()\[\]:;,.]/
-  };
+  }
 }

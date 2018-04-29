@@ -1,10 +1,10 @@
-'use strict';
+'use strict'
 
-module.exports = xeora;
-xeora.displayName = 'xeora';
-xeora.aliases = ['xeoracube'];
+module.exports = xeora
+xeora.displayName = 'xeora'
+xeora.aliases = ['xeoracube']
 function xeora(Prism) {
-  (function(Prism) {
+  ;(function(Prism) {
     Prism.languages.xeora = Prism.languages.extend('markup', {
       constant: {
         pattern: /\$(?:DomainContents|PageRenderDuration)\$/,
@@ -109,7 +109,7 @@ function xeora(Prism) {
         },
         alias: 'function'
       }
-    });
+    })
     Prism.languages.insertBefore(
       'inside',
       'punctuation',
@@ -117,7 +117,7 @@ function xeora(Prism) {
         variable: Prism.languages.xeora['function-inline'].inside['variable']
       },
       Prism.languages.xeora['function-block']
-    );
-    Prism.languages.xeoracube = Prism.languages.xeora;
-  })(Prism);
+    )
+    Prism.languages.xeoracube = Prism.languages.xeora
+  })(Prism)
 }

@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = tcl;
-tcl.displayName = 'tcl';
-tcl.aliases = [];
+module.exports = tcl
+tcl.displayName = 'tcl'
+tcl.aliases = []
 function tcl(Prism) {
   Prism.languages.tcl = {
     comment: {
@@ -49,5 +49,5 @@ function tcl(Prism) {
     },
     operator: /!=?|\*\*?|==|&&?|\|\|?|<[=<]?|>[=>]?|[-+~\/%?^]|\b(?:eq|ne|in|ni)\b/,
     punctuation: /[{}()\[\]]/
-  };
+  }
 }

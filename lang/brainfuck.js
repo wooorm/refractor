@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = brainfuck;
-brainfuck.displayName = 'brainfuck';
-brainfuck.aliases = [];
+module.exports = brainfuck
+brainfuck.displayName = 'brainfuck'
+brainfuck.aliases = []
 function brainfuck(Prism) {
   Prism.languages.brainfuck = {
     pointer: {
@@ -23,5 +23,5 @@ function brainfuck(Prism) {
     },
     operator: /[.,]/,
     comment: /\S+/
-  };
+  }
 }

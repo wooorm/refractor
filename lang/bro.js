@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = bro;
-bro.displayName = 'bro';
-bro.aliases = [];
+module.exports = bro
+bro.displayName = 'bro'
+bro.aliases = []
 function bro(Prism) {
   Prism.languages.bro = {
     comment: {
@@ -40,5 +40,5 @@ function bro(Prism) {
     operator: /--?|\+\+?|!=?=?|<=?|>=?|==?=?|&&|\|\|?|\?|\*|\/|~|\^|%/,
     number: /\b-?(?:0x[\da-f]+|\d*\.?\d+(?:e[+-]?\d+)?)\b/i,
     punctuation: /[{}[\];(),.:]/
-  };
+  }
 }

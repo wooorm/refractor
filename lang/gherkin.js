@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = gherkin;
-gherkin.displayName = 'gherkin';
-gherkin.aliases = [];
+module.exports = gherkin
+gherkin.displayName = 'gherkin'
+gherkin.aliases = []
 function gherkin(Prism) {
   Prism.languages.gherkin = {
     pystring: {
@@ -82,5 +82,5 @@ function gherkin(Prism) {
       pattern: /<[^>]+?>/,
       alias: 'variable'
     }
-  };
+  }
 }

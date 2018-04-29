@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = ini;
-ini.displayName = 'ini';
-ini.aliases = [];
+module.exports = ini
+ini.displayName = 'ini'
+ini.aliases = []
 function ini(Prism) {
   Prism.languages.ini = {
     comment: /^[ \t]*;.*$/m,
@@ -14,5 +14,5 @@ function ini(Prism) {
         punctuation: /^[=]/
       }
     }
-  };
+  }
 }

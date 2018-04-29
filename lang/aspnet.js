@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = aspnet;
-aspnet.displayName = 'aspnet';
-aspnet.aliases = [];
+module.exports = aspnet
+aspnet.displayName = 'aspnet'
+aspnet.aliases = []
 function aspnet(Prism) {
   Prism.languages.aspnet = Prism.languages.extend('markup', {
     'page-directive tag': {
@@ -19,9 +19,9 @@ function aspnet(Prism) {
         rest: Prism.languages.csharp
       }
     }
-  });
+  })
   // Regexp copied from prism-markup, with a negative look-ahead added
-  Prism.languages.aspnet.tag.pattern = /<(?!%)\/?[^\s>\/]+(?:\s+[^\s>\/=]+(?:=(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s'">=]+))?)*\s*\/?>/i;
+  Prism.languages.aspnet.tag.pattern = /<(?!%)\/?[^\s>\/]+(?:\s+[^\s>\/=]+(?:=(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s'">=]+))?)*\s*\/?>/i
   // match directives of attribute value foo="<% Bar %>"
   Prism.languages.insertBefore(
     'inside',
@@ -30,10 +30,10 @@ function aspnet(Prism) {
       'directive tag': Prism.languages.aspnet['directive tag']
     },
     Prism.languages.aspnet.tag.inside['attr-value']
-  );
+  )
   Prism.languages.insertBefore('aspnet', 'comment', {
     'asp comment': /<%--[\s\S]*?--%>/
-  });
+  })
   // script runat="server" contains csharp, not javascript
   Prism.languages.insertBefore(
     'aspnet',
@@ -45,5 +45,5 @@ function aspnet(Prism) {
         inside: Prism.languages.csharp || {}
       }
     }
-  );
+  )
 }

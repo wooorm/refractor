@@ -1,14 +1,14 @@
-'use strict';
+'use strict'
 
-module.exports = c;
-c.displayName = 'c';
-c.aliases = [];
+module.exports = c
+c.displayName = 'c'
+c.aliases = []
 function c(Prism) {
   Prism.languages.c = Prism.languages.extend('clike', {
     keyword: /\b(?:_Alignas|_Alignof|_Atomic|_Bool|_Complex|_Generic|_Imaginary|_Noreturn|_Static_assert|_Thread_local|asm|typeof|inline|auto|break|case|char|const|continue|default|do|double|else|enum|extern|float|for|goto|if|int|long|register|return|short|signed|sizeof|static|struct|switch|typedef|union|unsigned|void|volatile|while)\b/,
     operator: /-[>-]?|\+\+?|!=?|<<?=?|>>?=?|==?|&&?|\|\|?|[~^%?*\/]/,
     number: /\b-?(?:0x[\da-f]+|\d*\.?\d+(?:e[+-]?\d+)?)[ful]*\b/i
-  });
+  })
   Prism.languages.insertBefore('c', 'string', {
     macro: {
       // allow for multiline macro definitions
@@ -32,7 +32,7 @@ function c(Prism) {
     },
     // highlight predefined macros as constants
     constant: /\b(?:__FILE__|__LINE__|__DATE__|__TIME__|__TIMESTAMP__|__func__|EOF|NULL|SEEK_CUR|SEEK_END|SEEK_SET|stdin|stdout|stderr)\b/
-  });
-  delete Prism.languages.c['class-name'];
-  delete Prism.languages.c['boolean'];
+  })
+  delete Prism.languages.c['class-name']
+  delete Prism.languages.c['boolean']
 }

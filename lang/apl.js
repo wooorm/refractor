@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = apl;
-apl.displayName = 'apl';
-apl.aliases = [];
+module.exports = apl
+apl.displayName = 'apl'
+apl.aliases = []
 function apl(Prism) {
   Prism.languages.apl = {
     comment: /(?:⍝|#[! ]).*$/m,
@@ -35,5 +35,5 @@ function apl(Prism) {
       pattern: /[{}⍺⍵⍶⍹∇⍫:]/,
       alias: 'builtin'
     }
-  };
+  }
 }

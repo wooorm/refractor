@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = autoit;
-autoit.displayName = 'autoit';
-autoit.aliases = [];
+module.exports = autoit
+autoit.displayName = 'autoit'
+autoit.aliases = []
 function autoit(Prism) {
   Prism.languages.autoit = {
     comment: [
@@ -37,5 +37,5 @@ function autoit(Prism) {
     boolean: /\b(?:True|False)\b/i,
     operator: /<[=>]?|[-+*\/=&>]=?|[?^]|\b(?:And|Or|Not)\b/i,
     punctuation: /[\[\]().,:]/
-  };
+  }
 }

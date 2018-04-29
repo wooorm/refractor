@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = docker;
-docker.displayName = 'docker';
-docker.aliases = ['dockerfile'];
+module.exports = docker
+docker.displayName = 'docker'
+docker.aliases = ['dockerfile']
 function docker(Prism) {
   Prism.languages.docker = {
     keyword: {
@@ -12,6 +12,6 @@ function docker(Prism) {
     string: /("|')(?:(?!\1)[^\\\r\n]|\\(?:\r\n|[\s\S]))*\1/,
     comment: /#.*/,
     punctuation: /---|\.\.\.|[:[\]{}\-,|>?]/
-  };
-  Prism.languages.dockerfile = Prism.languages.docker;
+  }
+  Prism.languages.dockerfile = Prism.languages.docker
 }

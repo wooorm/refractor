@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = reason;
-reason.displayName = 'reason';
-reason.aliases = [];
+module.exports = reason
+reason.displayName = 'reason'
+reason.aliases = []
 function reason(Prism) {
   Prism.languages.reason = Prism.languages.extend('clike', {
     comment: {
@@ -17,7 +17,7 @@ function reason(Prism) {
     'class-name': /\b[A-Z]\w*/,
     keyword: /\b(?:and|as|assert|begin|class|constraint|do|done|downto|else|end|exception|external|for|fun|function|functor|if|in|include|inherit|initializer|lazy|let|method|module|mutable|new|nonrec|object|of|open|or|private|rec|sig|struct|switch|then|to|try|type|val|virtual|when|while|with)\b/,
     operator: /\.{3}|:[:=]|=(?:==?|>)?|<=?|>=?|[|^?'#!~`]|[+\-*\/]\.?|\b(?:mod|land|lor|lxor|lsl|lsr|asr)\b/
-  });
+  })
   Prism.languages.insertBefore('reason', 'class-name', {
     character: {
       pattern: /'(?:\\x[\da-f]{2}|\\o[0-3][0-7][0-7]|\\\d{3}|\\.|[^'\\\r\n])'/,
@@ -32,7 +32,7 @@ function reason(Prism) {
       pattern: /\b[a-z]\w*(?=::)/,
       alias: 'symbol'
     }
-  });
+  })
   // We can't match functions property, so let's not even try.
-  delete Prism.languages.reason.function;
+  delete Prism.languages.reason.function
 }

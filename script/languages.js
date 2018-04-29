@@ -1,122 +1,118 @@
-'use strict';
+'use strict'
 
-var fs = require('fs');
-var path = require('path');
-var bail = require('bail');
-var chalk = require('chalk');
-var async = require('async');
-var not = require('not');
-var hidden = require('is-hidden');
-var detab = require('detab');
-var unique = require('array-unique');
-var diff = require('arr-diff');
-var trim = require('trim-lines');
-var prettier = require('prettier');
-var bundled = require('./bundled');
+var fs = require('fs')
+var path = require('path')
+var bail = require('bail')
+var chalk = require('chalk')
+var async = require('async')
+var not = require('not')
+var hidden = require('is-hidden')
+var detab = require('detab')
+var unique = require('array-unique')
+var diff = require('arr-diff')
+var trim = require('trim-lines')
+var bundled = require('./bundled')
 
-var root = path.join('node_modules', 'prismjs', 'components');
-var extendRegex = /languages\.extend\('([^']+)'/g;
-var cloneRegex = /Prism\.util\.clone\(Prism\.languages\.([^[)]+)(?:\)|\[)/g;
-var aliasRegex = /Prism\.languages\.([\w]+) = Prism\.languages\.[\w]+;/g;
+var root = path.join('node_modules', 'prismjs', 'components')
+var extendRegex = /languages\.extend\('([^']+)'/g
+var cloneRegex = /Prism\.util\.clone\(Prism\.languages\.([^[)]+)(?:\)|\[)/g
+var aliasRegex = /Prism\.languages\.([\w]+) = Prism\.languages\.[\w]+;/g
 
-fs.readdir(root, ondir);
+fs.readdir(root, ondir)
 
 function ondir(err, paths) {
-  bail(err);
+  bail(err)
 
   paths = paths
     .filter(not(hidden))
     .map(name)
     .filter(not(minified))
-    .filter(not(core));
+    .filter(not(core))
 
-  async.map(paths, generate, done);
+  async.map(paths, generate, done)
 }
 
 function done(err, results) {
-  bail(err);
-  console.log(chalk.green('✓') + ' wrote ' + results.length + ' languages');
+  bail(err)
+  console.log(chalk.green('✓') + ' wrote ' + results.length + ' languages')
 }
 
 function generate(name, callback) {
-  var id = camelcase(name);
-  var out = path.join('lang', name + '.js');
+  var id = camelcase(name)
+  var out = path.join('lang', name + '.js')
 
-  fs.readFile(path.join(root, 'prism-' + name + '.js'), 'utf8', onread);
+  fs.readFile(path.join(root, 'prism-' + name + '.js'), 'utf8', onread)
 
   function onread(err, doc) {
-    var deps;
-    var aliases;
+    var deps
+    var aliases
 
     if (err) {
-      return callback(err);
+      return callback(err)
     }
 
-    deps = findAll(doc, extendRegex).concat(findAll(doc, cloneRegex));
-    aliases = unique(findAll(doc, aliasRegex));
+    deps = findAll(doc, extendRegex).concat(findAll(doc, cloneRegex))
+    aliases = unique(findAll(doc, aliasRegex))
 
-    deps = diff(unique(deps), bundled.map(base).concat([id]));
+    deps = diff(unique(deps), bundled.map(base).concat([id]))
 
-    fs.writeFile(out, prettier.format(
+    fs.writeFile(
+      out,
       [
-        '\'use strict\'',
+        "'use strict'",
         deps.map(load).join('\n'),
         'module.exports = ' + id + ';',
-        id + '.displayName = \'' + id + '\';',
+        id + ".displayName = '" + id + "';",
         id + '.aliases = ' + JSON.stringify(aliases) + ';',
         'function ' + id + '(Prism) {',
         deps.map(register).join('\n'),
         trim(detab(doc)),
         '}'
       ].join('\n'),
-      {
-        singleQuote: true,
-        bracketSpacing: false,
-        filepath: out
-      }
-    ), callback);
+      callback
+    )
   }
 }
 
 function load(lang) {
-  return 'var ' + camelcase(lang) + ' = require(\'./' + lang + '.js\');';
+  return 'var ' + camelcase(lang) + " = require('./" + lang + ".js');"
 }
 
 function register(lang) {
-  return '  Prism.register(' + camelcase(lang) + ');';
+  return '  Prism.register(' + camelcase(lang) + ');'
 }
 
 function name(fp) {
-  return base(fp).slice('prism-'.length);
+  return base(fp).slice('prism-'.length)
 }
 
 function base(fp) {
-  return path.basename(fp, '.js');
+  return path.basename(fp, '.js')
 }
 
 function minified(name) {
-  return path.extname(name) === '.min';
+  return path.extname(name) === '.min'
 }
 
 function core(name) {
-  return name === 'core';
+  return name === 'core'
 }
 
 function camelcase(str) {
-  return str.replace(/-[a-z]/gi, replace);
+  return str.replace(/-[a-z]/gi, replace)
   function replace($0) {
-    return $0.charAt(1).toUpperCase();
+    return $0.charAt(1).toUpperCase()
   }
 }
 
 function findAll(doc, re) {
-  var result = [];
-  var match = re.exec(doc);
+  var result = []
+  var match = re.exec(doc)
 
   while (match) {
-    result.push(match[1]);
-    match = re.exec(doc);
+    result.push(match[1])
+    match = re.exec(doc)
   }
 
-  return result;
+  return result
 }

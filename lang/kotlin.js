@@ -1,10 +1,10 @@
-'use strict';
+'use strict'
 
-module.exports = kotlin;
-kotlin.displayName = 'kotlin';
-kotlin.aliases = [];
+module.exports = kotlin
+kotlin.displayName = 'kotlin'
+kotlin.aliases = []
 function kotlin(Prism) {
-  (function(Prism) {
+  ;(function(Prism) {
     Prism.languages.kotlin = Prism.languages.extend('clike', {
       keyword: {
         // The lookbehind prevents wrong highlighting of e.g. kotlin.properties.get
@@ -20,27 +20,27 @@ function kotlin(Prism) {
       ],
       number: /\b(?:0[bx][\da-fA-F]+|\d+(?:\.\d+)?(?:e[+-]?\d+)?[fFL]?)\b/,
       operator: /\+[+=]?|-[-=>]?|==?=?|!(?:!|==?)?|[\/*%<>]=?|[?:]:?|\.\.|&&|\|\||\b(?:and|inv|or|shl|shr|ushr|xor)\b/
-    });
-    delete Prism.languages.kotlin['class-name'];
+    })
+    delete Prism.languages.kotlin['class-name']
     Prism.languages.insertBefore('kotlin', 'string', {
       'raw-string': {
         pattern: /("""|''')[\s\S]*?\1/,
         alias: 'string'
         // See interpolation below
       }
-    });
+    })
     Prism.languages.insertBefore('kotlin', 'keyword', {
       annotation: {
         pattern: /\B@(?:\w+:)?(?:[A-Z]\w*|\[[^\]]+\])/,
         alias: 'builtin'
       }
-    });
+    })
     Prism.languages.insertBefore('kotlin', 'function', {
       label: {
         pattern: /\w+@|@\w+/,
         alias: 'symbol'
       }
-    });
+    })
     var interpolation = [
       {
         pattern: /\$\{[^}]+\}/,
@@ -56,11 +56,11 @@ function kotlin(Prism) {
         pattern: /\$\w+/,
         alias: 'variable'
       }
-    ];
+    ]
     Prism.languages.kotlin['string'].inside = Prism.languages.kotlin[
       'raw-string'
     ].inside = {
       interpolation: interpolation
-    };
-  })(Prism);
+    }
+  })(Prism)
 }

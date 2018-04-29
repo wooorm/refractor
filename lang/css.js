@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = css;
-css.displayName = 'css';
-css.aliases = [];
+module.exports = css
+css.displayName = 'css'
+css.aliases = []
 function css(Prism) {
   Prism.languages.css = {
     comment: /\/\*[\s\S]*?\*\//,
@@ -23,10 +23,10 @@ function css(Prism) {
     important: /\B!important\b/i,
     function: /[-a-z0-9]+(?=\()/i,
     punctuation: /[(){};:]/
-  };
+  }
   Prism.languages.css['atrule'].inside.rest = Prism.util.clone(
     Prism.languages.css
-  );
+  )
   if (Prism.languages.markup) {
     Prism.languages.insertBefore('markup', 'tag', {
       style: {
@@ -36,7 +36,7 @@ function css(Prism) {
         alias: 'language-css',
         greedy: true
       }
-    });
+    })
     Prism.languages.insertBefore(
       'inside',
       'attr-value',
@@ -58,6 +58,6 @@ function css(Prism) {
         }
       },
       Prism.languages.markup.tag
-    );
+    )
   }
 }

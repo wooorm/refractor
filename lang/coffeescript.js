@@ -1,16 +1,16 @@
-'use strict';
+'use strict'
 
-module.exports = coffeescript;
-coffeescript.displayName = 'coffeescript';
-coffeescript.aliases = [];
+module.exports = coffeescript
+coffeescript.displayName = 'coffeescript'
+coffeescript.aliases = []
 function coffeescript(Prism) {
-  (function(Prism) {
+  ;(function(Prism) {
     // Ignore comments starting with { to privilege string interpolation highlighting
     var comment = /#(?!\{).+/,
       interpolation = {
         pattern: /#\{[^}]+\}/,
         alias: 'variable'
-      };
+      }
     Prism.languages.coffeescript = Prism.languages.extend('javascript', {
       comment: comment,
       string: [
@@ -33,7 +33,7 @@ function coffeescript(Prism) {
         pattern: /@(?!\d)\w+/,
         alias: 'variable'
       }
-    });
+    })
     Prism.languages.insertBefore('coffeescript', 'comment', {
       'multiline-comment': {
         pattern: /###[\s\S]+?###/,
@@ -48,7 +48,7 @@ function coffeescript(Prism) {
           interpolation: interpolation
         }
       }
-    });
+    })
     Prism.languages.insertBefore('coffeescript', 'string', {
       'inline-javascript': {
         pattern: /`(?:\\[\s\S]|[^\\`])*`/,
@@ -76,11 +76,11 @@ function coffeescript(Prism) {
           }
         }
       ]
-    });
+    })
     Prism.languages.insertBefore('coffeescript', 'keyword', {
       // Object property
       property: /(?!\d)\w+(?=\s*:(?!:))/
-    });
-    delete Prism.languages.coffeescript['template-string'];
-  })(Prism);
+    })
+    delete Prism.languages.coffeescript['template-string']
+  })(Prism)
 }

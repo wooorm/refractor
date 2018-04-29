@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = eiffel;
-eiffel.displayName = 'eiffel';
-eiffel.aliases = [];
+module.exports = eiffel
+eiffel.displayName = 'eiffel'
+eiffel.aliases = []
 function eiffel(Prism) {
   Prism.languages.eiffel = {
     comment: /--.*/,
@@ -40,5 +40,5 @@ function eiffel(Prism) {
     ],
     punctuation: /:=|<<|>>|\(\||\|\)|->|\.(?=\w)|[{}[\];(),:?]/,
     operator: /\\\\|\|\.\.\||\.\.|\/[~\/=]?|[><]=?|[-+*^=~]/
-  };
+  }
 }

@@ -1,10 +1,10 @@
-'use strict';
+'use strict'
 
-module.exports = puppet;
-puppet.displayName = 'puppet';
-puppet.aliases = [];
+module.exports = puppet
+puppet.displayName = 'puppet'
+puppet.aliases = []
 function puppet(Prism) {
-  (function(Prism) {
+  ;(function(Prism) {
     Prism.languages.puppet = {
       heredoc: [
         // Matches the content of a quoted heredoc string (subject to interpolation)
@@ -99,7 +99,7 @@ function puppet(Prism) {
       },
       operator: /=[=~>]?|![=~]?|<(?:<\|?|[=~|-])?|>[>=]?|->?|~>|\|>?>?|[*\/%+?]|\b(?:and|in|or)\b/,
       punctuation: /[\[\]{}().,;]|:+/
-    };
+    }
     var interpolation = [
       {
         // Allow for one nested level of braces inside interpolation
@@ -130,10 +130,10 @@ function puppet(Prism) {
           punctuation: /::/
         }
       }
-    ];
-    Prism.languages.puppet['heredoc'][0].inside.interpolation = interpolation;
+    ]
+    Prism.languages.puppet['heredoc'][0].inside.interpolation = interpolation
     Prism.languages.puppet['string'].inside[
       'double-quoted'
-    ].inside.interpolation = interpolation;
-  })(Prism);
+    ].inside.interpolation = interpolation
+  })(Prism)
 }

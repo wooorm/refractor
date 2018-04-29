@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = abap;
-abap.displayName = 'abap';
-abap.aliases = [];
+module.exports = abap
+abap.displayName = 'abap'
+abap.aliases = []
 function abap(Prism) {
   Prism.languages.abap = {
     comment: /^\*.*/m,
@@ -54,5 +54,5 @@ adjacent to operands.
       }
     ],
     punctuation: /[,.:()]/
-  };
+  }
 }

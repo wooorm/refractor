@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = swift;
-swift.displayName = 'swift';
-swift.aliases = [];
+module.exports = swift
+swift.displayName = 'swift'
+swift.aliases = []
 function swift(Prism) {
   // issues: nested multiline comments
   Prism.languages.swift = Prism.languages.extend('clike', {
@@ -27,8 +27,8 @@ function swift(Prism) {
     constant: /\b(?:nil|[A-Z_]{2,}|k[A-Z][A-Za-z_]+)\b/,
     atrule: /@\b(?:IB(?:Outlet|Designable|Action|Inspectable)|class_protocol|exported|noreturn|NS(?:Copying|Managed)|objc|UIApplicationMain|auto_closure)\b/,
     builtin: /\b(?:[A-Z]\S+|abs|advance|alignof(?:Value)?|assert|contains|count(?:Elements)?|debugPrint(?:ln)?|distance|drop(?:First|Last)|dump|enumerate|equal|filter|find|first|getVaList|indices|isEmpty|join|last|lexicographicalCompare|map|max(?:Element)?|min(?:Element)?|numericCast|overlaps|partition|print(?:ln)?|reduce|reflect|reverse|sizeof(?:Value)?|sort(?:ed)?|split|startsWith|stride(?:of(?:Value)?)?|suffix|swap|toDebugString|toString|transcode|underestimateCount|unsafeBitCast|with(?:ExtendedLifetime|Unsafe(?:MutablePointers?|Pointers?)|VaList))\b/
-  });
+  })
   Prism.languages.swift['string'].inside[
     'interpolation'
-  ].inside.rest = Prism.util.clone(Prism.languages.swift);
+  ].inside.rest = Prism.util.clone(Prism.languages.swift)
 }

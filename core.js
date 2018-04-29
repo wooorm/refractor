@@ -1,103 +1,103 @@
-'use strict';
+'use strict'
 
 /* global window */
 
-var restore = capture();
+var restore = capture()
 
 /* istanbul ignore next - Don't allow Prism to run on page load in browser. */
-var ctx = typeof window === 'undefined' ? {} : window;
+var ctx = typeof window === 'undefined' ? {} : window
 
-ctx.Prism = {manual: true};
+ctx.Prism = {manual: true}
 
 /* Load all stuff in `prism.js` itself, except for
  * `prism-file-highlight.js`.
  * The wrapped non-leaky grammars are loaded instead of
  * Prism’s originals. */
-var h = require('hastscript');
-var Prism = require('prismjs/components/prism-core');
-var markup = require('./lang/markup');
-var css = require('./lang/css');
-var clike = require('./lang/clike');
-var js = require('./lang/javascript');
+var h = require('hastscript')
+var Prism = require('prismjs/components/prism-core')
+var markup = require('./lang/markup')
+var css = require('./lang/css')
+var clike = require('./lang/clike')
+var js = require('./lang/javascript')
 
-restore();
+restore()
 
-var own = {}.hasOwnProperty;
+var own = {}.hasOwnProperty
 
 /* Inherit. */
 function Refractor() {}
 
-Refractor.prototype = Prism;
+Refractor.prototype = Prism
 
 /* Construct. */
-var refract = new Refractor();
+var refract = new Refractor()
 
 /* Expose. */
-module.exports = refract;
+module.exports = refract
 
 /* Create. */
-refract.highlight = highlight;
-refract.register = register;
-refract.registered = registered;
+refract.highlight = highlight
+refract.register = register
+refract.registered = registered
 
 /* Register bundled grammars. */
-register(markup);
-register(css);
-register(clike);
-register(js);
+register(markup)
+register(css)
+register(clike)
+register(js)
 
-refract.util.encode = encode;
-refract.Token.stringify = stringify;
+refract.util.encode = encode
+refract.Token.stringify = stringify
 
 function register(grammar) {
   if (typeof grammar !== 'function' || !grammar.displayName) {
-    throw new Error('Expected `function` for `grammar`, got `' + grammar + '`');
+    throw new Error('Expected `function` for `grammar`, got `' + grammar + '`')
   }
 
   /* Do not duplicate registrations. */
   if (refract.languages[grammar.displayName] === undefined) {
-    grammar(refract);
+    grammar(refract)
   }
 }
 
 function highlight(value, name, language) {
-  var sup = Prism.highlight;
-  var syntax;
+  var sup = Prism.highlight
+  var syntax
 
   if (typeof value !== 'string') {
-    throw new Error('Expected `string` for `value`, got `' + value + '`');
+    throw new Error('Expected `string` for `value`, got `' + value + '`')
   }
 
   if (typeof name !== 'string') {
-    throw new Error('Expected `string` for `name`, got `' + name + '`');
+    throw new Error('Expected `string` for `name`, got `' + name + '`')
   }
 
   if (!own.call(refract.languages, name)) {
-    throw new Error('Unknown language: `' + name + '` is not registered');
+    throw new Error('Unknown language: `' + name + '` is not registered')
   }
 
-  syntax = refract.languages[name];
+  syntax = refract.languages[name]
 
-  return sup.call(this, value, syntax, language);
+  return sup.call(this, value, syntax, language)
 }
 
 function registered(language) {
   if (typeof language !== 'string') {
-    throw new Error('Expected `string` for `language`, got `' + language + '`');
+    throw new Error('Expected `string` for `language`, got `' + language + '`')
   }
 
-  return own.call(refract.languages, language);
+  return own.call(refract.languages, language)
 }
 
 function stringify(value, language, parent) {
-  var env;
+  var env
 
   if (typeof value === 'string') {
-    return {type: 'text', value: value};
+    return {type: 'text', value: value}
   }
 
   if (refract.util.type(value) === 'Array') {
-    return stringifyAll(value, language);
+    return stringifyAll(value, language)
   }
 
   env = {
@@ -108,66 +108,62 @@ function stringify(value, language, parent) {
     attributes: {},
     language: language,
     parent: parent
-  };
-
-  if (value.alias) {
-    env.classes = env.classes.concat(value.alias);
   }
 
-  refract.hooks.run('wrap', env);
+  if (value.alias) {
+    env.classes = env.classes.concat(value.alias)
+  }
 
-  return h(
-    env.tag + '.' + env.classes.join('.'),
-    env.attributes,
-    env.content
-  );
+  refract.hooks.run('wrap', env)
+
+  return h(env.tag + '.' + env.classes.join('.'), env.attributes, env.content)
 }
 
 function stringifyAll(values, language) {
-  var result = [];
-  var length = values.length;
-  var index = -1;
-  var value;
+  var result = []
+  var length = values.length
+  var index = -1
+  var value
 
   while (++index < length) {
-    value = values[index];
+    value = values[index]
 
     if (value !== '' && value !== null && value !== undefined) {
-      result.push(value);
+      result.push(value)
     }
   }
 
-  index = -1;
-  length = result.length;
+  index = -1
+  length = result.length
 
   while (++index < length) {
-    value = result[index];
-    result[index] = refract.Token.stringify(value, language, result);
+    value = result[index]
+    result[index] = refract.Token.stringify(value, language, result)
   }
 
-  return result;
+  return result
 }
 
 function encode(tokens) {
-  return tokens;
+  return tokens
 }
 
 function capture() {
-  var defined = 'Prism' in global;
+  var defined = 'Prism' in global
   /* istanbul ignore next */
-  var current = defined ? global.Prism : undefined;
+  var current = defined ? global.Prism : undefined
 
-  return restore;
+  return restore
 
   function restore() {
     /* istanbul ignore else - Clean leaks after Prism. */
     if (defined) {
-      global.Prism = current;
+      global.Prism = current
     } else {
-      delete global.Prism;
+      delete global.Prism
     }
 
-    defined = undefined;
-    current = undefined;
+    defined = undefined
+    current = undefined
   }
 }

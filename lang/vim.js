@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = vim;
-vim.displayName = 'vim';
-vim.aliases = [];
+module.exports = vim
+vim.displayName = 'vim'
+vim.aliases = []
 function vim(Prism) {
   Prism.languages.vim = {
     string: /"(?:[^"\\\r\n]|\\.)*"|'(?:[^'\r\n]|'')*'/,
@@ -13,5 +13,5 @@ function vim(Prism) {
     number: /\b(?:0x[\da-f]+|\d+(?:\.\d+)?)\b/i,
     operator: /\|\||&&|[-+.]=?|[=!](?:[=~][#?]?)?|[<>]=?[#?]?|[*\/%?]|\b(?:is(?:not)?)\b/,
     punctuation: /[{}[\](),;:]/
-  };
+  }
 }

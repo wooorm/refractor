@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = haml;
-haml.displayName = 'haml';
-haml.aliases = [];
+module.exports = haml
+haml.displayName = 'haml'
+haml.aliases = []
 function haml(Prism) {
   /* TODO
 Handle multiline code after tag
@@ -10,7 +10,7 @@ Handle multiline code after tag
 multiline |
 code |
 */
-  (function(Prism) {
+  ;(function(Prism) {
     Prism.languages.haml = {
       // Multiline stuff should appear before the rest
       'multiline-comment': {
@@ -114,9 +114,9 @@ code |
         pattern: /((?:^|\r?\n|\r)[\t ]*)[~=\-&!]+/,
         lookbehind: true
       }
-    };
+    }
     var filter_pattern =
-      '((?:^|\\r?\\n|\\r)([\\t ]*)):{{filter_name}}(?:(?:\\r?\\n|\\r)(?:\\2[\\t ]+.+|\\s*?(?=\\r?\\n|\\r)))+';
+      '((?:^|\\r?\\n|\\r)([\\t ]*)):{{filter_name}}(?:(?:\\r?\\n|\\r)(?:\\2[\\t ]+.+|\\s*?(?=\\r?\\n|\\r)))+'
     // Non exhaustive list of available filters and associated languages
     var filters = [
       'css',
@@ -128,14 +128,12 @@ code |
       'ruby',
       'scss',
       'textile'
-    ];
-    var all_filters = {};
+    ]
+    var all_filters = {}
     for (var i = 0, l = filters.length; i < l; i++) {
-      var filter = filters[i];
+      var filter = filters[i]
       filter =
-        typeof filter === 'string'
-          ? {filter: filter, language: filter}
-          : filter;
+        typeof filter === 'string' ? {filter: filter, language: filter} : filter
       if (Prism.languages[filter.language]) {
         all_filters['filter-' + filter.filter] = {
           pattern: RegExp(
@@ -149,9 +147,9 @@ code |
             },
             rest: Prism.languages[filter.language]
           }
-        };
+        }
       }
     }
-    Prism.languages.insertBefore('haml', 'filter', all_filters);
-  })(Prism);
+    Prism.languages.insertBefore('haml', 'filter', all_filters)
+  })(Prism)
 }

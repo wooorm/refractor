@@ -1,43 +1,49 @@
-'use strict';
+'use strict'
 
-var fs = require('fs');
-var bail = require('bail');
-var chalk = require('chalk');
-var not = require('not');
-var hidden = require('is-hidden');
-var bundled = require('./bundled');
+var fs = require('fs')
+var bail = require('bail')
+var chalk = require('chalk')
+var not = require('not')
+var hidden = require('is-hidden')
+var bundled = require('./bundled')
 
-fs.readdir('lang', ondir);
+fs.readdir('lang', ondir)
 
 function ondir(err, paths) {
-  bail(err);
+  bail(err)
 
   paths = paths
     .filter(not(hidden))
     .filter(not(included))
-    .map(load);
+    .map(load)
 
-  fs.writeFile('index.js', [
-    '\'use strict\';',
-    '',
-    'var refractor = require(\'./core.js\');',
-    '',
-    'module.exports = refractor;',
-    '',
-    paths.join('\n'),
-    ''
-  ].join('\n'), done);
+  fs.writeFile(
+    'index.js',
+    [
+      "'use strict';",
+      '',
+      "var refractor = require('./core.js');",
+      '',
+      'module.exports = refractor;',
+      '',
+      paths.join('\n'),
+      ''
+    ].join('\n'),
+    done
+  )
 
   function done(err) {
-    bail(err);
-    console.log(chalk.green('✓') + ' wrote `index.js` for ' + paths.length + ' languages');
+    bail(err)
+    console.log(
+      chalk.green('✓') + ' wrote `index.js` for ' + paths.length + ' languages'
+    )
   }
 }
 
 function load(lang) {
-  return 'refractor.register(require(\'./lang/' + lang + '\'));';
+  return "refractor.register(require('./lang/" + lang + "'));"
 }
 
 function included(fp) {
-  return bundled.indexOf(fp) !== -1;
+  return bundled.indexOf(fp) !== -1
 }

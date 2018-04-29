@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = fsharp;
-fsharp.displayName = 'fsharp';
-fsharp.aliases = [];
+module.exports = fsharp
+fsharp.displayName = 'fsharp'
+fsharp.aliases = []
 function fsharp(Prism) {
   Prism.languages.fsharp = Prism.languages.extend('clike', {
     comment: [
@@ -26,7 +26,7 @@ function fsharp(Prism) {
       /\b-?(?:\d*\.?\d+|\d+\.)(?:[fFmM]|[eE][+-]?\d+)?\b/,
       /\b-?\d+(?:y|uy|s|us|l|u|ul|L|UL|I)?\b/
     ]
-  });
+  })
   Prism.languages.insertBefore('fsharp', 'keyword', {
     preprocessor: {
       pattern: /^[^\r\n\S]*#.*/m,
@@ -39,5 +39,5 @@ function fsharp(Prism) {
         }
       }
     }
-  });
+  })
 }

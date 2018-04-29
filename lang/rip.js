@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = rip;
-rip.displayName = 'rip';
-rip.aliases = [];
+module.exports = rip
+rip.displayName = 'rip'
+rip.aliases = []
 function rip(Prism) {
   Prism.languages.rip = {
     comment: /#.*/,
@@ -26,5 +26,5 @@ function rip(Prism) {
     number: /[+-]?(?:(?:\d+\.\d+)|(?:\d+))/,
     punctuation: /(?:\.{2,3})|[`,.:;=\/\\()<>\[\]{}]/,
     reference: /[^\d\s`'",.:;#\/\\()<>\[\]{}][^\s`'",.:;#\/\\()<>\[\]{}]*/
-  };
+  }
 }

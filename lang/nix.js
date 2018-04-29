@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = nix;
-nix.displayName = 'nix';
-nix.aliases = [];
+module.exports = nix
+nix.displayName = 'nix'
+nix.aliases = []
 function nix(Prism) {
   Prism.languages.nix = {
     comment: /\/\*[\s\S]*?\*\/|#.*/,
@@ -41,8 +41,8 @@ function nix(Prism) {
     boolean: /\b(?:true|false)\b/,
     operator: /[=!<>]=?|\+\+?|\|\||&&|\/\/|->?|[?@]/,
     punctuation: /[{}()[\].,:;]/
-  };
+  }
   Prism.languages.nix.string.inside.interpolation.inside.rest = Prism.util.clone(
     Prism.languages.nix
-  );
+  )
 }

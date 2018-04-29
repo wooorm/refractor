@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = oz;
-oz.displayName = 'oz';
-oz.aliases = [];
+module.exports = oz
+oz.displayName = 'oz'
+oz.aliases = []
 function oz(Prism) {
   Prism.languages.oz = {
     comment: /\/\*[\s\S]*?\*\/|%.*/,
@@ -28,5 +28,5 @@ function oz(Prism) {
     'attr-name': /\w+(?=:)/,
     operator: /:(?:=|::?)|<[-:=]?|=(?:=|<?:?)|>=?:?|\\=:?|!!?|[|#+\-*\/,~^@]|\b(?:andthen|div|mod|orelse)\b/,
     punctuation: /[\[\](){}.:;?]/
-  };
+  }
 }

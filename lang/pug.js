@@ -1,10 +1,10 @@
-'use strict';
+'use strict'
 
-module.exports = pug;
-pug.displayName = 'pug';
-pug.aliases = [];
+module.exports = pug
+pug.displayName = 'pug'
+pug.aliases = []
 function pug(Prism) {
-  (function(Prism) {
+  ;(function(Prism) {
     // TODO:
     // - Add CSS highlighting inside <style> tags
     // - Add support for multi-line code blocks
@@ -151,9 +151,9 @@ function pug(Prism) {
         }
       ],
       punctuation: /[.\-!=|]+/
-    };
+    }
     var filter_pattern =
-      '(^([\\t ]*)):{{filter_name}}(?:(?:\\r?\\n|\\r(?!\\n))(?:\\2[\\t ]+.+|\\s*?(?=\\r?\\n|\\r)))+';
+      '(^([\\t ]*)):{{filter_name}}(?:(?:\\r?\\n|\\r(?!\\n))(?:\\2[\\t ]+.+|\\s*?(?=\\r?\\n|\\r)))+'
     // Non exhaustive list of available filters and associated languages
     var filters = [
       {filter: 'atpl', language: 'twig'},
@@ -169,14 +169,12 @@ function pug(Prism) {
       {filter: 'sass', language: 'scss'},
       'stylus',
       'swig'
-    ];
-    var all_filters = {};
+    ]
+    var all_filters = {}
     for (var i = 0, l = filters.length; i < l; i++) {
-      var filter = filters[i];
+      var filter = filters[i]
       filter =
-        typeof filter === 'string'
-          ? {filter: filter, language: filter}
-          : filter;
+        typeof filter === 'string' ? {filter: filter, language: filter} : filter
       if (Prism.languages[filter.language]) {
         all_filters['filter-' + filter.filter] = {
           pattern: RegExp(
@@ -191,9 +189,9 @@ function pug(Prism) {
             },
             rest: Prism.languages[filter.language]
           }
-        };
+        }
       }
     }
-    Prism.languages.insertBefore('pug', 'filter', all_filters);
-  })(Prism);
+    Prism.languages.insertBefore('pug', 'filter', all_filters)
+  })(Prism)
 }

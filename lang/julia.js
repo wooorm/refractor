@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = julia;
-julia.displayName = 'julia';
-julia.aliases = [];
+module.exports = julia
+julia.displayName = 'julia'
+julia.aliases = []
 function julia(Prism) {
   Prism.languages.julia = {
     comment: {
@@ -15,5 +15,5 @@ function julia(Prism) {
     number: /\b-?(?:0[box])?(?:[\da-f]+\.?\d*|\.\d+)(?:[efp][+-]?\d+)?j?\b/i,
     operator: /[-+*^%÷&$\\]=?|\/[\/=]?|!=?=?|\|[=>]?|<(?:<=?|[=:])?|>(?:=|>>?=?)?|==?=?|[~≠≤≥]/,
     punctuation: /[{}[\];(),.:]/
-  };
+  }
 }

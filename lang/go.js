@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = go;
-go.displayName = 'go';
-go.aliases = [];
+module.exports = go
+go.displayName = 'go'
+go.aliases = []
 function go(Prism) {
   Prism.languages.go = Prism.languages.extend('clike', {
     keyword: /\b(?:break|case|chan|const|continue|default|defer|else|fallthrough|for|func|go(?:to)?|if|import|interface|map|package|range|return|select|struct|switch|type|var)\b/,
@@ -14,6 +14,6 @@ function go(Prism) {
       pattern: /(["'`])(\\[\s\S]|(?!\1)[^\\])*\1/,
       greedy: true
     }
-  });
-  delete Prism.languages.go['class-name'];
+  })
+  delete Prism.languages.go['class-name']
 }

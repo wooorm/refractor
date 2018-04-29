@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = parigp;
-parigp.displayName = 'parigp';
-parigp.aliases = [];
+module.exports = parigp
+parigp.displayName = 'parigp'
+parigp.aliases = []
 function parigp(Prism) {
   Prism.languages.parigp = {
     comment: /\/\*[\s\S]*?\*\/|\\\\.*/,
@@ -38,13 +38,13 @@ function parigp(Prism) {
         'return',
         'until',
         'while'
-      ];
+      ]
       keywords = keywords
         .map(function(keyword) {
-          return keyword.split('').join(' *');
+          return keyword.split('').join(' *')
         })
-        .join('|');
-      return RegExp('\\b(?:' + keywords + ')\\b');
+        .join('|')
+      return RegExp('\\b(?:' + keywords + ')\\b')
     })(),
     function: /\w[\w ]*?(?= *\()/,
     number: {
@@ -54,5 +54,5 @@ function parigp(Prism) {
     },
     operator: /\. *\.|[*\/!](?: *=)?|%(?: *=|(?: *#)?(?: *')*)?|\+(?: *[+=])?|-(?: *[-=>])?|<(?:(?: *<)?(?: *=)?| *>)?|>(?: *>)?(?: *=)?|=(?: *=){0,2}|\\(?: *\/)?(?: *=)?|&(?: *&)?|\| *\||['#~^]/,
     punctuation: /[\[\]{}().,:;|]/
-  };
+  }
 }

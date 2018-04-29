@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = rest;
-rest.displayName = 'rest';
-rest.aliases = [];
+module.exports = rest
+rest.displayName = 'rest'
+rest.aliases = []
 function rest(Prism) {
   Prism.languages.rest = {
     table: [
@@ -201,5 +201,5 @@ function rest(Prism) {
       pattern: /(^\s*)(?:\|(?= |$)|(?:---?|—|\.\.|__)(?= )|\.\.$)/m,
       lookbehind: true
     }
-  };
+  }
 }

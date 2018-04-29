@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = python;
-python.displayName = 'python';
-python.aliases = [];
+module.exports = python
+python.displayName = 'python'
+python.aliases = []
 function python(Prism) {
   Prism.languages.python = {
     comment: {
@@ -32,5 +32,5 @@ function python(Prism) {
     number: /\b-?(?:0[bo])?(?:(?:\d|0x[\da-f])[\da-f]*\.?\d*|\.\d+)(?:e[+-]?\d+)?j?\b/i,
     operator: /[-+%=]=?|!=|\*\*?=?|\/\/?=?|<[<=>]?|>[=>]?|[&|^~]|\b(?:or|and|not)\b/,
     punctuation: /[{}[\];(),.:]/
-  };
+  }
 }

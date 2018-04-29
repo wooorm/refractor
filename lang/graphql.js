@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = graphql;
-graphql.displayName = 'graphql';
-graphql.aliases = [];
+module.exports = graphql
+graphql.displayName = 'graphql'
+graphql.aliases = []
 function graphql(Prism) {
   Prism.languages.graphql = {
     comment: /#.*/,
@@ -27,5 +27,5 @@ function graphql(Prism) {
     ],
     operator: /!|=|\.{3}/,
     punctuation: /[!(){}\[\]:=,]/
-  };
+  }
 }

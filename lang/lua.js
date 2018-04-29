@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = lua;
-lua.displayName = 'lua';
-lua.aliases = [];
+module.exports = lua
+lua.displayName = 'lua'
+lua.aliases = []
 function lua(Prism) {
   Prism.languages.lua = {
     comment: /^#!.+|--(?:\[(=*)\[[\s\S]*?\]\1\]|.*)/m,
@@ -23,5 +23,5 @@ function lua(Prism) {
       }
     ],
     punctuation: /[\[\](){},;]|\.+|:+/
-  };
+  }
 }

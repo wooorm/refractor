@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = cssExtras;
-cssExtras.displayName = 'cssExtras';
-cssExtras.aliases = [];
+module.exports = cssExtras
+cssExtras.displayName = 'cssExtras'
+cssExtras.aliases = []
 function cssExtras(Prism) {
   Prism.languages.css.selector = {
     pattern: /[^{}\s][^{}]*(?=\s*\{)/,
@@ -13,10 +13,10 @@ function cssExtras(Prism) {
       id: /#[-:.\w]+/,
       attribute: /\[[^\]]+\]/
     }
-  };
+  }
   Prism.languages.insertBefore('css', 'function', {
     hexcode: /#[\da-f]{3,8}/i,
     entity: /\\[\da-f]{1,8}/i,
     number: /[\d%.]+/
-  });
+  })
 }

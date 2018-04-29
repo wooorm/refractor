@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = scheme;
-scheme.displayName = 'scheme';
-scheme.aliases = [];
+module.exports = scheme
+scheme.displayName = 'scheme'
+scheme.aliases = []
 function scheme(Prism) {
   Prism.languages.scheme = {
     comment: /;.*/,
@@ -32,5 +32,5 @@ function scheme(Prism) {
       lookbehind: true
     },
     punctuation: /[()]/
-  };
+  }
 }

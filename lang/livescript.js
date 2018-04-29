@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = livescript;
-livescript.displayName = 'livescript';
-livescript.aliases = [];
+module.exports = livescript
+livescript.displayName = 'livescript'
+livescript.aliases = []
 function livescript(Prism) {
   Prism.languages.livescript = {
     comment: [
@@ -120,9 +120,9 @@ function livescript(Prism) {
       /\.(?:[=~]|\.\.?)|\.(?:[&|^]|<<|>>>?)\.|:(?:=|:=?)|&&|\|[|>]|<(?:<<?<?|--?!?|~~?!?|[|=?])?|>[>=?]?|-(?:->?|>)?|\+\+?|@@?|%%?|\*\*?|!(?:~?=|--?>|~?~>)?|~(?:~?>|=)?|==?|\^\^?|[\/?]/
     ],
     punctuation: /[(){}\[\]|.,:;`]/
-  };
+  }
   Prism.languages.livescript['interpolated-string'].inside[
     'interpolation'
   ].inside.rest =
-    Prism.languages.livescript;
+    Prism.languages.livescript
 }

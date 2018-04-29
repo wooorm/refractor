@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = smalltalk;
-smalltalk.displayName = 'smalltalk';
-smalltalk.aliases = [];
+module.exports = smalltalk
+smalltalk.displayName = 'smalltalk'
+smalltalk.aliases = []
 function smalltalk(Prism) {
   Prism.languages.smalltalk = {
     comment: /"(?:""|[^"])+"/,
@@ -34,5 +34,5 @@ function smalltalk(Prism) {
     ],
     operator: /[<=]=?|:=|~[~=]|\/\/?|\\\\|>[>=]?|[!^+\-*&|,@]/,
     punctuation: /[.;:?\[\](){}]/
-  };
+  }
 }

@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = applescript;
-applescript.displayName = 'applescript';
-applescript.aliases = [];
+module.exports = applescript
+applescript.displayName = 'applescript'
+applescript.aliases = []
 function applescript(Prism) {
   Prism.languages.applescript = {
     comment: [
@@ -23,5 +23,5 @@ function applescript(Prism) {
       alias: 'builtin'
     },
     punctuation: /[{}():,¬«»《》]/
-  };
+  }
 }

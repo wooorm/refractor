@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = renpy;
-renpy.displayName = 'renpy';
-renpy.aliases = [];
+module.exports = renpy
+renpy.displayName = 'renpy'
+renpy.aliases = []
 function renpy(Prism) {
   Prism.languages.renpy = {
     // TODO Write tests.
@@ -22,5 +22,5 @@ function renpy(Prism) {
     number: /\b-?(?:0[bo])?(?:(?:\d|0x[\da-f])[\da-f]*\.?\d*|\.\d+)(?:e[+-]?\d+)?j?\b/i,
     operator: /[-+%=]=?|!=|\*\*?=?|\/\/?=?|<[<=>]?|>[=>]?|[&|^~]|\b(?:or|and|not|with|at)\b/,
     punctuation: /[{}[\];(),.:]/
-  };
+  }
 }

@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = elixir;
-elixir.displayName = 'elixir';
-elixir.aliases = [];
+module.exports = elixir
+elixir.displayName = 'elixir'
+elixir.aliases = []
 function elixir(Prism) {
   Prism.languages.elixir = {
     // Negative look-ahead is needed for string interpolation
@@ -80,7 +80,7 @@ function elixir(Prism) {
       }
     ],
     punctuation: /<<|>>|[.,%\[\]{}()]/
-  };
+  }
   Prism.languages.elixir.string.forEach(function(o) {
     o.inside = {
       interpolation: {
@@ -93,6 +93,6 @@ function elixir(Prism) {
           rest: Prism.util.clone(Prism.languages.elixir)
         }
       }
-    };
-  });
+    }
+  })
 }

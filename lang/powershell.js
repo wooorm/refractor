@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = powershell;
-powershell.displayName = 'powershell';
-powershell.aliases = [];
+module.exports = powershell
+powershell.displayName = 'powershell'
+powershell.aliases = []
 function powershell(Prism) {
   Prism.languages.powershell = {
     comment: [
@@ -50,13 +50,13 @@ function powershell(Prism) {
       lookbehind: true
     },
     punctuation: /[|{}[\];(),.]/
-  };
+  }
   // Variable interpolation inside strings, and nested expressions
   Prism.languages.powershell.string[0].inside.boolean =
-    Prism.languages.powershell.boolean;
+    Prism.languages.powershell.boolean
   Prism.languages.powershell.string[0].inside.variable =
-    Prism.languages.powershell.variable;
+    Prism.languages.powershell.variable
   Prism.languages.powershell.string[0].inside.function.inside = Prism.util.clone(
     Prism.languages.powershell
-  );
+  )
 }

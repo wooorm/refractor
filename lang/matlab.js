@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = matlab;
-matlab.displayName = 'matlab';
-matlab.aliases = [];
+module.exports = matlab
+matlab.displayName = 'matlab'
+matlab.aliases = []
 function matlab(Prism) {
   Prism.languages.matlab = {
     comment: [/%\{[\s\S]*?\}%/, /%.+/],
@@ -16,5 +16,5 @@ function matlab(Prism) {
     function: /(?!\d)\w+(?=\s*\()/,
     operator: /\.?[*^\/\\']|[+\-:@]|[<>=~]=?|&&?|\|\|?/,
     punctuation: /\.{3}|[.,;\[\](){}!]/
-  };
+  }
 }

@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = jolie;
-jolie.displayName = 'jolie';
-jolie.aliases = [];
+module.exports = jolie
+jolie.displayName = 'jolie'
+jolie.aliases = []
 function jolie(Prism) {
   Prism.languages.jolie = Prism.languages.extend('clike', {
     keyword: /\b(?:include|define|is_defined|undef|main|init|outputPort|inputPort|Location|Protocol|Interfaces|RequestResponse|OneWay|type|interface|extender|throws|cset|csets|forward|Aggregates|Redirects|embedded|courier|execution|sequential|concurrent|single|scope|install|throw|comp|cH|default|global|linkIn|linkOut|synchronized|this|new|for|if|else|while|in|Jolie|Java|Javascript|nullProcess|spawn|constants|with|provide|until|exit|foreach|instanceof|over|service)\b/,
@@ -15,9 +15,9 @@ function jolie(Prism) {
       pattern: /(["'])(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,
       greedy: true
     }
-  });
-  delete Prism.languages.jolie['class-name'];
-  delete Prism.languages.jolie['function'];
+  })
+  delete Prism.languages.jolie['class-name']
+  delete Prism.languages.jolie['function']
   Prism.languages.insertBefore('jolie', 'keyword', {
     function: {
       pattern: /((?:\b(?:outputPort|inputPort|in|service|courier)\b|@)\s*)\w+/,
@@ -56,5 +56,5 @@ function jolie(Prism) {
         }
       }
     }
-  });
+  })
 }

@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = nsis;
-nsis.displayName = 'nsis';
-nsis.aliases = [];
+module.exports = nsis
+nsis.displayName = 'nsis'
+nsis.aliases = []
 function nsis(Prism) {
   /**
    * Original by Jan T. Sott (http://github.com/idleberg)
@@ -32,5 +32,5 @@ function nsis(Prism) {
       pattern: /(^\s*)!(?:addincludedir|addplugindir|appendfile|cd|define|delfile|echo|else|endif|error|execute|finalize|getdllversionsystem|ifdef|ifmacrodef|ifmacrondef|ifndef|if|include|insertmacro|macroend|macro|makensis|packhdr|pragma|searchparse|searchreplace|tempfile|undef|verbose|warning)\b/im,
       lookbehind: true
     }
-  };
+  }
 }

@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = lolcode;
-lolcode.displayName = 'lolcode';
-lolcode.aliases = [];
+module.exports = lolcode
+lolcode.displayName = 'lolcode'
+lolcode.aliases = []
 function lolcode(Prism) {
   Prism.languages.lolcode = {
     comment: [/\bOBTW\s+[\s\S]*?\s+TLDR\b/, /\bBTW.+/],
@@ -51,5 +51,5 @@ function lolcode(Prism) {
       lookbehind: true
     },
     punctuation: /\.{3}|…|,|!/
-  };
+  }
 }

@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = json;
-json.displayName = 'json';
-json.aliases = ['jsonp'];
+module.exports = json
+json.displayName = 'json'
+json.aliases = ['jsonp']
 function json(Prism) {
   Prism.languages.json = {
     property: /"(?:\\.|[^\\"\r\n])*"(?=\s*:)/i,
@@ -15,6 +15,6 @@ function json(Prism) {
     operator: /:/g,
     boolean: /\b(?:true|false)\b/i,
     null: /\bnull\b/i
-  };
-  Prism.languages.jsonp = Prism.languages.json;
+  }
+  Prism.languages.jsonp = Prism.languages.json
 }

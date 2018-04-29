@@ -1,13 +1,13 @@
-'use strict';
+'use strict'
 
-module.exports = textile;
-textile.displayName = 'textile';
-textile.aliases = [];
+module.exports = textile
+textile.displayName = 'textile'
+textile.aliases = []
 function textile(Prism) {
-  (function(Prism) {
+  ;(function(Prism) {
     // We don't allow for pipes inside parentheses
     // to not break table pattern |(. foo |). bar |
-    var modifierRegex = '(?:\\([^|)]+\\)|\\[[^\\]]+\\]|\\{[^}]+\\})+';
+    var modifierRegex = '(?:\\([^|)]+\\)|\\[[^\\]]+\\]|\\{[^}]+\\})+'
     var modifierTokens = {
       css: {
         pattern: /\{[^}]+\}/,
@@ -27,7 +27,7 @@ function textile(Prism) {
       },
       // Anything else is punctuation (the first pattern is for row/col spans inside tables)
       punctuation: /[\\\/]\d+|\S/
-    };
+    }
     Prism.languages.textile = Prism.languages.extend('markup', {
       phrase: {
         pattern: /(^|\r|\n)\S[\s\S]*?(?=$|\r?\n\r?\n|\r\r)/,
@@ -242,7 +242,7 @@ function textile(Prism) {
           }
         }
       }
-    });
+    })
     var nestedPatterns = {
       inline: Prism.util.clone(
         Prism.languages.textile['phrase'].inside['inline']
@@ -258,37 +258,37 @@ function textile(Prism) {
         Prism.languages.textile['phrase'].inside['acronym']
       ),
       mark: Prism.util.clone(Prism.languages.textile['phrase'].inside['mark'])
-    };
+    }
     // Only allow alpha-numeric HTML tags, not XML tags
-    Prism.languages.textile.tag.pattern = /<\/?(?!\d)[a-z0-9]+(?:\s+[^\s>\/=]+(?:=(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s'">=]+))?)*\s*\/?>/i;
+    Prism.languages.textile.tag.pattern = /<\/?(?!\d)[a-z0-9]+(?:\s+[^\s>\/=]+(?:=(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s'">=]+))?)*\s*\/?>/i
     // Allow some nesting
     Prism.languages.textile['phrase'].inside['inline'].inside[
       'bold'
-    ].inside = nestedPatterns;
+    ].inside = nestedPatterns
     Prism.languages.textile['phrase'].inside['inline'].inside[
       'italic'
-    ].inside = nestedPatterns;
+    ].inside = nestedPatterns
     Prism.languages.textile['phrase'].inside['inline'].inside[
       'inserted'
-    ].inside = nestedPatterns;
+    ].inside = nestedPatterns
     Prism.languages.textile['phrase'].inside['inline'].inside[
       'deleted'
-    ].inside = nestedPatterns;
+    ].inside = nestedPatterns
     Prism.languages.textile['phrase'].inside['inline'].inside[
       'span'
-    ].inside = nestedPatterns;
+    ].inside = nestedPatterns
     // Allow some styles inside table cells
     Prism.languages.textile['phrase'].inside['table'].inside['inline'] =
-      nestedPatterns['inline'];
+      nestedPatterns['inline']
     Prism.languages.textile['phrase'].inside['table'].inside['link'] =
-      nestedPatterns['link'];
+      nestedPatterns['link']
     Prism.languages.textile['phrase'].inside['table'].inside['image'] =
-      nestedPatterns['image'];
+      nestedPatterns['image']
     Prism.languages.textile['phrase'].inside['table'].inside['footnote'] =
-      nestedPatterns['footnote'];
+      nestedPatterns['footnote']
     Prism.languages.textile['phrase'].inside['table'].inside['acronym'] =
-      nestedPatterns['acronym'];
+      nestedPatterns['acronym']
     Prism.languages.textile['phrase'].inside['table'].inside['mark'] =
-      nestedPatterns['mark'];
-  })(Prism);
+      nestedPatterns['mark']
+  })(Prism)
 }

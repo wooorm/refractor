@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = erlang;
-erlang.displayName = 'erlang';
-erlang.aliases = [];
+module.exports = erlang
+erlang.displayName = 'erlang'
+erlang.aliases = []
 function erlang(Prism) {
   Prism.languages.erlang = {
     comment: /%.+/,
@@ -42,5 +42,5 @@ function erlang(Prism) {
     ],
     atom: /\b[a-z][\w@]*/,
     punctuation: /[()[\]{}:;,.#|]|<<|>>/
-  };
+  }
 }

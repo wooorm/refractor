@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = keyman;
-keyman.displayName = 'keyman';
-keyman.aliases = [];
+module.exports = keyman
+keyman.displayName = 'keyman'
+keyman.aliases = []
 function keyman(Prism) {
   Prism.languages.keyman = {
     comment: /\bc\s.*/i,
@@ -18,5 +18,5 @@ function keyman(Prism) {
     number: /\b(?:U\+[\dA-F]+|d\d+|x[\da-f]+|\d+)\b/i, // U+####, x###, d### characters and numbers
     operator: /[+>\\,()]/,
     tag: /\$(?:keyman|kmfl|weaver|keymanweb|keymanonly):/i // prefixes
-  };
+  }
 }

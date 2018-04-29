@@ -1,10 +1,10 @@
-'use strict';
+'use strict'
 
-module.exports = bash;
-bash.displayName = 'bash';
-bash.aliases = [];
+module.exports = bash
+bash.displayName = 'bash'
+bash.aliases = []
 function bash(Prism) {
-  (function(Prism) {
+  ;(function(Prism) {
     var insideString = {
       variable: [
         // Arithmetic Environment
@@ -35,7 +35,7 @@ function bash(Prism) {
         },
         /\$(?:[\w#?*!@]+|\{[^}]+\})/i
       ]
-    };
+    }
     Prism.languages.bash = {
       shebang: {
         pattern: /^#!\s*\/bin\/bash|^#!\s*\/bin\/sh/,
@@ -75,12 +75,12 @@ function bash(Prism) {
       },
       operator: /&&?|\|\|?|==?|!=?|<<<?|>>|<=?|>=?|=~/,
       punctuation: /\$?\(\(?|\)\)?|\.\.|[{}[\];]/
-    };
-    var inside = insideString.variable[1].inside;
-    inside['function'] = Prism.languages.bash['function'];
-    inside.keyword = Prism.languages.bash.keyword;
-    inside.boolean = Prism.languages.bash.boolean;
-    inside.operator = Prism.languages.bash.operator;
-    inside.punctuation = Prism.languages.bash.punctuation;
-  })(Prism);
+    }
+    var inside = insideString.variable[1].inside
+    inside['function'] = Prism.languages.bash['function']
+    inside.keyword = Prism.languages.bash.keyword
+    inside.boolean = Prism.languages.bash.boolean
+    inside.operator = Prism.languages.bash.operator
+    inside.punctuation = Prism.languages.bash.punctuation
+  })(Prism)
 }

@@ -1,10 +1,10 @@
-'use strict';
+'use strict'
 
-module.exports = stylus;
-stylus.displayName = 'stylus';
-stylus.aliases = [];
+module.exports = stylus
+stylus.displayName = 'stylus'
+stylus.aliases = []
 function stylus(Prism) {
-  (function(Prism) {
+  ;(function(Prism) {
     var inside = {
       url: /url\((["']?).*?\1\)/i,
       string: {
@@ -27,19 +27,19 @@ function stylus(Prism) {
         /~|[+!\/%<>?=]=?|[-:]=|\*[*=]?|\.+|&&|\|\||\B-\B|\b(?:and|in|is(?: a| defined| not|nt)?|not|or)\b/
       ],
       punctuation: /[{}()\[\];:,]/
-    };
+    }
     inside['interpolation'] = {
       pattern: /\{[^\r\n}:]+\}/,
       alias: 'variable',
       inside: Prism.util.clone(inside)
-    };
+    }
     inside['func'] = {
       pattern: /[\w-]+\([^)]*\).*/,
       inside: {
         function: /^[^(]+/,
         rest: Prism.util.clone(inside)
       }
-    };
+    }
     Prism.languages.stylus = {
       comment: {
         pattern: /(^|[^\\])(\/\*[\s\S]*?\*\/|\/\/.*)/,
@@ -99,6 +99,6 @@ function stylus(Prism) {
       string: inside.string,
       interpolation: inside.interpolation,
       punctuation: /[{}()\[\];:.]/
-    };
-  })(Prism);
+    }
+  })(Prism)
 }

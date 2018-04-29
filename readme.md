@@ -44,10 +44,11 @@ npm install
 ## Usage
 
 ```javascript
-var refractor = require('refractor');
-var nodes = refractor.highlight('"use strict";', 'js');
+var refractor = require('refractor')
 
-console.log(nodes);
+var nodes = refractor.highlight('"use strict";', 'js')
+
+console.log(nodes)
 ```
 
 Yields:
@@ -66,10 +67,13 @@ Yields:
 Or, stringified with [rehype][]:
 
 ```js
-var rehype = require('rehype');
-var html = rehype().stringify({type: 'root', children: nodes}).toString();
+var rehype = require('rehype')
 
-console.log(html);
+var html = rehype()
+  .stringify({type: 'root', children: nodes})
+  .toString()
+
+console.log(html)
 ```
 
 Yields:
@@ -90,11 +94,11 @@ Register a [syntax][].  Needed if you’re using [`refractor/core.js`][browser].
 ###### Example
 
 ```js
-var refractor = require('refractor/core.js');
+var refractor = require('refractor/core.js')
 
-refractor.register(require('refractor/lang/markdown.js'));
+refractor.register(require('refractor/lang/markdown.js'))
 
-console.log(refractor.highlight('*Emphasis*', 'markdown'));
+console.log(refractor.highlight('*Emphasis*', 'markdown'))
 ```
 
 Yields:
@@ -118,9 +122,9 @@ Virtual nodes representing the highlighted value ([`Array.<Node>`][node]).
 ###### Example
 
 ```js
-var refractor = require('refractor/core.js');
+var refractor = require('refractor/core.js')
 
-console.log(refractor.highlight('em { color: red }', 'css'));
+console.log(refractor.highlight('em { color: red }', 'css'))
 ```
 
 Yields:
@@ -146,13 +150,13 @@ Check if a `language` ([name or alias][syntax]) is registered.
 ###### Example
 
 ```js
-var refractor = require('refractor/core.js');
+var refractor = require('refractor/core.js')
 
-console.log(refractor.registered('markdown'));
+console.log(refractor.registered('markdown'))
 
-refractor.register(require('refractor/lang/markdown.js'));
+refractor.register(require('refractor/lang/markdown.js'))
 
-console.log(refractor.registered('markdown'));
+console.log(refractor.registered('markdown'))
 ```
 
 Yields:
@@ -172,11 +176,11 @@ Instead require `refractor/core.js` and include only the needed syntaxes.
 For example:
 
 ```js
-var refractor = require('refractor/core.js');
+var refractor = require('refractor/core.js')
 
-refractor.register(require('refractor/lang/jsx.js'));
+refractor.register(require('refractor/lang/jsx.js'))
 
-console.log(refractor.highlight('<Dropdown primary />', 'jsx'));
+console.log(refractor.highlight('<Dropdown primary />', 'jsx'))
 ```
 
 Yields:

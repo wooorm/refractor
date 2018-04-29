@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = sas;
-sas.displayName = 'sas';
-sas.aliases = [];
+module.exports = sas
+sas.displayName = 'sas'
+sas.aliases = []
 function sas(Prism) {
   Prism.languages.sas = {
     datalines: {
@@ -37,5 +37,5 @@ function sas(Prism) {
     number: /(?:\B-|\b)(?:[\da-f]+x|\d+(?:\.\d+)?(?:e[+-]?\d+)?)/i,
     operator: /\*\*?|\|\|?|!!?|¦¦?|<[>=]?|>[<=]?|[-+\/=&]|[~¬^]=?|\b(?:eq|ne|gt|lt|ge|le|in|not)\b/i,
     punctuation: /[$%@.(){}\[\];,\\]/
-  };
+  }
 }

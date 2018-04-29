@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = roboconf;
-roboconf.displayName = 'roboconf';
-roboconf.aliases = [];
+module.exports = roboconf
+roboconf.displayName = 'roboconf'
+roboconf.aliases = []
 function roboconf(Prism) {
   Prism.languages.roboconf = {
     comment: /#.*/,
@@ -30,5 +30,5 @@ function roboconf(Prism) {
       alias: 'operator'
     },
     punctuation: /[{},.;:=]/
-  };
+  }
 }

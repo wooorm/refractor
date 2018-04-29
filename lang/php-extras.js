@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = phpExtras;
-phpExtras.displayName = 'phpExtras';
-phpExtras.aliases = [];
+module.exports = phpExtras
+phpExtras.displayName = 'phpExtras'
+phpExtras.aliases = []
 function phpExtras(Prism) {
   Prism.languages.insertBefore('php', 'variable', {
     this: /\$this\b/,
@@ -14,5 +14,5 @@ function phpExtras(Prism) {
         punctuation: /::|\\/
       }
     }
-  });
+  })
 }

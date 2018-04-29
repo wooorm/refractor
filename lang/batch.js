@@ -1,20 +1,20 @@
-'use strict';
+'use strict'
 
-module.exports = batch;
-batch.displayName = 'batch';
-batch.aliases = [];
+module.exports = batch
+batch.displayName = 'batch'
+batch.aliases = []
 function batch(Prism) {
-  (function(Prism) {
-    var variable = /%%?[~:\w]+%?|!\S+!/;
+  ;(function(Prism) {
+    var variable = /%%?[~:\w]+%?|!\S+!/
     var parameter = {
       pattern: /\/[a-z?]+(?=[ :]|$):?|-[a-z]\b|--[a-z-]+\b/im,
       alias: 'attr-name',
       inside: {
         punctuation: /:/
       }
-    };
-    var string = /"[^"]*"/;
-    var number = /(?:\b|-)\d+\b/;
+    }
+    var string = /"[^"]*"/
+    var number = /(?:\b|-)\d+\b/
     Prism.languages.batch = {
       comment: [
         /^::.*/m,
@@ -97,6 +97,6 @@ function batch(Prism) {
       ],
       operator: /[&@]/,
       punctuation: /[()']/
-    };
-  })(Prism);
+    }
+  })(Prism)
 }

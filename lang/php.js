@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = php;
-php.displayName = 'php';
-php.aliases = [];
+module.exports = php
+php.displayName = 'php'
+php.aliases = []
 function php(Prism) {
   /**
    * Original by Aaron Harun: http://aahacreative.com/2012/07/31/php-syntax-highlighting-prism/
@@ -27,7 +27,7 @@ function php(Prism) {
       pattern: /(^|[^\\])(?:\/\*[\s\S]*?\*\/|\/\/.*)/,
       lookbehind: true
     }
-  });
+  })
   // Shell-like comments are matched after strings, because they are less
   // common than strings containing hashes...
   Prism.languages.insertBefore('php', 'class-name', {
@@ -36,7 +36,7 @@ function php(Prism) {
       lookbehind: true,
       alias: 'comment'
     }
-  });
+  })
   Prism.languages.insertBefore('php', 'keyword', {
     delimiter: {
       pattern: /\?>|<\?(?:php|=)?/i,
@@ -50,67 +50,67 @@ function php(Prism) {
         punctuation: /\\/
       }
     }
-  });
+  })
   // Must be defined after the function pattern
   Prism.languages.insertBefore('php', 'operator', {
     property: {
       pattern: /(->)[\w]+/,
       lookbehind: true
     }
-  });
+  })
   // Add HTML support if the markup language exists
   if (Prism.languages.markup) {
     // Tokenize all inline PHP blocks that are wrapped in <?php ?>
     // This allows for easy PHP + markup highlighting
     Prism.hooks.add('before-highlight', function(env) {
       if (env.language !== 'php' || !/(?:<\?php|<\?)/gi.test(env.code)) {
-        return;
+        return
       }
-      env.tokenStack = [];
-      env.backupCode = env.code;
+      env.tokenStack = []
+      env.backupCode = env.code
       env.code = env.code.replace(/(?:<\?php|<\?)[\s\S]*?(?:\?>|$)/gi, function(
         match
       ) {
-        var i = env.tokenStack.length;
+        var i = env.tokenStack.length
         // Check for existing strings
-        while (env.backupCode.indexOf('___PHP' + i + '___') !== -1) ++i;
+        while (env.backupCode.indexOf('___PHP' + i + '___') !== -1) ++i
         // Create a sparse array
-        env.tokenStack[i] = match;
-        return '___PHP' + i + '___';
-      });
+        env.tokenStack[i] = match
+        return '___PHP' + i + '___'
+      })
       // Switch the grammar to markup
-      env.grammar = Prism.languages.markup;
-    });
+      env.grammar = Prism.languages.markup
+    })
     // Restore env.code for other plugins (e.g. line-numbers)
     Prism.hooks.add('before-insert', function(env) {
       if (env.language === 'php' && env.backupCode) {
-        env.code = env.backupCode;
-        delete env.backupCode;
+        env.code = env.backupCode
+        delete env.backupCode
       }
-    });
+    })
     // Re-insert the tokens after highlighting
     Prism.hooks.add('after-highlight', function(env) {
       if (env.language !== 'php' || !env.tokenStack) {
-        return;
+        return
       }
       // Switch the grammar back
-      env.grammar = Prism.languages.php;
+      env.grammar = Prism.languages.php
       for (
         var i = 0, keys = Object.keys(env.tokenStack);
         i < keys.length;
         ++i
       ) {
-        var k = keys[i];
-        var t = env.tokenStack[k];
+        var k = keys[i]
+        var t = env.tokenStack[k]
         // The replace prevents $$, $&, $`, $', $n, $nn from being interpreted as special patterns
         env.highlightedCode = env.highlightedCode.replace(
           '___PHP' + k + '___',
           '<span class="token php language-php">' +
             Prism.highlight(t, env.grammar, 'php').replace(/\$/g, '$$$$') +
             '</span>'
-        );
+        )
       }
-      env.element.innerHTML = env.highlightedCode;
-    });
+      env.element.innerHTML = env.highlightedCode
+    })
   }
 }

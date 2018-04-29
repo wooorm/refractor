@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = makefile;
-makefile.displayName = 'makefile';
-makefile.aliases = [];
+module.exports = makefile
+makefile.displayName = 'makefile'
+makefile.aliases = []
 function makefile(Prism) {
   Prism.languages.makefile = {
     comment: {
@@ -34,5 +34,5 @@ function makefile(Prism) {
     ],
     operator: /(?:::|[?:+!])?=|[|@]/,
     punctuation: /[:;(){}]/
-  };
+  }
 }

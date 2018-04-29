@@ -45,7 +45,7 @@
     "mdast-zone": "^3.0.1",
     "not": "^0.1.0",
     "nyc": "^11.0.0",
-    "prettier": "^1.5.0",
+    "prettier": "^1.12.1",
     "rehype": "^5.0.0",
     "remark-cli": "^5.0.0",
     "remark-preset-wooorm": "^4.0.0",
@@ -56,15 +56,14 @@
     "xo": "^0.20.0"
   },
   "scripts": {
-    "build-generate": "node script/languages && node script/list",
-    "build-md": "remark . -qfo",
+    "generate": "node script/languages && node script/list",
+    "format": "remark . -qfo && prettier --write '**/*.js' && xo --fix",
     "build-bundle": "browserify index.js --bare -s refractor > refractor.js",
     "build-mangle": "esmangle refractor.js > refractor.min.js",
-    "build": "npm run build-generate && npm run build-md && npm run build-bundle && npm run build-mangle",
-    "lint": "xo",
+    "build": "npm run build-bundle && npm run build-mangle",
     "test-api": "node test",
     "test-coverage": "nyc --reporter lcov tape test/index.js",
-    "test": "npm run build && npm run lint && npm run test-coverage"
+    "test": "npm run generate && npm run format && npm run build && npm run test-coverage"
   },
   "nyc": {
     "check-coverage": true,
@@ -75,8 +74,16 @@
       "lang/*.js"
     ]
   },
+  "prettier": {
+    "tabWidth": 2,
+    "useTabs": false,
+    "singleQuote": true,
+    "bracketSpacing": false,
+    "semi": false,
+    "trailingComma": "none"
+  },
   "xo": {
-    "space": true,
+    "prettier": true,
     "esnext": false,
     "rules": {
       "unicorn/prefer-type-error": "off",

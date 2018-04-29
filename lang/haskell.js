@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = haskell;
-haskell.displayName = 'haskell';
-haskell.aliases = [];
+module.exports = haskell
+haskell.displayName = 'haskell'
+haskell.aliases = []
 function haskell(Prism) {
   Prism.languages.haskell = {
     comment: {
@@ -39,5 +39,5 @@ function haskell(Prism) {
     hvariable: /\b(?:[A-Z][\w']*\.)*[_a-z][\w']*\b/,
     constant: /\b(?:[A-Z][\w']*\.)*[A-Z][\w']*\b/,
     punctuation: /[{}[\];(),.:]/
-  };
+  }
 }

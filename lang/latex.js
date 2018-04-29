@@ -1,17 +1,17 @@
-'use strict';
+'use strict'
 
-module.exports = latex;
-latex.displayName = 'latex';
-latex.aliases = [];
+module.exports = latex
+latex.displayName = 'latex'
+latex.aliases = []
 function latex(Prism) {
-  (function(Prism) {
+  ;(function(Prism) {
     var funcPattern = /\\(?:[^a-z()[\]]|[a-z*]+)/i,
       insideEqu = {
         'equation-command': {
           pattern: funcPattern,
           alias: 'regex'
         }
-      };
+      }
     Prism.languages.latex = {
       comment: /%.*/m,
       // the verbatim environment prints whitespace to the document
@@ -62,6 +62,6 @@ function latex(Prism) {
         alias: 'selector'
       },
       punctuation: /[[\]{}&]/
-    };
-  })(Prism);
+    }
+  })(Prism)
 }

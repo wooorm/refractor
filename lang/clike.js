@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = clike;
-clike.displayName = 'clike';
-clike.aliases = [];
+module.exports = clike
+clike.displayName = 'clike'
+clike.aliases = []
 function clike(Prism) {
   Prism.languages.clike = {
     comment: [
@@ -32,5 +32,5 @@ function clike(Prism) {
     number: /\b-?(?:0x[\da-f]+|\d*\.?\d+(?:e[+-]?\d+)?)\b/i,
     operator: /--?|\+\+?|!=?=?|<=?|>=?|==?=?|&&?|\|\|?|\?|\*|\/|~|\^|%/,
     punctuation: /[{}[\];(),.:]/
-  };
+  }
 }

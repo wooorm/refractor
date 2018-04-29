@@ -1,11 +1,11 @@
-'use strict';
-var c = require('./c.js');
-module.exports = bison;
-bison.displayName = 'bison';
-bison.aliases = [];
+'use strict'
+var c = require('./c.js')
+module.exports = bison
+bison.displayName = 'bison'
+bison.aliases = []
 function bison(Prism) {
-  Prism.register(c);
-  Prism.languages.bison = Prism.languages.extend('c', {});
+  Prism.register(c)
+  Prism.languages.bison = Prism.languages.extend('c', {})
   Prism.languages.insertBefore('bison', 'comment', {
     bison: {
       // This should match all the beginning of the file
@@ -42,5 +42,5 @@ function bison(Prism) {
         punctuation: /%[%?]|[|:;\[\]<>]/
       }
     }
-  });
+  })
 }

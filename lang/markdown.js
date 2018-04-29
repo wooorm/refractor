@@ -1,10 +1,10 @@
-'use strict';
+'use strict'
 
-module.exports = markdown;
-markdown.displayName = 'markdown';
-markdown.aliases = [];
+module.exports = markdown
+markdown.displayName = 'markdown'
+markdown.aliases = []
 function markdown(Prism) {
-  Prism.languages.markdown = Prism.languages.extend('markup', {});
+  Prism.languages.markdown = Prism.languages.extend('markup', {})
   Prism.languages.insertBefore('markdown', 'prolog', {
     blockquote: {
       // > ...
@@ -115,17 +115,17 @@ function markdown(Prism) {
         }
       }
     }
-  });
+  })
   Prism.languages.markdown['bold'].inside['url'] = Prism.util.clone(
     Prism.languages.markdown['url']
-  );
+  )
   Prism.languages.markdown['italic'].inside['url'] = Prism.util.clone(
     Prism.languages.markdown['url']
-  );
+  )
   Prism.languages.markdown['bold'].inside['italic'] = Prism.util.clone(
     Prism.languages.markdown['italic']
-  );
+  )
   Prism.languages.markdown['italic'].inside['bold'] = Prism.util.clone(
     Prism.languages.markdown['bold']
-  );
+  )
 }

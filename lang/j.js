@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = j;
-j.displayName = 'j';
-j.aliases = [];
+module.exports = j
+j.displayName = 'j'
+j.aliases = []
 function j(Prism) {
   Prism.languages.j = {
     comment: /\bNB\..*/,
@@ -28,5 +28,5 @@ function j(Prism) {
       alias: 'variable'
     },
     punctuation: /[()]/
-  };
+  }
 }

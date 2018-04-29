@@ -1,11 +1,11 @@
-'use strict';
-var c = require('./c.js');
-module.exports = pure;
-pure.displayName = 'pure';
-pure.aliases = [];
+'use strict'
+var c = require('./c.js')
+module.exports = pure
+pure.displayName = 'pure'
+pure.aliases = []
 function pure(Prism) {
-  Prism.register(c);
-  (function(Prism) {
+  Prism.register(c)
+  ;(function(Prism) {
     Prism.languages.pure = {
       comment: [
         {
@@ -52,23 +52,23 @@ function pure(Prism) {
       operator: /(?=\b_|[^_])[!"#$%&'*+,\-.\/:<=>?@\\^_`|~\u00a1-\u00bf\u00d7-\u00f7\u20d0-\u2bff]+|\b(?:and|div|mod|not|or)\b/,
       // FIXME: How can we prevent | and , to be highlighted as operator when they are used alone?
       punctuation: /[(){}\[\];,|]/
-    };
+    }
     var inlineLanguages = [
       'c',
       {lang: 'c++', alias: 'cpp'},
       'fortran',
       'ats',
       'dsp'
-    ];
-    var inlineLanguageRe = '%< *-\\*- *{lang}\\d* *-\\*-[\\s\\S]+?%>';
+    ]
+    var inlineLanguageRe = '%< *-\\*- *{lang}\\d* *-\\*-[\\s\\S]+?%>'
     inlineLanguages.forEach(function(lang) {
-      var alias = lang;
+      var alias = lang
       if (typeof lang !== 'string') {
-        alias = lang.alias;
-        lang = lang.lang;
+        alias = lang.alias
+        lang = lang.lang
       }
       if (Prism.languages[alias]) {
-        var o = {};
+        var o = {}
         o['inline-lang-' + alias] = {
           pattern: RegExp(
             inlineLanguageRe.replace(
@@ -78,18 +78,18 @@ function pure(Prism) {
             'i'
           ),
           inside: Prism.util.clone(Prism.languages.pure['inline-lang'].inside)
-        };
+        }
         o['inline-lang-' + alias].inside.rest = Prism.util.clone(
           Prism.languages[alias]
-        );
-        Prism.languages.insertBefore('pure', 'inline-lang', o);
+        )
+        Prism.languages.insertBefore('pure', 'inline-lang', o)
       }
-    });
+    })
     // C is the default inline language
     if (Prism.languages.c) {
       Prism.languages.pure['inline-lang'].inside.rest = Prism.util.clone(
         Prism.languages.c
-      );
+      )
     }
-  })(Prism);
+  })(Prism)
 }

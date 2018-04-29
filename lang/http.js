@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = http;
-http.displayName = 'http';
-http.aliases = [];
+module.exports = http
+http.displayName = 'http'
+http.aliases = []
 function http(Prism) {
   Prism.languages.http = {
     'request-line': {
@@ -29,19 +29,19 @@ function http(Prism) {
       pattern: /^[\w-]+:(?=.)/m,
       alias: 'keyword'
     }
-  };
+  }
   // Create a mapping of Content-Type headers to language definitions
   var httpLanguages = {
     'application/json': Prism.languages.javascript,
     'application/xml': Prism.languages.markup,
     'text/xml': Prism.languages.markup,
     'text/html': Prism.languages.markup
-  };
+  }
   // Insert each content type parser that has its associated language
   // currently loaded.
   for (var contentType in httpLanguages) {
     if (httpLanguages[contentType]) {
-      var options = {};
+      var options = {}
       options[contentType] = {
         pattern: new RegExp(
           '(content-type:\\s*' +
@@ -53,8 +53,8 @@ function http(Prism) {
         inside: {
           rest: httpLanguages[contentType]
         }
-      };
-      Prism.languages.insertBefore('http', 'header-name', options);
+      }
+      Prism.languages.insertBefore('http', 'header-name', options)
     }
   }
 }

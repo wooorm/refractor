@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = sql;
-sql.displayName = 'sql';
-sql.aliases = [];
+module.exports = sql
+sql.displayName = 'sql'
+sql.aliases = []
 function sql(Prism) {
   Prism.languages.sql = {
     comment: {
@@ -21,5 +21,5 @@ function sql(Prism) {
     number: /\b-?(?:0x)?\d*\.?[\da-f]+\b/,
     operator: /[-+*\/=%^~]|&&?|\|\|?|!=?|<(?:=>?|<|>)?|>[>=]?|\b(?:AND|BETWEEN|IN|LIKE|NOT|OR|IS|DIV|REGEXP|RLIKE|SOUNDS LIKE|XOR)\b/i,
     punctuation: /[;[\]()`,.]/
-  };
+  }
 }

@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = qore;
-qore.displayName = 'qore';
-qore.aliases = [];
+module.exports = qore
+qore.displayName = 'qore'
+qore.aliases = []
 function qore(Prism) {
   Prism.languages.qore = Prism.languages.extend('clike', {
     comment: {
@@ -23,5 +23,5 @@ function qore(Prism) {
       lookbehind: true
     },
     function: /\$?\b(?!\d)\w+(?=\()/
-  });
+  })
 }

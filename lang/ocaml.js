@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = ocaml;
-ocaml.displayName = 'ocaml';
-ocaml.aliases = [];
+module.exports = ocaml
+ocaml.displayName = 'ocaml'
+ocaml.aliases = []
 function ocaml(Prism) {
   Prism.languages.ocaml = {
     comment: /\(\*[\s\S]*?\*\)/,
@@ -30,5 +30,5 @@ function ocaml(Prism) {
     // Custom operators are allowed
     operator: /:=|[=<>@^|&+\-*\/$%!?~][!$%&*+\-.\/:<=>?@^|~]*|\b(?:and|asr|land|lor|lxor|lsl|lsr|mod|nor|or)\b/,
     punctuation: /[(){}\[\]|_.,:;]/
-  };
+  }
 }

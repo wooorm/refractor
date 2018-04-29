@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = perl;
-perl.displayName = 'perl';
-perl.aliases = [];
+module.exports = perl
+perl.displayName = 'perl'
+perl.aliases = []
 function perl(Prism) {
   Prism.languages.perl = {
     comment: [
@@ -190,5 +190,5 @@ function perl(Prism) {
     number: /\b-?(?:0x[\dA-Fa-f](?:_?[\dA-Fa-f])*|0b[01](?:_?[01])*|(?:\d(?:_?\d)*)?\.?\d(?:_?\d)*(?:[Ee][+-]?\d+)?)\b/,
     operator: /-[rwxoRWXOezsfdlpSbctugkTBMAC]\b|\+[+=]?|-[-=>]?|\*\*?=?|\/\/?=?|=[=~>]?|~[~=]?|\|\|?=?|&&?=?|<(?:=>?|<=?)?|>>?=?|![~=]?|[%^]=?|\.(?:=|\.\.?)?|[\\?]|\bx(?:=|\b)|\b(?:lt|gt|le|ge|eq|ne|cmp|not|and|or|xor)\b/,
     punctuation: /[{}[\];(),:]/
-  };
+  }
 }

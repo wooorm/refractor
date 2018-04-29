@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = icon;
-icon.displayName = 'icon';
-icon.aliases = [];
+module.exports = icon
+icon.displayName = 'icon'
+icon.aliases = []
 function icon(Prism) {
   Prism.languages.icon = {
     comment: /#.*/,
@@ -23,5 +23,5 @@ function icon(Prism) {
     function: /(?!\d)\w+(?=\s*[({]|\s*!\s*\[)/,
     operator: /[+-]:(?!=)|(?:[\/?@^%&]|\+\+?|--?|==?=?|~==?=?|\*\*?|\|\|\|?|<(?:->?|<?=?)|>>?=?)(?::=)?|:(?:=:?)?|[!.\\|~]/,
     punctuation: /[\[\](){},;]/
-  };
+  }
 }

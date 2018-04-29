@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = git;
-git.displayName = 'git';
-git.aliases = [];
+module.exports = git
+git.displayName = 'git'
+git.aliases = []
 function git(Prism) {
   Prism.languages.git = {
     /*
@@ -66,5 +66,5 @@ function git(Prism) {
 *     Add of a new line
 */
     commit_sha1: /^commit \w{40}$/m
-  };
+  }
 }

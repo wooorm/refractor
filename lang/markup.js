@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = markup;
-markup.displayName = 'markup';
-markup.aliases = ['xml', 'html', 'mathml', 'svg'];
+module.exports = markup
+markup.displayName = 'markup'
+markup.aliases = ['xml', 'html', 'mathml', 'svg']
 function markup(Prism) {
   Prism.languages.markup = {
     comment: /<!--[\s\S]*?-->/,
@@ -41,17 +41,17 @@ function markup(Prism) {
       }
     },
     entity: /&#?[\da-z]{1,8};/i
-  };
+  }
   Prism.languages.markup['tag'].inside['attr-value'].inside['entity'] =
-    Prism.languages.markup['entity'];
+    Prism.languages.markup['entity']
   // Plugin to make entity title show the real entity, idea by Roman Komarov
   Prism.hooks.add('wrap', function(env) {
     if (env.type === 'entity') {
-      env.attributes['title'] = env.content.replace(/&amp;/, '&');
+      env.attributes['title'] = env.content.replace(/&amp;/, '&')
     }
-  });
-  Prism.languages.xml = Prism.languages.markup;
-  Prism.languages.html = Prism.languages.markup;
-  Prism.languages.mathml = Prism.languages.markup;
-  Prism.languages.svg = Prism.languages.markup;
+  })
+  Prism.languages.xml = Prism.languages.markup
+  Prism.languages.html = Prism.languages.markup
+  Prism.languages.mathml = Prism.languages.markup
+  Prism.languages.svg = Prism.languages.markup
 }

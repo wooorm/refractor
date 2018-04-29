@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = io;
-io.displayName = 'io';
-io.aliases = [];
+module.exports = io
+io.displayName = 'io'
+io.aliases = []
 function io(Prism) {
   Prism.languages.io = {
     comment: [
@@ -34,5 +34,5 @@ function io(Prism) {
     number: /\b-?(?:0x[\da-f]+|\d*\.?\d+(?:e-?\d+)?)\b/i,
     operator: /[=!*/%+-^&|]=|>>?=?|<<?=?|:?:?=|\+\+?|--?|\*\*?|\/\/?|%|\|\|?|&&?|(\b(?:return|and|or|not)\b)|@@?|\?\??|\.\./,
     punctuation: /[{}[\];(),.:]/
-  };
+  }
 }

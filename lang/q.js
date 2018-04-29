@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = q;
-q.displayName = 'q';
-q.aliases = [];
+module.exports = q
+q.displayName = 'q'
+q.aliases = []
 function q(Prism) {
   Prism.languages.q = {
     string: /"(?:\\.|[^"\\\r\n])*"/,
@@ -45,5 +45,5 @@ function q(Prism) {
       alias: 'operator'
     },
     punctuation: /[(){}\[\];.]/
-  };
+  }
 }

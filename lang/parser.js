@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = parser;
-parser.displayName = 'parser';
-parser.aliases = [];
+module.exports = parser
+parser.displayName = 'parser'
+parser.aliases = []
 function parser(Prism) {
   Prism.languages.parser = Prism.languages.extend('markup', {
     keyword: {
@@ -32,7 +32,7 @@ function parser(Prism) {
       alias: 'builtin'
     },
     punctuation: /[\[\](){};]/
-  });
+  })
   Prism.languages.insertBefore('parser', 'keyword', {
     'parser-comment': {
       pattern: /(\s)#.*/,
@@ -59,7 +59,7 @@ function parser(Prism) {
         punctuation: Prism.languages.parser.punctuation
       }
     }
-  });
+  })
   Prism.languages.insertBefore(
     'inside',
     'punctuation',
@@ -75,5 +75,5 @@ function parser(Prism) {
       }
     },
     Prism.languages.parser['tag'].inside['attr-value']
-  );
+  )
 }

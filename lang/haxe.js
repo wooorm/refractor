@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = haxe;
-haxe.displayName = 'haxe';
-haxe.aliases = [];
+module.exports = haxe
+haxe.displayName = 'haxe'
+haxe.aliases = []
 function haxe(Prism) {
   Prism.languages.haxe = Prism.languages.extend('clike', {
     // Strings can be multi-line
@@ -26,13 +26,13 @@ function haxe(Prism) {
     // The final look-ahead prevents highlighting of keywords if expressions such as "haxe.macro.Expr"
     keyword: /\bthis\b|\b(?:abstract|as|break|case|cast|catch|class|continue|default|do|dynamic|else|enum|extends|extern|from|for|function|if|implements|import|in|inline|interface|macro|new|null|override|public|private|return|static|super|switch|throw|to|try|typedef|using|var|while)(?!\.)\b/,
     operator: /\.{3}|\+\+?|-[->]?|[=!]=?|&&?|\|\|?|<[<=]?|>[>=]?|[*\/%~^]/
-  });
+  })
   Prism.languages.insertBefore('haxe', 'class-name', {
     regex: {
       pattern: /~\/(?:[^\/\\\r\n]|\\.)+\/[igmsu]*/,
       greedy: true
     }
-  });
+  })
   Prism.languages.insertBefore('haxe', 'keyword', {
     preprocessor: {
       pattern: /#\w+/,
@@ -46,9 +46,9 @@ function haxe(Prism) {
       pattern: /\$(?:\w+|(?=\{))/,
       alias: 'variable'
     }
-  });
+  })
   Prism.languages.haxe['string'].inside[
     'interpolation'
-  ].inside.rest = Prism.util.clone(Prism.languages.haxe);
-  delete Prism.languages.haxe['class-name'];
+  ].inside.rest = Prism.util.clone(Prism.languages.haxe)
+  delete Prism.languages.haxe['class-name']
 }

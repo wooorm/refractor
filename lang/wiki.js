@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = wiki;
-wiki.displayName = 'wiki';
-wiki.aliases = [];
+module.exports = wiki
+wiki.displayName = 'wiki'
+wiki.aliases = []
 function wiki(Prism) {
   Prism.languages.wiki = Prism.languages.extend('markup', {
     'block-comment': {
@@ -68,7 +68,7 @@ function wiki(Prism) {
       }
     },
     punctuation: /^(?:\{\||\|\}|\|-|[*#:;!|])|\|\||!!/m
-  });
+  })
   Prism.languages.insertBefore('wiki', 'tag', {
     // Prevent highlighting inside <nowiki>, <source> and <pre> tags
     nowiki: {
@@ -80,5 +80,5 @@ function wiki(Prism) {
         }
       }
     }
-  });
+  })
 }

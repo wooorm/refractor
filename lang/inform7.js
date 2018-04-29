@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = inform7;
-inform7.displayName = 'inform7';
-inform7.aliases = [];
+module.exports = inform7
+inform7.displayName = 'inform7'
+inform7.aliases = []
 function inform7(Prism) {
   Prism.languages.inform7 = {
     string: {
@@ -57,13 +57,13 @@ function inform7(Prism) {
       alias: 'variable'
     },
     punctuation: /[.,:;(){}]/
-  };
+  }
   Prism.languages.inform7['string'].inside[
     'substitution'
-  ].inside.rest = Prism.util.clone(Prism.languages.inform7);
+  ].inside.rest = Prism.util.clone(Prism.languages.inform7)
   // We don't want the remaining text in the substitution to be highlighted as the string.
   Prism.languages.inform7['string'].inside['substitution'].inside.rest.text = {
     pattern: /\S(?:\s*\S)*/,
     alias: 'comment'
-  };
+  }
 }

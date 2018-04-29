@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = prolog;
-prolog.displayName = 'prolog';
-prolog.aliases = [];
+module.exports = prolog
+prolog.displayName = 'prolog'
+prolog.aliases = []
 function prolog(Prism) {
   Prism.languages.prolog = {
     // Syntax depends on the implementation
@@ -20,5 +20,5 @@ function prolog(Prism) {
     // Custom operators are allowed
     operator: /[:\\=><\-?*@\/;+^|!$.]+|\b(?:is|mod|not|xor)\b/,
     punctuation: /[(){}\[\],]/
-  };
+  }
 }

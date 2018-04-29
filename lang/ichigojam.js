@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = ichigojam;
-ichigojam.displayName = 'ichigojam';
-ichigojam.aliases = [];
+module.exports = ichigojam
+ichigojam.displayName = 'ichigojam'
+ichigojam.aliases = []
 function ichigojam(Prism) {
   // according to the offical reference (EN)
   // https://ichigojam.net/IchigoJam-en.html
@@ -18,5 +18,5 @@ function ichigojam(Prism) {
     label: /(?:\B@[^\s]+)/i,
     operator: /<[=>]?|>=?|\|\||&&|[+\-*\/=|&^~!]|\b(?:AND|NOT|OR)\b/i,
     punctuation: /[\[,;:()\]]/
-  };
+  }
 }

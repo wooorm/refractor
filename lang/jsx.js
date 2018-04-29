@@ -1,16 +1,16 @@
-'use strict';
+'use strict'
 
-module.exports = jsx;
-jsx.displayName = 'jsx';
-jsx.aliases = [];
+module.exports = jsx
+jsx.displayName = 'jsx'
+jsx.aliases = []
 function jsx(Prism) {
-  (function(Prism) {
-    var javascript = Prism.util.clone(Prism.languages.javascript);
-    Prism.languages.jsx = Prism.languages.extend('markup', javascript);
-    Prism.languages.jsx.tag.pattern = /<\/?[\w.:-]+\s*(?:\s+(?:[\w.:-]+(?:=(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s'">=]+|(?:\{\{?[^}]*\}?\})))?|\{\.{3}[a-z_$][\w$]*(?:\.[a-z_$][\w$]*)*\}))*\s*\/?>/i;
+  ;(function(Prism) {
+    var javascript = Prism.util.clone(Prism.languages.javascript)
+    Prism.languages.jsx = Prism.languages.extend('markup', javascript)
+    Prism.languages.jsx.tag.pattern = /<\/?[\w.:-]+\s*(?:\s+(?:[\w.:-]+(?:=(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s'">=]+|(?:\{\{?[^}]*\}?\})))?|\{\.{3}[a-z_$][\w$]*(?:\.[a-z_$][\w$]*)*\}))*\s*\/?>/i
     Prism.languages.jsx.tag.inside[
       'attr-value'
-    ].pattern = /=(?!\{)(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s'">]+)/i;
+    ].pattern = /=(?!\{)(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s'">]+)/i
     Prism.languages.insertBefore(
       'inside',
       'attr-name',
@@ -24,9 +24,9 @@ function jsx(Prism) {
         }
       },
       Prism.languages.jsx.tag
-    );
-    var jsxExpression = Prism.util.clone(Prism.languages.jsx);
-    delete jsxExpression.punctuation;
+    )
+    var jsxExpression = Prism.util.clone(Prism.languages.jsx)
+    delete jsxExpression.punctuation
     jsxExpression = Prism.languages.insertBefore(
       'jsx',
       'operator',
@@ -34,7 +34,7 @@ function jsx(Prism) {
         punctuation: /=(?={)|[{}[\];(),.:]/
       },
       {jsx: jsxExpression}
-    );
+    )
     Prism.languages.insertBefore(
       'inside',
       'attr-value',
@@ -47,6 +47,6 @@ function jsx(Prism) {
         }
       },
       Prism.languages.jsx.tag
-    );
-  })(Prism);
+    )
+  })(Prism)
 }

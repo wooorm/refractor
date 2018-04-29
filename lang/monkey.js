@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = monkey;
-monkey.displayName = 'monkey';
-monkey.aliases = [];
+module.exports = monkey
+monkey.displayName = 'monkey'
+monkey.aliases = []
 function monkey(Prism) {
   Prism.languages.monkey = {
     string: /"[^"\r\n]*"/,
@@ -25,5 +25,5 @@ function monkey(Prism) {
     keyword: /\b(?:Void|Strict|Public|Private|Property|Bool|Int|Float|String|Array|Object|Continue|Exit|Import|Extern|New|Self|Super|Try|Catch|Eachin|True|False|Extends|Abstract|Final|Select|Case|Default|Const|Local|Global|Field|Method|Function|Class|End|If|Then|Else|ElseIf|EndIf|While|Wend|Repeat|Until|Forever|For|To|Step|Next|Return|Module|Interface|Implements|Inline|Throw|Null)\b/i,
     operator: /\.\.|<[=>]?|>=?|:?=|(?:[+\-*\/&~|]|\b(?:Mod|Shl|Shr)\b)=?|\b(?:And|Not|Or)\b/i,
     punctuation: /[.,:;()\[\]]/
-  };
+  }
 }

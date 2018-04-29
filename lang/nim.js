@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = nim;
-nim.displayName = 'nim';
-nim.aliases = [];
+module.exports = nim
+nim.displayName = 'nim'
+nim.aliases = []
 function nim(Prism) {
   Prism.languages.nim = {
     comment: /#.*/,
@@ -36,5 +36,5 @@ function nim(Prism) {
       lookbehind: true
     },
     punctuation: /[({\[]\.|\.[)}\]]|[`(){}\[\],:]/
-  };
+  }
 }

@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = rust;
-rust.displayName = 'rust';
-rust.aliases = [];
+module.exports = rust
+rust.displayName = 'rust'
+rust.aliases = []
 function rust(Prism) {
   /* TODO
 Add support for Markdown notation inside doc comments
@@ -58,5 +58,5 @@ Add better support for macro definition
     },
     punctuation: /[{}[\];(),:]|\.+|->/,
     operator: /[-+*\/%!^=]=?|@|&[&=]?|\|[|=]?|<<?=?|>>?=?/
-  };
+  }
 }

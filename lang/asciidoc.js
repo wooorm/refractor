@@ -1,10 +1,10 @@
-'use strict';
+'use strict'
 
-module.exports = asciidoc;
-asciidoc.displayName = 'asciidoc';
-asciidoc.aliases = [];
+module.exports = asciidoc
+asciidoc.displayName = 'asciidoc'
+asciidoc.aliases = []
 function asciidoc(Prism) {
-  (function(Prism) {
+  ;(function(Prism) {
     var attributes = {
       pattern: /(^[ \t]*)\[(?!\[)(?:(["'$`])(?:(?!\2)[^\\]|\\.)*\2|\[(?:[^\]\\]|\\.)*\]|[^\]\\]|\\.)*\]/m,
       lookbehind: true,
@@ -29,7 +29,7 @@ function asciidoc(Prism) {
         // The negative look-ahead prevents blank matches
         'attr-value': /(?!^\s+$).+/
       }
-    };
+    }
     Prism.languages.asciidoc = {
       'comment-block': {
         pattern: /^(\/{4,})(?:\r?\n|\r)(?:[\s\S]*(?:\r?\n|\r))??\1/m,
@@ -193,20 +193,20 @@ They are, in order: __emphasis__, **strong**, ++monospace++, +++passthrough+++, 
         lookbehind: true,
         alias: 'punctuation'
       }
-    };
+    }
     // Allow some nesting. There is no recursion though, so cloning should not be needed.
     attributes.inside['interpreted'].inside.rest = {
       macro: Prism.languages.asciidoc['macro'],
       inline: Prism.languages.asciidoc['inline'],
       replacement: Prism.languages.asciidoc['replacement'],
       entity: Prism.languages.asciidoc['entity']
-    };
+    }
     Prism.languages.asciidoc['passthrough-block'].inside.rest = {
       macro: Prism.languages.asciidoc['macro']
-    };
+    }
     Prism.languages.asciidoc['literal-block'].inside.rest = {
       callout: Prism.languages.asciidoc['callout']
-    };
+    }
     Prism.languages.asciidoc['table'].inside.rest = {
       'comment-block': Prism.languages.asciidoc['comment-block'],
       'passthrough-block': Prism.languages.asciidoc['passthrough-block'],
@@ -228,7 +228,7 @@ They are, in order: __emphasis__, **strong**, ++monospace++, +++passthrough+++, 
       replacement: Prism.languages.asciidoc['replacement'],
       entity: Prism.languages.asciidoc['entity'],
       'line-continuation': Prism.languages.asciidoc['line-continuation']
-    };
+    }
     Prism.languages.asciidoc['other-block'].inside.rest = {
       table: Prism.languages.asciidoc['table'],
       'list-punctuation': Prism.languages.asciidoc['list-punctuation'],
@@ -245,18 +245,18 @@ They are, in order: __emphasis__, **strong**, ++monospace++, +++passthrough+++, 
       replacement: Prism.languages.asciidoc['replacement'],
       entity: Prism.languages.asciidoc['entity'],
       'line-continuation': Prism.languages.asciidoc['line-continuation']
-    };
+    }
     Prism.languages.asciidoc['title'].inside.rest = {
       macro: Prism.languages.asciidoc['macro'],
       inline: Prism.languages.asciidoc['inline'],
       replacement: Prism.languages.asciidoc['replacement'],
       entity: Prism.languages.asciidoc['entity']
-    };
+    }
     // Plugin to make entity title show the real entity, idea by Roman Komarov
     Prism.hooks.add('wrap', function(env) {
       if (env.type === 'entity') {
-        env.attributes['title'] = env.content.replace(/&amp;/, '&');
+        env.attributes['title'] = env.content.replace(/&amp;/, '&')
       }
-    });
-  })(Prism);
+    })
+  })(Prism)
 }

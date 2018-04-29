@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = yaml;
-yaml.displayName = 'yaml';
-yaml.aliases = [];
+module.exports = yaml
+yaml.displayName = 'yaml'
+yaml.aliases = []
 function yaml(Prism) {
   Prism.languages.yaml = {
     scalar: {
@@ -48,5 +48,5 @@ function yaml(Prism) {
     tag: /![^\s]+/,
     important: /[&*][\w]+/,
     punctuation: /---|[:[\]{}\-,|>?]|\.\.\./
-  };
+  }
 }

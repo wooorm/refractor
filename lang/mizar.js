@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = mizar;
-mizar.displayName = 'mizar';
-mizar.aliases = [];
+module.exports = mizar
+mizar.displayName = 'mizar'
+mizar.aliases = []
 function mizar(Prism) {
   Prism.languages.mizar = {
     comment: /::.+/,
@@ -15,5 +15,5 @@ function mizar(Prism) {
     number: /(?:\b|-)\d+\b/,
     operator: /\.\.\.|->|&|\.?=/,
     punctuation: /\(#|#\)|[,:;\[\](){}]/
-  };
+  }
 }

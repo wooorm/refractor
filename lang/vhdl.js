@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = vhdl;
-vhdl.displayName = 'vhdl';
-vhdl.aliases = [];
+module.exports = vhdl
+vhdl.displayName = 'vhdl'
+vhdl.aliases = []
 function vhdl(Prism) {
   Prism.languages.vhdl = {
     comment: /--.+/,
@@ -26,5 +26,5 @@ function vhdl(Prism) {
     number: /'[01uxzwlh-]'|\b(?:\d+#[\da-f_.]+#|\d[\d_.]*)(?:e[-+]?\d+)?/i,
     operator: /[<>]=?|:=|[-+*/&=]|\b(?:abs|not|mod|rem|sll|srl|sla|sra|rol|ror|and|or|nand|xnor|xor|nor)\b/i,
     punctuation: /[{}[\];(),.:]/
-  };
+  }
 }

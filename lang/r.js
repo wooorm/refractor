@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = r;
-r.displayName = 'r';
-r.aliases = [];
+module.exports = r
+r.displayName = 'r'
+r.aliases = []
 function r(Prism) {
   Prism.languages.r = {
     comment: /#.*/,
@@ -25,5 +25,5 @@ function r(Prism) {
     keyword: /\b(?:if|else|repeat|while|function|for|in|next|break|NULL|NA|NA_integer_|NA_real_|NA_complex_|NA_character_)\b/,
     operator: /->?>?|<(?:=|<?-)?|[>=!]=?|::?|&&?|\|\|?|[+*\/^$@~]/,
     punctuation: /[(){}\[\],;]/
-  };
+  }
 }

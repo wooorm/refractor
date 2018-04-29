@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = diff;
-diff.displayName = 'diff';
-diff.aliases = [];
+module.exports = diff
+diff.displayName = 'diff'
+diff.aliases = []
 function diff(Prism) {
   Prism.languages.diff = {
     coord: [
@@ -21,5 +21,5 @@ function diff(Prism) {
       pattern: /^!(?!!).+$/m,
       alias: 'important'
     }
-  };
+  }
 }

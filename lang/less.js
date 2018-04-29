@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = less;
-less.displayName = 'less';
-less.aliases = [];
+module.exports = less
+less.displayName = 'less'
+less.aliases = []
 function less(Prism) {
   /* FIXME :
 :extend() is not handled specifically : its highlighting is buggy.
@@ -36,11 +36,11 @@ A comment before a mixin usage prevents the latter to be properly highlighted.
     property: /(?:@\{[\w-]+\}|[\w-])+(?:\+_?)?(?=\s*:)/i,
     punctuation: /[{}();:,]/,
     operator: /[+\-*\/]/
-  });
+  })
   // Invert function and punctuation positions
   Prism.languages.insertBefore('less', 'punctuation', {
     function: Prism.languages.less.function
-  });
+  })
   Prism.languages.insertBefore('less', 'property', {
     variable: [
       // Variable declaration (the colon must be consumed!)
@@ -58,5 +58,5 @@ A comment before a mixin usage prevents the latter to be properly highlighted.
       lookbehind: true,
       alias: 'function'
     }
-  });
+  })
 }

@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = verilog;
-verilog.displayName = 'verilog';
-verilog.aliases = [];
+module.exports = verilog
+verilog.displayName = 'verilog'
+verilog.aliases = []
 function verilog(Prism) {
   Prism.languages.verilog = {
     comment: /\/\/.*|\/\*[\s\S]*?\*\//,
@@ -23,5 +23,5 @@ function verilog(Prism) {
     number: /\B##?\d+|(?:\b\d+)?'[odbh] ?[\da-fzx_?]+|\b\d*[._]?\d+(?:e[-+]?\d+)?/i,
     operator: /[-+{}^~%*\/?=!<>&|]+/,
     punctuation: /[[\];(),.:]/
-  };
+  }
 }

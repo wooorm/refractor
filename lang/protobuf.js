@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = protobuf;
-protobuf.displayName = 'protobuf';
-protobuf.aliases = [];
+module.exports = protobuf
+protobuf.displayName = 'protobuf'
+protobuf.aliases = []
 function protobuf(Prism) {
   Prism.languages.protobuf = Prism.languages.extend('clike', {
     keyword: /\b(?:package|import|message|enum)\b/,
@@ -11,5 +11,5 @@ function protobuf(Prism) {
       pattern: /\b(?:double|float|int32|int64|uint32|uint64|sint32|sint64|fixed32|fixed64|sfixed32|sfixed64|bool|string|bytes)\b/,
       alias: 'symbol'
     }
-  });
+  })
 }

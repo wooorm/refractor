@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = properties;
-properties.displayName = 'properties';
-properties.aliases = [];
+module.exports = properties
+properties.displayName = 'properties'
+properties.aliases = []
 function properties(Prism) {
   Prism.languages.properties = {
     comment: /^[ \t]*[#!].*$/m,
@@ -12,5 +12,5 @@ function properties(Prism) {
     },
     'attr-name': /^[ \t]*(?:\\(?:\r\n|[\s\S])|[^\\\s:=])+?(?= *[=:] *| )/m,
     punctuation: /[=:]/
-  };
+  }
 }

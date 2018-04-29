@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = mel;
-mel.displayName = 'mel';
-mel.aliases = [];
+module.exports = mel
+mel.displayName = 'mel'
+mel.aliases = []
 function mel(Prism) {
   Prism.languages.mel = {
     comment: /\/\/.*/,
@@ -45,8 +45,8 @@ function mel(Prism) {
       }
     ],
     punctuation: /<<|>>|[.,:;?\[\](){}]/
-  };
+  }
   Prism.languages.mel['code'].inside.rest = Prism.util.clone(
     Prism.languages.mel
-  );
+  )
 }

@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports = twig;
-twig.displayName = 'twig';
-twig.aliases = [];
+module.exports = twig
+twig.displayName = 'twig'
+twig.aliases = []
 function twig(Prism) {
   Prism.languages.twig = {
     comment: /\{#[\s\S]*?#\}/,
@@ -48,5 +48,5 @@ function twig(Prism) {
       pattern: /\S(?:[\s\S]*\S)?/,
       inside: Prism.languages.markup
     }
-  };
+  }
 }
