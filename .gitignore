@@ -5,3 +5,4 @@ coverage/
 node_modules/
 refractor.js
 refractor.min.js
+yarn.lock
