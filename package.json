@@ -37,7 +37,7 @@
     "array-unique": "^0.3.2",
     "async": "^2.5.0",
     "bail": "^1.0.2",
-    "browserify": "^15.0.0",
+    "browserify": "^16.0.0",
     "chalk": "^2.0.0",
     "detab": "^2.0.0",
     "esmangle": "^1.0.0",
@@ -53,7 +53,7 @@
     "trim-lines": "^1.1.0",
     "unist-builder": "^1.0.2",
     "unist-util-remove-position": "^1.1.0",
-    "xo": "^0.18.0"
+    "xo": "^0.20.0"
   },
   "scripts": {
     "build-generate": "node script/languages && node script/list",
@@ -79,7 +79,10 @@
     "space": true,
     "esnext": false,
     "rules": {
-      "unicorn/prefer-type-error": "off"
+      "unicorn/prefer-type-error": "off",
+      "no-var": "off",
+      "object-shorthand": "off",
+      "prefer-arrow-callback": "off"
     },
     "ignores": [
       "lang/*.js",
