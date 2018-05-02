@@ -15,6 +15,7 @@ var bundled = require('./bundled')
 
 var root = path.join('node_modules', 'prismjs', 'components')
 var extendRegex = /languages\.extend\('([^']+)'/g
+var insertRegex = /Prism\.languages\.insertBefore\(["'](.+?)["']/g
 var cloneRegex = /Prism\.util\.clone\(Prism\.languages\.([^[)]+)(?:\)|\[)/g
 var aliasRegex = /Prism\.languages\.([\w]+) = Prism\.languages\.[\w]+;/g
 var prefix = 'refractor-'
@@ -53,10 +54,14 @@ function generate(name, callback) {
       return callback(err)
     }
 
-    deps = findAll(doc, extendRegex).concat(findAll(doc, cloneRegex))
+    deps = [].concat(
+      findAll(doc, extendRegex),
+      findAll(doc, cloneRegex),
+      findAll(doc, insertRegex)
+    )
     aliases = unique(findAll(doc, aliasRegex))
 
-    deps = diff(unique(deps), bundled.map(base).concat([id]))
+    deps = diff(unique(deps), bundled.map(base).concat([id, 'inside']))
 
     fs.writeFile(
       out,
