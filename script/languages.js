@@ -14,7 +14,7 @@ var trim = require('trim-lines')
 var bundled = require('./bundled')
 
 var root = path.join('node_modules', 'prismjs', 'components')
-var extendRegex = /languages\.extend\('([^']+)'/g
+var extendRegex = /languages\.extend\(['"]([^'"]+)['"]/g
 var insertRegex = /Prism\.languages\.insertBefore\(["'](.+?)["']/g
 var cloneRegex = /Prism\.util\.clone\(Prism\.languages\.([^[)]+)(?:\)|\[)/g
 var aliasRegex = /Prism\.languages\.([\w]+) = Prism\.languages\.[\w]+;/g
