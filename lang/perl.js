@@ -23,31 +23,26 @@ function perl(Prism) {
         pattern: /\b(?:q|qq|qx|qw)\s*([^a-zA-Z0-9\s{(\[<])(?:(?!\1)[^\\]|\\[\s\S])*\1/,
         greedy: true
       },
-
       // q a...a
       {
         pattern: /\b(?:q|qq|qx|qw)\s+([a-zA-Z0-9])(?:(?!\1)[^\\]|\\[\s\S])*\1/,
         greedy: true
       },
-
       // q(...)
       {
         pattern: /\b(?:q|qq|qx|qw)\s*\((?:[^()\\]|\\[\s\S])*\)/,
         greedy: true
       },
-
       // q{...}
       {
         pattern: /\b(?:q|qq|qx|qw)\s*\{(?:[^{}\\]|\\[\s\S])*\}/,
         greedy: true
       },
-
       // q[...]
       {
         pattern: /\b(?:q|qq|qx|qw)\s*\[(?:[^[\]\\]|\\[\s\S])*\]/,
         greedy: true
       },
-
       // q<...>
       {
         pattern: /\b(?:q|qq|qx|qw)\s*<(?:[^<>\\]|\\[\s\S])*>/,
@@ -71,31 +66,26 @@ function perl(Prism) {
         pattern: /\b(?:m|qr)\s*([^a-zA-Z0-9\s{(\[<])(?:(?!\1)[^\\]|\\[\s\S])*\1[msixpodualngc]*/,
         greedy: true
       },
-
       // m a...a
       {
         pattern: /\b(?:m|qr)\s+([a-zA-Z0-9])(?:(?!\1)[^\\]|\\[\s\S])*\1[msixpodualngc]*/,
         greedy: true
       },
-
       // m(...)
       {
         pattern: /\b(?:m|qr)\s*\((?:[^()\\]|\\[\s\S])*\)[msixpodualngc]*/,
         greedy: true
       },
-
       // m{...}
       {
         pattern: /\b(?:m|qr)\s*\{(?:[^{}\\]|\\[\s\S])*\}[msixpodualngc]*/,
         greedy: true
       },
-
       // m[...]
       {
         pattern: /\b(?:m|qr)\s*\[(?:[^[\]\\]|\\[\s\S])*\][msixpodualngc]*/,
         greedy: true
       },
-
       // m<...>
       {
         pattern: /\b(?:m|qr)\s*<(?:[^<>\\]|\\[\s\S])*>[msixpodualngc]*/,
@@ -109,42 +99,36 @@ function perl(Prism) {
         lookbehind: true,
         greedy: true
       },
-
       // s a...a...a
       {
         pattern: /(^|[^-]\b)(?:s|tr|y)\s+([a-zA-Z0-9])(?:(?!\2)[^\\]|\\[\s\S])*\2(?:(?!\2)[^\\]|\\[\s\S])*\2[msixpodualngcer]*/,
         lookbehind: true,
         greedy: true
       },
-
       // s(...)(...)
       {
         pattern: /(^|[^-]\b)(?:s|tr|y)\s*\((?:[^()\\]|\\[\s\S])*\)\s*\((?:[^()\\]|\\[\s\S])*\)[msixpodualngcer]*/,
         lookbehind: true,
         greedy: true
       },
-
       // s{...}{...}
       {
         pattern: /(^|[^-]\b)(?:s|tr|y)\s*\{(?:[^{}\\]|\\[\s\S])*\}\s*\{(?:[^{}\\]|\\[\s\S])*\}[msixpodualngcer]*/,
         lookbehind: true,
         greedy: true
       },
-
       // s[...][...]
       {
         pattern: /(^|[^-]\b)(?:s|tr|y)\s*\[(?:[^[\]\\]|\\[\s\S])*\]\s*\[(?:[^[\]\\]|\\[\s\S])*\][msixpodualngcer]*/,
         lookbehind: true,
         greedy: true
       },
-
       // s<...><...>
       {
         pattern: /(^|[^-]\b)(?:s|tr|y)\s*<(?:[^<>\\]|\\[\s\S])*>\s*<(?:[^<>\\]|\\[\s\S])*>[msixpodualngcer]*/,
         lookbehind: true,
         greedy: true
       },
-
       // /.../
       // The look-ahead tries to prevent two divisions on
       // the same line from being highlighted as regex.

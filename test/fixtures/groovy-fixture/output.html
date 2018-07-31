@@ -1,0 +1,16 @@
+<span class="token annotation punctuation">@BaseScript</span> MyBaseClass baseScript
+<span class="token annotation punctuation">@DelegatesTo</span><span class="token punctuation">(</span>EmailSpec<span class="token punctuation">)</span>
+
+<span class="token keyword">assert</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">.</span><span class="token function">first</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token function">unique</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span>
+
+<span class="token keyword">class</span> <span class="token class-name">AGroovyBean</span> <span class="token punctuation">{</span>
+  String color
+<span class="token punctuation">}</span>
+
+<span class="token keyword">def</span> myGroovyBean <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AGroovyBean</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+myGroovyBean<span class="token operator">.</span><span class="token function">setColor</span><span class="token punctuation">(</span><span class="token string">'baby blue'</span><span class="token punctuation">)</span>
+<span class="token keyword">assert</span> myGroovyBean<span class="token operator">.</span><span class="token function">getColor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">'baby blue'</span>
+
+myGroovyBean<span class="token operator">.</span>color <span class="token operator">=</span> <span class="token string">'pewter'</span>
+<span class="token keyword">assert</span> myGroovyBean<span class="token operator">.</span>color <span class="token operator">==</span> <span class="token string">'pewter'</span>

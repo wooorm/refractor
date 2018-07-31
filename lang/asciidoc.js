@@ -45,8 +45,8 @@ function asciidoc(Prism) {
           punctuation: {
             pattern: /(^|[^\\])[|!]=*/,
             lookbehind: true
+            // See rest below
           }
-          // See rest below
         }
       },
       'passthrough-block': {
@@ -255,7 +255,7 @@ They are, in order: __emphasis__, **strong**, ++monospace++, +++passthrough+++, 
     // Plugin to make entity title show the real entity, idea by Roman Komarov
     Prism.hooks.add('wrap', function(env) {
       if (env.type === 'entity') {
-        env.attributes['title'] = env.content.replace(/&amp;/, '&')
+        env.attributes['title'] = env.content.value.replace(/&amp;/, '&')
       }
     })
   })(Prism)
