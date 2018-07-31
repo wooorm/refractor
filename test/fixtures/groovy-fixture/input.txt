@@ -1,0 +1,16 @@
+@BaseScript MyBaseClass baseScript
+@DelegatesTo(EmailSpec)
+
+assert [[1,2,3,3,3,3,4]].first().unique() == [1,2,3]
+
+class AGroovyBean {
+  String color
+}
+
+def myGroovyBean = new AGroovyBean()
+
+myGroovyBean.setColor('baby blue')
+assert myGroovyBean.getColor() == 'baby blue'
+
+myGroovyBean.color = 'pewter'
+assert myGroovyBean.color == 'pewter'

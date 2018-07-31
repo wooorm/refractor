@@ -169,7 +169,7 @@ true
 ## Browser
 
 I do not suggest using the [pre-bundled][releases] files or requiring
-`refractor` itself in the browser as that would include a 250kb (90kb GZipped)
+`refractor` itself in the browser as that would include a 352kb (128kb GZipped)
 of code.
 
 Instead require `refractor/core.js` and include only the needed syntaxes.
@@ -211,8 +211,8 @@ Yields:
          children: [ { type: 'text', value: '/>' } ] } ] } ]
 ```
 
-…When using browserify and minifying the result, this results in just 19kb of
-code (7.62kb with GZip).
+…When using [browserify][] and minifying with [tinyify][] this results in
+just 65kb of code (23kb with GZip).
 
 ## Plugins
 
@@ -440,6 +440,10 @@ syntaxes are made to work with global variables and are not requirable.
 [lowlight]: https://github.com/wooorm/lowlight
 
 [hljs]: https://github.com/isagalaev/highlight.js
+
+[browserify]: https://github.com/browserify/browserify
+
+[tinyify]: https://github.com/browserify/tinyify
 
 [node]: https://github.com/syntax-tree/hast#ast
 

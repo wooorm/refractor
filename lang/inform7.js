@@ -14,8 +14,8 @@ function inform7(Prism) {
             delimiter: {
               pattern: /\[|\]/,
               alias: 'punctuation'
+              // See rest below
             }
-            // See rest below
           }
         }
       }

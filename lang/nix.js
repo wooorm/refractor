@@ -18,8 +18,8 @@ function nix(Prism) {
             antiquotation: {
               pattern: /^\$(?=\{)/,
               alias: 'variable'
+              // See rest below
             }
-            // See rest below
           }
         }
       }

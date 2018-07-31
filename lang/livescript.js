@@ -33,8 +33,8 @@ function livescript(Prism) {
             'interpolation-punctuation': {
               pattern: /^#\{|\}$/,
               alias: 'variable'
+              // See rest below
             }
-            // See rest below
           }
         },
         string: /[\s\S]+/

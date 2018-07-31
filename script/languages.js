@@ -5,6 +5,7 @@ var path = require('path')
 var bail = require('bail')
 var chalk = require('chalk')
 var async = require('async')
+var babel = require('babel-core')
 var not = require('not')
 var hidden = require('is-hidden')
 var detab = require('detab')
@@ -63,6 +64,8 @@ function generate(name, callback) {
 
     deps = diff(unique(deps), bundled.map(base).concat([id, 'inside']))
 
+    doc = babel.transform(doc, {plugins: [fixWrapHook]}).code
+
     fs.writeFile(
       out,
       [
@@ -109,6 +112,46 @@ function camelcase(str) {
   return str.replace(/-[a-z]/gi, replace)
   function replace($0) {
     return $0.charAt(1).toUpperCase()
+  }
+}
+
+function fixWrapHook() {
+  var t = babel.types
+
+  return {
+    visitor: {
+      CallExpression: {
+        enter: function(path) {
+          if (isWrapHook(path)) {
+            this.inWrapHook = true
+          }
+        },
+        exit: function(path) {
+          if (isWrapHook(path)) {
+            this.inWrapHook = false
+          }
+        }
+      },
+      MemberExpression: {
+        enter: function(path) {
+          if (this.inWrapHook && path.matchesPattern('env.content')) {
+            path.node.object = t.memberExpression(
+              path.node.object,
+              t.identifier('content')
+            )
+            path.node.property.name = 'value'
+            path.removed = true
+          }
+        }
+      }
+    }
+  }
+
+  function isWrapHook(path) {
+    return (
+      path.get('callee').matchesPattern('Prism.hooks.add') &&
+      path.get('arguments.0').isStringLiteral({value: 'wrap'})
+    )
   }
 }
 

@@ -211,17 +211,13 @@ test('fixtures', function(t) {
     }
 
     t.test(name, function(st) {
-      var node = processor.parse(expected)
-
-      remove(node, true)
-
       st.plan(2)
 
       st.equal(actual, expected, 'Prism should compile to the fixture')
 
       st.deepEqual(
         tree,
-        node.children,
+        remove(processor.parse(expected), true).children,
         'Refractor should create a tree matching the fixture'
       )
     })

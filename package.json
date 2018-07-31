@@ -29,6 +29,7 @@
   ],
   "dependencies": {
     "hastscript": "^4.0.0",
+    "parse-entities": "^1.1.2",
     "prismjs": "~1.15.0"
   },
   "devDependencies": {
@@ -36,6 +37,7 @@
     "arr-diff": "^4.0.0",
     "array-unique": "^0.3.2",
     "async": "^2.5.0",
+    "babel-core": "^6.26.3",
     "bail": "^1.0.2",
     "browserify": "^16.0.0",
     "chalk": "^2.0.0",
@@ -88,6 +90,7 @@
     "rules": {
       "unicorn/prefer-type-error": "off",
       "no-var": "off",
+      "guard-for-in": "off",
       "object-shorthand": "off",
       "prefer-arrow-callback": "off"
     },

@@ -14,6 +14,7 @@ ctx.Prism = {manual: true}
  * The wrapped non-leaky grammars are loaded instead of
  * Prism’s originals. */
 var h = require('hastscript')
+var decode = require('parse-entities')
 var Prism = require('prismjs/components/prism-core')
 var markup = require('./lang/markup')
 var css = require('./lang/css')
@@ -113,7 +114,11 @@ function stringify(value, language, parent) {
 
   refract.hooks.run('wrap', env)
 
-  return h(env.tag + '.' + env.classes.join('.'), env.attributes, env.content)
+  return h(
+    env.tag + '.' + env.classes.join('.'),
+    attributes(env.attributes),
+    env.content
+  )
 }
 
 function stringifyAll(values, language) {
@@ -143,6 +148,16 @@ function stringifyAll(values, language) {
 
 function encode(tokens) {
   return tokens
+}
+
+function attributes(attrs) {
+  var key
+
+  for (key in attrs) {
+    attrs[key] = decode(attrs[key])
+  }
+
+  return attrs
 }
 
 function capture() {
