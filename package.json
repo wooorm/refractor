@@ -28,7 +28,7 @@
     "lang"
   ],
   "dependencies": {
-    "hastscript": "^3.1.0",
+    "hastscript": "^4.0.0",
     "prismjs": "~1.14.0"
   },
   "devDependencies": {
