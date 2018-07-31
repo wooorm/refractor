@@ -194,20 +194,31 @@ test('fixtures', function(t) {
 
   function subtest(name) {
     var input = read(join(root, name, 'input.txt'), 'utf8').trim()
-    var output = read(join(root, name, 'output.html'), 'utf8').trim()
     var lang = name.split('-')[0]
     var grammar = refractor.languages[lang]
-    var baseline = processor
+    var actual = processor
       .processSync(Prism.highlight(input, grammar, lang))
       .toString()
     var tree = refractor.highlight(input, lang)
-    var node = processor.parse(output)
+    var expected
 
-    remove(node, true)
+    /* istanbul ignore next - useful when generating fixtures. */
+    try {
+      expected = read(join(root, name, 'output.html'), 'utf8').trim()
+    } catch (err) {
+      expected = actual
+      fs.writeFileSync(join(root, name, 'output.html'), expected + '\n')
+    }
 
     t.test(name, function(st) {
+      var node = processor.parse(expected)
+
+      remove(node, true)
+
       st.plan(2)
-      st.equal(baseline, output, 'Prism should compile to the fixture')
+
+      st.equal(actual, expected, 'Prism should compile to the fixture')
+
       st.deepEqual(
         tree,
         node.children,

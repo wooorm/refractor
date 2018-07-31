@@ -2,7 +2,7 @@
 
 module.exports = pascal
 pascal.displayName = 'pascal'
-pascal.aliases = []
+pascal.aliases = ['objectpascal']
 function pascal(Prism) {
   // Based on Free Pascal
   /* TODO
@@ -51,4 +51,5 @@ Support inline asm ?
     ],
     punctuation: /\(\.|\.\)|[()\[\]:;,.]/
   }
+  Prism.languages.objectpascal = Prism.languages.pascal
 }

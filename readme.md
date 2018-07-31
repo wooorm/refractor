@@ -7,7 +7,7 @@ and others.
 <!--count start-->
 
 `refractor` is built to work with all syntaxes supported by [Prism][],
-that’s [148 languages][names] (as of [prism@1.14.0][prismjs]) and all
+that’s [151 languages][names] (as of [prism@1.15.0][prismjs]) and all
 [themes][].
 
 <!--count end-->
@@ -334,7 +334,7 @@ syntaxes are made to work with global variables and are not requirable.
 *   [ ] [`oz`](https://github.com/wooorm/refractor/blob/master/lang/oz.js)
 *   [ ] [`parigp`](https://github.com/wooorm/refractor/blob/master/lang/parigp.js)
 *   [ ] [`parser`](https://github.com/wooorm/refractor/blob/master/lang/parser.js)
-*   [ ] [`pascal`](https://github.com/wooorm/refractor/blob/master/lang/pascal.js)
+*   [ ] [`pascal`](https://github.com/wooorm/refractor/blob/master/lang/pascal.js) — alias: `objectpascal`
 *   [ ] [`perl`](https://github.com/wooorm/refractor/blob/master/lang/perl.js)
 *   [ ] [`phpExtras`](https://github.com/wooorm/refractor/blob/master/lang/php-extras.js)
 *   [ ] [`php`](https://github.com/wooorm/refractor/blob/master/lang/php.js)
@@ -369,9 +369,11 @@ syntaxes are made to work with global variables and are not requirable.
 *   [ ] [`sql`](https://github.com/wooorm/refractor/blob/master/lang/sql.js)
 *   [ ] [`stylus`](https://github.com/wooorm/refractor/blob/master/lang/stylus.js)
 *   [ ] [`swift`](https://github.com/wooorm/refractor/blob/master/lang/swift.js)
+*   [ ] [`tap`](https://github.com/wooorm/refractor/blob/master/lang/tap.js)
 *   [ ] [`tcl`](https://github.com/wooorm/refractor/blob/master/lang/tcl.js)
 *   [ ] [`textile`](https://github.com/wooorm/refractor/blob/master/lang/textile.js)
 *   [ ] [`tsx`](https://github.com/wooorm/refractor/blob/master/lang/tsx.js)
+*   [ ] [`tt2`](https://github.com/wooorm/refractor/blob/master/lang/tt2.js)
 *   [ ] [`twig`](https://github.com/wooorm/refractor/blob/master/lang/twig.js)
 *   [ ] [`typescript`](https://github.com/wooorm/refractor/blob/master/lang/typescript.js) — alias: `ts`
 *   [ ] [`vbnet`](https://github.com/wooorm/refractor/blob/master/lang/vbnet.js)
@@ -384,6 +386,7 @@ syntaxes are made to work with global variables and are not requirable.
 *   [ ] [`wiki`](https://github.com/wooorm/refractor/blob/master/lang/wiki.js)
 *   [ ] [`xeora`](https://github.com/wooorm/refractor/blob/master/lang/xeora.js) — alias: `xeoracube`
 *   [ ] [`xojo`](https://github.com/wooorm/refractor/blob/master/lang/xojo.js)
+*   [ ] [`xquery`](https://github.com/wooorm/refractor/blob/master/lang/xquery.js)
 *   [ ] [`yaml`](https://github.com/wooorm/refractor/blob/master/lang/yaml.js)
 
 <!--support end-->

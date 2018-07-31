@@ -60,7 +60,7 @@ function elixir(Prism) {
       alias: 'variable'
     },
     attribute: {
-      pattern: /@[\S]+/,
+      pattern: /@\w+/,
       alias: 'variable'
     },
     number: /\b(?:0[box][a-f\d_]+|\d[\d_]*)(?:\.[\d_]+)?(?:e[+-]?[\d_]+)?\b/i,

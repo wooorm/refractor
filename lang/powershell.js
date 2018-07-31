@@ -21,7 +21,8 @@ function powershell(Prism) {
         greedy: true,
         inside: {
           function: {
-            pattern: /(^|[^`])\$\(.*?\)/,
+            // Allow for one level of nesting
+            pattern: /(^|[^`])\$\((?:\$\(.*?\)|(?!\$\()[^\r\n)])*\)/,
             lookbehind: true,
             // Populated at end of file
             inside: {}
