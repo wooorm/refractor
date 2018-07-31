@@ -188,8 +188,7 @@ test('fixtures', function(t) {
   var root = path.join(__dirname, 'fixtures')
   var processor = rehype().use({settings: {fragment: true}})
 
-  fs
-    .readdirSync(root)
+  fs.readdirSync(root)
     .filter(not(hidden))
     .forEach(subtest)
 
