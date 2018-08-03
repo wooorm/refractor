@@ -68,6 +68,11 @@ function highlight(value, name) {
     throw new Error('Expected `string` for `value`, got `' + value + '`')
   }
 
+  /* `name` is a grammar object */
+  if (refract.util.type(name) === 'Object') {
+    return sup.call(this, value, name)
+  }
+
   if (typeof name !== 'string') {
     throw new Error('Expected `string` for `name`, got `' + name + '`')
   }
