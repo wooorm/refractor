@@ -52,7 +52,7 @@ function groovy(Prism) {
         env.content.value = env.content.value
           .replace(/&lt;/g, '<')
           .replace(/&amp;/g, '&')
-        env.content.value = Prism.highlight(env.content.value, {
+        env.content = Prism.highlight(env.content.value, {
           expression: {
             pattern: pattern,
             lookbehind: true,

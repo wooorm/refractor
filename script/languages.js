@@ -120,6 +120,7 @@ function fixWrapHook() {
 
   return {
     visitor: {
+      // We only perform the later changes inside `wrap` hooks, just to be safe.
       CallExpression: {
         enter: function(path) {
           if (isWrapHook(path)) {
@@ -132,9 +133,27 @@ function fixWrapHook() {
           }
         }
       },
+      // If a syntax is assigning `Prism.highlight` to `env.content`, we should
+      // add the result to `env.content` instead of `env.content.value`.
+      AssignmentExpression: {
+        enter: function(path) {
+          if (
+            path.get('right.callee').matchesPattern('Prism.highlight') &&
+            path.get('left').matchesPattern('env.content')
+          ) {
+            path.get('left').node.ignoreValueSuffix = true
+          }
+        }
+      },
+      // If a syntax is using `env.content`, it probably expects a string value,
+      // those are stored at `env.content.value`.
       MemberExpression: {
         enter: function(path) {
-          if (this.inWrapHook && path.matchesPattern('env.content')) {
+          if (
+            this.inWrapHook &&
+            !path.node.ignoreValueSuffix &&
+            path.matchesPattern('env.content')
+          ) {
             path.node.object = t.memberExpression(
               path.node.object,
               t.identifier('content')
