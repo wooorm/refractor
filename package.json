@@ -55,7 +55,7 @@
     "trim-lines": "^1.1.0",
     "unist-builder": "^1.0.2",
     "unist-util-remove-position": "^1.1.0",
-    "xo": "^0.21.0"
+    "xo": "^0.22.0"
   },
   "scripts": {
     "generate": "node script/languages && node script/list",
@@ -92,7 +92,8 @@
       "no-var": "off",
       "guard-for-in": "off",
       "object-shorthand": "off",
-      "prefer-arrow-callback": "off"
+      "prefer-arrow-callback": "off",
+      "ava/no-import-test-files": "off"
     },
     "ignores": [
       "lang/*.js",
