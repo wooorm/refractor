@@ -205,7 +205,7 @@ test('fixtures', function(t) {
     /* istanbul ignore next - useful when generating fixtures. */
     try {
       expected = read(join(root, name, 'output.html'), 'utf8').trim()
-    } catch (err) {
+    } catch (error) {
       expected = actual
       fs.writeFileSync(join(root, name, 'output.html'), expected + '\n')
     }

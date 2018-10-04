@@ -123,6 +123,5 @@ function livescript(Prism) {
   }
   Prism.languages.livescript['interpolated-string'].inside[
     'interpolation'
-  ].inside.rest =
-    Prism.languages.livescript
+  ].inside.rest = Prism.languages.livescript
 }

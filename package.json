@@ -45,7 +45,7 @@
     "is-hidden": "^1.1.0",
     "mdast-zone": "^3.0.1",
     "not": "^0.1.0",
-    "nyc": "^12.0.0",
+    "nyc": "^13.0.0",
     "prettier": "^1.12.1",
     "rehype": "^6.0.0",
     "remark-cli": "^5.0.0",
@@ -55,7 +55,7 @@
     "trim-lines": "^1.1.0",
     "unist-builder": "^1.0.2",
     "unist-util-remove-position": "^1.1.0",
-    "xo": "^0.22.0"
+    "xo": "^0.23.0"
   },
   "scripts": {
     "generate": "node script/languages && node script/list",

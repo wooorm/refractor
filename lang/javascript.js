@@ -45,8 +45,7 @@ function javascript(Prism) {
   })
   Prism.languages.javascript['template-string'].inside[
     'interpolation'
-  ].inside.rest =
-    Prism.languages.javascript
+  ].inside.rest = Prism.languages.javascript
   if (Prism.languages.markup) {
     Prism.languages.insertBefore('markup', 'tag', {
       script: {
