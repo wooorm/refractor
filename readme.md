@@ -26,6 +26,7 @@ Want to use [`highlight.js`][hljs] instead?  Try [`lowlight`][lowlight]!
 *   [Plugins](#plugins)
 *   [Syntaxes](#syntaxes)
 *   [Related](#related)
+*   [Projects](#projects)
 *   [License](#license)
 
 ## Installation
@@ -394,6 +395,15 @@ syntaxes are made to work with global variables and are not requirable.
 ## Related
 
 *   [`lowlight`][lowlight] — Same, but based on [`highlight.js`][hljs]
+
+## Projects
+
+*   [`react-syntax-highlighter`](https://github.com/conorhastings/react-syntax-highlighter)
+    — [React][] component for syntax highlighting
+*   [`rehype-prism`](https://github.com/mapbox/rehype-prism)
+    — Syntax highlighting in [**rehype**](https://github.com/rehypejs/rehype)
+*   [`react-refractor`](https://github.com/rexxars/react-refractor)
+    — Syntax highlighter for [React][]
 
 ## License
 
