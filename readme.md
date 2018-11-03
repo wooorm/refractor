@@ -413,15 +413,15 @@ syntaxes are made to work with global variables and are not requirable.
 
 [license]: license
 
-[author]: http://wooorm.com
+[author]: https://wooorm.com
 
 [releases]: https://github.com/wooorm/refractor/releases
 
 [rehype]: https://github.com/rehypejs/rehype
 
-[names]: http://prismjs.com/#languages-list
+[names]: https://prismjs.com/#languages-list
 
-[themes]: http://prismjs.com/#theme
+[themes]: https://prismjs.com/#theme
 
 [react]: https://facebook.github.io/react/
 
