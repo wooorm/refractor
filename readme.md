@@ -1,4 +1,4 @@
-# refractor [![Build Status][travis-badge]][travis] [![Coverage Status][codecov-badge]][codecov]
+# refractor [![Build][build-badge]][build] [![Coverage][coverage-badge]][coverage] [![Downloads][downloads-badge]][downloads] [![Size][size-badge]][size]
 
 Lightweight, robust, elegant virtual syntax highlighting using [Prism][].
 Useful for virtual DOMs and non-HTML things.  Perfect for [React][], [VDOM][],
@@ -401,13 +401,21 @@ syntaxes are made to work with global variables and are not requirable.
 
 <!-- Definitions -->
 
-[travis-badge]: https://img.shields.io/travis/wooorm/refractor.svg
+[build-badge]: https://img.shields.io/travis/wooorm/refractor.svg
 
-[travis]: https://travis-ci.org/wooorm/refractor
+[build]: https://travis-ci.org/wooorm/refractor
 
-[codecov-badge]: https://img.shields.io/codecov/c/github/wooorm/refractor.svg
+[coverage-badge]: https://img.shields.io/codecov/c/github/wooorm/refractor.svg
 
-[codecov]: https://codecov.io/github/wooorm/refractor
+[coverage]: https://codecov.io/github/wooorm/refractor
+
+[downloads-badge]: https://img.shields.io/npm/dm/refractor.svg
+
+[downloads]: https://www.npmjs.com/package/refractor
+
+[size-badge]: https://img.shields.io/bundlephobia/minzip/refractor.svg
+
+[size]: https://bundlephobia.com/result?p=refractor
 
 [npm]: https://www.npmjs.com/package/refractor/tutorial
 
