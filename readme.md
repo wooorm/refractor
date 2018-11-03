@@ -411,7 +411,7 @@ syntaxes are made to work with global variables and are not requirable.
 
 [npm]: https://www.npmjs.com/package/refractor/tutorial
 
-[license]: LICENSE
+[license]: license
 
 [author]: http://wooorm.com
 
