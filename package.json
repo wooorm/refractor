@@ -1,6 +1,6 @@
 {
   "name": "refractor",
-  "version": "2.6.1",
+  "version": "2.6.2",
   "description": "Lightweight, robust, elegant virtual syntax highlighting using Prism",
   "license": "MIT",
   "keywords": [
