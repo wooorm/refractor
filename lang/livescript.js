@@ -17,7 +17,7 @@ function livescript(Prism) {
     ],
     'interpolated-string': {
       /* Look-behind and look-ahead prevents wrong behavior of the greedy pattern
-* forcing it to match """-quoted string when it would otherwise match "-quoted first. */
+       * forcing it to match """-quoted string when it would otherwise match "-quoted first. */
       pattern: /(^|[^"])("""|")(?:\\[\s\S]|(?!\2)[^\\])*\2(?!")/,
       lookbehind: true,
       greedy: true,

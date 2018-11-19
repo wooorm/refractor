@@ -20,9 +20,9 @@ function latex(Prism) {
         lookbehind: true
       },
       /*
-* equations can be between $ $ or \( \) or \[ \]
-* (all are multiline)
-*/
+       * equations can be between $ $ or \( \) or \[ \]
+       * (all are multiline)
+       */
       equation: [
         {
           pattern: /\$(?:\\[\s\S]|[^\\$])*\$|\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\]/,
@@ -37,9 +37,9 @@ function latex(Prism) {
         }
       ],
       /*
-* arguments which are keywords or references are highlighted
-* as keywords
-*/
+       * arguments which are keywords or references are highlighted
+       * as keywords
+       */
       keyword: {
         pattern: /(\\(?:begin|end|ref|cite|label|usepackage|documentclass)(?:\[[^\]]+\])?\{)[^}]+(?=\})/,
         lookbehind: true
@@ -49,9 +49,9 @@ function latex(Prism) {
         lookbehind: true
       },
       /*
-* section or chapter headlines are highlighted as bold so that
-* they stand out more
-*/
+       * section or chapter headlines are highlighted as bold so that
+       * they stand out more
+       */
       headline: {
         pattern: /(\\(?:part|chapter|section|subsection|frametitle|subsubsection|paragraph|subparagraph|subsubparagraph|subsubsubparagraph)\*?(?:\[[^\]]+\])?\{)[^}]+(?=\}(?:\[[^\]]+\])?)/,
         lookbehind: true,
