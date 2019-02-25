@@ -22,6 +22,7 @@ Want to use [`highlight.js`][hljs] instead?  Try [`lowlight`][lowlight]!
     *   [refractor.register(syntax)](#refractorregistersyntax)
     *   [refractor.highlight(value, language)](#refractorhighlightvalue-language)
     *   [refractor.registered(language)](#refractorregisteredlanguage)
+    *   [refractor.listLanguages()](#refractorlistlanguages)
 *   [Browser](#browser)
 *   [Plugins](#plugins)
 *   [Syntaxes](#syntaxes)
@@ -96,8 +97,9 @@ Register a [syntax][].  Needed if you’re using [`refractor/core.js`][browser].
 
 ```js
 var refractor = require('refractor/core.js')
+var markdown = require('refractor/lang/markdown.js')
 
-refractor.register(require('refractor/lang/markdown.js'))
+refractor.register(markdown)
 
 console.log(refractor.highlight('*Emphasis*', 'markdown'))
 ```
@@ -152,10 +154,11 @@ Check if a `language` ([name or alias][syntax]) is registered.
 
 ```js
 var refractor = require('refractor/core.js')
+var markdown = require('refractor/lang/markdown.js')
 
 console.log(refractor.registered('markdown'))
 
-refractor.register(require('refractor/lang/markdown.js'))
+refractor.register(markdown)
 
 console.log(refractor.registered('markdown'))
 ```
@@ -165,6 +168,51 @@ Yields:
 ```js
 false
 true
+```
+
+### `refractor.listLanguages()`
+
+List all registered languages ([names and aliases][syntax]).
+
+###### Returns
+
+`Array.<string>`.
+
+###### Example
+
+```js
+var refractor = require('refractor/core.js')
+var markdown = require('refractor/lang/markdown.js')
+
+console.log(refractor.listLanguages())
+
+refractor.register(markdown)
+
+console.log(refractor.listLanguages())
+```
+
+Yields:
+
+```js
+[ 'markup',
+  'xml',
+  'html',
+  'mathml',
+  'svg',
+  'css',
+  'clike',
+  'javascript',
+  'js' ]
+[ 'markup',
+  'xml',
+  'html',
+  'mathml',
+  'svg',
+  'css',
+  'clike',
+  'javascript',
+  'js',
+  'markdown' ]
 ```
 
 ## Browser

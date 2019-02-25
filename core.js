@@ -46,6 +46,7 @@ module.exports = refract
 refract.highlight = highlight
 refract.register = register
 refract.registered = registered
+refract.listLanguages = listLanguages
 
 /* Register bundled grammars. */
 register(markup)
@@ -100,6 +101,23 @@ function registered(language) {
   }
 
   return own.call(refract.languages, language)
+}
+
+function listLanguages() {
+  var languages = refract.languages
+  var list = []
+  var language
+
+  for (language in languages) {
+    if (
+      own.call(languages, language) &&
+      typeof languages[language] === 'object'
+    ) {
+      list.push(language)
+    }
+  }
+
+  return list
 }
 
 function stringify(value, language, parent) {

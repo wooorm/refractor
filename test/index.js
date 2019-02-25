@@ -225,3 +225,33 @@ test('fixtures', function(t) {
 
   t.end()
 })
+
+test('listLanguages', function(t) {
+  grammar.displayName = 'grammar'
+
+  t.deepEqual(
+    refractor.listLanguages().sort(),
+    Object.keys(Prism.languages)
+      .filter(lang => typeof Prism.languages[lang] !== 'function')
+      .sort(),
+    'should return a list of registered languages'
+  )
+
+  refractor.register(grammar)
+
+  t.deepEqual(
+    [
+      refractor.listLanguages().includes('alpha'),
+      refractor.listLanguages().includes('bravo')
+    ],
+    [true, true],
+    'should support multiple languages from one grammar'
+  )
+
+  t.end()
+
+  function grammar(prism) {
+    prism.languages.alpha = {}
+    prism.languages.bravo = {}
+  }
+})
