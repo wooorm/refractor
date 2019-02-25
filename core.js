@@ -38,6 +38,8 @@ Refractor.prototype = Prism
 
 /* Construct. */
 var refract = new Refractor()
+var languageMethods = new Set(Object.keys(refract.languages))
+var registeredLanguages = new Set()
 
 /* Expose. */
 module.exports = refract
@@ -46,6 +48,7 @@ module.exports = refract
 refract.highlight = highlight
 refract.register = register
 refract.registered = registered
+refract.listLanguages = listLanguages
 
 /* Register bundled grammars. */
 register(markup)
@@ -64,6 +67,13 @@ function register(grammar) {
   /* Do not duplicate registrations. */
   if (refract.languages[grammar.displayName] === undefined) {
     grammar(refract)
+
+    /* Ensure that any languages added to the instance are known */
+    for (var language in refract.languages) {
+      if (!isLanguageMethod(language)) {
+        registeredLanguages.add(language)
+      }
+    }
   }
 }
 
@@ -100,6 +110,15 @@ function registered(language) {
   }
 
   return own.call(refract.languages, language)
+}
+
+/* Returns the list of all languages that have been registered through the `register` function. */
+function listLanguages() {
+  return [...registeredLanguages]
+}
+
+function isLanguageMethod(name) {
+  return languageMethods.has(name)
 }
 
 function stringify(value, language, parent) {

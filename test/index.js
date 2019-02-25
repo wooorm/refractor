@@ -225,3 +225,38 @@ test('fixtures', function(t) {
 
   t.end()
 })
+
+test('listLanguages', function(t) {
+  var expectedLanguages = Object.keys(Prism.languages).filter(
+    lang => typeof Prism.languages[lang] !== 'function'
+  )
+
+  t.deepEqual(
+    refractor
+      .listLanguages()
+      .concat()
+      .sort(),
+    expectedLanguages.concat().sort(),
+    'should return the same list of languages as prismjs'
+  )
+
+  var testGrammar = '--test-grammar-314159--'
+  var testLang1 = '--test-lang-1414--'
+  var testLang2 = '--test-lang-0707--'
+  var mockGrammar = function(p) {
+    p.languages[testLang1] = {}
+    p.languages[testLang2] = {}
+  }
+  mockGrammar.displayName = testGrammar
+  refractor.register(mockGrammar)
+  t.ok(
+    refractor.listLanguages().includes(testLang1),
+    'should include any additional languages from registered grammars (test lang 1)'
+  )
+  t.ok(
+    refractor.listLanguages().includes(testLang2),
+    'should include any additional languages from registered grammars (test lang 2)'
+  )
+
+  t.end()
+})
