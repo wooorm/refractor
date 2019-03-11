@@ -59,7 +59,7 @@
   },
   "scripts": {
     "generate": "node script/languages && node script/list",
-    "format": "remark . -qfo && prettier --write '**/*.js' && xo --fix",
+    "format": "remark . -qfo && prettier --write \"**/*.js\" && xo --fix",
     "build-bundle": "browserify index.js -s refractor > refractor.js",
     "build-mangle": "browserify index.js -s refractor -p tinyify > refractor.min.js",
     "build": "npm run build-bundle && npm run build-mangle",
