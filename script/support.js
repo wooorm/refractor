@@ -46,6 +46,7 @@ function items() {
         if (index !== 0) {
           content.push(u('text', ', '))
         }
+
         content.push(u('inlineCode', alias))
       })
     }

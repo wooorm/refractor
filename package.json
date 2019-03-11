@@ -55,7 +55,7 @@
     "trim-lines": "^1.1.0",
     "unist-builder": "^1.0.2",
     "unist-util-remove-position": "^1.1.0",
-    "xo": "^0.23.0"
+    "xo": "^0.24.0"
   },
   "scripts": {
     "generate": "node script/languages && node script/list",
