@@ -15,10 +15,8 @@ var ctx =
 
 ctx.Prism = {manual: true, disableWorkerMessageHandler: true}
 
-/* Load all stuff in `prism.js` itself, except for
- * `prism-file-highlight.js`.
- * The wrapped non-leaky grammars are loaded instead of
- * Prism’s originals. */
+// Load all stuff in `prism.js` itself, except for `prism-file-highlight.js`.
+// The wrapped non-leaky grammars are loaded instead of Prism’s originals.
 var h = require('hastscript')
 var decode = require('parse-entities')
 var Prism = require('prismjs/components/prism-core')
@@ -31,24 +29,24 @@ restore()
 
 var own = {}.hasOwnProperty
 
-/* Inherit. */
+// Inherit.
 function Refractor() {}
 
 Refractor.prototype = Prism
 
-/* Construct. */
+// Construct.
 var refract = new Refractor()
 
-/* Expose. */
+// Expose.
 module.exports = refract
 
-/* Create. */
+// Create.
 refract.highlight = highlight
 refract.register = register
 refract.registered = registered
 refract.listLanguages = listLanguages
 
-/* Register bundled grammars. */
+// Register bundled grammars.
 register(markup)
 register(css)
 register(clike)
@@ -62,7 +60,7 @@ function register(grammar) {
     throw new Error('Expected `function` for `grammar`, got `' + grammar + '`')
   }
 
-  /* Do not duplicate registrations. */
+  // Do not duplicate registrations.
   if (refract.languages[grammar.displayName] === undefined) {
     grammar(refract)
   }
@@ -76,7 +74,7 @@ function highlight(value, name) {
     throw new Error('Expected `string` for `value`, got `' + value + '`')
   }
 
-  /* `name` is a grammar object */
+  // `name` is a grammar object.
   if (refract.util.type(name) === 'Object') {
     grammar = name
     name = null
