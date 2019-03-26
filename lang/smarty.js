@@ -1,9 +1,10 @@
 'use strict'
-
+var refractorMarkupTemplating = require('./markup-templating.js')
 module.exports = smarty
 smarty.displayName = 'smarty'
 smarty.aliases = []
 function smarty(Prism) {
+  Prism.register(refractorMarkupTemplating)
   /* TODO
 Add support for variables inside double quoted strings
 Add support for {php}
@@ -56,14 +57,6 @@ Add support for {php}
       ],
       keyword: /\b(?:false|off|on|no|true|yes)\b/
     }
-    // Comments are inserted at top so that they can
-    // surround markup
-    Prism.languages.insertBefore('smarty', 'tag', {
-      'smarty-comment': {
-        pattern: /\{\*[\s\S]*?\*\}/,
-        alias: ['smarty', 'comment']
-      }
-    })
     // Tokenize all inline Smarty expressions
     Prism.hooks.add('before-tokenize', function(env) {
       var smartyPattern = /\{\*[\s\S]*?\*\}|\{[\s\S]+?\}/g

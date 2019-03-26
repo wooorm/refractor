@@ -12,6 +12,9 @@ function jsx(Prism) {
     Prism.languages.jsx.tag.inside[
       'attr-value'
     ].pattern = /=(?!\{)(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s'">]+)/i
+    Prism.languages.jsx.tag.inside['tag'].inside[
+      'class-name'
+    ] = /^[A-Z]\w*(?:\.[A-Z]\w*)*$/
     Prism.languages.insertBefore(
       'inside',
       'attr-name',

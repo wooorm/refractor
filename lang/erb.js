@@ -1,9 +1,11 @@
 'use strict'
+var refractorMarkupTemplating = require('./markup-templating.js')
 var refractorRuby = require('./ruby.js')
 module.exports = erb
 erb.displayName = 'erb'
 erb.aliases = []
 function erb(Prism) {
+  Prism.register(refractorMarkupTemplating)
   Prism.register(refractorRuby)
   ;(function(Prism) {
     Prism.languages.erb = Prism.languages.extend('ruby', {})
@@ -14,7 +16,7 @@ function erb(Prism) {
       }
     })
     Prism.hooks.add('before-tokenize', function(env) {
-      var erbPattern = /<%=?[\s\S]+?%>/g
+      var erbPattern = /<%=?(?:[^\r\n]|[\r\n](?!=begin)|[\r\n]=begin\s[\s\S]*?^=end)+?%>/gm
       Prism.languages['markup-templating'].buildPlaceholders(
         env,
         'erb',

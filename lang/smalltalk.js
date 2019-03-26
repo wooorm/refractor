@@ -5,8 +5,8 @@ smalltalk.displayName = 'smalltalk'
 smalltalk.aliases = []
 function smalltalk(Prism) {
   Prism.languages.smalltalk = {
-    comment: /"(?:""|[^"])+"/,
-    string: /'(?:''|[^'])+'/,
+    comment: /"(?:""|[^"])*"/,
+    string: /'(?:''|[^'])*'/,
     symbol: /#[\da-z]+|#(?:-|([+\/\\*~<>=@%|&?!])\1?)|#(?=\()/i,
     'block-arguments': {
       pattern: /(\[\s*):[^\[|]*\|/,

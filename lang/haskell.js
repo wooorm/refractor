@@ -2,7 +2,7 @@
 
 module.exports = haskell
 haskell.displayName = 'haskell'
-haskell.aliases = []
+haskell.aliases = ['hs']
 function haskell(Prism) {
   Prism.languages.haskell = {
     comment: {
@@ -40,4 +40,5 @@ function haskell(Prism) {
     constant: /\b(?:[A-Z][\w']*\.)*[A-Z][\w']*\b/,
     punctuation: /[{}[\];(),.:]/
   }
+  Prism.languages.hs = Prism.languages.haskell
 }

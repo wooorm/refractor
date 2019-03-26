@@ -2,7 +2,7 @@
 
 module.exports = yaml
 yaml.displayName = 'yaml'
-yaml.aliases = []
+yaml.aliases = ['yml']
 function yaml(Prism) {
   Prism.languages.yaml = {
     scalar: {
@@ -37,7 +37,7 @@ function yaml(Prism) {
       alias: 'important'
     },
     string: {
-      pattern: /([:\-,[{]\s*(?:![^\s]+)?[ \t]*)("|')(?:(?!\2)[^\\\r\n]|\\.)*\2(?=[ \t]*(?:$|,|]|}))/m,
+      pattern: /([:\-,[{]\s*(?:![^\s]+)?[ \t]*)("|')(?:(?!\2)[^\\\r\n]|\\.)*\2(?=[ \t]*(?:$|,|]|}|\s*#))/m,
       lookbehind: true,
       greedy: true
     },
@@ -49,4 +49,5 @@ function yaml(Prism) {
     important: /[&*][\w]+/,
     punctuation: /---|[:[\]{}\-,|>?]|\.\.\./
   }
+  Prism.languages.yml = Prism.languages.yaml
 }

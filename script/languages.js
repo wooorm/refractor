@@ -15,10 +15,11 @@ var trim = require('trim-lines')
 var bundled = require('./bundled')
 
 var root = path.join('node_modules', 'prismjs', 'components')
+var useBracesRegex = /Prism\.languages\[['"]([^'"]+)['"]\](?!\s*[=:])/g
 var extendRegex = /languages\.extend\(['"]([^'"]+)['"]/g
 var insertRegex = /Prism\.languages\.insertBefore\(["'](.+?)["']/g
 var cloneRegex = /Prism\.util\.clone\(Prism\.languages\.([^[)]+)(?:\)|\[)/g
-var aliasRegex = /Prism\.languages\.([\w]+) = Prism\.languages\.[\w]+;/g
+var aliasRegex = /Prism\.languages\.([\w]+) = Prism\.languages\.(extend\([^)]+\)|[\w]+);/g
 var prefix = 'refractor-'
 
 fs.readdir(root, ondir)
@@ -56,13 +57,15 @@ function generate(name, callback) {
     }
 
     deps = [].concat(
+      findAll(doc, useBracesRegex),
       findAll(doc, extendRegex),
       findAll(doc, cloneRegex),
       findAll(doc, insertRegex)
     )
-    aliases = unique(findAll(doc, aliasRegex))
+    aliases = unique(findAll(doc, aliasRegex)).filter(d => d !== name)
 
     deps = diff(unique(deps), bundled.map(base).concat([id, 'inside']))
+    deps = deps.filter(d => d !== name)
 
     doc = babel.transform(doc, {plugins: [fixWrapHook]}).code
 

@@ -17,7 +17,6 @@ function jolie(Prism) {
     }
   })
   delete Prism.languages.jolie['class-name']
-  delete Prism.languages.jolie['function']
   Prism.languages.insertBefore('jolie', 'keyword', {
     function: {
       pattern: /((?:\b(?:outputPort|inputPort|in|service|courier)\b|@)\s*)\w+/,

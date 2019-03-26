@@ -2,7 +2,7 @@
 
 module.exports = ruby
 ruby.displayName = 'ruby'
-ruby.aliases = []
+ruby.aliases = ['rb']
 function ruby(Prism) {
   /**
    * Original by Samuel Flores
@@ -15,7 +15,7 @@ function ruby(Prism) {
       comment: [
         /#.*/,
         {
-          pattern: /^=begin(?:\r?\n|\r)(?:.*(?:\r?\n|\r))*?=end/m,
+          pattern: /^=begin\s[\s\S]*?^=end/m,
           greedy: true
         }
       ],
@@ -31,6 +31,7 @@ function ruby(Prism) {
         rest: Prism.languages.ruby
       }
     }
+    delete Prism.languages.ruby.function
     Prism.languages.insertBefore('ruby', 'keyword', {
       regex: [
         {
@@ -79,6 +80,14 @@ function ruby(Prism) {
       symbol: {
         pattern: /(^|[^:]):[a-zA-Z_]\w*(?:[?!]|\b)/,
         lookbehind: true
+      },
+      'method-definition': {
+        pattern: /(\bdef\s+)[\w.]+/,
+        lookbehind: true,
+        inside: {
+          function: /\w+$/,
+          rest: Prism.languages.ruby
+        }
       }
     })
     Prism.languages.insertBefore('ruby', 'number', {
@@ -130,5 +139,6 @@ function ruby(Prism) {
         }
       }
     ]
+    Prism.languages.rb = Prism.languages.ruby
   })(Prism)
 }

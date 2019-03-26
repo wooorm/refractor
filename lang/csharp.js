@@ -49,7 +49,9 @@ function csharp(Prism) {
         }
       }
     ],
-    number: /\b0x[\da-f]+\b|(?:\b\d+\.?\d*|\B\.\d+)f?/i
+    number: /\b0x[\da-f]+\b|(?:\b\d+\.?\d*|\B\.\d+)f?/i,
+    operator: />>=?|<<=?|[-=]>|([-+&|?])\1|~|[-+*/%&|^!=<>]=?/,
+    punctuation: /\?\.?|::|[{}[\];(),.:]/
   })
   Prism.languages.insertBefore('csharp', 'class-name', {
     'generic-method': {

@@ -2,7 +2,7 @@
 
 module.exports = coffeescript
 coffeescript.displayName = 'coffeescript'
-coffeescript.aliases = []
+coffeescript.aliases = ['coffee']
 function coffeescript(Prism) {
   ;(function(Prism) {
     // Ignore comments starting with { to privilege string interpolation highlighting
@@ -82,5 +82,6 @@ function coffeescript(Prism) {
       property: /(?!\d)\w+(?=\s*:(?!:))/
     })
     delete Prism.languages.coffeescript['template-string']
+    Prism.languages.coffee = Prism.languages.coffeescript
   })(Prism)
 }

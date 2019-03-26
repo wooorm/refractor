@@ -1,9 +1,10 @@
 'use strict'
-
+var refractorMarkupTemplating = require('./markup-templating.js')
 module.exports = handlebars
 handlebars.displayName = 'handlebars'
 handlebars.aliases = []
 function handlebars(Prism) {
+  Prism.register(refractorMarkupTemplating)
   ;(function(Prism) {
     Prism.languages.handlebars = {
       comment: /\{\{![\s\S]*?\}\}/,

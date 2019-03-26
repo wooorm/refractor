@@ -1,32 +1,32 @@
 <span class="token keyword">function</span> <span class="token function">visibleTodoFilter</span><span class="token punctuation">(</span>state <span class="token operator">=</span> <span class="token string">'watch'</span><span class="token punctuation">,</span> action<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">switch</span> <span class="token punctuation">(</span>action<span class="token punctuation">.</span>type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">switch</span> <span class="token punctuation">(</span>action<span class="token punctuation">.</span><span class="token property-access">type</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">case</span> <span class="token string">'CHANGE_VISIBLE_FILTER'</span><span class="token punctuation">:</span>
-    <span class="token keyword">return</span> action<span class="token punctuation">.</span>filter<span class="token punctuation">;</span>
-  <span class="token keyword">default</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> action<span class="token punctuation">.</span><span class="token property-access">filter</span><span class="token punctuation">;</span>
+  <span class="token keyword module">default</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> state<span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 
-<span class="token keyword">function</span> <span class="token function">todos</span><span class="token punctuation">(</span>state<span class="token punctuation">,</span> action<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">switch</span> <span class="token punctuation">(</span>action<span class="token punctuation">.</span>type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">function</span> <span class="token function">todos</span><span class="token punctuation">(</span><span class="token parameter">state<span class="token punctuation">,</span> action</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">switch</span> <span class="token punctuation">(</span>action<span class="token punctuation">.</span><span class="token property-access">type</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">case</span> <span class="token string">'ADD_TODO'</span><span class="token punctuation">:</span>
-    <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token operator">...</span>state<span class="token punctuation">,</span> <span class="token punctuation">{</span>
-      text<span class="token punctuation">:</span> action<span class="token punctuation">.</span>text<span class="token punctuation">,</span>
+    <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token spread operator">...</span>state<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+      text<span class="token punctuation">:</span> action<span class="token punctuation">.</span><span class="token property-access">text</span><span class="token punctuation">,</span>
       completed<span class="token punctuation">:</span> <span class="token boolean">false</span>
     <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
   <span class="token keyword">case</span> <span class="token string">'COMPLETE_TODO'</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> <span class="token punctuation">[</span>
-      <span class="token operator">...</span>state<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> action<span class="token punctuation">.</span>index<span class="token punctuation">)</span><span class="token punctuation">,</span>
-      Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> state<span class="token punctuation">[</span>action<span class="token punctuation">.</span>index<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+      <span class="token spread operator">...</span>state<span class="token punctuation">.</span><span class="token method function property-access">slice</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> action<span class="token punctuation">.</span><span class="token property-access">index</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token known-class-name class-name">Object</span><span class="token punctuation">.</span><span class="token method function property-access">assign</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> state<span class="token punctuation">[</span>action<span class="token punctuation">.</span><span class="token property-access">index</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
         completed<span class="token punctuation">:</span> <span class="token boolean">true</span>
       <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-      <span class="token operator">...</span>state<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span>action<span class="token punctuation">.</span>index <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+      <span class="token spread operator">...</span>state<span class="token punctuation">.</span><span class="token method function property-access">slice</span><span class="token punctuation">(</span>action<span class="token punctuation">.</span><span class="token property-access">index</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
     <span class="token punctuation">]</span>
-  <span class="token keyword">default</span><span class="token punctuation">:</span>
+  <span class="token keyword module">default</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> state<span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 
-<span class="token keyword">import</span> <span class="token punctuation">{</span> combineReducers<span class="token punctuation">,</span> createStore <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux'</span><span class="token punctuation">;</span>
+<span class="token keyword module">import</span> <span class="token punctuation">{</span> combineReducers<span class="token punctuation">,</span> createStore <span class="token punctuation">}</span> <span class="token keyword module">from</span> <span class="token string">'redux'</span><span class="token punctuation">;</span>
 <span class="token keyword">let</span> reducer <span class="token operator">=</span> <span class="token function">combineReducers</span><span class="token punctuation">(</span><span class="token punctuation">{</span> visibleTodoFilter<span class="token punctuation">,</span> todos <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">let</span> store <span class="token operator">=</span> <span class="token function">createStore</span><span class="token punctuation">(</span>reducer<span class="token punctuation">)</span><span class="token punctuation">;</span>

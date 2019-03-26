@@ -2,19 +2,25 @@
 
 module.exports = json
 json.displayName = 'json'
-json.aliases = ['jsonp']
+json.aliases = []
 function json(Prism) {
   Prism.languages.json = {
-    property: /"(?:\\.|[^\\"\r\n])*"(?=\s*:)/i,
+    comment: /\/\/.*|\/\*[\s\S]*?(?:\*\/|$)/,
+    property: {
+      pattern: /"(?:\\.|[^\\"\r\n])*"(?=\s*:)/,
+      greedy: true
+    },
     string: {
       pattern: /"(?:\\.|[^\\"\r\n])*"(?!\s*:)/,
       greedy: true
     },
-    number: /\b0x[\dA-Fa-f]+\b|(?:\b\d+\.?\d*|\B\.\d+)(?:[Ee][+-]?\d+)?/,
-    punctuation: /[{}[\]);,]/,
-    operator: /:/g,
-    boolean: /\b(?:true|false)\b/i,
-    null: /\bnull\b/i
+    number: /-?\d+\.?\d*(e[+-]?\d+)?/i,
+    punctuation: /[{}[\],]/,
+    operator: /:/,
+    boolean: /\b(?:true|false)\b/,
+    null: {
+      pattern: /\bnull\b/,
+      alias: 'keyword'
+    }
   }
-  Prism.languages.jsonp = Prism.languages.json
 }

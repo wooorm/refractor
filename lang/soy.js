@@ -1,9 +1,10 @@
 'use strict'
-
+var refractorMarkupTemplating = require('./markup-templating.js')
 module.exports = soy
 soy.displayName = 'soy'
 soy.aliases = []
 function soy(Prism) {
+  Prism.register(refractorMarkupTemplating)
   ;(function(Prism) {
     var stringPattern = /(["'])(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/
     var numberPattern = /\b\d+(?:\.\d+)?(?:[eE][+-]?\d+)?\b|\b0x[\dA-F]+\b/

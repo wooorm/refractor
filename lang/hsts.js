@@ -19,7 +19,7 @@ function hsts(Prism) {
       alias: 'selector'
     },
     unsafe: {
-      pattern: /\d{0,7}/,
+      pattern: /\d{1,7}/,
       alias: 'function'
     }
   }

@@ -19,7 +19,7 @@ function hpkp(Prism) {
       alias: 'selector'
     },
     unsafe: {
-      pattern: /\d{0,6}/,
+      pattern: /\d{1,6}/,
       alias: 'function'
     }
   }

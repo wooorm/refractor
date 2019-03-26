@@ -27,13 +27,19 @@ function scss(Prism) {
     // this one was hard to do, so please be careful if you edit this one :)
     selector: {
       // Initial look-ahead is used to prevent matching of blank selectors
-      pattern: /(?=\S)[^@;{}()]?(?:[^@;{}()]|&|#\{\$[-\w]+\})+(?=\s*\{(?:\}|\s|[^}]+[:{][^}]+))/m,
+      pattern: /(?=\S)[^@;{}()]?(?:[^@;{}()]|#\{\$[-\w]+\})+(?=\s*\{(?:\}|\s|[^}]+[:{][^}]+))/m,
       inside: {
         parent: {
           pattern: /&/,
           alias: 'important'
         },
         placeholder: /%[-\w]+/,
+        variable: /\$[-\w]+|#\{\$[-\w]+\}/
+      }
+    },
+    property: {
+      pattern: /(?:[\w-]|\$[-\w]+|#\{\$[-\w]+\})+(?=\s*:)/,
+      inside: {
         variable: /\$[-\w]+|#\{\$[-\w]+\}/
       }
     }
@@ -47,12 +53,6 @@ function scss(Prism) {
       }
     ]
   })
-  Prism.languages.scss.property = {
-    pattern: /(?:[\w-]|\$[-\w]+|#\{\$[-\w]+\})+(?=\s*:)/i,
-    inside: {
-      variable: /\$[-\w]+|#\{\$[-\w]+\}/
-    }
-  }
   Prism.languages.insertBefore('scss', 'important', {
     // var and interpolated vars
     variable: /\$[-\w]+|#\{\$[-\w]+\}/
@@ -67,7 +67,10 @@ function scss(Prism) {
       alias: 'keyword'
     },
     boolean: /\b(?:true|false)\b/,
-    null: /\bnull\b/,
+    null: {
+      pattern: /\bnull\b/,
+      alias: 'keyword'
+    },
     operator: {
       pattern: /(\s)(?:[-+*\/%]|[=!]=|<=?|>=?|and|or|not)(?=\s)/,
       lookbehind: true

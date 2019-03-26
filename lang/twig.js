@@ -19,7 +19,7 @@ function twig(Prism) {
         rd: {
           pattern: /-?(?:%\}|\}\})$/,
           inside: {
-            punctuation: /.*/
+            punctuation: /.+/
           }
         },
         string: {
