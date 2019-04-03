@@ -2,7 +2,7 @@
 
 module.exports = bash
 bash.displayName = 'bash'
-bash.aliases = ['shell']
+bash.aliases = ['shell', 'sh']
 function bash(Prism) {
   ;(function(Prism) {
     var insideString = {
