@@ -184,6 +184,59 @@ test('.registered(language)', function(t) {
   t.end()
 })
 
+test('.alias(name, alias)', function(t) {
+  var languages = refractor.languages
+  var input = fs
+    .readFileSync(join('test', 'fixtures', 'markdown-sublanguage', 'input.txt'))
+    .toString()
+    .trim()
+  var expected = refractor.highlight(input, 'markdown').value
+
+  refractor.alias('markdown', 'mkd')
+
+  t.deepEqual(
+    refractor.highlight(input, 'mkd').value,
+    expected,
+    'alias must be parsed like original language'
+  )
+
+  delete languages.mkd
+
+  refractor.alias('markdown', ['mmkd', 'mmkdown'])
+
+  t.deepEqual(
+    refractor.highlight(input, 'mmkd').value,
+    expected,
+    'alias must be parsed like original language'
+  )
+
+  delete languages.mmkd
+  delete languages.mmkdown
+
+  refractor.alias({markdown: 'mdown'})
+
+  t.deepEqual(
+    refractor.highlight(input, 'mdown').value,
+    expected,
+    'alias must be parsed like original language'
+  )
+
+  delete languages.mdown
+
+  refractor.alias({markdown: ['mmdown', 'mark']})
+
+  t.deepEqual(
+    refractor.highlight(input, 'mark').value,
+    expected,
+    'alias must be parsed like original language'
+  )
+
+  delete languages.mmdown
+  delete languages.mark
+
+  t.end()
+})
+
 test('fixtures', function(t) {
   var root = path.join(__dirname, 'fixtures')
   var processor = rehype().use({settings: {fragment: true}})

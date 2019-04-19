@@ -43,6 +43,7 @@ module.exports = refract
 // Create.
 refract.highlight = highlight
 refract.register = register
+refract.alias = alias
 refract.registered = registered
 refract.listLanguages = listLanguages
 
@@ -63,6 +64,31 @@ function register(grammar) {
   // Do not duplicate registrations.
   if (refract.languages[grammar.displayName] === undefined) {
     grammar(refract)
+  }
+}
+
+function alias(name, alias) {
+  var languages = refract.languages
+  var map = name
+  var key
+  var list
+  var length
+  var index
+
+  if (alias) {
+    map = {}
+    map[name] = alias
+  }
+
+  for (key in map) {
+    list = map[key]
+    list = typeof list === 'string' ? [list] : list
+    length = list.length
+    index = -1
+
+    while (++index < length) {
+      languages[list[index]] = languages[key]
+    }
   }
 }
 

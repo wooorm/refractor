@@ -20,6 +20,7 @@ Want to use [`highlight.js`][hljs] instead?  Try [`lowlight`][lowlight]!
 *   [Usage](#usage)
 *   [API](#api)
     *   [refractor.register(syntax)](#refractorregistersyntax)
+    *   [refractor.alias(name\[, alias\])](#refractoraliasname-alias)
     *   [refractor.highlight(value, language)](#refractorhighlightvalue-language)
     *   [refractor.registered(language)](#refractorregisteredlanguage)
     *   [refractor.listLanguages()](#refractorlistlanguages)
@@ -111,6 +112,39 @@ Yields:
     tagName: 'span',
     properties: [Object],
     children: [Array] } ]
+```
+
+### `refractor.alias(name[, alias])`
+
+Register a new `alias` for the `name` language.
+
+###### Signatures
+
+*   `alias(name, alias|list)`
+*   `alias(aliases)`
+
+###### Parameters
+
+*   `name` (`string`) — [Name][names] of a registered language
+*   `alias` (`string`) — New alias for the registered language
+*   `list` (`Array.<alias>`) — List of aliases
+*   `aliases` (`Object.<alias|list>`) — Map where each key is a `name` and each
+    value an `alias` or a `list`
+
+###### Example
+
+```js
+var refractor = require('./core')
+var markdown = require('./lang/markdown')
+
+refractor.register(markdown)
+
+// refractor.highlight('*Emphasis*', 'mdown')
+// ^ would throw: Error: Unknown language: `mdown` is not registered
+
+refractor.alias({markdown: ['mdown', 'mkdn', 'mdwn', 'ron']})
+refractor.highlight('*Emphasis*', 'mdown')
+// ^ Works!
 ```
 
 ### `refractor.highlight(value, language)`
