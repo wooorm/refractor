@@ -33,7 +33,7 @@
     "prismjs": "~1.16.0"
   },
   "devDependencies": {
-    "alpha-sort": "^2.0.1",
+    "alpha-sort": "^3.0.0",
     "arr-diff": "^4.0.0",
     "array-unique": "^0.3.2",
     "async": "^2.5.0",

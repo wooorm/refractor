@@ -72,5 +72,5 @@ function sort(a, b) {
     return 1
   }
 
-  return alphaSort.asc(a, b)
+  return alphaSort.ascending(a, b)
 }
