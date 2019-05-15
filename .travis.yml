@@ -1,7 +1,7 @@
 language: node_js
 node_js:
-- lts/boron
-- node
+  - lts/dubnium
+  - node
 after_script: bash <(curl -s https://codecov.io/bash)
 deploy:
   provider: releases
@@ -9,7 +9,7 @@ deploy:
   api_key:
     secure: iuNBBlbV4ETEU4mTX4JSZKC2dYezIUDoMe8r4zu1sKoVP6hxs4xoFa8Xy5nGr+QjIhOGmPnNOv/cGYUeZoDLSdWNRiliVzg0OMUSBVaxkAQHKtEssBPJNXNWMhP7APXgu2Iq5Jb5jqYk/igrot7q1KBTqRJKZmaa5iamU1Hn+sVMovhU5qHy4eZFwExy/oQaSuhnT967UerA05L56Rn0KQRpf3rMeT9rnaeAQNOosyY5agQWGN2JfHyBcf+DSCETqJB6DlDIpDkIulyYH8vT0MAjoV08+HRBM+lopq8CyJs4FpAKNiWJcjSLEiQBQtIPAfeG2AZlpYphNBlXqwIO9WQLsSeWWxwtMpDeJ+sIgkxBjOV2nKCrc5g90s28wMC0x9gDCuxpSAolFv8kW6gDiIdGWyh1VJE2ch4EZxUZ+/J19PJPCAWJOSEKig3g20PsPwJ6wCG0n3cTB+QY7994pPN4oQZEvLrcDmylfd2go9dyjBvuGYUIaoTfUVHHsYN42gM8KR0EfYqh71sUqvPZaXbR/vhFHn4Bdm6kVK6/n8be5IGWRi5cthblEfVR8reVqBVPvqHnET7yszKu51HoUMKncD1akVNmlpXjg9GCNPqYsaY8cRTh0S2RJj9hwcD1tCN4e7rOzH52lAsK/tYxt24A/yQB5psyubMxRZCnGq8=
   file:
-    - "refractor.js"
-    - "refractor.min.js"
+    - 'refractor.js'
+    - 'refractor.min.js'
   on:
     tags: true
