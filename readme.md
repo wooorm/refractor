@@ -1,4 +1,9 @@
-# refractor [![Build][build-badge]][build] [![Coverage][coverage-badge]][coverage] [![Downloads][downloads-badge]][downloads] [![Size][size-badge]][size]
+# refractor
+
+[![Build][build-badge]][build]
+[![Coverage][coverage-badge]][coverage]
+[![Downloads][downloads-badge]][downloads]
+[![Size][size-badge]][size]
 
 Lightweight, robust, elegant virtual syntax highlighting using [Prism][].
 Useful for virtual DOMs and non-HTML things.  Perfect for [React][], [VDOM][],
