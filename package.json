@@ -103,6 +103,12 @@
   "remarkConfig": {
     "plugins": [
       "preset-wooorm",
+      [
+        "toc",
+        {
+          "skip": "license"
+        }
+      ],
       "./script/count",
       "./script/support"
     ]

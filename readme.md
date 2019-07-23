@@ -6,8 +6,8 @@
 [![Size][size-badge]][size]
 
 Lightweight, robust, elegant virtual syntax highlighting using [Prism][].
-Useful for virtual DOMs and non-HTML things.  Perfect for [React][], [VDOM][],
-and others.
+Useful for virtual DOMs and non-HTML things.
+Perfect for [React][], [VDOM][], and others.
 
 <!--count start-->
 
@@ -17,12 +17,13 @@ that’s [184 languages][names] (as of [prism@1.17.0][prismjs]) and all
 
 <!--count end-->
 
-Want to use [`highlight.js`][hljs] instead?  Try [`lowlight`][lowlight]!
+Want to use [`highlight.js`][hljs] instead?
+Try [`lowlight`][lowlight]!
 
 ## Table of Contents
 
-*   [Installation](#installation)
-*   [Usage](#usage)
+*   [Install](#install)
+*   [Use](#use)
 *   [API](#api)
     *   [`refractor.register(syntax)`](#refractorregistersyntax)
     *   [`refractor.alias(name[, alias])`](#refractoraliasname-alias)
@@ -34,24 +35,23 @@ Want to use [`highlight.js`][hljs] instead?  Try [`lowlight`][lowlight]!
 *   [Syntaxes](#syntaxes)
 *   [Related](#related)
 *   [Projects](#projects)
-*   [License](#license)
 
-## Installation
+## Install
 
 [npm][]:
 
-```bash
+```sh
 npm install
 ```
 
-[Usage in the browser »][browser]
+[Use in the browser »][browser]
 
 > Note: Prism depends on [`clipboard.js`][clipboard], but that code isn’t
 > included when running refractor.
 
-## Usage
+## Use
 
-```javascript
+```js
 var refractor = require('refractor')
 
 var nodes = refractor.highlight('"use strict";', 'js')
@@ -97,7 +97,8 @@ Yields:
 
 ### `refractor.register(syntax)`
 
-Register a [syntax][].  Needed if you’re using [`refractor/core.js`][browser].
+Register a [syntax][].
+Needed if you’re using [`refractor/core.js`][browser].
 
 ###### Example
 
@@ -257,7 +258,7 @@ Yields:
 ## Browser
 
 I do not suggest using the [pre-bundled][releases] files or requiring
-`refractor` itself in the browser as that would include a 352kb (128kb GZipped)
+`refractor` itself in the browser as that would include a 376kb (139kb GZipped)
 of code.
 
 Instead require `refractor/core.js` and include only the needed syntaxes.
@@ -313,9 +314,9 @@ just 65kb of code (23kb with GZip).
 
 ## Syntaxes
 
-All syntaxes are included if you `require('refractor')`.  If you’re using
-`refractor/core.js`, checked syntaxes are always included, but unchecked
-syntaxes are not and must be `require`d and [`register`][register]ed.
+All syntaxes are included if you `require('refractor')`.
+If you’re using `refractor/core.js`, checked syntaxes are always included, but
+unchecked syntaxes are not and must be `require`d and [`register`][register]ed.
 
 Unlike in Prism, `cssExtras` and `phpExtras` are camel-cased instead of
 dash-cased.
