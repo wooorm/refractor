@@ -14,7 +14,12 @@ function toml(Prism) {
       },
       table: {
         pattern: RegExp(
-          '(\\[\\s*)' + key + '(?:\\s*\\.\\s*' + key + ')*(?=\\s*\\])'
+          '(^\\s*\\[\\s*(?:\\[\\s*)?)' +
+            key +
+            '(?:\\s*\\.\\s*' +
+            key +
+            ')*(?=\\s*\\])',
+          'm'
         ),
         lookbehind: true,
         greedy: true,

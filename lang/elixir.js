@@ -5,10 +5,7 @@ elixir.displayName = 'elixir'
 elixir.aliases = []
 function elixir(Prism) {
   Prism.languages.elixir = {
-    comment: {
-      pattern: /#.*/m,
-      lookbehind: true
-    },
+    comment: /#.*/m,
     // ~r"""foo""" (multi-line), ~r'''foo''' (multi-line), ~r/foo/, ~r|foo|, ~r"foo", ~r'foo', ~r(foo), ~r[foo], ~r{foo}, ~r<foo>
     regex: {
       pattern: /~[rR](?:("""|''')(?:\\[\s\S]|(?!\1)[^\\])+\1|([\/|"'])(?:\\.|(?!\2)[^\\\r\n])+\2|\((?:\\.|[^\\)\r\n])+\)|\[(?:\\.|[^\\\]\r\n])+\]|\{(?:\\.|[^\\}\r\n])+\}|<(?:\\.|[^\\>\r\n])+>)[uismxfr]*/,

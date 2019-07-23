@@ -2,16 +2,16 @@
 
 module.exports = latex
 latex.displayName = 'latex'
-latex.aliases = []
+latex.aliases = ['tex', 'context']
 function latex(Prism) {
   ;(function(Prism) {
-    var funcPattern = /\\(?:[^a-z()[\]]|[a-z*]+)/i,
-      insideEqu = {
-        'equation-command': {
-          pattern: funcPattern,
-          alias: 'regex'
-        }
+    var funcPattern = /\\(?:[^a-z()[\]]|[a-z*]+)/i
+    var insideEqu = {
+      'equation-command': {
+        pattern: funcPattern,
+        alias: 'regex'
       }
+    }
     Prism.languages.latex = {
       comment: /%.*/m,
       // the verbatim environment prints whitespace to the document
@@ -20,12 +20,12 @@ function latex(Prism) {
         lookbehind: true
       },
       /*
-       * equations can be between $ $ or \( \) or \[ \]
+       * equations can be between $$ $$ or $ $ or \( \) or \[ \]
        * (all are multiline)
        */
       equation: [
         {
-          pattern: /\$(?:\\[\s\S]|[^\\$])*\$|\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\]/,
+          pattern: /\$\$(?:\\[\s\S]|[^\\$])+\$\$|\$(?:\\[\s\S]|[^\\$])+\$|\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\]/,
           inside: insideEqu,
           alias: 'string'
         },
@@ -63,5 +63,7 @@ function latex(Prism) {
       },
       punctuation: /[[\]{}&]/
     }
+    Prism.languages.tex = Prism.languages.latex
+    Prism.languages.context = Prism.languages.latex
   })(Prism)
 }

@@ -17,7 +17,7 @@ function visualBasic(Prism) {
       greedy: true
     },
     string: {
-      pattern: /["“”](?:["“”]{2}|[^"“”])*["“”]C?/i,
+      pattern: /\$?["“”](?:["“”]{2}|[^"“”])*["“”]C?/i,
       greedy: true
     },
     date: {

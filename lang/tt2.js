@@ -7,10 +7,7 @@ function tt2(Prism) {
   Prism.register(refractorMarkupTemplating)
   ;(function(Prism) {
     Prism.languages.tt2 = Prism.languages.extend('clike', {
-      comment: {
-        pattern: /#.*|\[%#[\s\S]*?%\]/,
-        lookbehind: true
-      },
+      comment: /#.*|\[%#[\s\S]*?%\]/,
       keyword: /\b(?:BLOCK|CALL|CASE|CATCH|CLEAR|DEBUG|DEFAULT|ELSE|ELSIF|END|FILTER|FINAL|FOREACH|GET|IF|IN|INCLUDE|INSERT|LAST|MACRO|META|NEXT|PERL|PROCESS|RAWPERL|RETURN|SET|STOP|TAGS|THROW|TRY|SWITCH|UNLESS|USE|WHILE|WRAPPER)\b/,
       punctuation: /[[\]{},()]/
     })

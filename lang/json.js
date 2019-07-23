@@ -5,7 +5,6 @@ json.displayName = 'json'
 json.aliases = []
 function json(Prism) {
   Prism.languages.json = {
-    comment: /\/\/.*|\/\*[\s\S]*?(?:\*\/|$)/,
     property: {
       pattern: /"(?:\\.|[^\\"\r\n])*"(?=\s*:)/,
       greedy: true
@@ -14,6 +13,7 @@ function json(Prism) {
       pattern: /"(?:\\.|[^\\"\r\n])*"(?!\s*:)/,
       greedy: true
     },
+    comment: /\/\/.*|\/\*[\s\S]*?(?:\*\/|$)/,
     number: /-?\d+\.?\d*(e[+-]?\d+)?/i,
     punctuation: /[{}[\],]/,
     operator: /:/,
