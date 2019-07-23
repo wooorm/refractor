@@ -357,7 +357,7 @@ syntaxes are made to work with global variables and are not requirable.
 *   [ ] [`coffeescript`](https://github.com/wooorm/refractor/blob/master/lang/coffeescript.js) — alias: `coffee`
 *   [ ] [`cpp`](https://github.com/wooorm/refractor/blob/master/lang/cpp.js)
 *   [ ] [`crystal`](https://github.com/wooorm/refractor/blob/master/lang/crystal.js)
-*   [ ] [`csharp`](https://github.com/wooorm/refractor/blob/master/lang/csharp.js) — alias: `cs`
+*   [ ] [`csharp`](https://github.com/wooorm/refractor/blob/master/lang/csharp.js) — alias: `dotnet`, `cs`
 *   [ ] [`csp`](https://github.com/wooorm/refractor/blob/master/lang/csp.js)
 *   [ ] [`cssExtras`](https://github.com/wooorm/refractor/blob/master/lang/css-extras.js)
 *   [ ] [`d`](https://github.com/wooorm/refractor/blob/master/lang/d.js)

@@ -19,7 +19,8 @@ var useBracesRegex = /Prism\.languages\[['"]([^'"]+)['"]\](?!\s*[=:])/g
 var extendRegex = /languages\.extend\(['"]([^'"]+)['"]/g
 var insertRegex = /Prism\.languages\.insertBefore\(["'](.+?)["']/g
 var cloneRegex = /Prism\.util\.clone\(Prism\.languages\.([^[)]+)(?:\)|\[)/g
-var aliasRegex = /Prism\.languages\.([\w]+) = Prism\.languages\.(extend\([^)]+\)|[\w]+);/g
+var anyAliasRegex = /((?:Prism\.languages\.[\w]+ = )+)Prism\.languages\.(extend\([^)]+\)|[\w]+);/g
+var aliasRegex = /Prism\.languages\.([\w]+) = /g
 var prefix = 'refractor-'
 
 fs.readdir(root, ondir)
@@ -50,6 +51,7 @@ function generate(name, callback) {
 
   function onread(err, doc) {
     var deps
+    var anyAlias
     var aliases
 
     if (err) {
@@ -62,7 +64,8 @@ function generate(name, callback) {
       findAll(doc, cloneRegex),
       findAll(doc, insertRegex)
     )
-    aliases = unique(findAll(doc, aliasRegex)).filter(d => d !== name)
+    anyAlias = findAll(doc, anyAliasRegex).join('\n')
+    aliases = findAll(anyAlias, aliasRegex).filter(d => d !== name)
 
     deps = diff(unique(deps), bundled.map(base).concat([id, 'inside']))
     deps = deps.filter(d => d !== name)
