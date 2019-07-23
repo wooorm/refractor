@@ -10,21 +10,16 @@ function lisp(Prism) {
     // e.g. (interactive ... or (interactive)
     function simple_form(name) {
       return RegExp('(\\()' + name + '(?=[\\s\\)])')
-    }
-    // booleans and numbers
+    } // booleans and numbers
     function primitive(pattern) {
       return RegExp('([\\s([])' + pattern + '(?=[\\s)])')
-    }
-    // Patterns in regular expressions
+    } // Patterns in regular expressions
     // Symbol name. See https://www.gnu.org/software/emacs/manual/html_node/elisp/Symbol-Type.html
     // & and : are excluded as they are usually used for special purposes
-    var symbol = '[-+*/_~!@$%^=<>{}\\w]+'
-    // symbol starting with & used in function arguments
-    var marker = '&' + symbol
-    // Open parenthesis for look-behind
+    var symbol = '[-+*/_~!@$%^=<>{}\\w]+' // symbol starting with & used in function arguments
+    var marker = '&' + symbol // Open parenthesis for look-behind
     var par = '(\\()'
-    var endpar = '(?=\\))'
-    // End the pattern with look-ahead space
+    var endpar = '(?=\\))' // End the pattern with look-ahead space
     var space = '(?=\\s)'
     var language = {
       // Three or four semicolons are considered a heading.
@@ -135,8 +130,7 @@ function lisp(Prism) {
       },
       punctuation: [
         // open paren, brackets, and close paren
-        /(['`,]?\(|[)\[\]])/,
-        // cons
+        /(['`,]?\(|[)\[\]])/, // cons
         {
           pattern: /(\s)\.(?=\s)/,
           lookbehind: true

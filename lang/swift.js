@@ -15,8 +15,7 @@ function swift(Prism) {
           inside: {
             delimiter: {
               pattern: /^\\\(|\)$/,
-              alias: 'variable'
-              // See rest below
+              alias: 'variable' // See rest below
             }
           }
         }

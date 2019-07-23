@@ -38,8 +38,7 @@ function groovy(Prism) {
       pattern: /(^|[^.])@\w+/,
       lookbehind: true
     }
-  })
-  // Handle string interpolation
+  }) // Handle string interpolation
   Prism.hooks.add('wrap', function(env) {
     if (env.language === 'groovy' && env.type === 'string') {
       var delimiter = env.content.value[0]
@@ -47,8 +46,7 @@ function groovy(Prism) {
         var pattern = /([^\\])(?:\$(?:\{.*?\}|[\w.]+))/
         if (delimiter === '$') {
           pattern = /([^\$])(?:\$(?:\{.*?\}|[\w.]+))/
-        }
-        // To prevent double HTML-encoding we have to decode env.content first
+        } // To prevent double HTML-encoding we have to decode env.content first
         env.content.value = env.content.value
           .replace(/&lt;/g, '<')
           .replace(/&amp;/g, '&')

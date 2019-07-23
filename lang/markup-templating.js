@@ -38,18 +38,15 @@ function markupTemplating(Prism) {
               return match
             }
             var i = tokenStack.length
-            var placeholder
-            // Check for existing strings
+            var placeholder // Check for existing strings
             while (
               env.code.indexOf((placeholder = getPlaceholder(language, i))) !==
               -1
             )
-              ++i
-            // Create a sparse array
+              ++i // Create a sparse array
             tokenStack[i] = match
             return placeholder
-          })
-          // Switch the grammar to markup
+          }) // Switch the grammar to markup
           env.grammar = Prism.languages.markup
         }
       },
@@ -63,8 +60,7 @@ function markupTemplating(Prism) {
         value: function(env, language) {
           if (env.language !== language || !env.tokenStack) {
             return
-          }
-          // Switch the grammar back
+          } // Switch the grammar back
           env.grammar = Prism.languages[language]
           var j = 0
           var keys = Object.keys(env.tokenStack)
@@ -109,7 +105,8 @@ function markupTemplating(Prism) {
                   }
                 }
               } else if (
-                token.content /* && typeof token.content !== 'string' */
+                token.content
+                /* && typeof token.content !== 'string' */
               ) {
                 walkTokens(token.content)
               }

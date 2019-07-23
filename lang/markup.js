@@ -44,8 +44,7 @@ function markup(Prism) {
     entity: /&#?[\da-z]{1,8};/i
   }
   Prism.languages.markup['tag'].inside['attr-value'].inside['entity'] =
-    Prism.languages.markup['entity']
-  // Plugin to make entity title show the real entity, idea by Roman Komarov
+    Prism.languages.markup['entity'] // Plugin to make entity title show the real entity, idea by Roman Komarov
   Prism.hooks.add('wrap', function(env) {
     if (env.type === 'entity') {
       env.attributes['title'] = env.content.value.replace(/&amp;/, '&')

@@ -13,8 +13,7 @@ function q(Prism) {
         pattern: /([\t )\]}])\/.*/,
         lookbehind: true,
         greedy: true
-      },
-      // From http://code.kx.com/wiki/Reference/Slash:
+      }, // From http://code.kx.com/wiki/Reference/Slash:
       // A line which has / as its first character and contains at least one other non-whitespace character is a whole-line comment and is ignored entirely.
       // A / on a line by itself begins a multiline comment which is terminated by the next \ on a line by itself.
       // If a / is not matched by a \, the multiline comment is unterminated and continues to end of file.
@@ -23,8 +22,7 @@ function q(Prism) {
         pattern: /(^|\r?\n|\r)\/[\t ]*(?:(?:\r?\n|\r)(?:.*(?:\r?\n|\r))*?(?:\\(?=[\t ]*(?:\r?\n|\r))|$)|\S.*)/,
         lookbehind: true,
         greedy: true
-      },
-      // From http://code.kx.com/wiki/Reference/Slash:
+      }, // From http://code.kx.com/wiki/Reference/Slash:
       // A \ on a line by itself with no preceding matching / will comment to end of file.
       {
         pattern: /^\\[\t ]*(?:\r?\n|\r)[\s\S]+/m,

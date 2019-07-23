@@ -53,7 +53,14 @@ function pure(Prism) {
       // FIXME: How can we prevent | and , to be highlighted as operator when they are used alone?
       punctuation: /[(){}\[\];,|]/
     }
-    var inlineLanguages = ['c', {lang: 'c++', alias: 'cpp'}, 'fortran']
+    var inlineLanguages = [
+      'c',
+      {
+        lang: 'c++',
+        alias: 'cpp'
+      },
+      'fortran'
+    ]
     var inlineLanguageRe = /%< *-\*- *{lang}\d* *-\*-[\s\S]+?%>/.source
     inlineLanguages.forEach(function(lang) {
       var alias = lang
@@ -78,8 +85,7 @@ function pure(Prism) {
         )
         Prism.languages.insertBefore('pure', 'inline-lang', o)
       }
-    })
-    // C is the default inline language
+    }) // C is the default inline language
     if (Prism.languages.c) {
       Prism.languages.pure['inline-lang'].inside.rest = Prism.util.clone(
         Prism.languages.c

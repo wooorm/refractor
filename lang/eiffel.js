@@ -11,13 +11,11 @@ function eiffel(Prism) {
       {
         pattern: /"([^[]*)\[[\s\S]*?\]\1"/,
         greedy: true
-      },
-      // Non-aligned-verbatim-strings
+      }, // Non-aligned-verbatim-strings
       {
         pattern: /"([^{]*)\{[\s\S]*?\}\1"/,
         greedy: true
-      },
-      // Single-line string
+      }, // Single-line string
       {
         pattern: /"(?:%\s+%|%.|[^%"\r\n])*"/,
         greedy: true
@@ -34,8 +32,7 @@ function eiffel(Prism) {
     },
     number: [
       // hexa | octal | bin
-      /\b0[xcb][\da-f](?:_*[\da-f])*\b/i,
-      // Decimal
+      /\b0[xcb][\da-f](?:_*[\da-f])*\b/i, // Decimal
       /(?:\d(?:_*\d)*)?\.(?:(?:\d(?:_*\d)*)?e[+-]?)?\d(?:_*\d)*|\d(?:_*\d)*\.?/i
     ],
     punctuation: /:=|<<|>>|\(\||\|\)|->|\.(?=\w)|[{}[\];(),:?]/,

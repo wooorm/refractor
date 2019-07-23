@@ -18,8 +18,7 @@ function asciidoc(Prism) {
         interpreted: {
           pattern: /'(?:[^'\\]|\\.)*'/,
           inside: {
-            punctuation: /^'|'$/
-            // See rest below
+            punctuation: /^'|'$/ // See rest below
           }
         },
         string: /"(?:[^"\\]|\\.)*"/,
@@ -44,32 +43,28 @@ function asciidoc(Prism) {
           },
           punctuation: {
             pattern: /(^|[^\\])[|!]=*/,
-            lookbehind: true
-            // See rest below
+            lookbehind: true // See rest below
           }
         }
       },
       'passthrough-block': {
         pattern: /^(\+{4,})(?:\r?\n|\r)(?:[\s\S]*(?:\r?\n|\r))??\1$/m,
         inside: {
-          punctuation: /^\++|\++$/
-          // See rest below
+          punctuation: /^\++|\++$/ // See rest below
         }
       },
       // Literal blocks and listing blocks
       'literal-block': {
         pattern: /^(-{4,}|\.{4,})(?:\r?\n|\r)(?:[\s\S]*(?:\r?\n|\r))??\1$/m,
         inside: {
-          punctuation: /^(?:-+|\.+)|(?:-+|\.+)$/
-          // See rest below
+          punctuation: /^(?:-+|\.+)|(?:-+|\.+)$/ // See rest below
         }
       },
       // Sidebar blocks, quote blocks, example blocks and open blocks
       'other-block': {
         pattern: /^(--|\*{4,}|_{4,}|={4,})(?:\r?\n|\r)(?:[\s\S]*(?:\r?\n|\r))??\1$/m,
         inside: {
-          punctuation: /^(?:-+|\*+|_+|=+)|(?:-+|\*+|_+|=+)$/
-          // See rest below
+          punctuation: /^(?:-+|\*+|_+|=+)|(?:-+|\*+|_+|=+)$/ // See rest below
         }
       },
       // list-punctuation and list-label must appear before indented-block
@@ -92,8 +87,7 @@ function asciidoc(Prism) {
         pattern: /^.+(?:\r?\n|\r)(?:={3,}|-{3,}|~{3,}|\^{3,}|\+{3,})$|^={1,5} +.+|^\.(?![\s.]).*/m,
         alias: 'important',
         inside: {
-          punctuation: /^(?:\.|=+)|(?:=+|-+|~+|\^+|\++)$/
-          // See rest below
+          punctuation: /^(?:\.|=+)|(?:=+|-+|~+|\^+|\++)$/ // See rest below
         }
       },
       'attribute-entry': {
@@ -193,8 +187,7 @@ They are, in order: __emphasis__, **strong**, ++monospace++, +++passthrough+++, 
         lookbehind: true,
         alias: 'punctuation'
       }
-    })
-    // Allow some nesting. There is no recursion though, so cloning should not be needed.
+    }) // Allow some nesting. There is no recursion though, so cloning should not be needed.
     function copyFromAsciiDoc(keys) {
       keys = keys.split(' ')
       var o = {}
@@ -216,8 +209,7 @@ They are, in order: __emphasis__, **strong**, ++monospace++, +++passthrough+++, 
     )
     asciidoc['title'].inside.rest = copyFromAsciiDoc(
       'macro inline replacement entity'
-    )
-    // Plugin to make entity title show the real entity, idea by Roman Komarov
+    ) // Plugin to make entity title show the real entity, idea by Roman Komarov
     Prism.hooks.add('wrap', function(env) {
       if (env.type === 'entity') {
         env.attributes['title'] = env.content.value.replace(/&amp;/, '&')

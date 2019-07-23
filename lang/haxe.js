@@ -16,8 +16,7 @@ function haxe(Prism) {
           inside: {
             interpolation: {
               pattern: /^\$\w*/,
-              alias: 'variable'
-              // See rest below
+              alias: 'variable' // See rest below
             }
           }
         }

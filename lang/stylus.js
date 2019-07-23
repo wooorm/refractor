@@ -11,8 +11,10 @@ function stylus(Prism) {
         pattern: /("|')(?:(?!\1)[^\\\r\n]|\\(?:\r\n|[\s\S]))*\1/,
         greedy: true
       },
-      interpolation: null, // See below
-      func: null, // See below
+      interpolation: null,
+      // See below
+      func: null,
+      // See below
       important: /\B!(?:important|optional)\b/i,
       keyword: {
         pattern: /(^|\s+)(?:(?:if|else|for|return|unless)(?=\s+|$)|@[\w-]+)/,

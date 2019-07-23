@@ -81,8 +81,7 @@ function jsExtras(Prism) {
         pattern: /\bconsole(?=\s*\.)/,
         alias: 'class-name'
       }
-    })
-    // add 'maybe-class-name' to tokens which might be a class name
+    }) // add 'maybe-class-name' to tokens which might be a class name
     var maybeClassNameTokens = [
       'function',
       'function-variable',
@@ -92,14 +91,12 @@ function jsExtras(Prism) {
     ]
     for (var i = 0; i < maybeClassNameTokens.length; i++) {
       var token = maybeClassNameTokens[i]
-      var value = Prism.languages.javascript[token]
-      // convert regex to object
+      var value = Prism.languages.javascript[token] // convert regex to object
       if (Prism.util.type(value) === 'RegExp') {
         value = Prism.languages.javascript[token] = {
           pattern: value
         }
-      }
-      // keep in mind that we don't support arrays
+      } // keep in mind that we don't support arrays
       var inside = value.inside || {}
       value.inside = inside
       inside['maybe-class-name'] = /^[A-Z][\s\S]*/

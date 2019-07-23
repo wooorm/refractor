@@ -56,8 +56,7 @@ Add support for {php}
         /\b(?:eq|neq?|gt|lt|gt?e|lt?e|not|mod|or|and)\b/
       ],
       keyword: /\b(?:false|off|on|no|true|yes)\b/
-    }
-    // Tokenize all inline Smarty expressions
+    } // Tokenize all inline Smarty expressions
     Prism.hooks.add('before-tokenize', function(env) {
       var smartyPattern = /\{\*[\s\S]*?\*\}|\{[\s\S]+?\}/g
       var smartyLitteralStart = '{literal}'
@@ -81,8 +80,7 @@ Add support for {php}
           return false
         }
       )
-    })
-    // Re-insert the tokens after tokenizing
+    }) // Re-insert the tokens after tokenizing
     Prism.hooks.add('after-tokenize', function(env) {
       Prism.languages['markup-templating'].tokenizePlaceholders(env, 'smarty')
     })

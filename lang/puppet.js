@@ -14,11 +14,9 @@ function puppet(Prism) {
           alias: 'string',
           inside: {
             // Matches the end tag
-            punctuation: /(?=\S).*\S(?= *$)/
-            // See interpolation below
+            punctuation: /(?=\S).*\S(?= *$)/ // See interpolation below
           }
-        },
-        // Matches the content of an unquoted heredoc string (no interpolation)
+        }, // Matches the content of an unquoted heredoc string (no interpolation)
         {
           pattern: /(@\(([^"\r\n\/):]+)(?:\/[nrts$uL]*)?\).*(?:\r?\n|\r))(?:.*(?:\r?\n|\r))*?[ \t]*\|?[ \t]*-?[ \t]*\2/,
           lookbehind: true,
@@ -28,8 +26,7 @@ function puppet(Prism) {
             // Matches the end tag
             punctuation: /(?=\S).*\S(?= *$)/
           }
-        },
-        // Matches the start tag of heredoc strings
+        }, // Matches the start tag of heredoc strings
         {
           pattern: /@\("?(?:[^"\r\n\/):]+)"?(?:\/[nrts$uL]*)?\)/,
           alias: 'string',

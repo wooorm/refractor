@@ -5,7 +5,7 @@ var path = require('path')
 var bail = require('bail')
 var chalk = require('chalk')
 var async = require('async')
-var babel = require('babel-core')
+var babel = require('@babel/core')
 var not = require('not')
 var hidden = require('is-hidden')
 var detab = require('detab')
@@ -70,7 +70,7 @@ function generate(name, callback) {
     deps = diff(unique(deps), bundled.map(base).concat([id, 'inside']))
     deps = deps.filter(d => d !== name)
 
-    doc = babel.transform(doc, {plugins: [fixWrapHook]}).code
+    doc = babel.transformSync(doc, {plugins: [fixWrapHook]}).code
 
     fs.writeFile(
       out,

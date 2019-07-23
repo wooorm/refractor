@@ -21,8 +21,7 @@ function shellSession(Prism) {
       }
     },
     output: {
-      pattern: /.(?:.*(?:\r\n?|\n|.$))*/
-      // output highlighting?
+      pattern: /.(?:.*(?:\r\n?|\n|.$))*/ // output highlighting?
     }
   }
 }

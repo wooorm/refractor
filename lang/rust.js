@@ -46,8 +46,7 @@ Add better support for macro definition
       alias: 'attr-name'
     },
     function: [
-      /\w+(?=\s*\()/,
-      // Macros can use parens or brackets
+      /\w+(?=\s*\()/, // Macros can use parens or brackets
       /\w+!(?=\s*\(|\[)/
     ],
     'macro-rules': {

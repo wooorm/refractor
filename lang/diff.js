@@ -8,13 +8,10 @@ function diff(Prism) {
     Prism.languages.diff = {
       coord: [
         // Match all kinds of coord lines (prefixed by "+++", "---" or "***").
-        /^(?:\*{3}|-{3}|\+{3}).*$/m,
-        // Match "@@ ... @@" coord lines in unified diff.
-        /^@@.*@@$/m,
-        // Match coord lines in normal diff (starts with a number).
+        /^(?:\*{3}|-{3}|\+{3}).*$/m, // Match "@@ ... @@" coord lines in unified diff.
+        /^@@.*@@$/m, // Match coord lines in normal diff (starts with a number).
         /^\d+.*$/m
-      ]
-      // deleted, inserted, unchanged, diff
+      ] // deleted, inserted, unchanged, diff
     }
     /**
      * A map from the name of a block to its line prefix.
@@ -28,8 +25,7 @@ function diff(Prism) {
       'inserted-arrow': '>',
       unchanged: ' ',
       diff: '!'
-    }
-    // add a token for each prefix
+    } // add a token for each prefix
     Object.keys(PREFIXES).forEach(function(name) {
       var prefix = PREFIXES[name]
       var alias = []
@@ -48,8 +44,7 @@ function diff(Prism) {
         ),
         alias: alias
       }
-    })
-    // make prefixes available to Diff plugin
+    }) // make prefixes available to Diff plugin
     Object.defineProperty(Prism.languages.diff, 'PREFIXES', {
       value: PREFIXES
     })

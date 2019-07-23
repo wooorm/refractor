@@ -30,8 +30,7 @@ function http(Prism) {
         pattern: /^[\w-]+:(?=.)/m,
         alias: 'keyword'
       }
-    }
-    // Create a mapping of Content-Type headers to language definitions
+    } // Create a mapping of Content-Type headers to language definitions
     var langs = Prism.languages
     var httpLanguages = {
       'application/javascript': langs.javascript,
@@ -40,8 +39,7 @@ function http(Prism) {
       'text/xml': langs.xml,
       'text/html': langs.html,
       'text/css': langs.css
-    }
-    // Declare which types can also be suffixes
+    } // Declare which types can also be suffixes
     var suffixTypes = {
       'application/json': true,
       'application/xml': true
@@ -56,8 +54,7 @@ function http(Prism) {
       var suffix = contentType.replace(/^[a-z]+\//, '')
       var suffixPattern = '\\w+/(?:[\\w.-]+\\+)+' + suffix + '(?![+\\w.-])'
       return '(?:' + contentType + '|' + suffixPattern + ')'
-    }
-    // Insert each content type parser that has its associated language
+    } // Insert each content type parser that has its associated language
     // currently loaded.
     var options
     for (var contentType in httpLanguages) {

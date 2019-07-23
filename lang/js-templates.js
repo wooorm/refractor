@@ -5,8 +5,7 @@ jsTemplates.displayName = 'jsTemplates'
 jsTemplates.aliases = []
 function jsTemplates(Prism) {
   ;(function(Prism) {
-    var templateString = Prism.languages.javascript['template-string']
-    // see the pattern in prism-javascript.js
+    var templateString = Prism.languages.javascript['template-string'] // see the pattern in prism-javascript.js
     var templateLiteralPattern = templateString.pattern.source
     var interpolationObject = templateString.inside['interpolation']
     var interpolationPunctuationObject =
@@ -52,20 +51,15 @@ function jsTemplates(Prism) {
         'css',
         /\b(?:styled(?:\([^)]*\))?(?:\s*\.\s*\w+(?:\([^)]*\))*)*|css(?:\s*\.\s*(?:global|resolve))?|createGlobalStyle|keyframes)/
           .source
-      ),
-      // html`<p></p>`
+      ), // html`<p></p>`
       // div.innerHTML = `<p></p>`
-      createTemplate('html', /\bhtml|\.\s*(?:inner|outer)HTML\s*\+?=/.source),
-      // svg`<path fill="#fff" d="M55.37 ..."/>`
-      createTemplate('svg', /\bsvg/.source),
-      // md`# h1`, markdown`## h2`
-      createTemplate('markdown', /\b(?:md|markdown)/.source),
-      // gql`...`, graphql`...`, graphql.experimental`...`
+      createTemplate('html', /\bhtml|\.\s*(?:inner|outer)HTML\s*\+?=/.source), // svg`<path fill="#fff" d="M55.37 ..."/>`
+      createTemplate('svg', /\bsvg/.source), // md`# h1`, markdown`## h2`
+      createTemplate('markdown', /\b(?:md|markdown)/.source), // gql`...`, graphql`...`, graphql.experimental`...`
       createTemplate(
         'graphql',
         /\b(?:gql|graphql(?:\s*\.\s*experimental)?)/.source
-      ),
-      // vanilla template string
+      ), // vanilla template string
       templateString
     ].filter(Boolean)
     /**
@@ -157,8 +151,7 @@ function jsTemplates(Prism) {
           pattern: RegExp(interpolationPattern),
           lookbehind: true
         }
-      })
-      // replace all interpolations with a placeholder which is not in the code already
+      }) // replace all interpolations with a placeholder which is not in the code already
       var placeholderCounter = 0
       /** @type {Object<string, string>} */
       var placeholderMap = {}
@@ -178,10 +171,8 @@ function jsTemplates(Prism) {
             return placeholder
           }
         })
-        .join('')
-      // 2. Tokenize the embedded code
-      var embeddedTokens = tokenizeWithHooks(embeddedCode, grammar, language)
-      // 3. Re-insert the interpolation
+        .join('') // 2. Tokenize the embedded code
+      var embeddedTokens = tokenizeWithHooks(embeddedCode, grammar, language) // 3. Re-insert the interpolation
       var placeholders = Object.keys(placeholderMap)
       placeholderCounter = 0
       /**
@@ -200,7 +191,8 @@ function jsTemplates(Prism) {
             var s =
               typeof token === 'string'
                 ? token
-                : /** @type {string} */ token.content
+                : /** @type {string} */
+                  token.content
             var index = s.indexOf(placeholder)
             if (index !== -1) {
               ++placeholderCounter

@@ -297,8 +297,7 @@ function markdown(Prism) {
               codeLang.content
                 .trim()
                 .split(/\s+/)[0]
-                .toLowerCase()
-            // add alias
+                .toLowerCase() // add alias
             if (!codeBlock.alias) {
               codeBlock.alias = [alias]
             } else if (typeof codeBlock.alias === 'string') {

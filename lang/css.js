@@ -11,8 +11,7 @@ function css(Prism) {
       atrule: {
         pattern: /@[\w-]+[\s\S]*?(?:;|(?=\s*\{))/,
         inside: {
-          rule: /@[\w-]+/
-          // See rest below
+          rule: /@[\w-]+/ // See rest below
         }
       },
       url: {

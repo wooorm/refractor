@@ -17,8 +17,7 @@ function nix(Prism) {
           inside: {
             antiquotation: {
               pattern: /^\$(?=\{)/,
-              alias: 'variable'
-              // See rest below
+              alias: 'variable' // See rest below
             }
           }
         }

@@ -43,12 +43,16 @@ function javadoclike(Prism) {
       }
       if (token instanceof RegExp) {
         // convert regex to object
-        token = grammar[tokenName] = {pattern: token}
+        token = grammar[tokenName] = {
+          pattern: token
+        }
       }
       if (Array.isArray(token)) {
         for (var i = 0, l = token.length; i < l; i++) {
           if (token[i] instanceof RegExp) {
-            token[i] = {pattern: token[i]}
+            token[i] = {
+              pattern: token[i]
+            }
           }
           callback(token[i])
         }
@@ -75,7 +79,9 @@ function javadoclike(Prism) {
         })
       })
     }
-    Object.defineProperty(javaDocLike, 'addSupport', {value: addSupport})
+    Object.defineProperty(javaDocLike, 'addSupport', {
+      value: addSupport
+    })
     javaDocLike.addSupport(['java', 'javascript', 'php'], javaDocLike)
   })(Prism)
 }

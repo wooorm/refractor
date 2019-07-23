@@ -36,11 +36,11 @@
     "prismjs": "~1.17.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
     "alpha-sort": "^3.0.0",
     "arr-diff": "^4.0.0",
     "array-unique": "^0.3.2",
     "async": "^3.0.0",
-    "babel-core": "^6.26.3",
     "bail": "^1.0.2",
     "browserify": "^16.0.0",
     "chalk": "^2.0.0",

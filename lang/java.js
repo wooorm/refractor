@@ -5,13 +5,11 @@ java.displayName = 'java'
 java.aliases = []
 function java(Prism) {
   ;(function(Prism) {
-    var keywords = /\b(?:abstract|continue|for|new|switch|assert|default|goto|package|synchronized|boolean|do|if|private|this|break|double|implements|protected|throw|byte|else|import|public|throws|case|enum|instanceof|return|transient|catch|extends|int|short|try|char|final|interface|static|void|class|finally|long|strictfp|volatile|const|float|native|super|while|var|null|exports|module|open|opens|provides|requires|to|transitive|uses|with)\b/
-    // based on the java naming conventions
+    var keywords = /\b(?:abstract|continue|for|new|switch|assert|default|goto|package|synchronized|boolean|do|if|private|this|break|double|implements|protected|throw|byte|else|import|public|throws|case|enum|instanceof|return|transient|catch|extends|int|short|try|char|final|interface|static|void|class|finally|long|strictfp|volatile|const|float|native|super|while|var|null|exports|module|open|opens|provides|requires|to|transitive|uses|with)\b/ // based on the java naming conventions
     var className = /\b[A-Z](?:\w*[a-z]\w*)?\b/
     Prism.languages.java = Prism.languages.extend('clike', {
       'class-name': [
-        className,
-        // variables and parameters
+        className, // variables and parameters
         // this to support class names (or generic parameters) which do not contain a lower case letter (also works for methods)
         /\b[A-Z]\w*(?=\s+\w+\s*[;,=())])/
       ],

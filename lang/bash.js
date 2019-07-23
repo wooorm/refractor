@@ -36,16 +36,14 @@ function bash(Prism) {
             // If there is no $ sign at the beginning highlight (( and )) as punctuation
             punctuation: /\(\(?|\)\)?|,|;/
           }
-        },
-        // [1]: Command Substitution
+        }, // [1]: Command Substitution
         {
           pattern: /\$\((?:\([^)]+\)|[^()])+\)|`[^`]+`/,
           greedy: true,
           inside: {
             variable: /^\$\(|^`|\)$|`$/
           }
-        },
-        // [2]: Brace expansion
+        }, // [2]: Brace expansion
         {
           pattern: /\$\{[^}]+\}/,
           greedy: true,
@@ -117,15 +115,13 @@ function bash(Prism) {
           lookbehind: true,
           greedy: true,
           inside: insideString
-        },
-        // Here-document with quotes around the tag
+        }, // Here-document with quotes around the tag
         // → No expansion (so no “inside”).
         {
           pattern: /((?:^|[^<])<<-?\s*)(["'])(\w+)\2\s*(?:\r?\n|\r)(?:[\s\S])*?(?:\r?\n|\r)\3/,
           lookbehind: true,
           greedy: true
-        },
-        // “Normal” string
+        }, // “Normal” string
         {
           pattern: /(["'])(?:\\[\s\S]|\$\([^)]+\)|`[^`]+`|(?!\1)[^\\])*\1/,
           greedy: true,

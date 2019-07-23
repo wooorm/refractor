@@ -15,9 +15,7 @@ function processing(Prism) {
       pattern: /\b(?:boolean|byte|char|color|double|float|int|XML|[A-Z]\w*)\b/,
       alias: 'variable'
     }
-  })
-  // Spaces are allowed between function name and parenthesis
-  Prism.languages.processing['function'].pattern = /\w+(?=\s*\()/
-  // Class-names is not styled by default
+  }) // Spaces are allowed between function name and parenthesis
+  Prism.languages.processing['function'].pattern = /\w+(?=\s*\()/ // Class-names is not styled by default
   Prism.languages.processing['class-name'].alias = 'variable'
 }

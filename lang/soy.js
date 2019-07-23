@@ -68,8 +68,7 @@ function soy(Prism) {
       number: numberPattern,
       operator: /\?:?|<=?|>=?|==?|!=|[+*/%-]|\b(?:and|not|or)\b/,
       punctuation: /[{}()\[\]|.,:]/
-    }
-    // Tokenize all inline Soy expressions
+    } // Tokenize all inline Soy expressions
     Prism.hooks.add('before-tokenize', function(env) {
       var soyPattern = /{{.+?}}|{.+?}|\s\/\/.*|\/\*[\s\S]*?\*\//g
       var soyLitteralStart = '{literal}'
@@ -93,8 +92,7 @@ function soy(Prism) {
           return false
         }
       )
-    })
-    // Re-insert the tokens after tokenizing
+    }) // Re-insert the tokens after tokenizing
     Prism.hooks.add('after-tokenize', function(env) {
       Prism.languages['markup-templating'].tokenizePlaceholders(env, 'soy')
     })

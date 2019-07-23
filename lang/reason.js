@@ -32,7 +32,6 @@ function reason(Prism) {
       pattern: /\b[a-z]\w*(?=::)/,
       alias: 'symbol'
     }
-  })
-  // We can't match functions property, so let's not even try.
+  }) // We can't match functions property, so let's not even try.
   delete Prism.languages.reason.function
 }

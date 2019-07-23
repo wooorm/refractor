@@ -47,8 +47,7 @@ function jsx(Prism) {
         }
       },
       Prism.languages.jsx.tag
-    )
-    // The following will handle plain text inside tags
+    ) // The following will handle plain text inside tags
     var stringifyToken = function(token) {
       if (!token) {
         return ''
@@ -120,8 +119,7 @@ function jsx(Prism) {
           ) {
             // Here we are inside a tag, and not inside a JSX context.
             // That's plain text: drop any tokens matched.
-            var plainText = stringifyToken(token)
-            // And merge text with adjacent text
+            var plainText = stringifyToken(token) // And merge text with adjacent text
             if (
               i < tokens.length - 1 &&
               (typeof tokens[i + 1] === 'string' ||

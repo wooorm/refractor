@@ -54,8 +54,7 @@ function powershell(Prism) {
         lookbehind: true
       },
       punctuation: /[|{}[\];(),.]/
-    })
-    // Variable interpolation inside strings, and nested expressions
+    }) // Variable interpolation inside strings, and nested expressions
     var stringInside = powershell.string[0].inside
     stringInside.boolean = powershell.boolean
     stringInside.variable = powershell.variable

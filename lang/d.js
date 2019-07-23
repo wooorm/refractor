@@ -7,16 +7,12 @@ function d(Prism) {
   Prism.languages.d = Prism.languages.extend('clike', {
     string: [
       // r"", x""
-      /\b[rx]"(?:\\[\s\S]|[^\\"])*"[cwd]?/,
-      // q"[]", q"()", q"<>", q"{}"
-      /\bq"(?:\[[\s\S]*?\]|\([\s\S]*?\)|<[\s\S]*?>|\{[\s\S]*?\})"/,
-      // q"IDENT
+      /\b[rx]"(?:\\[\s\S]|[^\\"])*"[cwd]?/, // q"[]", q"()", q"<>", q"{}"
+      /\bq"(?:\[[\s\S]*?\]|\([\s\S]*?\)|<[\s\S]*?>|\{[\s\S]*?\})"/, // q"IDENT
       // ...
       // IDENT"
-      /\bq"([_a-zA-Z][_a-zA-Z\d]*)(?:\r?\n|\r)[\s\S]*?(?:\r?\n|\r)\1"/,
-      // q"//", q"||", etc.
-      /\bq"(.)[\s\S]*?\1"/,
-      // Characters
+      /\bq"([_a-zA-Z][_a-zA-Z\d]*)(?:\r?\n|\r)[\s\S]*?(?:\r?\n|\r)\1"/, // q"//", q"||", etc.
+      /\bq"(.)[\s\S]*?\1"/, // Characters
       /'(?:\\'|\\?[^']+)'/,
       /(["`])(?:\\[\s\S]|(?!\1)[^\\])*\1[cwd]?/
     ],
@@ -35,8 +31,7 @@ function d(Prism) {
   })
   Prism.languages.d.comment = [
     // Shebang
-    /^\s*#!.+/,
-    // /+ +/
+    /^\s*#!.+/, // /+ +/
     {
       // Allow one level of nesting
       pattern: /(^|[^\\])\/\+(?:\/\+[\s\S]*?\+\/|[\s\S])*?\+\//,

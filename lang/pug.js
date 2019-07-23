@@ -87,8 +87,7 @@ function pug(Prism) {
             function: /\w+(?=\s*\(|\s*$)/,
             punctuation: /[(),.]/
           }
-        },
-        // Usage
+        }, // Usage
         {
           pattern: /(^[\t ]*)\+.+/m,
           lookbehind: true,
@@ -153,24 +152,37 @@ function pug(Prism) {
       punctuation: /[.\-!=|]+/
     }
     var filter_pattern = /(^([\t ]*)):{{filter_name}}(?:(?:\r?\n|\r(?!\n))(?:\2[\t ]+.+|\s*?(?=\r?\n|\r)))+/
-      .source
-    // Non exhaustive list of available filters and associated languages
+      .source // Non exhaustive list of available filters and associated languages
     var filters = [
-      {filter: 'atpl', language: 'twig'},
-      {filter: 'coffee', language: 'coffeescript'},
+      {
+        filter: 'atpl',
+        language: 'twig'
+      },
+      {
+        filter: 'coffee',
+        language: 'coffeescript'
+      },
       'ejs',
       'handlebars',
       'less',
       'livescript',
       'markdown',
-      {filter: 'sass', language: 'scss'},
+      {
+        filter: 'sass',
+        language: 'scss'
+      },
       'stylus'
     ]
     var all_filters = {}
     for (var i = 0, l = filters.length; i < l; i++) {
       var filter = filters[i]
       filter =
-        typeof filter === 'string' ? {filter: filter, language: filter} : filter
+        typeof filter === 'string'
+          ? {
+              filter: filter,
+              language: filter
+            }
+          : filter
       if (Prism.languages[filter.language]) {
         all_filters['filter-' + filter.filter] = {
           pattern: RegExp(

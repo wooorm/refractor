@@ -116,11 +116,13 @@ code |
       }
     }
     var filter_pattern =
-      '((?:^|\\r?\\n|\\r)([\\t ]*)):{{filter_name}}(?:(?:\\r?\\n|\\r)(?:\\2[\\t ]+.+|\\s*?(?=\\r?\\n|\\r)))+'
-    // Non exhaustive list of available filters and associated languages
+      '((?:^|\\r?\\n|\\r)([\\t ]*)):{{filter_name}}(?:(?:\\r?\\n|\\r)(?:\\2[\\t ]+.+|\\s*?(?=\\r?\\n|\\r)))+' // Non exhaustive list of available filters and associated languages
     var filters = [
       'css',
-      {filter: 'coffee', language: 'coffeescript'},
+      {
+        filter: 'coffee',
+        language: 'coffeescript'
+      },
       'erb',
       'javascript',
       'less',
@@ -133,7 +135,12 @@ code |
     for (var i = 0, l = filters.length; i < l; i++) {
       var filter = filters[i]
       filter =
-        typeof filter === 'string' ? {filter: filter, language: filter} : filter
+        typeof filter === 'string'
+          ? {
+              filter: filter,
+              language: filter
+            }
+          : filter
       if (Prism.languages[filter.language]) {
         all_filters['filter-' + filter.filter] = {
           pattern: RegExp(

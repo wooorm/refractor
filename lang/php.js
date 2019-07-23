@@ -52,8 +52,7 @@ function php(Prism) {
           punctuation: /\\/
         }
       }
-    })
-    // Must be defined after the function pattern
+    }) // Must be defined after the function pattern
     Prism.languages.insertBefore('php', 'operator', {
       property: {
         pattern: /(->)[\w]+/,
@@ -110,8 +109,7 @@ function php(Prism) {
           interpolation: string_interpolation // See below
         }
       }
-    })
-    // The different types of PHP strings "replace" the C-like standard string
+    }) // The different types of PHP strings "replace" the C-like standard string
     delete Prism.languages.php['string']
     Prism.hooks.add('before-tokenize', function(env) {
       if (!/<\?/.test(env.code)) {
