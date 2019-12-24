@@ -38,7 +38,7 @@ function soy(Prism) {
         /\b(?:any|as|attributes|bool|css|float|in|int|js|html|list|map|null|number|string|uri)\b/
       ],
       delimiter: {
-        pattern: /^{+\/?|\/?}+$/,
+        pattern: /^\{+\/?|\/?}+$/,
         alias: 'punctuation'
       },
       property: /\w+(?==)/,
