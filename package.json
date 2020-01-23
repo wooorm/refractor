@@ -110,6 +110,7 @@
       [
         "toc",
         {
+          "heading": "contents",
           "skip": "license"
         }
       ],

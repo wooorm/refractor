@@ -20,7 +20,7 @@ that’s [184 languages][names] (as of [prism@1.17.0][prismjs]) and all
 Want to use [`highlight.js`][hljs] instead?
 Try [`lowlight`][lowlight]!
 
-## Table of Contents
+## Contents
 
 *   [Install](#install)
 *   [Use](#use)
@@ -41,13 +41,10 @@ Try [`lowlight`][lowlight]!
 [npm][]:
 
 ```sh
-npm install
+npm install refractor
 ```
 
 [Use in the browser »][browser]
-
-> Note: Prism depends on [`clipboard.js`][clipboard], but that code isn’t
-> included when running refractor.
 
 ## Use
 
@@ -72,7 +69,7 @@ Yields:
     children: [ { type: 'text', value: ';' } ] } ]
 ```
 
-Or, stringified with [rehype][]:
+Or, serialized with [rehype][]:
 
 ```js
 var rehype = require('rehype')
@@ -90,8 +87,8 @@ Yields:
 <span class="token string">"use strict"</span><span class="token punctuation">;</span>
 ```
 
-> **Tip**: Use [`hast-to-hyperscript`][to-hyperscript] to transform
-> to other virtual DOMs, or DIY.
+> **Tip**: Use [`hast-to-hyperscript`][to-hyperscript] to transform to other
+> virtual DOMs, or DIY.
 
 ## API
 
@@ -310,7 +307,7 @@ just 65kb of code (23kb with GZip).
 1.  Prism plugins often deal with the DOM, not Prism tokens
 2.  Prism is made using global variables instead of a module format, so all
     syntaxes below are custom built to work so you can `require` just what you
-    need.
+    need
 
 ## Syntaxes
 
@@ -573,8 +570,6 @@ syntaxes are made to work with global variables and are not requirable.
 [prism]: https://github.com/PrismJS/prism
 
 [prismjs]: https://www.npmjs.com/package/prismjs
-
-[clipboard]: https://github.com/zenorocha/clipboard.js
 
 [lowlight]: https://github.com/wooorm/lowlight
 
