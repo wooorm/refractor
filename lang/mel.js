@@ -13,8 +13,8 @@ function mel(Prism) {
       inside: {
         delimiter: {
           pattern: /^`|`$/,
-          alias: 'punctuation' // See rest below
-        }
+          alias: 'punctuation'
+        } // See rest below
       }
     },
     string: {

@@ -43,8 +43,8 @@ function asciidoc(Prism) {
           },
           punctuation: {
             pattern: /(^|[^\\])[|!]=*/,
-            lookbehind: true // See rest below
-          }
+            lookbehind: true
+          } // See rest below
         }
       },
       'passthrough-block': {

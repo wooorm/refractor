@@ -9,7 +9,6 @@ var babel = require('@babel/core')
 var not = require('not')
 var hidden = require('is-hidden')
 var detab = require('detab')
-var unique = require('array-unique')
 var diff = require('arr-diff')
 var trim = require('trim-lines')
 var bundled = require('./bundled')
@@ -67,7 +66,7 @@ function generate(name, callback) {
     anyAlias = findAll(doc, anyAliasRegex).join('\n')
     aliases = findAll(anyAlias, aliasRegex).filter(d => d !== name)
 
-    deps = diff(unique(deps), bundled.map(base).concat([id, 'inside']))
+    deps = diff(deps.filter(unique), bundled.map(base).concat([id, 'inside']))
     deps = deps.filter(d => d !== name)
 
     doc = babel.transformSync(doc, {plugins: [fixWrapHook]}).code
@@ -194,4 +193,8 @@ function findAll(doc, re) {
 
 function index(fp) {
   return fp === 'index.js'
+}
+
+function unique(d, i, all) {
+  return all.indexOf(d) === i
 }

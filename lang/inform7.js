@@ -13,8 +13,8 @@ function inform7(Prism) {
           inside: {
             delimiter: {
               pattern: /\[|\]/,
-              alias: 'punctuation' // See rest below
-            }
+              alias: 'punctuation'
+            } // See rest below
           }
         }
       }
