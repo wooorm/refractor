@@ -50,7 +50,7 @@ function python(Prism) {
       lookbehind: true
     },
     decorator: {
-      pattern: /(^\s*)@\w+(?:\.\w+)*/i,
+      pattern: /(^\s*)@\w+(?:\.\w+)*/im,
       lookbehind: true,
       alias: ['annotation', 'punctuation'],
       inside: {

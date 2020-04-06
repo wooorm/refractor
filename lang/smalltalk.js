@@ -6,6 +6,10 @@ smalltalk.aliases = []
 function smalltalk(Prism) {
   Prism.languages.smalltalk = {
     comment: /"(?:""|[^"])*"/,
+    character: {
+      pattern: /\$./,
+      alias: 'string'
+    },
     string: /'(?:''|[^'])*'/,
     symbol: /#[\da-z]+|#(?:-|([+\/\\*~<>=@%|&?!])\1?)|#(?=\()/i,
     'block-arguments': {
@@ -24,10 +28,6 @@ function smalltalk(Prism) {
       }
     },
     keyword: /\b(?:nil|true|false|self|super|new)\b/,
-    character: {
-      pattern: /\$./,
-      alias: 'string'
-    },
     number: [
       /\d+r-?[\dA-Z]+(?:\.[\dA-Z]+)?(?:e-?\d+)?/,
       /\b\d+(?:\.\d+)?(?:e-?\d+)?/

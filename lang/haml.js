@@ -22,16 +22,12 @@ code |
         {
           pattern: /((?:^|\r?\n|\r)([\t ]*)(?:[~-]|[&!]?=)).*,[\t ]*(?:(?:\r?\n|\r)\2[\t ]+.*,[\t ]*)*(?:(?:\r?\n|\r)\2[\t ]+.+)/,
           lookbehind: true,
-          inside: {
-            rest: Prism.languages.ruby
-          }
+          inside: Prism.languages.ruby
         },
         {
           pattern: /((?:^|\r?\n|\r)([\t ]*)(?:[~-]|[&!]?=)).*\|[\t ]*(?:(?:\r?\n|\r)\2[\t ]+.*\|[\t ]*)*/,
           lookbehind: true,
-          inside: {
-            rest: Prism.languages.ruby
-          }
+          inside: Prism.languages.ruby
         }
       ],
       // See at the end of the file for known filters
@@ -48,9 +44,7 @@ code |
       markup: {
         pattern: /((?:^|\r?\n|\r)[\t ]*)<.+/,
         lookbehind: true,
-        inside: {
-          rest: Prism.languages.markup
-        }
+        inside: Prism.languages.markup
       },
       doctype: {
         pattern: /((?:^|\r?\n|\r)[\t ]*)!!!(?: .+)?/,
@@ -67,9 +61,7 @@ code |
               // Allows for one nested group of braces
               pattern: /(^|[^#])\{(?:\{[^}]+\}|[^}])+\}/,
               lookbehind: true,
-              inside: {
-                rest: Prism.languages.ruby
-              }
+              inside: Prism.languages.ruby
             },
             {
               pattern: /\([^)]+\)/,
@@ -84,9 +76,7 @@ code |
             },
             {
               pattern: /\[[^\]]+\]/,
-              inside: {
-                rest: Prism.languages.ruby
-              }
+              inside: Prism.languages.ruby
             }
           ],
           punctuation: /[<>]/
@@ -95,9 +85,7 @@ code |
       code: {
         pattern: /((?:^|\r?\n|\r)[\t ]*(?:[~-]|[&!]?=)).+/,
         lookbehind: true,
-        inside: {
-          rest: Prism.languages.ruby
-        }
+        inside: Prism.languages.ruby
       },
       // Interpolations in plain text
       interpolation: {

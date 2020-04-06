@@ -14,7 +14,7 @@ function rip(Prism) {
     datetime: /\b\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\b/,
     character: /\B`[^\s`'",.:;#\/\\()<>\[\]{}]\b/,
     regex: {
-      pattern: /(^|[^/])\/(?!\/)(\[.+?]|\\.|[^/\\\r\n])+\/(?=\s*($|[\r\n,.;})]))/,
+      pattern: /(^|[^/])\/(?!\/)(?:\[.+?]|\\.|[^/\\\r\n])+\/(?=\s*(?:$|[\r\n,.;})]))/,
       lookbehind: true,
       greedy: true
     },

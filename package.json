@@ -37,7 +37,7 @@
   "dependencies": {
     "hastscript": "^5.0.0",
     "parse-entities": "^1.1.2",
-    "prismjs": "~1.17.0"
+    "prismjs": "~1.18.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",

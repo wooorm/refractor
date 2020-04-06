@@ -6,8 +6,11 @@ clojure.aliases = []
 function clojure(Prism) {
   // Copied from https://github.com/jeluard/prism-clojure
   Prism.languages.clojure = {
-    comment: /;+.*/,
-    string: /"(?:\\.|[^\\"\r\n])*"/,
+    comment: /;.*/,
+    string: {
+      pattern: /"(?:[^"\\]|\\.)*"/,
+      greedy: true
+    },
     operator: /(?:::|[:|'])\b[a-z][\w*+!?-]*\b/i,
     //used for symbols and keywords
     keyword: {
@@ -15,7 +18,7 @@ function clojure(Prism) {
       lookbehind: true
     },
     boolean: /\b(?:true|false|nil)\b/,
-    number: /\b[0-9A-Fa-f]+\b/,
+    number: /\b[\da-f]+\b/i,
     punctuation: /[{}\[\](),]/
   }
 }

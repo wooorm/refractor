@@ -130,7 +130,7 @@ function lisp(Prism) {
       },
       punctuation: [
         // open paren, brackets, and close paren
-        /(['`,]?\(|[)\[\]])/, // cons
+        /(?:['`,]?\(|[)\[\]])/, // cons
         {
           pattern: /(\s)\.(?=\s)/,
           lookbehind: true

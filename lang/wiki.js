@@ -21,9 +21,10 @@ function wiki(Prism) {
       // TODO Multi-line
       pattern: /('{2,5}).+?\1/,
       inside: {
-        'bold italic': {
+        'bold-italic': {
           pattern: /(''''').+?(?=\1)/,
-          lookbehind: true
+          lookbehind: true,
+          alias: ['bold', 'italic']
         },
         bold: {
           pattern: /(''')[^'](?:.*?[^'])?(?=\1)/,

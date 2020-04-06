@@ -63,7 +63,7 @@ function http(Prism) {
         var pattern = suffixTypes[contentType]
           ? getSuffixPattern(contentType)
           : contentType
-        options[contentType] = {
+        options[contentType.replace(/\//g, '-')] = {
           pattern: RegExp(
             '(content-type:\\s*' +
               pattern +
@@ -71,9 +71,7 @@ function http(Prism) {
             'i'
           ),
           lookbehind: true,
-          inside: {
-            rest: httpLanguages[contentType]
-          }
+          inside: httpLanguages[contentType]
         }
       }
     }

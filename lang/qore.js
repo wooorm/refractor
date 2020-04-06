@@ -11,7 +11,7 @@ function qore(Prism) {
     },
     // Overridden to allow unescaped multi-line strings
     string: {
-      pattern: /("|')(\\[\s\S]|(?!\1)[^\\])*\1/,
+      pattern: /("|')(?:\\[\s\S]|(?!\1)[^\\])*\1/,
       greedy: true
     },
     variable: /\$(?!\d)\w+\b/,

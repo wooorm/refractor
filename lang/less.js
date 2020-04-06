@@ -20,14 +20,14 @@ A comment before a mixin usage prevents the latter to be properly highlighted.
       }
     ],
     atrule: {
-      pattern: /@[\w-]+?(?:\([^{}]+\)|[^(){};])*?(?=\s*\{)/i,
+      pattern: /@[\w-]+?(?:\((?:[^(){}]|\([^(){}]*\))*\)|[^(){};])*?(?=\s*\{)/,
       inside: {
         punctuation: /[:()]/
       }
     },
     // selectors and mixins are considered the same
     selector: {
-      pattern: /(?:@\{[\w-]+\}|[^{};\s@])(?:@\{[\w-]+\}|\([^{}]*\)|[^{};@])*?(?=\s*\{)/,
+      pattern: /(?:@\{[\w-]+\}|[^{};\s@])(?:@\{[\w-]+\}|\((?:[^(){}]|\([^(){}]*\))*\)|[^(){};@])*?(?=\s*\{)/,
       inside: {
         // mixin parameters
         variable: /@+[\w-]+/

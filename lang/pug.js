@@ -24,9 +24,7 @@ function pug(Prism) {
       'multiline-script': {
         pattern: /(^([\t ]*)script\b.*\.[\t ]*)(?:(?:\r?\n|\r(?!\n))(?:\2[\t ]+.+|\s*?(?=\r?\n|\r)))+/m,
         lookbehind: true,
-        inside: {
-          rest: Prism.languages.javascript
-        }
+        inside: Prism.languages.javascript
       },
       // See at the end of the file for known filters
       filter: {
@@ -46,9 +44,7 @@ function pug(Prism) {
       markup: {
         pattern: /(^[\t ]*)<.+/m,
         lookbehind: true,
-        inside: {
-          rest: Prism.languages.markup
-        }
+        inside: Prism.languages.markup
       },
       doctype: {
         pattern: /((?:^|\n)[\t ]*)doctype(?: .+)?/,
@@ -103,9 +99,7 @@ function pug(Prism) {
       script: {
         pattern: /(^[\t ]*script(?:(?:&[^(]+)?\([^)]+\))*[\t ]+).+/m,
         lookbehind: true,
-        inside: {
-          rest: Prism.languages.javascript
-        }
+        inside: Prism.languages.javascript
       },
       'plain-text': {
         pattern: /(^[\t ]*(?!-)[\w\-#.]*[\w\-](?:(?:&[^(]+)?\([^)]+\))*\/?[\t ]+).+/m,
@@ -118,9 +112,7 @@ function pug(Prism) {
           attributes: [
             {
               pattern: /&[^(]+\([^)]+\)/,
-              inside: {
-                rest: Prism.languages.javascript
-              }
+              inside: Prism.languages.javascript
             },
             {
               pattern: /\([^)]+\)/,
@@ -128,9 +120,7 @@ function pug(Prism) {
                 'attr-value': {
                   pattern: /(=\s*)(?:\{[^}]*\}|[^,)\r\n]+)/,
                   lookbehind: true,
-                  inside: {
-                    rest: Prism.languages.javascript
-                  }
+                  inside: Prism.languages.javascript
                 },
                 'attr-name': /[\w-]+(?=\s*!?=|\s*[,)])/,
                 punctuation: /[!=(),]+/
@@ -144,9 +134,7 @@ function pug(Prism) {
         {
           pattern: /(^[\t ]*(?:-|!?=)).+/m,
           lookbehind: true,
-          inside: {
-            rest: Prism.languages.javascript
-          }
+          inside: Prism.languages.javascript
         }
       ],
       punctuation: /[.\-!=|]+/

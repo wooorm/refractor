@@ -72,7 +72,7 @@ function vala(Prism) {
   })
   Prism.languages.insertBefore('vala', 'keyword', {
     regex: {
-      pattern: /\/(\[(?:[^\]\\\r\n]|\\.)*]|\\.|[^/\\\[\r\n])+\/[imsx]{0,4}(?=\s*($|[\r\n,.;})\]]))/,
+      pattern: /\/(?:\[(?:[^\]\\\r\n]|\\.)*]|\\.|[^/\\\[\r\n])+\/[imsx]{0,4}(?=\s*(?:$|[\r\n,.;})\]]))/,
       greedy: true
     }
   })

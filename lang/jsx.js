@@ -35,7 +35,7 @@ function jsx(Prism) {
       {
         script: {
           // Allow for two levels of nesting
-          pattern: /=(\{(?:\{(?:\{[^}]*\}|[^}])*\}|[^}])+\})/i,
+          pattern: /=(?:\{(?:\{(?:\{[^}]*\}|[^}])*\}|[^}])+\})/i,
           inside: {
             'script-punctuation': {
               pattern: /^=(?={)/,

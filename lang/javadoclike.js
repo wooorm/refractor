@@ -36,6 +36,7 @@ function javadoclike(Prism) {
         var definition = {}
         definition[tokenName] = {
           pattern: /(^|[^\\])\/\*\*[^/][\s\S]*?(?:\*\/|$)/,
+          lookbehind: true,
           alias: 'comment'
         }
         grammar = Prism.languages.insertBefore(lang, 'comment', definition)

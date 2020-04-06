@@ -21,7 +21,7 @@ function clike(Prism) {
       greedy: true
     },
     'class-name': {
-      pattern: /((?:\b(?:class|interface|extends|implements|trait|instanceof|new)\s+)|(?:catch\s+\())[\w.\\]+/i,
+      pattern: /(\b(?:class|interface|extends|implements|trait|instanceof|new)\s+|\bcatch\s+\()[\w.\\]+/i,
       lookbehind: true,
       inside: {
         punctuation: /[.\\]/
@@ -31,7 +31,7 @@ function clike(Prism) {
     boolean: /\b(?:true|false)\b/,
     function: /\w+(?=\()/,
     number: /\b0x[\da-f]+\b|(?:\b\d+\.?\d*|\B\.\d+)(?:e[+-]?\d+)?/i,
-    operator: /--?|\+\+?|!=?=?|<=?|>=?|==?=?|&&?|\|\|?|\?|\*|\/|~|\^|%/,
+    operator: /[<>]=?|[!=]=?=?|--?|\+\+?|&&?|\|\|?|[?*/~^%]/,
     punctuation: /[{}[\];(),.:]/
   }
 }
