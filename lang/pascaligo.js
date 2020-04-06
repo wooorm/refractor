@@ -9,7 +9,9 @@ function pascaligo(Prism) {
     var braces = /\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/.source
     var type = /(?:\w+(?:<braces>)?|<braces>)/.source.replace(
       /<braces>/g,
-      braces
+      function () {
+        return braces
+      }
     )
     var pascaligo = (Prism.languages.pascaligo = {
       comment: /\(\*[\s\S]+?\*\)|\/\/.*/,
@@ -20,7 +22,12 @@ function pascaligo(Prism) {
       'class-name': [
         {
           pattern: RegExp(
-            /(\btype\s+\w+\s+is\s+)<type>/.source.replace(/<type>/g, type),
+            /(\btype\s+\w+\s+is\s+)<type>/.source.replace(
+              /<type>/g,
+              function () {
+                return type
+              }
+            ),
             'i'
           ),
           lookbehind: true,
@@ -28,13 +35,19 @@ function pascaligo(Prism) {
         },
         {
           pattern: RegExp(
-            /<type>(?=\s+is\b)/.source.replace(/<type>/g, type),
+            /<type>(?=\s+is\b)/.source.replace(/<type>/g, function () {
+              return type
+            }),
             'i'
           ),
           inside: null // see below
         },
         {
-          pattern: RegExp(/(:\s*)<type>/.source.replace(/<type>/g, type)),
+          pattern: RegExp(
+            /(:\s*)<type>/.source.replace(/<type>/g, function () {
+              return type
+            })
+          ),
           lookbehind: true,
           inside: null // see below
         }

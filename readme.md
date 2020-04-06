@@ -12,7 +12,7 @@ Perfect for [React][], [VDOM][], and others.
 <!--count start-->
 
 `refractor` is built to work with all syntaxes supported by [Prism][],
-that’s [209 languages][names] (as of [prism@1.19.0][prismjs]) and all
+that’s [209 languages][names] (as of [prism@1.20.0][prismjs]) and all
 [themes][].
 
 <!--count end-->
@@ -346,7 +346,7 @@ syntaxes are made to work with global variables and are not requirable.
 *   [ ] [`bash`](https://github.com/wooorm/refractor/blob/master/lang/bash.js) — alias: `shell`
 *   [ ] [`basic`](https://github.com/wooorm/refractor/blob/master/lang/basic.js)
 *   [ ] [`batch`](https://github.com/wooorm/refractor/blob/master/lang/batch.js)
-*   [ ] [`bbcode`](https://github.com/wooorm/refractor/blob/master/lang/bbcode.js)
+*   [ ] [`bbcode`](https://github.com/wooorm/refractor/blob/master/lang/bbcode.js) — alias: `shortcode`
 *   [ ] [`bison`](https://github.com/wooorm/refractor/blob/master/lang/bison.js)
 *   [ ] [`bnf`](https://github.com/wooorm/refractor/blob/master/lang/bnf.js) — alias: `rbnf`
 *   [ ] [`brainfuck`](https://github.com/wooorm/refractor/blob/master/lang/brainfuck.js)

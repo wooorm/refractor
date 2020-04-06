@@ -6,7 +6,7 @@ markdown.aliases = ['md']
 function markdown(Prism) {
   ;(function (Prism) {
     // Allow only one line break
-    var inner = /(?:\\.|[^\\\n\r]|(?:\r?\n|\r)(?!\r?\n|\r))/.source
+    var inner = /(?:\\.|[^\\\n\r]|(?:\n|\r\n?)(?!\n|\r\n?))/.source
     /**
      * This function is intended for the creation of the bold or italic pattern.
      *
@@ -19,18 +19,22 @@ function markdown(Prism) {
      * @returns {RegExp}
      */
     function createInline(pattern, starAlternative) {
-      pattern = pattern.replace(/<inner>/g, inner)
+      pattern = pattern.replace(/<inner>/g, function () {
+        return inner
+      })
       if (starAlternative) {
         pattern = pattern + '|' + pattern.replace(/_/g, '\\*')
       }
       return RegExp(/((?:^|[^\\])(?:\\{2})*)/.source + '(?:' + pattern + ')')
     }
     var tableCell = /(?:\\.|``.+?``|`[^`\r\n]+`|[^\\|\r\n`])+/.source
-    var tableRow = /\|?__(?:\|__)+\|?(?:(?:\r?\n|\r)|$)/.source.replace(
+    var tableRow = /\|?__(?:\|__)+\|?(?:(?:\n|\r\n?)|$)/.source.replace(
       /__/g,
-      tableCell
+      function () {
+        return tableCell
+      }
     )
-    var tableLine = /\|?[ \t]*:?-{3,}:?[ \t]*(?:\|[ \t]*:?-{3,}:?[ \t]*)+\|?(?:\r?\n|\r)/
+    var tableLine = /\|?[ \t]*:?-{3,}:?[ \t]*(?:\|[ \t]*:?-{3,}:?[ \t]*)+\|?(?:\n|\r\n?)/
       .source
     Prism.languages.markdown = Prism.languages.extend('markup', {})
     Prism.languages.insertBefore('markdown', 'prolog', {
@@ -81,7 +85,7 @@ function markdown(Prism) {
       code: [
         {
           // Prefixed by 4 spaces or 1 tab and preceded by an empty line
-          pattern: /(^[ \t]*(?:\r?\n|\r))(?: {4}|\t).+(?:(?:\r?\n|\r)(?: {4}|\t).+)*/m,
+          pattern: /((?:^|\n)[ \t]*\n|(?:^|\r\n?)[ \t]*\r\n?)(?: {4}|\t).+(?:(?:\n|\r\n?)(?: {4}|\t).+)*/,
           lookbehind: true,
           alias: 'keyword'
         },
@@ -99,7 +103,7 @@ function markdown(Prism) {
           greedy: true,
           inside: {
             'code-block': {
-              pattern: /^(```.*(?:\r?\n|\r))[\s\S]+?(?=(?:\r?\n|\r)^```$)/m,
+              pattern: /^(```.*(?:\n|\r\n?))[\s\S]+?(?=(?:\n|\r\n?)^```$)/m,
               lookbehind: true
             },
             'code-language': {
@@ -116,7 +120,7 @@ function markdown(Prism) {
           // =======
           // title 2
           // -------
-          pattern: /\S.*(?:\r?\n|\r)(?:==+|--+)(?=[ \t]*$)/m,
+          pattern: /\S.*(?:\n|\r\n?)(?:==+|--+)(?=[ \t]*$)/m,
           alias: 'important',
           inside: {
             punctuation: /==+$|--+$/

@@ -7,7 +7,9 @@ function jq(Prism) {
   ;(function (Prism) {
     var interpolation = /\\\((?:[^()]|\([^()]*\))*\)/.source
     var string = RegExp(
-      /"(?:[^"\r\n\\]|\\[^\r\n(]|__)*"/.source.replace(/__/g, interpolation)
+      /"(?:[^"\r\n\\]|\\[^\r\n(]|__)*"/.source.replace(/__/g, function () {
+        return interpolation
+      })
     )
     var stringInterpolation = {
       interpolation: {

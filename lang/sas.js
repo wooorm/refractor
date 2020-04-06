@@ -83,20 +83,24 @@ function sas(Prism) {
       lookbehind: true,
       alias: 'keyword'
     }
-    var actionSets =
-      'accessControl|cdm|aggregation|aStore|ruleMining|audio|autotune|bayesianNetClassifier|bioMedImage|boolRule|builtins|cardinality|sccasl|clustering|copula|countreg|dataDiscovery|dataPreprocess|dataSciencePilot|dataStep|decisionTree|deepLearn|deepNeural|varReduce|simSystem|ds2|deduplication|ecm|entityRes|espCluster|explainModel|factmac|fastKnn|fcmpact|fedSql|freqTab|gam|gleam|graphSemiSupLearn|gVarCluster|hiddenMarkovModel|hyperGroup|image|iml|ica|kernalPca|langModel|ldaTopic|sparseML|mlTools|mixed|modelPublishing|mbc|network|optNetwork|neuralNet|nonlinear|nmf|nonParametricBayes|optimization|panel|pls|percentile|pca|phreg|qkb|qlim|quantreg|recommend|tsReconcile|deepRnn|regression|reinforcementLearn|robustPca|sampling|sparkEmbeddedProcess|search(?:Analytics)?|sentimentAnalysis|sequence|configuration|session(?:Prop)?|severity|simple|smartData|sandwich|spatialreg|stabilityMonitoring|spc|loadStreams|svDataDescription|svm|table|conditionalRandomFields|text(?:Rule(?:Develop|Score)|Mining|Parse|Topic|Util|Filters|Frequency)|tsInfo|timeData|transpose|uniTimeSeries'
+    var actionSets = /accessControl|cdm|aggregation|aStore|ruleMining|audio|autotune|bayesianNetClassifier|bioMedImage|boolRule|builtins|cardinality|sccasl|clustering|copula|countreg|dataDiscovery|dataPreprocess|dataSciencePilot|dataStep|decisionTree|deepLearn|deepNeural|varReduce|simSystem|ds2|deduplication|ecm|entityRes|espCluster|explainModel|factmac|fastKnn|fcmpact|fedSql|freqTab|gam|gleam|graphSemiSupLearn|gVarCluster|hiddenMarkovModel|hyperGroup|image|iml|ica|kernalPca|langModel|ldaTopic|sparseML|mlTools|mixed|modelPublishing|mbc|network|optNetwork|neuralNet|nonlinear|nmf|nonParametricBayes|optimization|panel|pls|percentile|pca|phreg|qkb|qlim|quantreg|recommend|tsReconcile|deepRnn|regression|reinforcementLearn|robustPca|sampling|sparkEmbeddedProcess|search(?:Analytics)?|sentimentAnalysis|sequence|configuration|session(?:Prop)?|severity|simple|smartData|sandwich|spatialreg|stabilityMonitoring|spc|loadStreams|svDataDescription|svm|table|conditionalRandomFields|text(?:Rule(?:Develop|Score)|Mining|Parse|Topic|Util|Filters|Frequency)|tsInfo|timeData|transpose|uniTimeSeries/
+      .source
     var casActions = {
       pattern: RegExp(
-        '(^|\\s)(?:action\\s+)?(?:<act>)\\.[a-z]+\\b[^;]+'.replace(
+        /(^|\s)(?:action\s+)?(?:<act>)\.[a-z]+\b[^;]+/.source.replace(
           /<act>/g,
-          actionSets
+          function () {
+            return actionSets
+          }
         ),
         'i'
       ),
       lookbehind: true,
       inside: {
         keyword: RegExp(
-          '(?:<act>)\\.[a-z]+\\b'.replace(/<act>/g, actionSets),
+          /(?:<act>)\.[a-z]+\b/.source.replace(/<act>/g, function () {
+            return actionSets
+          }),
           'i'
         ),
         action: {
@@ -138,7 +142,9 @@ function sas(Prism) {
             pattern: RegExp(
               /^[ \t]*(?:select|alter\s+table|(?:create|describe|drop)\s+(?:index|table(?:\s+constraints)?|view)|create\s+unique\s+index|insert\s+into|update)(?:<str>|[^;"'])+;/.source.replace(
                 /<str>/g,
-                stringPattern
+                function () {
+                  return stringPattern
+                }
               ),
               'im'
             ),
@@ -165,7 +171,9 @@ function sas(Prism) {
             pattern: RegExp(
               /(^[ \t]*submit(?:\s+(?:load|parseonly|norun))?)(?:<str>|[^"'])+?(?=endsubmit;)/.source.replace(
                 /<str>/g,
-                stringPattern
+                function () {
+                  return stringPattern
+                }
               ),
               'im'
             ),
@@ -189,7 +197,9 @@ function sas(Prism) {
             pattern: RegExp(
               /(^[ \t]*submit(?:\s+(?:load|parseonly|norun))?)(?:<str>|[^"'])+?(?=endsubmit;)/.source.replace(
                 /<str>/g,
-                stringPattern
+                function () {
+                  return stringPattern
+                }
               ),
               'im'
             ),
@@ -245,7 +255,9 @@ function sas(Prism) {
         pattern: RegExp(
           /(^proc\s+\w+\s+)(?!\s)(?:[^;"']|<str>)+;/.source.replace(
             /<str>/g,
-            stringPattern
+            function () {
+              return stringPattern
+            }
           ),
           'im'
         ),

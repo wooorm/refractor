@@ -2,7 +2,7 @@
 
 module.exports = bbcode
 bbcode.displayName = 'bbcode'
-bbcode.aliases = []
+bbcode.aliases = ['shortcode']
 function bbcode(Prism) {
   Prism.languages.bbcode = {
     tag: {
@@ -31,4 +31,5 @@ function bbcode(Prism) {
       }
     }
   }
+  Prism.languages.shortcode = Prism.languages.bbcode
 }

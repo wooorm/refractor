@@ -6,7 +6,7 @@ visualBasic.aliases = []
 function visualBasic(Prism) {
   Prism.languages['visual-basic'] = {
     comment: {
-      pattern: /(?:['‘’]|REM\b).*/i,
+      pattern: /(?:['‘’]|REM\b)(?:[^\r\n_]|_(?:\r\n?|\n)?)*/i,
       inside: {
         keyword: /^REM/i
       }

@@ -11,7 +11,9 @@ function ftl(Prism) {
     var FTL_EXPR = /(?!<#--)[^()"']|\((?:<expr>)*\)|<#--[\s\S]*?-->|"(?:[^\\"]|\\.)*"|'(?:[^\\']|\\.)*'/
       .source
     for (var i = 0; i < 2; i++) {
-      FTL_EXPR = FTL_EXPR.replace(/<expr>/g, FTL_EXPR)
+      FTL_EXPR = FTL_EXPR.replace(/<expr>/g, function () {
+        return FTL_EXPR
+      })
     }
     FTL_EXPR = FTL_EXPR.replace(/<expr>/g, '[^sS]')
     var ftl = {
@@ -26,7 +28,9 @@ function ftl(Prism) {
           pattern: RegExp(
             /("|')(?:(?!\1|\$\{)[^\\]|\\.|\$\{(?:<expr>)*?\})*\1/.source.replace(
               /<expr>/g,
-              FTL_EXPR
+              function () {
+                return FTL_EXPR
+              }
             )
           ),
           greedy: true,
@@ -35,7 +39,9 @@ function ftl(Prism) {
               pattern: RegExp(
                 /((?:^|[^\\])(?:\\\\)*)\$\{(?:<expr>)*?\}/.source.replace(
                   /<expr>/g,
-                  FTL_EXPR
+                  function () {
+                    return FTL_EXPR
+                  }
                 )
               ),
               lookbehind: true,
@@ -101,7 +107,9 @@ function ftl(Prism) {
       var pattern = RegExp(
         /<#--[\s\S]*?-->|<\/?[#@][a-zA-Z](?:<expr>)*?>|\$\{(?:<expr>)*?\}/.source.replace(
           /<expr>/g,
-          FTL_EXPR
+          function () {
+            return FTL_EXPR
+          }
         ),
         'gi'
       )

@@ -88,7 +88,9 @@ function markup(Prism) {
         pattern: RegExp(
           /(<__[\s\S]*?>)(?:<!\[CDATA\[[\s\S]*?\]\]>\s*|[\s\S])*?(?=<\/__>)/.source.replace(
             /__/g,
-            tagName
+            function () {
+              return tagName
+            }
           ),
           'i'
         ),

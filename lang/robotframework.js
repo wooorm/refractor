@@ -39,7 +39,9 @@ function robotframework(Prism) {
         pattern: RegExp(
           /^ ?\*{3}[ \t]*<name>[ \t]*\*{3}(?:.|[\r\n](?!\*{3}))*/.source.replace(
             /<name>/g,
-            name
+            function () {
+              return name
+            }
           ),
           'im'
         ),
