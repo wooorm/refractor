@@ -27,8 +27,8 @@ function handlebars(Prism) {
           variable: /[\s\S]+/
         }
       },
-      punctuation: /[!"#%&'()*+,.\/;<=>@\[\\\]^`{|}~]/,
-      variable: /[^!"#%&'()*+,.\/;<=>@\[\\\]^`{|}~\s]+/
+      punctuation: /[!"#%&':()*+,.\/;<=>@\[\\\]^`{|}~]/,
+      variable: /[^!"#%&'()*+,\/;<=>@\[\\\]^`{|}~\s]+/
     }
     Prism.hooks.add('before-tokenize', function (env) {
       var handlebarsPattern = /\{\{\{[\s\S]+?\}\}\}|\{\{[\s\S]+?\}\}/g

@@ -12,7 +12,7 @@ Perfect for [React][], [VDOM][], and others.
 <!--count start-->
 
 `refractor` is built to work with all syntaxes supported by [Prism][],
-that’s [209 languages][names] (as of [prism@1.18.0][prismjs]) and all
+that’s [209 languages][names] (as of [prism@1.19.0][prismjs]) and all
 [themes][].
 
 <!--count end-->

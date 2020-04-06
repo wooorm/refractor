@@ -8,16 +8,10 @@ function qml(Prism) {
     var jsString = /"(?:\\.|[^\\"\r\n])*"|'(?:\\.|[^\\'\r\n])*'/.source
     var jsComment = /\/\/.*|\/\*(?:(?!\*\/)[\s\S])*\*\//.source
     var jsExpr = /(?:[^\\()[\]{}"'/]|<string>|\/(?![*/])|<comment>|\(<expr>*\)|\[<expr>*\]|\{<expr>*\}|\\[\s\S])/.source
-      .replace(/<string>/g, function () {
-        return jsString
-      })
-      .replace(/<comment>/g, function () {
-        return jsComment
-      }) // the pattern will blow up, so only a few iterations
+      .replace(/<string>/g, jsString)
+      .replace(/<comment>/g, jsComment) // the pattern will blow up, so only a few iterations
     for (var i = 0; i < 2; i++) {
-      jsExpr = jsExpr.replace(/<expr>/g, function () {
-        return jsExpr
-      })
+      jsExpr = jsExpr.replace(/<expr>/g, jsExpr)
     }
     jsExpr = jsExpr.replace(/<expr>/g, '[^\\s\\S]')
     Prism.languages.qml = {
@@ -29,9 +23,7 @@ function qml(Prism) {
         pattern: RegExp(
           /((?:^|;)[ \t]*)function\s+[_$a-zA-Z\xA0-\uFFFF][$\w\xA0-\uFFFF]*\s*\(<js>*\)\s*\{<js>*\}/.source.replace(
             /<js>/g,
-            function () {
-              return jsExpr
-            }
+            jsExpr
           ),
           'm'
         ),
@@ -62,9 +54,7 @@ function qml(Prism) {
         pattern: RegExp(
           /(:[ \t]*)(?![\s;}[])(?:(?!$|[;}])<js>)+/.source.replace(
             /<js>/g,
-            function () {
-              return jsExpr
-            }
+            jsExpr
           ),
           'm'
         ),
