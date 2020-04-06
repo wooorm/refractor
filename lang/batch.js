@@ -4,7 +4,7 @@ module.exports = batch
 batch.displayName = 'batch'
 batch.aliases = []
 function batch(Prism) {
-  ;(function(Prism) {
+  ;(function (Prism) {
     var variable = /%%?[~:\w]+%?|!\S+!/
     var parameter = {
       pattern: /\/[a-z?]+(?=[ :]|$):?|-[a-z]\b|--[a-z-]+\b/im,

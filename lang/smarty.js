@@ -9,7 +9,7 @@ function smarty(Prism) {
 Add support for variables inside double quoted strings
 Add support for {php}
 */
-  ;(function(Prism) {
+  ;(function (Prism) {
     Prism.languages.smarty = {
       comment: /\{\*[\s\S]*?\*\}/,
       delimiter: {
@@ -57,7 +57,7 @@ Add support for {php}
       ],
       keyword: /\b(?:false|off|on|no|true|yes)\b/
     } // Tokenize all inline Smarty expressions
-    Prism.hooks.add('before-tokenize', function(env) {
+    Prism.hooks.add('before-tokenize', function (env) {
       var smartyPattern = /\{\*[\s\S]*?\*\}|\{[\s\S]+?\}/g
       var smartyLitteralStart = '{literal}'
       var smartyLitteralEnd = '{/literal}'
@@ -66,7 +66,7 @@ Add support for {php}
         env,
         'smarty',
         smartyPattern,
-        function(match) {
+        function (match) {
           // Smarty tags inside {literal} block are ignored
           if (match === smartyLitteralEnd) {
             smartyLitteralMode = false
@@ -81,7 +81,7 @@ Add support for {php}
         }
       )
     }) // Re-insert the tokens after tokenizing
-    Prism.hooks.add('after-tokenize', function(env) {
+    Prism.hooks.add('after-tokenize', function (env) {
       Prism.languages['markup-templating'].tokenizePlaceholders(env, 'smarty')
     })
   })(Prism)

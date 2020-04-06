@@ -4,7 +4,7 @@ module.exports = regex
 regex.displayName = 'regex'
 regex.aliases = []
 function regex(Prism) {
-  ;(function(Prism) {
+  ;(function (Prism) {
     var specialEscape = {
       pattern: /\\[\\(){}[\]^$+*?|.]/,
       alias: 'escape'
@@ -77,7 +77,7 @@ function regex(Prism) {
       'javascript',
       'typescript',
       'vala'
-    ].forEach(function(lang) {
+    ].forEach(function (lang) {
       var grammar = Prism.languages[lang]
       if (grammar) {
         grammar['regex'].inside = {

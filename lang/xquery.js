@@ -4,7 +4,7 @@ module.exports = xquery
 xquery.displayName = 'xquery'
 xquery.aliases = []
 function xquery(Prism) {
-  ;(function(Prism) {
+  ;(function (Prism) {
     Prism.languages.xquery = Prism.languages.extend('markup', {
       'xquery-comment': {
         pattern: /\(:[\s\S]*?:\)/,
@@ -74,7 +74,7 @@ function xquery(Prism) {
       },
       alias: 'language-xquery'
     } // The following will handle plain text inside tags
-    var stringifyToken = function(token) {
+    var stringifyToken = function (token) {
       if (typeof token === 'string') {
         return token
       }
@@ -83,7 +83,7 @@ function xquery(Prism) {
       }
       return token.content.map(stringifyToken).join('')
     }
-    var walkTokens = function(tokens) {
+    var walkTokens = function (tokens) {
       var openedTags = []
       for (var i = 0; i < tokens.length; i++) {
         var token = tokens[i]
@@ -183,7 +183,7 @@ function xquery(Prism) {
         }
       }
     }
-    Prism.hooks.add('after-tokenize', function(env) {
+    Prism.hooks.add('after-tokenize', function (env) {
       if (env.language !== 'xquery') {
         return
       }

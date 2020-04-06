@@ -16,9 +16,9 @@ loadLanguages()
 var read = fs.readFileSync
 var join = path.join
 
-test('.highlight(value, language)', function(t) {
+test('.highlight(value, language)', function (t) {
   t.throws(
-    function() {
+    function () {
       refractor.highlight()
     },
     / Expected `string` for `value`, got `undefined`/,
@@ -26,7 +26,7 @@ test('.highlight(value, language)', function(t) {
   )
 
   t.throws(
-    function() {
+    function () {
       refractor.highlight('')
     },
     /Expected `string` for `name`, got `undefined`/,
@@ -34,7 +34,7 @@ test('.highlight(value, language)', function(t) {
   )
 
   t.throws(
-    function() {
+    function () {
       refractor.highlight(true, 'js')
     },
     /Expected `string` for `value`, got `true`/,
@@ -42,7 +42,7 @@ test('.highlight(value, language)', function(t) {
   )
 
   t.throws(
-    function() {
+    function () {
       refractor.highlight('', 'fooscript')
     },
     /Unknown language: `fooscript` is not registered/,
@@ -61,7 +61,7 @@ test('.highlight(value, language)', function(t) {
     'should silently ignore illegals'
   )
 
-  t.test('fixture', function(st) {
+  t.test('fixture', function (st) {
     st.deepEqual(
       refractor.highlight('public void moveTo(int x, int y, int z);', 'java'),
       [
@@ -148,9 +148,9 @@ test('.highlight(value, language)', function(t) {
   t.end()
 })
 
-test('.register(grammar)', function(t) {
+test('.register(grammar)', function (t) {
   t.throws(
-    function() {
+    function () {
       refractor.register()
     },
     /Expected `function` for `grammar`, got `undefined`/,
@@ -160,9 +160,9 @@ test('.register(grammar)', function(t) {
   t.end()
 })
 
-test('.registered(language)', function(t) {
+test('.registered(language)', function (t) {
   t.throws(
-    function() {
+    function () {
       refractor.registered()
     },
     /Expected `string` for `language`, got `undefined`/,
@@ -184,7 +184,7 @@ test('.registered(language)', function(t) {
   t.end()
 })
 
-test('.alias(name, alias)', function(t) {
+test('.alias(name, alias)', function (t) {
   var languages = refractor.languages
   var input = fs
     .readFileSync(join('test', 'fixtures', 'markdown-sublanguage', 'input.txt'))
@@ -237,13 +237,11 @@ test('.alias(name, alias)', function(t) {
   t.end()
 })
 
-test('fixtures', function(t) {
+test('fixtures', function (t) {
   var root = path.join(__dirname, 'fixtures')
   var processor = rehype().use({settings: {fragment: true}})
 
-  fs.readdirSync(root)
-    .filter(not(hidden))
-    .forEach(subtest)
+  fs.readdirSync(root).filter(not(hidden)).forEach(subtest)
 
   function subtest(name) {
     var input = read(join(root, name, 'input.txt'), 'utf8').trim()
@@ -263,7 +261,7 @@ test('fixtures', function(t) {
       fs.writeFileSync(join(root, name, 'output.html'), expected + '\n')
     }
 
-    t.test(name, function(st) {
+    t.test(name, function (st) {
       st.plan(2)
 
       st.equal(actual, expected, 'Prism should compile to the fixture')
@@ -279,13 +277,13 @@ test('fixtures', function(t) {
   t.end()
 })
 
-test('listLanguages', function(t) {
+test('listLanguages', function (t) {
   grammar.displayName = 'grammar'
 
   t.deepEqual(
     refractor.listLanguages().sort(),
     Object.keys(Prism.languages)
-      .filter(lang => typeof Prism.languages[lang] !== 'function')
+      .filter((lang) => typeof Prism.languages[lang] !== 'function')
       .sort(),
     'should return a list of registered languages'
   )

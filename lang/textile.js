@@ -4,7 +4,7 @@ module.exports = textile
 textile.displayName = 'textile'
 textile.aliases = []
 function textile(Prism) {
-  ;(function(Prism) {
+  ;(function (Prism) {
     // We don't allow for pipes inside parentheses
     // to not break table pattern |(. foo |). bar |
     var modifierRegex = /(?:\([^|)]+\)|\[[^\]]+\]|\{[^}]+\})+/.source

@@ -5,7 +5,7 @@ plsql.displayName = 'plsql'
 plsql.aliases = []
 function plsql(Prism) {
   Prism.register(refractorSql)
-  ;(function(Prism) {
+  ;(function (Prism) {
     var plsql = (Prism.languages.plsql = Prism.languages.extend('sql', {
       comment: [/\/\*[\s\S]*?\*\//, /--.*/]
     }))

@@ -10,7 +10,7 @@ Handle multiline code after tag
 multiline |
 code |
 */
-  ;(function(Prism) {
+  ;(function (Prism) {
     Prism.languages.haml = {
       // Multiline stuff should appear before the rest
       'multiline-comment': {

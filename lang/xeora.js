@@ -4,7 +4,7 @@ module.exports = xeora
 xeora.displayName = 'xeora'
 xeora.aliases = ['xeoracube']
 function xeora(Prism) {
-  ;(function(Prism) {
+  ;(function (Prism) {
     Prism.languages.xeora = Prism.languages.extend('markup', {
       constant: {
         pattern: /\$(?:DomainContents|PageRenderDuration)\$/,

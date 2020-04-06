@@ -78,7 +78,7 @@ function elixir(Prism) {
     ],
     punctuation: /<<|>>|[.,%\[\]{}()]/
   }
-  Prism.languages.elixir.string.forEach(function(o) {
+  Prism.languages.elixir.string.forEach(function (o) {
     o.inside = {
       interpolation: {
         pattern: /#\{[^}]+\}/,

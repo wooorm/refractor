@@ -5,7 +5,7 @@ handlebars.displayName = 'handlebars'
 handlebars.aliases = []
 function handlebars(Prism) {
   Prism.register(refractorMarkupTemplating)
-  ;(function(Prism) {
+  ;(function (Prism) {
     Prism.languages.handlebars = {
       comment: /\{\{![\s\S]*?\}\}/,
       delimiter: {
@@ -30,7 +30,7 @@ function handlebars(Prism) {
       punctuation: /[!"#%&'()*+,.\/;<=>@\[\\\]^`{|}~]/,
       variable: /[^!"#%&'()*+,.\/;<=>@\[\\\]^`{|}~\s]+/
     }
-    Prism.hooks.add('before-tokenize', function(env) {
+    Prism.hooks.add('before-tokenize', function (env) {
       var handlebarsPattern = /\{\{\{[\s\S]+?\}\}\}|\{\{[\s\S]+?\}\}/g
       Prism.languages['markup-templating'].buildPlaceholders(
         env,
@@ -38,7 +38,7 @@ function handlebars(Prism) {
         handlebarsPattern
       )
     })
-    Prism.hooks.add('after-tokenize', function(env) {
+    Prism.hooks.add('after-tokenize', function (env) {
       Prism.languages['markup-templating'].tokenizePlaceholders(
         env,
         'handlebars'

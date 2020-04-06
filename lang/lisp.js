@@ -4,7 +4,7 @@ module.exports = lisp
 lisp.displayName = 'lisp'
 lisp.aliases = []
 function lisp(Prism) {
-  ;(function(Prism) {
+  ;(function (Prism) {
     // Functions to construct regular expressions
     // simple form
     // e.g. (interactive ... or (interactive)

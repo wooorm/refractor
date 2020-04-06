@@ -4,7 +4,7 @@ module.exports = bash
 bash.displayName = 'bash'
 bash.aliases = ['shell']
 function bash(Prism) {
-  ;(function(Prism) {
+  ;(function (Prism) {
     // $ set | grep '^[A-Z][^[:space:]]*=' | cut -d= -f1 | tr '\n' '|'
     // + LC_ALL, RANDOM, REPLY, SECONDS.
     // + make sure PS1..4 are here as they are not always set,

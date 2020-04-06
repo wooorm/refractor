@@ -4,7 +4,7 @@ module.exports = markdown
 markdown.displayName = 'markdown'
 markdown.aliases = ['md']
 function markdown(Prism) {
-  ;(function(Prism) {
+  ;(function (Prism) {
     // Allow only one line break
     var inner = /(?:\\.|[^\\\n\r]|(?:\r?\n|\r)(?!\r?\n|\r))/.source
     /**
@@ -247,15 +247,15 @@ function markdown(Prism) {
         }
       }
     })
-    ;['url', 'bold', 'italic', 'strike'].forEach(function(token) {
-      ;['url', 'bold', 'italic', 'strike'].forEach(function(inside) {
+    ;['url', 'bold', 'italic', 'strike'].forEach(function (token) {
+      ;['url', 'bold', 'italic', 'strike'].forEach(function (inside) {
         if (token !== inside) {
           Prism.languages.markdown[token].inside.content.inside[inside] =
             Prism.languages.markdown[inside]
         }
       })
     })
-    Prism.hooks.add('after-tokenize', function(env) {
+    Prism.hooks.add('after-tokenize', function (env) {
       if (env.language !== 'markdown' && env.language !== 'md') {
         return
       }
@@ -294,10 +294,7 @@ function markdown(Prism) {
             // this might be a language that Prism does not support
             var alias =
               'language-' +
-              codeLang.content
-                .trim()
-                .split(/\s+/)[0]
-                .toLowerCase() // add alias
+              codeLang.content.trim().split(/\s+/)[0].toLowerCase() // add alias
             if (!codeBlock.alias) {
               codeBlock.alias = [alias]
             } else if (typeof codeBlock.alias === 'string') {
@@ -310,7 +307,7 @@ function markdown(Prism) {
       }
       walkTokens(env.tokens)
     })
-    Prism.hooks.add('wrap', function(env) {
+    Prism.hooks.add('wrap', function (env) {
       if (env.type !== 'code-block') {
         return
       }
@@ -332,7 +329,7 @@ function markdown(Prism) {
             '-' +
             Math.floor(Math.random() * 1e16)
           env.attributes['id'] = id
-          Prism.plugins.autoloader.loadLanguages(codeLang, function() {
+          Prism.plugins.autoloader.loadLanguages(codeLang, function () {
             var ele = document.getElementById(id)
             if (ele) {
               ele.innerHTML = Prism.highlight(

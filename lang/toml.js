@@ -4,7 +4,7 @@ module.exports = toml
 toml.displayName = 'toml'
 toml.aliases = []
 function toml(Prism) {
-  ;(function(Prism) {
+  ;(function (Prism) {
     // pattern: /(?:[\w-]+|'[^'\n\r]*'|"(?:\.|[^\\"\r\n])*")/
     var key = '(?:[\\w-]+|\'[^\'\n\r]*\'|"(?:\\.|[^\\\\"\r\n])*")'
     Prism.languages.toml = {

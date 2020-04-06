@@ -4,7 +4,7 @@ module.exports = flow
 flow.displayName = 'flow'
 flow.aliases = []
 function flow(Prism) {
-  ;(function(Prism) {
+  ;(function (Prism) {
     Prism.languages.flow = Prism.languages.extend('javascript', {})
     Prism.languages.insertBefore('flow', 'keyword', {
       type: [

@@ -4,7 +4,7 @@ module.exports = pascaligo
 pascaligo.displayName = 'pascaligo'
 pascaligo.aliases = []
 function pascaligo(Prism) {
-  ;(function(Prism) {
+  ;(function (Prism) {
     // Pascaligo is a layer 2 smart contract language for the tezos blockchain
     var braces = /\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/.source
     var type = /(?:\w+(?:<braces>)?|<braces>)/.source.replace(
@@ -66,11 +66,11 @@ function pascaligo(Prism) {
       'builtin',
       'operator',
       'punctuation'
-    ].reduce(function(accum, key) {
+    ].reduce(function (accum, key) {
       accum[key] = pascaligo[key]
       return accum
     }, {})
-    pascaligo['class-name'].forEach(function(p) {
+    pascaligo['class-name'].forEach(function (p) {
       p.inside = classNameInside
     })
   })(Prism)

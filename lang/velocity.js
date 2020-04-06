@@ -4,7 +4,7 @@ module.exports = velocity
 velocity.displayName = 'velocity'
 velocity.aliases = []
 function velocity(Prism) {
-  ;(function(Prism) {
+  ;(function (Prism) {
     Prism.languages.velocity = Prism.languages.extend('markup', {})
     var velocity = {
       variable: {

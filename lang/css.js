@@ -4,7 +4,7 @@ module.exports = css
 css.displayName = 'css'
 css.aliases = []
 function css(Prism) {
-  ;(function(Prism) {
+  ;(function (Prism) {
     var string = /("|')(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/
     Prism.languages.css = {
       comment: /\/\*[\s\S]*?\*\//,

@@ -4,7 +4,7 @@ module.exports = stylus
 stylus.displayName = 'stylus'
 stylus.aliases = []
 function stylus(Prism) {
-  ;(function(Prism) {
+  ;(function (Prism) {
     var inside = {
       url: /url\((["']?).*?\1\)/i,
       string: {

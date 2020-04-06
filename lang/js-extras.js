@@ -4,7 +4,7 @@ module.exports = jsExtras
 jsExtras.displayName = 'jsExtras'
 jsExtras.aliases = []
 function jsExtras(Prism) {
-  ;(function(Prism) {
+  ;(function (Prism) {
     Prism.languages.insertBefore('javascript', 'function-variable', {
       'method-variable': {
         pattern: RegExp(

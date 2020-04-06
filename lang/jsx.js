@@ -4,7 +4,7 @@ module.exports = jsx
 jsx.displayName = 'jsx'
 jsx.aliases = []
 function jsx(Prism) {
-  ;(function(Prism) {
+  ;(function (Prism) {
     var javascript = Prism.util.clone(Prism.languages.javascript)
     Prism.languages.jsx = Prism.languages.extend('markup', javascript)
     Prism.languages.jsx.tag.pattern = /<\/?(?:[\w.:-]+\s*(?:\s+(?:[\w.:-]+(?:=(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s{'">=]+|\{(?:\{(?:\{[^}]*\}|[^{}])*\}|[^{}])+\}))?|\{\.{3}[a-z_$][\w$]*(?:\.[a-z_$][\w$]*)*\}))*\s*\/?)?>/i
@@ -48,7 +48,7 @@ function jsx(Prism) {
       },
       Prism.languages.jsx.tag
     ) // The following will handle plain text inside tags
-    var stringifyToken = function(token) {
+    var stringifyToken = function (token) {
       if (!token) {
         return ''
       }
@@ -60,7 +60,7 @@ function jsx(Prism) {
       }
       return token.content.map(stringifyToken).join('')
     }
-    var walkTokens = function(tokens) {
+    var walkTokens = function (tokens) {
       var openedTags = []
       for (var i = 0; i < tokens.length; i++) {
         var token = tokens[i]
@@ -150,7 +150,7 @@ function jsx(Prism) {
         }
       }
     }
-    Prism.hooks.add('after-tokenize', function(env) {
+    Prism.hooks.add('after-tokenize', function (env) {
       if (env.language !== 'jsx' && env.language !== 'tsx') {
         return
       }

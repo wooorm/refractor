@@ -39,7 +39,7 @@ function groovy(Prism) {
       lookbehind: true
     }
   }) // Handle string interpolation
-  Prism.hooks.add('wrap', function(env) {
+  Prism.hooks.add('wrap', function (env) {
     if (env.language === 'groovy' && env.type === 'string') {
       var delimiter = env.content.value[0]
       if (delimiter != "'") {

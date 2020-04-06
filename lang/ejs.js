@@ -5,7 +5,7 @@ ejs.displayName = 'ejs'
 ejs.aliases = []
 function ejs(Prism) {
   Prism.register(refractorMarkupTemplating)
-  ;(function(Prism) {
+  ;(function (Prism) {
     Prism.languages.ejs = {
       delimiter: {
         pattern: /^<%[-_=]?|[-_]?%>$/,
@@ -17,7 +17,7 @@ function ejs(Prism) {
         inside: Prism.languages.javascript
       }
     }
-    Prism.hooks.add('before-tokenize', function(env) {
+    Prism.hooks.add('before-tokenize', function (env) {
       var ejsPattern = /<%(?!%)[\s\S]+?%>/g
       Prism.languages['markup-templating'].buildPlaceholders(
         env,
@@ -25,7 +25,7 @@ function ejs(Prism) {
         ejsPattern
       )
     })
-    Prism.hooks.add('after-tokenize', function(env) {
+    Prism.hooks.add('after-tokenize', function (env) {
       Prism.languages['markup-templating'].tokenizePlaceholders(env, 'ejs')
     })
   })(Prism)

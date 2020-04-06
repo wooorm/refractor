@@ -4,7 +4,7 @@ module.exports = t4Templating
 t4Templating.displayName = 't4Templating'
 t4Templating.aliases = []
 function t4Templating(Prism) {
-  ;(function(Prism) {
+  ;(function (Prism) {
     function createBlock(prefix, inside, contentAlias) {
       return {
         pattern: RegExp('<#' + prefix + '[\\s\\S]*?#>'),

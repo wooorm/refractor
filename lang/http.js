@@ -4,7 +4,7 @@ module.exports = http
 http.displayName = 'http'
 http.aliases = []
 function http(Prism) {
-  ;(function(Prism) {
+  ;(function (Prism) {
     Prism.languages.http = {
       'request-line': {
         pattern: /^(?:POST|GET|PUT|DELETE|OPTIONS|PATCH|TRACE|CONNECT)\s(?:https?:\/\/|\/)\S+\sHTTP\/[0-9.]+/m,

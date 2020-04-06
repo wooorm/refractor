@@ -4,7 +4,7 @@ module.exports = kotlin
 kotlin.displayName = 'kotlin'
 kotlin.aliases = []
 function kotlin(Prism) {
-  ;(function(Prism) {
+  ;(function (Prism) {
     Prism.languages.kotlin = Prism.languages.extend('clike', {
       keyword: {
         // The lookbehind prevents wrong highlighting of e.g. kotlin.properties.get

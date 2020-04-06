@@ -4,7 +4,7 @@ module.exports = puppet
 puppet.displayName = 'puppet'
 puppet.aliases = []
 function puppet(Prism) {
-  ;(function(Prism) {
+  ;(function (Prism) {
     Prism.languages.puppet = {
       heredoc: [
         // Matches the content of a quoted heredoc string (subject to interpolation)

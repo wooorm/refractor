@@ -4,7 +4,7 @@ module.exports = diff
 diff.displayName = 'diff'
 diff.aliases = []
 function diff(Prism) {
-  ;(function(Prism) {
+  ;(function (Prism) {
     Prism.languages.diff = {
       coord: [
         // Match all kinds of coord lines (prefixed by "+++", "---" or "***").
@@ -26,7 +26,7 @@ function diff(Prism) {
       unchanged: ' ',
       diff: '!'
     } // add a token for each prefix
-    Object.keys(PREFIXES).forEach(function(name) {
+    Object.keys(PREFIXES).forEach(function (name) {
       var prefix = PREFIXES[name]
       var alias = []
       if (!/^\w+$/.test(name)) {

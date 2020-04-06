@@ -4,7 +4,7 @@ module.exports = jsTemplates
 jsTemplates.displayName = 'jsTemplates'
 jsTemplates.aliases = []
 function jsTemplates(Prism) {
-  ;(function(Prism) {
+  ;(function (Prism) {
     var templateString = Prism.languages.javascript['template-string'] // see the pattern in prism-javascript.js
     var templateLiteralPattern = templateString.pattern.source
     var interpolationObject = templateString.inside['interpolation']
@@ -156,7 +156,7 @@ function jsTemplates(Prism) {
       /** @type {Object<string, string>} */
       var placeholderMap = {}
       var embeddedCode = _tokens
-        .map(function(token) {
+        .map(function (token) {
           if (typeof token === 'string') {
             return token
           } else {
@@ -249,7 +249,7 @@ function jsTemplates(Prism) {
       jsx: true,
       tsx: true
     }
-    Prism.hooks.add('after-tokenize', function(env) {
+    Prism.hooks.add('after-tokenize', function (env) {
       if (!(env.language in supportedLanguages)) {
         return
       }

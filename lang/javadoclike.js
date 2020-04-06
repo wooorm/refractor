@@ -4,7 +4,7 @@ module.exports = javadoclike
 javadoclike.displayName = 'javadoclike'
 javadoclike.aliases = []
 function javadoclike(Prism) {
-  ;(function(Prism) {
+  ;(function (Prism) {
     var javaDocLike = (Prism.languages.javadoclike = {
       parameter: {
         pattern: /(^\s*(?:\/{3}|\*|\/\*\*)\s*@(?:param|arg|arguments)\s+)\w+/m,
@@ -70,8 +70,8 @@ function javadoclike(Prism) {
       if (typeof languages === 'string') {
         languages = [languages]
       }
-      languages.forEach(function(lang) {
-        docCommentSupport(lang, function(pattern) {
+      languages.forEach(function (lang) {
+        docCommentSupport(lang, function (pattern) {
           if (!pattern.inside) {
             pattern.inside = {}
           }

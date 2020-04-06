@@ -17,7 +17,7 @@ function php(Prism) {
    * Adds the following new token classes:
    *      constant, delimiter, variable, function, package
    */
-  ;(function(Prism) {
+  ;(function (Prism) {
     Prism.languages.php = Prism.languages.extend('clike', {
       keyword: /\b(?:__halt_compiler|abstract|and|array|as|break|callable|case|catch|class|clone|const|continue|declare|default|die|do|echo|else|elseif|empty|enddeclare|endfor|endforeach|endif|endswitch|endwhile|eval|exit|extends|final|finally|for|foreach|function|global|goto|if|implements|include|include_once|instanceof|insteadof|interface|isset|list|namespace|new|or|parent|print|private|protected|public|require|require_once|return|static|switch|throw|trait|try|unset|use|var|while|xor|yield)\b/i,
       boolean: {
@@ -111,7 +111,7 @@ function php(Prism) {
       }
     }) // The different types of PHP strings "replace" the C-like standard string
     delete Prism.languages.php['string']
-    Prism.hooks.add('before-tokenize', function(env) {
+    Prism.hooks.add('before-tokenize', function (env) {
       if (!/<\?/.test(env.code)) {
         return
       }
@@ -122,7 +122,7 @@ function php(Prism) {
         phpPattern
       )
     })
-    Prism.hooks.add('after-tokenize', function(env) {
+    Prism.hooks.add('after-tokenize', function (env) {
       Prism.languages['markup-templating'].tokenizePlaceholders(env, 'php')
     })
   })(Prism)

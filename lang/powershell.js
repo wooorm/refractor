@@ -4,7 +4,7 @@ module.exports = powershell
 powershell.displayName = 'powershell'
 powershell.aliases = []
 function powershell(Prism) {
-  ;(function(Prism) {
+  ;(function (Prism) {
     var powershell = (Prism.languages.powershell = {
       comment: [
         {

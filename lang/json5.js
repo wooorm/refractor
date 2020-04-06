@@ -5,7 +5,7 @@ json5.displayName = 'json5'
 json5.aliases = []
 function json5(Prism) {
   Prism.register(refractorJson)
-  ;(function(Prism) {
+  ;(function (Prism) {
     var string = /("|')(?:\\(?:\r\n?|\n|.)|(?!\1)[^\\\r\n])*\1/
     Prism.languages.json5 = Prism.languages.extend('json', {
       property: [

@@ -5,7 +5,7 @@ javadoc.displayName = 'javadoc'
 javadoc.aliases = []
 function javadoc(Prism) {
   Prism.register(refractorJavadoclike)
-  ;(function(Prism) {
+  ;(function (Prism) {
     var codeLines = {
       code: {
         pattern: /(^(\s*(?:\*\s*)*)).*[^*\s].+$/m,

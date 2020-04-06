@@ -4,7 +4,7 @@ module.exports = markupTemplating
 markupTemplating.displayName = 'markupTemplating'
 markupTemplating.aliases = []
 function markupTemplating(Prism) {
-  ;(function(Prism) {
+  ;(function (Prism) {
     /**
      * Returns the placeholder for the given language id and index.
      *
@@ -28,12 +28,12 @@ function markupTemplating(Prism) {
          * @param {RegExp} placeholderPattern The matches of this pattern will be replaced by placeholders.
          * @param {(match: string) => boolean} [replaceFilter]
          */
-        value: function(env, language, placeholderPattern, replaceFilter) {
+        value: function (env, language, placeholderPattern, replaceFilter) {
           if (env.language !== language) {
             return
           }
           var tokenStack = (env.tokenStack = [])
-          env.code = env.code.replace(placeholderPattern, function(match) {
+          env.code = env.code.replace(placeholderPattern, function (match) {
             if (typeof replaceFilter === 'function' && !replaceFilter(match)) {
               return match
             }
@@ -57,7 +57,7 @@ function markupTemplating(Prism) {
          * @param {object} env The environment of the `after-tokenize` hook.
          * @param {string} language The language id.
          */
-        value: function(env, language) {
+        value: function (env, language) {
           if (env.language !== language || !env.tokenStack) {
             return
           } // Switch the grammar back

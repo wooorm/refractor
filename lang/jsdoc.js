@@ -5,7 +5,7 @@ jsdoc.displayName = 'jsdoc'
 jsdoc.aliases = []
 function jsdoc(Prism) {
   Prism.register(refractorJavadoclike)
-  ;(function(Prism) {
+  ;(function (Prism) {
     var javascript = Prism.languages.javascript
     var type = /{(?:[^{}]|{(?:[^{}]|{[^{}]*})*})+}/.source
     var parameterPrefix =

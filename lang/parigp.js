@@ -13,7 +13,7 @@ function parigp(Prism) {
     // PARI/GP does not care about white spaces at all
     // so let's process the keywords to build an appropriate regexp
     // (e.g. "b *r *e *a *k", etc.)
-    keyword: (function() {
+    keyword: (function () {
       var keywords = [
         'breakpoint',
         'break',
@@ -40,7 +40,7 @@ function parigp(Prism) {
         'while'
       ]
       keywords = keywords
-        .map(function(keyword) {
+        .map(function (keyword) {
           return keyword.split('').join(' *')
         })
         .join('|')

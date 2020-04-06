@@ -5,7 +5,7 @@ pure.displayName = 'pure'
 pure.aliases = []
 function pure(Prism) {
   Prism.register(refractorC)
-  ;(function(Prism) {
+  ;(function (Prism) {
     Prism.languages.pure = {
       comment: [
         {
@@ -62,7 +62,7 @@ function pure(Prism) {
       'fortran'
     ]
     var inlineLanguageRe = /%< *-\*- *{lang}\d* *-\*-[\s\S]+?%>/.source
-    inlineLanguages.forEach(function(lang) {
+    inlineLanguages.forEach(function (lang) {
       var alias = lang
       if (typeof lang !== 'string') {
         alias = lang.alias

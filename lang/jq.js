@@ -4,7 +4,7 @@ module.exports = jq
 jq.displayName = 'jq'
 jq.aliases = []
 function jq(Prism) {
-  ;(function(Prism) {
+  ;(function (Prism) {
     var interpolation = /\\\((?:[^()]|\([^()]*\))*\)/.source
     var string = RegExp(
       /"(?:[^"\r\n\\]|\\[^\r\n(]|__)*"/.source.replace(/__/g, interpolation)

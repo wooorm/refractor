@@ -4,7 +4,7 @@ module.exports = latex
 latex.displayName = 'latex'
 latex.aliases = ['tex', 'context']
 function latex(Prism) {
-  ;(function(Prism) {
+  ;(function (Prism) {
     var funcPattern = /\\(?:[^a-z()[\]]|[a-z*]+)/i
     var insideEqu = {
       'equation-command': {

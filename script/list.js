@@ -12,10 +12,7 @@ fs.readdir('lang', ondir)
 function ondir(err, paths) {
   bail(err)
 
-  paths = paths
-    .filter(not(hidden))
-    .filter(not(included))
-    .map(load)
+  paths = paths.filter(not(hidden)).filter(not(included)).map(load)
 
   fs.writeFile(
     'index.js',

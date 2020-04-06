@@ -4,7 +4,7 @@ module.exports = coffeescript
 coffeescript.displayName = 'coffeescript'
 coffeescript.aliases = ['coffee']
 function coffeescript(Prism) {
-  ;(function(Prism) {
+  ;(function (Prism) {
     // Ignore comments starting with { to privilege string interpolation highlighting
     var comment = /#(?!\{).+/,
       interpolation = {

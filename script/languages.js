@@ -14,12 +14,12 @@ var trim = require('trim-lines')
 var bundled = require('./bundled')
 
 var root = path.join('node_modules', 'prismjs', 'components')
-var useBracesRegex = /Prism\.languages\[['"]([^'"]+)['"]\](?!\s*[=:])/g
+var useBracesRegex = /Prism\.languages\[['"]([^'"]+)['"]](?!\s*[=:])/g
 var extendRegex = /languages\.extend\(['"]([^'"]+)['"]/g
 var insertRegex = /Prism\.languages\.insertBefore\(["'](.+?)["']/g
-var cloneRegex = /Prism\.util\.clone\(Prism\.languages\.([^[)]+)(?:\)|\[)/g
-var anyAliasRegex = /((?:Prism\.languages\.[\w]+ = )+)Prism\.languages\.(extend\([^)]+\)|[\w]+);/g
-var aliasRegex = /Prism\.languages\.([\w]+) = /g
+var cloneRegex = /Prism\.util\.clone\(Prism\.languages\.([^[)]+)[)[]/g
+var anyAliasRegex = /((?:Prism\.languages\.\w+ = )+)Prism\.languages\.(extend\([^)]+\)|\w+);/g
+var aliasRegex = /Prism\.languages\.(\w+) = /g
 var prefix = 'refractor-'
 
 fs.readdir(root, ondir)
@@ -64,10 +64,10 @@ function generate(name, callback) {
       findAll(doc, insertRegex)
     )
     anyAlias = findAll(doc, anyAliasRegex).join('\n')
-    aliases = findAll(anyAlias, aliasRegex).filter(d => d !== name)
+    aliases = findAll(anyAlias, aliasRegex).filter((d) => d !== name)
 
     deps = diff(deps.filter(unique), bundled.map(base).concat([id, 'inside']))
-    deps = deps.filter(d => d !== name)
+    deps = deps.filter((d) => d !== name)
 
     doc = babel.transformSync(doc, {plugins: [fixWrapHook]}).code
 
@@ -113,8 +113,8 @@ function core(name) {
   return name === 'core'
 }
 
-function camelcase(str) {
-  return str.replace(/-[a-z]/gi, replace)
+function camelcase(string) {
+  return string.replace(/-[a-z]/gi, replace)
   function replace($0) {
     return $0.charAt(1).toUpperCase()
   }
@@ -127,12 +127,12 @@ function fixWrapHook() {
     visitor: {
       // We only perform the later changes inside `wrap` hooks, just to be safe.
       CallExpression: {
-        enter: function(path) {
+        enter: function (path) {
           if (isWrapHook(path)) {
             this.inWrapHook = true
           }
         },
-        exit: function(path) {
+        exit: function (path) {
           if (isWrapHook(path)) {
             this.inWrapHook = false
           }
@@ -141,7 +141,7 @@ function fixWrapHook() {
       // If a syntax is assigning `Prism.highlight` to `env.content`, we should
       // add the result to `env.content` instead of `env.content.value`.
       AssignmentExpression: {
-        enter: function(path) {
+        enter: function (path) {
           if (
             path.get('right.callee').matchesPattern('Prism.highlight') &&
             path.get('left').matchesPattern('env.content')
@@ -153,7 +153,7 @@ function fixWrapHook() {
       // If a syntax is using `env.content`, it probably expects a string value,
       // those are stored at `env.content.value`.
       MemberExpression: {
-        enter: function(path) {
+        enter: function (path) {
           if (
             this.inWrapHook &&
             !path.node.ignoreValueSuffix &&

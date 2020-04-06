@@ -5,7 +5,7 @@ phpdoc.displayName = 'phpdoc'
 phpdoc.aliases = []
 function phpdoc(Prism) {
   Prism.register(refractorJavadoclike)
-  ;(function(Prism) {
+  ;(function (Prism) {
     var typeExpression = /(?:[a-zA-Z]\w*|[|\\[\]])+/.source
     Prism.languages.phpdoc = Prism.languages.extend('javadoclike', {
       parameter: {
