@@ -10,7 +10,7 @@ function graphql(Prism) {
       pattern: /"(?:\\.|[^\\"\r\n])*"/,
       greedy: true
     },
-    docstring: {
+    description: {
       pattern: /(\s{4})?(\"{3}((?!\"\"\")[^\\]|\\[abfnrtv?\"'\\0-7]|\\x[0-9a-fA-F])*\"{3})$/gm,
       greedy: true
     },
