@@ -35,7 +35,7 @@ function items() {
     var content = [
       u(
         'link',
-        {url: 'https://github.com/wooorm/refractor/blob/master/lang/' + fp},
+        {url: 'https://github.com/wooorm/refractor/blob/main/lang/' + fp},
         [u('inlineCode', grammar.displayName)]
       )
     ]
