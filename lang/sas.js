@@ -11,6 +11,14 @@ function sas(Prism) {
       pattern: RegExp(stringPattern + '[bx]'),
       alias: 'number'
     }
+    var macroVariable = {
+      pattern: /&[a-z_][a-z_0-9]*/i
+    }
+    var macroKeyword = {
+      pattern: /((?:^|\s|=|\())%(?:ABORT|BY|CMS|COPY|DISPLAY|DO|ELSE|END|EVAL|GLOBAL|GO|GOTO|IF|INC|INCLUDE|INDEX|INPUT|KTRIM|LENGTH|LET|LIST|LOCAL|PUT|QKTRIM|QSCAN|QSUBSTR|QSYSFUNC|QUPCASE|RETURN|RUN|SCAN|SUBSTR|SUPERQ|SYMDEL|SYMGLOBL|SYMLOCAL|SYMEXIST|SYSCALL|SYSEVALF|SYSEXEC|SYSFUNC|SYSGET|SYSRPUT|THEN|TO|TSO|UNQUOTE|UNTIL|UPCASE|WHILE|WINDOW)\b/i,
+      lookbehind: true,
+      alias: 'keyword'
+    }
     var step = {
       pattern: /(^|\s+)(?:proc\s+\w+|quit|run|data(?!\=))\b/i,
       alias: 'keyword',
@@ -39,10 +47,7 @@ function sas(Prism) {
         lookbehind: true
       },
       operator: /=/,
-      'macro-variable': {
-        pattern: /&[^\.]*\./i,
-        alias: 'string'
-      },
+      'macro-variable': macroVariable,
       arg: {
         pattern: /[A-Z]+/i,
         alias: 'keyword'
@@ -107,10 +112,10 @@ function sas(Prism) {
           pattern: /(?:action)/i,
           alias: 'keyword'
         },
+        comment: comment,
         function: func,
         'arg-value': args['arg-value'],
         operator: args.operator,
-        comment: comment,
         argument: args.arg,
         number: number,
         'numeric-constant': numericConstant,
@@ -164,9 +169,10 @@ function sas(Prism) {
         }
       },
       'proc-groovy': {
-        pattern: /(^proc\s+groovy(?:\s+[\w|=]+)?;)(?:\s*submit)[\s\S]+?(?=^(?:proc\s+\w+|quit|run|data);|(?![\s\S]))/im,
+        pattern: /(^proc\s+groovy(?:\s+[\w|=]+)?;)[\s\S]+?(?=^(?:proc\s+\w+|quit|run|data);|(?![\s\S]))/im,
         lookbehind: true,
         inside: {
+          comment: comment,
           groovy: {
             pattern: RegExp(
               /(^[ \t]*submit(?:\s+(?:load|parseonly|norun))?)(?:<str>|[^"'])+?(?=endsubmit;)/.source.replace(
@@ -181,6 +187,7 @@ function sas(Prism) {
             alias: 'language-groovy',
             inside: Prism.languages.groovy
           },
+          keyword: keywords,
           'submit-statement': submitStatement,
           'global-statements': globalStatements,
           number: number,
@@ -190,9 +197,10 @@ function sas(Prism) {
         }
       },
       'proc-lua': {
-        pattern: /(^proc\s+lua(?:\s+[\w|=]+)?;)(?:\s*submit)[\s\S]+?(?=^(?:proc\s+\w+|quit|run|data);|(?![\s\S]))/im,
+        pattern: /(^proc\s+lua(?:\s+[\w|=]+)?;)[\s\S]+?(?=^(?:proc\s+\w+|quit|run|data);|(?![\s\S]))/im,
         lookbehind: true,
         inside: {
+          comment: comment,
           lua: {
             pattern: RegExp(
               /(^[ \t]*submit(?:\s+(?:load|parseonly|norun))?)(?:<str>|[^"'])+?(?=endsubmit;)/.source.replace(
@@ -207,6 +215,7 @@ function sas(Prism) {
             alias: 'language-lua',
             inside: Prism.languages.lua
           },
+          keyword: keywords,
           'submit-statement': submitStatement,
           'global-statements': globalStatements,
           number: number,
@@ -219,6 +228,7 @@ function sas(Prism) {
         pattern: /(^proc\s+cas(?:\s+[\w|=]+)?;)[\s\S]+?(?=^(?:proc\s+\w+|quit|data);|(?![\s\S]))/im,
         lookbehind: true,
         inside: {
+          comment: comment,
           'statement-var': {
             pattern: /((?:^|\s)=?)saveresult\s+[^;]+/im,
             lookbehind: true,
@@ -241,7 +251,6 @@ function sas(Prism) {
           step: step,
           keyword: keywords,
           function: func,
-          comment: comment,
           format: format,
           altformat: altformat,
           'global-statements': globalStatements,
@@ -265,10 +274,23 @@ function sas(Prism) {
         inside: args
       },
       /*Special keywords within macros*/
-      'macro-keyword': {
-        pattern: /((?:^|\s)=?)%(?:ABORT|BQUOTE|BY|CMS|COPY|DISPLAY|DO|ELSE|END|EVAL|GLOBAL|GO|GOTO|IF|INC|INCLUDE|INDEX|INPUT|KTRIM|LENGTH|LET|LIST|LOCAL|NRBQUOTE|NRQUOTE|NRSTR|PUT|QKTRIM|QSCAN|QSUBSTR|QSYSFUNC|QUOTE|QUPCASE|RETURN|RUN|SCAN|STR|SUBSTR|SUPERQ|SYMDEL|SYMGLOBL|SYMLOCAL|SYMEXIST|SYSCALL|SYSEVALF|SYSEXEC|SYSFUNC|SYSGET|SYSRPUT|THEN|TO|TSO|UNQUOTE|UNTIL|UPCASE|WHILE|WINDOW)\b/i,
+      'macro-keyword': macroKeyword,
+      'macro-variable': macroVariable,
+      'macro-string-functions': {
+        pattern: /((?:^|\s|=))%(?:NRBQUOTE|NRQUOTE|NRSTR|BQUOTE|QUOTE|STR)\(.*?(?:[^%]\))/i,
         lookbehind: true,
-        alias: 'keyword'
+        inside: {
+          function: {
+            pattern: /%(?:NRBQUOTE|NRQUOTE|NRSTR|BQUOTE|QUOTE|STR)/i,
+            alias: 'keyword'
+          },
+          'macro-keyword': macroKeyword,
+          'macro-variable': macroVariable,
+          'escaped-char': {
+            pattern: /%['"()<>=¬^~;,#]/i
+          },
+          punctuation: punctuation
+        }
       },
       'macro-declaration': {
         pattern: /^%macro[^;]+(?=;)/im,

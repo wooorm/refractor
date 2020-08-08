@@ -2,8 +2,9 @@
 
 module.exports = json
 json.displayName = 'json'
-json.aliases = []
+json.aliases = ['webmanifest']
 function json(Prism) {
+  // https://www.json.org/json-en.html
   Prism.languages.json = {
     property: {
       pattern: /"(?:\\.|[^\\"\r\n])*"(?=\s*:)/,
@@ -13,8 +14,11 @@ function json(Prism) {
       pattern: /"(?:\\.|[^\\"\r\n])*"(?!\s*:)/,
       greedy: true
     },
-    comment: /\/\/.*|\/\*[\s\S]*?(?:\*\/|$)/,
-    number: /-?\d+\.?\d*(?:e[+-]?\d+)?/i,
+    comment: {
+      pattern: /\/\/.*|\/\*[\s\S]*?(?:\*\/|$)/,
+      greedy: true
+    },
+    number: /-?\b\d+(?:\.\d+)?(?:e[+-]?\d+)?\b/i,
     punctuation: /[{}[\],]/,
     operator: /:/,
     boolean: /\b(?:true|false)\b/,
@@ -23,4 +27,5 @@ function json(Prism) {
       alias: 'keyword'
     }
   }
+  Prism.languages.webmanifest = Prism.languages.json
 }

@@ -7,7 +7,25 @@ function textile(Prism) {
   ;(function (Prism) {
     // We don't allow for pipes inside parentheses
     // to not break table pattern |(. foo |). bar |
-    var modifierRegex = /(?:\([^|)]+\)|\[[^\]]+\]|\{[^}]+\})+/.source
+    var modifierRegex = /\([^|()\n]+\)|\[[^\]\n]+\]|\{[^}\n]+\}/.source // Opening and closing parentheses which are not a modifier
+    // This pattern is necessary to prevent exponential backtracking
+    var parenthesesRegex = /\)|\((?![^|()\n]+\))/.source
+    /**
+     * @param {string} source
+     * @param {string} [flags]
+     */
+    function withModifier(source, flags) {
+      return RegExp(
+        source
+          .replace(/<MOD>/g, function () {
+            return '(?:' + modifierRegex + ')'
+          })
+          .replace(/<PAR>/g, function () {
+            return '(?:' + parenthesesRegex + ')'
+          }),
+        flags || ''
+      )
+    }
     var modifierTokens = {
       css: {
         pattern: /\{[^}]+\}/,
@@ -35,11 +53,11 @@ function textile(Prism) {
         inside: {
           // h1. Header 1
           'block-tag': {
-            pattern: RegExp('^[a-z]\\w*(?:' + modifierRegex + '|[<>=()])*\\.'),
+            pattern: withModifier(/^[a-z]\w*(?:<MOD>|<PAR>|[<>=])*\./.source),
             inside: {
               modifier: {
-                pattern: RegExp(
-                  '(^[a-z]\\w*)(?:' + modifierRegex + '|[<>=()])+(?=\\.)'
+                pattern: withModifier(
+                  /(^[a-z]\w*)(?:<MOD>|<PAR>|[<>=])+(?=\.)/.source
                 ),
                 lookbehind: true,
                 inside: modifierTokens
@@ -51,10 +69,10 @@ function textile(Prism) {
           // # List item
           // * List item
           list: {
-            pattern: RegExp('^[*#]+(?:' + modifierRegex + ')?\\s+.+', 'm'),
+            pattern: withModifier(/^[*#]+<MOD>*\s+.+/.source, 'm'),
             inside: {
               modifier: {
-                pattern: RegExp('(^[*#]+)' + modifierRegex),
+                pattern: withModifier(/(^[*#]+)<MOD>+/.source),
                 lookbehind: true,
                 inside: modifierTokens
               },
@@ -65,22 +83,18 @@ function textile(Prism) {
           table: {
             // Modifiers can be applied to the row: {color:red}.|1|2|3|
             // or the cell: |{color:red}.1|2|3|
-            pattern: RegExp(
-              '^(?:(?:' +
-                modifierRegex +
-                '|[<>=()^~])+\\.\\s*)?(?:\\|(?:(?:' +
-                modifierRegex +
-                '|[<>=()^~_]|[\\\\/]\\d+)+\\.)?[^|]*)+\\|',
+            pattern: withModifier(
+              /^(?:(?:<MOD>|<PAR>|[<>=^~])+\.\s*)?(?:\|(?:(?:<MOD>|<PAR>|[<>=^~_]|[\\/]\d+)+\.)?[^|]*)+\|/
+                .source,
               'm'
             ),
             inside: {
               modifier: {
                 // Modifiers for rows after the first one are
                 // preceded by a pipe and a line feed
-                pattern: RegExp(
-                  '(^|\\|(?:\\r?\\n|\\r)?)(?:' +
-                    modifierRegex +
-                    '|[<>=()^~_]|[\\\\/]\\d+)+(?=\\.)'
+                pattern: withModifier(
+                  /(^|\|(?:\r?\n|\r)?)(?:<MOD>|<PAR>|[<>=^~_]|[\\/]\d+)+(?=\.)/
+                    .source
                 ),
                 lookbehind: true,
                 inside: modifierTokens
@@ -89,55 +103,53 @@ function textile(Prism) {
             }
           },
           inline: {
-            pattern: RegExp(
-              '(\\*\\*|__|\\?\\?|[*_%@+\\-^~])(?:' + modifierRegex + ')?.+?\\1'
+            pattern: withModifier(
+              /(^|[^a-zA-Z\d])(\*\*|__|\?\?|[*_%@+\-^~])<MOD>*.+?\2(?![a-zA-Z\d])/
+                .source
             ),
+            lookbehind: true,
             inside: {
               // Note: superscripts and subscripts are not handled specifically
               // *bold*, **bold**
               bold: {
-                pattern: RegExp(
-                  '(^(\\*\\*?)(?:' + modifierRegex + ')?).+?(?=\\2)'
-                ),
+                pattern: withModifier(/(^(\*\*?)<MOD>*).+?(?=\2)/.source),
                 lookbehind: true
               },
               // _italic_, __italic__
               italic: {
-                pattern: RegExp('(^(__?)(?:' + modifierRegex + ')?).+?(?=\\2)'),
+                pattern: withModifier(/(^(__?)<MOD>*).+?(?=\2)/.source),
                 lookbehind: true
               },
               // ??cite??
               cite: {
-                pattern: RegExp(
-                  '(^\\?\\?(?:' + modifierRegex + ')?).+?(?=\\?\\?)'
-                ),
+                pattern: withModifier(/(^\?\?<MOD>*).+?(?=\?\?)/.source),
                 lookbehind: true,
                 alias: 'string'
               },
               // @code@
               code: {
-                pattern: RegExp('(^@(?:' + modifierRegex + ')?).+?(?=@)'),
+                pattern: withModifier(/(^@<MOD>*).+?(?=@)/.source),
                 lookbehind: true,
                 alias: 'keyword'
               },
               // +inserted+
               inserted: {
-                pattern: RegExp('(^\\+(?:' + modifierRegex + ')?).+?(?=\\+)'),
+                pattern: withModifier(/(^\+<MOD>*).+?(?=\+)/.source),
                 lookbehind: true
               },
               // -deleted-
               deleted: {
-                pattern: RegExp('(^-(?:' + modifierRegex + ')?).+?(?=-)'),
+                pattern: withModifier(/(^-<MOD>*).+?(?=-)/.source),
                 lookbehind: true
               },
               // %span%
               span: {
-                pattern: RegExp('(^%(?:' + modifierRegex + ')?).+?(?=%)'),
+                pattern: withModifier(/(^%<MOD>*).+?(?=%)/.source),
                 lookbehind: true
               },
               modifier: {
-                pattern: RegExp(
-                  '(^\\*\\*|__|\\?\\?|[*_%@+\\-^~])' + modifierRegex
+                pattern: withModifier(
+                  /(^\*\*|__|\?\?|[*_%@+\-^~])<MOD>+/.source
                 ),
                 lookbehind: true,
                 inside: modifierTokens
@@ -163,16 +175,16 @@ function textile(Prism) {
           // "text":http://example.com
           // "text":link-ref
           link: {
-            pattern: RegExp(
-              '"(?:' + modifierRegex + ')?[^"]+":.+?(?=[^\\w/]?(?:\\s|$))'
+            pattern: withModifier(
+              /"<MOD>*[^"]+":.+?(?=[^\w/]?(?:\s|$))/.source
             ),
             inside: {
               text: {
-                pattern: RegExp('(^"(?:' + modifierRegex + ')?)[^"]+(?=")'),
+                pattern: withModifier(/(^"<MOD>*)[^"]+(?=")/.source),
                 lookbehind: true
               },
               modifier: {
-                pattern: RegExp('(^")' + modifierRegex),
+                pattern: withModifier(/(^")<MOD>+/.source),
                 lookbehind: true,
                 inside: modifierTokens
               },
@@ -186,23 +198,21 @@ function textile(Prism) {
           // !image.jpg!
           // !image.jpg(Title)!:http://example.com
           image: {
-            pattern: RegExp(
-              '!(?:' +
-                modifierRegex +
-                '|[<>=()])*[^!\\s()]+(?:\\([^)]+\\))?!(?::.+?(?=[^\\w/]?(?:\\s|$)))?'
+            pattern: withModifier(
+              /!(?:<MOD>|<PAR>|[<>=])*[^!\s()]+(?:\([^)]+\))?!(?::.+?(?=[^\w/]?(?:\s|$)))?/
+                .source
             ),
             inside: {
               source: {
-                pattern: RegExp(
-                  '(^!(?:' +
-                    modifierRegex +
-                    '|[<>=()])*)[^!\\s()]+(?:\\([^)]+\\))?(?=!)'
+                pattern: withModifier(
+                  /(^!(?:<MOD>|<PAR>|[<>=])*)[^!\s()]+(?:\([^)]+\))?(?=!)/
+                    .source
                 ),
                 lookbehind: true,
                 alias: 'url'
               },
               modifier: {
-                pattern: RegExp('(^!)(?:' + modifierRegex + '|[<>=()])+'),
+                pattern: withModifier(/(^!)(?:<MOD>|<PAR>|[<>=])+/.source),
                 lookbehind: true,
                 inside: modifierTokens
               },

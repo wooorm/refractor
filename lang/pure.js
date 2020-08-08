@@ -6,6 +6,7 @@ pure.aliases = []
 function pure(Prism) {
   Prism.register(refractorC)
   ;(function (Prism) {
+    // https://agraef.github.io/pure-docs/pure.html#lexical-matters
     Prism.languages.pure = {
       comment: [
         {
@@ -49,7 +50,7 @@ function pure(Prism) {
         alias: 'builtin'
       },
       // Any combination of operator chars can be an operator
-      operator: /(?=\b_|[^_])[!"#$%&'*+,\-.\/:<=>?@\\^_`|~\u00a1-\u00bf\u00d7-\u00f7\u20d0-\u2bff]+|\b(?:and|div|mod|not|or)\b/,
+      operator: /(?:[!"#$%&'*+,\-.\/:<=>?@\\^`|~\u00a1-\u00bf\u00d7-\u00f7\u20d0-\u2bff]|\b_+\b)+|\b(?:and|div|mod|not|or)\b/,
       // FIXME: How can we prevent | and , to be highlighted as operator when they are used alone?
       punctuation: /[(){}\[\];,|]/
     }

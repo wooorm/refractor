@@ -37,12 +37,21 @@ function diff(Prism) {
         alias.push('bold')
       }
       Prism.languages.diff[name] = {
-        // pattern: /^(?:[_].*(?:\r\n?|\n|(?![\s\S])))+/m
         pattern: RegExp(
           '^(?:[' + prefix + '].*(?:\r\n?|\n|(?![\\s\\S])))+',
           'm'
         ),
-        alias: alias
+        alias: alias,
+        inside: {
+          line: {
+            pattern: /(.)(?=[\s\S]).*(?:\r\n?|\n)?/,
+            lookbehind: true
+          },
+          prefix: {
+            pattern: /[\s\S]/,
+            alias: /\w+/.exec(name)[0]
+          }
+        }
       }
     }) // make prefixes available to Diff plugin
     Object.defineProperty(Prism.languages.diff, 'PREFIXES', {

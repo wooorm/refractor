@@ -52,7 +52,7 @@ function livescript(Prism) {
     ],
     regex: [
       {
-        pattern: /\/\/(?:\[.+?]|\\.|(?!\/\/)[^\\])+\/\/[gimyu]{0,5}/,
+        pattern: /\/\/(?:\[[^\r\n\]]*\]|\\.|(?!\/\/)[^\\\[])+\/\/[gimyu]{0,5}/,
         greedy: true,
         inside: {
           comment: {
@@ -62,7 +62,7 @@ function livescript(Prism) {
         }
       },
       {
-        pattern: /\/(?:\[.+?]|\\.|[^/\\\r\n])+\/[gimyu]{0,5}/,
+        pattern: /\/(?:\[[^\r\n\]]*\]|\\.|[^/\\\r\n\[])+\/[gimyu]{0,5}/,
         greedy: true
       }
     ],

@@ -14,7 +14,7 @@ function tt2(Prism) {
     Prism.languages.insertBefore('tt2', 'number', {
       operator: /=[>=]?|!=?|<=?|>=?|&&|\|\|?|\b(?:and|or|not)\b/,
       variable: {
-        pattern: /[a-z]\w*(?:\s*\.\s*(?:\d+|\$?[a-z]\w*))*/i
+        pattern: /\b[a-z]\w*(?:\s*\.\s*(?:\d+|\$?[a-z]\w*))*\b/i
       }
     })
     Prism.languages.insertBefore('tt2', 'keyword', {

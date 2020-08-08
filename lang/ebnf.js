@@ -20,7 +20,7 @@ function ebnf(Prism) {
       lookbehind: true,
       alias: ['rule', 'keyword']
     },
-    rule: /[a-z]\w*(?:[ \t]+[a-z]\w*)*/i,
+    rule: /\b[a-z]\w*(?:[ \t]+[a-z]\w*)*\b/i,
     punctuation: /\([:/]|[:/]\)|[.,;()[\]{}]/,
     operator: /[-=|*/!]/
   }

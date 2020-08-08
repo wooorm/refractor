@@ -17,7 +17,7 @@ function eiffel(Prism) {
         greedy: true
       }, // Single-line string
       {
-        pattern: /"(?:%\s+%|%.|[^%"\r\n])*"/,
+        pattern: /"(?:%\s*\n\s*%|%.|[^%"\r\n])*"/,
         greedy: true
       }
     ],
@@ -33,7 +33,7 @@ function eiffel(Prism) {
     number: [
       // hexa | octal | bin
       /\b0[xcb][\da-f](?:_*[\da-f])*\b/i, // Decimal
-      /(?:\d(?:_*\d)*)?\.(?:(?:\d(?:_*\d)*)?e[+-]?)?\d(?:_*\d)*|\d(?:_*\d)*\.?/i
+      /(?:\b\d(?:_*\d)*)?\.(?:(?:\d(?:_*\d)*)?e[+-]?)?\d(?:_*\d)*\b|\b\d(?:_*\d)*\b\.?/i
     ],
     punctuation: /:=|<<|>>|\(\||\|\)|->|\.(?=\w)|[{}[\];(),:?]/,
     operator: /\\\\|\|\.\.\||\.\.|\/[~\/=]?|[><]=?|[-+*^=~]/
