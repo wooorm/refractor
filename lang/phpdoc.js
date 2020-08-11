@@ -1,9 +1,11 @@
 'use strict'
+var refractorPhp = require('./php.js')
 var refractorJavadoclike = require('./javadoclike.js')
 module.exports = phpdoc
 phpdoc.displayName = 'phpdoc'
 phpdoc.aliases = []
 function phpdoc(Prism) {
+  Prism.register(refractorPhp)
   Prism.register(refractorJavadoclike)
   ;(function (Prism) {
     var typeExpression = /(?:\b[a-zA-Z]\w*|[|\\[\]])+/.source

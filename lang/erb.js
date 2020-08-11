@@ -1,12 +1,12 @@
 'use strict'
-var refractorMarkupTemplating = require('./markup-templating.js')
 var refractorRuby = require('./ruby.js')
+var refractorMarkupTemplating = require('./markup-templating.js')
 module.exports = erb
 erb.displayName = 'erb'
 erb.aliases = []
 function erb(Prism) {
-  Prism.register(refractorMarkupTemplating)
   Prism.register(refractorRuby)
+  Prism.register(refractorMarkupTemplating)
   ;(function (Prism) {
     Prism.languages.erb = Prism.languages.extend('ruby', {})
     Prism.languages.insertBefore('erb', 'comment', {

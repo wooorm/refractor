@@ -1,9 +1,11 @@
 'use strict'
+var refractorJava = require('./java.js')
 var refractorJavadoclike = require('./javadoclike.js')
 module.exports = javadoc
 javadoc.displayName = 'javadoc'
 javadoc.aliases = []
 function javadoc(Prism) {
+  Prism.register(refractorJava)
   Prism.register(refractorJavadoclike)
   ;(function (Prism) {
     var codeLinePattern = /(^(?:\s*(?:\*\s*)*)).*[^*\s].*$/m

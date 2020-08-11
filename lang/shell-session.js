@@ -1,9 +1,10 @@
 'use strict'
-
+var refractorBash = require('./bash.js')
 module.exports = shellSession
 shellSession.displayName = 'shellSession'
 shellSession.aliases = []
 function shellSession(Prism) {
+  Prism.register(refractorBash)
   ;(function (Prism) {
     // CAREFUL!
     // The following patterns are concatenated, so the group referenced by a back reference is non-obvious!

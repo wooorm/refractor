@@ -1,10 +1,12 @@
 'use strict'
 var refractorJavadoclike = require('./javadoclike.js')
+var refractorTypescript = require('./typescript.js')
 module.exports = jsdoc
 jsdoc.displayName = 'jsdoc'
 jsdoc.aliases = []
 function jsdoc(Prism) {
   Prism.register(refractorJavadoclike)
+  Prism.register(refractorTypescript)
   ;(function (Prism) {
     var javascript = Prism.languages.javascript
     var type = /{(?:[^{}]|{(?:[^{}]|{[^{}]*})*})+}/.source

@@ -1,10 +1,9 @@
 'use strict'
-var refractorC = require('./c.js')
+
 module.exports = pure
 pure.displayName = 'pure'
 pure.aliases = []
 function pure(Prism) {
-  Prism.register(refractorC)
   ;(function (Prism) {
     // https://agraef.github.io/pure-docs/pure.html#lexical-matters
     Prism.languages.pure = {

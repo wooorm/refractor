@@ -1,9 +1,10 @@
 'use strict'
-
+var refractorYaml = require('./yaml.js')
 module.exports = tap
 tap.displayName = 'tap'
 tap.aliases = []
 function tap(Prism) {
+  Prism.register(refractorYaml)
   Prism.languages.tap = {
     fail: /not ok[^#{\n\r]*/,
     pass: /ok[^#{\n\r]*/,
