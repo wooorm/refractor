@@ -54,10 +54,7 @@ function generate(name, callback) {
       return callback(err)
     }
 
-    deps =
-      typeof componentsJson.languages[name].require === 'undefined'
-        ? []
-        : componentsJson.languages[name].require
+    deps = componentsJson.languages[name].require || []
 
     if (!Array.isArray(deps)) {
       deps = [deps]
