@@ -18,7 +18,7 @@ function d(Prism) {
             [
               // /+ comment +/
               // Allow one level of nesting
-              /\/\+(?:\/\+[\s\S]*?\+\/|(?!\/\+)[\s\S])*?\+\//.source, // // comment
+              /\/\+(?:\/\+(?:[^+]|\+(?!\/))*\+\/|(?!\/\+)[\s\S])*?\+\//.source, // // comment
               /\/\/.*/.source, // /* comment */
               /\/\*[\s\S]*?\*\//.source
             ].join('|') +

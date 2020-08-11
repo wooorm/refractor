@@ -1,10 +1,12 @@
 'use strict'
 var refractorMarkupTemplating = require('./markup-templating.js')
+var refractorPhp = require('./php.js')
 module.exports = latte
 latte.displayName = 'latte'
 latte.aliases = []
 function latte(Prism) {
   Prism.register(refractorMarkupTemplating)
+  Prism.register(refractorPhp)
   ;(function (Prism) {
     Prism.languages.latte = {
       comment: /^\{\*[\s\S]*/,

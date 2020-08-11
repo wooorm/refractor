@@ -6,8 +6,20 @@ graphql.aliases = []
 function graphql(Prism) {
   Prism.languages.graphql = {
     comment: /#.*/,
+    description: {
+      pattern: /(?:"""(?:[^"]|(?!""")")*"""|"(?:\\.|[^\\"\r\n])*")(?=\s*[a-z_])/i,
+      greedy: true,
+      alias: 'string',
+      inside: {
+        'language-markdown': {
+          pattern: /(^"(?:"")?)(?!\1)[\s\S]+(?=\1$)/,
+          lookbehind: true,
+          inside: Prism.languages.markdown
+        }
+      }
+    },
     string: {
-      pattern: /"(?:\\.|[^\\"\r\n])*"/,
+      pattern: /"""(?:[^"]|(?!""")")*"""|"(?:\\.|[^\\"\r\n])*"/,
       greedy: true
     },
     number: /(?:\B-|\b)\d+(?:\.\d+)?(?:e[+-]?\d+)?\b/i,
@@ -22,7 +34,7 @@ function graphql(Prism) {
       greedy: true
     },
     'class-name': {
-      pattern: /(\b(?:enum|implements|interface|on|scalar|type|union)\s+)[a-zA-Z_]\w*/,
+      pattern: /(\b(?:enum|implements|interface|on|scalar|type|union)\s+|&\s*)[a-zA-Z_]\w*/,
       lookbehind: true
     },
     fragment: {
@@ -30,8 +42,8 @@ function graphql(Prism) {
       lookbehind: true,
       alias: 'function'
     },
-    keyword: /\b(?:enum|fragment|implements|input|interface|mutation|on|query|scalar|schema|type|union)\b/,
-    operator: /[!=|]|\.{3}/,
+    keyword: /\b(?:directive|enum|extend|fragment|implements|input|interface|mutation|on|query|repeatable|scalar|schema|subscription|type|union)\b/,
+    operator: /[!=|&]|\.{3}/,
     punctuation: /[!(){}\[\]:=,]/,
     constant: /\b(?!ID\b)[A-Z][A-Z_\d]*\b/
   }

@@ -2,7 +2,7 @@
 var refractorC = require('./c.js')
 module.exports = objectivec
 objectivec.displayName = 'objectivec'
-objectivec.aliases = []
+objectivec.aliases = ['objc']
 function objectivec(Prism) {
   Prism.register(refractorC)
   Prism.languages.objectivec = Prism.languages.extend('c', {
@@ -11,4 +11,5 @@ function objectivec(Prism) {
     operator: /-[->]?|\+\+?|!=?|<<?=?|>>?=?|==?|&&?|\|\|?|[~^%?*\/@]/
   })
   delete Prism.languages.objectivec['class-name']
+  Prism.languages.objc = Prism.languages.objectivec
 }

@@ -2,7 +2,7 @@
 
 module.exports = kotlin
 kotlin.displayName = 'kotlin'
-kotlin.aliases = []
+kotlin.aliases = ['kt', 'kts']
 function kotlin(Prism) {
   ;(function (Prism) {
     Prism.languages.kotlin = Prism.languages.extend('clike', {
@@ -61,5 +61,7 @@ function kotlin(Prism) {
     ].inside = {
       interpolation: interpolation
     }
+    Prism.languages.kt = Prism.languages.kotlin
+    Prism.languages.kts = Prism.languages.kotlin
   })(Prism)
 }

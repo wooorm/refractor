@@ -2,7 +2,7 @@
 
 module.exports = solidity
 solidity.displayName = 'solidity'
-solidity.aliases = []
+solidity.aliases = ['sol']
 function solidity(Prism) {
   Prism.languages.solidity = Prism.languages.extend('clike', {
     'class-name': {
@@ -22,4 +22,5 @@ function solidity(Prism) {
       alias: 'number'
     }
   })
+  Prism.languages.sol = Prism.languages.solidity
 }

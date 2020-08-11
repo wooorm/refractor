@@ -2,7 +2,7 @@
 
 module.exports = renpy
 renpy.displayName = 'renpy'
-renpy.aliases = []
+renpy.aliases = ['rpy']
 function renpy(Prism) {
   Prism.languages.renpy = {
     // TODO Write tests.
@@ -23,4 +23,5 @@ function renpy(Prism) {
     operator: /[-+%=]=?|!=|\*\*?=?|\/\/?=?|<[<=>]?|>[=>]?|[&|^~]|\b(?:or|and|not|with|at)\b/,
     punctuation: /[{}[\];(),.:]/
   }
+  Prism.languages.rpy = Prism.languages.renpy
 }

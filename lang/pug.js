@@ -127,7 +127,9 @@ function pug(Prism) {
               }
             }
           ],
-          punctuation: /:/
+          punctuation: /:/,
+          'attr-id': /#[\w\-]+/,
+          'attr-class': /\.[\w\-]+/
         }
       },
       code: [

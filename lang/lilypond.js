@@ -1,11 +1,12 @@
 'use strict'
-
+var refractorScheme = require('./scheme.js')
 module.exports = lilypond
 lilypond.displayName = 'lilypond'
 lilypond.aliases = []
 function lilypond(Prism) {
+  Prism.register(refractorScheme)
   ;(function (Prism) {
-    var schemeExpression = /\((?:[^();"#\\]|\\[\s\S]|;.*|"(?:[^"\\]|\\.)*"|#(?:\{(?:(?!#\})[\s\S])*#\}|[^{])|<expr>)*\)/
+    var schemeExpression = /\((?:[^();"#\\]|\\[\s\S]|;.*(?!.)|"(?:[^"\\]|\\.)*"|#(?:\{(?:(?!#\})[\s\S])*#\}|[^{])|<expr>)*\)/
       .source // allow for up to pow(2, recursivenessLog2) many levels of recursive brace expressions
     // For some reason, this can't be 4
     var recursivenessLog2 = 5

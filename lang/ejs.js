@@ -2,7 +2,7 @@
 var refractorMarkupTemplating = require('./markup-templating.js')
 module.exports = ejs
 ejs.displayName = 'ejs'
-ejs.aliases = []
+ejs.aliases = ['eta']
 function ejs(Prism) {
   Prism.register(refractorMarkupTemplating)
   ;(function (Prism) {
@@ -28,5 +28,6 @@ function ejs(Prism) {
     Prism.hooks.add('after-tokenize', function (env) {
       Prism.languages['markup-templating'].tokenizePlaceholders(env, 'ejs')
     })
+    Prism.languages.eta = Prism.languages.ejs
   })(Prism)
 }

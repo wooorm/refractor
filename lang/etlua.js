@@ -1,9 +1,11 @@
 'use strict'
+var refractorLua = require('./lua.js')
 var refractorMarkupTemplating = require('./markup-templating.js')
 module.exports = etlua
 etlua.displayName = 'etlua'
 etlua.aliases = []
 function etlua(Prism) {
+  Prism.register(refractorLua)
   Prism.register(refractorMarkupTemplating)
   ;(function (Prism) {
     Prism.languages.etlua = {

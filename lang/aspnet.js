@@ -1,9 +1,10 @@
 'use strict'
-
+var refractorCsharp = require('./csharp.js')
 module.exports = aspnet
 aspnet.displayName = 'aspnet'
 aspnet.aliases = []
 function aspnet(Prism) {
+  Prism.register(refractorCsharp)
   Prism.languages.aspnet = Prism.languages.extend('markup', {
     'page-directive': {
       pattern: /<%\s*@.*%>/i,

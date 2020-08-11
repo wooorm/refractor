@@ -53,7 +53,7 @@ function csharp(Prism) {
       // contextual keywords
       // ("var" and "dynamic" are missing because they are used like types)
       contextual:
-        'add alias ascending async await by descending from get global group into join let nameof notnull on orderby partial remove select set unmanaged value when where where',
+        'add alias and ascending async await by descending from get global group into join let nameof not notnull on or orderby partial remove select set unmanaged value when where where',
       // all other keywords
       other:
         'abstract as base break case catch checked const continue default delegate do else event explicit extern finally fixed for foreach goto if implicit in internal is lock namespace new null operator out override params private protected public readonly ref return sealed sizeof stackalloc static switch this throw try typeof unchecked unsafe using virtual volatile while yield'
@@ -98,6 +98,10 @@ function csharp(Prism) {
       genericName
     ])
     var array = /\[\s*(?:,\s*)*\]/.source
+    var typeExpressionWithoutTuple = replace(
+      /<<0>>(?:\s*(?:\?\s*)?<<1>>)*(?:\s*\?)?/.source,
+      [identifier, array]
+    )
     var tupleElement = replace(
       /[^,()<>[\];=+\-*/%&|^]|<<0>>|<<1>>|<<2>>/.source,
       [generic, nestedRound, array]
@@ -189,7 +193,9 @@ function csharp(Prism) {
           // Casts and checks via as and is.
           // as Foo<A>, is Bar<B>
           // (things like if(a is Foo b) is covered by variable declaration)
-          pattern: re(/(\b(?:is|as)\s+)<<0>>/.source, [typeExpression]),
+          pattern: re(/(\b(?:is(?:\s+not)?|as)\s+)<<0>>/.source, [
+            typeExpressionWithoutTuple
+          ]),
           lookbehind: true,
           inside: typeInside
         },
@@ -197,7 +203,8 @@ function csharp(Prism) {
           // Variable, field and parameter declaration
           // (Foo bar, Bar baz, Foo[,,] bay, Foo<Bar, FooBar<Bar>> bax)
           pattern: re(
-            /\b<<0>>(?=\s+(?!<<1>>)<<2>>(?:\s*[=,;:{)\]]|\s+in))/.source,
+            /\b<<0>>(?=\s+(?!<<1>>)<<2>>(?:\s*[=,;:{)\]]|\s+(?:in|when)\b))/
+              .source,
             [typeExpression, nonContextualKeywords, name]
           ),
           inside: typeInside
@@ -324,7 +331,7 @@ alias: 'class-name'
     }) // attributes
     var regularStringOrCharacter = regularString + '|' + character
     var regularStringCharacterOrComment = replace(
-      /\/(?![*/])|\/\/[^\r\n]*[\r\n]|\/\*[\s\S]*?\*\/|<<0>>/.source,
+      /\/(?![*/])|\/\/[^\r\n]*[\r\n]|\/\*(?:[^*]|\*(?!\/))*\*\/|<<0>>/.source,
       [regularStringOrCharacter]
     )
     var roundExpression = nested(
@@ -381,9 +388,11 @@ alias: 'class-name'
       formatString
     ]) // single line
     var sInterpolationRound = nested(
-      replace(/[^"'/()]|\/(?!\*)|\/\*.*?\*\/|<<0>>|\(<<self>>*\)/.source, [
-        regularStringOrCharacter
-      ]),
+      replace(
+        /[^"'/()]|\/(?!\*)|\/\*(?:[^*]|\*(?!\/))*\*\/|<<0>>|\(<<self>>*\)/
+          .source,
+        [regularStringOrCharacter]
+      ),
       2
     )
     var sInterpolation = replace(/\{(?!\{)(?:(?![}:])<<0>>)*<<1>>?\}/.source, [
@@ -393,7 +402,7 @@ alias: 'class-name'
     function createInterpolationInside(interpolation, interpolationRound) {
       return {
         interpolation: {
-          pattern: re(/([^{](?:\{\{)*)<<0>>/.source, [interpolation]),
+          pattern: re(/((?:^|[^{])(?:\{\{)*)<<0>>/.source, [interpolation]),
           lookbehind: true,
           inside: {
             'format-string': {

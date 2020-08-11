@@ -14,10 +14,7 @@ var trim = require('trim-lines')
 var bundled = require('./bundled')
 
 var root = path.join('node_modules', 'prismjs', 'components')
-var useBracesRegex = /Prism\.languages\[['"]([^'"]+)['"]](?!\s*[=:])/g
-var extendRegex = /languages\.extend\(['"]([^'"]+)['"]/g
-var insertRegex = /Prism\.languages\.insertBefore\(["'](.+?)["']/g
-var cloneRegex = /Prism\.util\.clone\(Prism\.languages\.([^[)]+)[)[]/g
+var componentsJson = require('prismjs/components.json')
 var anyAliasRegex = /((?:Prism\.languages\.\w+ = )+)Prism\.languages\.(extend\([^)]+\)|\w+);/g
 var aliasRegex = /Prism\.languages\.(\w+) = /g
 var prefix = 'refractor-'
@@ -57,17 +54,17 @@ function generate(name, callback) {
       return callback(err)
     }
 
-    deps = [].concat(
-      findAll(doc, useBracesRegex),
-      findAll(doc, extendRegex),
-      findAll(doc, cloneRegex),
-      findAll(doc, insertRegex)
-    )
-    anyAlias = findAll(doc, anyAliasRegex).join('\n')
-    aliases = findAll(anyAlias, aliasRegex).filter((d) => d !== name)
+    deps = componentsJson.languages[name].require || []
+
+    if (!Array.isArray(deps)) {
+      deps = [deps]
+    }
 
     deps = diff(deps.filter(unique), bundled.map(base).concat([id, 'inside']))
     deps = deps.filter((d) => d !== name)
+
+    anyAlias = findAll(doc, anyAliasRegex).join('\n')
+    aliases = findAll(anyAlias, aliasRegex).filter((d) => d !== name)
 
     doc = babel.transformSync(doc, {plugins: [fixWrapHook]}).code
 

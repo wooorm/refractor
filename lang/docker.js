@@ -10,7 +10,10 @@ function docker(Prism) {
       lookbehind: true
     },
     string: /("|')(?:(?!\1)[^\\\r\n]|\\(?:\r\n|[\s\S]))*\1/,
-    comment: /#.*/,
+    comment: {
+      pattern: /#.*/,
+      greedy: true
+    },
     punctuation: /---|\.\.\.|[:[\]{}\-,|>?]/
   }
   Prism.languages.dockerfile = Prism.languages.docker
