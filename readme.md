@@ -12,7 +12,7 @@ Perfect for [React][], [VDOM][], and others.
 <!--count start-->
 
 `refractor` is built to work with all syntaxes supported by [Prism][],
-that’s [234 languages][names] (as of [prism@1.22.0][prismjs]) and all
+that’s [234 languages][names] (as of [`prism@1.22.0`][prismjs]) and all
 [themes][].
 
 <!--count end-->
@@ -59,29 +59,25 @@ console.log(nodes)
 Yields:
 
 ```js
-[ { type: 'element',
+[
+  {
+    type: 'element',
     tagName: 'span',
-    properties: { className: [ 'token', 'string' ] },
-    children: [ { type: 'text', value: '"use strict"' } ] },
-  { type: 'element',
+    properties: {className: ['token', 'string']},
+    children: [{type: 'text', value: '"use strict"'}]
+  },
+  {
+    type: 'element',
     tagName: 'span',
-    properties: { className: [ 'token', 'punctuation' ] },
-    children: [ { type: 'text', value: ';' } ] } ]
+    properties: {className: ['token', 'punctuation']},
+    children: [{type: 'text', value: ';'}]
+  }
+]
 ```
 
-Or, serialized with [rehype][]:
-
-```js
-var rehype = require('rehype')
-
-var html = rehype()
-  .stringify({type: 'root', children: nodes})
-  .toString()
-
-console.log(html)
-```
-
-Yields:
+Which serialized with [`rehype`][rehype] or [`hast-util-to-html`][to-html]
+yields (you may have to wrap it into a fragment like so: `{type: 'root',
+children: nodes}`):
 
 ```html
 <span class="token string">"use strict"</span><span class="token punctuation">;</span>
@@ -95,13 +91,13 @@ Yields:
 ### `refractor.register(syntax)`
 
 Register a [syntax][].
-Needed if you’re using [`refractor/core.js`][browser].
+Needed if you’re using [`refractor/core`][browser].
 
 ###### Example
 
 ```js
-var refractor = require('refractor/core.js')
-var markdown = require('refractor/lang/markdown.js')
+var refractor = require('refractor/core')
+var markdown = require('refractor/lang/markdown')
 
 refractor.register(markdown)
 
@@ -111,10 +107,14 @@ console.log(refractor.highlight('*Emphasis*', 'markdown'))
 Yields:
 
 ```js
-[ { type: 'element',
+[
+  {
+    type: 'element',
     tagName: 'span',
-    properties: [Object],
-    children: [Array] } ]
+    properties: {className: [Array]},
+    children: [[Object], [Object], [Object]]
+  }
+]
 ```
 
 ### `refractor.alias(name[, alias])`
@@ -137,8 +137,8 @@ Register a new `alias` for the `name` language.
 ###### Example
 
 ```js
-var refractor = require('./core')
-var markdown = require('./lang/markdown')
+var refractor = require('refractor/core')
+var markdown = require('refractor/lang/markdown')
 
 refractor.register(markdown)
 
@@ -162,7 +162,7 @@ Virtual nodes representing the highlighted value ([`Array.<Node>`][node]).
 ###### Example
 
 ```js
-var refractor = require('refractor/core.js')
+var refractor = require('refractor/core')
 
 console.log(refractor.highlight('em { color: red }', 'css'))
 ```
@@ -170,17 +170,23 @@ console.log(refractor.highlight('em { color: red }', 'css'))
 Yields:
 
 ```js
-[ { type: 'element',
+[
+  {
+    type: 'element',
     tagName: 'span',
-    properties: [Object],
-    children: [Array] },
-  { type: 'text', value: ' ' },
-  // ...
-  { type: 'text', value: ' red ' },
-  { type: 'element',
+    properties: {className: [Array]},
+    children: [[Object]]
+  },
+  {type: 'text', value: ' '},
+  // …
+  {type: 'text', value: ' red '},
+  {
+    type: 'element',
     tagName: 'span',
-    properties: [Object],
-    children: [Array] } ]
+    properties: {className: [Array]},
+    children: [[Object]]
+  }
+]
 ```
 
 ### `refractor.registered(language)`
@@ -190,8 +196,8 @@ Check if a `language` ([name or alias][syntax]) is registered.
 ###### Example
 
 ```js
-var refractor = require('refractor/core.js')
-var markdown = require('refractor/lang/markdown.js')
+var refractor = require('refractor/core')
+var markdown = require('refractor/lang/markdown')
 
 console.log(refractor.registered('markdown'))
 
@@ -218,8 +224,8 @@ List all registered languages ([names and aliases][syntax]).
 ###### Example
 
 ```js
-var refractor = require('refractor/core.js')
-var markdown = require('refractor/lang/markdown.js')
+var refractor = require('refractor/core')
+var markdown = require('refractor/lang/markdown')
 
 console.log(refractor.listLanguages())
 
@@ -231,25 +237,22 @@ console.log(refractor.listLanguages())
 Yields:
 
 ```js
-[ 'markup',
-  'xml',
+[
+  'markup',
   'html',
-  'mathml',
-  'svg',
-  'css',
-  'clike',
+  // …
   'javascript',
-  'js' ]
-[ 'markup',
-  'xml',
+  'js'
+]
+[
+  'markup',
   'html',
-  'mathml',
-  'svg',
-  'css',
-  'clike',
+  // …
   'javascript',
   'js',
-  'markdown' ]
+  'markdown',
+  'md'
+]
 ```
 
 ## Browser
@@ -258,13 +261,13 @@ I do not suggest using the [pre-bundled][releases] files or requiring
 `refractor` itself in the browser as that would include a 376kb (139kb GZipped)
 of code.
 
-Instead require `refractor/core.js` and include only the needed syntaxes.
+Instead require `refractor/core` and include only the needed syntaxes.
 For example:
 
 ```js
-var refractor = require('refractor/core.js')
+var refractor = require('refractor/core')
 
-refractor.register(require('refractor/lang/jsx.js'))
+refractor.register(require('refractor/lang/jsx'))
 
 console.log(refractor.highlight('<Dropdown primary />', 'jsx'))
 ```
@@ -272,29 +275,20 @@ console.log(refractor.highlight('<Dropdown primary />', 'jsx'))
 Yields:
 
 ```js
-[ { type: 'element',
+[
+  {
+    type: 'element',
     tagName: 'span',
-    properties: { className: [ 'token', 'tag' ] },
-    children:
-     [ { type: 'element',
-         tagName: 'span',
-         properties: { className: [ 'token', 'tag' ] },
-         children:
-          [ { type: 'element',
-              tagName: 'span',
-              properties: { className: [ 'token', 'punctuation' ] },
-              children: [ { type: 'text', value: '<' } ] },
-            { type: 'text', value: 'Dropdown' } ] },
-       { type: 'text', value: ' ' },
-       { type: 'element',
-         tagName: 'span',
-         properties: { className: [ 'token', 'attr-name' ] },
-         children: [ { type: 'text', value: 'primary' } ] },
-       { type: 'text', value: ' ' },
-       { type: 'element',
-         tagName: 'span',
-         properties: { className: [ 'token', 'punctuation' ] },
-         children: [ { type: 'text', value: '/>' } ] } ] } ]
+    properties: {className: ['token', 'tag']},
+    children: [
+      {type: 'element', tagName: 'span', properties: {className: [Array]}, children: [[Object], [Object]]},
+      {type: 'text', value: ' '},
+      {type: 'element', tagName: 'span', properties: {className: [Array]}, children: [[Object]]},
+      {type: 'text', value: ' '},
+      {type: 'element', tagName: 'span', properties: {className: [Array]}, children: [[Object]]}
+    ]
+  }
+]
 ```
 
 …When using [browserify][] and minifying with [tinyify][] this results in
@@ -312,7 +306,7 @@ just 65kb of code (23kb with GZip).
 ## Syntaxes
 
 All syntaxes are included if you `require('refractor')`.
-If you’re using `refractor/core.js`, checked syntaxes are always included, but
+If you’re using `refractor/core`, checked syntaxes are always included, but
 unchecked syntaxes are not and must be `require`d and [`register`][register]ed.
 
 Unlike in Prism, `cssExtras` and `phpExtras` are camel-cased instead of
@@ -614,6 +608,8 @@ syntaxes are made to work with global variables and are not requirable.
 [vdom]: https://github.com/Matt-Esch/virtual-dom
 
 [to-hyperscript]: https://github.com/syntax-tree/hast-to-hyperscript
+
+[to-html]: https://github.com/syntax-tree/hast-util-to-html
 
 [browser]: #browser
 

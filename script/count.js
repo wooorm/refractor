@@ -34,7 +34,7 @@ function replace(start, nodes, end) {
       ]),
       u('text', ' (as of '),
       u('linkReference', {identifier: 'prismjs', referenceType: 'full'}, [
-        u('text', 'prism@' + pkg.dependencies.prismjs.slice(1))
+        u('inlineCode', 'prism@' + pkg.dependencies.prismjs.slice(1))
       ]),
       u('text', ') and all\n'),
       u('linkReference', {identifier: 'themes', referenceType: 'collapsed'}, [
