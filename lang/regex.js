@@ -100,26 +100,5 @@ function regex(Prism) {
         alias: 'keyword'
       }
     }
-    ;[
-      'actionscript',
-      'coffescript',
-      'flow',
-      'javascript',
-      'typescript',
-      'vala'
-    ].forEach(function (lang) {
-      var grammar = Prism.languages[lang]
-      if (grammar) {
-        grammar['regex'].inside = {
-          'language-regex': {
-            pattern: /^(\/)[\s\S]+(?=\/[a-z]*$)/i,
-            lookbehind: true,
-            inside: Prism.languages.regex
-          },
-          'regex-flags': /[a-z]+$/i,
-          'regex-delimiter': /^\/|\/$/
-        }
-      }
-    })
   })(Prism)
 }

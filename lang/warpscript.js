@@ -23,6 +23,6 @@ function warpscript(Prism) {
     punctuation: /<%|%>|[{}[\]()]/,
     // Some operators from the "operators" category
     // https://www.warp10.io/tags/operators
-    operator: /==|&&?|\|\|?|\*\*?|>>>?|<<|==|[<>!~]=?|[-/%^]|\+!?|\b(?:AND|NOT|OR)\b/
+    operator: /==|&&?|\|\|?|\*\*?|>>>?|<<|[<>!~]=?|[-/%^]|\+!?|\b(?:AND|NOT|OR)\b/
   }
 }

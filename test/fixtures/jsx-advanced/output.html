@@ -1,9 +1,9 @@
-<span class="token keyword module">import</span> <span class="token maybe-class-name">React</span> <span class="token keyword module">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+<span class="token keyword module">import</span> <span class="token imports"><span class="token maybe-class-name">React</span></span> <span class="token keyword module">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
 
-<span class="token keyword module">import</span> <span class="token punctuation">{</span>
+<span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span>
   <span class="token maybe-class-name">Alert</span><span class="token punctuation">,</span>
   <span class="token maybe-class-name">Button</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span> <span class="token keyword module">from</span> <span class="token string">'bootstrap-styled'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">'bootstrap-styled'</span><span class="token punctuation">;</span>
 
 <span class="token keyword module">export</span> <span class="token keyword module">default</span> <span class="token keyword">class</span> <span class="token class-name">AlertDismissExample</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
 
@@ -16,7 +16,7 @@
   <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
   <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token keyword control-flow">return</span> <span class="token punctuation">(</span>
       <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">
         </span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span><span class="token class-name">Alert</span></span> <span class="token attr-name">color</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>info<span class="token punctuation">"</span></span> <span class="token attr-name">isOpen</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">state</span><span class="token punctuation">.</span><span class="token property-access">visible</span><span class="token punctuation">}</span></span> <span class="token attr-name">toggle</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">onDismiss</span><span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">
           I am an alert and I can be dismissed!

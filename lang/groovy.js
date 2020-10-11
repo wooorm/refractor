@@ -24,7 +24,7 @@ function groovy(Prism) {
       pattern: /(^|[^.])(?:~|==?~?|\?[.:]?|\*(?:[.=]|\*=?)?|\.[@&]|\.\.<|\.\.(?!\.)|-[-=>]?|\+[+=]?|!=?|<(?:<=?|=>?)?|>(?:>>?=?|=)?|&[&=]?|\|[|=]?|\/=?|\^=?|%=?)/,
       lookbehind: true
     },
-    punctuation: /\.+|[{}[\];(),.:$]/
+    punctuation: /\.+|[{}[\];(),:$]/
   })
   Prism.languages.insertBefore('groovy', 'string', {
     shebang: {
