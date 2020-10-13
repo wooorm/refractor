@@ -25,7 +25,7 @@ function replace(start, nodes, end) {
     u('paragraph', [
       u('inlineCode', 'refractor'),
       u('text', ' is built to work with all syntaxes supported by '),
-      u('linkReference', {identifier: 'prism', referenceType: 'collapsed'}, [
+      u('linkReference', {identifier: 'Prism', referenceType: 'collapsed'}, [
         u('text', 'Prism')
       ]),
       u('text', ',\nthat’s '),

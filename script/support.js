@@ -19,7 +19,7 @@ function transformer(tree) {
 }
 
 function replace(start, nodes, end) {
-  return [start, u('list', {ordered: false}, items()), end]
+  return [start, u('list', {spread: false, ordered: false}, items()), end]
 }
 
 function items() {
