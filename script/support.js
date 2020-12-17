@@ -40,7 +40,7 @@ function items() {
       )
     ]
 
-    if (grammar.aliases.length !== 0) {
+    if (grammar.aliases.length > 0) {
       content.push(u('text', ' — alias: '))
       grammar.aliases.forEach(function (alias, index) {
         if (index !== 0) {
