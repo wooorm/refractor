@@ -573,9 +573,9 @@ syntaxes are made to work with global variables and are not requirable.
 
 <!-- Definitions -->
 
-[build-badge]: https://img.shields.io/travis/wooorm/refractor.svg
+[build-badge]: https://github.com/wooorm/refractor/workflows/main/badge.svg
 
-[build]: https://travis-ci.org/wooorm/refractor
+[build]: https://github.com/wooorm/refractor/actions
 
 [coverage-badge]: https://img.shields.io/codecov/c/github/wooorm/refractor.svg
 
