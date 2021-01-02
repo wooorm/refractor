@@ -11,7 +11,7 @@ function wiki(Prism) {
       alias: 'comment'
     },
     heading: {
-      pattern: /^(=+).+?\1/m,
+      pattern: /^(=+)[^=\r\n].*?\1/m,
       inside: {
         punctuation: /^=+|=+$/,
         important: /.+/
@@ -72,10 +72,10 @@ function wiki(Prism) {
   Prism.languages.insertBefore('wiki', 'tag', {
     // Prevent highlighting inside <nowiki>, <source> and <pre> tags
     nowiki: {
-      pattern: /<(nowiki|pre|source)\b[\s\S]*?>[\s\S]*?<\/\1>/i,
+      pattern: /<(nowiki|pre|source)\b[^>]*>[\s\S]*?<\/\1>/i,
       inside: {
         tag: {
-          pattern: /<(?:nowiki|pre|source)\b[\s\S]*?>|<\/(?:nowiki|pre|source)>/i,
+          pattern: /<(?:nowiki|pre|source)\b[^>]*>|<\/(?:nowiki|pre|source)>/i,
           inside: Prism.languages.markup['tag'].inside
         }
       }

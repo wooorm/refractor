@@ -28,7 +28,7 @@ function stan(Prism) {
       lookbehind: true,
       inside: {
         expression: {
-          pattern: /(=\s*)(?:(?!\s*(?:>$|,\s*\w+\s*=))[\s\S])+/,
+          pattern: /(=\s*)\S(?:\S|\s+(?!\s))*?(?=\s*(?:>$|,\s*\w+\s*=))/,
           lookbehind: true,
           inside: null // see below
         },

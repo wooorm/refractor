@@ -53,7 +53,7 @@ function csharp(Prism) {
       // contextual keywords
       // ("var" and "dynamic" are missing because they are used like types)
       contextual:
-        'add alias and ascending async await by descending from get global group into join let nameof not notnull on or orderby partial remove select set unmanaged value when where where',
+        'add alias and ascending async await by descending from get global group into join let nameof not notnull on or orderby partial remove select set unmanaged value when where',
       // all other keywords
       other:
         'abstract as base break case catch checked const continue default delegate do else event explicit extern finally fixed for foreach goto if implicit in internal is lock namespace new null operator out override params private protected public readonly ref return sealed sizeof stackalloc static switch this throw try typeof unchecked unsafe using virtual volatile while yield'
@@ -245,7 +245,7 @@ function csharp(Prism) {
       'type-expression': {
         // default(Foo), typeof(Foo<Bar>), sizeof(int)
         pattern: re(
-          /(\b(?:default|typeof|sizeof)\s*\(\s*)(?:[^()\s]|\s(?!\s*\))|<<0>>)*(?=\s*\))/
+          /(\b(?:default|typeof|sizeof)\s*\(\s*(?!\s))(?:[^()\s]|\s(?!\s)|<<0>>)*(?=\s*\))/
             .source,
           [nestedRound]
         ),

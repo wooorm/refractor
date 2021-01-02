@@ -7,7 +7,7 @@ function gedcom(Prism) {
   Prism.languages.gedcom = {
     'line-value': {
       // Preceded by level, optional pointer, and tag
-      pattern: /(^\s*\d+ +(?:@\w[\w!"$%&'()*+,\-./:;<=>?[\\\]^`{|}~\x80-\xfe #]*@ +)?\w+ +).+/m,
+      pattern: /(^\s*\d+ +(?:@\w[\w!"$%&'()*+,\-./:;<=>?[\\\]^`{|}~\x80-\xfe #]*@ +)?\w+ ).+/m,
       lookbehind: true,
       inside: {
         pointer: {

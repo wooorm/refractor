@@ -10,7 +10,7 @@ function diff(Prism) {
         // Match all kinds of coord lines (prefixed by "+++", "---" or "***").
         /^(?:\*{3}|-{3}|\+{3}).*$/m, // Match "@@ ... @@" coord lines in unified diff.
         /^@@.*@@$/m, // Match coord lines in normal diff (starts with a number).
-        /^\d+.*$/m
+        /^\d.*$/m
       ] // deleted, inserted, unchanged, diff
     }
     /**

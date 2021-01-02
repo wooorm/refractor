@@ -26,7 +26,7 @@ function ftl(Prism) {
         },
         {
           pattern: RegExp(
-            /("|')(?:(?!\1|\$\{)[^\\]|\\.|\$\{(?:<expr>)*?\})*\1/.source.replace(
+            /("|')(?:(?!\1|\$\{)[^\\]|\\.|\$\{(?:(?!\})(?:<expr>))*\})*\1/.source.replace(
               /<expr>/g,
               function () {
                 return FTL_EXPR
@@ -37,7 +37,7 @@ function ftl(Prism) {
           inside: {
             interpolation: {
               pattern: RegExp(
-                /((?:^|[^\\])(?:\\\\)*)\$\{(?:<expr>)*?\}/.source.replace(
+                /((?:^|[^\\])(?:\\\\)*)\$\{(?:(?!\})(?:<expr>))*\}/.source.replace(
                   /<expr>/g,
                   function () {
                     return FTL_EXPR
@@ -85,7 +85,7 @@ function ftl(Prism) {
           },
           punctuation: /^<\/?|\/?>$/,
           content: {
-            pattern: /[\s\S]*\S[\s\S]*/,
+            pattern: /\s*\S[\s\S]*/,
             alias: 'ftl',
             inside: ftl
           }
@@ -96,7 +96,7 @@ function ftl(Prism) {
         inside: {
           punctuation: /^\$\{|\}$/,
           content: {
-            pattern: /[\s\S]*\S[\s\S]*/,
+            pattern: /\s*\S[\s\S]*/,
             alias: 'ftl',
             inside: ftl
           }

@@ -37,7 +37,7 @@ function antlr4(Prism) {
       }
     },
     command: {
-      pattern: /(->\s*)(?:\s*(?:,\s*)?\b[a-z]\w*(?:\s*\([^()\r\n]*\))?)+(?=\s*;)/i,
+      pattern: /(->\s*(?!\s))(?:\s*(?:,\s*)?\b[a-z]\w*(?:\s*\([^()\r\n]*\))?)+(?=\s*;)/i,
       lookbehind: true,
       inside: {
         function: /\b\w+(?=\s*(?:[,(]|$))/,

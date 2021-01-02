@@ -10,7 +10,7 @@ function scss(Prism) {
       lookbehind: true
     },
     atrule: {
-      pattern: /@[\w-]+(?:\([^()]+\)|[^(])*?(?=\s+[{;])/,
+      pattern: /@[\w-](?:\([^()]+\)|[^()\s]|\s+(?!\s))*?(?=\s+[{;])/,
       inside: {
         rule: /@[\w-]+/ // See rest below
       }
@@ -26,7 +26,7 @@ function scss(Prism) {
     // this one was hard to do, so please be careful if you edit this one :)
     selector: {
       // Initial look-ahead is used to prevent matching of blank selectors
-      pattern: /(?=\S)[^@;{}()]?(?:[^@;{}()]|#\{\$[-\w]+\})+(?=\s*\{(?:\}|\s|[^}]+[:{][^}]+))/m,
+      pattern: /(?=\S)[^@;{}()]?(?:[^@;{}()\s]|\s+(?!\s)|#\{\$[-\w]+\})+(?=\s*\{(?:\}|\s|[^}][^:{}]*[:{][^}]+))/m,
       inside: {
         parent: {
           pattern: /&/,
@@ -37,7 +37,7 @@ function scss(Prism) {
       }
     },
     property: {
-      pattern: /(?:[\w-]|\$[-\w]+|#\{\$[-\w]+\})+(?=\s*:)/,
+      pattern: /(?:[-\w]|\$[-\w]|#\{\$[-\w]+\})+(?=\s*:)/,
       inside: {
         variable: /\$[-\w]+|#\{\$[-\w]+\}/
       }
@@ -45,7 +45,7 @@ function scss(Prism) {
   })
   Prism.languages.insertBefore('scss', 'atrule', {
     keyword: [
-      /@(?:if|else(?: if)?|for|each|while|import|extend|debug|warn|mixin|include|function|return|content)/i,
+      /@(?:if|else(?: if)?|forward|for|each|while|import|use|extend|debug|warn|mixin|include|function|return|content)\b/i,
       {
         pattern: /( +)(?:from|through)(?= )/,
         lookbehind: true
@@ -57,6 +57,10 @@ function scss(Prism) {
     variable: /\$[-\w]+|#\{\$[-\w]+\}/
   })
   Prism.languages.insertBefore('scss', 'function', {
+    'module-modifier': {
+      pattern: /\b(?:as|with|show|hide)\b/i,
+      alias: 'keyword'
+    },
     placeholder: {
       pattern: /%[-\w]+/,
       alias: 'selector'

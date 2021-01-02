@@ -8,7 +8,7 @@ function monkey(Prism) {
     string: /"[^"\r\n]*"/,
     comment: [
       {
-        pattern: /^#Rem\s+[\s\S]*?^#End/im,
+        pattern: /^#Rem\s[\s\S]*?^#End/im,
         greedy: true
       },
       {

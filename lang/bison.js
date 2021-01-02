@@ -11,7 +11,7 @@ function bison(Prism) {
       // This should match all the beginning of the file
       // including the prologue(s), the bison declarations and
       // the grammar rules.
-      pattern: /^[\s\S]*?%%[\s\S]*?%%/,
+      pattern: /^(?:[^%]|%(?!%))*%%[\s\S]*?%%/,
       inside: {
         c: {
           // Allow for one level of nested braces

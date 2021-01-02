@@ -37,7 +37,7 @@ function solutionFile(Prism) {
         alias: 'keyword'
       },
       property: {
-        pattern: /^([ \t]*)[^\r\n"#=()]*[^\s"#=()](?=\s*=)/m,
+        pattern: /^([ \t]*)(?!\s)[^\r\n"#=()]*[^\s"#=()](?=\s*=)/m,
         lookbehind: true,
         inside: {
           guid: guid

@@ -20,14 +20,14 @@ A comment before a mixin usage prevents the latter to be properly highlighted.
       }
     ],
     atrule: {
-      pattern: /@[\w-]+?(?:\((?:[^(){}]|\([^(){}]*\))*\)|[^(){};])*?(?=\s*\{)/,
+      pattern: /@[\w-](?:\((?:[^(){}]|\([^(){}]*\))*\)|[^(){};\s]|\s+(?!\s))*?(?=\s*\{)/,
       inside: {
         punctuation: /[:()]/
       }
     },
     // selectors and mixins are considered the same
     selector: {
-      pattern: /(?:@\{[\w-]+\}|[^{};\s@])(?:@\{[\w-]+\}|\((?:[^(){}]|\([^(){}]*\))*\)|[^(){};@])*?(?=\s*\{)/,
+      pattern: /(?:@\{[\w-]+\}|[^{};\s@])(?:@\{[\w-]+\}|\((?:[^(){}]|\([^(){}]*\))*\)|[^(){};@\s]|\s+(?!\s))*?(?=\s*\{)/,
       inside: {
         // mixin parameters
         variable: /@+[\w-]+/
@@ -48,7 +48,7 @@ A comment before a mixin usage prevents the latter to be properly highlighted.
       /@@?[\w-]+/
     ],
     'mixin-usage': {
-      pattern: /([{;]\s*)[.#](?!\d)[\w-]+.*?(?=[(;])/,
+      pattern: /([{;]\s*)[.#](?!\d)[\w-].*?(?=[(;])/,
       lookbehind: true,
       alias: 'function'
     }

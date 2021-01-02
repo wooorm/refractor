@@ -21,7 +21,7 @@ function pcaxis(Prism) {
           }
         },
         'sub-key': {
-          pattern: /^(\s*)[\s\S]+/,
+          pattern: /^(\s*)\S[\s\S]*/,
           lookbehind: true,
           inside: {
             parameter: {

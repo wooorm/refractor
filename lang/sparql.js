@@ -6,11 +6,11 @@ sparql.aliases = ['rq']
 function sparql(Prism) {
   Prism.register(refractorTurtle)
   Prism.languages.sparql = Prism.languages.extend('turtle', {
+    boolean: /\b(?:true|false)\b/i,
     variable: {
       pattern: /[?$]\w+/,
       greedy: true
-    },
-    boolean: /\b(?:true|false)\b/i
+    }
   })
   Prism.languages.insertBefore('sparql', 'punctuation', {
     keyword: [

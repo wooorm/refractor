@@ -17,11 +17,11 @@ function elm(Prism) {
         greedy: true
       },
       {
-        pattern: /"(?:[^\\"\r\n]|\\(?:[abfnrtv\\"]|\d+|x[0-9a-fA-F]+))*"/,
+        pattern: /"(?:[^\\"\r\n]|\\.)*"/,
         greedy: true
       }
     ],
-    import_statement: {
+    'import-statement': {
       // The imported or hidden names are not included in this import
       // statement. This is because we want to highlight those exactly like
       // we do for the names in the program.

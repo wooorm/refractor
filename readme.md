@@ -12,7 +12,7 @@ Perfect for [React][], [VDOM][], and others.
 <!--count start-->
 
 `refractor` is built to work with all syntaxes supported by [Prism][],
-that’s [234 languages][names] (as of [`prism@1.22.0`][prismjs]) and all
+that’s [237 languages][names] (as of [`prism@1.23.0`][prismjs]) and all
 [themes][].
 
 <!--count end-->
@@ -329,6 +329,7 @@ syntaxes are made to work with global variables and are not requirable.
 *   [ ] [`al`](https://github.com/wooorm/refractor/blob/main/lang/al.js)
 *   [ ] [`antlr4`](https://github.com/wooorm/refractor/blob/main/lang/antlr4.js) — alias: `g4`
 *   [ ] [`apacheconf`](https://github.com/wooorm/refractor/blob/main/lang/apacheconf.js)
+*   [ ] [`apex`](https://github.com/wooorm/refractor/blob/main/lang/apex.js)
 *   [ ] [`apl`](https://github.com/wooorm/refractor/blob/main/lang/apl.js)
 *   [ ] [`applescript`](https://github.com/wooorm/refractor/blob/main/lang/applescript.js)
 *   [ ] [`aql`](https://github.com/wooorm/refractor/blob/main/lang/aql.js)
@@ -364,6 +365,7 @@ syntaxes are made to work with global variables and are not requirable.
 *   [ ] [`cypher`](https://github.com/wooorm/refractor/blob/main/lang/cypher.js)
 *   [ ] [`d`](https://github.com/wooorm/refractor/blob/main/lang/d.js)
 *   [ ] [`dart`](https://github.com/wooorm/refractor/blob/main/lang/dart.js)
+*   [ ] [`dataweave`](https://github.com/wooorm/refractor/blob/main/lang/dataweave.js)
 *   [ ] [`dax`](https://github.com/wooorm/refractor/blob/main/lang/dax.js)
 *   [ ] [`dhall`](https://github.com/wooorm/refractor/blob/main/lang/dhall.js)
 *   [ ] [`diff`](https://github.com/wooorm/refractor/blob/main/lang/diff.js)
@@ -478,6 +480,7 @@ syntaxes are made to work with global variables and are not requirable.
 *   [ ] [`powershell`](https://github.com/wooorm/refractor/blob/main/lang/powershell.js)
 *   [ ] [`processing`](https://github.com/wooorm/refractor/blob/main/lang/processing.js)
 *   [ ] [`prolog`](https://github.com/wooorm/refractor/blob/main/lang/prolog.js)
+*   [ ] [`promql`](https://github.com/wooorm/refractor/blob/main/lang/promql.js)
 *   [ ] [`properties`](https://github.com/wooorm/refractor/blob/main/lang/properties.js)
 *   [ ] [`protobuf`](https://github.com/wooorm/refractor/blob/main/lang/protobuf.js)
 *   [ ] [`pug`](https://github.com/wooorm/refractor/blob/main/lang/pug.js)

@@ -49,7 +49,7 @@ function aspnet(Prism) {
     Prism.languages.javascript ? 'script' : 'tag',
     {
       'asp-script': {
-        pattern: /(<script(?=.*runat=['"]?server['"]?)[\s\S]*?>)[\s\S]*?(?=<\/script>)/i,
+        pattern: /(<script(?=.*runat=['"]?server['"]?)[^>]*>)[\s\S]*?(?=<\/script>)/i,
         lookbehind: true,
         alias: ['asp', 'script'],
         inside: Prism.languages.csharp || {}

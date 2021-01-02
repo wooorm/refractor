@@ -57,7 +57,11 @@ function coffeescript(Prism) {
             pattern: /^`|`$/,
             alias: 'punctuation'
           },
-          rest: Prism.languages.javascript
+          script: {
+            pattern: /[\s\S]+/,
+            alias: 'language-javascript',
+            inside: Prism.languages.javascript
+          }
         }
       },
       // Block strings

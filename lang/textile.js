@@ -69,7 +69,7 @@ function textile(Prism) {
           // # List item
           // * List item
           list: {
-            pattern: withModifier(/^[*#]+<MOD>*\s+.+/.source, 'm'),
+            pattern: withModifier(/^[*#]+<MOD>*\s+\S.*/.source, 'm'),
             inside: {
               modifier: {
                 pattern: withModifier(/(^[*#]+)<MOD>+/.source),
@@ -84,7 +84,7 @@ function textile(Prism) {
             // Modifiers can be applied to the row: {color:red}.|1|2|3|
             // or the cell: |{color:red}.1|2|3|
             pattern: withModifier(
-              /^(?:(?:<MOD>|<PAR>|[<>=^~])+\.\s*)?(?:\|(?:(?:<MOD>|<PAR>|[<>=^~_]|[\\/]\d+)+\.)?[^|]*)+\|/
+              /^(?:(?:<MOD>|<PAR>|[<>=^~])+\.\s*)?(?:\|(?:(?:<MOD>|<PAR>|[<>=^~_]|[\\/]\d+)+\.|(?!(?:<MOD>|<PAR>|[<>=^~_]|[\\/]\d+)+\.))[^|]*)+\|/
                 .source,
               'm'
             ),
@@ -199,13 +199,13 @@ function textile(Prism) {
           // !image.jpg(Title)!:http://example.com
           image: {
             pattern: withModifier(
-              /!(?:<MOD>|<PAR>|[<>=])*[^!\s()]+(?:\([^)]+\))?!(?::.+?(?=[^\w/]?(?:\s|$)))?/
+              /!(?:<MOD>|<PAR>|[<>=])*(?![<>=])[^!\s()]+(?:\([^)]+\))?!(?::.+?(?=[^\w/]?(?:\s|$)))?/
                 .source
             ),
             inside: {
               source: {
                 pattern: withModifier(
-                  /(^!(?:<MOD>|<PAR>|[<>=])*)[^!\s()]+(?:\([^)]+\))?(?=!)/
+                  /(^!(?:<MOD>|<PAR>|[<>=])*)(?![<>=])[^!\s()]+(?:\([^)]+\))?(?=!)/
                     .source
                 ),
                 lookbehind: true,

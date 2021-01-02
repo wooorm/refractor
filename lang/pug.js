@@ -16,19 +16,19 @@ function pug(Prism) {
       // Multiline stuff should appear before the rest
       // This handles both single-line and multi-line comments
       comment: {
-        pattern: /(^([\t ]*))\/\/.*(?:(?:\r?\n|\r)\2[\t ]+.+)*/m,
+        pattern: /(^([\t ]*))\/\/.*(?:(?:\r?\n|\r)\2[\t ].+)*/m,
         lookbehind: true
       },
       // All the tag-related part is in lookbehind
       // so that it can be highlighted by the "tag" pattern
       'multiline-script': {
-        pattern: /(^([\t ]*)script\b.*\.[\t ]*)(?:(?:\r?\n|\r(?!\n))(?:\2[\t ]+.+|\s*?(?=\r?\n|\r)))+/m,
+        pattern: /(^([\t ]*)script\b.*\.[\t ]*)(?:(?:\r?\n|\r(?!\n))(?:\2[\t ].+|\s*?(?=\r?\n|\r)))+/m,
         lookbehind: true,
         inside: Prism.languages.javascript
       },
       // See at the end of the file for known filters
       filter: {
-        pattern: /(^([\t ]*)):.+(?:(?:\r?\n|\r(?!\n))(?:\2[\t ]+.+|\s*?(?=\r?\n|\r)))+/m,
+        pattern: /(^([\t ]*)):.+(?:(?:\r?\n|\r(?!\n))(?:\2[\t ].+|\s*?(?=\r?\n|\r)))+/m,
         lookbehind: true,
         inside: {
           'filter-name': {
@@ -38,7 +38,7 @@ function pug(Prism) {
         }
       },
       'multiline-plain-text': {
-        pattern: /(^([\t ]*)[\w\-#.]+\.[\t ]*)(?:(?:\r?\n|\r(?!\n))(?:\2[\t ]+.+|\s*?(?=\r?\n|\r)))+/m,
+        pattern: /(^([\t ]*)[\w\-#.]+\.[\t ]*)(?:(?:\r?\n|\r(?!\n))(?:\2[\t ].+|\s*?(?=\r?\n|\r)))+/m,
         lookbehind: true
       },
       markup: {
@@ -97,12 +97,12 @@ function pug(Prism) {
         }
       ],
       script: {
-        pattern: /(^[\t ]*script(?:(?:&[^(]+)?\([^)]+\))*[\t ]+).+/m,
+        pattern: /(^[\t ]*script(?:(?:&[^(]+)?\([^)]+\))*[\t ]).+/m,
         lookbehind: true,
         inside: Prism.languages.javascript
       },
       'plain-text': {
-        pattern: /(^[\t ]*(?!-)[\w\-#.]*[\w\-](?:(?:&[^(]+)?\([^)]+\))*\/?[\t ]+).+/m,
+        pattern: /(^[\t ]*(?!-)[\w\-#.]*[\w\-](?:(?:&[^(]+)?\([^)]+\))*\/?[\t ]).+/m,
         lookbehind: true
       },
       tag: {
@@ -118,7 +118,7 @@ function pug(Prism) {
               pattern: /\([^)]+\)/,
               inside: {
                 'attr-value': {
-                  pattern: /(=\s*)(?:\{[^}]*\}|[^,)\r\n]+)/,
+                  pattern: /(=\s*(?!\s))(?:\{[^}]*\}|[^,)\r\n]+)/,
                   lookbehind: true,
                   inside: Prism.languages.javascript
                 },
@@ -141,7 +141,7 @@ function pug(Prism) {
       ],
       punctuation: /[.\-!=|]+/
     }
-    var filter_pattern = /(^([\t ]*)):{{filter_name}}(?:(?:\r?\n|\r(?!\n))(?:\2[\t ]+.+|\s*?(?=\r?\n|\r)))+/
+    var filter_pattern = /(^([\t ]*)):{{filter_name}}(?:(?:\r?\n|\r(?!\n))(?:\2[\t ].+|\s*?(?=\r?\n|\r)))+/
       .source // Non exhaustive list of available filters and associated languages
     var filters = [
       {

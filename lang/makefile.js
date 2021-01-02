@@ -17,12 +17,12 @@ function makefile(Prism) {
     builtin: /\.[A-Z][^:#=\s]+(?=\s*:(?!=))/,
     // Targets
     symbol: {
-      pattern: /^[^:=\r\n]+(?=\s*:(?!=))/m,
+      pattern: /^(?:[^:=\s]|[ \t]+(?![\s:]))+(?=\s*:(?!=))/m,
       inside: {
-        variable: /\$+(?:[^(){}:#=\s]+|(?=[({]))/
+        variable: /\$+(?:(?!\$)[^(){}:#=\s]+|(?=[({]))/
       }
     },
-    variable: /\$+(?:[^(){}:#=\s]+|\([@*%<^+?][DF]\)|(?=[({]))/,
+    variable: /\$+(?:(?!\$)[^(){}:#=\s]+|\([@*%<^+?][DF]\)|(?=[({]))/,
     keyword: [
       // Directives
       /-include\b|\b(?:define|else|endef|endif|export|ifn?def|ifn?eq|include|override|private|sinclude|undefine|unexport|vpath)\b/, // Functions

@@ -255,7 +255,7 @@ function mongodb(Prism) {
     Prism.languages.mongodb = Prism.languages.extend('javascript', {})
     Prism.languages.insertBefore('mongodb', 'string', {
       property: {
-        pattern: /(?:(["'])(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1|[_$a-zA-Z\xA0-\uFFFF][$\w\xA0-\uFFFF]*)(?=\s*:)/,
+        pattern: /(?:(["'])(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1|(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*)(?=\s*:)/,
         greedy: true,
         inside: {
           keyword: RegExp('^([\'"])?' + operatorsSource + '(?:\\1)?$')

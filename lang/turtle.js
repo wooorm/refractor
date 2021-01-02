@@ -43,7 +43,7 @@ function turtle(Prism) {
         }
       }
     },
-    number: /[+-]?\b\d+\.?\d*(?:e[+-]?\d+)?/i,
+    number: /[+-]?\b\d+(?:\.\d*)?(?:e[+-]?\d+)?/i,
     punctuation: /[{}.,;()[\]]|\^\^/,
     boolean: /\b(?:true|false)\b/,
     keyword: [/(?:\ba|@prefix|@base)\b|=/, /\b(?:graph|base|prefix)\b/i],

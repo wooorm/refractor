@@ -27,7 +27,7 @@ function qml(Prism) {
       },
       'javascript-function': {
         pattern: RegExp(
-          /((?:^|;)[ \t]*)function\s+[_$a-zA-Z\xA0-\uFFFF][$\w\xA0-\uFFFF]*\s*\(<js>*\)\s*\{<js>*\}/.source.replace(
+          /((?:^|;)[ \t]*)function\s+(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*\s*\(<js>*\)\s*\{<js>*\}/.source.replace(
             /<js>/g,
             function () {
               return jsExpr

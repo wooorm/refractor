@@ -12,7 +12,7 @@ function nix(Prism) {
       inside: {
         interpolation: {
           // The lookbehind ensures the ${} is not preceded by \ or ''
-          pattern: /(^|(?:^|(?!'').)[^\\])\$\{(?:[^}]|\{[^}]*\})*}/,
+          pattern: /(^|(?:^|(?!'').)[^\\])\$\{(?:[^{}]|\{[^}]*\})*\}/,
           lookbehind: true,
           inside: {
             antiquotation: {

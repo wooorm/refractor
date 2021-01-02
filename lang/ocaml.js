@@ -16,7 +16,7 @@ function ocaml(Prism) {
         greedy: true
       }
     ],
-    number: /\b(?:0x[\da-f][\da-f_]+|(?:0[bo])?\d[\d_]*\.?[\d_]*(?:e[+-]?[\d_]+)?)/i,
+    number: /\b(?:0x[\da-f][\da-f_]+|(?:0[bo])?\d[\d_]*(?:\.[\d_]*)?(?:e[+-]?[\d_]+)?)/i,
     directive: {
       pattern: /\B#\w+/,
       alias: 'important'
@@ -25,7 +25,7 @@ function ocaml(Prism) {
       pattern: /\B~\w+/,
       alias: 'function'
     },
-    type_variable: {
+    'type-variable': {
       pattern: /\B'\w+/,
       alias: 'function'
     },

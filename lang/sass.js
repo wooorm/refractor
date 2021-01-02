@@ -8,7 +8,7 @@ function sass(Prism) {
     Prism.languages.sass = Prism.languages.extend('css', {
       // Sass comments don't need to be closed, only indented
       comment: {
-        pattern: /^([ \t]*)\/[\/*].*(?:(?:\r?\n|\r)\1[ \t]+.+)*/m,
+        pattern: /^([ \t]*)\/[\/*].*(?:(?:\r?\n|\r)\1[ \t].+)*/m,
         lookbehind: true
       }
     })
@@ -43,7 +43,7 @@ function sass(Prism) {
       },
       // We want to consume the whole line
       'property-line': {
-        pattern: /^[ \t]*(?:[^:\s]+ *:.*|:[^:\s]+.*)/m,
+        pattern: /^[ \t]*(?:[^:\s]+ *:.*|:[^:\s].*)/m,
         inside: {
           property: [
             /[^:\s]+(?=\s*:)/,
@@ -64,7 +64,7 @@ function sass(Prism) {
     // what's left should be selectors
     Prism.languages.insertBefore('sass', 'punctuation', {
       selector: {
-        pattern: /([ \t]*)\S(?:,?[^,\r\n]+)*(?:,(?:\r?\n|\r)\1[ \t]+\S(?:,?[^,\r\n]+)*)*/,
+        pattern: /([ \t]*)\S(?:,[^,\r\n]+|[^,\r\n]*)(?:,[^,\r\n]+)*(?:,(?:\r?\n|\r)\1[ \t]+\S(?:,[^,\r\n]+|[^,\r\n]*)(?:,[^,\r\n]+)*)*/,
         lookbehind: true
       }
     })

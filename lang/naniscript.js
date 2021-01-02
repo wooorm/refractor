@@ -74,7 +74,7 @@ function naniscript(Prism) {
             alias: 'selector'
           },
           'command-params': {
-            pattern: /[\s\S]*\S[\s\S]*/,
+            pattern: /\s*\S[\s\S]*/,
             inside: params
           }
         }
@@ -93,7 +93,7 @@ function naniscript(Prism) {
             alias: 'selector'
           },
           'inline-command': {
-            pattern: /\[[\t ]*\w+[^\r\n\[\]]*\]/,
+            pattern: /\[[\t ]*\w[^\r\n\[\]]*\]/,
             greedy: true,
             alias: 'function',
             inside: {

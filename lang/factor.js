@@ -85,7 +85,7 @@ The values of MMMMMMMMMMMMM and EEEE map directly to the mantissa and exponent f
       ],
       // R/ regexp?\/\\/
       regexp: {
-        pattern: /(^|\s)R\/\s+(?:\\\S|[^\\/])*\/(?:[idmsr]*|[idmsr]+-[idmsr]+)(?=\s|$)/,
+        pattern: /(^|\s)R\/\s(?:\\\S|[^\\/])*\/(?:[idmsr]*|[idmsr]+-[idmsr]+)(?=\s|$)/,
         lookbehind: true,
         alias: 'number',
         inside: {

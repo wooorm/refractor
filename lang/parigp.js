@@ -46,10 +46,10 @@ function parigp(Prism) {
         .join('|')
       return RegExp('\\b(?:' + keywords + ')\\b')
     })(),
-    function: /\w[\w ]*?(?= *\()/,
+    function: /\w(?:[\w ]*\w)?(?= *\()/,
     number: {
       // The lookbehind and the negative lookahead prevent from breaking the .. operator
-      pattern: /((?:\. *\. *)?)(?:\b\d(?: *\d)*(?: *(?!\. *\.)\.(?: *\d)*)?|\. *\d(?: *\d)*)(?: *e *[+-]? *\d(?: *\d)*)?/i,
+      pattern: /((?:\. *\. *)?)(?:\b\d(?: *\d)*(?: *(?!\. *\.)\.(?: *\d)*)?|\. *\d(?: *\d)*)(?: *e *(?:[+-] *)?\d(?: *\d)*)?/i,
       lookbehind: true
     },
     operator: /\. *\.|[*\/!](?: *=)?|%(?: *=|(?: *#)?(?: *')*)?|\+(?: *[+=])?|-(?: *[-=>])?|<(?:(?: *<)?(?: *=)?| *>)?|>(?: *>)?(?: *=)?|=(?: *=){0,2}|\\(?: *\/)?(?: *=)?|&(?: *&)?|\| *\||['#~^]/,

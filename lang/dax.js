@@ -27,7 +27,7 @@ function dax(Prism) {
       pattern: /\b(?:TRUE|FALSE|NULL)\b/i,
       alias: 'constant'
     },
-    number: /\b\d+\.?\d*|\B\.\d+\b/i,
+    number: /\b\d+(?:\.\d*)?|\B\.\d+\b/i,
     operator: /:=|[-+*\/=^]|&&?|\|\||<(?:=>?|<|>)?|>[>=]?|\b(?:IN|NOT)\b/i,
     punctuation: /[;\[\](){}`,.]/
   }

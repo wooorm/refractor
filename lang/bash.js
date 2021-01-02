@@ -38,7 +38,7 @@ function bash(Prism) {
               },
               /^\$\(\(/
             ],
-            number: /\b0x[\dA-Fa-f]+\b|(?:\b\d+\.?\d*|\B\.\d+)(?:[Ee]-?\d+)?/,
+            number: /\b0x[\dA-Fa-f]+\b|(?:\b\d+(?:\.\d*)?|\B\.\d+)(?:[Ee]-?\d+)?/,
             // Operators according to https://www.gnu.org/software/bash/manual/bashref.html#Shell-Arithmetic
             operator: /--?|-=|\+\+?|\+=|!=?|~|\*\*?|\*=|\/=?|%=?|<<=?|>>=?|<=?|>=?|==?|&&?|&=|\^=?|\|\|?|\|=|\?|:/,
             // If there is no $ sign at the beginning highlight (( and )) as punctuation
@@ -134,7 +134,7 @@ function bash(Prism) {
           }
         }, // “Normal” string
         {
-          pattern: /(^|[^\\](?:\\\\)*)(["'])(?:\\[\s\S]|\$\([^)]+\)|`[^`]+`|(?!\2)[^\\])*\2/,
+          pattern: /(^|[^\\](?:\\\\)*)(["'])(?:\\[\s\S]|\$\([^)]+\)|\$(?!\()|`[^`]+`|(?!\2)[^\\`$])*\2/,
           lookbehind: true,
           greedy: true,
           inside: insideString

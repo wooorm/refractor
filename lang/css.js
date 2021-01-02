@@ -9,11 +9,11 @@ function css(Prism) {
     Prism.languages.css = {
       comment: /\/\*[\s\S]*?\*\//,
       atrule: {
-        pattern: /@[\w-]+[\s\S]*?(?:;|(?=\s*\{))/,
+        pattern: /@[\w-](?:[^;{\s]|\s+(?![\s{]))*(?:;|(?=\s*\{))/,
         inside: {
           rule: /^@[\w-]+/,
           'selector-function-argument': {
-            pattern: /(\bselector\s*\((?!\s*\))\s*)(?:[^()]|\((?:[^()]|\([^()]*\))*\))+?(?=\s*\))/,
+            pattern: /(\bselector\s*\(\s*(?![\s)]))(?:[^()\s]|\s+(?![\s)])|\((?:[^()]|\([^()]*\))*\))+(?=\s*\))/,
             lookbehind: true,
             alias: 'selector'
           },
@@ -44,13 +44,15 @@ function css(Prism) {
         }
       },
       selector: RegExp(
-        '[^{}\\s](?:[^{};"\']|' + string.source + ')*?(?=\\s*\\{)'
+        '[^{}\\s](?:[^{};"\'\\s]|\\s+(?![\\s{])|' +
+          string.source +
+          ')*(?=\\s*\\{)'
       ),
       string: {
         pattern: string,
         greedy: true
       },
-      property: /[-_a-z\xA0-\uFFFF][-\w\xA0-\uFFFF]*(?=\s*:)/i,
+      property: /(?!\s)[-_a-z\xA0-\uFFFF](?:(?!\s)[-\w\xA0-\uFFFF])*(?=\s*:)/i,
       important: /!important\b/i,
       function: /[-a-z0-9]+(?=\()/i,
       punctuation: /[(){};:,]/
@@ -64,19 +66,29 @@ function css(Prism) {
         'attr-value',
         {
           'style-attr': {
-            pattern: /\s*style=("|')(?:\\[\s\S]|(?!\1)[^\\])*\1/i,
+            pattern: /(^|["'\s])style\s*=\s*(?:"[^"]*"|'[^']*')/i,
+            lookbehind: true,
             inside: {
-              'attr-name': {
-                pattern: /^\s*style/i,
-                inside: markup.tag.inside
-              },
-              punctuation: /^\s*=\s*['"]|['"]\s*$/,
               'attr-value': {
-                pattern: /.+/i,
-                inside: Prism.languages.css
-              }
-            },
-            alias: 'language-css'
+                pattern: /=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+)/,
+                inside: {
+                  style: {
+                    pattern: /(["'])[\s\S]+(?=["']$)/,
+                    lookbehind: true,
+                    alias: 'language-css',
+                    inside: Prism.languages.css
+                  },
+                  punctuation: [
+                    {
+                      pattern: /^=/,
+                      alias: 'attr-equals'
+                    },
+                    /"|'/
+                  ]
+                }
+              },
+              'attr-name': /^style/i
+            }
           }
         },
         markup.tag

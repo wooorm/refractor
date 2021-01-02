@@ -9,7 +9,7 @@ function puppet(Prism) {
       heredoc: [
         // Matches the content of a quoted heredoc string (subject to interpolation)
         {
-          pattern: /(@\("([^"\r\n\/):]+)"(?:\/[nrts$uL]*)?\).*(?:\r?\n|\r))(?:.*(?:\r?\n|\r))*?[ \t]*\|?[ \t]*-?[ \t]*\2/,
+          pattern: /(@\("([^"\r\n\/):]+)"(?:\/[nrts$uL]*)?\).*(?:\r?\n|\r))(?:.*(?:\r?\n|\r(?!\n)))*?[ \t]*(?:\|[ \t]*)?(?:-[ \t]*)?\2/,
           lookbehind: true,
           alias: 'string',
           inside: {
@@ -18,7 +18,7 @@ function puppet(Prism) {
           }
         }, // Matches the content of an unquoted heredoc string (no interpolation)
         {
-          pattern: /(@\(([^"\r\n\/):]+)(?:\/[nrts$uL]*)?\).*(?:\r?\n|\r))(?:.*(?:\r?\n|\r))*?[ \t]*\|?[ \t]*-?[ \t]*\2/,
+          pattern: /(@\(([^"\r\n\/):]+)(?:\/[nrts$uL]*)?\).*(?:\r?\n|\r))(?:.*(?:\r?\n|\r(?!\n)))*?[ \t]*(?:\|[ \t]*)?(?:-[ \t]*)?\2/,
           lookbehind: true,
           greedy: true,
           alias: 'string',
@@ -66,7 +66,7 @@ function puppet(Prism) {
       },
       string: {
         // Allow for one nested level of double quotes inside interpolation
-        pattern: /(["'])(?:\$\{(?:[^'"}]|(["'])(?:(?!\2)[^\\]|\\[\s\S])*\2)+\}|(?!\1)[^\\]|\\[\s\S])*\1/,
+        pattern: /(["'])(?:\$\{(?:[^'"}]|(["'])(?:(?!\2)[^\\]|\\[\s\S])*\2)+\}|\$(?!\{)|(?!\1)[^\\$]|\\[\s\S])*\1/,
         greedy: true,
         inside: {
           'double-quoted': {
