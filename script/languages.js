@@ -21,8 +21,8 @@ var prefix = 'refractor-'
 
 fs.readdir(root, ondir)
 
-function ondir(err, paths) {
-  bail(err)
+function ondir(error, paths) {
+  bail(error)
 
   paths = paths
     .filter(not(hidden))
@@ -34,8 +34,8 @@ function ondir(err, paths) {
   async.map(paths, generate, done)
 }
 
-function done(err, results) {
-  bail(err)
+function done(error, results) {
+  bail(error)
   console.log(chalk.green('✓') + ' wrote ' + results.length + ' languages')
 }
 
@@ -45,13 +45,13 @@ function generate(name, callback) {
 
   fs.readFile(path.join(root, 'prism-' + name + '.js'), 'utf8', onread)
 
-  function onread(err, doc) {
+  function onread(error, doc) {
     var deps
     var anyAlias
     var aliases
 
-    if (err) {
-      return callback(err)
+    if (error) {
+      return callback(error)
     }
 
     deps = componentsJson.languages[name].require || []

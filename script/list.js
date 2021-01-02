@@ -9,8 +9,8 @@ var bundled = require('./bundled')
 
 fs.readdir('lang', ondir)
 
-function ondir(err, paths) {
-  bail(err)
+function ondir(error, paths) {
+  bail(error)
 
   paths = paths.filter(not(hidden)).filter(not(included)).map(load)
 
@@ -29,8 +29,8 @@ function ondir(err, paths) {
     done
   )
 
-  function done(err) {
-    bail(err)
+  function done(error) {
+    bail(error)
     console.log(
       chalk.green('✓') + ' wrote `index.js` for ' + paths.length + ' languages'
     )

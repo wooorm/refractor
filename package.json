@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
-    "alpha-sort": "^3.0.0",
+    "alpha-sort": "^4.0.0",
     "arr-diff": "^4.0.0",
     "async": "^3.0.0",
     "bail": "^1.0.0",
@@ -61,7 +61,7 @@
     "trim-lines": "^1.0.0",
     "unist-builder": "^2.0.0",
     "unist-util-remove-position": "^3.0.0",
-    "xo": "^0.36.0"
+    "xo": "^0.37.0"
   },
   "scripts": {
     "generate": "node script/languages && node script/list",
@@ -94,6 +94,7 @@
     "prettier": true,
     "esnext": false,
     "rules": {
+      "unicorn/no-array-callback-reference": "off",
       "unicorn/no-fn-reference-in-iterator": "off",
       "unicorn/prefer-includes": "off",
       "unicorn/prefer-optional-catch-binding": "off",

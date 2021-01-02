@@ -5,7 +5,7 @@ var zone = require('mdast-zone')
 var u = require('unist-builder')
 var not = require('not')
 var hidden = require('is-hidden')
-var alphaSort = require('alpha-sort')
+var alphaSort = require('alpha-sort')()
 var bundled = require('./bundled')
 
 module.exports = syntaxes
@@ -72,5 +72,5 @@ function sort(a, b) {
     return 1
   }
 
-  return alphaSort.ascending(a, b)
+  return alphaSort(a, b)
 }
