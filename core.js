@@ -2,16 +2,20 @@
 
 /* global window, self */
 
-var restore = capture()
-
 // istanbul ignore next - Don't allow Prism to run on page load in browser or
 // to start messaging from workers.
 var ctx =
-  typeof window === 'undefined'
-    ? typeof self === 'undefined'
-      ? {}
-      : self
-    : window
+  typeof globalThis === 'object'
+    ? globalThis
+    : typeof self === 'object'
+    ? self
+    : typeof window === 'object'
+    ? window
+    : typeof global === 'object'
+    ? global
+    : {}
+
+var restore = capture()
 
 ctx.Prism = {manual: true, disableWorkerMessageHandler: true}
 
@@ -218,18 +222,18 @@ function attributes(attrs) {
 }
 
 function capture() {
-  var defined = 'Prism' in global
+  var defined = 'Prism' in ctx
   /* istanbul ignore next */
-  var current = defined ? global.Prism : undefined
+  var current = defined ? ctx.Prism : undefined
 
   return restore
 
   function restore() {
     /* istanbul ignore else - Clean leaks after Prism. */
     if (defined) {
-      global.Prism = current
+      ctx.Prism = current
     } else {
-      delete global.Prism
+      delete ctx.Prism
     }
 
     defined = undefined
