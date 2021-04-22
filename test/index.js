@@ -5,16 +5,12 @@ var path = require('path')
 var Prism = require('prismjs')
 var loadLanguages = require('prismjs/components/index.js')
 var test = require('tape')
-var not = require('not')
 var hidden = require('is-hidden')
 var rehype = require('rehype')
 var remove = require('unist-util-remove-position')
 var refractor = require('..')
 
 loadLanguages()
-
-var read = fs.readFileSync
-var join = path.join
 
 test('.highlight(value, language)', function (t) {
   t.throws(
@@ -187,7 +183,9 @@ test('.registered(language)', function (t) {
 test('.alias(name, alias)', function (t) {
   var languages = refractor.languages
   var input = fs
-    .readFileSync(join('test', 'fixtures', 'markdown-sublanguage', 'input.txt'))
+    .readFileSync(
+      path.join('test', 'fixtures', 'markdown-sublanguage', 'input.txt')
+    )
     .toString()
     .trim()
   var expected = refractor.highlight(input, 'markdown').value
@@ -240,38 +238,43 @@ test('.alias(name, alias)', function (t) {
 test('fixtures', function (t) {
   var root = path.join(__dirname, 'fixtures')
   var processor = rehype().use({settings: {fragment: true}})
+  var files = fs.readdirSync(root)
+  var index = -1
+  var name
+  var input
+  var lang
+  var actual
+  var expected
 
-  fs.readdirSync(root).filter(not(hidden)).forEach(subtest)
+  while (++index < files.length) {
+    name = files[index]
 
-  function subtest(name) {
-    var input = read(join(root, name, 'input.txt'), 'utf8').trim()
-    var lang = name.split('-')[0]
-    var grammar = refractor.languages[lang]
-    var actual = processor
-      .processSync(Prism.highlight(input, grammar, lang))
+    /* istanbul ignore next */
+    if (hidden(name)) continue
+
+    lang = name.split('-')[0]
+    input = String(fs.readFileSync(path.join(root, name, 'input.txt'))).trim()
+    actual = processor
+      .processSync(Prism.highlight(input, refractor.languages[lang], lang))
       .toString()
-    var tree = refractor.highlight(input, lang)
-    var expected
 
     /* istanbul ignore next - useful when generating fixtures. */
     try {
-      expected = read(join(root, name, 'output.html'), 'utf8').trim()
+      expected = String(
+        fs.readFileSync(path.join(root, name, 'output.html'))
+      ).trim()
     } catch (_) {
       expected = actual
-      fs.writeFileSync(join(root, name, 'output.html'), expected + '\n')
+      fs.writeFileSync(path.join(root, name, 'output.html'), expected + '\n')
     }
 
-    t.test(name, function (st) {
-      st.plan(2)
+    t.equal(actual, expected, name + ' — prism should compile to the fixture')
 
-      st.equal(actual, expected, 'Prism should compile to the fixture')
-
-      st.deepEqual(
-        tree,
-        remove(processor.parse(expected), true).children,
-        'Refractor should create a tree matching the fixture'
-      )
-    })
+    t.deepEqual(
+      refractor.highlight(input, lang),
+      remove(processor.parse(expected), true).children,
+      name + ' — refractor should create a tree matching the fixture'
+    )
   }
 
   t.end()

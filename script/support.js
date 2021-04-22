@@ -39,16 +39,18 @@ function items() {
         [u('inlineCode', grammar.displayName)]
       )
     ]
+    var index = -1
 
     if (grammar.aliases.length > 0) {
       content.push(u('text', ' — alias: '))
-      grammar.aliases.forEach(function (alias, index) {
+
+      while (++index < grammar.aliases.length) {
         if (index !== 0) {
           content.push(u('text', ', '))
         }
 
-        content.push(u('inlineCode', alias))
-      })
+        content.push(u('inlineCode', grammar.aliases[index]))
+      }
     }
 
     return u('listItem', {checked: included(fp)}, [u('paragraph', content)])
