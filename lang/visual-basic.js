@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = visualBasic
 visualBasic.displayName = 'visualBasic'
 visualBasic.aliases = []
-function visualBasic(Prism) {
+
+export default function visualBasic(Prism) {
   Prism.languages['visual-basic'] = {
     comment: {
       pattern: /(?:['‘’]|REM\b)(?:[^\r\n_]|_(?:\r\n?|\n)?)*/i,

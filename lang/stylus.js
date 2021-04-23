@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = stylus
 stylus.displayName = 'stylus'
 stylus.aliases = []
-function stylus(Prism) {
+
+export default function stylus(Prism) {
   ;(function (Prism) {
     var unit = {
       pattern: /(\b\d+)(?:%|[a-z]+)/,

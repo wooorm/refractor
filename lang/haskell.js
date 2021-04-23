@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = haskell
 haskell.displayName = 'haskell'
 haskell.aliases = ['hs']
-function haskell(Prism) {
+
+export default function haskell(Prism) {
   Prism.languages.haskell = {
     comment: {
       pattern: /(^|[^-!#$%*+=?&@|~.:<>^\\\/])(?:--(?:(?=.)[^-!#$%*+=?&@|~.:<>^\\\/].*|$)|{-[\s\S]*?-})/m,

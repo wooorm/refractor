@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = scheme
 scheme.displayName = 'scheme'
 scheme.aliases = []
-function scheme(Prism) {
+
+export default function scheme(Prism) {
   ;(function (Prism) {
     Prism.languages.scheme = {
       // this supports "normal" single-line comments:

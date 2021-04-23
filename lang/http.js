@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = http
 http.displayName = 'http'
 http.aliases = []
-function http(Prism) {
+
+export default function http(Prism) {
   ;(function (Prism) {
     Prism.languages.http = {
       'request-line': {

@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = ruby
 ruby.displayName = 'ruby'
 ruby.aliases = ['rb']
-function ruby(Prism) {
+
+export default function ruby(Prism) {
   /**
    * Original by Samuel Flores
    *

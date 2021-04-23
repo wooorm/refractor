@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = pug
 pug.displayName = 'pug'
 pug.aliases = []
-function pug(Prism) {
+
+export default function pug(Prism) {
   ;(function (Prism) {
     // TODO:
     // - Add CSS highlighting inside <style> tags

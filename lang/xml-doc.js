@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = xmlDoc
 xmlDoc.displayName = 'xmlDoc'
 xmlDoc.aliases = []
-function xmlDoc(Prism) {
+
+export default function xmlDoc(Prism) {
   ;(function (Prism) {
     /**
      * If the given language is present, it will insert the given doc comment grammar token into it.

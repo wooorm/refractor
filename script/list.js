@@ -1,29 +1,35 @@
-'use strict'
+import fs from 'fs'
+import path from 'path'
+import {bail} from 'bail'
+import chalk from 'chalk'
+import not from 'not'
+import {isHidden} from 'is-hidden'
+import {camelcase} from './camelcase.js'
 
-var fs = require('fs')
-var bail = require('bail')
-var chalk = require('chalk')
-var not = require('not')
-var hidden = require('is-hidden')
-var bundled = require('./bundled')
+var bundled = JSON.parse(
+  String(fs.readFileSync(path.join('script', 'bundled.json')))
+)
 
 fs.readdir('lang', ondir)
 
 function ondir(error, paths) {
   bail(error)
 
-  paths = paths.filter(not(hidden)).filter(not(included)).map(load)
+  var names = paths
+    .filter(not(isHidden))
+    .filter(not(included))
+    .map((d) => path.basename(d, path.extname(d)))
 
   fs.writeFile(
     'index.js',
     [
-      "'use strict';",
+      "import {refractor} from './core.js'",
+      ...names.map(
+        (lang) => 'import ' + camelcase(lang) + " from './lang/" + lang + ".js'"
+      ),
       '',
-      "var refractor = require('./core.js');",
-      '',
-      'module.exports = refractor;',
-      '',
-      paths.join('\n'),
+      'export {refractor}',
+      ...names.map((lang) => 'refractor.register(' + camelcase(lang) + ')'),
       ''
     ].join('\n'),
     done
@@ -32,15 +38,11 @@ function ondir(error, paths) {
   function done(error) {
     bail(error)
     console.log(
-      chalk.green('✓') + ' wrote `index.js` for ' + paths.length + ' languages'
+      chalk.green('✓') + ' wrote `index.js` for ' + names.length + ' languages'
     )
   }
 }
 
-function load(lang) {
-  return "refractor.register(require('./lang/" + lang + "'));"
-}
-
 function included(fp) {
-  return bundled.indexOf(fp) !== -1
+  return bundled.includes(fp)
 }

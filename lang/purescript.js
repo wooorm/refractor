@@ -1,9 +1,8 @@
-'use strict'
-var refractorHaskell = require('./haskell.js')
-module.exports = purescript
+import refractorHaskell from './haskell.js'
 purescript.displayName = 'purescript'
 purescript.aliases = ['purs']
-function purescript(Prism) {
+
+export default function purescript(Prism) {
   Prism.register(refractorHaskell)
   Prism.languages.purescript = Prism.languages.extend('haskell', {
     keyword: /\b(?:ado|case|class|data|derive|do|else|forall|if|in|infixl|infixr|instance|let|module|newtype|of|primitive|then|type|where)\b/,

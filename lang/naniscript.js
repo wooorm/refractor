@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = naniscript
 naniscript.displayName = 'naniscript'
 naniscript.aliases = []
-function naniscript(Prism) {
+
+export default function naniscript(Prism) {
   ;(function (Prism) {
     var expressionDef = /\{[^\r\n\[\]{}]*\}/
     var params = {

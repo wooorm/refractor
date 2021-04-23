@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = ebnf
 ebnf.displayName = 'ebnf'
 ebnf.aliases = []
-function ebnf(Prism) {
+
+export default function ebnf(Prism) {
   Prism.languages.ebnf = {
     comment: /\(\*[\s\S]*?\*\)/,
     string: {

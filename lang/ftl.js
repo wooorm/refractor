@@ -1,9 +1,8 @@
-'use strict'
-var refractorMarkupTemplating = require('./markup-templating.js')
-module.exports = ftl
+import refractorMarkupTemplating from './markup-templating.js'
 ftl.displayName = 'ftl'
 ftl.aliases = []
-function ftl(Prism) {
+
+export default function ftl(Prism) {
   Prism.register(refractorMarkupTemplating)
   ;(function (Prism) {
     // https://freemarker.apache.org/docs/dgui_template_exp.html

@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = diff
 diff.displayName = 'diff'
 diff.aliases = []
-function diff(Prism) {
+
+export default function diff(Prism) {
   ;(function (Prism) {
     Prism.languages.diff = {
       coord: [

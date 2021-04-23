@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = nsis
 nsis.displayName = 'nsis'
 nsis.aliases = []
-function nsis(Prism) {
+
+export default function nsis(Prism) {
   /**
    * Original by Jan T. Sott (http://github.com/idleberg)
    *

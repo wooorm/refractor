@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = cil
 cil.displayName = 'cil'
 cil.aliases = []
-function cil(Prism) {
+
+export default function cil(Prism) {
   Prism.languages.cil = {
     comment: /\/\/.*/,
     string: {

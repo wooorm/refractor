@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = jsstacktrace
 jsstacktrace.displayName = 'jsstacktrace'
 jsstacktrace.aliases = []
-function jsstacktrace(Prism) {
+
+export default function jsstacktrace(Prism) {
   Prism.languages.jsstacktrace = {
     'error-message': {
       pattern: /^\S.*/m,

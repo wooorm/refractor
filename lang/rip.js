@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = rip
 rip.displayName = 'rip'
 rip.aliases = []
-function rip(Prism) {
+
+export default function rip(Prism) {
   Prism.languages.rip = {
     comment: /#.*/,
     keyword: /(?:=>|->)|\b(?:class|if|else|switch|case|return|exit|try|catch|finally|raise)\b/,

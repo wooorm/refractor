@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = nix
 nix.displayName = 'nix'
 nix.aliases = []
-function nix(Prism) {
+
+export default function nix(Prism) {
   Prism.languages.nix = {
     comment: /\/\*[\s\S]*?\*\/|#.*/,
     string: {

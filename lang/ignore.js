@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = ignore
 ignore.displayName = 'ignore'
 ignore.aliases = []
-function ignore(Prism) {
+
+export default function ignore(Prism) {
   ;(function (Prism) {
     Prism.languages.ignore = {
       // https://git-scm.com/docs/gitignore

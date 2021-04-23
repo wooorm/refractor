@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = makefile
 makefile.displayName = 'makefile'
 makefile.aliases = []
-function makefile(Prism) {
+
+export default function makefile(Prism) {
   Prism.languages.makefile = {
     comment: {
       pattern: /(^|[^\\])#(?:\\(?:\r\n|[\s\S])|[^\\\r\n])*/,

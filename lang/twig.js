@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = twig
 twig.displayName = 'twig'
 twig.aliases = []
-function twig(Prism) {
+
+export default function twig(Prism) {
   Prism.languages.twig = {
     comment: /\{#[\s\S]*?#\}/,
     tag: {

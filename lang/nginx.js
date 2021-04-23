@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = nginx
 nginx.displayName = 'nginx'
 nginx.aliases = []
-function nginx(Prism) {
+
+export default function nginx(Prism) {
   Prism.languages.nginx = Prism.languages.extend('clike', {
     comment: {
       pattern: /(^|[^"{\\])#.*/,

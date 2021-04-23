@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = basic
 basic.displayName = 'basic'
 basic.aliases = []
-function basic(Prism) {
+
+export default function basic(Prism) {
   Prism.languages.basic = {
     comment: {
       pattern: /(?:!|REM\b).+/i,

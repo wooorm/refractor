@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = factor
 factor.displayName = 'factor'
 factor.aliases = []
-function factor(Prism) {
+
+export default function factor(Prism) {
   ;(function (Prism) {
     var comment_inside = {
       function: /\b(?:TODOS?|FIX(?:MES?)?|NOTES?|BUGS?|XX+|HACKS?|WARN(?:ING)?|\?{2,}|!{2,})\b/

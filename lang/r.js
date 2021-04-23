@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = r
 r.displayName = 'r'
 r.aliases = []
-function r(Prism) {
+
+export default function r(Prism) {
   Prism.languages.r = {
     comment: /#.*/,
     string: {

@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = smalltalk
 smalltalk.displayName = 'smalltalk'
 smalltalk.aliases = []
-function smalltalk(Prism) {
+
+export default function smalltalk(Prism) {
   Prism.languages.smalltalk = {
     comment: /"(?:""|[^"])*"/,
     character: {

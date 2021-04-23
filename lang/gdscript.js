@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = gdscript
 gdscript.displayName = 'gdscript'
 gdscript.aliases = []
-function gdscript(Prism) {
+
+export default function gdscript(Prism) {
   Prism.languages.gdscript = {
     comment: /#.*/,
     string: {

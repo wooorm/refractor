@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = gherkin
 gherkin.displayName = 'gherkin'
 gherkin.aliases = []
-function gherkin(Prism) {
+
+export default function gherkin(Prism) {
   ;(function (Prism) {
     var tableRow = /(?:\r?\n|\r)[ \t]*\|.+\|(?:(?!\|).)*/.source
     Prism.languages.gherkin = {

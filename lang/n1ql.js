@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = n1ql
 n1ql.displayName = 'n1ql'
 n1ql.aliases = []
-function n1ql(Prism) {
+
+export default function n1ql(Prism) {
   Prism.languages.n1ql = {
     comment: /\/\*[\s\S]*?(?:$|\*\/)/,
     parameter: /\$[\w.]+/,

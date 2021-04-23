@@ -1,9 +1,8 @@
-'use strict'
-var refractorMarkupTemplating = require('./markup-templating.js')
-module.exports = smarty
+import refractorMarkupTemplating from './markup-templating.js'
 smarty.displayName = 'smarty'
 smarty.aliases = []
-function smarty(Prism) {
+
+export default function smarty(Prism) {
   Prism.register(refractorMarkupTemplating)
   /* TODO
 Add support for variables inside double quoted strings

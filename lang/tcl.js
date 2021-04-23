@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = tcl
 tcl.displayName = 'tcl'
 tcl.aliases = []
-function tcl(Prism) {
+
+export default function tcl(Prism) {
   Prism.languages.tcl = {
     comment: {
       pattern: /(^|[^\\])#.*/,

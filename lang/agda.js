@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = agda
 agda.displayName = 'agda'
 agda.aliases = []
-function agda(Prism) {
+
+export default function agda(Prism) {
   ;(function (Prism) {
     Prism.languages.agda = {
       comment: /\{-[\s\S]*?(?:-\}|$)|--.*/,

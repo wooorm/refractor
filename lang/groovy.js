@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = groovy
 groovy.displayName = 'groovy'
 groovy.aliases = []
-function groovy(Prism) {
+
+export default function groovy(Prism) {
   Prism.languages.groovy = Prism.languages.extend('clike', {
     string: [
       {

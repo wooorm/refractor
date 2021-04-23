@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = ada
 ada.displayName = 'ada'
 ada.aliases = []
-function ada(Prism) {
+
+export default function ada(Prism) {
   Prism.languages.ada = {
     comment: /--.*/,
     string: /"(?:""|[^"\r\f\n])*"/i,

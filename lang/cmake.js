@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = cmake
 cmake.displayName = 'cmake'
 cmake.aliases = []
-function cmake(Prism) {
+
+export default function cmake(Prism) {
   Prism.languages.cmake = {
     comment: /#.*/,
     string: {

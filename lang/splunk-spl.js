@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = splunkSpl
 splunkSpl.displayName = 'splunkSpl'
 splunkSpl.aliases = []
-function splunkSpl(Prism) {
+
+export default function splunkSpl(Prism) {
   Prism.languages['splunk-spl'] = {
     comment: /`comment\("(?:\\.|[^\\"])*"\)`/,
     string: {

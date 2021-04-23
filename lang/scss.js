@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = scss
 scss.displayName = 'scss'
 scss.aliases = []
-function scss(Prism) {
+
+export default function scss(Prism) {
   Prism.languages.scss = Prism.languages.extend('css', {
     comment: {
       pattern: /(^|[^\\])(?:\/\*[\s\S]*?\*\/|\/\/.*)/,

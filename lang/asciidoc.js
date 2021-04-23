@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = asciidoc
 asciidoc.displayName = 'asciidoc'
 asciidoc.aliases = ['adoc']
-function asciidoc(Prism) {
+
+export default function asciidoc(Prism) {
   ;(function (Prism) {
     var attributes = {
       pattern: /(^[ \t]*)\[(?!\[)(?:(["'$`])(?:(?!\2)[^\\]|\\.)*\2|\[(?:[^\[\]\\]|\\.)*\]|[^\[\]\\"'$`]|\\.)*\]/m,

@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = qore
 qore.displayName = 'qore'
 qore.aliases = []
-function qore(Prism) {
+
+export default function qore(Prism) {
   Prism.languages.qore = Prism.languages.extend('clike', {
     comment: {
       pattern: /(^|[^\\])(?:\/\*[\s\S]*?\*\/|(?:\/\/|#).*)/,

@@ -1,9 +1,8 @@
-'use strict'
-var refractorC = require('./c.js')
-module.exports = opencl
+import refractorC from './c.js'
 opencl.displayName = 'opencl'
 opencl.aliases = []
-function opencl(Prism) {
+
+export default function opencl(Prism) {
   Prism.register(refractorC)
   ;(function (Prism) {
     /* OpenCL kernel language */

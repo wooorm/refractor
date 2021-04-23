@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = latex
 latex.displayName = 'latex'
 latex.aliases = ['tex', 'context']
-function latex(Prism) {
+
+export default function latex(Prism) {
   ;(function (Prism) {
     var funcPattern = /\\(?:[^a-z()[\]]|[a-z*]+)/i
     var insideEqu = {

@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = monkey
 monkey.displayName = 'monkey'
 monkey.aliases = []
-function monkey(Prism) {
+
+export default function monkey(Prism) {
   Prism.languages.monkey = {
     string: /"[^"\r\n]*"/,
     comment: [

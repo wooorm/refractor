@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = apl
 apl.displayName = 'apl'
 apl.aliases = []
-function apl(Prism) {
+
+export default function apl(Prism) {
   Prism.languages.apl = {
     comment: /(?:⍝|#[! ]).*$/m,
     string: {

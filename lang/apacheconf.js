@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = apacheconf
 apacheconf.displayName = 'apacheconf'
 apacheconf.aliases = []
-function apacheconf(Prism) {
+
+export default function apacheconf(Prism) {
   Prism.languages.apacheconf = {
     comment: /#.*/,
     'directive-inline': {

@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = rust
 rust.displayName = 'rust'
 rust.aliases = []
-function rust(Prism) {
+
+export default function rust(Prism) {
   ;(function (Prism) {
     var multilineComment = /\/\*(?:[^*/]|\*(?!\/)|\/(?!\*)|<self>)*\*\//.source
     for (var i = 0; i < 2; i++) {

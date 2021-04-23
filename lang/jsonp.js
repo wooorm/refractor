@@ -1,9 +1,8 @@
-'use strict'
-var refractorJson = require('./json.js')
-module.exports = jsonp
+import refractorJson from './json.js'
 jsonp.displayName = 'jsonp'
 jsonp.aliases = []
-function jsonp(Prism) {
+
+export default function jsonp(Prism) {
   Prism.register(refractorJson)
   Prism.languages.jsonp = Prism.languages.extend('json', {
     punctuation: /[{}[\]();,.]/

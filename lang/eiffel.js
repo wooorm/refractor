@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = eiffel
 eiffel.displayName = 'eiffel'
 eiffel.aliases = []
-function eiffel(Prism) {
+
+export default function eiffel(Prism) {
   Prism.languages.eiffel = {
     comment: /--.*/,
     string: [

@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = xeora
 xeora.displayName = 'xeora'
 xeora.aliases = ['xeoracube']
-function xeora(Prism) {
+
+export default function xeora(Prism) {
   ;(function (Prism) {
     Prism.languages.xeora = Prism.languages.extend('markup', {
       constant: {

@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = dax
 dax.displayName = 'dax'
 dax.aliases = []
-function dax(Prism) {
+
+export default function dax(Prism) {
   Prism.languages.dax = {
     comment: {
       pattern: /(^|[^\\])(?:\/\*[\s\S]*?\*\/|(?:--|\/\/).*)/,

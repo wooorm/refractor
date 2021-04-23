@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = javadoclike
 javadoclike.displayName = 'javadoclike'
 javadoclike.aliases = []
-function javadoclike(Prism) {
+
+export default function javadoclike(Prism) {
   ;(function (Prism) {
     var javaDocLike = (Prism.languages.javadoclike = {
       parameter: {

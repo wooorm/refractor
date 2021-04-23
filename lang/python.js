@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = python
 python.displayName = 'python'
 python.aliases = ['py']
-function python(Prism) {
+
+export default function python(Prism) {
   Prism.languages.python = {
     comment: {
       pattern: /(^|[^\\])#.*/,

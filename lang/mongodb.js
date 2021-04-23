@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = mongodb
 mongodb.displayName = 'mongodb'
 mongodb.aliases = []
-function mongodb(Prism) {
+
+export default function mongodb(Prism) {
   ;(function (Prism) {
     var operators = [
       // query and projection

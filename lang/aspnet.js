@@ -1,9 +1,8 @@
-'use strict'
-var refractorCsharp = require('./csharp.js')
-module.exports = aspnet
+import refractorCsharp from './csharp.js'
 aspnet.displayName = 'aspnet'
 aspnet.aliases = []
-function aspnet(Prism) {
+
+export default function aspnet(Prism) {
   Prism.register(refractorCsharp)
   Prism.languages.aspnet = Prism.languages.extend('markup', {
     'page-directive': {

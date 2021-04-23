@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = purebasic
 purebasic.displayName = 'purebasic'
 purebasic.aliases = []
-function purebasic(Prism) {
+
+export default function purebasic(Prism) {
   /*
 Original Code by Bas Groothedde
 !!MANY THANKS!! I never would have made this, regex and me will never be best friends ;)

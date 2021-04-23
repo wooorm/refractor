@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = sass
 sass.displayName = 'sass'
 sass.aliases = []
-function sass(Prism) {
+
+export default function sass(Prism) {
   ;(function (Prism) {
     Prism.languages.sass = Prism.languages.extend('css', {
       // Sass comments don't need to be closed, only indented

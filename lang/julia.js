@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = julia
 julia.displayName = 'julia'
 julia.aliases = []
-function julia(Prism) {
+
+export default function julia(Prism) {
   Prism.languages.julia = {
     comment: {
       // support one level of nested comments

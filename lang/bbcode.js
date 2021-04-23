@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = bbcode
 bbcode.displayName = 'bbcode'
 bbcode.aliases = ['shortcode']
-function bbcode(Prism) {
+
+export default function bbcode(Prism) {
   Prism.languages.bbcode = {
     tag: {
       pattern: /\[\/?[^\s=\]]+(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'"\]=]+))?(?:\s+[^\s=\]]+\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'"\]=]+))*\s*\]/,

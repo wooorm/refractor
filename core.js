@@ -1,9 +1,8 @@
-'use strict'
-
 /* global window, self */
 
-// istanbul ignore next - Don't allow Prism to run on page load in browser or
-// to start messaging from workers.
+// Don’t allow Prism to run on page load in browser or to start messaging from
+// workers.
+/* c8 ignore next 10 */
 var ctx =
   typeof globalThis === 'object'
     ? globalThis
@@ -21,13 +20,13 @@ ctx.Prism = {manual: true, disableWorkerMessageHandler: true}
 
 // Load all stuff in `prism.js` itself, except for `prism-file-highlight.js`.
 // The wrapped non-leaky grammars are loaded instead of Prism’s originals.
-var h = require('hastscript')
-var decode = require('parse-entities')
-var Prism = require('prismjs/components/prism-core')
-var markup = require('./lang/markup')
-var css = require('./lang/css')
-var clike = require('./lang/clike')
-var js = require('./lang/javascript')
+import h from 'hastscript'
+import {parseEntities} from 'parse-entities'
+import Prism from 'prismjs/components/prism-core.js'
+import markup from './lang/markup.js'
+import css from './lang/css.js'
+import clike from './lang/clike.js'
+import js from './lang/javascript.js'
 
 restore()
 
@@ -39,17 +38,14 @@ function Refractor() {}
 Refractor.prototype = Prism
 
 // Construct.
-var refract = new Refractor()
-
-// Expose.
-module.exports = refract
+export const refractor = new Refractor()
 
 // Create.
-refract.highlight = highlight
-refract.register = register
-refract.alias = alias
-refract.registered = registered
-refract.listLanguages = listLanguages
+refractor.highlight = highlight
+refractor.register = register
+refractor.alias = alias
+refractor.registered = registered
+refractor.listLanguages = listLanguages
 
 // Register bundled grammars.
 register(markup)
@@ -57,8 +53,8 @@ register(css)
 register(clike)
 register(js)
 
-refract.util.encode = encode
-refract.Token.stringify = stringify
+refractor.util.encode = encode
+refractor.Token.stringify = stringify
 
 function register(grammar) {
   if (typeof grammar !== 'function' || !grammar.displayName) {
@@ -66,13 +62,13 @@ function register(grammar) {
   }
 
   // Do not duplicate registrations.
-  if (refract.languages[grammar.displayName] === undefined) {
-    grammar(refract)
+  if (refractor.languages[grammar.displayName] === undefined) {
+    grammar(refractor)
   }
 }
 
 function alias(name, alias) {
-  var languages = refract.languages
+  var languages = refractor.languages
   var map = name
   var key
   var list
@@ -85,13 +81,15 @@ function alias(name, alias) {
   }
 
   for (key in map) {
-    list = map[key]
-    list = typeof list === 'string' ? [list] : list
-    length = list.length
-    index = -1
+    if (own.call(map, key)) {
+      list = map[key]
+      list = typeof list === 'string' ? [list] : list
+      length = list.length
+      index = -1
 
-    while (++index < length) {
-      languages[list[index]] = languages[key]
+      while (++index < length) {
+        languages[list[index]] = languages[key]
+      }
     }
   }
 }
@@ -101,20 +99,20 @@ function highlight(value, name) {
   var grammar
 
   if (typeof value !== 'string') {
-    throw new Error('Expected `string` for `value`, got `' + value + '`')
+    throw new TypeError('Expected `string` for `value`, got `' + value + '`')
   }
 
   // `name` is a grammar object.
-  if (refract.util.type(name) === 'Object') {
+  if (refractor.util.type(name) === 'Object') {
     grammar = name
     name = null
   } else {
     if (typeof name !== 'string') {
-      throw new Error('Expected `string` for `name`, got `' + name + '`')
+      throw new TypeError('Expected `string` for `name`, got `' + name + '`')
     }
 
-    if (own.call(refract.languages, name)) {
-      grammar = refract.languages[name]
+    if (own.call(refractor.languages, name)) {
+      grammar = refractor.languages[name]
     } else {
       throw new Error('Unknown language: `' + name + '` is not registered')
     }
@@ -125,14 +123,16 @@ function highlight(value, name) {
 
 function registered(language) {
   if (typeof language !== 'string') {
-    throw new Error('Expected `string` for `language`, got `' + language + '`')
+    throw new TypeError(
+      'Expected `string` for `language`, got `' + language + '`'
+    )
   }
 
-  return own.call(refract.languages, language)
+  return own.call(refractor.languages, language)
 }
 
 function listLanguages() {
-  var languages = refract.languages
+  var languages = refractor.languages
   var list = []
   var language
 
@@ -152,28 +152,28 @@ function stringify(value, language, parent) {
   var env
 
   if (typeof value === 'string') {
-    return {type: 'text', value: value}
+    return {type: 'text', value}
   }
 
-  if (refract.util.type(value) === 'Array') {
+  if (refractor.util.type(value) === 'Array') {
     return stringifyAll(value, language)
   }
 
   env = {
     type: value.type,
-    content: refract.Token.stringify(value.content, language, parent),
+    content: refractor.Token.stringify(value.content, language, parent),
     tag: 'span',
     classes: ['token', value.type],
     attributes: {},
-    language: language,
-    parent: parent
+    language,
+    parent
   }
 
   if (value.alias) {
     env.classes = env.classes.concat(value.alias)
   }
 
-  refract.hooks.run('wrap', env)
+  refractor.hooks.run('wrap', env)
 
   return h(
     env.tag + '.' + env.classes.join('.'),
@@ -201,7 +201,7 @@ function stringifyAll(values, language) {
 
   while (++index < length) {
     value = result[index]
-    result[index] = refract.Token.stringify(value, language, result)
+    result[index] = refractor.Token.stringify(value, language, result)
   }
 
   return result
@@ -215,7 +215,9 @@ function attributes(attrs) {
   var key
 
   for (key in attrs) {
-    attrs[key] = decode(attrs[key])
+    if (own.call(attrs, key)) {
+      attrs[key] = parseEntities(attrs[key])
+    }
   }
 
   return attrs
@@ -223,7 +225,7 @@ function attributes(attrs) {
 
 function capture() {
   var defined = 'Prism' in ctx
-  /* istanbul ignore next */
+  /* c8 ignore next */
   var current = defined ? ctx.Prism : undefined
 
   return restore
@@ -232,6 +234,7 @@ function capture() {
     /* istanbul ignore else - Clean leaks after Prism. */
     if (defined) {
       ctx.Prism = current
+      /* c8 ignore next 3 */
     } else {
       delete ctx.Prism
     }

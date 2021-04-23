@@ -1,9 +1,8 @@
-'use strict'
-var refractorC = require('./c.js')
-module.exports = hlsl
+import refractorC from './c.js'
 hlsl.displayName = 'hlsl'
 hlsl.aliases = []
-function hlsl(Prism) {
+
+export default function hlsl(Prism) {
   Prism.register(refractorC)
   Prism.languages.hlsl = Prism.languages.extend('c', {
     // Regarding keywords and class names:

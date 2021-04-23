@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = t4Templating
 t4Templating.displayName = 't4Templating'
 t4Templating.aliases = []
-function t4Templating(Prism) {
+
+export default function t4Templating(Prism) {
   ;(function (Prism) {
     function createBlock(prefix, inside, contentAlias) {
       return {

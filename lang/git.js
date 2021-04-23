@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = git
 git.displayName = 'git'
 git.aliases = []
-function git(Prism) {
+
+export default function git(Prism) {
   Prism.languages.git = {
     /*
      * A simple one line comment like in a git status command

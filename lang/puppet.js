@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = puppet
 puppet.displayName = 'puppet'
 puppet.aliases = []
-function puppet(Prism) {
+
+export default function puppet(Prism) {
   ;(function (Prism) {
     Prism.languages.puppet = {
       heredoc: [

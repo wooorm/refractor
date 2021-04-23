@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = gml
 gml.displayName = 'gml'
 gml.aliases = []
-function gml(Prism) {
+
+export default function gml(Prism) {
   Prism.languages.gamemakerlanguage = Prism.languages.gml = Prism.languages.extend(
     'clike',
     {

@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = stan
 stan.displayName = 'stan'
 stan.aliases = []
-function stan(Prism) {
+
+export default function stan(Prism) {
   // https://mc-stan.org/docs/2_24/reference-manual/bnf-grammars.html
   Prism.languages.stan = {
     comment: /\/\/.*|\/\*[\s\S]*?\*\/|#(?!include).*/,

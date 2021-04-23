@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = nim
 nim.displayName = 'nim'
 nim.aliases = []
-function nim(Prism) {
+
+export default function nim(Prism) {
   Prism.languages.nim = {
     comment: /#.*/,
     // Double-quoted strings can be prefixed by an identifier (Generalized raw string literals)

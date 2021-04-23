@@ -1,9 +1,8 @@
-'use strict'
-var refractorMarkupTemplating = require('./markup-templating.js')
-module.exports = tt2
+import refractorMarkupTemplating from './markup-templating.js'
 tt2.displayName = 'tt2'
 tt2.aliases = []
-function tt2(Prism) {
+
+export default function tt2(Prism) {
   Prism.register(refractorMarkupTemplating)
   ;(function (Prism) {
     Prism.languages.tt2 = Prism.languages.extend('clike', {

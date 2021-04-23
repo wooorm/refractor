@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = abap
 abap.displayName = 'abap'
 abap.aliases = []
-function abap(Prism) {
+
+export default function abap(Prism) {
   Prism.languages.abap = {
     comment: /^\*.*/m,
     string: /(`|')(?:\\.|(?!\1)[^\\\r\n])*\1/m,

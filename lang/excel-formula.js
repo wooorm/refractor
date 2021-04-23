@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = excelFormula
 excelFormula.displayName = 'excelFormula'
 excelFormula.aliases = []
-function excelFormula(Prism) {
+
+export default function excelFormula(Prism) {
   Prism.languages['excel-formula'] = {
     comment: {
       pattern: /(\bN\(\s*)"(?:[^"]|"")*"(?=\s*\))/i,

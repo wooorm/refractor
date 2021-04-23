@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = roboconf
 roboconf.displayName = 'roboconf'
 roboconf.aliases = []
-function roboconf(Prism) {
+
+export default function roboconf(Prism) {
   Prism.languages.roboconf = {
     comment: /#.*/,
     keyword: {

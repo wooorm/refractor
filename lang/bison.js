@@ -1,9 +1,8 @@
-'use strict'
-var refractorC = require('./c.js')
-module.exports = bison
+import refractorC from './c.js'
 bison.displayName = 'bison'
 bison.aliases = []
-function bison(Prism) {
+
+export default function bison(Prism) {
   Prism.register(refractorC)
   Prism.languages.bison = Prism.languages.extend('c', {})
   Prism.languages.insertBefore('bison', 'comment', {

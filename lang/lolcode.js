@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = lolcode
 lolcode.displayName = 'lolcode'
 lolcode.aliases = []
-function lolcode(Prism) {
+
+export default function lolcode(Prism) {
   Prism.languages.lolcode = {
     comment: [/\bOBTW\s[\s\S]*?\sTLDR\b/, /\bBTW.+/],
     string: {

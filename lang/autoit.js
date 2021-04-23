@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = autoit
 autoit.displayName = 'autoit'
 autoit.aliases = []
-function autoit(Prism) {
+
+export default function autoit(Prism) {
   Prism.languages.autoit = {
     comment: [
       /;.*/,

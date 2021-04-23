@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = xojo
 xojo.displayName = 'xojo'
 xojo.aliases = []
-function xojo(Prism) {
+
+export default function xojo(Prism) {
   Prism.languages.xojo = {
     comment: {
       pattern: /(?:'|\/\/|Rem\b).+/i,

@@ -1,10 +1,9 @@
-'use strict'
-var refractorJsx = require('./jsx.js')
-var refractorTypescript = require('./typescript.js')
-module.exports = tsx
+import refractorJsx from './jsx.js'
+import refractorTypescript from './typescript.js'
 tsx.displayName = 'tsx'
 tsx.aliases = []
-function tsx(Prism) {
+
+export default function tsx(Prism) {
   Prism.register(refractorJsx)
   Prism.register(refractorTypescript)
   ;(function (Prism) {

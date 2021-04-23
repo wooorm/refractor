@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = clike
 clike.displayName = 'clike'
 clike.aliases = []
-function clike(Prism) {
+
+export default function clike(Prism) {
   Prism.languages.clike = {
     comment: [
       {

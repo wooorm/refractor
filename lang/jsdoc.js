@@ -1,10 +1,9 @@
-'use strict'
-var refractorJavadoclike = require('./javadoclike.js')
-var refractorTypescript = require('./typescript.js')
-module.exports = jsdoc
+import refractorJavadoclike from './javadoclike.js'
+import refractorTypescript from './typescript.js'
 jsdoc.displayName = 'jsdoc'
 jsdoc.aliases = []
-function jsdoc(Prism) {
+
+export default function jsdoc(Prism) {
   Prism.register(refractorJavadoclike)
   Prism.register(refractorTypescript)
   ;(function (Prism) {

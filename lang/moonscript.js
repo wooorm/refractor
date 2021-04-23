@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = moonscript
 moonscript.displayName = 'moonscript'
 moonscript.aliases = ['moon']
-function moonscript(Prism) {
+
+export default function moonscript(Prism) {
   Prism.languages.moonscript = {
     comment: /--.*/,
     string: [

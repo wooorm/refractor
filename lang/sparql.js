@@ -1,9 +1,8 @@
-'use strict'
-var refractorTurtle = require('./turtle.js')
-module.exports = sparql
+import refractorTurtle from './turtle.js'
 sparql.displayName = 'sparql'
 sparql.aliases = ['rq']
-function sparql(Prism) {
+
+export default function sparql(Prism) {
   Prism.register(refractorTurtle)
   Prism.languages.sparql = Prism.languages.extend('turtle', {
     boolean: /\b(?:true|false)\b/i,

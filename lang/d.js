@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = d
 d.displayName = 'd'
 d.aliases = []
-function d(Prism) {
+
+export default function d(Prism) {
   Prism.languages.d = Prism.languages.extend('clike', {
     comment: [
       {

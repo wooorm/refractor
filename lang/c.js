@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = c
 c.displayName = 'c'
 c.aliases = []
-function c(Prism) {
+
+export default function c(Prism) {
   Prism.languages.c = Prism.languages.extend('clike', {
     comment: {
       pattern: /\/\/(?:[^\r\n\\]|\\(?:\r\n?|\n|(?![\r\n])))*|\/\*[\s\S]*?(?:\*\/|$)/,

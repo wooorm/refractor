@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = gcode
 gcode.displayName = 'gcode'
 gcode.aliases = []
-function gcode(Prism) {
+
+export default function gcode(Prism) {
   Prism.languages.gcode = {
     comment: /;.*|\B\(.*?\)\B/,
     string: {

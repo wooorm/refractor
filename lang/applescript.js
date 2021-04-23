@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = applescript
 applescript.displayName = 'applescript'
 applescript.aliases = []
-function applescript(Prism) {
+
+export default function applescript(Prism) {
   Prism.languages.applescript = {
     comment: [
       // Allow one level of nesting

@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = aql
 aql.displayName = 'aql'
 aql.aliases = []
-function aql(Prism) {
+
+export default function aql(Prism) {
   Prism.languages.aql = {
     comment: /\/\/.*|\/\*[\s\S]*?\*\//,
     property: {

@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = kotlin
 kotlin.displayName = 'kotlin'
 kotlin.aliases = ['kt', 'kts']
-function kotlin(Prism) {
+
+export default function kotlin(Prism) {
   ;(function (Prism) {
     Prism.languages.kotlin = Prism.languages.extend('clike', {
       keyword: {

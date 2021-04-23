@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = birb
 birb.displayName = 'birb'
 birb.aliases = []
-function birb(Prism) {
+
+export default function birb(Prism) {
   Prism.languages.birb = Prism.languages.extend('clike', {
     string: {
       pattern: /r?("|')(?:\\.|(?!\1)[^\\])*\1/,

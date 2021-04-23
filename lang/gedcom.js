@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = gedcom
 gedcom.displayName = 'gedcom'
 gedcom.aliases = []
-function gedcom(Prism) {
+
+export default function gedcom(Prism) {
   Prism.languages.gedcom = {
     'line-value': {
       // Preceded by level, optional pointer, and tag

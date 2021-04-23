@@ -1,10 +1,9 @@
-'use strict'
-var refractorMarkupTemplating = require('./markup-templating.js')
-var refractorPhp = require('./php.js')
-module.exports = latte
+import refractorMarkupTemplating from './markup-templating.js'
+import refractorPhp from './php.js'
 latte.displayName = 'latte'
 latte.aliases = []
-function latte(Prism) {
+
+export default function latte(Prism) {
   Prism.register(refractorMarkupTemplating)
   Prism.register(refractorPhp)
   ;(function (Prism) {

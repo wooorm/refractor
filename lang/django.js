@@ -1,9 +1,8 @@
-'use strict'
-var refractorMarkupTemplating = require('./markup-templating.js')
-module.exports = django
+import refractorMarkupTemplating from './markup-templating.js'
 django.displayName = 'django'
 django.aliases = ['jinja2']
-function django(Prism) {
+
+export default function django(Prism) {
   Prism.register(refractorMarkupTemplating)
   // Django/Jinja2 syntax definition for Prism.js <http://prismjs.com> syntax highlighter.
   // Mostly it works OK but can paint code incorrectly on complex html/template tag combinations.

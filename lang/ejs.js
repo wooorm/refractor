@@ -1,9 +1,8 @@
-'use strict'
-var refractorMarkupTemplating = require('./markup-templating.js')
-module.exports = ejs
+import refractorMarkupTemplating from './markup-templating.js'
 ejs.displayName = 'ejs'
 ejs.aliases = ['eta']
-function ejs(Prism) {
+
+export default function ejs(Prism) {
   Prism.register(refractorMarkupTemplating)
   ;(function (Prism) {
     Prism.languages.ejs = {

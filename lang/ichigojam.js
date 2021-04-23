@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = ichigojam
 ichigojam.displayName = 'ichigojam'
 ichigojam.aliases = []
-function ichigojam(Prism) {
+
+export default function ichigojam(Prism) {
   // according to the offical reference (EN)
   // https://ichigojam.net/IchigoJam-en.html
   Prism.languages.ichigojam = {

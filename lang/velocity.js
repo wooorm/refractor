@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = velocity
 velocity.displayName = 'velocity'
 velocity.aliases = []
-function velocity(Prism) {
+
+export default function velocity(Prism) {
   ;(function (Prism) {
     Prism.languages.velocity = Prism.languages.extend('markup', {})
     var velocity = {

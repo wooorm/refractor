@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = markupTemplating
 markupTemplating.displayName = 'markupTemplating'
 markupTemplating.aliases = []
-function markupTemplating(Prism) {
+
+export default function markupTemplating(Prism) {
   ;(function (Prism) {
     /**
      * Returns the placeholder for the given language id and index.

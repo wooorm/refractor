@@ -1,10 +1,9 @@
-'use strict'
-var refractorRuby = require('./ruby.js')
-var refractorMarkupTemplating = require('./markup-templating.js')
-module.exports = erb
+import refractorRuby from './ruby.js'
+import refractorMarkupTemplating from './markup-templating.js'
 erb.displayName = 'erb'
 erb.aliases = []
-function erb(Prism) {
+
+export default function erb(Prism) {
   Prism.register(refractorRuby)
   Prism.register(refractorMarkupTemplating)
   ;(function (Prism) {

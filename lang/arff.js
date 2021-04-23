@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = arff
 arff.displayName = 'arff'
 arff.aliases = []
-function arff(Prism) {
+
+export default function arff(Prism) {
   Prism.languages.arff = {
     comment: /%.*/,
     string: {

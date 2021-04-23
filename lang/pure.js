@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = pure
 pure.displayName = 'pure'
 pure.aliases = []
-function pure(Prism) {
+
+export default function pure(Prism) {
   ;(function (Prism) {
     // https://agraef.github.io/pure-docs/pure.html#lexical-matters
     Prism.languages.pure = {

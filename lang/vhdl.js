@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = vhdl
 vhdl.displayName = 'vhdl'
 vhdl.aliases = []
-function vhdl(Prism) {
+
+export default function vhdl(Prism) {
   Prism.languages.vhdl = {
     comment: /--.+/,
     // support for all logic vectors

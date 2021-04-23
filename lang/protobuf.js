@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = protobuf
 protobuf.displayName = 'protobuf'
 protobuf.aliases = []
-function protobuf(Prism) {
+
+export default function protobuf(Prism) {
   ;(function (Prism) {
     var builtinTypes = /\b(?:double|float|[su]?int(?:32|64)|s?fixed(?:32|64)|bool|string|bytes)\b/
     Prism.languages.protobuf = Prism.languages.extend('clike', {

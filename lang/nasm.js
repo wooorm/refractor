@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = nasm
 nasm.displayName = 'nasm'
 nasm.aliases = []
-function nasm(Prism) {
+
+export default function nasm(Prism) {
   Prism.languages.nasm = {
     comment: /;.*$/m,
     string: /(["'`])(?:\\.|(?!\1)[^\\\r\n])*\1/,

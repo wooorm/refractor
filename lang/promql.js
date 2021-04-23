@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = promql
 promql.displayName = 'promql'
 promql.aliases = []
-function promql(Prism) {
+
+export default function promql(Prism) {
   // Thanks to: https://github.com/prometheus-community/monaco-promql/blob/master/src/promql/promql.ts
   // As well as: https://kausal.co/blog/slate-prism-add-new-syntax-promql/
   ;(function (Prism) {

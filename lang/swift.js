@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = swift
 swift.displayName = 'swift'
 swift.aliases = []
-function swift(Prism) {
+
+export default function swift(Prism) {
   // issues: nested multiline comments
   Prism.languages.swift = Prism.languages.extend('clike', {
     string: {

@@ -1,9 +1,8 @@
-'use strict'
-var refractorRuby = require('./ruby.js')
-module.exports = haml
+import refractorRuby from './ruby.js'
 haml.displayName = 'haml'
 haml.aliases = []
-function haml(Prism) {
+
+export default function haml(Prism) {
   Prism.register(refractorRuby)
   /* TODO
 Handle multiline code after tag

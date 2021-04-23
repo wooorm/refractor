@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = editorconfig
 editorconfig.displayName = 'editorconfig'
 editorconfig.aliases = []
-function editorconfig(Prism) {
+
+export default function editorconfig(Prism) {
   Prism.languages.editorconfig = {
     // https://editorconfig-specification.readthedocs.io/en/latest/
     comment: /[;#].*/,

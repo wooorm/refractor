@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = xquery
 xquery.displayName = 'xquery'
 xquery.aliases = []
-function xquery(Prism) {
+
+export default function xquery(Prism) {
   ;(function (Prism) {
     Prism.languages.xquery = Prism.languages.extend('markup', {
       'xquery-comment': {

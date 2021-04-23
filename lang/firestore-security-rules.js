@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = firestoreSecurityRules
 firestoreSecurityRules.displayName = 'firestoreSecurityRules'
 firestoreSecurityRules.aliases = []
-function firestoreSecurityRules(Prism) {
+
+export default function firestoreSecurityRules(Prism) {
   Prism.languages['firestore-security-rules'] = Prism.languages.extend(
     'clike',
     {

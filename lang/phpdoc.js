@@ -1,10 +1,9 @@
-'use strict'
-var refractorPhp = require('./php.js')
-var refractorJavadoclike = require('./javadoclike.js')
-module.exports = phpdoc
+import refractorPhp from './php.js'
+import refractorJavadoclike from './javadoclike.js'
 phpdoc.displayName = 'phpdoc'
 phpdoc.aliases = []
-function phpdoc(Prism) {
+
+export default function phpdoc(Prism) {
   Prism.register(refractorPhp)
   Prism.register(refractorJavadoclike)
   ;(function (Prism) {

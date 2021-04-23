@@ -1,9 +1,8 @@
-'use strict'
-var refractorSql = require('./sql.js')
-module.exports = plsql
+import refractorSql from './sql.js'
 plsql.displayName = 'plsql'
 plsql.aliases = []
-function plsql(Prism) {
+
+export default function plsql(Prism) {
   Prism.register(refractorSql)
   ;(function (Prism) {
     var plsql = (Prism.languages.plsql = Prism.languages.extend('sql', {

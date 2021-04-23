@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = elixir
 elixir.displayName = 'elixir'
 elixir.aliases = []
-function elixir(Prism) {
+
+export default function elixir(Prism) {
   Prism.languages.elixir = {
     comment: /#.*/m,
     // ~r"""foo""" (multi-line), ~r'''foo''' (multi-line), ~r/foo/, ~r|foo|, ~r"foo", ~r'foo', ~r(foo), ~r[foo], ~r{foo}, ~r<foo>

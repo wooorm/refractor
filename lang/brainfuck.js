@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = brainfuck
 brainfuck.displayName = 'brainfuck'
 brainfuck.aliases = []
-function brainfuck(Prism) {
+
+export default function brainfuck(Prism) {
   Prism.languages.brainfuck = {
     pointer: {
       pattern: /<|>/,

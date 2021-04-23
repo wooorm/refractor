@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = robotframework
 robotframework.displayName = 'robotframework'
 robotframework.aliases = []
-function robotframework(Prism) {
+
+export default function robotframework(Prism) {
   ;(function (Prism) {
     var comment = {
       pattern: /(^[ \t]*| {2}|\t)#.*/m,

@@ -1,9 +1,8 @@
-'use strict'
-var refractorBash = require('./bash.js')
-module.exports = shellSession
+import refractorBash from './bash.js'
 shellSession.displayName = 'shellSession'
 shellSession.aliases = []
-function shellSession(Prism) {
+
+export default function shellSession(Prism) {
   Prism.register(refractorBash)
   ;(function (Prism) {
     // CAREFUL!

@@ -1,9 +1,8 @@
-'use strict'
-var refractorCpp = require('./cpp.js')
-module.exports = arduino
+import refractorCpp from './cpp.js'
 arduino.displayName = 'arduino'
 arduino.aliases = []
-function arduino(Prism) {
+
+export default function arduino(Prism) {
   Prism.register(refractorCpp)
   Prism.languages.arduino = Prism.languages.extend('cpp', {
     constant: /\b(?:DIGITAL_MESSAGE|FIRMATA_STRING|ANALOG_MESSAGE|REPORT_DIGITAL|REPORT_ANALOG|INPUT_PULLUP|SET_PIN_MODE|INTERNAL2V56|SYSTEM_RESET|LED_BUILTIN|INTERNAL1V1|SYSEX_START|INTERNAL|EXTERNAL|DEFAULT|OUTPUT|INPUT|HIGH|LOW)\b/,

@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = verilog
 verilog.displayName = 'verilog'
 verilog.aliases = []
-function verilog(Prism) {
+
+export default function verilog(Prism) {
   Prism.languages.verilog = {
     comment: /\/\/.*|\/\*[\s\S]*?\*\//,
     string: {

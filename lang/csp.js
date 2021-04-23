@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = csp
 csp.displayName = 'csp'
 csp.aliases = []
-function csp(Prism) {
+
+export default function csp(Prism) {
   /**
    * Original by Scott Helme.
    *

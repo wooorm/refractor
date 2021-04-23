@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = turtle
 turtle.displayName = 'turtle'
 turtle.aliases = []
-function turtle(Prism) {
+
+export default function turtle(Prism) {
   Prism.languages.turtle = {
     comment: {
       pattern: /#.*/,

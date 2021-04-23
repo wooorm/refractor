@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = markup
 markup.displayName = 'markup'
 markup.aliases = ['html', 'mathml', 'svg', 'xml', 'ssml', 'atom', 'rss']
-function markup(Prism) {
+
+export default function markup(Prism) {
   Prism.languages.markup = {
     comment: /<!--[\s\S]*?-->/,
     prolog: /<\?[\s\S]+?\?>/,

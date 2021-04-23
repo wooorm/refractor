@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = matlab
 matlab.displayName = 'matlab'
 matlab.aliases = []
-function matlab(Prism) {
+
+export default function matlab(Prism) {
   Prism.languages.matlab = {
     comment: [/%\{[\s\S]*?\}%/, /%.+/],
     string: {

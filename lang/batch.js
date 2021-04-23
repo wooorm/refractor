@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = batch
 batch.displayName = 'batch'
 batch.aliases = []
-function batch(Prism) {
+
+export default function batch(Prism) {
   ;(function (Prism) {
     var variable = /%%?[~:\w]+%?|!\S+!/
     var parameter = {

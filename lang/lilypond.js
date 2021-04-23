@@ -1,9 +1,8 @@
-'use strict'
-var refractorScheme = require('./scheme.js')
-module.exports = lilypond
+import refractorScheme from './scheme.js'
 lilypond.displayName = 'lilypond'
 lilypond.aliases = []
-function lilypond(Prism) {
+
+export default function lilypond(Prism) {
   Prism.register(refractorScheme)
   ;(function (Prism) {
     var schemeExpression = /\((?:[^();"#\\]|\\[\s\S]|;.*(?!.)|"(?:[^"\\]|\\.)*"|#(?:\{(?:(?!#\})[\s\S])*#\}|[^{])|<expr>)*\)/

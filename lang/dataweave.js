@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = dataweave
 dataweave.displayName = 'dataweave'
 dataweave.aliases = []
-function dataweave(Prism) {
+
+export default function dataweave(Prism) {
   ;(function (Prism) {
     Prism.languages.dataweave = {
       url: /\b[A-Za-z]+:\/\/[\w/:.?=&-]+|\burn:[\w:.?=&-]+/,

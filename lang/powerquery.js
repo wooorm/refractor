@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = powerquery
 powerquery.displayName = 'powerquery'
 powerquery.aliases = []
-function powerquery(Prism) {
+
+export default function powerquery(Prism) {
   // https://docs.microsoft.com/en-us/powerquery-m/power-query-m-language-specification
   Prism.languages.powerquery = {
     comment: {

@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = neon
 neon.displayName = 'neon'
 neon.aliases = []
-function neon(Prism) {
+
+export default function neon(Prism) {
   Prism.languages.neon = {
     comment: {
       pattern: /#.*/,

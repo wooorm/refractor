@@ -1,8 +1,5 @@
 .DS_Store
 *.log
-.nyc_output/
 coverage/
 node_modules/
-refractor.js
-refractor.min.js
 yarn.lock

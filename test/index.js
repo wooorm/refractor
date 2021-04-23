@@ -1,16 +1,10 @@
-'use strict'
-
-var fs = require('fs')
-var path = require('path')
-var Prism = require('prismjs')
-var loadLanguages = require('prismjs/components/index.js')
-var test = require('tape')
-var hidden = require('is-hidden')
-var rehype = require('rehype')
-var remove = require('unist-util-remove-position')
-var refractor = require('..')
-
-loadLanguages()
+import fs from 'fs'
+import path from 'path'
+import test from 'tape'
+import rehype from 'rehype'
+import {isHidden} from 'is-hidden'
+import {removePosition} from 'unist-util-remove-position'
+import {refractor} from '../index.js'
 
 test('.highlight(value, language)', function (t) {
   t.throws(
@@ -236,44 +230,31 @@ test('.alias(name, alias)', function (t) {
 })
 
 test('fixtures', function (t) {
-  var root = path.join(__dirname, 'fixtures')
+  var root = path.join('test', 'fixtures')
   var processor = rehype().use({settings: {fragment: true}})
   var files = fs.readdirSync(root)
   var index = -1
   var name
   var input
   var lang
-  var actual
   var expected
 
   while (++index < files.length) {
     name = files[index]
 
-    /* istanbul ignore next */
-    if (hidden(name)) continue
+    /* c8 ignore next */
+    if (isHidden(name)) continue
 
     lang = name.split('-')[0]
     input = String(fs.readFileSync(path.join(root, name, 'input.txt'))).trim()
-    actual = processor
-      .processSync(Prism.highlight(input, refractor.languages[lang], lang))
-      .toString()
-
-    /* istanbul ignore next - useful when generating fixtures. */
-    try {
-      expected = String(
-        fs.readFileSync(path.join(root, name, 'output.html'))
-      ).trim()
-    } catch (_) {
-      expected = actual
-      fs.writeFileSync(path.join(root, name, 'output.html'), expected + '\n')
-    }
-
-    t.equal(actual, expected, name + ' — prism should compile to the fixture')
+    expected = String(
+      fs.readFileSync(path.join(root, name, 'output.html'))
+    ).trim()
 
     t.deepEqual(
       refractor.highlight(input, lang),
-      remove(processor.parse(expected), true).children,
-      name + ' — refractor should create a tree matching the fixture'
+      removePosition(processor.parse(expected), true).children,
+      name
     )
   }
 
@@ -283,11 +264,8 @@ test('fixtures', function (t) {
 test('listLanguages', function (t) {
   grammar.displayName = 'grammar'
 
-  t.deepEqual(
-    refractor.listLanguages().sort(),
-    Object.keys(Prism.languages)
-      .filter((lang) => typeof Prism.languages[lang] !== 'function')
-      .sort(),
+  t.ok(
+    Array.isArray(refractor.listLanguages().sort()),
     'should return a list of registered languages'
   )
 

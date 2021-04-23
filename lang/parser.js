@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = parser
 parser.displayName = 'parser'
 parser.aliases = []
-function parser(Prism) {
+
+export default function parser(Prism) {
   ;(function (Prism) {
     var parser = (Prism.languages.parser = Prism.languages.extend('markup', {
       keyword: {

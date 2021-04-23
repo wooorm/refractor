@@ -1,9 +1,8 @@
-'use strict'
-var refractorScheme = require('./scheme.js')
-module.exports = racket
+import refractorScheme from './scheme.js'
 racket.displayName = 'racket'
 racket.aliases = ['rkt']
-function racket(Prism) {
+
+export default function racket(Prism) {
   Prism.register(refractorScheme)
   Prism.languages.racket = Prism.languages.extend('scheme', {
     'lambda-parameter': {

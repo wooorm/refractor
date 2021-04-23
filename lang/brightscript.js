@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = brightscript
 brightscript.displayName = 'brightscript'
 brightscript.aliases = []
-function brightscript(Prism) {
+
+export default function brightscript(Prism) {
   Prism.languages.brightscript = {
     comment: /(?:\brem|').*/i,
     'directive-statement': {

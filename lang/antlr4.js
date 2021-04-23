@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = antlr4
 antlr4.displayName = 'antlr4'
 antlr4.aliases = ['g4']
-function antlr4(Prism) {
+
+export default function antlr4(Prism) {
   Prism.languages.antlr4 = {
     comment: /\/\/.*|\/\*[\s\S]*?(?:\*\/|$)/,
     string: {

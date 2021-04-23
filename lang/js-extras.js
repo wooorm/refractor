@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = jsExtras
 jsExtras.displayName = 'jsExtras'
 jsExtras.aliases = []
-function jsExtras(Prism) {
+
+export default function jsExtras(Prism) {
   ;(function (Prism) {
     Prism.languages.insertBefore('javascript', 'function-variable', {
       'method-variable': {

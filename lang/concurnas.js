@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = concurnas
 concurnas.displayName = 'concurnas'
 concurnas.aliases = ['conc']
-function concurnas(Prism) {
+
+export default function concurnas(Prism) {
   Prism.languages.concurnas = {
     comment: [
       {

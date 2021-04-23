@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = smali
 smali.displayName = 'smali'
 smali.aliases = []
-function smali(Prism) {
+
+export default function smali(Prism) {
   // Test files for the parser itself:
   // https://github.com/JesusFreke/smali/tree/master/smali/src/test/resources/LexerTest
   Prism.languages.smali = {

@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = markdown
 markdown.displayName = 'markdown'
 markdown.aliases = ['md']
-function markdown(Prism) {
+
+export default function markdown(Prism) {
   ;(function (Prism) {
     // Allow only one line break
     var inner = /(?:\\.|[^\\\n\r]|(?:\n|\r\n?)(?!\n|\r\n?))/.source

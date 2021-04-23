@@ -1,64 +1,66 @@
-'use strict'
+import fs from 'fs'
+import path from 'path'
+import zone from 'mdast-zone'
+import {u} from 'unist-builder'
+import not from 'not'
+import {isHidden} from 'is-hidden'
+import alphaSort from 'alpha-sort'
 
-var fs = require('fs')
-var zone = require('mdast-zone')
-var u = require('unist-builder')
-var not = require('not')
-var hidden = require('is-hidden')
-var alphaSort = require('alpha-sort')()
-var bundled = require('./bundled')
+var bundled = JSON.parse(
+  String(fs.readFileSync(path.join('script', 'bundled.json')))
+)
 
-module.exports = syntaxes
+var itemPromises = Promise.all(
+  fs
+    .readdirSync('lang')
+    .filter(not(isHidden))
+    .filter(not(core))
+    .sort(sort)
+    .map((d) => one(d))
+)
 
-function syntaxes() {
+export default function syntaxes() {
   return transformer
 }
 
-function transformer(tree) {
+async function transformer(tree) {
+  var items = await itemPromises
+
   zone(tree, 'support', replace)
-}
 
-function replace(start, nodes, end) {
-  return [start, u('list', {spread: false, ordered: false}, items()), end]
-}
-
-function items() {
-  return fs
-    .readdirSync('lang')
-    .filter(not(hidden))
-    .filter(not(core))
-    .sort(sort)
-    .map(one)
-
-  function one(fp) {
-    var grammar = require('../lang/' + fp)
-    var content = [
-      u(
-        'link',
-        {url: 'https://github.com/wooorm/refractor/blob/main/lang/' + fp},
-        [u('inlineCode', grammar.displayName)]
-      )
-    ]
-    var index = -1
-
-    if (grammar.aliases.length > 0) {
-      content.push(u('text', ' — alias: '))
-
-      while (++index < grammar.aliases.length) {
-        if (index !== 0) {
-          content.push(u('text', ', '))
-        }
-
-        content.push(u('inlineCode', grammar.aliases[index]))
-      }
-    }
-
-    return u('listItem', {checked: included(fp)}, [u('paragraph', content)])
+  function replace(start, nodes, end) {
+    return [start, u('list', {spread: false, ordered: false}, items), end]
   }
 }
 
+async function one(fp) {
+  var grammar = (await import('../lang/' + fp)).default
+  var content = [
+    u(
+      'link',
+      {url: 'https://github.com/wooorm/refractor/blob/main/lang/' + fp},
+      [u('inlineCode', grammar.displayName)]
+    )
+  ]
+  var index = -1
+
+  if (grammar.aliases.length > 0) {
+    content.push(u('text', ' — alias: '))
+
+    while (++index < grammar.aliases.length) {
+      if (index !== 0) {
+        content.push(u('text', ', '))
+      }
+
+      content.push(u('inlineCode', grammar.aliases[index]))
+    }
+  }
+
+  return u('listItem', {checked: included(fp)}, [u('paragraph', content)])
+}
+
 function included(fp) {
-  return bundled.indexOf(fp) !== -1
+  return bundled.includes(fp)
 }
 
 function core(fp) {
@@ -74,5 +76,5 @@ function sort(a, b) {
     return 1
   }
 
-  return alphaSort(a, b)
+  return alphaSort()(a, b)
 }

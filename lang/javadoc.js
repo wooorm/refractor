@@ -1,10 +1,9 @@
-'use strict'
-var refractorJava = require('./java.js')
-var refractorJavadoclike = require('./javadoclike.js')
-module.exports = javadoc
+import refractorJava from './java.js'
+import refractorJavadoclike from './javadoclike.js'
 javadoc.displayName = 'javadoc'
 javadoc.aliases = []
-function javadoc(Prism) {
+
+export default function javadoc(Prism) {
   Prism.register(refractorJava)
   Prism.register(refractorJavadoclike)
   ;(function (Prism) {

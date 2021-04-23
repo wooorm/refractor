@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = vala
 vala.displayName = 'vala'
 vala.aliases = []
-function vala(Prism) {
+
+export default function vala(Prism) {
   Prism.languages.vala = Prism.languages.extend('clike', {
     // Classes copied from prism-csharp
     'class-name': [

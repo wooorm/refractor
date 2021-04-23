@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = qml
 qml.displayName = 'qml'
 qml.aliases = []
-function qml(Prism) {
+
+export default function qml(Prism) {
   ;(function (Prism) {
     var jsString = /"(?:\\.|[^\\"\r\n])*"|'(?:\\.|[^\\'\r\n])*'/.source
     var jsComment = /\/\/.*(?!.)|\/\*(?:[^*]|\*(?!\/))*\*\//.source

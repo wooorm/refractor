@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = flow
 flow.displayName = 'flow'
 flow.aliases = []
-function flow(Prism) {
+
+export default function flow(Prism) {
   ;(function (Prism) {
     Prism.languages.flow = Prism.languages.extend('javascript', {})
     Prism.languages.insertBefore('flow', 'keyword', {

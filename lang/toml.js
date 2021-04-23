@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = toml
 toml.displayName = 'toml'
 toml.aliases = []
-function toml(Prism) {
+
+export default function toml(Prism) {
   ;(function (Prism) {
     var key = /(?:[\w-]+|'[^'\n\r]*'|"(?:\\.|[^\\"\r\n])*")/.source
     /**

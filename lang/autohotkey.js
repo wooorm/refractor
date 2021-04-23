@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = autohotkey
 autohotkey.displayName = 'autohotkey'
 autohotkey.aliases = []
-function autohotkey(Prism) {
+
+export default function autohotkey(Prism) {
   // NOTES - follows first-first highlight method, block is locked after highlight, different from SyntaxHl
   Prism.languages.autohotkey = {
     comment: [

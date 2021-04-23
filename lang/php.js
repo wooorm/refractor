@@ -1,9 +1,8 @@
-'use strict'
-var refractorMarkupTemplating = require('./markup-templating.js')
-module.exports = php
+import refractorMarkupTemplating from './markup-templating.js'
 php.displayName = 'php'
 php.aliases = []
-function php(Prism) {
+
+export default function php(Prism) {
   Prism.register(refractorMarkupTemplating)
   /**
    * Original by Aaron Harun: http://aahacreative.com/2012/07/31/php-syntax-highlighting-prism/

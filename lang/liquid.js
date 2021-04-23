@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = liquid
 liquid.displayName = 'liquid'
 liquid.aliases = []
-function liquid(Prism) {
+
+export default function liquid(Prism) {
   Prism.languages.liquid = {
     keyword: /\b(?:comment|endcomment|if|elsif|else|endif|unless|endunless|for|endfor|case|endcase|when|in|break|assign|continue|limit|offset|range|reversed|raw|endraw|capture|endcapture|tablerow|endtablerow)\b/,
     number: /\b0b[01]+\b|\b0x(?:\.[\da-fp-]+|[\da-f]+(?:\.[\da-fp-]+)?)\b|(?:\b\d+(?:\.\d*)?|\B\.\d+)(?:e[+-]?\d+)?[df]?/i,

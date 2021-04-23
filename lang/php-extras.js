@@ -1,9 +1,8 @@
-'use strict'
-var refractorPhp = require('./php.js')
-module.exports = phpExtras
+import refractorPhp from './php.js'
 phpExtras.displayName = 'phpExtras'
 phpExtras.aliases = []
-function phpExtras(Prism) {
+
+export default function phpExtras(Prism) {
   Prism.register(refractorPhp)
   Prism.languages.insertBefore('php', 'variable', {
     this: /\$this\b/,

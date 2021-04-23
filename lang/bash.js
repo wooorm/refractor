@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = bash
 bash.displayName = 'bash'
 bash.aliases = ['shell']
-function bash(Prism) {
+
+export default function bash(Prism) {
   ;(function (Prism) {
     // $ set | grep '^[A-Z][^[:space:]]*=' | cut -d= -f1 | tr '\n' '|'
     // + LC_ALL, RANDOM, REPLY, SECONDS.

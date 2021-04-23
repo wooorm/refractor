@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = perl
 perl.displayName = 'perl'
 perl.aliases = []
-function perl(Prism) {
+
+export default function perl(Prism) {
   Prism.languages.perl = {
     comment: [
       {

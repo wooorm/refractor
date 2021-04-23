@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = dnsZoneFile
 dnsZoneFile.displayName = 'dnsZoneFile'
 dnsZoneFile.aliases = []
-function dnsZoneFile(Prism) {
+
+export default function dnsZoneFile(Prism) {
   Prism.languages['dns-zone-file'] = {
     comment: /;.*/,
     string: {

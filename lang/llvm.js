@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = llvm
 llvm.displayName = 'llvm'
 llvm.aliases = []
-function llvm(Prism) {
+
+export default function llvm(Prism) {
   ;(function (Prism) {
     Prism.languages.llvm = {
       comment: /;.*/,

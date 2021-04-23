@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = pascaligo
 pascaligo.displayName = 'pascaligo'
 pascaligo.aliases = []
-function pascaligo(Prism) {
+
+export default function pascaligo(Prism) {
   ;(function (Prism) {
     // Pascaligo is a layer 2 smart contract language for the tezos blockchain
     var braces = /\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/.source

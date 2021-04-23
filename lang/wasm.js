@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = wasm
 wasm.displayName = 'wasm'
 wasm.aliases = []
-function wasm(Prism) {
+
+export default function wasm(Prism) {
   Prism.languages.wasm = {
     comment: [
       /\(;[\s\S]*?;\)/,

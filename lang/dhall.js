@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = dhall
 dhall.displayName = 'dhall'
 dhall.aliases = []
-function dhall(Prism) {
+
+export default function dhall(Prism) {
   // ABNF grammar:
   // https://github.com/dhall-lang/dhall-lang/blob/master/standard/dhall.abnf
   Prism.languages.dhall = {

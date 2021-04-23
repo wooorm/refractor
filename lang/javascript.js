@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = javascript
 javascript.displayName = 'javascript'
 javascript.aliases = ['js']
-function javascript(Prism) {
+
+export default function javascript(Prism) {
   Prism.languages.javascript = Prism.languages.extend('clike', {
     'class-name': [
       Prism.languages.clike['class-name'],

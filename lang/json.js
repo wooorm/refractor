@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = json
 json.displayName = 'json'
 json.aliases = ['webmanifest']
-function json(Prism) {
+
+export default function json(Prism) {
   // https://www.json.org/json-en.html
   Prism.languages.json = {
     property: {

@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = oz
 oz.displayName = 'oz'
 oz.aliases = []
-function oz(Prism) {
+
+export default function oz(Prism) {
   Prism.languages.oz = {
     comment: /\/\*[\s\S]*?\*\/|%.*/,
     string: {

@@ -1,15 +1,12 @@
-'use strict'
+import fs from 'fs'
+import zone from 'mdast-zone'
+import not from 'not'
+import {u} from 'unist-builder'
+import {isHidden} from 'is-hidden'
 
-var fs = require('fs')
-var zone = require('mdast-zone')
-var u = require('unist-builder')
-var not = require('not')
-var hidden = require('is-hidden')
-var pkg = require('../package.json')
+var pkg = JSON.parse(String(fs.readFileSync('package.json')))
 
-module.exports = count
-
-function count() {
+export default function count() {
   return transformer
 }
 
@@ -18,7 +15,7 @@ function transformer(tree) {
 }
 
 function replace(start, nodes, end) {
-  var langs = fs.readdirSync('lang').filter(not(hidden)).length
+  var langs = fs.readdirSync('lang').filter(not(isHidden)).length
 
   return [
     start,

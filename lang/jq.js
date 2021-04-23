@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = jq
 jq.displayName = 'jq'
 jq.aliases = []
-function jq(Prism) {
+
+export default function jq(Prism) {
   ;(function (Prism) {
     var interpolation = /\\\((?:[^()]|\([^()]*\))*\)/.source
     var string = RegExp(

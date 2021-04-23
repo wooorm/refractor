@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = mel
 mel.displayName = 'mel'
 mel.aliases = []
-function mel(Prism) {
+
+export default function mel(Prism) {
   Prism.languages.mel = {
     comment: /\/\/.*/,
     code: {

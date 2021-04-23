@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = wiki
 wiki.displayName = 'wiki'
 wiki.aliases = []
-function wiki(Prism) {
+
+export default function wiki(Prism) {
   Prism.languages.wiki = Prism.languages.extend('markup', {
     'block-comment': {
       pattern: /(^|[^\\])\/\*[\s\S]*?\*\//,

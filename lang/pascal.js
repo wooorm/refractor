@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = pascal
 pascal.displayName = 'pascal'
 pascal.aliases = ['objectpascal']
-function pascal(Prism) {
+
+export default function pascal(Prism) {
   // Based on Free Pascal
   /* TODO
 Support inline asm ?

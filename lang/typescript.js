@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = typescript
 typescript.displayName = 'typescript'
 typescript.aliases = ['ts']
-function typescript(Prism) {
+
+export default function typescript(Prism) {
   ;(function (Prism) {
     Prism.languages.typescript = Prism.languages.extend('javascript', {
       'class-name': {

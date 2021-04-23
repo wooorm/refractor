@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = icon
 icon.displayName = 'icon'
 icon.aliases = []
-function icon(Prism) {
+
+export default function icon(Prism) {
   Prism.languages.icon = {
     comment: /#.*/,
     string: {

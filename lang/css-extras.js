@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = cssExtras
 cssExtras.displayName = 'cssExtras'
 cssExtras.aliases = []
-function cssExtras(Prism) {
+
+export default function cssExtras(Prism) {
   ;(function (Prism) {
     var string = /("|')(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/
     var selectorInside

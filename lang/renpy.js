@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = renpy
 renpy.displayName = 'renpy'
 renpy.aliases = ['rpy']
-function renpy(Prism) {
+
+export default function renpy(Prism) {
   Prism.languages.renpy = {
     // TODO Write tests.
     comment: {

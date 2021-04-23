@@ -38,6 +38,9 @@ Try [`lowlight`][lowlight]!
 
 ## Install
 
+This package is [ESM only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c):
+Node 12+ is needed to use it and it must be `import`ed instead of `require`d.
+
 [npm][]:
 
 ```sh
@@ -49,7 +52,7 @@ npm install refractor
 ## Use
 
 ```js
-var refractor = require('refractor')
+import {refractor} from 'refractor'
 
 var nodes = refractor.highlight('"use strict";', 'js')
 
@@ -88,6 +91,9 @@ children: nodes}`):
 
 ## API
 
+This package exports the following identifiers: `refractor`.
+There is no default export.
+
 ### `refractor.register(syntax)`
 
 Register a [syntax][].
@@ -96,8 +102,8 @@ Needed if you’re using [`refractor/core`][browser].
 ###### Example
 
 ```js
-var refractor = require('refractor/core')
-var markdown = require('refractor/lang/markdown')
+import {refractor} from 'refractor/core.js'
+import markdown from 'refractor/lang/markdown.js'
 
 refractor.register(markdown)
 
@@ -137,8 +143,8 @@ Register a new `alias` for the `name` language.
 ###### Example
 
 ```js
-var refractor = require('refractor/core')
-var markdown = require('refractor/lang/markdown')
+import {refractor} from 'refractor/core.js'
+import markdown from 'refractor/lang/markdown.js'
 
 refractor.register(markdown)
 
@@ -162,7 +168,7 @@ Virtual nodes representing the highlighted value ([`Array.<Node>`][node]).
 ###### Example
 
 ```js
-var refractor = require('refractor/core')
+import {refractor} from 'refractor/core.js'
 
 console.log(refractor.highlight('em { color: red }', 'css'))
 ```
@@ -196,8 +202,8 @@ Check if a `language` ([name or alias][syntax]) is registered.
 ###### Example
 
 ```js
-var refractor = require('refractor/core')
-var markdown = require('refractor/lang/markdown')
+import {refractor} from 'refractor/core.js'
+import {markdown} from 'refractor/lang/markdown.js'
 
 console.log(refractor.registered('markdown'))
 
@@ -224,8 +230,8 @@ List all registered languages ([names and aliases][syntax]).
 ###### Example
 
 ```js
-var refractor = require('refractor/core')
-var markdown = require('refractor/lang/markdown')
+import {refractor} from 'refractor/core.js'
+import {markdown} from 'refractor/lang/markdown.js'
 
 console.log(refractor.listLanguages())
 
@@ -257,42 +263,22 @@ Yields:
 
 ## Browser
 
-I do not suggest using the [pre-bundled][releases] files or requiring
-`refractor` itself in the browser as that would include a 376kb (139kb GZipped)
-of code.
+It is not suggested to import `refractor` itself in the browser as that would
+include a 500kb (187kb minzipped) of code.
 
-Instead require `refractor/core` and include only the needed syntaxes.
+Instead import `refractor/core.js` and include only the needed syntaxes.
 For example:
 
 ```js
-var refractor = require('refractor/core')
+import {refractor} from 'refractor/core.js'
+import jsx from 'refractor/lang/jsx.js'
 
-refractor.register(require('refractor/lang/jsx'))
+refractor.register(jsx)
 
 console.log(refractor.highlight('<Dropdown primary />', 'jsx'))
 ```
 
-Yields:
-
-```js
-[
-  {
-    type: 'element',
-    tagName: 'span',
-    properties: {className: ['token', 'tag']},
-    children: [
-      {type: 'element', tagName: 'span', properties: {className: [Array]}, children: [[Object], [Object]]},
-      {type: 'text', value: ' '},
-      {type: 'element', tagName: 'span', properties: {className: [Array]}, children: [[Object]]},
-      {type: 'text', value: ' '},
-      {type: 'element', tagName: 'span', properties: {className: [Array]}, children: [[Object]]}
-    ]
-  }
-]
-```
-
-…When using [browserify][] and minifying with [tinyify][] this results in
-just 65kb of code (23kb with GZip).
+…when using esbuild this results in 35.8kB of code (14kb minzipped).
 
 ## Plugins
 
@@ -300,14 +286,14 @@ just 65kb of code (23kb with GZip).
 
 1.  Prism plugins often deal with the DOM, not Prism tokens
 2.  Prism is made using global variables instead of a module format, so all
-    syntaxes below are custom built to work so you can `require` just what you
+    syntaxes below are custom built to work so you can import just what you
     need
 
 ## Syntaxes
 
-All syntaxes are included if you `require('refractor')`.
-If you’re using `refractor/core`, checked syntaxes are always included, but
-unchecked syntaxes are not and must be `require`d and [`register`][register]ed.
+All syntaxes are included if you `import 'refractor'`.
+If you’re using `refractor/core.js`, checked syntaxes are always included, but
+unchecked syntaxes are not and must be imported and [`register`][register]ed.
 
 Unlike in Prism, `cssExtras` and `phpExtras` are camel-cased instead of
 dash-cased.
@@ -598,8 +584,6 @@ syntaxes are made to work with global variables and are not requirable.
 
 [author]: https://wooorm.com
 
-[releases]: https://github.com/wooorm/refractor/releases
-
 [rehype]: https://github.com/rehypejs/rehype
 
 [names]: https://prismjs.com/#languages-list
@@ -623,10 +607,6 @@ syntaxes are made to work with global variables and are not requirable.
 [lowlight]: https://github.com/wooorm/lowlight
 
 [hljs]: https://github.com/isagalaev/highlight.js
-
-[browserify]: https://github.com/browserify/browserify
-
-[tinyify]: https://github.com/browserify/tinyify
 
 [node]: https://github.com/syntax-tree/hast#ast
 

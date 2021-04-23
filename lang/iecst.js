@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = iecst
 iecst.displayName = 'iecst'
 iecst.aliases = []
-function iecst(Prism) {
+
+export default function iecst(Prism) {
   Prism.languages.iecst = {
     comment: [
       {

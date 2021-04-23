@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = sas
 sas.displayName = 'sas'
 sas.aliases = []
-function sas(Prism) {
+
+export default function sas(Prism) {
   ;(function (Prism) {
     var stringPattern = /(?:"(?:""|[^"])*"(?!")|'(?:''|[^'])*'(?!'))/.source
     var number = /\b(?:\d[\da-f]*x|\d+(?:\.\d+)?(?:e[+-]?\d+)?)\b/i

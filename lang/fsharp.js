@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = fsharp
 fsharp.displayName = 'fsharp'
 fsharp.aliases = []
-function fsharp(Prism) {
+
+export default function fsharp(Prism) {
   Prism.languages.fsharp = Prism.languages.extend('clike', {
     comment: [
       {

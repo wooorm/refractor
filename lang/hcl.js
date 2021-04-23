@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = hcl
 hcl.displayName = 'hcl'
 hcl.aliases = []
-function hcl(Prism) {
+
+export default function hcl(Prism) {
   Prism.languages.hcl = {
     comment: /(?:\/\/|#).*|\/\*[\s\S]*?(?:\*\/|$)/,
     heredoc: {

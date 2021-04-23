@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = sml
 sml.displayName = 'sml'
 sml.aliases = ['smlnj']
-function sml(Prism) {
+
+export default function sml(Prism) {
   // https://smlfamily.github.io/sml97-defn.pdf
   // https://people.mpi-sws.org/~rossberg/sml.html
   ;(function (Prism) {

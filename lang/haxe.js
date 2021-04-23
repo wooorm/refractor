@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = haxe
 haxe.displayName = 'haxe'
 haxe.aliases = []
-function haxe(Prism) {
+
+export default function haxe(Prism) {
   Prism.languages.haxe = Prism.languages.extend('clike', {
     // Strings can be multi-line
     string: {

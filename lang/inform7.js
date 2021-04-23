@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = inform7
 inform7.displayName = 'inform7'
 inform7.aliases = []
-function inform7(Prism) {
+
+export default function inform7(Prism) {
   Prism.languages.inform7 = {
     string: {
       pattern: /"[^"]*"/,

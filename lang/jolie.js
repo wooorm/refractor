@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = jolie
 jolie.displayName = 'jolie'
 jolie.aliases = []
-function jolie(Prism) {
+
+export default function jolie(Prism) {
   Prism.languages.jolie = Prism.languages.extend('clike', {
     string: {
       pattern: /(["'])(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,

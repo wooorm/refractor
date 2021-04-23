@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = less
 less.displayName = 'less'
 less.aliases = []
-function less(Prism) {
+
+export default function less(Prism) {
   /* FIXME :
 :extend() is not handled specifically : its highlighting is buggy.
 Mixin usage must be inside a ruleset to be highlighted.

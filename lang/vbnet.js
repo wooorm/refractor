@@ -1,9 +1,8 @@
-'use strict'
-var refractorBasic = require('./basic.js')
-module.exports = vbnet
+import refractorBasic from './basic.js'
 vbnet.displayName = 'vbnet'
 vbnet.aliases = []
-function vbnet(Prism) {
+
+export default function vbnet(Prism) {
   Prism.register(refractorBasic)
   Prism.languages.vbnet = Prism.languages.extend('basic', {
     comment: [

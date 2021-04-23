@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = abnf
 abnf.displayName = 'abnf'
 abnf.aliases = []
-function abnf(Prism) {
+
+export default function abnf(Prism) {
   ;(function (Prism) {
     var coreRules =
       '(?:ALPHA|BIT|CHAR|CR|CRLF|CTL|DIGIT|DQUOTE|HEXDIG|HTAB|LF|LWSP|OCTET|SP|VCHAR|WSP)'

@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = bro
 bro.displayName = 'bro'
 bro.aliases = []
-function bro(Prism) {
+
+export default function bro(Prism) {
   Prism.languages.bro = {
     comment: {
       pattern: /(^|[^\\$])#.*/,

@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = zig
 zig.displayName = 'zig'
 zig.aliases = []
-function zig(Prism) {
+
+export default function zig(Prism) {
   ;(function (Prism) {
     function literal(str) {
       return function () {

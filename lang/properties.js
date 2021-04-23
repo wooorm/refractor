@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = properties
 properties.displayName = 'properties'
 properties.aliases = []
-function properties(Prism) {
+
+export default function properties(Prism) {
   Prism.languages.properties = {
     comment: /^[ \t]*[#!].*$/m,
     'attr-value': {

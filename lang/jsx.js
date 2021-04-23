@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = jsx
 jsx.displayName = 'jsx'
 jsx.aliases = []
-function jsx(Prism) {
+
+export default function jsx(Prism) {
   ;(function (Prism) {
     var javascript = Prism.util.clone(Prism.languages.javascript)
     Prism.languages.jsx = Prism.languages.extend('markup', javascript)

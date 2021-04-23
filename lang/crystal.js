@@ -1,9 +1,8 @@
-'use strict'
-var refractorRuby = require('./ruby.js')
-module.exports = crystal
+import refractorRuby from './ruby.js'
 crystal.displayName = 'crystal'
 crystal.aliases = []
-function crystal(Prism) {
+
+export default function crystal(Prism) {
   Prism.register(refractorRuby)
   ;(function (Prism) {
     Prism.languages.crystal = Prism.languages.extend('ruby', {

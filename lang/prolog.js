@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = prolog
 prolog.displayName = 'prolog'
 prolog.aliases = []
-function prolog(Prism) {
+
+export default function prolog(Prism) {
   Prism.languages.prolog = {
     // Syntax depends on the implementation
     comment: [/%.+/, /\/\*[\s\S]*?\*\//],

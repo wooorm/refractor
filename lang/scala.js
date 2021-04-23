@@ -1,9 +1,8 @@
-'use strict'
-var refractorJava = require('./java.js')
-module.exports = scala
+import refractorJava from './java.js'
 scala.displayName = 'scala'
 scala.aliases = []
-function scala(Prism) {
+
+export default function scala(Prism) {
   Prism.register(refractorJava)
   Prism.languages.scala = Prism.languages.extend('java', {
     'triple-quoted-string': {

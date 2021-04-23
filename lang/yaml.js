@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = yaml
 yaml.displayName = 'yaml'
 yaml.aliases = ['yml']
-function yaml(Prism) {
+
+export default function yaml(Prism) {
   ;(function (Prism) {
     // https://yaml.org/spec/1.2/spec.html#c-ns-anchor-property
     // https://yaml.org/spec/1.2/spec.html#c-ns-alias-node

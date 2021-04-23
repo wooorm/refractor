@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = bsl
 bsl.displayName = 'bsl'
 bsl.aliases = []
-function bsl(Prism) {
+
+export default function bsl(Prism) {
   // 1C:Enterprise
   // https://github.com/Diversus23/
   //

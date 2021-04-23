@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = io
 io.displayName = 'io'
 io.aliases = []
-function io(Prism) {
+
+export default function io(Prism) {
   Prism.languages.io = {
     comment: [
       {

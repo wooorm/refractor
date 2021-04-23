@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = livescript
 livescript.displayName = 'livescript'
 livescript.aliases = []
-function livescript(Prism) {
+
+export default function livescript(Prism) {
   Prism.languages.livescript = {
     comment: [
       {

@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = lisp
 lisp.displayName = 'lisp'
 lisp.aliases = []
-function lisp(Prism) {
+
+export default function lisp(Prism) {
   ;(function (Prism) {
     // Functions to construct regular expressions
     // simple form

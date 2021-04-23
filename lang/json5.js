@@ -1,9 +1,8 @@
-'use strict'
-var refractorJson = require('./json.js')
-module.exports = json5
+import refractorJson from './json.js'
 json5.displayName = 'json5'
 json5.aliases = []
-function json5(Prism) {
+
+export default function json5(Prism) {
   Prism.register(refractorJson)
   ;(function (Prism) {
     var string = /("|')(?:\\(?:\r\n?|\n|.)|(?!\1)[^\\\r\n])*\1/

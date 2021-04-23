@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = nand2tetrisHdl
 nand2tetrisHdl.displayName = 'nand2tetrisHdl'
 nand2tetrisHdl.aliases = []
-function nand2tetrisHdl(Prism) {
+
+export default function nand2tetrisHdl(Prism) {
   Prism.languages['nand2tetris-hdl'] = {
     comment: /\/\/.*|\/\*[\s\S]*?(?:\*\/|$)/,
     keyword: /\b(?:CHIP|IN|OUT|PARTS|BUILTIN|CLOCKED)\b/,

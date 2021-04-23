@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = jsTemplates
 jsTemplates.displayName = 'jsTemplates'
 jsTemplates.aliases = []
-function jsTemplates(Prism) {
+
+export default function jsTemplates(Prism) {
   ;(function (Prism) {
     var templateString = Prism.languages.javascript['template-string'] // see the pattern in prism-javascript.js
     var templateLiteralPattern = templateString.pattern.source

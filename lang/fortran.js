@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = fortran
 fortran.displayName = 'fortran'
 fortran.aliases = []
-function fortran(Prism) {
+
+export default function fortran(Prism) {
   Prism.languages.fortran = {
     'quoted-number': {
       pattern: /[BOZ](['"])[A-F0-9]+\1/i,

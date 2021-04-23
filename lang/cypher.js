@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = cypher
 cypher.displayName = 'cypher'
 cypher.aliases = []
-function cypher(Prism) {
+
+export default function cypher(Prism) {
   Prism.languages.cypher = {
     // https://neo4j.com/docs/cypher-manual/current/syntax/comments/
     comment: /\/\/.*/,

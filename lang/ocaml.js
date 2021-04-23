@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = ocaml
 ocaml.displayName = 'ocaml'
 ocaml.aliases = []
-function ocaml(Prism) {
+
+export default function ocaml(Prism) {
   Prism.languages.ocaml = {
     comment: /\(\*[\s\S]*?\*\)/,
     string: [

@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = parigp
 parigp.displayName = 'parigp'
 parigp.aliases = []
-function parigp(Prism) {
+
+export default function parigp(Prism) {
   Prism.languages.parigp = {
     comment: /\/\*[\s\S]*?\*\/|\\\\.*/,
     string: {

@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = dart
 dart.displayName = 'dart'
 dart.aliases = []
-function dart(Prism) {
+
+export default function dart(Prism) {
   Prism.languages.dart = Prism.languages.extend('clike', {
     string: [
       {

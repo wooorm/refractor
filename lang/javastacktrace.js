@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = javastacktrace
 javastacktrace.displayName = 'javastacktrace'
 javastacktrace.aliases = []
-function javastacktrace(Prism) {
+
+export default function javastacktrace(Prism) {
   // Specification:
   // https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Throwable.html#printStackTrace()
   Prism.languages.javastacktrace = {

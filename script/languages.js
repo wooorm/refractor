@@ -1,20 +1,26 @@
-'use strict'
+import fs from 'fs'
+import path from 'path'
+import {bail} from 'bail'
+import chalk from 'chalk'
+import async from 'async'
+import babel from '@babel/core'
+import not from 'not'
+import {isHidden} from 'is-hidden'
+import {detab} from 'detab'
+import diff from 'arr-diff'
+import {trimLines} from 'trim-lines'
+import {camelcase} from './camelcase.js'
 
-var fs = require('fs')
-var path = require('path')
-var bail = require('bail')
-var chalk = require('chalk')
-var async = require('async')
-var babel = require('@babel/core')
-var not = require('not')
-var hidden = require('is-hidden')
-var detab = require('detab')
-var diff = require('arr-diff')
-var trim = require('trim-lines')
-var bundled = require('./bundled')
+var bundled = JSON.parse(
+  String(fs.readFileSync(path.join('script', 'bundled.json')))
+)
+var componentsJson = JSON.parse(
+  String(
+    fs.readFileSync(path.join('node_modules', 'prismjs', 'components.json'))
+  )
+)
 
 var root = path.join('node_modules', 'prismjs', 'components')
-var componentsJson = require('prismjs/components.json')
 var anyAliasRegex = /((?:Prism\.languages\.\w+ = )+)Prism\.languages\.(extend\([^)]+\)|\w+);/g
 var aliasRegex = /Prism\.languages\.(\w+) = /g
 var prefix = 'refractor-'
@@ -25,9 +31,9 @@ function ondir(error, paths) {
   bail(error)
 
   paths = paths
-    .filter(not(hidden))
+    .filter(not(isHidden))
     .filter(not(index))
-    .map(name)
+    .map((fp) => base(fp).slice('prism-'.length))
     .filter(not(minified))
     .filter(not(core))
 
@@ -60,7 +66,10 @@ function generate(name, callback) {
       deps = [deps]
     }
 
-    deps = diff(deps.filter(unique), bundled.map(base).concat([id, 'inside']))
+    deps = diff(
+      deps.filter((d, i, all) => all.indexOf(d) === i),
+      bundled.map((d) => base(d)).concat([id, 'inside'])
+    )
     deps = deps.filter((d) => d !== name)
 
     anyAlias = findAll(doc, anyAliasRegex).join('\n')
@@ -71,14 +80,18 @@ function generate(name, callback) {
     fs.writeFile(
       out,
       [
-        "'use strict'",
-        deps.map(load).join('\n'),
-        'module.exports = ' + id + ';',
-        id + ".displayName = '" + id + "';",
-        id + '.aliases = ' + JSON.stringify(aliases) + ';',
-        'function ' + id + '(Prism) {',
-        deps.map(register).join('\n'),
-        trim(detab(doc)),
+        ...deps.map(
+          (lang) =>
+            'import ' + camelcase(prefix + lang) + " from './" + lang + ".js'"
+        ),
+        id + ".displayName = '" + id + "'",
+        id + '.aliases = ' + JSON.stringify(aliases),
+        '',
+        'export default function ' + id + '(Prism) {',
+        ...deps.map(
+          (lang) => '  Prism.register(' + camelcase(prefix + lang) + ');'
+        ),
+        trimLines(detab(doc)),
         '}'
       ].join('\n'),
       callback
@@ -86,20 +99,8 @@ function generate(name, callback) {
   }
 }
 
-function load(lang) {
-  return 'var ' + camelcase(prefix + lang) + " = require('./" + lang + ".js');"
-}
-
-function register(lang) {
-  return '  Prism.register(' + camelcase(prefix + lang) + ');'
-}
-
-function name(fp) {
-  return base(fp).slice('prism-'.length)
-}
-
 function base(fp) {
-  return path.basename(fp, '.js')
+  return path.basename(fp, path.extname(fp))
 }
 
 function minified(name) {
@@ -110,13 +111,6 @@ function core(name) {
   return name === 'core'
 }
 
-function camelcase(string) {
-  return string.replace(/-[a-z]/gi, replace)
-  function replace($0) {
-    return $0.charAt(1).toUpperCase()
-  }
-}
-
 function fixWrapHook() {
   var t = babel.types
 
@@ -124,12 +118,12 @@ function fixWrapHook() {
     visitor: {
       // We only perform the later changes inside `wrap` hooks, just to be safe.
       CallExpression: {
-        enter: function (path) {
+        enter(path) {
           if (isWrapHook(path)) {
             this.inWrapHook = true
           }
         },
-        exit: function (path) {
+        exit(path) {
           if (isWrapHook(path)) {
             this.inWrapHook = false
           }
@@ -138,7 +132,7 @@ function fixWrapHook() {
       // If a syntax is assigning `Prism.highlight` to `env.content`, we should
       // add the result to `env.content` instead of `env.content.value`.
       AssignmentExpression: {
-        enter: function (path) {
+        enter(path) {
           if (
             path.get('right.callee').matchesPattern('Prism.highlight') &&
             path.get('left').matchesPattern('env.content')
@@ -150,7 +144,7 @@ function fixWrapHook() {
       // If a syntax is using `env.content`, it probably expects a string value,
       // those are stored at `env.content.value`.
       MemberExpression: {
-        enter: function (path) {
+        enter(path) {
           if (
             this.inWrapHook &&
             !path.node.ignoreValueSuffix &&
@@ -190,8 +184,4 @@ function findAll(doc, re) {
 
 function index(fp) {
   return fp === 'index.js'
-}
-
-function unique(d, i, all) {
-  return all.indexOf(d) === i
 }

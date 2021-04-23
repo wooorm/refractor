@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = keyman
 keyman.displayName = 'keyman'
 keyman.aliases = []
-function keyman(Prism) {
+
+export default function keyman(Prism) {
   Prism.languages.keyman = {
     comment: /\bc\s.*/i,
     function: /\[\s*(?:(?:CTRL|SHIFT|ALT|LCTRL|RCTRL|LALT|RALT|CAPS|NCAPS)\s+)*(?:[TKU]_[\w?]+|".+?"|'.+?')\s*\]/i,

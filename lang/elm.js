@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = elm
 elm.displayName = 'elm'
 elm.aliases = []
-function elm(Prism) {
+
+export default function elm(Prism) {
   Prism.languages.elm = {
     comment: /--.*|{-[\s\S]*?-}/,
     char: {

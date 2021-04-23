@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = graphql
 graphql.displayName = 'graphql'
 graphql.aliases = []
-function graphql(Prism) {
+
+export default function graphql(Prism) {
   Prism.languages.graphql = {
     comment: /#.*/,
     description: {

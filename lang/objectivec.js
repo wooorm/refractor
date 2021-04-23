@@ -1,9 +1,8 @@
-'use strict'
-var refractorC = require('./c.js')
-module.exports = objectivec
+import refractorC from './c.js'
 objectivec.displayName = 'objectivec'
 objectivec.aliases = ['objc']
-function objectivec(Prism) {
+
+export default function objectivec(Prism) {
   Prism.register(refractorC)
   Prism.languages.objectivec = Prism.languages.extend('c', {
     string: /("|')(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1|@"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"/,

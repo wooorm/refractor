@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = solutionFile
 solutionFile.displayName = 'solutionFile'
 solutionFile.aliases = []
-function solutionFile(Prism) {
+
+export default function solutionFile(Prism) {
   ;(function (Prism) {
     var guid = {
       // https://en.wikipedia.org/wiki/Universally_unique_identifier#Format

@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = hpkp
 hpkp.displayName = 'hpkp'
 hpkp.aliases = []
-function hpkp(Prism) {
+
+export default function hpkp(Prism) {
   /**
    * Original by Scott Helme.
    *

@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = hsts
 hsts.displayName = 'hsts'
 hsts.aliases = []
-function hsts(Prism) {
+
+export default function hsts(Prism) {
   /**
    * Original by Scott Helme.
    *

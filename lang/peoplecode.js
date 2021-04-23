@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = peoplecode
 peoplecode.displayName = 'peoplecode'
 peoplecode.aliases = ['pcode']
-function peoplecode(Prism) {
+
+export default function peoplecode(Prism) {
   Prism.languages.peoplecode = {
     comment: RegExp(
       [

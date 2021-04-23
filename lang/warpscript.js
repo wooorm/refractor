@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = warpscript
 warpscript.displayName = 'warpscript'
 warpscript.aliases = []
-function warpscript(Prism) {
+
+export default function warpscript(Prism) {
   Prism.languages.warpscript = {
     comment: /#.*|\/\/.*|\/\*[\s\S]*?\*\//,
     string: {

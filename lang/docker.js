@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = docker
 docker.displayName = 'docker'
 docker.aliases = ['dockerfile']
-function docker(Prism) {
+
+export default function docker(Prism) {
   Prism.languages.docker = {
     keyword: {
       pattern: /(^\s*)(?:ADD|ARG|CMD|COPY|ENTRYPOINT|ENV|EXPOSE|FROM|HEALTHCHECK|LABEL|MAINTAINER|ONBUILD|RUN|SHELL|STOPSIGNAL|USER|VOLUME|WORKDIR)(?=\s)/im,

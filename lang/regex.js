@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = regex
 regex.displayName = 'regex'
 regex.aliases = []
-function regex(Prism) {
+
+export default function regex(Prism) {
   ;(function (Prism) {
     var specialEscape = {
       pattern: /\\[\\(){}[\]^$+*?|.]/,

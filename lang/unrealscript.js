@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = unrealscript
 unrealscript.displayName = 'unrealscript'
 unrealscript.aliases = ['uc', 'uscript']
-function unrealscript(Prism) {
+
+export default function unrealscript(Prism) {
   Prism.languages.unrealscript = {
     comment: /\/\/.*|\/\*[\s\S]*?\*\//,
     string: {

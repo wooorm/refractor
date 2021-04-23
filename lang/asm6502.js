@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = asm6502
 asm6502.displayName = 'asm6502'
 asm6502.aliases = []
-function asm6502(Prism) {
+
+export default function asm6502(Prism) {
   Prism.languages.asm6502 = {
     comment: /;.*/,
     directive: {

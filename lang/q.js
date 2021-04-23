@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = q
 q.displayName = 'q'
 q.aliases = []
-function q(Prism) {
+
+export default function q(Prism) {
   Prism.languages.q = {
     string: /"(?:\\.|[^"\\\r\n])*"/,
     comment: [

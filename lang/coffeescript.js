@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = coffeescript
 coffeescript.displayName = 'coffeescript'
 coffeescript.aliases = ['coffee']
-function coffeescript(Prism) {
+
+export default function coffeescript(Prism) {
   ;(function (Prism) {
     // Ignore comments starting with { to privilege string interpolation highlighting
     var comment = /#(?!\{).+/,

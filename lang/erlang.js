@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = erlang
 erlang.displayName = 'erlang'
 erlang.aliases = []
-function erlang(Prism) {
+
+export default function erlang(Prism) {
   Prism.languages.erlang = {
     comment: /%.+/,
     string: {

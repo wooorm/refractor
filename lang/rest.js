@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = rest
 rest.displayName = 'rest'
 rest.aliases = []
-function rest(Prism) {
+
+export default function rest(Prism) {
   Prism.languages.rest = {
     table: [
       {

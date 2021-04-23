@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = go
 go.displayName = 'go'
 go.aliases = []
-function go(Prism) {
+
+export default function go(Prism) {
   Prism.languages.go = Prism.languages.extend('clike', {
     string: {
       pattern: /(["'`])(?:\\[\s\S]|(?!\1)[^\\])*\1/,

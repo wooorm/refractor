@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = sql
 sql.displayName = 'sql'
 sql.aliases = []
-function sql(Prism) {
+
+export default function sql(Prism) {
   Prism.languages.sql = {
     comment: {
       pattern: /(^|[^\\])(?:\/\*[\s\S]*?\*\/|(?:--|\/\/|#).*)/,

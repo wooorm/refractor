@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = csharp
 csharp.displayName = 'csharp'
 csharp.aliases = ['dotnet', 'cs']
-function csharp(Prism) {
+
+export default function csharp(Prism) {
   ;(function (Prism) {
     /**
      * Replaces all placeholders "<<n>>" of given pattern with the n-th replacement (zero based).

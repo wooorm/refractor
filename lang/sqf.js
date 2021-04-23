@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = sqf
 sqf.displayName = 'sqf'
 sqf.aliases = []
-function sqf(Prism) {
+
+export default function sqf(Prism) {
   Prism.languages.sqf = Prism.languages.extend('clike', {
     string: {
       pattern: /"(?:(?:"")?[^"])*"(?!")|'(?:[^'])*'/,

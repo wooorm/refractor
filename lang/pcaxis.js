@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = pcaxis
 pcaxis.displayName = 'pcaxis'
 pcaxis.aliases = ['px']
-function pcaxis(Prism) {
+
+export default function pcaxis(Prism) {
   Prism.languages.pcaxis = {
     string: /"[^"]*"/,
     keyword: {

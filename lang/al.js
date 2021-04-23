@@ -1,9 +1,7 @@
-'use strict'
-
-module.exports = al
 al.displayName = 'al'
 al.aliases = []
-function al(Prism) {
+
+export default function al(Prism) {
   // based on https://github.com/microsoft/AL/blob/master/grammar/alsyntax.tmlanguage
   Prism.languages.al = {
     comment: /\/\/.*|\/\*[\s\S]*?\*\//,
