@@ -1,5 +1,5 @@
 ignore.displayName = 'ignore'
-ignore.aliases = []
+ignore.aliases = ['gitignore', 'hgignore', 'npmignore']
 
 export default function ignore(Prism) {
   ;(function (Prism) {

@@ -9,6 +9,7 @@ import {isHidden} from 'is-hidden'
 import {detab} from 'detab'
 import diff from 'arr-diff'
 import {trimLines} from 'trim-lines'
+import alphaSort from 'alpha-sort'
 import {camelcase} from './camelcase.js'
 
 var bundled = JSON.parse(
@@ -21,8 +22,6 @@ var componentsJson = JSON.parse(
 )
 
 var root = path.join('node_modules', 'prismjs', 'components')
-var anyAliasRegex = /((?:Prism\.languages\.\w+ = )+)Prism\.languages\.(extend\([^)]+\)|\w+);/g
-var aliasRegex = /Prism\.languages\.(\w+) = /g
 var prefix = 'refractor-'
 
 fs.readdir(root, ondir)
@@ -53,7 +52,6 @@ function generate(name, callback) {
 
   function onread(error, doc) {
     var deps
-    var anyAlias
     var aliases
 
     if (error) {
@@ -61,19 +59,18 @@ function generate(name, callback) {
     }
 
     deps = componentsJson.languages[name].require || []
+    aliases = componentsJson.languages[name].alias || []
 
-    if (!Array.isArray(deps)) {
-      deps = [deps]
-    }
+    if (!Array.isArray(deps)) deps = [deps]
+    if (!Array.isArray(aliases)) aliases = [aliases]
 
     deps = diff(
       deps.filter((d, i, all) => all.indexOf(d) === i),
       bundled.map((d) => base(d)).concat([id, 'inside'])
     )
-    deps = deps.filter((d) => d !== name)
+    deps = deps.filter((d) => d !== name).sort(alphaSort())
 
-    anyAlias = findAll(doc, anyAliasRegex).join('\n')
-    aliases = findAll(anyAlias, aliasRegex).filter((d) => d !== name)
+    aliases = aliases.sort(alphaSort())
 
     doc = babel.transformSync(doc, {plugins: [fixWrapHook]}).code
 
@@ -168,18 +165,6 @@ function fixWrapHook() {
       path.get('arguments.0').isStringLiteral({value: 'wrap'})
     )
   }
-}
-
-function findAll(doc, re) {
-  var result = []
-  var match = re.exec(doc)
-
-  while (match) {
-    result.push(match[1])
-    match = re.exec(doc)
-  }
-
-  return result
 }
 
 function index(fp) {

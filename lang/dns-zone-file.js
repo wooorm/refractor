@@ -1,5 +1,5 @@
 dnsZoneFile.displayName = 'dnsZoneFile'
-dnsZoneFile.aliases = []
+dnsZoneFile.aliases = ['dns-zone']
 
 export default function dnsZoneFile(Prism) {
   Prism.languages['dns-zone-file'] = {

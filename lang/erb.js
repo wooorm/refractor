@@ -1,11 +1,11 @@
-import refractorRuby from './ruby.js'
 import refractorMarkupTemplating from './markup-templating.js'
+import refractorRuby from './ruby.js'
 erb.displayName = 'erb'
 erb.aliases = []
 
 export default function erb(Prism) {
-  Prism.register(refractorRuby)
   Prism.register(refractorMarkupTemplating)
+  Prism.register(refractorRuby)
   ;(function (Prism) {
     Prism.languages.erb = Prism.languages.extend('ruby', {})
     Prism.languages.insertBefore('erb', 'comment', {

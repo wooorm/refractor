@@ -1,6 +1,6 @@
 import refractorScheme from './scheme.js'
 lilypond.displayName = 'lilypond'
-lilypond.aliases = []
+lilypond.aliases = ['ly']
 
 export default function lilypond(Prism) {
   Prism.register(refractorScheme)

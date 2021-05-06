@@ -1,5 +1,5 @@
 solutionFile.displayName = 'solutionFile'
-solutionFile.aliases = []
+solutionFile.aliases = ['sln']
 
 export default function solutionFile(Prism) {
   ;(function (Prism) {

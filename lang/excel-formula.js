@@ -1,5 +1,5 @@
 excelFormula.displayName = 'excelFormula'
-excelFormula.aliases = []
+excelFormula.aliases = ['xls', 'xlsx']
 
 export default function excelFormula(Prism) {
   Prism.languages['excel-formula'] = {

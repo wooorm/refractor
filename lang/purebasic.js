@@ -1,5 +1,5 @@
 purebasic.displayName = 'purebasic'
-purebasic.aliases = []
+purebasic.aliases = ['pbfasm']
 
 export default function purebasic(Prism) {
   /*

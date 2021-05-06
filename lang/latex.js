@@ -1,5 +1,5 @@
 latex.displayName = 'latex'
-latex.aliases = ['tex', 'context']
+latex.aliases = ['context', 'tex']
 
 export default function latex(Prism) {
   ;(function (Prism) {

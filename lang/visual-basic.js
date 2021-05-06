@@ -1,5 +1,5 @@
 visualBasic.displayName = 'visualBasic'
-visualBasic.aliases = []
+visualBasic.aliases = ['vb', 'vba']
 
 export default function visualBasic(Prism) {
   Prism.languages['visual-basic'] = {

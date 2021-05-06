@@ -1,5 +1,5 @@
 gml.displayName = 'gml'
-gml.aliases = []
+gml.aliases = ['gamemakerlanguage']
 
 export default function gml(Prism) {
   Prism.languages.gamemakerlanguage = Prism.languages.gml = Prism.languages.extend(

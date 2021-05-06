@@ -1,5 +1,5 @@
 bsl.displayName = 'bsl'
-bsl.aliases = []
+bsl.aliases = ['oscript']
 
 export default function bsl(Prism) {
   // 1C:Enterprise

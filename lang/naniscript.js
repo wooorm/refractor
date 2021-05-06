@@ -1,5 +1,5 @@
 naniscript.displayName = 'naniscript'
-naniscript.aliases = []
+naniscript.aliases = ['nani']
 
 export default function naniscript(Prism) {
   ;(function (Prism) {

@@ -1,5 +1,5 @@
 markup.displayName = 'markup'
-markup.aliases = ['html', 'mathml', 'svg', 'xml', 'ssml', 'atom', 'rss']
+markup.aliases = ['atom', 'html', 'mathml', 'rss', 'ssml', 'svg', 'xml']
 
 export default function markup(Prism) {
   Prism.languages.markup = {

@@ -1,5 +1,5 @@
 csharp.displayName = 'csharp'
-csharp.aliases = ['dotnet', 'cs']
+csharp.aliases = ['cs', 'dotnet']
 
 export default function csharp(Prism) {
   ;(function (Prism) {

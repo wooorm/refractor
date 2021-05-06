@@ -1,5 +1,5 @@
 n4js.displayName = 'n4js'
-n4js.aliases = []
+n4js.aliases = ['n4jsd']
 
 export default function n4js(Prism) {
   Prism.languages.n4js = Prism.languages.extend('javascript', {

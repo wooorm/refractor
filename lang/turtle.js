@@ -1,5 +1,5 @@
 turtle.displayName = 'turtle'
-turtle.aliases = []
+turtle.aliases = ['trig']
 
 export default function turtle(Prism) {
   Prism.languages.turtle = {

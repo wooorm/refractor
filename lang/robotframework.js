@@ -1,5 +1,5 @@
 robotframework.displayName = 'robotframework'
-robotframework.aliases = []
+robotframework.aliases = ['robot']
 
 export default function robotframework(Prism) {
   ;(function (Prism) {

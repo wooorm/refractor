@@ -1,5 +1,5 @@
 powerquery.displayName = 'powerquery'
-powerquery.aliases = []
+powerquery.aliases = ['mscript', 'pq']
 
 export default function powerquery(Prism) {
   // https://docs.microsoft.com/en-us/powerquery-m/power-query-m-language-specification

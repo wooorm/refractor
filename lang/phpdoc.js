@@ -1,11 +1,11 @@
-import refractorPhp from './php.js'
 import refractorJavadoclike from './javadoclike.js'
+import refractorPhp from './php.js'
 phpdoc.displayName = 'phpdoc'
 phpdoc.aliases = []
 
 export default function phpdoc(Prism) {
-  Prism.register(refractorPhp)
   Prism.register(refractorJavadoclike)
+  Prism.register(refractorPhp)
   ;(function (Prism) {
     var typeExpression = /(?:\b[a-zA-Z]\w*|[|\\[\]])+/.source
     Prism.languages.phpdoc = Prism.languages.extend('javadoclike', {

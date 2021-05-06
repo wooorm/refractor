@@ -1,5 +1,5 @@
 lisp.displayName = 'lisp'
-lisp.aliases = []
+lisp.aliases = ['elisp', 'emacs', 'emacs-lisp']
 
 export default function lisp(Prism) {
   ;(function (Prism) {

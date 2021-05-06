@@ -1,5 +1,4 @@
-/* global window, self */
-
+/* eslint-disable no-undef */
 // Don’t allow Prism to run on page load in browser or to start messaging from
 // workers.
 /* c8 ignore next 10 */
@@ -13,6 +12,7 @@ var ctx =
     : typeof global === 'object'
     ? global
     : {}
+/* eslint-enable no-undef */
 
 var restore = capture()
 
