@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import zone from 'mdast-zone'
+import {zone} from 'mdast-zone'
 import {u} from 'unist-builder'
 import not from 'not'
 import {isHidden} from 'is-hidden'

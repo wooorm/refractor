@@ -20,7 +20,7 @@ ctx.Prism = {manual: true, disableWorkerMessageHandler: true}
 
 // Load all stuff in `prism.js` itself, except for `prism-file-highlight.js`.
 // The wrapped non-leaky grammars are loaded instead of Prism’s originals.
-import h from 'hastscript'
+import {h} from 'hastscript'
 import {parseEntities} from 'parse-entities'
 import Prism from 'prismjs/components/prism-core.js'
 import markup from './lang/markup.js'
