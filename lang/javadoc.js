@@ -1,11 +1,13 @@
 import refractorJava from './java.js'
 import refractorJavadoclike from './javadoclike.js'
+import refractorMarkup from './markup.js'
 javadoc.displayName = 'javadoc'
 javadoc.aliases = []
 
 export default function javadoc(Prism) {
   Prism.register(refractorJava)
   Prism.register(refractorJavadoclike)
+  Prism.register(refractorMarkup)
   ;(function (Prism) {
     var codeLinePattern = /(^(?:\s*(?:\*\s*)*))[^*\s].*$/m
     var memberReference = /#\s*\w+(?:\s*\([^()]*\))?/.source

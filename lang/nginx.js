@@ -1,7 +1,9 @@
+import refractorClike from './clike.js'
 nginx.displayName = 'nginx'
 nginx.aliases = []
 
 export default function nginx(Prism) {
+  Prism.register(refractorClike)
   Prism.languages.nginx = Prism.languages.extend('clike', {
     comment: {
       pattern: /(^|[^"{\\])#.*/,

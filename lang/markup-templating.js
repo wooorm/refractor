@@ -1,7 +1,9 @@
-markupTemplating.displayName = 'markupTemplating'
+import refractorMarkup from './markup.js'
+markupTemplating.displayName = 'markup-templating'
 markupTemplating.aliases = []
 
 export default function markupTemplating(Prism) {
+  Prism.register(refractorMarkup)
   ;(function (Prism) {
     /**
      * Returns the placeholder for the given language id and index.

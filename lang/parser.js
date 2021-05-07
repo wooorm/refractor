@@ -1,7 +1,9 @@
+import refractorMarkup from './markup.js'
 parser.displayName = 'parser'
 parser.aliases = []
 
 export default function parser(Prism) {
+  Prism.register(refractorMarkup)
   ;(function (Prism) {
     var parser = (Prism.languages.parser = Prism.languages.extend('markup', {
       keyword: {

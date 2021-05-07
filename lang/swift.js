@@ -1,7 +1,9 @@
+import refractorClike from './clike.js'
 swift.displayName = 'swift'
 swift.aliases = []
 
 export default function swift(Prism) {
+  Prism.register(refractorClike)
   // issues: nested multiline comments
   Prism.languages.swift = Prism.languages.extend('clike', {
     string: {

@@ -1,7 +1,9 @@
+import refractorCss from './css.js'
 less.displayName = 'less'
 less.aliases = []
 
 export default function less(Prism) {
+  Prism.register(refractorCss)
   /* FIXME :
 :extend() is not handled specifically : its highlighting is buggy.
 Mixin usage must be inside a ruleset to be highlighted.

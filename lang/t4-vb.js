@@ -1,6 +1,6 @@
 import refractorT4Templating from './t4-templating.js'
 import refractorVbnet from './vbnet.js'
-t4Vb.displayName = 't4Vb'
+t4Vb.displayName = 't4-vb'
 t4Vb.aliases = []
 
 export default function t4Vb(Prism) {

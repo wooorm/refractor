@@ -1,7 +1,9 @@
+import refractorJavascript from './javascript.js'
 mongodb.displayName = 'mongodb'
 mongodb.aliases = []
 
 export default function mongodb(Prism) {
+  Prism.register(refractorJavascript)
   ;(function (Prism) {
     var operators = [
       // query and projection

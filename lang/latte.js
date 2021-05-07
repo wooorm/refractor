@@ -1,9 +1,11 @@
+import refractorClike from './clike.js'
 import refractorMarkupTemplating from './markup-templating.js'
 import refractorPhp from './php.js'
 latte.displayName = 'latte'
 latte.aliases = []
 
 export default function latte(Prism) {
+  Prism.register(refractorClike)
   Prism.register(refractorMarkupTemplating)
   Prism.register(refractorPhp)
   ;(function (Prism) {

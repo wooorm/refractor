@@ -1,7 +1,9 @@
-xmlDoc.displayName = 'xmlDoc'
+import refractorMarkup from './markup.js'
+xmlDoc.displayName = 'xml-doc'
 xmlDoc.aliases = []
 
 export default function xmlDoc(Prism) {
+  Prism.register(refractorMarkup)
   ;(function (Prism) {
     /**
      * If the given language is present, it will insert the given doc comment grammar token into it.

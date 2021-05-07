@@ -1,4 +1,4 @@
-dnsZoneFile.displayName = 'dnsZoneFile'
+dnsZoneFile.displayName = 'dns-zone-file'
 dnsZoneFile.aliases = ['dns-zone']
 
 export default function dnsZoneFile(Prism) {

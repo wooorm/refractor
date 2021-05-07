@@ -1,7 +1,9 @@
+import refractorJavascript from './javascript.js'
 qml.displayName = 'qml'
 qml.aliases = []
 
 export default function qml(Prism) {
+  Prism.register(refractorJavascript)
   ;(function (Prism) {
     var jsString = /"(?:\\.|[^\\"\r\n])*"|'(?:\\.|[^\\'\r\n])*'/.source
     var jsComment = /\/\/.*(?!.)|\/\*(?:[^*]|\*(?!\/))*\*\//.source

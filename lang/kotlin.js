@@ -1,7 +1,9 @@
+import refractorClike from './clike.js'
 kotlin.displayName = 'kotlin'
 kotlin.aliases = ['kt', 'kts']
 
 export default function kotlin(Prism) {
+  Prism.register(refractorClike)
   ;(function (Prism) {
     Prism.languages.kotlin = Prism.languages.extend('clike', {
       keyword: {

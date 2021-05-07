@@ -1,7 +1,9 @@
-jsExtras.displayName = 'jsExtras'
+import refractorJavascript from './javascript.js'
+jsExtras.displayName = 'js-extras'
 jsExtras.aliases = []
 
 export default function jsExtras(Prism) {
+  Prism.register(refractorJavascript)
   ;(function (Prism) {
     Prism.languages.insertBefore('javascript', 'function-variable', {
       'method-variable': {

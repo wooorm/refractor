@@ -1,7 +1,9 @@
+import refractorJavascript from './javascript.js'
 typescript.displayName = 'typescript'
 typescript.aliases = ['ts']
 
 export default function typescript(Prism) {
+  Prism.register(refractorJavascript)
   ;(function (Prism) {
     Prism.languages.typescript = Prism.languages.extend('javascript', {
       'class-name': {

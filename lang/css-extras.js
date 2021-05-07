@@ -1,7 +1,9 @@
-cssExtras.displayName = 'cssExtras'
+import refractorCss from './css.js'
+cssExtras.displayName = 'css-extras'
 cssExtras.aliases = []
 
 export default function cssExtras(Prism) {
+  Prism.register(refractorCss)
   ;(function (Prism) {
     var string = /("|')(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/
     var selectorInside

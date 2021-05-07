@@ -1,7 +1,9 @@
+import refractorCss from './css.js'
 sass.displayName = 'sass'
 sass.aliases = []
 
 export default function sass(Prism) {
+  Prism.register(refractorCss)
   ;(function (Prism) {
     Prism.languages.sass = Prism.languages.extend('css', {
       // Sass comments don't need to be closed, only indented

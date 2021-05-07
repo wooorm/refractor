@@ -1,7 +1,9 @@
+import refractorMarkup from './markup.js'
 xeora.displayName = 'xeora'
 xeora.aliases = ['xeoracube']
 
 export default function xeora(Prism) {
+  Prism.register(refractorMarkup)
   ;(function (Prism) {
     Prism.languages.xeora = Prism.languages.extend('markup', {
       constant: {

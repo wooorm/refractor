@@ -1,7 +1,11 @@
+import refractorJavascript from './javascript.js'
+import refractorMarkup from './markup.js'
 pug.displayName = 'pug'
 pug.aliases = []
 
 export default function pug(Prism) {
+  Prism.register(refractorJavascript)
+  Prism.register(refractorMarkup)
   ;(function (Prism) {
     // TODO:
     // - Add CSS highlighting inside <style> tags

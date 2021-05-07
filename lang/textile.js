@@ -1,7 +1,9 @@
+import refractorMarkup from './markup.js'
 textile.displayName = 'textile'
 textile.aliases = []
 
 export default function textile(Prism) {
+  Prism.register(refractorMarkup)
   ;(function (Prism) {
     // We don't allow for pipes inside parentheses
     // to not break table pattern |(. foo |). bar |

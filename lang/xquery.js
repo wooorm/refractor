@@ -1,7 +1,9 @@
+import refractorMarkup from './markup.js'
 xquery.displayName = 'xquery'
 xquery.aliases = []
 
 export default function xquery(Prism) {
+  Prism.register(refractorMarkup)
   ;(function (Prism) {
     Prism.languages.xquery = Prism.languages.extend('markup', {
       'xquery-comment': {

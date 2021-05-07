@@ -1,7 +1,9 @@
+import refractorMarkup from './markup.js'
 velocity.displayName = 'velocity'
 velocity.aliases = []
 
 export default function velocity(Prism) {
+  Prism.register(refractorMarkup)
   ;(function (Prism) {
     Prism.languages.velocity = Prism.languages.extend('markup', {})
     var velocity = {

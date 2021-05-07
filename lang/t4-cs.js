@@ -1,6 +1,6 @@
 import refractorCsharp from './csharp.js'
 import refractorT4Templating from './t4-templating.js'
-t4Cs.displayName = 't4Cs'
+t4Cs.displayName = 't4-cs'
 t4Cs.aliases = ['t4']
 
 export default function t4Cs(Prism) {

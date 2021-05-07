@@ -1,7 +1,9 @@
+import refractorClike from './clike.js'
 sqf.displayName = 'sqf'
 sqf.aliases = []
 
 export default function sqf(Prism) {
+  Prism.register(refractorClike)
   Prism.languages.sqf = Prism.languages.extend('clike', {
     string: {
       pattern: /"(?:(?:"")?[^"])*"(?!")|'(?:[^'])*'/,

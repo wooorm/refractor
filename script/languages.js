@@ -4,40 +4,24 @@ import {bail} from 'bail'
 import chalk from 'chalk'
 import async from 'async'
 import babel from '@babel/core'
-import not from 'not'
-import {isHidden} from 'is-hidden'
 import {detab} from 'detab'
-import diff from 'arr-diff'
 import {trimLines} from 'trim-lines'
 import alphaSort from 'alpha-sort'
 import {camelcase} from './camelcase.js'
 
-var bundled = JSON.parse(
-  String(fs.readFileSync(path.join('script', 'bundled.json')))
-)
-var componentsJson = JSON.parse(
+var {languages} = JSON.parse(
   String(
     fs.readFileSync(path.join('node_modules', 'prismjs', 'components.json'))
   )
 )
 
-var root = path.join('node_modules', 'prismjs', 'components')
 var prefix = 'refractor-'
 
-fs.readdir(root, ondir)
-
-function ondir(error, paths) {
-  bail(error)
-
-  paths = paths
-    .filter(not(isHidden))
-    .filter(not(index))
-    .map((fp) => base(fp).slice('prism-'.length))
-    .filter(not(minified))
-    .filter(not(core))
-
-  async.map(paths, generate, done)
-}
+async.map(
+  Object.keys(languages).filter((d) => d !== 'meta'),
+  generate,
+  done
+)
 
 function done(error, results) {
   bail(error)
@@ -46,46 +30,41 @@ function done(error, results) {
 
 function generate(name, callback) {
   var id = camelcase(name)
-  var out = path.join('lang', name + '.js')
 
-  fs.readFile(path.join(root, 'prism-' + name + '.js'), 'utf8', onread)
+  fs.readFile(
+    path.join('node_modules', 'prismjs', 'components', 'prism-' + name + '.js'),
+    onread
+  )
 
-  function onread(error, doc) {
-    var deps
-    var aliases
-
+  function onread(error, buf) {
     if (error) {
       return callback(error)
     }
 
-    deps = componentsJson.languages[name].require || []
-    aliases = componentsJson.languages[name].alias || []
+    var info = languages[name]
+    var dependency = (typeof info.require === 'string'
+      ? [info.require]
+      : info.require || []
+    ).sort(alphaSort())
+    var alias = (typeof info.alias === 'string'
+      ? [info.alias]
+      : info.alias || []
+    ).sort(alphaSort())
 
-    if (!Array.isArray(deps)) deps = [deps]
-    if (!Array.isArray(aliases)) aliases = [aliases]
-
-    deps = diff(
-      deps.filter((d, i, all) => all.indexOf(d) === i),
-      bundled.map((d) => base(d)).concat([id, 'inside'])
-    )
-    deps = deps.filter((d) => d !== name).sort(alphaSort())
-
-    aliases = aliases.sort(alphaSort())
-
-    doc = babel.transformSync(doc, {plugins: [fixWrapHook]}).code
+    var doc = babel.transformSync(String(buf), {plugins: [fixWrapHook]}).code
 
     fs.writeFile(
-      out,
+      path.join('lang', name + '.js'),
       [
-        ...deps.map(
+        ...dependency.map(
           (lang) =>
             'import ' + camelcase(prefix + lang) + " from './" + lang + ".js'"
         ),
-        id + ".displayName = '" + id + "'",
-        id + '.aliases = ' + JSON.stringify(aliases),
+        id + ".displayName = '" + name + "'",
+        id + '.aliases = ' + JSON.stringify(alias),
         '',
         'export default function ' + id + '(Prism) {',
-        ...deps.map(
+        ...dependency.map(
           (lang) => '  Prism.register(' + camelcase(prefix + lang) + ');'
         ),
         trimLines(detab(doc)),
@@ -94,18 +73,6 @@ function generate(name, callback) {
       callback
     )
   }
-}
-
-function base(fp) {
-  return path.basename(fp, path.extname(fp))
-}
-
-function minified(name) {
-  return path.extname(name) === '.min'
-}
-
-function core(name) {
-  return name === 'core'
 }
 
 function fixWrapHook() {
@@ -165,8 +132,4 @@ function fixWrapHook() {
       path.get('arguments.0').isStringLiteral({value: 'wrap'})
     )
   }
-}
-
-function index(fp) {
-  return fp === 'index.js'
 }

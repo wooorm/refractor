@@ -1,7 +1,9 @@
+import refractorJavascript from './javascript.js'
 coffeescript.displayName = 'coffeescript'
 coffeescript.aliases = ['coffee']
 
 export default function coffeescript(Prism) {
+  Prism.register(refractorJavascript)
   ;(function (Prism) {
     // Ignore comments starting with { to privilege string interpolation highlighting
     var comment = /#(?!\{).+/,

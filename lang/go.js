@@ -1,7 +1,9 @@
+import refractorClike from './clike.js'
 go.displayName = 'go'
 go.aliases = []
 
 export default function go(Prism) {
+  Prism.register(refractorClike)
   Prism.languages.go = Prism.languages.extend('clike', {
     string: {
       pattern: /(["'`])(?:\\[\s\S]|(?!\1)[^\\])*\1/,

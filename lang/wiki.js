@@ -1,7 +1,9 @@
+import refractorMarkup from './markup.js'
 wiki.displayName = 'wiki'
 wiki.aliases = []
 
 export default function wiki(Prism) {
+  Prism.register(refractorMarkup)
   Prism.languages.wiki = Prism.languages.extend('markup', {
     'block-comment': {
       pattern: /(^|[^\\])\/\*[\s\S]*?\*\//,

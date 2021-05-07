@@ -1,7 +1,9 @@
+import refractorJavascript from './javascript.js'
 flow.displayName = 'flow'
 flow.aliases = []
 
 export default function flow(Prism) {
+  Prism.register(refractorJavascript)
   ;(function (Prism) {
     Prism.languages.flow = Prism.languages.extend('javascript', {})
     Prism.languages.insertBefore('flow', 'keyword', {

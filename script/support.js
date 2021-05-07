@@ -2,19 +2,17 @@ import fs from 'fs'
 import path from 'path'
 import {zone} from 'mdast-zone'
 import {u} from 'unist-builder'
-import not from 'not'
-import {isHidden} from 'is-hidden'
 import alphaSort from 'alpha-sort'
 
-var bundled = JSON.parse(
-  String(fs.readFileSync(path.join('script', 'bundled.json')))
+var components = JSON.parse(
+  String(
+    fs.readFileSync(path.join('node_modules', 'prismjs', 'components.json'))
+  )
 )
 
 var itemPromises = Promise.all(
-  fs
-    .readdirSync('lang')
-    .filter(not(isHidden))
-    .filter(not(core))
+  Object.keys(components.languages)
+    .filter((d) => d !== 'meta')
     .sort(sort)
     .map((d) => one(d))
 )
@@ -33,38 +31,40 @@ async function transformer(tree) {
   }
 }
 
-async function one(fp) {
-  var grammar = (await import('../lang/' + fp)).default
+async function one(name) {
+  var aliases = (await import('../lang/' + name + '.js')).default.aliases
+
   var content = [
     u(
       'link',
-      {url: 'https://github.com/wooorm/refractor/blob/main/lang/' + fp},
-      [u('inlineCode', grammar.displayName)]
+      {
+        url:
+          'https://github.com/wooorm/refractor/blob/main/lang/' + name + '.js'
+      },
+      [u('inlineCode', name)]
     )
   ]
   var index = -1
 
-  if (grammar.aliases.length > 0) {
+  if (aliases.length > 0) {
     content.push(u('text', ' — alias: '))
 
-    while (++index < grammar.aliases.length) {
+    while (++index < aliases.length) {
       if (index !== 0) {
         content.push(u('text', ', '))
       }
 
-      content.push(u('inlineCode', grammar.aliases[index]))
+      content.push(u('inlineCode', aliases[index]))
     }
   }
 
-  return u('listItem', {checked: included(fp)}, [u('paragraph', content)])
+  return u('listItem', {checked: included(name + '.js')}, [
+    u('paragraph', content)
+  ])
 }
 
-function included(fp) {
-  return bundled.includes(fp)
-}
-
-function core(fp) {
-  return fp === 'core.js'
+function included() {
+  return false
 }
 
 function sort(a, b) {

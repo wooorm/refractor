@@ -1,4 +1,4 @@
-t4Templating.displayName = 't4Templating'
+t4Templating.displayName = 't4-templating'
 t4Templating.aliases = []
 
 export default function t4Templating(Prism) {

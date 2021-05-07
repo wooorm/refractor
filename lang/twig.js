@@ -1,7 +1,9 @@
+import refractorMarkup from './markup.js'
 twig.displayName = 'twig'
 twig.aliases = []
 
 export default function twig(Prism) {
+  Prism.register(refractorMarkup)
   Prism.languages.twig = {
     comment: /\{#[\s\S]*?#\}/,
     tag: {

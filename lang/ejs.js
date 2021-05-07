@@ -1,8 +1,10 @@
+import refractorJavascript from './javascript.js'
 import refractorMarkupTemplating from './markup-templating.js'
 ejs.displayName = 'ejs'
 ejs.aliases = ['eta']
 
 export default function ejs(Prism) {
+  Prism.register(refractorJavascript)
   Prism.register(refractorMarkupTemplating)
   ;(function (Prism) {
     Prism.languages.ejs = {

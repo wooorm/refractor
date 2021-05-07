@@ -1,5 +1,5 @@
 import refractorBash from './bash.js'
-shellSession.displayName = 'shellSession'
+shellSession.displayName = 'shell-session'
 shellSession.aliases = ['sh-session', 'shellsession']
 
 export default function shellSession(Prism) {

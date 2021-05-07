@@ -1,4 +1,4 @@
-nand2tetrisHdl.displayName = 'nand2tetrisHdl'
+nand2tetrisHdl.displayName = 'nand2tetris-hdl'
 nand2tetrisHdl.aliases = []
 
 export default function nand2tetrisHdl(Prism) {

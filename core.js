@@ -23,10 +23,6 @@ ctx.Prism = {manual: true, disableWorkerMessageHandler: true}
 import {h} from 'hastscript'
 import {parseEntities} from 'parse-entities'
 import Prism from 'prismjs/components/prism-core.js'
-import markup from './lang/markup.js'
-import css from './lang/css.js'
-import clike from './lang/clike.js'
-import js from './lang/javascript.js'
 
 restore()
 
@@ -47,12 +43,6 @@ refractor.alias = alias
 refractor.registered = registered
 refractor.listLanguages = listLanguages
 
-// Register bundled grammars.
-register(markup)
-register(css)
-register(clike)
-register(js)
-
 refractor.util.encode = encode
 refractor.Token.stringify = stringify
 
@@ -62,7 +52,7 @@ function register(grammar) {
   }
 
   // Do not duplicate registrations.
-  if (refractor.languages[grammar.displayName] === undefined) {
+  if (!own.call(refractor.languages, grammar.displayName)) {
     grammar(refractor)
   }
 }

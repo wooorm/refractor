@@ -1,7 +1,9 @@
-jsTemplates.displayName = 'jsTemplates'
+import refractorJavascript from './javascript.js'
+jsTemplates.displayName = 'js-templates'
 jsTemplates.aliases = []
 
 export default function jsTemplates(Prism) {
+  Prism.register(refractorJavascript)
   ;(function (Prism) {
     var templateString = Prism.languages.javascript['template-string'] // see the pattern in prism-javascript.js
     var templateLiteralPattern = templateString.pattern.source

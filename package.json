@@ -45,7 +45,6 @@
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "alpha-sort": "^5.0.0",
-    "arr-diff": "^4.0.0",
     "async": "^3.0.0",
     "bail": "^2.0.0",
     "c8": "^7.0.0",
@@ -53,7 +52,6 @@
     "detab": "^3.0.0",
     "is-hidden": "^2.0.0",
     "mdast-zone": "^5.0.0",
-    "not": "^0.1.0",
     "prettier": "^2.0.0",
     "rehype": "^11.0.0",
     "remark-cli": "^9.0.0",

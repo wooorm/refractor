@@ -1,7 +1,9 @@
+import refractorClike from './clike.js'
 purebasic.displayName = 'purebasic'
 purebasic.aliases = ['pbfasm']
 
 export default function purebasic(Prism) {
+  Prism.register(refractorClike)
   /*
 Original Code by Bas Groothedde
 !!MANY THANKS!! I never would have made this, regex and me will never be best friends ;)

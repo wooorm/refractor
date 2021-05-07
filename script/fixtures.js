@@ -14,10 +14,6 @@ var name
 var lang
 var baseline
 
-// To do: fix regexes and allow this again
-// <https://github.com/wooorm/refractor/issues/34>
-index = Number.POSITIVE_INFINITY
-
 while (++index < files.length) {
   name = files[index]
   lang = name.split('-')[0]

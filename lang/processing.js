@@ -1,7 +1,9 @@
+import refractorClike from './clike.js'
 processing.displayName = 'processing'
 processing.aliases = []
 
 export default function processing(Prism) {
+  Prism.register(refractorClike)
   Prism.languages.processing = Prism.languages.extend('clike', {
     keyword: /\b(?:break|catch|case|class|continue|default|else|extends|final|for|if|implements|import|new|null|private|public|return|static|super|switch|this|try|void|while)\b/,
     operator: /<[<=]?|>[>=]?|&&?|\|\|?|[%?]|[!=+\-*\/]=?/

@@ -1,4 +1,4 @@
-excelFormula.displayName = 'excelFormula'
+excelFormula.displayName = 'excel-formula'
 excelFormula.aliases = ['xls', 'xlsx']
 
 export default function excelFormula(Prism) {

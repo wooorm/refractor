@@ -1,7 +1,9 @@
+import refractorClike from './clike.js'
 haxe.displayName = 'haxe'
 haxe.aliases = []
 
 export default function haxe(Prism) {
+  Prism.register(refractorClike)
   Prism.languages.haxe = Prism.languages.extend('clike', {
     // Strings can be multi-line
     string: {

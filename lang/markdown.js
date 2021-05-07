@@ -1,7 +1,9 @@
+import refractorMarkup from './markup.js'
 markdown.displayName = 'markdown'
 markdown.aliases = ['md']
 
 export default function markdown(Prism) {
+  Prism.register(refractorMarkup)
   ;(function (Prism) {
     // Allow only one line break
     var inner = /(?:\\.|[^\\\n\r]|(?:\n|\r\n?)(?!\n|\r\n?))/.source

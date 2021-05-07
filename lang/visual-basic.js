@@ -1,4 +1,4 @@
-visualBasic.displayName = 'visualBasic'
+visualBasic.displayName = 'visual-basic'
 visualBasic.aliases = ['vb', 'vba']
 
 export default function visualBasic(Prism) {

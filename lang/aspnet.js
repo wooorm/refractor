@@ -1,9 +1,11 @@
 import refractorCsharp from './csharp.js'
+import refractorMarkup from './markup.js'
 aspnet.displayName = 'aspnet'
 aspnet.aliases = []
 
 export default function aspnet(Prism) {
   Prism.register(refractorCsharp)
+  Prism.register(refractorMarkup)
   Prism.languages.aspnet = Prism.languages.extend('markup', {
     'page-directive': {
       pattern: /<%\s*@.*%>/i,

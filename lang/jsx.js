@@ -1,7 +1,11 @@
+import refractorJavascript from './javascript.js'
+import refractorMarkup from './markup.js'
 jsx.displayName = 'jsx'
 jsx.aliases = []
 
 export default function jsx(Prism) {
+  Prism.register(refractorJavascript)
+  Prism.register(refractorMarkup)
   ;(function (Prism) {
     var javascript = Prism.util.clone(Prism.languages.javascript)
     Prism.languages.jsx = Prism.languages.extend('markup', javascript)

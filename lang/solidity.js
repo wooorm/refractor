@@ -1,7 +1,9 @@
+import refractorClike from './clike.js'
 solidity.displayName = 'solidity'
 solidity.aliases = ['sol']
 
 export default function solidity(Prism) {
+  Prism.register(refractorClike)
   Prism.languages.solidity = Prism.languages.extend('clike', {
     'class-name': {
       pattern: /(\b(?:contract|enum|interface|library|new|struct|using)\s+)(?!\d)[\w$]+/,

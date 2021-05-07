@@ -1,4 +1,4 @@
-splunkSpl.displayName = 'splunkSpl'
+splunkSpl.displayName = 'splunk-spl'
 splunkSpl.aliases = []
 
 export default function splunkSpl(Prism) {

@@ -1,7 +1,9 @@
+import refractorClike from './clike.js'
 jolie.displayName = 'jolie'
 jolie.aliases = []
 
 export default function jolie(Prism) {
+  Prism.register(refractorClike)
   Prism.languages.jolie = Prism.languages.extend('clike', {
     string: {
       pattern: /(["'])(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,

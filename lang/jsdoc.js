@@ -1,10 +1,12 @@
 import refractorJavadoclike from './javadoclike.js'
+import refractorJavascript from './javascript.js'
 import refractorTypescript from './typescript.js'
 jsdoc.displayName = 'jsdoc'
 jsdoc.aliases = []
 
 export default function jsdoc(Prism) {
   Prism.register(refractorJavadoclike)
+  Prism.register(refractorJavascript)
   Prism.register(refractorTypescript)
   ;(function (Prism) {
     var javascript = Prism.languages.javascript

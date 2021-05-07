@@ -1,7 +1,9 @@
+import refractorClike from './clike.js'
 csharp.displayName = 'csharp'
 csharp.aliases = ['cs', 'dotnet']
 
 export default function csharp(Prism) {
+  Prism.register(refractorClike)
   ;(function (Prism) {
     /**
      * Replaces all placeholders "<<n>>" of given pattern with the n-th replacement (zero based).

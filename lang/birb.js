@@ -1,7 +1,9 @@
+import refractorClike from './clike.js'
 birb.displayName = 'birb'
 birb.aliases = []
 
 export default function birb(Prism) {
+  Prism.register(refractorClike)
   Prism.languages.birb = Prism.languages.extend('clike', {
     string: {
       pattern: /r?("|')(?:\\.|(?!\1)[^\\])*\1/,

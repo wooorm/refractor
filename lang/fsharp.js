@@ -1,7 +1,9 @@
+import refractorClike from './clike.js'
 fsharp.displayName = 'fsharp'
 fsharp.aliases = []
 
 export default function fsharp(Prism) {
+  Prism.register(refractorClike)
   Prism.languages.fsharp = Prism.languages.extend('clike', {
     comment: [
       {

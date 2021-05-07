@@ -1,5 +1,5 @@
 import refractorPhp from './php.js'
-phpExtras.displayName = 'phpExtras'
+phpExtras.displayName = 'php-extras'
 phpExtras.aliases = []
 
 export default function phpExtras(Prism) {

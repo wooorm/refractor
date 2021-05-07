@@ -1,7 +1,9 @@
+import refractorClike from './clike.js'
 protobuf.displayName = 'protobuf'
 protobuf.aliases = []
 
 export default function protobuf(Prism) {
+  Prism.register(refractorClike)
   ;(function (Prism) {
     var builtinTypes = /\b(?:double|float|[su]?int(?:32|64)|s?fixed(?:32|64)|bool|string|bytes)\b/
     Prism.languages.protobuf = Prism.languages.extend('clike', {

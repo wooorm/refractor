@@ -1,4 +1,4 @@
-solutionFile.displayName = 'solutionFile'
+solutionFile.displayName = 'solution-file'
 solutionFile.aliases = ['sln']
 
 export default function solutionFile(Prism) {

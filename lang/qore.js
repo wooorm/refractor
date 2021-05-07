@@ -1,7 +1,9 @@
+import refractorClike from './clike.js'
 qore.displayName = 'qore'
 qore.aliases = []
 
 export default function qore(Prism) {
+  Prism.register(refractorClike)
   Prism.languages.qore = Prism.languages.extend('clike', {
     comment: {
       pattern: /(^|[^\\])(?:\/\*[\s\S]*?\*\/|(?:\/\/|#).*)/,

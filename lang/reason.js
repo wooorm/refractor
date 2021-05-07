@@ -1,7 +1,9 @@
+import refractorClike from './clike.js'
 reason.displayName = 'reason'
 reason.aliases = []
 
 export default function reason(Prism) {
+  Prism.register(refractorClike)
   Prism.languages.reason = Prism.languages.extend('clike', {
     string: {
       pattern: /"(?:\\(?:\r\n|[\s\S])|[^\\\r\n"])*"/,
