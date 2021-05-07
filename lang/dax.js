@@ -1,6 +1,8 @@
+// @ts-nocheck
 dax.displayName = 'dax'
 dax.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function dax(Prism) {
   Prism.languages.dax = {
     comment: {

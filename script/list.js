@@ -5,12 +5,13 @@ import chalk from 'chalk'
 import getLoader from 'prismjs/dependencies.js'
 import {camelcase} from './camelcase.js'
 
+/** @type {{languages: Object.<string, unknown>}} */
 var components = JSON.parse(
   String(
     fs.readFileSync(path.join('node_modules', 'prismjs', 'components.json'))
   )
 )
-
+/** @type {Array.<string>} */
 var names = getLoader(
   components,
   Object.keys(components.languages).filter((d) => d !== 'meta')
@@ -31,6 +32,9 @@ fs.writeFile(
   done
 )
 
+/**
+ * @param {Error} error
+ */
 function done(error) {
   bail(error)
   console.log(

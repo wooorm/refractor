@@ -1,6 +1,8 @@
+// @ts-nocheck
 powerquery.displayName = 'powerquery'
 powerquery.aliases = ['mscript', 'pq']
 
+/** @type {import('../core.js').Syntax} */
 export default function powerquery(Prism) {
   // https://docs.microsoft.com/en-us/powerquery-m/power-query-m-language-specification
   Prism.languages.powerquery = {

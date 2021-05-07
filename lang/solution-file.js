@@ -1,6 +1,8 @@
+// @ts-nocheck
 solutionFile.displayName = 'solution-file'
 solutionFile.aliases = ['sln']
 
+/** @type {import('../core.js').Syntax} */
 export default function solutionFile(Prism) {
   ;(function (Prism) {
     var guid = {

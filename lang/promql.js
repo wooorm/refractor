@@ -1,6 +1,8 @@
+// @ts-nocheck
 promql.displayName = 'promql'
 promql.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function promql(Prism) {
   // Thanks to: https://github.com/prometheus-community/monaco-promql/blob/master/src/promql/promql.ts
   // As well as: https://kausal.co/blog/slate-prism-add-new-syntax-promql/

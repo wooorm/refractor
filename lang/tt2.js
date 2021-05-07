@@ -1,8 +1,10 @@
+// @ts-nocheck
 import refractorClike from './clike.js'
 import refractorMarkupTemplating from './markup-templating.js'
 tt2.displayName = 'tt2'
 tt2.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function tt2(Prism) {
   Prism.register(refractorClike)
   Prism.register(refractorMarkupTemplating)

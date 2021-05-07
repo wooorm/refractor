@@ -1,6 +1,8 @@
+// @ts-nocheck
 lisp.displayName = 'lisp'
 lisp.aliases = ['elisp', 'emacs', 'emacs-lisp']
 
+/** @type {import('../core.js').Syntax} */
 export default function lisp(Prism) {
   ;(function (Prism) {
     // Functions to construct regular expressions

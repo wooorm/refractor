@@ -1,7 +1,9 @@
+// @ts-nocheck
 import refractorJavascript from './javascript.js'
 qml.displayName = 'qml'
 qml.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function qml(Prism) {
   Prism.register(refractorJavascript)
   ;(function (Prism) {

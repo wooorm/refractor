@@ -1,6 +1,8 @@
+// @ts-nocheck
 yaml.displayName = 'yaml'
 yaml.aliases = ['yml']
 
+/** @type {import('../core.js').Syntax} */
 export default function yaml(Prism) {
   ;(function (Prism) {
     // https://yaml.org/spec/1.2/spec.html#c-ns-anchor-property

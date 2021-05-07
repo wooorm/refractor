@@ -1,7 +1,9 @@
+// @ts-nocheck
 import refractorScheme from './scheme.js'
 racket.displayName = 'racket'
 racket.aliases = ['rkt']
 
+/** @type {import('../core.js').Syntax} */
 export default function racket(Prism) {
   Prism.register(refractorScheme)
   Prism.languages.racket = Prism.languages.extend('scheme', {

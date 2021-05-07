@@ -1,8 +1,10 @@
+// @ts-nocheck
 import refractorJsx from './jsx.js'
 import refractorTypescript from './typescript.js'
 tsx.displayName = 'tsx'
 tsx.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function tsx(Prism) {
   Prism.register(refractorJsx)
   Prism.register(refractorTypescript)

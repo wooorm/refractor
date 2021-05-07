@@ -1,7 +1,9 @@
+// @ts-nocheck
 import refractorMarkup from './markup.js'
 markupTemplating.displayName = 'markup-templating'
 markupTemplating.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function markupTemplating(Prism) {
   Prism.register(refractorMarkup)
   ;(function (Prism) {

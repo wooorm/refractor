@@ -1,6 +1,8 @@
+// @ts-nocheck
 prolog.displayName = 'prolog'
 prolog.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function prolog(Prism) {
   Prism.languages.prolog = {
     // Syntax depends on the implementation

@@ -1,6 +1,8 @@
+// @ts-nocheck
 t4Templating.displayName = 't4-templating'
 t4Templating.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function t4Templating(Prism) {
   ;(function (Prism) {
     function createBlock(prefix, inside, contentAlias) {

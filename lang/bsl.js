@@ -1,6 +1,8 @@
+// @ts-nocheck
 bsl.displayName = 'bsl'
 bsl.aliases = ['oscript']
 
+/** @type {import('../core.js').Syntax} */
 export default function bsl(Prism) {
   // 1C:Enterprise
   // https://github.com/Diversus23/

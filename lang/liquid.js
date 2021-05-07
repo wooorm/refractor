@@ -1,6 +1,8 @@
+// @ts-nocheck
 liquid.displayName = 'liquid'
 liquid.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function liquid(Prism) {
   Prism.languages.liquid = {
     keyword: /\b(?:comment|endcomment|if|elsif|else|endif|unless|endunless|for|endfor|case|endcase|when|in|break|assign|continue|limit|offset|range|reversed|raw|endraw|capture|endcapture|tablerow|endtablerow)\b/,

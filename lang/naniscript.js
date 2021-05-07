@@ -1,6 +1,8 @@
+// @ts-nocheck
 naniscript.displayName = 'naniscript'
 naniscript.aliases = ['nani']
 
+/** @type {import('../core.js').Syntax} */
 export default function naniscript(Prism) {
   ;(function (Prism) {
     var expressionDef = /\{[^\r\n\[\]{}]*\}/

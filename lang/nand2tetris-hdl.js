@@ -1,6 +1,8 @@
+// @ts-nocheck
 nand2tetrisHdl.displayName = 'nand2tetris-hdl'
 nand2tetrisHdl.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function nand2tetrisHdl(Prism) {
   Prism.languages['nand2tetris-hdl'] = {
     comment: /\/\/.*|\/\*[\s\S]*?(?:\*\/|$)/,

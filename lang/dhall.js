@@ -1,6 +1,8 @@
+// @ts-nocheck
 dhall.displayName = 'dhall'
 dhall.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function dhall(Prism) {
   // ABNF grammar:
   // https://github.com/dhall-lang/dhall-lang/blob/master/standard/dhall.abnf

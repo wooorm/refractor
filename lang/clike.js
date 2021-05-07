@@ -1,6 +1,8 @@
+// @ts-nocheck
 clike.displayName = 'clike'
 clike.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function clike(Prism) {
   Prism.languages.clike = {
     comment: [

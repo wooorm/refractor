@@ -1,7 +1,9 @@
+// @ts-nocheck
 import refractorClike from './clike.js'
 ruby.displayName = 'ruby'
 ruby.aliases = ['rb']
 
+/** @type {import('../core.js').Syntax} */
 export default function ruby(Prism) {
   Prism.register(refractorClike)
   /**

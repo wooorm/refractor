@@ -1,6 +1,8 @@
+// @ts-nocheck
 gherkin.displayName = 'gherkin'
 gherkin.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function gherkin(Prism) {
   ;(function (Prism) {
     var tableRow = /(?:\r?\n|\r)[ \t]*\|.+\|(?:(?!\|).)*/.source

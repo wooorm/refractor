@@ -1,6 +1,8 @@
+// @ts-nocheck
 yang.displayName = 'yang'
 yang.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function yang(Prism) {
   Prism.languages.yang = {
     // https://tools.ietf.org/html/rfc6020#page-34

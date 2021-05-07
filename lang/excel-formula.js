@@ -1,6 +1,8 @@
+// @ts-nocheck
 excelFormula.displayName = 'excel-formula'
 excelFormula.aliases = ['xls', 'xlsx']
 
+/** @type {import('../core.js').Syntax} */
 export default function excelFormula(Prism) {
   Prism.languages['excel-formula'] = {
     comment: {

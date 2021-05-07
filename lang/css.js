@@ -1,6 +1,8 @@
+// @ts-nocheck
 css.displayName = 'css'
 css.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function css(Prism) {
   ;(function (Prism) {
     var string = /("|')(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/

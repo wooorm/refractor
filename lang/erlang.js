@@ -1,6 +1,8 @@
+// @ts-nocheck
 erlang.displayName = 'erlang'
 erlang.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function erlang(Prism) {
   Prism.languages.erlang = {
     comment: /%.+/,

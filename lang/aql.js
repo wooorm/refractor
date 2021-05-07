@@ -1,6 +1,8 @@
+// @ts-nocheck
 aql.displayName = 'aql'
 aql.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function aql(Prism) {
   Prism.languages.aql = {
     comment: /\/\/.*|\/\*[\s\S]*?\*\//,

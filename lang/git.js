@@ -1,6 +1,8 @@
+// @ts-nocheck
 git.displayName = 'git'
 git.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function git(Prism) {
   Prism.languages.git = {
     /*

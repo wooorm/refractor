@@ -1,6 +1,8 @@
+// @ts-nocheck
 monkey.displayName = 'monkey'
 monkey.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function monkey(Prism) {
   Prism.languages.monkey = {
     string: /"[^"\r\n]*"/,

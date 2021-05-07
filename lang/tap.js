@@ -1,7 +1,9 @@
+// @ts-nocheck
 import refractorYaml from './yaml.js'
 tap.displayName = 'tap'
 tap.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function tap(Prism) {
   Prism.register(refractorYaml)
   Prism.languages.tap = {

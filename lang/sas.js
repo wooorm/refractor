@@ -1,6 +1,8 @@
+// @ts-nocheck
 sas.displayName = 'sas'
 sas.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function sas(Prism) {
   ;(function (Prism) {
     var stringPattern = /(?:"(?:""|[^"])*"(?!")|'(?:''|[^'])*'(?!'))/.source

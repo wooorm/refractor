@@ -1,7 +1,9 @@
+// @ts-nocheck
 import refractorClike from './clike.js'
 javascript.displayName = 'javascript'
 javascript.aliases = ['js']
 
+/** @type {import('../core.js').Syntax} */
 export default function javascript(Prism) {
   Prism.register(refractorClike)
   Prism.languages.javascript = Prism.languages.extend('clike', {

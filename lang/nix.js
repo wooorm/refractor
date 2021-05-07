@@ -1,6 +1,8 @@
+// @ts-nocheck
 nix.displayName = 'nix'
 nix.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function nix(Prism) {
   Prism.languages.nix = {
     comment: /\/\*[\s\S]*?\*\/|#.*/,

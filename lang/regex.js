@@ -1,6 +1,8 @@
+// @ts-nocheck
 regex.displayName = 'regex'
 regex.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function regex(Prism) {
   ;(function (Prism) {
     var specialEscape = {

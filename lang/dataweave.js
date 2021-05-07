@@ -1,6 +1,8 @@
+// @ts-nocheck
 dataweave.displayName = 'dataweave'
 dataweave.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function dataweave(Prism) {
   ;(function (Prism) {
     Prism.languages.dataweave = {

@@ -1,6 +1,8 @@
+// @ts-nocheck
 hpkp.displayName = 'hpkp'
 hpkp.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function hpkp(Prism) {
   /**
    * Original by Scott Helme.

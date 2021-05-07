@@ -1,6 +1,8 @@
+// @ts-nocheck
 apl.displayName = 'apl'
 apl.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function apl(Prism) {
   Prism.languages.apl = {
     comment: /(?:⍝|#[! ]).*$/m,

@@ -1,6 +1,8 @@
+// @ts-nocheck
 pascal.displayName = 'pascal'
 pascal.aliases = ['objectpascal']
 
+/** @type {import('../core.js').Syntax} */
 export default function pascal(Prism) {
   // Based on Free Pascal
   /* TODO

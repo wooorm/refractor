@@ -1,6 +1,8 @@
+// @ts-nocheck
 mizar.displayName = 'mizar'
 mizar.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function mizar(Prism) {
   Prism.languages.mizar = {
     comment: /::.+/,

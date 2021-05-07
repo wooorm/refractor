@@ -1,6 +1,8 @@
+// @ts-nocheck
 gedcom.displayName = 'gedcom'
 gedcom.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function gedcom(Prism) {
   Prism.languages.gedcom = {
     'line-value': {

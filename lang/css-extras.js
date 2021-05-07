@@ -1,7 +1,9 @@
+// @ts-nocheck
 import refractorCss from './css.js'
 cssExtras.displayName = 'css-extras'
 cssExtras.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function cssExtras(Prism) {
   Prism.register(refractorCss)
   ;(function (Prism) {

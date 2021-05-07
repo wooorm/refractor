@@ -1,6 +1,8 @@
+// @ts-nocheck
 j.displayName = 'j'
 j.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function j(Prism) {
   Prism.languages.j = {
     comment: /\bNB\..*/,

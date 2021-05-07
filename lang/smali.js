@@ -1,6 +1,8 @@
+// @ts-nocheck
 smali.displayName = 'smali'
 smali.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function smali(Prism) {
   // Test files for the parser itself:
   // https://github.com/JesusFreke/smali/tree/master/smali/src/test/resources/LexerTest

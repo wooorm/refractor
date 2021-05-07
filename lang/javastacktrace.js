@@ -1,6 +1,8 @@
+// @ts-nocheck
 javastacktrace.displayName = 'javastacktrace'
 javastacktrace.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function javastacktrace(Prism) {
   // Specification:
   // https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Throwable.html#printStackTrace()

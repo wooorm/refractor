@@ -1,6 +1,8 @@
+// @ts-nocheck
 keyman.displayName = 'keyman'
 keyman.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function keyman(Prism) {
   Prism.languages.keyman = {
     comment: /\bc\s.*/i,

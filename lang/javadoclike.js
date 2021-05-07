@@ -1,6 +1,8 @@
+// @ts-nocheck
 javadoclike.displayName = 'javadoclike'
 javadoclike.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function javadoclike(Prism) {
   ;(function (Prism) {
     var javaDocLike = (Prism.languages.javadoclike = {

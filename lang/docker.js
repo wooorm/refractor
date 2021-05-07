@@ -1,6 +1,8 @@
+// @ts-nocheck
 docker.displayName = 'docker'
 docker.aliases = ['dockerfile']
 
+/** @type {import('../core.js').Syntax} */
 export default function docker(Prism) {
   Prism.languages.docker = {
     keyword: {

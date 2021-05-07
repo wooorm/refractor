@@ -1,8 +1,10 @@
+// @ts-nocheck
 import refractorClike from './clike.js'
 import refractorSql from './sql.js'
 apex.displayName = 'apex'
 apex.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function apex(Prism) {
   Prism.register(refractorClike)
   Prism.register(refractorSql)

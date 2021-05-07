@@ -1,6 +1,8 @@
+// @ts-nocheck
 haskell.displayName = 'haskell'
 haskell.aliases = ['hs']
 
+/** @type {import('../core.js').Syntax} */
 export default function haskell(Prism) {
   Prism.languages.haskell = {
     comment: {

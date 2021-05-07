@@ -1,6 +1,8 @@
+// @ts-nocheck
 pcaxis.displayName = 'pcaxis'
 pcaxis.aliases = ['px']
 
+/** @type {import('../core.js').Syntax} */
 export default function pcaxis(Prism) {
   Prism.languages.pcaxis = {
     string: /"[^"]*"/,

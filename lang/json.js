@@ -1,6 +1,8 @@
+// @ts-nocheck
 json.displayName = 'json'
 json.aliases = ['webmanifest']
 
+/** @type {import('../core.js').Syntax} */
 export default function json(Prism) {
   // https://www.json.org/json-en.html
   Prism.languages.json = {

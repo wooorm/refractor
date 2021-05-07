@@ -1,6 +1,8 @@
+// @ts-nocheck
 elixir.displayName = 'elixir'
 elixir.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function elixir(Prism) {
   Prism.languages.elixir = {
     comment: /#.*/m,

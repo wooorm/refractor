@@ -1,14 +1,51 @@
+/**
+ * @typedef _Token A hidden Prism token
+ * @property {string} type
+ * @property {string} content
+ * @property {string} alias
+ * @property {number} length
+ *
+ * @typedef _Env A hidden Prism environment
+ * @property {string} type
+ * @property {string} tag
+ * @property {Text|RefractorElement|Array.<Text|RefractorElement>} content
+ * @property {Array.<string>} classes
+ * @property {Object.<string, string>} attributes
+ * @property {string} language
+ *
+ * @typedef {import('hast').Element} Element
+ * @typedef {import('hast').Text} Text
+ * @typedef {Omit<Element, 'children'> & {children: Array.<RefractorElement|Text>}} RefractorElement
+ *
+ * @typedef {import('prismjs').Languages} Languages
+ * @typedef {import('prismjs').Grammar} Grammar Whatever this is, Prism handles it.
+ * @typedef {((prism: unknown) => void) & {displayName: string, aliases?: string[]}} Syntax A refractor syntax function
+ *
+ * @typedef Refractor Virtual syntax highlighting
+ * @property {highlight} highlight
+ * @property {alias} alias
+ * @property {register} register
+ * @property {registered} registered
+ * @property {listLanguages} listLanguages
+ * @property {Languages} languages
+ */
+
 /* eslint-disable no-undef */
 // Don’t allow Prism to run on page load in browser or to start messaging from
 // workers.
-/* c8 ignore next 10 */
+/* c8 ignore next 15 */
+/** @type {typeof globalThis} */
 var ctx =
   typeof globalThis === 'object'
     ? globalThis
-    : typeof self === 'object'
-    ? self
-    : typeof window === 'object'
-    ? window
+    : // @ts-ignore
+    typeof self === 'object'
+    ? // @ts-ignore
+      self
+    : // @ts-ignore
+    typeof window === 'object'
+    ? // @ts-ignore
+      window
     : typeof global === 'object'
     ? global
     : {}
@@ -16,6 +53,7 @@ var ctx =
 
 var restore = capture()
 
+// @ts-ignore Types are incorrect.
 ctx.Prism = {manual: true, disableWorkerMessageHandler: true}
 
 // Load all stuff in `prism.js` itself, except for `prism-file-highlight.js`.
@@ -33,7 +71,7 @@ function Refractor() {}
 
 Refractor.prototype = Prism
 
-// Construct.
+/** @type {Refractor} */
 export const refractor = new Refractor()
 
 // Create.
@@ -43,60 +81,95 @@ refractor.alias = alias
 refractor.registered = registered
 refractor.listLanguages = listLanguages
 
+// @ts-ignore Overwrite Prism.
 refractor.util.encode = encode
+// @ts-ignore Overwrite Prism.
 refractor.Token.stringify = stringify
 
-function register(grammar) {
-  if (typeof grammar !== 'function' || !grammar.displayName) {
-    throw new Error('Expected `function` for `grammar`, got `' + grammar + '`')
+/**
+ * Register a syntax.
+ * Needed if you’re using `refractor/core.js`.
+ *
+ * @param {Syntax} syntax
+ * @returns {void}
+ */
+function register(syntax) {
+  if (typeof syntax !== 'function' || !syntax.displayName) {
+    throw new Error('Expected `function` for `syntax`, got `' + syntax + '`')
   }
 
   // Do not duplicate registrations.
-  if (!own.call(refractor.languages, grammar.displayName)) {
-    grammar(refractor)
+  if (!own.call(refractor.languages, syntax.displayName)) {
+    syntax(refractor)
   }
 }
 
+/**
+ * Register a new `alias` for the `name` language.
+ *
+ * @param {Object.<string, string|Array.<string>>|string} name
+ * @param {string|Array.<string>} [alias]
+ * @returns {void}
+ */
 function alias(name, alias) {
   var languages = refractor.languages
-  var map = name
+  /** @type {Object.<string, string|Array.<string>>} */
+  var map
+  /** @type {string} */
   var key
+  /** @type {string|Array.<string>} */
+  var value
+  /** @type {Array.<string>} */
   var list
-  var length
+  /** @type {number} */
   var index
 
-  if (alias) {
+  if (typeof name === 'string') {
     map = {}
     map[name] = alias
+  } else {
+    map = name
   }
 
   for (key in map) {
     if (own.call(map, key)) {
-      list = map[key]
-      list = typeof list === 'string' ? [list] : list
-      length = list.length
+      value = map[key]
+      list = typeof value === 'string' ? [value] : value
       index = -1
 
-      while (++index < length) {
+      while (++index < list.length) {
         languages[list[index]] = languages[key]
       }
     }
   }
 }
 
-function highlight(value, name) {
-  var sup = Prism.highlight
+/**
+ * Parse `value` according to the `language` (name or alias)
+ * syntax.
+ *
+ * @param {string} value
+ * @param {string|Grammar} nameOrGrammar
+ * @returns {Array.<RefractorElement|Text>}
+ */
+function highlight(value, nameOrGrammar) {
+  /** @type {Grammar} */
   var grammar
+  /** @type {string} */
+  var name
 
   if (typeof value !== 'string') {
     throw new TypeError('Expected `string` for `value`, got `' + value + '`')
   }
 
   // `name` is a grammar object.
-  if (refractor.util.type(name) === 'Object') {
-    grammar = name
+  if (nameOrGrammar && typeof nameOrGrammar === 'object') {
+    grammar = nameOrGrammar
     name = null
   } else {
+    // @ts-ignore Assume string.
+    name = nameOrGrammar
+
     if (typeof name !== 'string') {
       throw new TypeError('Expected `string` for `name`, got `' + name + '`')
     }
@@ -108,9 +181,15 @@ function highlight(value, name) {
     }
   }
 
-  return sup.call(this, value, grammar, name)
+  return Prism.highlight.call(refractor, value, grammar, name)
 }
 
+/**
+ * Check if a `language` (name or alias) is registered.
+ *
+ * @param {string} language
+ * @returns {boolean}
+ */
 function registered(language) {
   if (typeof language !== 'string') {
     throw new TypeError(
@@ -121,9 +200,16 @@ function registered(language) {
   return own.call(refractor.languages, language)
 }
 
+/**
+ * List all registered languages (names and aliases).
+ *
+ * @returns {Array.<string>}
+ */
 function listLanguages() {
   var languages = refractor.languages
+  /** @type {Array.<string>} */
   var list = []
+  /** @type {string} */
   var language
 
   for (language in languages) {
@@ -138,33 +224,58 @@ function listLanguages() {
   return list
 }
 
-function stringify(value, language, parent) {
+/**
+ * @param {string|_Token|Array.<string|_Token>} value
+ * @param {string} language
+ * @returns {Text|RefractorElement|Array.<Text|RefractorElement>}
+ */
+function stringify(value, language) {
+  var index = -1
+  /** @type {Array.<Text|RefractorElement>} */
+  var result
+  /** @type {_Env} */
   var env
 
   if (typeof value === 'string') {
     return {type: 'text', value}
   }
 
-  if (refractor.util.type(value) === 'Array') {
-    return stringifyAll(value, language)
+  if (Array.isArray(value)) {
+    result = []
+
+    while (++index < value.length) {
+      if (
+        value[index] !== '' &&
+        value[index] !== null &&
+        value[index] !== undefined
+      ) {
+        // @ts-ignore Assume no sub-arrays.
+        result.push(stringify(value[index], language))
+      }
+    }
+
+    return result
   }
 
   env = {
     type: value.type,
-    content: refractor.Token.stringify(value.content, language, parent),
+    content: stringify(value.content, language),
     tag: 'span',
     classes: ['token', value.type],
     attributes: {},
-    language,
-    parent
+    language
   }
 
   if (value.alias) {
-    env.classes = env.classes.concat(value.alias)
+    env.classes.push(
+      ...(typeof value.alias === 'string' ? [value.alias] : value.alias)
+    )
   }
 
+  // @ts-ignore Prism.
   refractor.hooks.run('wrap', env)
 
+  // @ts-ignore Hush, it’s fine.
   return h(
     env.tag + '.' + env.classes.join('.'),
     attributes(env.attributes),
@@ -172,36 +283,21 @@ function stringify(value, language, parent) {
   )
 }
 
-function stringifyAll(values, language) {
-  var result = []
-  var length = values.length
-  var index = -1
-  var value
-
-  while (++index < length) {
-    value = values[index]
-
-    if (value !== '' && value !== null && value !== undefined) {
-      result.push(value)
-    }
-  }
-
-  index = -1
-  length = result.length
-
-  while (++index < length) {
-    value = result[index]
-    result[index] = refractor.Token.stringify(value, language, result)
-  }
-
-  return result
-}
-
+/**
+ * @template {unknown} T
+ * @param {T} tokens
+ * @returns {T}
+ */
 function encode(tokens) {
   return tokens
 }
 
+/**
+ * @param {Object.<string, string>} attrs
+ * @returns {Object.<string, string>}
+ */
 function attributes(attrs) {
+  /** @type {string} */
   var key
 
   for (key in attrs) {
@@ -213,6 +309,9 @@ function attributes(attrs) {
   return attrs
 }
 
+/**
+ * @returns {() => void}
+ */
 function capture() {
   var defined = 'Prism' in ctx
   /* c8 ignore next */
@@ -220,6 +319,9 @@ function capture() {
 
   return restore
 
+  /**
+   * @returns {void}
+   */
   function restore() {
     /* istanbul ignore else - Clean leaks after Prism. */
     if (defined) {

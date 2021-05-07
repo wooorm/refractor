@@ -1,6 +1,8 @@
+// @ts-nocheck
 bash.displayName = 'bash'
 bash.aliases = ['shell']
 
+/** @type {import('../core.js').Syntax} */
 export default function bash(Prism) {
   ;(function (Prism) {
     // $ set | grep '^[A-Z][^[:space:]]*=' | cut -d= -f1 | tr '\n' '|'

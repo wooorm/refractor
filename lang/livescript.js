@@ -1,6 +1,8 @@
+// @ts-nocheck
 livescript.displayName = 'livescript'
 livescript.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function livescript(Prism) {
   Prism.languages.livescript = {
     comment: [

@@ -1,6 +1,8 @@
+// @ts-nocheck
 lua.displayName = 'lua'
 lua.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function lua(Prism) {
   Prism.languages.lua = {
     comment: /^#!.+|--(?:\[(=*)\[[\s\S]*?\]\1\]|.*)/m,

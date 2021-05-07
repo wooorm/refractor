@@ -1,6 +1,8 @@
+// @ts-nocheck
 roboconf.displayName = 'roboconf'
 roboconf.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function roboconf(Prism) {
   Prism.languages.roboconf = {
     comment: /#.*/,

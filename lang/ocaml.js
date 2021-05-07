@@ -1,6 +1,8 @@
+// @ts-nocheck
 ocaml.displayName = 'ocaml'
 ocaml.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function ocaml(Prism) {
   Prism.languages.ocaml = {
     comment: /\(\*[\s\S]*?\*\)/,

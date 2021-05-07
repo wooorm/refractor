@@ -1,6 +1,8 @@
+// @ts-nocheck
 gcode.displayName = 'gcode'
 gcode.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function gcode(Prism) {
   Prism.languages.gcode = {
     comment: /;.*|\B\(.*?\)\B/,

@@ -1,7 +1,9 @@
+// @ts-nocheck
 import refractorHaskell from './haskell.js'
 purescript.displayName = 'purescript'
 purescript.aliases = ['purs']
 
+/** @type {import('../core.js').Syntax} */
 export default function purescript(Prism) {
   Prism.register(refractorHaskell)
   Prism.languages.purescript = Prism.languages.extend('haskell', {

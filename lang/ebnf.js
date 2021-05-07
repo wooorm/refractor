@@ -1,6 +1,8 @@
+// @ts-nocheck
 ebnf.displayName = 'ebnf'
 ebnf.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function ebnf(Prism) {
   Prism.languages.ebnf = {
     comment: /\(\*[\s\S]*?\*\)/,

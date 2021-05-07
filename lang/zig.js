@@ -1,6 +1,8 @@
+// @ts-nocheck
 zig.displayName = 'zig'
 zig.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function zig(Prism) {
   ;(function (Prism) {
     function literal(str) {

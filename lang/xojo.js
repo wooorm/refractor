@@ -1,6 +1,8 @@
+// @ts-nocheck
 xojo.displayName = 'xojo'
 xojo.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function xojo(Prism) {
   Prism.languages.xojo = {
     comment: {

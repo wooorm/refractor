@@ -1,7 +1,9 @@
+// @ts-nocheck
 import refractorJavascript from './javascript.js'
 typescript.displayName = 'typescript'
 typescript.aliases = ['ts']
 
+/** @type {import('../core.js').Syntax} */
 export default function typescript(Prism) {
   Prism.register(refractorJavascript)
   ;(function (Prism) {

@@ -1,7 +1,9 @@
+// @ts-nocheck
 import refractorMarkup from './markup.js'
 wiki.displayName = 'wiki'
 wiki.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function wiki(Prism) {
   Prism.register(refractorMarkup)
   Prism.languages.wiki = Prism.languages.extend('markup', {

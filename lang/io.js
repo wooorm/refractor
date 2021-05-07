@@ -1,6 +1,8 @@
+// @ts-nocheck
 io.displayName = 'io'
 io.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function io(Prism) {
   Prism.languages.io = {
     comment: [

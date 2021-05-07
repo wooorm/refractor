@@ -1,7 +1,9 @@
+// @ts-nocheck
 import refractorClike from './clike.js'
 birb.displayName = 'birb'
 birb.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function birb(Prism) {
   Prism.register(refractorClike)
   Prism.languages.birb = Prism.languages.extend('clike', {

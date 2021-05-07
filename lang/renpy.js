@@ -1,6 +1,8 @@
+// @ts-nocheck
 renpy.displayName = 'renpy'
 renpy.aliases = ['rpy']
 
+/** @type {import('../core.js').Syntax} */
 export default function renpy(Prism) {
   Prism.languages.renpy = {
     // TODO Write tests.

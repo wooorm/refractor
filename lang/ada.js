@@ -1,6 +1,8 @@
+// @ts-nocheck
 ada.displayName = 'ada'
 ada.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function ada(Prism) {
   Prism.languages.ada = {
     comment: /--.*/,

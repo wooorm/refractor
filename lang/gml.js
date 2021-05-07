@@ -1,7 +1,9 @@
+// @ts-nocheck
 import refractorClike from './clike.js'
 gml.displayName = 'gml'
 gml.aliases = ['gamemakerlanguage']
 
+/** @type {import('../core.js').Syntax} */
 export default function gml(Prism) {
   Prism.register(refractorClike)
   Prism.languages.gamemakerlanguage = Prism.languages.gml = Prism.languages.extend(

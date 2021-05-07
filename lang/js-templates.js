@@ -1,7 +1,9 @@
+// @ts-nocheck
 import refractorJavascript from './javascript.js'
 jsTemplates.displayName = 'js-templates'
 jsTemplates.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function jsTemplates(Prism) {
   Prism.register(refractorJavascript)
   ;(function (Prism) {

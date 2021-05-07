@@ -1,6 +1,8 @@
+// @ts-nocheck
 powershell.displayName = 'powershell'
 powershell.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function powershell(Prism) {
   ;(function (Prism) {
     var powershell = (Prism.languages.powershell = {

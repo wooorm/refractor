@@ -1,6 +1,8 @@
+// @ts-nocheck
 cmake.displayName = 'cmake'
 cmake.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function cmake(Prism) {
   Prism.languages.cmake = {
     comment: /#.*/,

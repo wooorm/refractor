@@ -1,7 +1,9 @@
+// @ts-nocheck
 import refractorClike from './clike.js'
 firestoreSecurityRules.displayName = 'firestore-security-rules'
 firestoreSecurityRules.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function firestoreSecurityRules(Prism) {
   Prism.register(refractorClike)
   Prism.languages['firestore-security-rules'] = Prism.languages.extend(

@@ -1,6 +1,8 @@
+// @ts-nocheck
 hsts.displayName = 'hsts'
 hsts.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function hsts(Prism) {
   /**
    * Original by Scott Helme.

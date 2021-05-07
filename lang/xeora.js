@@ -1,7 +1,9 @@
+// @ts-nocheck
 import refractorMarkup from './markup.js'
 xeora.displayName = 'xeora'
 xeora.aliases = ['xeoracube']
 
+/** @type {import('../core.js').Syntax} */
 export default function xeora(Prism) {
   Prism.register(refractorMarkup)
   ;(function (Prism) {

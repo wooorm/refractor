@@ -1,6 +1,8 @@
+// @ts-nocheck
 vim.displayName = 'vim'
 vim.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function vim(Prism) {
   Prism.languages.vim = {
     string: /"(?:[^"\\\r\n]|\\.)*"|'(?:[^'\r\n]|'')*'/,

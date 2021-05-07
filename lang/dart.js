@@ -1,7 +1,9 @@
+// @ts-nocheck
 import refractorClike from './clike.js'
 dart.displayName = 'dart'
 dart.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function dart(Prism) {
   Prism.register(refractorClike)
   Prism.languages.dart = Prism.languages.extend('clike', {

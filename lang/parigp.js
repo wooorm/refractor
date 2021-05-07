@@ -1,6 +1,8 @@
+// @ts-nocheck
 parigp.displayName = 'parigp'
 parigp.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function parigp(Prism) {
   Prism.languages.parigp = {
     comment: /\/\*[\s\S]*?\*\/|\\\\.*/,

@@ -1,7 +1,9 @@
+// @ts-nocheck
 import refractorClike from './clike.js'
 purebasic.displayName = 'purebasic'
 purebasic.aliases = ['pbfasm']
 
+/** @type {import('../core.js').Syntax} */
 export default function purebasic(Prism) {
   Prism.register(refractorClike)
   /*

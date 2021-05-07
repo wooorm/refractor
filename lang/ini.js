@@ -1,6 +1,8 @@
+// @ts-nocheck
 ini.displayName = 'ini'
 ini.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function ini(Prism) {
   Prism.languages.ini = {
     comment: /^[ \t]*[;#].*$/m,

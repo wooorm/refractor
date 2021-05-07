@@ -1,7 +1,9 @@
+// @ts-nocheck
 import refractorBash from './bash.js'
 shellSession.displayName = 'shell-session'
 shellSession.aliases = ['sh-session', 'shellsession']
 
+/** @type {import('../core.js').Syntax} */
 export default function shellSession(Prism) {
   Prism.register(refractorBash)
   ;(function (Prism) {

@@ -1,6 +1,8 @@
+// @ts-nocheck
 verilog.displayName = 'verilog'
 verilog.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function verilog(Prism) {
   Prism.languages.verilog = {
     comment: /\/\/.*|\/\*[\s\S]*?\*\//,

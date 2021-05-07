@@ -1,9 +1,16 @@
+/**
+ * @typedef {import('mdast').Root} Root
+ * @typedef {import('mdast').PhrasingContent} PhrasingContent
+ * @typedef {import('mdast-zone').Handler} Handler
+ */
+
 import fs from 'fs'
 import path from 'path'
 import {zone} from 'mdast-zone'
 import {u} from 'unist-builder'
 import alphaSort from 'alpha-sort'
 
+/** @type {{languages: Object.<string, unknown>}} */
 var components = JSON.parse(
   String(
     fs.readFileSync(path.join('node_modules', 'prismjs', 'components.json'))
@@ -21,19 +28,27 @@ export default function syntaxes() {
   return transformer
 }
 
+/**
+ * @param {Root} tree
+ */
 async function transformer(tree) {
   var items = await itemPromises
 
   zone(tree, 'support', replace)
 
-  function replace(start, nodes, end) {
+  /** @type {Handler} */
+  function replace(start, _, end) {
     return [start, u('list', {spread: false, ordered: false}, items), end]
   }
 }
 
+/**
+ * @param {string} name
+ */
 async function one(name) {
-  var aliases = (await import('../lang/' + name + '.js')).default.aliases
-
+  /** @type {Array.<string>} */
+  var aliases = (await import('../lang/' + name + '.js')).default.aliases // type-coverage:ignore-line
+  /** @type {Array.<PhrasingContent>} */
   var content = [
     u(
       'link',
@@ -63,10 +78,17 @@ async function one(name) {
   ])
 }
 
-function included() {
+/**
+ * @param {string} _
+ */
+function included(_) {
   return false
 }
 
+/**
+ * @param {string} a
+ * @param {string} b
+ */
 function sort(a, b) {
   if (included(a) && !included(b)) {
     return -1

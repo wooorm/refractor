@@ -1,6 +1,8 @@
+// @ts-nocheck
 python.displayName = 'python'
 python.aliases = ['py']
 
+/** @type {import('../core.js').Syntax} */
 export default function python(Prism) {
   Prism.languages.python = {
     comment: {

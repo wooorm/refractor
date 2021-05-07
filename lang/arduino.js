@@ -1,7 +1,9 @@
+// @ts-nocheck
 import refractorCpp from './cpp.js'
 arduino.displayName = 'arduino'
 arduino.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function arduino(Prism) {
   Prism.register(refractorCpp)
   Prism.languages.arduino = Prism.languages.extend('cpp', {

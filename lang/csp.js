@@ -1,6 +1,8 @@
+// @ts-nocheck
 csp.displayName = 'csp'
 csp.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function csp(Prism) {
   /**
    * Original by Scott Helme.

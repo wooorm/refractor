@@ -1,8 +1,10 @@
+// @ts-nocheck
 import refractorJavascript from './javascript.js'
 import refractorMarkup from './markup.js'
 pug.displayName = 'pug'
 pug.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function pug(Prism) {
   Prism.register(refractorJavascript)
   Prism.register(refractorMarkup)

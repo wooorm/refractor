@@ -1,6 +1,8 @@
+// @ts-nocheck
 http.displayName = 'http'
 http.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function http(Prism) {
   ;(function (Prism) {
     Prism.languages.http = {

@@ -1,6 +1,8 @@
+// @ts-nocheck
 moonscript.displayName = 'moonscript'
 moonscript.aliases = ['moon']
 
+/** @type {import('../core.js').Syntax} */
 export default function moonscript(Prism) {
   Prism.languages.moonscript = {
     comment: /--.*/,

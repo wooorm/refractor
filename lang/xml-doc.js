@@ -1,7 +1,9 @@
+// @ts-nocheck
 import refractorMarkup from './markup.js'
 xmlDoc.displayName = 'xml-doc'
 xmlDoc.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function xmlDoc(Prism) {
   Prism.register(refractorMarkup)
   ;(function (Prism) {

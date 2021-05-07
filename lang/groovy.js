@@ -1,7 +1,9 @@
+// @ts-nocheck
 import refractorClike from './clike.js'
 groovy.displayName = 'groovy'
 groovy.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function groovy(Prism) {
   Prism.register(refractorClike)
   Prism.languages.groovy = Prism.languages.extend('clike', {

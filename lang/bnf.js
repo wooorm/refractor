@@ -1,6 +1,8 @@
+// @ts-nocheck
 bnf.displayName = 'bnf'
 bnf.aliases = ['rbnf']
 
+/** @type {import('../core.js').Syntax} */
 export default function bnf(Prism) {
   Prism.languages.bnf = {
     string: {

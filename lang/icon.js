@@ -1,6 +1,8 @@
+// @ts-nocheck
 icon.displayName = 'icon'
 icon.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function icon(Prism) {
   Prism.languages.icon = {
     comment: /#.*/,

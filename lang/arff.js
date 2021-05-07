@@ -1,6 +1,8 @@
+// @ts-nocheck
 arff.displayName = 'arff'
 arff.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function arff(Prism) {
   Prism.languages.arff = {
     comment: /%.*/,

@@ -1,6 +1,8 @@
+// @ts-nocheck
 llvm.displayName = 'llvm'
 llvm.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function llvm(Prism) {
   ;(function (Prism) {
     Prism.languages.llvm = {

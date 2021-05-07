@@ -1,6 +1,8 @@
+// @ts-nocheck
 visualBasic.displayName = 'visual-basic'
 visualBasic.aliases = ['vb', 'vba']
 
+/** @type {import('../core.js').Syntax} */
 export default function visualBasic(Prism) {
   Prism.languages['visual-basic'] = {
     comment: {

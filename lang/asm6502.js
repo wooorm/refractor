@@ -1,6 +1,8 @@
+// @ts-nocheck
 asm6502.displayName = 'asm6502'
 asm6502.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function asm6502(Prism) {
   Prism.languages.asm6502 = {
     comment: /;.*/,

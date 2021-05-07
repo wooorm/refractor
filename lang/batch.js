@@ -1,6 +1,8 @@
+// @ts-nocheck
 batch.displayName = 'batch'
 batch.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function batch(Prism) {
   ;(function (Prism) {
     var variable = /%%?[~:\w]+%?|!\S+!/

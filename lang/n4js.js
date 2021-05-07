@@ -1,7 +1,9 @@
+// @ts-nocheck
 import refractorJavascript from './javascript.js'
 n4js.displayName = 'n4js'
 n4js.aliases = ['n4jsd']
 
+/** @type {import('../core.js').Syntax} */
 export default function n4js(Prism) {
   Prism.register(refractorJavascript)
   Prism.languages.n4js = Prism.languages.extend('javascript', {

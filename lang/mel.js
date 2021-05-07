@@ -1,6 +1,8 @@
+// @ts-nocheck
 mel.displayName = 'mel'
 mel.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function mel(Prism) {
   Prism.languages.mel = {
     comment: /\/\/.*/,

@@ -1,6 +1,8 @@
+// @ts-nocheck
 nsis.displayName = 'nsis'
 nsis.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function nsis(Prism) {
   /**
    * Original by Jan T. Sott (http://github.com/idleberg)

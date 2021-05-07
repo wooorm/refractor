@@ -1,6 +1,8 @@
+// @ts-nocheck
 jsstacktrace.displayName = 'jsstacktrace'
 jsstacktrace.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function jsstacktrace(Prism) {
   Prism.languages.jsstacktrace = {
     'error-message': {

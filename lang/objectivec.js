@@ -1,7 +1,9 @@
+// @ts-nocheck
 import refractorC from './c.js'
 objectivec.displayName = 'objectivec'
 objectivec.aliases = ['objc']
 
+/** @type {import('../core.js').Syntax} */
 export default function objectivec(Prism) {
   Prism.register(refractorC)
   Prism.languages.objectivec = Prism.languages.extend('c', {

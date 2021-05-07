@@ -1,6 +1,8 @@
+// @ts-nocheck
 hcl.displayName = 'hcl'
 hcl.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function hcl(Prism) {
   Prism.languages.hcl = {
     comment: /(?:\/\/|#).*|\/\*[\s\S]*?(?:\*\/|$)/,

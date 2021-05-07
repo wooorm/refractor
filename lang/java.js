@@ -1,7 +1,9 @@
+// @ts-nocheck
 import refractorClike from './clike.js'
 java.displayName = 'java'
 java.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function java(Prism) {
   Prism.register(refractorClike)
   ;(function (Prism) {

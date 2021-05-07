@@ -1,7 +1,9 @@
+// @ts-nocheck
 import refractorMarkupTemplating from './markup-templating.js'
 handlebars.displayName = 'handlebars'
 handlebars.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function handlebars(Prism) {
   Prism.register(refractorMarkupTemplating)
   ;(function (Prism) {

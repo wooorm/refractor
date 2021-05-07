@@ -1,7 +1,9 @@
+// @ts-nocheck
 import refractorMarkup from './markup.js'
 parser.displayName = 'parser'
 parser.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function parser(Prism) {
   Prism.register(refractorMarkup)
   ;(function (Prism) {

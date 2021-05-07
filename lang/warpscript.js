@@ -1,6 +1,8 @@
+// @ts-nocheck
 warpscript.displayName = 'warpscript'
 warpscript.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function warpscript(Prism) {
   Prism.languages.warpscript = {
     comment: /#.*|\/\/.*|\/\*[\s\S]*?\*\//,

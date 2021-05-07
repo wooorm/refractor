@@ -1,6 +1,8 @@
+// @ts-nocheck
 vhdl.displayName = 'vhdl'
 vhdl.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function vhdl(Prism) {
   Prism.languages.vhdl = {
     comment: /--.+/,

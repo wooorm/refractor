@@ -1,6 +1,8 @@
+// @ts-nocheck
 stan.displayName = 'stan'
 stan.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function stan(Prism) {
   // https://mc-stan.org/docs/2_24/reference-manual/bnf-grammars.html
   Prism.languages.stan = {

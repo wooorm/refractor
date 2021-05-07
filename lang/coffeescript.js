@@ -1,7 +1,9 @@
+// @ts-nocheck
 import refractorJavascript from './javascript.js'
 coffeescript.displayName = 'coffeescript'
 coffeescript.aliases = ['coffee']
 
+/** @type {import('../core.js').Syntax} */
 export default function coffeescript(Prism) {
   Prism.register(refractorJavascript)
   ;(function (Prism) {

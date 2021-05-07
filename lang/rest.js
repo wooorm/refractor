@@ -1,6 +1,8 @@
+// @ts-nocheck
 rest.displayName = 'rest'
 rest.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function rest(Prism) {
   Prism.languages.rest = {
     table: [

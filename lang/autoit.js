@@ -1,6 +1,8 @@
+// @ts-nocheck
 autoit.displayName = 'autoit'
 autoit.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function autoit(Prism) {
   Prism.languages.autoit = {
     comment: [

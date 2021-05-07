@@ -1,6 +1,8 @@
+// @ts-nocheck
 al.displayName = 'al'
 al.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function al(Prism) {
   // based on https://github.com/microsoft/AL/blob/master/grammar/alsyntax.tmlanguage
   Prism.languages.al = {

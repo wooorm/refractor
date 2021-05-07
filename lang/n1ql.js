@@ -1,6 +1,8 @@
+// @ts-nocheck
 n1ql.displayName = 'n1ql'
 n1ql.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function n1ql(Prism) {
   Prism.languages.n1ql = {
     comment: /\/\*[\s\S]*?(?:$|\*\/)/,

@@ -1,6 +1,8 @@
+// @ts-nocheck
 rust.displayName = 'rust'
 rust.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function rust(Prism) {
   ;(function (Prism) {
     var multilineComment = /\/\*(?:[^*/]|\*(?!\/)|\/(?!\*)|<self>)*\*\//.source

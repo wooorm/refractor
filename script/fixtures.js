@@ -10,24 +10,25 @@ var root = path.join('test', 'fixtures')
 var files = fs.readdirSync(root)
 var processor = rehype().use({settings: {fragment: true}})
 var index = -1
+/** @type {string} */
 var name
+/** @type {string} */
 var lang
-var baseline
 
 while (++index < files.length) {
   name = files[index]
   lang = name.split('-')[0]
 
-  baseline = processor.processSync(
-    Prism.highlight(
-      String(fs.readFileSync(path.join(root, name, 'input.txt'))).trim(),
-      Prism.languages[lang],
-      lang
-    )
-  )
-
   fs.writeFileSync(
     path.join(root, name, 'output.html'),
-    String(baseline) + '\n'
+    String(
+      processor.processSync(
+        Prism.highlight(
+          String(fs.readFileSync(path.join(root, name, 'input.txt'))).trim(),
+          Prism.languages[lang],
+          lang
+        )
+      )
+    ) + '\n'
   )
 }

@@ -1,7 +1,9 @@
+// @ts-nocheck
 import refractorMarkupTemplating from './markup-templating.js'
 soy.displayName = 'soy'
 soy.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function soy(Prism) {
   Prism.register(refractorMarkupTemplating)
   ;(function (Prism) {

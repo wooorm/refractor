@@ -1,6 +1,8 @@
+// @ts-nocheck
 iecst.displayName = 'iecst'
 iecst.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function iecst(Prism) {
   Prism.languages.iecst = {
     comment: [

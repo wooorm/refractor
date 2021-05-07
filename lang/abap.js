@@ -1,6 +1,8 @@
+// @ts-nocheck
 abap.displayName = 'abap'
 abap.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function abap(Prism) {
   Prism.languages.abap = {
     comment: /^\*.*/m,

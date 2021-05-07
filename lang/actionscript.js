@@ -1,7 +1,9 @@
+// @ts-nocheck
 import refractorJavascript from './javascript.js'
 actionscript.displayName = 'actionscript'
 actionscript.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function actionscript(Prism) {
   Prism.register(refractorJavascript)
   Prism.languages.actionscript = Prism.languages.extend('javascript', {

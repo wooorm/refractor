@@ -1,7 +1,9 @@
+// @ts-nocheck
 import refractorClike from './clike.js'
 qore.displayName = 'qore'
 qore.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function qore(Prism) {
   Prism.register(refractorClike)
   Prism.languages.qore = Prism.languages.extend('clike', {

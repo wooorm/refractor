@@ -1,27 +1,38 @@
+/**
+ * @typedef {import('mdast').Root} Root
+ * @typedef {import('mdast-zone').Handler} Handler
+ */
+
 import fs from 'fs'
 import path from 'path'
 import {zone} from 'mdast-zone'
 import {u} from 'unist-builder'
 
+/** @type {{[x: string]: unknown} & {dependencies: Object.<string, string>}} */
 var pkg = JSON.parse(String(fs.readFileSync('package.json')))
 
-var {languages} = JSON.parse(
+/** @type {{languages: Object.<string, unknown>}} */
+var components = JSON.parse(
   String(
     fs.readFileSync(path.join('node_modules', 'prismjs', 'components.json'))
   )
 )
 
-var langs = Object.keys(languages).filter((d) => d !== 'meta').length
+var langs = Object.keys(components.languages).filter((d) => d !== 'meta').length
 
 export default function count() {
   return transformer
 }
 
+/**
+ * @param {Root} tree
+ */
 function transformer(tree) {
   zone(tree, 'count', replace)
 }
 
-function replace(start, nodes, end) {
+/** @type {Handler} */
+function replace(start, _, end) {
   return [
     start,
     u('paragraph', [

@@ -1,6 +1,8 @@
+// @ts-nocheck
 stylus.displayName = 'stylus'
 stylus.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function stylus(Prism) {
   ;(function (Prism) {
     var unit = {

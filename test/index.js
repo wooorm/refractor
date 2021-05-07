@@ -1,3 +1,7 @@
+/**
+ * @typedef {import('../core.js').Syntax} Syntax
+ */
+
 import fs from 'fs'
 import path from 'path'
 import test from 'tape'
@@ -9,6 +13,7 @@ import {refractor} from '../index.js'
 test('.highlight(value, language)', function (t) {
   t.throws(
     function () {
+      // @ts-ignore runtime.
       refractor.highlight()
     },
     / Expected `string` for `value`, got `undefined`/,
@@ -17,6 +22,7 @@ test('.highlight(value, language)', function (t) {
 
   t.throws(
     function () {
+      // @ts-ignore runtime.
       refractor.highlight('')
     },
     /Expected `string` for `name`, got `undefined`/,
@@ -25,6 +31,7 @@ test('.highlight(value, language)', function (t) {
 
   t.throws(
     function () {
+      // @ts-ignore runtime.
       refractor.highlight(true, 'js')
     },
     /Expected `string` for `value`, got `true`/,
@@ -57,9 +64,10 @@ test('.highlight(value, language)', function (t) {
 test('.register(grammar)', function (t) {
   t.throws(
     function () {
+      // @ts-ignore runtime.
       refractor.register()
     },
-    /Expected `function` for `grammar`, got `undefined`/,
+    /Expected `function` for `syntax`, got `undefined`/,
     'should throw when not given a `value`'
   )
 
@@ -69,6 +77,7 @@ test('.register(grammar)', function (t) {
 test('.registered(language)', function (t) {
   t.throws(
     function () {
+      // @ts-ignore runtime.
       refractor.registered()
     },
     /Expected `string` for `language`, got `undefined`/,
@@ -98,12 +107,12 @@ test('.alias(name, alias)', function (t) {
     )
     .toString()
     .trim()
-  var expected = refractor.highlight(input, 'markdown').value
+  var expected = refractor.highlight(input, 'markdown')
 
   refractor.alias('markdown', 'mkd')
 
   t.deepEqual(
-    refractor.highlight(input, 'mkd').value,
+    refractor.highlight(input, 'mkd'),
     expected,
     'alias must be parsed like original language'
   )
@@ -113,7 +122,7 @@ test('.alias(name, alias)', function (t) {
   refractor.alias('markdown', ['mmkd', 'mmkdown'])
 
   t.deepEqual(
-    refractor.highlight(input, 'mmkd').value,
+    refractor.highlight(input, 'mmkd'),
     expected,
     'alias must be parsed like original language'
   )
@@ -124,7 +133,7 @@ test('.alias(name, alias)', function (t) {
   refractor.alias({markdown: 'mdown'})
 
   t.deepEqual(
-    refractor.highlight(input, 'mdown').value,
+    refractor.highlight(input, 'mdown'),
     expected,
     'alias must be parsed like original language'
   )
@@ -134,7 +143,7 @@ test('.alias(name, alias)', function (t) {
   refractor.alias({markdown: ['mmdown', 'mark']})
 
   t.deepEqual(
-    refractor.highlight(input, 'mark').value,
+    refractor.highlight(input, 'mark'),
     expected,
     'alias must be parsed like original language'
   )
@@ -150,9 +159,13 @@ test('fixtures', function (t) {
   var processor = rehype().use({settings: {fragment: true}})
   var files = fs.readdirSync(root)
   var index = -1
+  /** @type {string} */
   var name
+  /** @type {string} */
   var input
+  /** @type {string} */
   var lang
+  /** @type {string} */
   var expected
 
   while (++index < files.length) {
@@ -198,6 +211,7 @@ test('listLanguages', function (t) {
 
   t.end()
 
+  /** @param {Prism} prism */
   function grammar(prism) {
     prism.languages.alpha = {}
     prism.languages.bravo = {}

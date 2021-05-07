@@ -1,6 +1,8 @@
+// @ts-nocheck
 eiffel.displayName = 'eiffel'
 eiffel.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function eiffel(Prism) {
   Prism.languages.eiffel = {
     comment: /--.*/,

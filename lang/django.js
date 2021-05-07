@@ -1,7 +1,9 @@
+// @ts-nocheck
 import refractorMarkupTemplating from './markup-templating.js'
 django.displayName = 'django'
 django.aliases = ['jinja2']
 
+/** @type {import('../core.js').Syntax} */
 export default function django(Prism) {
   Prism.register(refractorMarkupTemplating)
   // Django/Jinja2 syntax definition for Prism.js <http://prismjs.com> syntax highlighter.

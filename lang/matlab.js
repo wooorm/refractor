@@ -1,6 +1,8 @@
+// @ts-nocheck
 matlab.displayName = 'matlab'
 matlab.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function matlab(Prism) {
   Prism.languages.matlab = {
     comment: [/%\{[\s\S]*?\}%/, /%.+/],

@@ -1,7 +1,9 @@
+// @ts-nocheck
 import refractorC from './c.js'
 bison.displayName = 'bison'
 bison.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function bison(Prism) {
   Prism.register(refractorC)
   Prism.languages.bison = Prism.languages.extend('c', {})

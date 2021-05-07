@@ -1,6 +1,8 @@
+// @ts-nocheck
 sql.displayName = 'sql'
 sql.aliases = []
 
+/** @type {import('../core.js').Syntax} */
 export default function sql(Prism) {
   Prism.languages.sql = {
     comment: {
