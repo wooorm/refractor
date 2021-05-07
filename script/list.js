@@ -20,6 +20,13 @@ var names = getLoader(
 fs.writeFile(
   'index.js',
   [
+    '/**',
+    " * @typedef {import('./core.js').RefractorRoot} RefractorRoot",
+    " * @typedef {import('./core.js').RefractorElement} RefractorElement",
+    " * @typedef {import('./core.js').Text} Text",
+    " * @typedef {import('./core.js').Grammar} Grammar",
+    " * @typedef {import('./core.js').Syntax} Syntax",
+    ' */',
     "import {refractor} from './core.js'",
     ...names.map(
       (lang) => 'import ' + camelcase(lang) + " from './lang/" + lang + ".js'"

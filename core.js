@@ -13,9 +13,11 @@
  * @property {Object.<string, string>} attributes
  * @property {string} language
  *
+ * @typedef {import('hast').Root} Root
  * @typedef {import('hast').Element} Element
  * @typedef {import('hast').Text} Text
  * @typedef {Omit<Element, 'children'> & {children: Array.<RefractorElement|Text>}} RefractorElement
+ * @typedef {Omit<Root, 'children'> & {children: Array.<RefractorElement|Text>}} RefractorRoot
  *
  * @typedef {import('prismjs').Languages} Languages
  * @typedef {import('prismjs').Grammar} Grammar Whatever this is, Prism handles it.
@@ -150,7 +152,7 @@ function alias(name, alias) {
  *
  * @param {string} value
  * @param {string|Grammar} nameOrGrammar
- * @returns {Array.<RefractorElement|Text>}
+ * @returns {RefractorRoot}
  */
 function highlight(value, nameOrGrammar) {
   /** @type {Grammar} */
@@ -181,7 +183,10 @@ function highlight(value, nameOrGrammar) {
     }
   }
 
-  return Prism.highlight.call(refractor, value, grammar, name)
+  return {
+    type: 'root',
+    children: Prism.highlight.call(refractor, value, grammar, name)
+  }
 }
 
 /**

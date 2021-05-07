@@ -1,3 +1,10 @@
+/**
+ * @typedef {import('./core.js').RefractorRoot} RefractorRoot
+ * @typedef {import('./core.js').RefractorElement} RefractorElement
+ * @typedef {import('./core.js').Text} Text
+ * @typedef {import('./core.js').Grammar} Grammar
+ * @typedef {import('./core.js').Syntax} Syntax
+ */
 import {refractor} from './core.js'
 import markup from './lang/markup.js'
 import css from './lang/css.js'

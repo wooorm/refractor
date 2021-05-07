@@ -54,33 +54,35 @@ npm install refractor
 ```js
 import {refractor} from 'refractor'
 
-var nodes = refractor.highlight('"use strict";', 'js')
+var root = refractor.highlight('"use strict";', 'js')
 
-console.log(nodes)
+console.log(root)
 ```
 
 Yields:
 
 ```js
-[
-  {
-    type: 'element',
-    tagName: 'span',
-    properties: {className: ['token', 'string']},
-    children: [{type: 'text', value: '"use strict"'}]
-  },
-  {
-    type: 'element',
-    tagName: 'span',
-    properties: {className: ['token', 'punctuation']},
-    children: [{type: 'text', value: ';'}]
-  }
-]
+{
+  type: 'root',
+  children: [
+    {
+      type: 'element',
+      tagName: 'span',
+      properties: {className: ['token', 'string']},
+      children: [{type: 'text', value: '"use strict"'}]
+    },
+    {
+      type: 'element',
+      tagName: 'span',
+      properties: {className: ['token', 'punctuation']},
+      children: [{type: 'text', value: ';'}]
+    }
+  ]
+}
 ```
 
-Which serialized with [`rehype`][rehype] or [`hast-util-to-html`][to-html]
-yields (you may have to wrap it into a fragment like so: `{type: 'root',
-children: nodes}`):
+Which serialized with [`hast-util-to-html`][to-html] (or [`rehype`][rehype])
+yields:
 
 ```html
 <span class="token string">"use strict"</span><span class="token punctuation">;</span>
@@ -113,14 +115,12 @@ console.log(refractor.highlight('*Emphasis*', 'markdown'))
 Yields:
 
 ```js
-[
-  {
-    type: 'element',
-    tagName: 'span',
-    properties: {className: [Array]},
-    children: [[Object], [Object], [Object]]
-  }
-]
+{
+  type: 'root',
+  children: [
+    {type: 'element', tagName: 'span', properties: [Object], children: [Array]}
+  ]
+}
 ```
 
 ### `refractor.alias(name[, alias])`
@@ -163,36 +163,31 @@ syntax.
 
 ###### Returns
 
-Virtual nodes representing the highlighted value ([`Array.<Node>`][node]).
+Virtual node representing the highlighted value ([`Root`][root]).
 
 ###### Example
 
 ```js
 import {refractor} from 'refractor/core.js'
+import css from 'refractor/lang/css.js'
 
+refractor.register(css)
 console.log(refractor.highlight('em { color: red }', 'css'))
 ```
 
 Yields:
 
 ```js
-[
-  {
-    type: 'element',
-    tagName: 'span',
-    properties: {className: [Array]},
-    children: [[Object]]
-  },
-  {type: 'text', value: ' '},
-  // …
-  {type: 'text', value: ' red '},
-  {
-    type: 'element',
-    tagName: 'span',
-    properties: {className: [Array]},
-    children: [[Object]]
-  }
-]
+{
+  type: 'root',
+  children: [
+    {type: 'element', tagName: 'span', properties: [Object], children: [Array]},
+    {type: 'text', value: ' '},
+    // …
+    {type: 'text', value: ' red '},
+    {type: 'element', tagName: 'span', properties: [Object], children: [Array]}
+  ]
+}
 ```
 
 ### `refractor.registered(language)`
@@ -203,7 +198,7 @@ Check if a `language` ([name or alias][syntax]) is registered.
 
 ```js
 import {refractor} from 'refractor/core.js'
-import {markdown} from 'refractor/lang/markdown.js'
+import markdown from 'refractor/lang/markdown.js'
 
 console.log(refractor.registered('markdown'))
 
@@ -231,7 +226,7 @@ List all registered languages ([names and aliases][syntax]).
 
 ```js
 import {refractor} from 'refractor/core.js'
-import {markdown} from 'refractor/lang/markdown.js'
+import markdown from 'refractor/lang/markdown.js'
 
 console.log(refractor.listLanguages())
 
@@ -243,19 +238,11 @@ console.log(refractor.listLanguages())
 Yields:
 
 ```js
+[]
 [
-  'markup',
+  'markup', // Note that `markup` (a lot of xml based languages) is a dep of markdown.
   'html',
   // …
-  'javascript',
-  'js'
-]
-[
-  'markup',
-  'html',
-  // …
-  'javascript',
-  'js',
   'markdown',
   'md'
 ]
@@ -605,7 +592,7 @@ syntaxes are made to work with global variables and are not requirable.
 
 [hljs]: https://github.com/isagalaev/highlight.js
 
-[node]: https://github.com/syntax-tree/hast#ast
+[root]: https://github.com/syntax-tree/hast#root
 
 [syntax]: #syntaxes
 

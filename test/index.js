@@ -1,5 +1,6 @@
 /**
  * @typedef {import('../core.js').Syntax} Syntax
+ * @typedef {import('hast').Node} Node
  */
 
 import fs from 'fs'
@@ -48,13 +49,13 @@ test('.highlight(value, language)', function (t) {
 
   t.deepEqual(
     refractor.highlight('', 'js'),
-    [],
+    {type: 'root', children: []},
     'should return an empty array when given an empty `value`'
   )
 
   t.deepEqual(
     refractor.highlight('# foo', 'js'),
-    [{type: 'text', value: '# foo'}],
+    {type: 'root', children: [{type: 'text', value: '# foo'}]},
     'should silently ignore illegals'
   )
 
@@ -181,8 +182,12 @@ test('fixtures', function (t) {
     ).trim()
 
     t.deepEqual(
-      refractor.highlight(input, lang),
-      removePosition(processor.parse(expected), true).children,
+      Object.assign(refractor.highlight(input, lang), {
+        data: undefined
+      }),
+      Object.assign(removePosition(processor.parse(expected), true), {
+        data: undefined
+      }),
       name
     )
   }
