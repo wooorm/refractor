@@ -35,8 +35,7 @@
   "types": "index.d.ts",
   "files": [
     "lang/",
-    "core.d.ts",
-    "core.js",
+    "lib/",
     "index.d.ts",
     "index.js"
   ],
@@ -49,9 +48,9 @@
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
-    "@types/async": "^3.2.6",
-    "@types/babel__core": "^7.1.14",
-    "@types/mdast": "^3.0.3",
+    "@types/async": "^3.0.0",
+    "@types/babel__core": "^7.0.0",
+    "@types/mdast": "^3.0.0",
     "@types/tape": "^4.0.0",
     "alpha-sort": "^5.0.0",
     "async": "^3.0.0",
@@ -76,7 +75,7 @@
   },
   "scripts": {
     "prepack": "npm run build && npm run format",
-    "build": "rimraf \"{lang/**,script/**,test/**,}*.d.ts\" && tsc && type-coverage",
+    "build": "rimraf \"{lang/**,lib/**,script/**,test/**,}*.d.ts\" && tsc && type-coverage",
     "generate": "node script/languages.js && node script/list.js && node script/fixtures.js",
     "format": "remark . -qfo && prettier . -w --loglevel warn && xo --fix",
     "test-api": "node test/index.js",

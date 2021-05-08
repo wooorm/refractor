@@ -1,5 +1,5 @@
 /**
- * @typedef {import('../core.js').Syntax} Syntax
+ * @typedef {import('../lib/core.js').Syntax} Syntax
  * @typedef {import('hast').Node} Node
  */
 
@@ -9,7 +9,7 @@ import test from 'tape'
 import rehype from 'rehype'
 import {isHidden} from 'is-hidden'
 import {removePosition} from 'unist-util-remove-position'
-import {refractor} from '../index.js'
+import {refractor} from '../lib/all.js'
 
 test('.highlight(value, language)', function (t) {
   t.throws(

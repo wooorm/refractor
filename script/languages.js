@@ -11,6 +11,7 @@ import babel from '@babel/core'
 import {detab} from 'detab'
 import {trimLines} from 'trim-lines'
 import alphaSort from 'alpha-sort'
+import {all} from './data.js'
 import {camelcase} from './camelcase.js'
 
 /** @type {{languages: Object.<string, {require: string|string[], alias: string|string[]}>}} */
@@ -22,11 +23,7 @@ var components = JSON.parse(
 
 var prefix = 'refractor-'
 
-async.map(
-  Object.keys(components.languages).filter((d) => d !== 'meta'),
-  generate,
-  done
-)
+async.map(all, generate, done)
 
 /**
  * @param {Error} error

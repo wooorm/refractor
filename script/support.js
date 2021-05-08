@@ -4,25 +4,12 @@
  * @typedef {import('mdast-zone').Handler} Handler
  */
 
-import fs from 'fs'
-import path from 'path'
 import {zone} from 'mdast-zone'
 import {u} from 'unist-builder'
 import alphaSort from 'alpha-sort'
+import {all, common} from './data.js'
 
-/** @type {{languages: Object.<string, unknown>}} */
-var components = JSON.parse(
-  String(
-    fs.readFileSync(path.join('node_modules', 'prismjs', 'components.json'))
-  )
-)
-
-var itemPromises = Promise.all(
-  Object.keys(components.languages)
-    .filter((d) => d !== 'meta')
-    .sort(sort)
-    .map((d) => one(d))
-)
+var itemPromises = Promise.all(all.sort(sort).map((d) => one(d)))
 
 export default function syntaxes() {
   return transformer
@@ -73,16 +60,14 @@ async function one(name) {
     }
   }
 
-  return u('listItem', {checked: included(name + '.js')}, [
-    u('paragraph', content)
-  ])
+  return u('listItem', {checked: included(name)}, [u('paragraph', content)])
 }
 
 /**
- * @param {string} _
+ * @param {string} name
  */
-function included(_) {
-  return false
+function included(name) {
+  return common.includes(name)
 }
 
 /**

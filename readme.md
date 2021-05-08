@@ -9,11 +9,14 @@ Lightweight, robust, elegant virtual syntax highlighting using [Prism][].
 Useful for virtual DOMs and non-HTML things.
 Perfect for [React][], [VDOM][], and others.
 
+`refractor` is built to work with all syntaxes supported by \[highlight.js]\[].
+There are three builds:
+
 <!--count start-->
 
-`refractor` is built to work with all syntaxes supported by [Prism][],
-that’s [237 languages][names] (as of [`prism@1.23.0`][prismjs]) and all
-[themes][].
+*   `lib/core.js` — 0 languages
+*   `lib/common.js` (default) — 36 languages
+*   `lib/all.js` — 237 languages
 
 <!--count end-->
 
@@ -278,15 +281,56 @@ console.log(refractor.highlight('<Dropdown primary />', 'jsx'))
 
 ## Syntaxes
 
-All syntaxes are included if you `import 'refractor'`.
-If you’re using `refractor/core.js`, checked syntaxes are always included, but
-unchecked syntaxes are not and must be imported and [`register`][register]ed.
+If you’re using `refractor/lib/core.js`, no syntaxes are included.
+Checked syntaxes are included if you import `refractor` (or
+`refractor/lib/common.js`).
+Unchecked syntaxes are available through `refractor/lib/all.js`.
+
+Note that Prism works as a singleton.
+That means that if you register a syntax anywhere in your project, it’ll
+become available everywhere!
 
 Only these custom built syntaxes will work with `refractor` because Prism’s own
 syntaxes are made to work with global variables and are not requirable.
 
 <!--support start-->
 
+*   [x] [`arduino`](https://github.com/wooorm/refractor/blob/main/lang/arduino.js)
+*   [x] [`bash`](https://github.com/wooorm/refractor/blob/main/lang/bash.js) — alias: `shell`
+*   [x] [`basic`](https://github.com/wooorm/refractor/blob/main/lang/basic.js)
+*   [x] [`c`](https://github.com/wooorm/refractor/blob/main/lang/c.js)
+*   [x] [`clike`](https://github.com/wooorm/refractor/blob/main/lang/clike.js)
+*   [x] [`cpp`](https://github.com/wooorm/refractor/blob/main/lang/cpp.js)
+*   [x] [`csharp`](https://github.com/wooorm/refractor/blob/main/lang/csharp.js) — alias: `cs`, `dotnet`
+*   [x] [`css`](https://github.com/wooorm/refractor/blob/main/lang/css.js)
+*   [x] [`diff`](https://github.com/wooorm/refractor/blob/main/lang/diff.js)
+*   [x] [`go`](https://github.com/wooorm/refractor/blob/main/lang/go.js)
+*   [x] [`ini`](https://github.com/wooorm/refractor/blob/main/lang/ini.js)
+*   [x] [`java`](https://github.com/wooorm/refractor/blob/main/lang/java.js)
+*   [x] [`javascript`](https://github.com/wooorm/refractor/blob/main/lang/javascript.js) — alias: `js`
+*   [x] [`json`](https://github.com/wooorm/refractor/blob/main/lang/json.js) — alias: `webmanifest`
+*   [x] [`kotlin`](https://github.com/wooorm/refractor/blob/main/lang/kotlin.js) — alias: `kt`, `kts`
+*   [x] [`less`](https://github.com/wooorm/refractor/blob/main/lang/less.js)
+*   [x] [`lua`](https://github.com/wooorm/refractor/blob/main/lang/lua.js)
+*   [x] [`makefile`](https://github.com/wooorm/refractor/blob/main/lang/makefile.js)
+*   [x] [`markdown`](https://github.com/wooorm/refractor/blob/main/lang/markdown.js) — alias: `md`
+*   [x] [`markup`](https://github.com/wooorm/refractor/blob/main/lang/markup.js) — alias: `atom`, `html`, `mathml`, `rss`, `ssml`, `svg`, `xml`
+*   [x] [`markup-templating`](https://github.com/wooorm/refractor/blob/main/lang/markup-templating.js)
+*   [x] [`objectivec`](https://github.com/wooorm/refractor/blob/main/lang/objectivec.js) — alias: `objc`
+*   [x] [`perl`](https://github.com/wooorm/refractor/blob/main/lang/perl.js)
+*   [x] [`php`](https://github.com/wooorm/refractor/blob/main/lang/php.js)
+*   [x] [`python`](https://github.com/wooorm/refractor/blob/main/lang/python.js) — alias: `py`
+*   [x] [`r`](https://github.com/wooorm/refractor/blob/main/lang/r.js)
+*   [x] [`regex`](https://github.com/wooorm/refractor/blob/main/lang/regex.js)
+*   [x] [`ruby`](https://github.com/wooorm/refractor/blob/main/lang/ruby.js) — alias: `rb`
+*   [x] [`rust`](https://github.com/wooorm/refractor/blob/main/lang/rust.js)
+*   [x] [`sass`](https://github.com/wooorm/refractor/blob/main/lang/sass.js)
+*   [x] [`scss`](https://github.com/wooorm/refractor/blob/main/lang/scss.js)
+*   [x] [`sql`](https://github.com/wooorm/refractor/blob/main/lang/sql.js)
+*   [x] [`swift`](https://github.com/wooorm/refractor/blob/main/lang/swift.js)
+*   [x] [`typescript`](https://github.com/wooorm/refractor/blob/main/lang/typescript.js) — alias: `ts`
+*   [x] [`vbnet`](https://github.com/wooorm/refractor/blob/main/lang/vbnet.js)
+*   [x] [`yaml`](https://github.com/wooorm/refractor/blob/main/lang/yaml.js) — alias: `yml`
 *   [ ] [`abap`](https://github.com/wooorm/refractor/blob/main/lang/abap.js)
 *   [ ] [`abnf`](https://github.com/wooorm/refractor/blob/main/lang/abnf.js)
 *   [ ] [`actionscript`](https://github.com/wooorm/refractor/blob/main/lang/actionscript.js)
@@ -299,15 +343,12 @@ syntaxes are made to work with global variables and are not requirable.
 *   [ ] [`apl`](https://github.com/wooorm/refractor/blob/main/lang/apl.js)
 *   [ ] [`applescript`](https://github.com/wooorm/refractor/blob/main/lang/applescript.js)
 *   [ ] [`aql`](https://github.com/wooorm/refractor/blob/main/lang/aql.js)
-*   [ ] [`arduino`](https://github.com/wooorm/refractor/blob/main/lang/arduino.js)
 *   [ ] [`arff`](https://github.com/wooorm/refractor/blob/main/lang/arff.js)
 *   [ ] [`asciidoc`](https://github.com/wooorm/refractor/blob/main/lang/asciidoc.js) — alias: `adoc`
 *   [ ] [`asm6502`](https://github.com/wooorm/refractor/blob/main/lang/asm6502.js)
 *   [ ] [`aspnet`](https://github.com/wooorm/refractor/blob/main/lang/aspnet.js)
 *   [ ] [`autohotkey`](https://github.com/wooorm/refractor/blob/main/lang/autohotkey.js)
 *   [ ] [`autoit`](https://github.com/wooorm/refractor/blob/main/lang/autoit.js)
-*   [ ] [`bash`](https://github.com/wooorm/refractor/blob/main/lang/bash.js) — alias: `shell`
-*   [ ] [`basic`](https://github.com/wooorm/refractor/blob/main/lang/basic.js)
 *   [ ] [`batch`](https://github.com/wooorm/refractor/blob/main/lang/batch.js)
 *   [ ] [`bbcode`](https://github.com/wooorm/refractor/blob/main/lang/bbcode.js) — alias: `shortcode`
 *   [ ] [`birb`](https://github.com/wooorm/refractor/blob/main/lang/birb.js)
@@ -317,18 +358,13 @@ syntaxes are made to work with global variables and are not requirable.
 *   [ ] [`brightscript`](https://github.com/wooorm/refractor/blob/main/lang/brightscript.js)
 *   [ ] [`bro`](https://github.com/wooorm/refractor/blob/main/lang/bro.js)
 *   [ ] [`bsl`](https://github.com/wooorm/refractor/blob/main/lang/bsl.js) — alias: `oscript`
-*   [ ] [`c`](https://github.com/wooorm/refractor/blob/main/lang/c.js)
 *   [ ] [`cil`](https://github.com/wooorm/refractor/blob/main/lang/cil.js)
-*   [ ] [`clike`](https://github.com/wooorm/refractor/blob/main/lang/clike.js)
 *   [ ] [`clojure`](https://github.com/wooorm/refractor/blob/main/lang/clojure.js)
 *   [ ] [`cmake`](https://github.com/wooorm/refractor/blob/main/lang/cmake.js)
 *   [ ] [`coffeescript`](https://github.com/wooorm/refractor/blob/main/lang/coffeescript.js) — alias: `coffee`
 *   [ ] [`concurnas`](https://github.com/wooorm/refractor/blob/main/lang/concurnas.js) — alias: `conc`
-*   [ ] [`cpp`](https://github.com/wooorm/refractor/blob/main/lang/cpp.js)
 *   [ ] [`crystal`](https://github.com/wooorm/refractor/blob/main/lang/crystal.js)
-*   [ ] [`csharp`](https://github.com/wooorm/refractor/blob/main/lang/csharp.js) — alias: `cs`, `dotnet`
 *   [ ] [`csp`](https://github.com/wooorm/refractor/blob/main/lang/csp.js)
-*   [ ] [`css`](https://github.com/wooorm/refractor/blob/main/lang/css.js)
 *   [ ] [`css-extras`](https://github.com/wooorm/refractor/blob/main/lang/css-extras.js)
 *   [ ] [`cypher`](https://github.com/wooorm/refractor/blob/main/lang/cypher.js)
 *   [ ] [`d`](https://github.com/wooorm/refractor/blob/main/lang/d.js)
@@ -336,7 +372,6 @@ syntaxes are made to work with global variables and are not requirable.
 *   [ ] [`dataweave`](https://github.com/wooorm/refractor/blob/main/lang/dataweave.js)
 *   [ ] [`dax`](https://github.com/wooorm/refractor/blob/main/lang/dax.js)
 *   [ ] [`dhall`](https://github.com/wooorm/refractor/blob/main/lang/dhall.js)
-*   [ ] [`diff`](https://github.com/wooorm/refractor/blob/main/lang/diff.js)
 *   [ ] [`django`](https://github.com/wooorm/refractor/blob/main/lang/django.js) — alias: `jinja2`
 *   [ ] [`dns-zone-file`](https://github.com/wooorm/refractor/blob/main/lang/dns-zone-file.js) — alias: `dns-zone`
 *   [ ] [`docker`](https://github.com/wooorm/refractor/blob/main/lang/docker.js) — alias: `dockerfile`
@@ -363,7 +398,6 @@ syntaxes are made to work with global variables and are not requirable.
 *   [ ] [`git`](https://github.com/wooorm/refractor/blob/main/lang/git.js)
 *   [ ] [`glsl`](https://github.com/wooorm/refractor/blob/main/lang/glsl.js)
 *   [ ] [`gml`](https://github.com/wooorm/refractor/blob/main/lang/gml.js) — alias: `gamemakerlanguage`
-*   [ ] [`go`](https://github.com/wooorm/refractor/blob/main/lang/go.js)
 *   [ ] [`graphql`](https://github.com/wooorm/refractor/blob/main/lang/graphql.js)
 *   [ ] [`groovy`](https://github.com/wooorm/refractor/blob/main/lang/groovy.js)
 *   [ ] [`haml`](https://github.com/wooorm/refractor/blob/main/lang/haml.js)
@@ -380,41 +414,30 @@ syntaxes are made to work with global variables and are not requirable.
 *   [ ] [`iecst`](https://github.com/wooorm/refractor/blob/main/lang/iecst.js)
 *   [ ] [`ignore`](https://github.com/wooorm/refractor/blob/main/lang/ignore.js) — alias: `gitignore`, `hgignore`, `npmignore`
 *   [ ] [`inform7`](https://github.com/wooorm/refractor/blob/main/lang/inform7.js)
-*   [ ] [`ini`](https://github.com/wooorm/refractor/blob/main/lang/ini.js)
 *   [ ] [`io`](https://github.com/wooorm/refractor/blob/main/lang/io.js)
 *   [ ] [`j`](https://github.com/wooorm/refractor/blob/main/lang/j.js)
-*   [ ] [`java`](https://github.com/wooorm/refractor/blob/main/lang/java.js)
 *   [ ] [`javadoc`](https://github.com/wooorm/refractor/blob/main/lang/javadoc.js)
 *   [ ] [`javadoclike`](https://github.com/wooorm/refractor/blob/main/lang/javadoclike.js)
-*   [ ] [`javascript`](https://github.com/wooorm/refractor/blob/main/lang/javascript.js) — alias: `js`
 *   [ ] [`javastacktrace`](https://github.com/wooorm/refractor/blob/main/lang/javastacktrace.js)
 *   [ ] [`jolie`](https://github.com/wooorm/refractor/blob/main/lang/jolie.js)
 *   [ ] [`jq`](https://github.com/wooorm/refractor/blob/main/lang/jq.js)
 *   [ ] [`js-extras`](https://github.com/wooorm/refractor/blob/main/lang/js-extras.js)
 *   [ ] [`js-templates`](https://github.com/wooorm/refractor/blob/main/lang/js-templates.js)
 *   [ ] [`jsdoc`](https://github.com/wooorm/refractor/blob/main/lang/jsdoc.js)
-*   [ ] [`json`](https://github.com/wooorm/refractor/blob/main/lang/json.js) — alias: `webmanifest`
 *   [ ] [`json5`](https://github.com/wooorm/refractor/blob/main/lang/json5.js)
 *   [ ] [`jsonp`](https://github.com/wooorm/refractor/blob/main/lang/jsonp.js)
 *   [ ] [`jsstacktrace`](https://github.com/wooorm/refractor/blob/main/lang/jsstacktrace.js)
 *   [ ] [`jsx`](https://github.com/wooorm/refractor/blob/main/lang/jsx.js)
 *   [ ] [`julia`](https://github.com/wooorm/refractor/blob/main/lang/julia.js)
 *   [ ] [`keyman`](https://github.com/wooorm/refractor/blob/main/lang/keyman.js)
-*   [ ] [`kotlin`](https://github.com/wooorm/refractor/blob/main/lang/kotlin.js) — alias: `kt`, `kts`
 *   [ ] [`latex`](https://github.com/wooorm/refractor/blob/main/lang/latex.js) — alias: `context`, `tex`
 *   [ ] [`latte`](https://github.com/wooorm/refractor/blob/main/lang/latte.js)
-*   [ ] [`less`](https://github.com/wooorm/refractor/blob/main/lang/less.js)
 *   [ ] [`lilypond`](https://github.com/wooorm/refractor/blob/main/lang/lilypond.js) — alias: `ly`
 *   [ ] [`liquid`](https://github.com/wooorm/refractor/blob/main/lang/liquid.js)
 *   [ ] [`lisp`](https://github.com/wooorm/refractor/blob/main/lang/lisp.js) — alias: `elisp`, `emacs`, `emacs-lisp`
 *   [ ] [`livescript`](https://github.com/wooorm/refractor/blob/main/lang/livescript.js)
 *   [ ] [`llvm`](https://github.com/wooorm/refractor/blob/main/lang/llvm.js)
 *   [ ] [`lolcode`](https://github.com/wooorm/refractor/blob/main/lang/lolcode.js)
-*   [ ] [`lua`](https://github.com/wooorm/refractor/blob/main/lang/lua.js)
-*   [ ] [`makefile`](https://github.com/wooorm/refractor/blob/main/lang/makefile.js)
-*   [ ] [`markdown`](https://github.com/wooorm/refractor/blob/main/lang/markdown.js) — alias: `md`
-*   [ ] [`markup`](https://github.com/wooorm/refractor/blob/main/lang/markup.js) — alias: `atom`, `html`, `mathml`, `rss`, `ssml`, `svg`, `xml`
-*   [ ] [`markup-templating`](https://github.com/wooorm/refractor/blob/main/lang/markup-templating.js)
 *   [ ] [`matlab`](https://github.com/wooorm/refractor/blob/main/lang/matlab.js)
 *   [ ] [`mel`](https://github.com/wooorm/refractor/blob/main/lang/mel.js)
 *   [ ] [`mizar`](https://github.com/wooorm/refractor/blob/main/lang/mizar.js)
@@ -431,7 +454,6 @@ syntaxes are made to work with global variables and are not requirable.
 *   [ ] [`nim`](https://github.com/wooorm/refractor/blob/main/lang/nim.js)
 *   [ ] [`nix`](https://github.com/wooorm/refractor/blob/main/lang/nix.js)
 *   [ ] [`nsis`](https://github.com/wooorm/refractor/blob/main/lang/nsis.js)
-*   [ ] [`objectivec`](https://github.com/wooorm/refractor/blob/main/lang/objectivec.js) — alias: `objc`
 *   [ ] [`ocaml`](https://github.com/wooorm/refractor/blob/main/lang/ocaml.js)
 *   [ ] [`opencl`](https://github.com/wooorm/refractor/blob/main/lang/opencl.js)
 *   [ ] [`oz`](https://github.com/wooorm/refractor/blob/main/lang/oz.js)
@@ -441,8 +463,6 @@ syntaxes are made to work with global variables and are not requirable.
 *   [ ] [`pascaligo`](https://github.com/wooorm/refractor/blob/main/lang/pascaligo.js)
 *   [ ] [`pcaxis`](https://github.com/wooorm/refractor/blob/main/lang/pcaxis.js) — alias: `px`
 *   [ ] [`peoplecode`](https://github.com/wooorm/refractor/blob/main/lang/peoplecode.js) — alias: `pcode`
-*   [ ] [`perl`](https://github.com/wooorm/refractor/blob/main/lang/perl.js)
-*   [ ] [`php`](https://github.com/wooorm/refractor/blob/main/lang/php.js)
 *   [ ] [`php-extras`](https://github.com/wooorm/refractor/blob/main/lang/php-extras.js)
 *   [ ] [`phpdoc`](https://github.com/wooorm/refractor/blob/main/lang/phpdoc.js)
 *   [ ] [`plsql`](https://github.com/wooorm/refractor/blob/main/lang/plsql.js)
@@ -458,26 +478,19 @@ syntaxes are made to work with global variables and are not requirable.
 *   [ ] [`pure`](https://github.com/wooorm/refractor/blob/main/lang/pure.js)
 *   [ ] [`purebasic`](https://github.com/wooorm/refractor/blob/main/lang/purebasic.js) — alias: `pbfasm`
 *   [ ] [`purescript`](https://github.com/wooorm/refractor/blob/main/lang/purescript.js) — alias: `purs`
-*   [ ] [`python`](https://github.com/wooorm/refractor/blob/main/lang/python.js) — alias: `py`
 *   [ ] [`q`](https://github.com/wooorm/refractor/blob/main/lang/q.js)
 *   [ ] [`qml`](https://github.com/wooorm/refractor/blob/main/lang/qml.js)
 *   [ ] [`qore`](https://github.com/wooorm/refractor/blob/main/lang/qore.js)
-*   [ ] [`r`](https://github.com/wooorm/refractor/blob/main/lang/r.js)
 *   [ ] [`racket`](https://github.com/wooorm/refractor/blob/main/lang/racket.js) — alias: `rkt`
 *   [ ] [`reason`](https://github.com/wooorm/refractor/blob/main/lang/reason.js)
-*   [ ] [`regex`](https://github.com/wooorm/refractor/blob/main/lang/regex.js)
 *   [ ] [`renpy`](https://github.com/wooorm/refractor/blob/main/lang/renpy.js) — alias: `rpy`
 *   [ ] [`rest`](https://github.com/wooorm/refractor/blob/main/lang/rest.js)
 *   [ ] [`rip`](https://github.com/wooorm/refractor/blob/main/lang/rip.js)
 *   [ ] [`roboconf`](https://github.com/wooorm/refractor/blob/main/lang/roboconf.js)
 *   [ ] [`robotframework`](https://github.com/wooorm/refractor/blob/main/lang/robotframework.js) — alias: `robot`
-*   [ ] [`ruby`](https://github.com/wooorm/refractor/blob/main/lang/ruby.js) — alias: `rb`
-*   [ ] [`rust`](https://github.com/wooorm/refractor/blob/main/lang/rust.js)
 *   [ ] [`sas`](https://github.com/wooorm/refractor/blob/main/lang/sas.js)
-*   [ ] [`sass`](https://github.com/wooorm/refractor/blob/main/lang/sass.js)
 *   [ ] [`scala`](https://github.com/wooorm/refractor/blob/main/lang/scala.js)
 *   [ ] [`scheme`](https://github.com/wooorm/refractor/blob/main/lang/scheme.js)
-*   [ ] [`scss`](https://github.com/wooorm/refractor/blob/main/lang/scss.js)
 *   [ ] [`shell-session`](https://github.com/wooorm/refractor/blob/main/lang/shell-session.js) — alias: `sh-session`, `shellsession`
 *   [ ] [`smali`](https://github.com/wooorm/refractor/blob/main/lang/smali.js)
 *   [ ] [`smalltalk`](https://github.com/wooorm/refractor/blob/main/lang/smalltalk.js)
@@ -489,10 +502,8 @@ syntaxes are made to work with global variables and are not requirable.
 *   [ ] [`sparql`](https://github.com/wooorm/refractor/blob/main/lang/sparql.js) — alias: `rq`
 *   [ ] [`splunk-spl`](https://github.com/wooorm/refractor/blob/main/lang/splunk-spl.js)
 *   [ ] [`sqf`](https://github.com/wooorm/refractor/blob/main/lang/sqf.js)
-*   [ ] [`sql`](https://github.com/wooorm/refractor/blob/main/lang/sql.js)
 *   [ ] [`stan`](https://github.com/wooorm/refractor/blob/main/lang/stan.js)
 *   [ ] [`stylus`](https://github.com/wooorm/refractor/blob/main/lang/stylus.js)
-*   [ ] [`swift`](https://github.com/wooorm/refractor/blob/main/lang/swift.js)
 *   [ ] [`t4-cs`](https://github.com/wooorm/refractor/blob/main/lang/t4-cs.js) — alias: `t4`
 *   [ ] [`t4-templating`](https://github.com/wooorm/refractor/blob/main/lang/t4-templating.js)
 *   [ ] [`t4-vb`](https://github.com/wooorm/refractor/blob/main/lang/t4-vb.js)
@@ -504,11 +515,9 @@ syntaxes are made to work with global variables and are not requirable.
 *   [ ] [`tt2`](https://github.com/wooorm/refractor/blob/main/lang/tt2.js)
 *   [ ] [`turtle`](https://github.com/wooorm/refractor/blob/main/lang/turtle.js) — alias: `trig`
 *   [ ] [`twig`](https://github.com/wooorm/refractor/blob/main/lang/twig.js)
-*   [ ] [`typescript`](https://github.com/wooorm/refractor/blob/main/lang/typescript.js) — alias: `ts`
 *   [ ] [`typoscript`](https://github.com/wooorm/refractor/blob/main/lang/typoscript.js) — alias: `tsconfig`
 *   [ ] [`unrealscript`](https://github.com/wooorm/refractor/blob/main/lang/unrealscript.js) — alias: `uc`, `uscript`
 *   [ ] [`vala`](https://github.com/wooorm/refractor/blob/main/lang/vala.js)
-*   [ ] [`vbnet`](https://github.com/wooorm/refractor/blob/main/lang/vbnet.js)
 *   [ ] [`velocity`](https://github.com/wooorm/refractor/blob/main/lang/velocity.js)
 *   [ ] [`verilog`](https://github.com/wooorm/refractor/blob/main/lang/verilog.js)
 *   [ ] [`vhdl`](https://github.com/wooorm/refractor/blob/main/lang/vhdl.js)
@@ -521,7 +530,6 @@ syntaxes are made to work with global variables and are not requirable.
 *   [ ] [`xml-doc`](https://github.com/wooorm/refractor/blob/main/lang/xml-doc.js)
 *   [ ] [`xojo`](https://github.com/wooorm/refractor/blob/main/lang/xojo.js)
 *   [ ] [`xquery`](https://github.com/wooorm/refractor/blob/main/lang/xquery.js)
-*   [ ] [`yaml`](https://github.com/wooorm/refractor/blob/main/lang/yaml.js) — alias: `yml`
 *   [ ] [`yang`](https://github.com/wooorm/refractor/blob/main/lang/yang.js)
 *   [ ] [`zig`](https://github.com/wooorm/refractor/blob/main/lang/zig.js)
 
@@ -572,8 +580,6 @@ syntaxes are made to work with global variables and are not requirable.
 
 [names]: https://prismjs.com/#languages-list
 
-[themes]: https://prismjs.com/#theme
-
 [react]: https://facebook.github.io/react/
 
 [vdom]: https://github.com/Matt-Esch/virtual-dom
@@ -586,8 +592,6 @@ syntaxes are made to work with global variables and are not requirable.
 
 [prism]: https://github.com/PrismJS/prism
 
-[prismjs]: https://www.npmjs.com/package/prismjs
-
 [lowlight]: https://github.com/wooorm/lowlight
 
 [hljs]: https://github.com/isagalaev/highlight.js
@@ -595,5 +599,3 @@ syntaxes are made to work with global variables and are not requirable.
 [root]: https://github.com/syntax-tree/hast#root
 
 [syntax]: #syntaxes
-
-[register]: #refractorregistersyntax

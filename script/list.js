@@ -1,25 +1,27 @@
 import fs from 'fs'
 import path from 'path'
-import {bail} from 'bail'
 import chalk from 'chalk'
-import getLoader from 'prismjs/dependencies.js'
 import {camelcase} from './camelcase.js'
+import {all, common} from './data.js'
 
-/** @type {{languages: Object.<string, unknown>}} */
-var components = JSON.parse(
-  String(
-    fs.readFileSync(path.join('node_modules', 'prismjs', 'components.json'))
-  )
+fs.writeFileSync(path.join('lib', 'all.js'), generate(all))
+fs.writeFileSync(path.join('lib', 'common.js'), generate(common))
+
+console.log(
+  chalk.green('✓') + ' wrote `lib/all.js` for ' + all.length + ' languages'
 )
-/** @type {Array.<string>} */
-var names = getLoader(
-  components,
-  Object.keys(components.languages).filter((d) => d !== 'meta')
-).getIds()
+console.log(
+  chalk.green('✓') +
+    ' wrote `lib/common.js` for ' +
+    common.length +
+    ' languages'
+)
 
-fs.writeFile(
-  'index.js',
-  [
+/**
+ * @param {Array.<string>} list
+ */
+function generate(list) {
+  return [
     '/**',
     " * @typedef {import('./core.js').RefractorRoot} RefractorRoot",
     " * @typedef {import('./core.js').RefractorElement} RefractorElement",
@@ -28,23 +30,12 @@ fs.writeFile(
     " * @typedef {import('./core.js').Syntax} Syntax",
     ' */',
     "import {refractor} from './core.js'",
-    ...names.map(
-      (lang) => 'import ' + camelcase(lang) + " from './lang/" + lang + ".js'"
+    ...list.map(
+      (lang) => 'import ' + camelcase(lang) + " from '../lang/" + lang + ".js'"
     ),
     '',
     'export {refractor}',
-    ...names.map((lang) => 'refractor.register(' + camelcase(lang) + ')'),
+    ...list.map((lang) => 'refractor.register(' + camelcase(lang) + ')'),
     ''
-  ].join('\n'),
-  done
-)
-
-/**
- * @param {Error} error
- */
-function done(error) {
-  bail(error)
-  console.log(
-    chalk.green('✓') + ' wrote `index.js` for ' + names.length + ' languages'
-  )
+  ].join('\n')
 }
