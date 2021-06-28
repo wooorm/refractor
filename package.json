@@ -81,7 +81,7 @@
     "format": "remark . -qfo && prettier . -w --loglevel warn && xo --fix",
     "test-api": "node test/index.js",
     "test-coverage": "c8 -x \"lang/*.js\" --check-coverage --branches 100 --functions 100 --lines 100 --statements 100 --reporter lcov node test/index.js",
-    "test": "npm run generate && npm run format && npm run test-coverage"
+    "test": "npm run build && npm run generate && npm run format && npm run test-coverage"
   },
   "prettier": {
     "tabWidth": 2,
