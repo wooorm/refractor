@@ -13,7 +13,8 @@ export default function hcl(Prism) {
     },
     keyword: [
       {
-        pattern: /(?:resource|data)\s+(?:"(?:\\[\s\S]|[^\\"])*")(?=\s+"[\w-]+"\s+{)/i,
+        pattern:
+          /(?:resource|data)\s+(?:"(?:\\[\s\S]|[^\\"])*")(?=\s+"[\w-]+"\s+\{)/i,
         inside: {
           type: {
             pattern: /(resource|data|\s+)(?:"(?:\\[\s\S]|[^\\"])*")/i,
@@ -23,20 +24,23 @@ export default function hcl(Prism) {
         }
       },
       {
-        pattern: /(?:provider|provisioner|variable|output|module|backend)\s+(?:[\w-]+|"(?:\\[\s\S]|[^\\"])*")\s+(?={)/i,
+        pattern:
+          /(?:provider|provisioner|variable|output|module|backend)\s+(?:[\w-]+|"(?:\\[\s\S]|[^\\"])*")\s+(?=\{)/i,
         inside: {
           type: {
-            pattern: /(provider|provisioner|variable|output|module|backend)\s+(?:[\w-]+|"(?:\\[\s\S]|[^\\"])*")\s+/i,
+            pattern:
+              /(provider|provisioner|variable|output|module|backend)\s+(?:[\w-]+|"(?:\\[\s\S]|[^\\"])*")\s+/i,
             lookbehind: true,
             alias: 'variable'
           }
         }
       },
-      /[\w-]+(?=\s+{)/
+      /[\w-]+(?=\s+\{)/
     ],
-    property: [/[\w-\.]+(?=\s*=(?!=))/, /"(?:\\[\s\S]|[^\\"])+"(?=\s*[:=])/],
+    property: [/[-\w\.]+(?=\s*=(?!=))/, /"(?:\\[\s\S]|[^\\"])+"(?=\s*[:=])/],
     string: {
-      pattern: /"(?:[^\\$"]|\\[\s\S]|\$(?:(?=")|\$+(?!\$)|[^"${])|\$\{(?:[^{}"]|"(?:[^\\"]|\\[\s\S])*")*\})*"/,
+      pattern:
+        /"(?:[^\\$"]|\\[\s\S]|\$(?:(?=")|\$+(?!\$)|[^"${])|\$\{(?:[^{}"]|"(?:[^\\"]|\\[\s\S])*")*\})*"/,
       greedy: true,
       inside: {
         interpolation: {
@@ -44,7 +48,8 @@ export default function hcl(Prism) {
           lookbehind: true,
           inside: {
             type: {
-              pattern: /(\b(?:terraform|var|self|count|module|path|data|local)\b\.)[\w\*]+/i,
+              pattern:
+                /(\b(?:terraform|var|self|count|module|path|data|local)\b\.)[\w\*]+/i,
               lookbehind: true,
               alias: 'variable'
             },

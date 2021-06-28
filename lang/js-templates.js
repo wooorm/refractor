@@ -61,7 +61,8 @@ export default function jsTemplates(Prism) {
       createTemplate(
         'graphql',
         /\b(?:gql|graphql(?:\s*\.\s*experimental)?)/.source
-      ), // vanilla template string
+      ), // sql`...`
+      createTemplate('sql', /\bsql/.source), // vanilla template string
       templateString
     ].filter(Boolean)
     /**
@@ -168,7 +169,9 @@ export default function jsTemplates(Prism) {
               code.indexOf(
                 (placeholder = getPlaceholder(placeholderCounter++, language))
               ) !== -1
-            ) {}
+            ) {
+              /* noop */
+            }
             placeholderMap[placeholder] = interpolationExpression
             return placeholder
           }

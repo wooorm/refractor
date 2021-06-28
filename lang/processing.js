@@ -7,7 +7,8 @@ processing.aliases = []
 export default function processing(Prism) {
   Prism.register(refractorClike)
   Prism.languages.processing = Prism.languages.extend('clike', {
-    keyword: /\b(?:break|catch|case|class|continue|default|else|extends|final|for|if|implements|import|new|null|private|public|return|static|super|switch|this|try|void|while)\b/,
+    keyword:
+      /\b(?:break|catch|case|class|continue|default|else|extends|final|for|if|implements|import|new|null|private|public|return|static|super|switch|this|try|void|while)\b/,
     operator: /<[<=]?|>[>=]?|&&?|\|\|?|[%?]|[!=+\-*\/]=?/
   })
   Prism.languages.insertBefore('processing', 'number', {
@@ -18,6 +19,6 @@ export default function processing(Prism) {
       alias: 'variable'
     }
   }) // Spaces are allowed between function name and parenthesis
-  Prism.languages.processing['function'] = /\w+(?=\s*\()/ // Class-names is not styled by default
+  Prism.languages.processing['function'] = /\b\w+(?=\s*\()/ // Class-names is not styled by default
   Prism.languages.processing['class-name'].alias = 'variable'
 }

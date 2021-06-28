@@ -58,7 +58,7 @@ export default function promql(Prism) {
         pattern: /\{[^{}]*\}/,
         inside: {
           'label-key': {
-            pattern: /\b[a-z_]\w*(?=\s*(?:=~?|![=~]))/,
+            pattern: /\b[a-z_]\w*(?=\s*(?:=|![=~]))/,
             alias: 'attr-name'
           },
           'label-value': {
@@ -94,8 +94,9 @@ export default function promql(Prism) {
         }
       ],
       keyword: new RegExp('\\b(?:' + keywords.join('|') + ')\\b', 'i'),
-      function: /\b[a-zA-Z_]\w*(?=\s*\()/i,
-      number: /[-+]?(?:(?:\b\d+(?:\.\d+)?|\B\.\d+)(?:e[-+]?\d+)?\b|\b(?:0x[0-9a-f]+|nan|inf)\b)/i,
+      function: /\b[a-z_]\w*(?=\s*\()/i,
+      number:
+        /[-+]?(?:(?:\b\d+(?:\.\d+)?|\B\.\d+)(?:e[-+]?\d+)?\b|\b(?:0x[0-9a-f]+|nan|inf)\b)/i,
       operator: /[\^*/%+-]|==|!=|<=|<|>=|>|\b(?:and|unless|or)\b/i,
       punctuation: /[{};()`,.[\]]/
     }

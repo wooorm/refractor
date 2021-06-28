@@ -29,7 +29,7 @@ export default function sass(Prism) {
     var operator = [
       /[+*\/%]|[=!]=|<=?|>=?|\b(?:and|or|not)\b/,
       {
-        pattern: /(\s+)-(?=\s)/,
+        pattern: /(\s)-(?=\s)/,
         lookbehind: true
       }
     ]
@@ -66,7 +66,8 @@ export default function sass(Prism) {
     // what's left should be selectors
     Prism.languages.insertBefore('sass', 'punctuation', {
       selector: {
-        pattern: /([ \t]*)\S(?:,[^,\r\n]+|[^,\r\n]*)(?:,[^,\r\n]+)*(?:,(?:\r?\n|\r)\1[ \t]+\S(?:,[^,\r\n]+|[^,\r\n]*)(?:,[^,\r\n]+)*)*/,
+        pattern:
+          /([ \t]*)\S(?:,[^,\r\n]+|[^,\r\n]*)(?:,[^,\r\n]+)*(?:,(?:\r?\n|\r)\1[ \t]+\S(?:,[^,\r\n]+|[^,\r\n]*)(?:,[^,\r\n]+)*)*/,
         lookbehind: true
       }
     })

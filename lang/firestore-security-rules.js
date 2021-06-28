@@ -10,14 +10,16 @@ export default function firestoreSecurityRules(Prism) {
     'clike',
     {
       comment: /\/\/.*/,
-      keyword: /\b(?:allow|function|if|match|null|return|rules_version|service)\b/,
+      keyword:
+        /\b(?:allow|function|if|match|null|return|rules_version|service)\b/,
       operator: /&&|\|\||[<>!=]=?|[-+*/%]|\b(?:in|is)\b/
     }
   )
   delete Prism.languages['firestore-security-rules']['class-name']
   Prism.languages.insertBefore('firestore-security-rules', 'keyword', {
     path: {
-      pattern: /(^|[\s(),])(?:\/(?:[\w\xA0-\uFFFF]+|\{[\w\xA0-\uFFFF]+(?:=\*\*)?\}|\$\([\w\xA0-\uFFFF.]+\)))+/,
+      pattern:
+        /(^|[\s(),])(?:\/(?:[\w\xA0-\uFFFF]+|\{[\w\xA0-\uFFFF]+(?:=\*\*)?\}|\$\([\w\xA0-\uFFFF.]+\)))+/,
       lookbehind: true,
       greedy: true,
       inside: {
@@ -29,7 +31,7 @@ export default function firestoreSecurityRules(Prism) {
             punctuation: /[.$(){}]/
           }
         },
-        punctuation: /[/]/
+        punctuation: /\//
       }
     },
     method: {

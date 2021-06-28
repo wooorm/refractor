@@ -8,11 +8,11 @@ export default function coffeescript(Prism) {
   Prism.register(refractorJavascript)
   ;(function (Prism) {
     // Ignore comments starting with { to privilege string interpolation highlighting
-    var comment = /#(?!\{).+/,
-      interpolation = {
-        pattern: /#\{[^}]+\}/,
-        alias: 'variable'
-      }
+    var comment = /#(?!\{).+/
+    var interpolation = {
+      pattern: /#\{[^}]+\}/,
+      alias: 'variable'
+    }
     Prism.languages.coffeescript = Prism.languages.extend('javascript', {
       comment: comment,
       string: [
@@ -30,7 +30,8 @@ export default function coffeescript(Prism) {
           }
         }
       ],
-      keyword: /\b(?:and|break|by|catch|class|continue|debugger|delete|do|each|else|extend|extends|false|finally|for|if|in|instanceof|is|isnt|let|loop|namespace|new|no|not|null|of|off|on|or|own|return|super|switch|then|this|throw|true|try|typeof|undefined|unless|until|when|while|window|with|yes|yield)\b/,
+      keyword:
+        /\b(?:and|break|by|catch|class|continue|debugger|delete|do|each|else|extend|extends|false|finally|for|if|in|instanceof|is|isnt|let|loop|namespace|new|no|not|null|of|off|on|or|own|return|super|switch|then|this|throw|true|try|typeof|undefined|unless|until|when|while|window|with|yes|yield)\b/,
       'class-member': {
         pattern: /@(?!\d)\w+/,
         alias: 'variable'

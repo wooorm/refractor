@@ -14,7 +14,8 @@ export default function aspnet(Prism) {
       alias: 'tag',
       inside: {
         'page-directive': {
-          pattern: /<%\s*@\s*(?:Assembly|Control|Implements|Import|Master(?:Type)?|OutputCache|Page|PreviousPageType|Reference|Register)?|%>/i,
+          pattern:
+            /<%\s*@\s*(?:Assembly|Control|Implements|Import|Master(?:Type)?|OutputCache|Page|PreviousPageType|Reference|Register)?|%>/i,
           alias: 'tag'
         },
         rest: Prism.languages.markup.tag.inside
@@ -32,7 +33,8 @@ export default function aspnet(Prism) {
       }
     }
   }) // Regexp copied from prism-markup, with a negative look-ahead added
-  Prism.languages.aspnet.tag.pattern = /<(?!%)\/?[^\s>\/]+(?:\s+[^\s>\/=]+(?:=(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s'">=]+))?)*\s*\/?>/i // match directives of attribute value foo="<% Bar %>"
+  Prism.languages.aspnet.tag.pattern =
+    /<(?!%)\/?[^\s>\/]+(?:\s+[^\s>\/=]+(?:=(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s'">=]+))?)*\s*\/?>/i // match directives of attribute value foo="<% Bar %>"
   Prism.languages.insertBefore(
     'inside',
     'punctuation',
@@ -52,7 +54,8 @@ export default function aspnet(Prism) {
     Prism.languages.javascript ? 'script' : 'tag',
     {
       'asp-script': {
-        pattern: /(<script(?=.*runat=['"]?server['"]?)[^>]*>)[\s\S]*?(?=<\/script>)/i,
+        pattern:
+          /(<script(?=.*runat=['"]?server\b)[^>]*>)[\s\S]*?(?=<\/script>)/i,
         lookbehind: true,
         alias: ['asp', 'script'],
         inside: Prism.languages.csharp || {}

@@ -12,7 +12,7 @@ export default function jsdoc(Prism) {
   Prism.register(refractorTypescript)
   ;(function (Prism) {
     var javascript = Prism.languages.javascript
-    var type = /{(?:[^{}]|{(?:[^{}]|{[^{}]*})*})+}/.source
+    var type = /\{(?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})+\}/.source
     var parameterPrefix =
       '(@(?:param|arg|argument|property)\\s+(?:' + type + '\\s+)?)'
     Prism.languages.jsdoc = Prism.languages.extend('javadoclike', {
@@ -81,11 +81,12 @@ export default function jsdoc(Prism) {
         }
       ],
       example: {
-        pattern: /(@example\s+(?!\s))(?:[^@\s]|\s+(?!\s))+?(?=\s*(?:\*\s*)?(?:@\w|\*\/))/,
+        pattern:
+          /(@example\s+(?!\s))(?:[^@\s]|\s+(?!\s))+?(?=\s*(?:\*\s*)?(?:@\w|\*\/))/,
         lookbehind: true,
         inside: {
           code: {
-            pattern: /^(\s*(?:\*\s*)?)\S.*$/m,
+            pattern: /^([\t ]*(?:\*\s*)?)\S.*$/m,
             lookbehind: true,
             inside: javascript,
             alias: 'language-javascript'

@@ -9,7 +9,8 @@ export default function parser(Prism) {
   ;(function (Prism) {
     var parser = (Prism.languages.parser = Prism.languages.extend('markup', {
       keyword: {
-        pattern: /(^|[^^])(?:\^(?:case|eval|for|if|switch|throw)\b|@(?:BASE|CLASS|GET(?:_DEFAULT)?|OPTIONS|SET_DEFAULT|USE)\b)/,
+        pattern:
+          /(^|[^^])(?:\^(?:case|eval|for|if|switch|throw)\b|@(?:BASE|CLASS|GET(?:_DEFAULT)?|OPTIONS|SET_DEFAULT|USE)\b)/,
         lookbehind: true
       },
       variable: {
@@ -58,12 +59,13 @@ export default function parser(Prism) {
           boolean: /\b(?:true|false)\b/,
           number: /\b(?:0x[a-f\d]+|\d+(?:\.\d*)?(?:e[+-]?\d+)?)\b/i,
           escape: parser.escape,
-          operator: /[~+*\/\\%]|!(?:\|\|?|=)?|&&?|\|\|?|==|<[<=]?|>[>=]?|-[fd]?|\b(?:def|eq|ge|gt|in|is|le|lt|ne)\b/,
+          operator:
+            /[~+*\/\\%]|!(?:\|\|?|=)?|&&?|\|\|?|==|<[<=]?|>[>=]?|-[fd]?|\b(?:def|eq|ge|gt|in|is|le|lt|ne)\b/,
           punctuation: parser.punctuation
         }
       }
     })
-    parser = Prism.languages.insertBefore(
+    Prism.languages.insertBefore(
       'inside',
       'punctuation',
       {

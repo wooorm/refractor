@@ -9,13 +9,14 @@ export default function regex(Prism) {
       pattern: /\\[\\(){}[\]^$+*?|.]/,
       alias: 'escape'
     }
-    var escape = /\\(?:x[\da-fA-F]{2}|u[\da-fA-F]{4}|u\{[\da-fA-F]+\}|c[a-zA-Z]|0[0-7]{0,2}|[123][0-7]{2}|.)/
+    var escape =
+      /\\(?:x[\da-fA-F]{2}|u[\da-fA-F]{4}|u\{[\da-fA-F]+\}|c[a-zA-Z]|0[0-7]{0,2}|[123][0-7]{2}|.)/
     var charClass = {
-      pattern: /\.|\\[wsd]|\\p{[^{}]+}/i,
+      pattern: /\.|\\[wsd]|\\p\{[^{}]+\}/i,
       alias: 'class-name'
     }
     var charClassWithoutDot = {
-      pattern: /\\[wsd]|\\p{[^{}]+}/i,
+      pattern: /\\[wsd]|\\p\{[^{}]+\}/i,
       alias: 'class-name'
     }
     var rangeChar = '(?:[^\\\\-]|' + escape.source + ')'
@@ -80,7 +81,8 @@ export default function regex(Prism) {
           // https://docs.oracle.com/javase/10/docs/api/java/util/regex/Pattern.html
           // https://docs.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference?view=netframework-4.7.2#grouping-constructs
           // (), (?<name>), (?'name'), (?>), (?:), (?=), (?!), (?<=), (?<!), (?is-m), (?i-m:)
-          pattern: /\((?:\?(?:<[^<>']+>|'[^<>']+'|[>:]|<?[=!]|[idmnsuxU]+(?:-[idmnsuxU]+)?:?))?/,
+          pattern:
+            /\((?:\?(?:<[^<>']+>|'[^<>']+'|[>:]|<?[=!]|[idmnsuxU]+(?:-[idmnsuxU]+)?:?))?/,
           alias: 'punctuation',
           inside: {
             'group-name': groupName

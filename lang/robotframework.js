@@ -27,7 +27,7 @@ export default function robotframework(Prism) {
         extendecInside[token] = inside[token]
       }
       extendecInside['tag'] = {
-        pattern: /([\r\n](?:  |\t)[ \t]*)\[[-\w]+\]/,
+        pattern: /([\r\n](?: {2}|\t)[ \t]*)\[[-\w]+\]/,
         lookbehind: true,
         inside: {
           punctuation: /\[|\]/
@@ -50,7 +50,8 @@ export default function robotframework(Prism) {
       }
     }
     var docTag = {
-      pattern: /(\[Documentation\](?:  |\t)[ \t]*)(?![ \t]|#)(?:.|(?:\r\n?|\n)[ \t]*\.{3})+/,
+      pattern:
+        /(\[Documentation\](?: {2}|\t)[ \t]*)(?![ \t]|#)(?:.|(?:\r\n?|\n)[ \t]*\.{3})+/,
       lookbehind: true,
       alias: 'string'
     }
@@ -63,7 +64,7 @@ export default function robotframework(Prism) {
       }
     }
     var testPropertyLike = {
-      pattern: /([\r\n](?:  |\t)[ \t]*)(?!\[|\.{3}|#)(?:\S(?:[ \t]\S)*)+/,
+      pattern: /([\r\n](?: {2}|\t)[ \t]*)(?!\[|\.{3}|#)(?:\S(?:[ \t]\S)*)+/,
       lookbehind: true,
       inside: {
         variable: variable
@@ -72,7 +73,8 @@ export default function robotframework(Prism) {
     Prism.languages['robotframework'] = {
       settings: createSection('Settings', {
         documentation: {
-          pattern: /([\r\n] ?Documentation(?:  |\t)[ \t]*)(?![ \t]|#)(?:.|(?:\r\n?|\n)[ \t]*\.{3})+/,
+          pattern:
+            /([\r\n] ?Documentation(?: {2}|\t)[ \t]*)(?![ \t]|#)(?:.|(?:\r\n?|\n)[ \t]*\.{3})+/,
           lookbehind: true,
           alias: 'string'
         },

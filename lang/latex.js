@@ -16,7 +16,8 @@ export default function latex(Prism) {
       comment: /%.*/m,
       // the verbatim environment prints whitespace to the document
       cdata: {
-        pattern: /(\\begin\{((?:verbatim|lstlisting)\*?)\})[\s\S]*?(?=\\end\{\2\})/,
+        pattern:
+          /(\\begin\{((?:verbatim|lstlisting)\*?)\})[\s\S]*?(?=\\end\{\2\})/,
         lookbehind: true
       },
       /*
@@ -25,12 +26,14 @@ export default function latex(Prism) {
        */
       equation: [
         {
-          pattern: /\$\$(?:\\[\s\S]|[^\\$])+\$\$|\$(?:\\[\s\S]|[^\\$])+\$|\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\]/,
+          pattern:
+            /\$\$(?:\\[\s\S]|[^\\$])+\$\$|\$(?:\\[\s\S]|[^\\$])+\$|\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\]/,
           inside: insideEqu,
           alias: 'string'
         },
         {
-          pattern: /(\\begin\{((?:equation|math|eqnarray|align|multline|gather)\*?)\})[\s\S]*?(?=\\end\{\2\})/,
+          pattern:
+            /(\\begin\{((?:equation|math|eqnarray|align|multline|gather)\*?)\})[\s\S]*?(?=\\end\{\2\})/,
           lookbehind: true,
           inside: insideEqu,
           alias: 'string'
@@ -41,7 +44,8 @@ export default function latex(Prism) {
        * as keywords
        */
       keyword: {
-        pattern: /(\\(?:begin|end|ref|cite|label|usepackage|documentclass)(?:\[[^\]]+\])?\{)[^}]+(?=\})/,
+        pattern:
+          /(\\(?:begin|end|ref|cite|label|usepackage|documentclass)(?:\[[^\]]+\])?\{)[^}]+(?=\})/,
         lookbehind: true
       },
       url: {
@@ -53,7 +57,8 @@ export default function latex(Prism) {
        * they stand out more
        */
       headline: {
-        pattern: /(\\(?:part|chapter|section|subsection|frametitle|subsubsection|paragraph|subparagraph|subsubparagraph|subsubsubparagraph)\*?(?:\[[^\]]+\])?\{)[^}]+(?=\}(?:\[[^\]]+\])?)/,
+        pattern:
+          /(\\(?:part|chapter|section|subsection|frametitle|subsubsection|paragraph|subparagraph|subsubparagraph|subsubsubparagraph)\*?(?:\[[^\]]+\])?\{)[^}]+(?=\})/,
         lookbehind: true,
         alias: 'class-name'
       },

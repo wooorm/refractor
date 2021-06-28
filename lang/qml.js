@@ -9,13 +9,14 @@ export default function qml(Prism) {
   ;(function (Prism) {
     var jsString = /"(?:\\.|[^\\"\r\n])*"|'(?:\\.|[^\\'\r\n])*'/.source
     var jsComment = /\/\/.*(?!.)|\/\*(?:[^*]|\*(?!\/))*\*\//.source
-    var jsExpr = /(?:[^\\()[\]{}"'/]|<string>|\/(?![*/])|<comment>|\(<expr>*\)|\[<expr>*\]|\{<expr>*\}|\\[\s\S])/.source
-      .replace(/<string>/g, function () {
-        return jsString
-      })
-      .replace(/<comment>/g, function () {
-        return jsComment
-      }) // the pattern will blow up, so only a few iterations
+    var jsExpr =
+      /(?:[^\\()[\]{}"'/]|<string>|\/(?![*/])|<comment>|\(<expr>*\)|\[<expr>*\]|\{<expr>*\}|\\[\s\S])/.source
+        .replace(/<string>/g, function () {
+          return jsString
+        })
+        .replace(/<comment>/g, function () {
+          return jsComment
+        }) // the pattern will blow up, so only a few iterations
     for (var i = 0; i < 2; i++) {
       jsExpr = jsExpr.replace(/<expr>/g, function () {
         return jsExpr
@@ -52,7 +53,8 @@ export default function qml(Prism) {
           lookbehind: true
         },
         {
-          pattern: /((?:^|[;{])[ \t]*)property[ \t]+(?!\d)\w+(?:\.\w+)*[ \t]+(?!\d)\w+(?:\.\w+)*(?=[ \t]*:)/m,
+          pattern:
+            /((?:^|[;{])[ \t]*)property[ \t]+(?!\d)\w+(?:\.\w+)*[ \t]+(?!\d)\w+(?:\.\w+)*(?=[ \t]*:)/m,
           lookbehind: true,
           inside: {
             keyword: /^property/,

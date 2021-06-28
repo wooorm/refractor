@@ -8,7 +8,7 @@ export default function markdown(Prism) {
   Prism.register(refractorMarkup)
   ;(function (Prism) {
     // Allow only one line break
-    var inner = /(?:\\.|[^\\\n\r]|(?:\n|\r\n?)(?!\n|\r\n?))/.source
+    var inner = /(?:\\.|[^\\\n\r]|(?:\n|\r\n?)(?![\r\n]))/.source
     /**
      * This function is intended for the creation of the bold or italic pattern.
      *
@@ -27,14 +27,16 @@ export default function markdown(Prism) {
     }
     var tableCell = /(?:\\.|``(?:[^`\r\n]|`(?!`))+``|`[^`\r\n]+`|[^\\|\r\n`])+/
       .source
-    var tableRow = /\|?__(?:\|__)+\|?(?:(?:\n|\r\n?)|(?![\s\S]))/.source.replace(
-      /__/g,
-      function () {
-        return tableCell
-      }
-    )
-    var tableLine = /\|?[ \t]*:?-{3,}:?[ \t]*(?:\|[ \t]*:?-{3,}:?[ \t]*)+\|?(?:\n|\r\n?)/
-      .source
+    var tableRow =
+      /\|?__(?:\|__)+\|?(?:(?:\n|\r\n?)|(?![\s\S]))/.source.replace(
+        /__/g,
+        function () {
+          return tableCell
+        }
+      )
+    var tableLine =
+      /\|?[ \t]*:?-{3,}:?[ \t]*(?:\|[ \t]*:?-{3,}:?[ \t]*)+\|?(?:\n|\r\n?)/
+        .source
     Prism.languages.markdown = Prism.languages.extend('markup', {})
     Prism.languages.insertBefore('markdown', 'prolog', {
       'front-matter-block': {
@@ -97,14 +99,9 @@ export default function markdown(Prism) {
       code: [
         {
           // Prefixed by 4 spaces or 1 tab and preceded by an empty line
-          pattern: /((?:^|\n)[ \t]*\n|(?:^|\r\n?)[ \t]*\r\n?)(?: {4}|\t).+(?:(?:\n|\r\n?)(?: {4}|\t).+)*/,
+          pattern:
+            /((?:^|\n)[ \t]*\n|(?:^|\r\n?)[ \t]*\r\n?)(?: {4}|\t).+(?:(?:\n|\r\n?)(?: {4}|\t).+)*/,
           lookbehind: true,
-          alias: 'keyword'
-        },
-        {
-          // `code`
-          // ``code``
-          pattern: /``.+?``|`[^`\r\n]+`/,
           alias: 'keyword'
         },
         {
@@ -172,13 +169,15 @@ export default function markdown(Prism) {
         // [id]: http://example.com 'Optional title'
         // [id]: http://example.com (Optional title)
         // [id]: <http://example.com> "Optional title"
-        pattern: /!?\[[^\]]+\]:[\t ]+(?:\S+|<(?:\\.|[^>\\])+>)(?:[\t ]+(?:"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\((?:\\.|[^)\\])*\)))?/,
+        pattern:
+          /!?\[[^\]]+\]:[\t ]+(?:\S+|<(?:\\.|[^>\\])+>)(?:[\t ]+(?:"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\((?:\\.|[^)\\])*\)))?/,
         inside: {
           variable: {
             pattern: /^(!?\[)[^\]]+/,
             lookbehind: true
           },
-          string: /(?:"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\((?:\\.|[^)\\])*\))$/,
+          string:
+            /(?:"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\((?:\\.|[^)\\])*\))$/,
           punctuation: /^[\[\]!:]|[<>]/
         },
         alias: 'url'
@@ -224,7 +223,8 @@ export default function markdown(Prism) {
       strike: {
         // ~~strike through~~
         // ~strike~
-        pattern: createInline(/(~~?)(?:(?!~)<inner>)+?\2/.source),
+        // eslint-disable-next-line regexp/strict
+        pattern: createInline(/(~~?)(?:(?!~)<inner>)+\2/.source),
         lookbehind: true,
         greedy: true,
         inside: {
@@ -235,6 +235,15 @@ export default function markdown(Prism) {
           },
           punctuation: /~~?/
         }
+      },
+      'code-snippet': {
+        // `code`
+        // ``code``
+        pattern:
+          /(^|[^\\`])(?:``[^`\r\n]+(?:`[^`\r\n]+)*``(?!`)|`[^`\r\n]+`(?!`))/,
+        lookbehind: true,
+        greedy: true,
+        alias: ['code', 'keyword']
       },
       url: {
         // [example](http://example.com "Optional title")
@@ -269,7 +278,9 @@ export default function markdown(Prism) {
       }
     })
     ;['url', 'bold', 'italic', 'strike'].forEach(function (token) {
-      ;['url', 'bold', 'italic', 'strike'].forEach(function (inside) {
+      ;['url', 'bold', 'italic', 'strike', 'code-snippet'].forEach(function (
+        inside
+      ) {
         if (token !== inside) {
           Prism.languages.markdown[token].inside.content.inside[inside] =
             Prism.languages.markdown[inside]
@@ -365,10 +376,10 @@ export default function markdown(Prism) {
           })
         }
       } else {
-        // reverse Prism.util.encode
-        var code = env.content.value
-          .replace(/&lt;/g, '<')
-          .replace(/&amp;/g, '&')
+        // get the textContent of the given env HTML
+        var tempContainer = document.createElement('div')
+        tempContainer.innerHTML = env.content.value
+        var code = tempContainer.textContent
         env.content = Prism.highlight(code, grammar, codeLang)
       }
     })

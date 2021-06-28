@@ -8,7 +8,6 @@ t4Cs.aliases = ['t4']
 export default function t4Cs(Prism) {
   Prism.register(refractorCsharp)
   Prism.register(refractorT4Templating)
-  Prism.languages.t4 = Prism.languages['t4-cs'] = Prism.languages[
-    't4-templating'
-  ].createT4('csharp')
+  Prism.languages.t4 = Prism.languages['t4-cs'] =
+    Prism.languages['t4-templating'].createT4('csharp')
 }

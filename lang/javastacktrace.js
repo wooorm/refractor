@@ -13,10 +13,12 @@ export default function javastacktrace(Prism) {
     // Caused by: MidLevelException: LowLevelException
     // Suppressed: Resource$CloseFailException: Resource ID = 0
     summary: {
-      pattern: /^[\t ]*(?:(?:Caused by:|Suppressed:|Exception in thread "[^"]*")[\t ]+)?[\w$.]+(?:\:.*)?$/m,
+      pattern:
+        /^[\t ]*(?:(?:Caused by:|Suppressed:|Exception in thread "[^"]*")[\t ]+)?[\w$.]+(?::.*)?$/m,
       inside: {
         keyword: {
-          pattern: /^(\s*)(?:(?:Caused by|Suppressed)(?=:)|Exception in thread)/m,
+          pattern:
+            /^(\s*)(?:(?:Caused by|Suppressed)(?=:)|Exception in thread)/m,
           lookbehind: true
         },
         // the current thread if the summary starts with 'Exception in thread'
@@ -38,7 +40,7 @@ export default function javastacktrace(Prism) {
           lookbehind: true,
           alias: 'string'
         },
-        punctuation: /[:]/
+        punctuation: /:/
       }
     },
     // at org.mortbay.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1166)

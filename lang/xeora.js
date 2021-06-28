@@ -28,7 +28,8 @@ export default function xeora(Prism) {
         }
       },
       'function-inline': {
-        pattern: /\$F:[-\w.]+\?[-\w.]+(?:,(?:(?:@[-#]*\w+\.[\w+.]\.*)*\|)*(?:(?:[\w+]|[-#*.~^]+[\w+]|=\S)(?:[^$=]|=+[^=])*=*|(?:@[-#]*\w+\.[\w+.]\.*)+(?:(?:[\w+]|[-#*~^][-#*.~^]*[\w+]|=\S)(?:[^$=]|=+[^=])*=*)?)?)?\$/,
+        pattern:
+          /\$F:[-\w.]+\?[-\w.]+(?:,(?:(?:@[-#]*\w+\.[\w+.]\.*)*\|)*(?:(?:[\w+]|[-#*.~^]+[\w+]|=\S)(?:[^$=]|=+[^=])*=*|(?:@[-#]*\w+\.[\w+.]\.*)+(?:(?:[\w+]|[-#*~^][-#*.~^]*[\w+]|=\S)(?:[^$=]|=+[^=])*=*)?)?)?\$/,
         inside: {
           variable: {
             pattern: /(?:[,|])@?(?:#+|[-+*~=^])?[\w.]+/,
@@ -48,7 +49,8 @@ export default function xeora(Prism) {
         alias: 'function'
       },
       'function-block': {
-        pattern: /\$XF:{[-\w.]+\?[-\w.]+(?:,(?:(?:@[-#]*\w+\.[\w+.]\.*)*\|)*(?:(?:[\w+]|[-#*.~^]+[\w+]|=\S)(?:[^$=]|=+[^=])*=*|(?:@[-#]*\w+\.[\w+.]\.*)+(?:(?:[\w+]|[-#*~^][-#*.~^]*[\w+]|=\S)(?:[^$=]|=+[^=])*=*)?)?)?}:XF\$/,
+        pattern:
+          /\$XF:\{[-\w.]+\?[-\w.]+(?:,(?:(?:@[-#]*\w+\.[\w+.]\.*)*\|)*(?:(?:[\w+]|[-#*.~^]+[\w+]|=\S)(?:[^$=]|=+[^=])*=*|(?:@[-#]*\w+\.[\w+.]\.*)+(?:(?:[\w+]|[-#*~^][-#*.~^]*[\w+]|=\S)(?:[^$=]|=+[^=])*=*)?)?)?\}:XF\$/,
         inside: {
           punctuation: {
             pattern: /[$:{}?.,|]/
@@ -57,7 +59,7 @@ export default function xeora(Prism) {
         alias: 'function'
       },
       'directive-inline': {
-        pattern: /\$\w(?:#\d+\+?)?(?:\[[-\w.]+])?:[-\/\w.]+\$/,
+        pattern: /\$\w(?:#\d+\+?)?(?:\[[-\w.]+\])?:[-\/\w.]+\$/,
         inside: {
           punctuation: {
             pattern: /\$(?:\w:|C(?:\[|#\d))?|[:{[\]]/,
@@ -71,7 +73,8 @@ export default function xeora(Prism) {
         alias: 'function'
       },
       'directive-block-open': {
-        pattern: /\$\w+:{|\$\w(?:#\d+\+?)?(?:\[[-\w.]+])?:[-\w.]+:{(?:![A-Z]+)?/,
+        pattern:
+          /\$\w+:\{|\$\w(?:#\d+\+?)?(?:\[[-\w.]+\])?:[-\w.]+:\{(?:![A-Z]+)?/,
         inside: {
           punctuation: {
             pattern: /\$(?:\w:|C(?:\[|#\d))?|[:{[\]]/,
@@ -94,7 +97,7 @@ export default function xeora(Prism) {
         alias: 'function'
       },
       'directive-block-separator': {
-        pattern: /}:[-\w.]+:{/,
+        pattern: /\}:[-\w.]+:\{/,
         inside: {
           punctuation: {
             pattern: /[:{}]/
@@ -103,7 +106,7 @@ export default function xeora(Prism) {
         alias: 'function'
       },
       'directive-block-close': {
-        pattern: /}:[-\w.]+\$/,
+        pattern: /\}:[-\w.]+\$/,
         inside: {
           punctuation: {
             pattern: /[:{}$]/

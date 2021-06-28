@@ -19,7 +19,8 @@ export default function soy(Prism) {
         }
       ],
       'command-arg': {
-        pattern: /({+\/?\s*(?:alias|call|delcall|delpackage|deltemplate|namespace|template)\s+)\.?[\w.]+/,
+        pattern:
+          /(\{+\/?\s*(?:alias|call|delcall|delpackage|deltemplate|namespace|template)\s+)\.?[\w.]+/,
         lookbehind: true,
         alias: 'string',
         inside: {
@@ -27,24 +28,25 @@ export default function soy(Prism) {
         }
       },
       parameter: {
-        pattern: /({+\/?\s*@?param\??\s+)\.?[\w.]+/,
+        pattern: /(\{+\/?\s*@?param\??\s+)\.?[\w.]+/,
         lookbehind: true,
         alias: 'variable'
       },
       keyword: [
         {
-          pattern: /({+\/?[^\S\r\n]*)(?:\\[nrt]|alias|call|case|css|default|delcall|delpackage|deltemplate|else(?:if)?|fallbackmsg|for(?:each)?|if(?:empty)?|lb|let|literal|msg|namespace|nil|@?param\??|rb|sp|switch|template|xid)/,
+          pattern:
+            /(\{+\/?[^\S\r\n]*)(?:\\[nrt]|alias|call|case|css|default|delcall|delpackage|deltemplate|else(?:if)?|fallbackmsg|for(?:each)?|if(?:empty)?|lb|let|literal|msg|namespace|nil|@?param\??|rb|sp|switch|template|xid)/,
           lookbehind: true
         },
         /\b(?:any|as|attributes|bool|css|float|in|int|js|html|list|map|null|number|string|uri)\b/
       ],
       delimiter: {
-        pattern: /^{+\/?|\/?}+$/,
+        pattern: /^\{+\/?|\/?\}+$/,
         alias: 'punctuation'
       },
       property: /\w+(?==)/,
       variable: {
-        pattern: /\$[^\W\d]\w*(?:\??(?:\.\w+|\[[^\]]+]))*/,
+        pattern: /\$[^\W\d]\w*(?:\??(?:\.\w+|\[[^\]]+\]))*/,
         inside: {
           string: {
             pattern: stringPattern,
@@ -71,7 +73,7 @@ export default function soy(Prism) {
       punctuation: /[{}()\[\]|.,:]/
     } // Tokenize all inline Soy expressions
     Prism.hooks.add('before-tokenize', function (env) {
-      var soyPattern = /{{.+?}}|{.+?}|\s\/\/.*|\/\*[\s\S]*?\*\//g
+      var soyPattern = /\{\{.+?\}\}|\{.+?\}|\s\/\/.*|\/\*[\s\S]*?\*\//g
       var soyLitteralStart = '{literal}'
       var soyLitteralEnd = '{/literal}'
       var soyLitteralMode = false

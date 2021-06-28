@@ -44,8 +44,9 @@ export default function markupTemplating(Prism) {
             while (
               env.code.indexOf((placeholder = getPlaceholder(language, i))) !==
               -1
-            )
-              ++i // Create a sparse array
+            ) {
+              ++i
+            } // Create a sparse array
             tokenStack[i] = match
             return placeholder
           }) // Switch the grammar to markup

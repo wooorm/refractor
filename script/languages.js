@@ -12,7 +12,7 @@ import {detab} from 'detab'
 import {trimLines} from 'trim-lines'
 import alphaSort from 'alpha-sort'
 import {all} from './data.js'
-import {camelcase} from './camelcase.js'
+import {toId} from './to-id.js'
 
 /** @type {{languages: Object.<string, {require: string|string[], alias: string|string[]}>}} */
 var components = JSON.parse(
@@ -39,7 +39,7 @@ function done(error, results) {
  * @param {(error: Error) => void} callback
  */
 function generate(name, callback) {
-  var id = camelcase(name)
+  var id = toId(name)
 
   fs.readFile(
     path.join('node_modules', 'prismjs', 'components', 'prism-' + name + '.js'),
@@ -49,13 +49,11 @@ function generate(name, callback) {
       }
 
       var info = components.languages[name]
-      var dependency = (typeof info.require === 'string'
-        ? [info.require]
-        : info.require || []
+      var dependency = (
+        typeof info.require === 'string' ? [info.require] : info.require || []
       ).sort(alphaSort())
-      var alias = (typeof info.alias === 'string'
-        ? [info.alias]
-        : info.alias || []
+      var alias = (
+        typeof info.alias === 'string' ? [info.alias] : info.alias || []
       ).sort(alphaSort())
 
       var doc = babel.transformSync(String(buf), {plugins: [fixWrapHook]}).code
@@ -66,7 +64,7 @@ function generate(name, callback) {
           '// @ts-nocheck',
           ...dependency.map(
             (lang) =>
-              'import ' + camelcase(prefix + lang) + " from './" + lang + ".js'"
+              'import ' + toId(prefix + lang) + " from './" + lang + ".js'"
           ),
           id + ".displayName = '" + name + "'",
           id + '.aliases = ' + JSON.stringify(alias),
@@ -74,7 +72,7 @@ function generate(name, callback) {
           "/** @type {import('../core.js').Syntax} */",
           'export default function ' + id + '(Prism) {',
           ...dependency.map(
-            (lang) => '  Prism.register(' + camelcase(prefix + lang) + ');'
+            (lang) => '  Prism.register(' + toId(prefix + lang) + ');'
           ),
           trimLines(detab(doc)),
           '}'

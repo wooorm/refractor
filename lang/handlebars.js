@@ -1,7 +1,7 @@
 // @ts-nocheck
 import refractorMarkupTemplating from './markup-templating.js'
 handlebars.displayName = 'handlebars'
-handlebars.aliases = []
+handlebars.aliases = ['hbs']
 
 /** @type {import('../core.js').Syntax} */
 export default function handlebars(Prism) {
@@ -45,5 +45,6 @@ export default function handlebars(Prism) {
         'handlebars'
       )
     })
+    Prism.languages.hbs = Prism.languages.handlebars
   })(Prism)
 }

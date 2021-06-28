@@ -21,7 +21,8 @@ export default function abnf(Prism) {
         alias: 'number'
       },
       terminal: {
-        pattern: /%(?:b[01]+(?:\.[01]+)*|d\d+(?:\.\d+)*|x[A-F\d]+(?:\.[A-F\d]+)*)/i,
+        pattern:
+          /%(?:b[01]+(?:\.[01]+)*|d\d+(?:\.\d+)*|x[A-F\d]+(?:\.[A-F\d]+)*)/i,
         alias: 'number'
       },
       repetition: {
@@ -30,7 +31,7 @@ export default function abnf(Prism) {
         alias: 'operator'
       },
       definition: {
-        pattern: /(^[ \t]*)(?:[a-z][\w-]*|<[^>\r\n]*>)(?=\s*=)/m,
+        pattern: /(^[ \t]*)(?:[a-z][\w-]*|<[^<>\r\n]*>)(?=\s*=)/m,
         lookbehind: true,
         alias: 'keyword',
         inside: {
@@ -49,7 +50,7 @@ export default function abnf(Prism) {
         }
       },
       rule: {
-        pattern: /(^|[^<\w-])[a-z][\w-]*|<[^>\r\n]*>/i,
+        pattern: /(^|[^<\w-])[a-z][\w-]*|<[^<>\r\n]*>/i,
         lookbehind: true,
         inside: {
           punctuation: /<|>/

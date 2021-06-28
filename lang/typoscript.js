@@ -5,7 +5,8 @@ typoscript.aliases = ['tsconfig']
 /** @type {import('../core.js').Syntax} */
 export default function typoscript(Prism) {
   ;(function (Prism) {
-    var keywords = /\b(?:ACT|ACTIFSUB|CARRAY|CASE|CLEARGIF|COA|COA_INT|CONSTANTS|CONTENT|CUR|EDITPANEL|EFFECT|EXT|FILE|FLUIDTEMPLATE|FORM|FRAME|FRAMESET|GIFBUILDER|GMENU|GMENU_FOLDOUT|GMENU_LAYERS|GP|HMENU|HRULER|HTML|IENV|IFSUB|IMAGE|IMGMENU|IMGMENUITEM|IMGTEXT|IMG_RESOURCE|INCLUDE_TYPOSCRIPT|JSMENU|JSMENUITEM|LLL|LOAD_REGISTER|NO|PAGE|RECORDS|RESTORE_REGISTER|TEMPLATE|TEXT|TMENU|TMENUITEM|TMENU_LAYERS|USER|USER_INT|_GIFBUILDER|global|globalString|globalVar)\b/
+    var keywords =
+      /\b(?:ACT|ACTIFSUB|CARRAY|CASE|CLEARGIF|COA|COA_INT|CONSTANTS|CONTENT|CUR|EDITPANEL|EFFECT|EXT|FILE|FLUIDTEMPLATE|FORM|FRAME|FRAMESET|GIFBUILDER|GMENU|GMENU_FOLDOUT|GMENU_LAYERS|GP|HMENU|HRULER|HTML|IENV|IFSUB|IMAGE|IMGMENU|IMGMENUITEM|IMGTEXT|IMG_RESOURCE|INCLUDE_TYPOSCRIPT|JSMENU|JSMENUITEM|LLL|LOAD_REGISTER|NO|PAGE|RECORDS|RESTORE_REGISTER|TEMPLATE|TEXT|TMENU|TMENUITEM|TMENU_LAYERS|USER|USER_INT|_GIFBUILDER|global|globalString|globalVar)\b/
     Prism.languages.typoscript = {
       comment: [
         {
@@ -30,7 +31,8 @@ export default function typoscript(Prism) {
       function: [
         {
           // old include style
-          pattern: /<INCLUDE_TYPOSCRIPT:\s*source\s*=\s*(?:"[^"\r\n]*"|'[^'\r\n]*')\s*>/,
+          pattern:
+            /<INCLUDE_TYPOSCRIPT:\s*source\s*=\s*(?:"[^"\r\n]*"|'[^'\r\n]*')\s*>/,
           inside: {
             string: {
               pattern: /"[^"\r\n]*"|'[^'\r\n]*'/,
@@ -52,10 +54,10 @@ export default function typoscript(Prism) {
         }
       ],
       string: {
-        pattern: /^([^=]*=[< ]?)(?:(?!]\n).)*/,
+        pattern: /^([^=]*=[< ]?)(?:(?!\]\n).)*/,
         lookbehind: true,
         inside: {
-          function: /{\$.*}/,
+          function: /\{\$.*\}/,
           // constants include
           keyword: keywords,
           number: /^[0-9]+$/,
@@ -65,13 +67,13 @@ export default function typoscript(Prism) {
       keyword: keywords,
       number: {
         // special highlighting for indexes of arrays in tags
-        pattern: /[0-9]+\s*[.{=]/,
+        pattern: /\b[0-9]+\s*[.{=]/,
         inside: {
           operator: /[.{=]/
         }
       },
       tag: {
-        pattern: /\.?[\w-\\]+\.?/,
+        pattern: /\.?[-\w\\]+\.?/,
         inside: {
           punctuation: /\./
         }

@@ -18,7 +18,7 @@ export const all = getLoader(components, allLanguages).getIds()
 export const common = getLoader(components, [
   // These are alphabetical, but they are exported in registration order.
   // They are based on the languages that lowlight exports as common,
-  // which is is turn based on what highlight.js treats as common.
+  // which is in turn based on what highlight.js treats as common.
   // <https://github.com/wooorm/lowlight/blob/bf79fd1/script/build-registry.js#L39>
   // <https://github.com/wooorm/lowlight/blob/main/lib/common.js>
   'arduino',

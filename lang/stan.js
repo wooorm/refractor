@@ -19,7 +19,8 @@ export default function stan(Prism) {
       alias: 'property'
     },
     'function-arg': {
-      pattern: /(\b(?:algebra_solver|integrate_1d|integrate_ode|integrate_ode_bdf|integrate_ode_rk45|map_rect)\s*\(\s*)[a-zA-Z]\w*/,
+      pattern:
+        /(\b(?:algebra_solver|integrate_1d|integrate_ode|integrate_ode_bdf|integrate_ode_rk45|map_rect)\s*\(\s*)[a-zA-Z]\w*/,
       lookbehind: true,
       alias: 'function'
     },
@@ -34,7 +35,7 @@ export default function stan(Prism) {
         },
         property: /\b[a-z]\w*(?=\s*=)/i,
         operator: /=/,
-        punctuation: /^<|>$|[,]/
+        punctuation: /^<|>$|,/
       }
     },
     keyword: [

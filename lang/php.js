@@ -20,11 +20,23 @@ export default function php(Prism) {
         pattern: /\b(?:false|true)\b/i,
         alias: 'boolean'
       },
-      /\b[A-Z_][A-Z0-9_]*\b(?!\s*\()/,
-      /\b(?:null)\b/i
+      {
+        pattern: /(::\s*)\b[a-z_]\w*\b(?!\s*\()/i,
+        greedy: true,
+        lookbehind: true
+      },
+      {
+        pattern: /(\b(?:case|const)\s+)\b[a-z_]\w*(?=\s*[;=])/i,
+        greedy: true,
+        lookbehind: true
+      },
+      /\b(?:null)\b/i,
+      /\b[A-Z_][A-Z0-9_]*\b(?!\s*\()/
     ]
-    var number = /\b0b[01]+\b|\b0x[\da-f]+\b|(?:\b\d+(?:_\d+)*(?:\.(?:\d+(?:_\d+)*)?)?|\B\.\d+)(?:e[+-]?\d+)?/i
-    var operator = /<?=>|\?\?=?|\.{3}|\??->|[!=]=?=?|::|\*\*=?|--|\+\+|&&|\|\||<<|>>|[?~]|[/^|%*&<>.+-]=?/
+    var number =
+      /\b0b[01]+(?:_[01]+)*\b|\b0o[0-7]+(?:_[0-7]+)*\b|\b0x[\da-f]+(?:_[\da-f]+)*\b|(?:\b\d+(?:_\d+)*\.?(?:\d+(?:_\d+)*)?|\B\.\d+)(?:e[+-]?\d+)?/i
+    var operator =
+      /<?=>|\?\?=?|\.{3}|\??->|[!=]=?=?|::|\*\*=?|--|\+\+|&&|\|\||<<|>>|[?~]|[/^|%*&<>.+-]=?/
     var punctuation = /[{}\[\](),:;]/
     Prism.languages.php = {
       delimiter: {
@@ -32,47 +44,62 @@ export default function php(Prism) {
         alias: 'important'
       },
       comment: comment,
-      variable: /\$+(?:\w+\b|(?={))/i,
+      variable: /\$+(?:\w+\b|(?=\{))/i,
       package: {
-        pattern: /(namespace\s+|use\s+(?:function\s+)?)(?:\\?\b[a-z_]\w*)+\b(?!\\)/i,
+        pattern:
+          /(namespace\s+|use\s+(?:function\s+)?)(?:\\?\b[a-z_]\w*)+\b(?!\\)/i,
         lookbehind: true,
         inside: {
           punctuation: /\\/
         }
       },
+      'class-name-definition': {
+        pattern: /(\b(?:class|enum|interface|trait)\s+)\b[a-z_]\w*(?!\\)\b/i,
+        lookbehind: true,
+        alias: 'class-name'
+      },
+      'function-definition': {
+        pattern: /(\bfunction\s+)[a-z_]\w*(?=\s*\()/i,
+        lookbehind: true,
+        alias: 'function'
+      },
       keyword: [
         {
-          pattern: /(\(\s*)\b(?:bool|boolean|int|integer|float|string|object|array)\b(?=\s*\))/i,
+          pattern:
+            /(\(\s*)\b(?:bool|boolean|int|integer|float|string|object|array)\b(?=\s*\))/i,
           alias: 'type-casting',
           greedy: true,
           lookbehind: true
         },
         {
-          pattern: /([(,?]\s*)\b(?:bool|int|float|string|object|array(?!\s*\()|mixed|self|static|callable|iterable|(?:null|false)(?=\s*\|))\b(?=\s*\$)/i,
+          pattern:
+            /([(,?]\s*)\b(?:bool|int|float|string|object|array(?!\s*\()|mixed|self|static|callable|iterable|(?:null|false)(?=\s*\|))\b(?=\s*\$)/i,
           alias: 'type-hint',
           greedy: true,
           lookbehind: true
         },
         {
-          pattern: /([(,?]\s*[a-z0-9_|]\|\s*)(?:null|false)\b(?=\s*\$)/i,
+          pattern: /([(,?]\s*[\w|]\|\s*)(?:null|false)\b(?=\s*\$)/i,
           alias: 'type-hint',
           greedy: true,
           lookbehind: true
         },
         {
-          pattern: /(\)\s*:\s*(?:\?\s*)?)\b(?:bool|int|float|string|object|void|array(?!\s*\()|mixed|self|static|callable|iterable|(?:null|false)(?=\s*\|))\b/i,
+          pattern:
+            /(\)\s*:\s*(?:\?\s*)?)\b(?:bool|int|float|string|object|void|array(?!\s*\()|mixed|self|static|callable|iterable|(?:null|false)(?=\s*\|))\b/i,
           alias: 'return-type',
           greedy: true,
           lookbehind: true
         },
         {
-          pattern: /(\)\s*:\s*(?:\?\s*)?[a-z0-9_|]\|\s*)(?:null|false)\b/i,
+          pattern: /(\)\s*:\s*(?:\?\s*)?[\w|]\|\s*)(?:null|false)\b/i,
           alias: 'return-type',
           greedy: true,
           lookbehind: true
         },
         {
-          pattern: /\b(?:bool|int|float|string|object|void|array(?!\s*\()|mixed|iterable|(?:null|false)(?=\s*\|))\b/i,
+          pattern:
+            /\b(?:bool|int|float|string|object|void|array(?!\s*\()|mixed|iterable|(?:null|false)(?=\s*\|))\b/i,
           alias: 'type-declaration',
           greedy: true
         },
@@ -87,12 +114,30 @@ export default function php(Prism) {
           alias: 'static-context',
           greedy: true
         },
-        /\b(?:__halt_compiler|abstract|and|array|as|break|callable|case|catch|class|clone|const|continue|declare|default|die|do|echo|else|elseif|empty|enddeclare|endfor|endforeach|endif|endswitch|endwhile|eval|exit|extends|final|finally|for|foreach|function|global|goto|if|implements|include|include_once|instanceof|insteadof|interface|isset|list|namespace|match|new|or|parent|print|private|protected|public|require|require_once|return|self|static|switch|throw|trait|try|unset|use|var|while|xor|yield)\b/i
+        {
+          // yield from
+          pattern: /(\byield\s+)from\b/i,
+          lookbehind: true
+        }, // `class` is always a keyword unlike other keywords
+        /\bclass\b/i,
+        {
+          // https://www.php.net/manual/en/reserved.keywords.php
+          //
+          // keywords cannot be preceded by "->"
+          // the complex lookbehind means `(?<!(?:->|::)\s*)`
+          pattern:
+            /((?:^|[^\s>:]|(?:^|[^-])>|(?:^|[^:]):)\s*)\b(?:__halt_compiler|abstract|and|array|as|break|callable|case|catch|clone|const|continue|declare|default|die|do|echo|else|elseif|empty|enddeclare|endfor|endforeach|endif|endswitch|endwhile|enum|eval|exit|extends|final|finally|fn|for|foreach|function|global|goto|if|implements|include|include_once|instanceof|insteadof|interface|isset|list|namespace|match|new|or|parent|print|private|protected|public|require|require_once|return|self|static|switch|throw|trait|try|unset|use|var|while|xor|yield)\b/i,
+          lookbehind: true
+        }
       ],
-      'argument-name': /\b[a-z_]\w*(?=\s*:(?!:))/i,
+      'argument-name': {
+        pattern: /([(,]\s+)\b[a-z_]\w*(?=\s*:(?!:))/i,
+        lookbehind: true
+      },
       'class-name': [
         {
-          pattern: /(\b(?:class|interface|extends|implements|trait|instanceof|new(?!\s+self|\s+static))\s+|\bcatch\s*\()\b[a-z_]\w*(?!\\)\b/i,
+          pattern:
+            /(\b(?:extends|implements|instanceof|new(?!\s+self|\s+static))\s+|\bcatch\s*\()\b[a-z_]\w*(?!\\)\b/i,
           greedy: true,
           lookbehind: true
         },
@@ -123,7 +168,8 @@ export default function php(Prism) {
           }
         },
         {
-          pattern: /(\b(?:extends|implements|instanceof|new(?!\s+self\b|\s+static\b))\s+|\bcatch\s*\()(?:\\?\b[a-z_]\w*)+\b(?!\\)/i,
+          pattern:
+            /(\b(?:extends|implements|instanceof|new(?!\s+self\b|\s+static\b))\s+|\bcatch\s*\()(?:\\?\b[a-z_]\w*)+\b(?!\\)/i,
           alias: 'class-name-fully-qualified',
           greedy: true,
           lookbehind: true,
@@ -189,9 +235,15 @@ export default function php(Prism) {
         }
       ],
       constant: constant,
-      function: /\w+\s*(?=\()/,
+      function: {
+        pattern: /(^|[^\\\w])\\?[a-z_](?:[\w\\]*\w)?(?=\s*\()/i,
+        lookbehind: true,
+        inside: {
+          punctuation: /\\/
+        }
+      },
       property: {
-        pattern: /(->)[\w]+/,
+        pattern: /(->\s*)\w+/,
         lookbehind: true
       },
       number: number,
@@ -199,7 +251,8 @@ export default function php(Prism) {
       punctuation: punctuation
     }
     var string_interpolation = {
-      pattern: /{\$(?:{(?:{[^{}]+}|[^{}]+)}|[^{}])+}|(^|[^\\{])\$+(?:\w+(?:\[[^\r\n\[\]]+\]|->\w+)*)/,
+      pattern:
+        /\{\$(?:\{(?:\{[^{}]+\}|[^{}]+)\}|[^{}])+\}|(^|[^\\{])\$+(?:\w+(?:\[[^\r\n\[\]]+\]|->\w+)?)/,
       lookbehind: true,
       inside: Prism.languages.php
     }
@@ -219,7 +272,8 @@ export default function php(Prism) {
         }
       },
       {
-        pattern: /<<<(?:"([^"]+)"[\r\n](?:.*[\r\n])*?\1;|([a-z_]\w*)[\r\n](?:.*[\r\n])*?\2;)/i,
+        pattern:
+          /<<<(?:"([^"]+)"[\r\n](?:.*[\r\n])*?\1;|([a-z_]\w*)[\r\n](?:.*[\r\n])*?\2;)/i,
         alias: 'heredoc-string',
         greedy: true,
         inside: {
@@ -230,7 +284,7 @@ export default function php(Prism) {
               punctuation: /^<<<"?|[";]$/
             }
           },
-          interpolation: string_interpolation // See below
+          interpolation: string_interpolation
         }
       },
       {
@@ -248,20 +302,19 @@ export default function php(Prism) {
         alias: 'double-quoted-string',
         greedy: true,
         inside: {
-          interpolation: string_interpolation // See below
+          interpolation: string_interpolation
         }
       }
     ]
     Prism.languages.insertBefore('php', 'variable', {
-      string: string
-    })
-    Prism.languages.insertBefore('php', 'variable', {
+      string: string,
       attribute: {
-        pattern: /#\[(?:[^"'\/#]|\/(?![*/])|\/\/.*$|#(?!\[).*$|\/\*(?:[^*]|\*(?!\/))*\*\/|"(?:\\[\s\S]|[^\\"])*"|'(?:\\[\s\S]|[^\\'])*')+\](?=\s*[a-z$#])/im,
+        pattern:
+          /#\[(?:[^"'\/#]|\/(?![*/])|\/\/.*$|#(?!\[).*$|\/\*(?:[^*]|\*(?!\/))*\*\/|"(?:\\[\s\S]|[^\\"])*"|'(?:\\[\s\S]|[^\\'])*')+\](?=\s*[a-z$#])/im,
         greedy: true,
         inside: {
           'attribute-content': {
-            pattern: /^(#\[)[\s\S]+(?=]$)/,
+            pattern: /^(#\[)[\s\S]+(?=\]$)/,
             lookbehind: true,
             // inside can appear subset of php
             inside: {
@@ -291,7 +344,7 @@ export default function php(Prism) {
             }
           },
           delimiter: {
-            pattern: /^#\[|]$/,
+            pattern: /^#\[|\]$/,
             alias: 'punctuation'
           }
         }
@@ -301,7 +354,8 @@ export default function php(Prism) {
       if (!/<\?/.test(env.code)) {
         return
       }
-      var phpPattern = /<\?(?:[^"'/#]|\/(?![*/])|("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|(?:\/\/|#(?!\[))(?:[^?\n\r]|\?(?!>))*(?=$|\?>|[\r\n])|#\[|\/\*(?:[^*]|\*(?!\/))*(?:\*\/|$))*?(?:\?>|$)/gi
+      var phpPattern =
+        /<\?(?:[^"'/#]|\/(?![*/])|("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|(?:\/\/|#(?!\[))(?:[^?\n\r]|\?(?!>))*(?=$|\?>|[\r\n])|#\[|\/\*(?:[^*]|\*(?!\/))*(?:\*\/|$))*?(?:\?>|$)/gi
       Prism.languages['markup-templating'].buildPlaceholders(
         env,
         'php',

@@ -6,7 +6,8 @@ factor.aliases = []
 export default function factor(Prism) {
   ;(function (Prism) {
     var comment_inside = {
-      function: /\b(?:TODOS?|FIX(?:MES?)?|NOTES?|BUGS?|XX+|HACKS?|WARN(?:ING)?|\?{2,}|!{2,})\b/
+      function:
+        /\b(?:TODOS?|FIX(?:MES?)?|NOTES?|BUGS?|XX+|HACKS?|WARN(?:ING)?|\?{2,}|!{2,})\b/
     }
     var string_inside = {
       number: /\\[^\s']|%\w/
@@ -64,7 +65,8 @@ export default function factor(Prism) {
         {
           // basic decimal floats -0.01 0. .0 .1 -.1 -1. -12.13 +12.13
           // and scientific notation with base 10 exponents 3e4 3e-4 .3e-4
-          pattern: /(^|\s)[+-]?(?:\d*\.\d+|\d+\.\d*|\d+)(?:e[+-]?\d+)?(?=\s|$)/i,
+          pattern:
+            /(^|\s)[+-]?(?:\d*\.\d+|\d+\.\d*|\d+)(?:e[+-]?\d+)?(?=\s|$)/i,
           lookbehind: true
         },
         {
@@ -79,13 +81,15 @@ base prefix floats 0x1.0p3 (8.0) 0b1.010p2 (5.0) 0x1.p1 0b1.11111111p11111...
 The values of MMMMMMMMMMMMM and EEEE map directly to the mantissa and exponent fields of the binary IEEE 754 representation."
 <https://docs.factorcode.org/content/article-syntax-floats.html>
 */
-          pattern: /(^|\s)[+-]?0(?:b1\.[01]*|o1\.[0-7]*|d1\.\d*|x1\.[\dA-F]*)p\d+(?=\s|$)/i,
+          pattern:
+            /(^|\s)[+-]?0(?:b1\.[01]*|o1\.[0-7]*|d1\.\d*|x1\.[\dA-F]*)p\d+(?=\s|$)/i,
           lookbehind: true
         }
       ],
       // R/ regexp?\/\\/
       regexp: {
-        pattern: /(^|\s)R\/\s(?:\\\S|[^\\/])*\/(?:[idmsr]*|[idmsr]+-[idmsr]+)(?=\s|$)/,
+        pattern:
+          /(^|\s)R\/\s(?:\\\S|[^\\/])*\/(?:[idmsr]*|[idmsr]+-[idmsr]+)(?=\s|$)/,
         lookbehind: true,
         alias: 'number',
         inside: {
@@ -122,7 +126,7 @@ The values of MMMMMMMMMMMMM and EEEE map directly to the mantissa and exponent f
             number: string_inside.number,
             // trailing semicolon on its own line
             'semicolon-or-setlocal': {
-              pattern: /((?:\n|\r\n)\s*);(?=\s|$)/,
+              pattern: /([\r\n][ \t]*);(?=\s|$)/,
               lookbehind: true,
               alias: 'function'
             }
@@ -248,7 +252,8 @@ $[help-markup]
 see <https://docs.factorcode.org/content/article-conventions.html>
 */
       'conventionally-named-word': {
-        pattern: /(^|\s)(?!")(?:(?:set|change|with|new)-\S+|\$\S+|>[^>\s]+|[^:>\s]+>|[^>\s]+>[^>\s]+|\+[^+\s]+\+|[^?\s]+\?|\?[^?\s]+|[^>\s]+>>|>>[^>\s]+|[^<\s]+<<|\([^()\s]+\)|[^!\s]+!|[^*\s]\S*\*|[^.\s]\S*\.)(?=\s|$)/,
+        pattern:
+          /(^|\s)(?!")(?:(?:set|change|with|new)-\S+|\$\S+|>[^>\s]+|[^:>\s]+>|[^>\s]+>[^>\s]+|\+[^+\s]+\+|[^?\s]+\?|\?[^?\s]+|[^>\s]+>>|>>[^>\s]+|[^<\s]+<<|\([^()\s]+\)|[^!\s]+!|[^*\s]\S*\*|[^.\s]\S*\.)(?=\s|$)/,
         lookbehind: true,
         alias: 'keyword'
       },

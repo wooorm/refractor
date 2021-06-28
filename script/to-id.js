@@ -1,9 +1,14 @@
+import isKeyword from 'is-keyword'
+
 /**
  * @param {string} string
  * @returns {string}
  */
-export function camelcase(string) {
-  return string.replace(/-[a-z]/gi, replace)
+export function toId(string) {
+  const id = string.replace(/-[a-z]/gi, replace)
+
+  return isKeyword(id) ? '$' + id : id
+
   /**
    * @param {string} $0
    * @returns {string}

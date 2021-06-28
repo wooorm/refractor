@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import chalk from 'chalk'
-import {camelcase} from './camelcase.js'
+import {toId} from './to-id.js'
 import {all, common} from './data.js'
 
 fs.writeFileSync(path.join('lib', 'all.js'), generate(all))
@@ -31,11 +31,11 @@ function generate(list) {
     ' */',
     "import {refractor} from './core.js'",
     ...list.map(
-      (lang) => 'import ' + camelcase(lang) + " from '../lang/" + lang + ".js'"
+      (lang) => 'import ' + toId(lang) + " from '../lang/" + lang + ".js'"
     ),
     '',
     'export {refractor}',
-    ...list.map((lang) => 'refractor.register(' + camelcase(lang) + ')'),
+    ...list.map((lang) => 'refractor.register(' + toId(lang) + ')'),
     ''
   ].join('\n')
 }

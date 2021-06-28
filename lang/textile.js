@@ -30,18 +30,18 @@ export default function textile(Prism) {
     }
     var modifierTokens = {
       css: {
-        pattern: /\{[^}]+\}/,
+        pattern: /\{[^{}]+\}/,
         inside: {
           rest: Prism.languages.css
         }
       },
       'class-id': {
-        pattern: /(\()[^)]+(?=\))/,
+        pattern: /(\()[^()]+(?=\))/,
         lookbehind: true,
         alias: 'attr-value'
       },
       lang: {
-        pattern: /(\[)[^\]]+(?=\])/,
+        pattern: /(\[)[^\[\]]+(?=\])/,
         lookbehind: true,
         alias: 'attr-value'
       },
@@ -164,11 +164,11 @@ export default function textile(Prism) {
             pattern: /^\[[^\]]+\]\S+$/m,
             inside: {
               string: {
-                pattern: /(\[)[^\]]+(?=\])/,
+                pattern: /(^\[)[^\]]+(?=\])/,
                 lookbehind: true
               },
               url: {
-                pattern: /(\])\S+$/,
+                pattern: /(^\])\S+$/,
                 lookbehind: true
               },
               punctuation: /[\[\]]/
@@ -238,7 +238,7 @@ export default function textile(Prism) {
             pattern: /\b[A-Z\d]+\([^)]+\)/,
             inside: {
               comment: {
-                pattern: /(\()[^)]+(?=\))/,
+                pattern: /(\()[^()]+(?=\))/,
                 lookbehind: true
               },
               punctuation: /[()]/
@@ -264,7 +264,8 @@ export default function textile(Prism) {
       acronym: phraseInside['acronym'],
       mark: phraseInside['mark']
     } // Only allow alpha-numeric HTML tags, not XML tags
-    textile.tag.pattern = /<\/?(?!\d)[a-z0-9]+(?:\s+[^\s>\/=]+(?:=(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s'">=]+))?)*\s*\/?>/i // Allow some nesting
+    textile.tag.pattern =
+      /<\/?(?!\d)[a-z0-9]+(?:\s+[^\s>\/=]+(?:=(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s'">=]+))?)*\s*\/?>/i // Allow some nesting
     var phraseInlineInside = phraseInside['inline'].inside
     phraseInlineInside['bold'].inside = nestedPatterns
     phraseInlineInside['italic'].inside = nestedPatterns
