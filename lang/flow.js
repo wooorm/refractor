@@ -9,14 +9,14 @@ function flow(Prism) {
     Prism.languages.insertBefore('flow', 'keyword', {
       type: [
         {
-          pattern: /\b(?:[Nn]umber|[Ss]tring|[Bb]oolean|Function|any|mixed|null|void)\b/,
+          pattern:
+            /\b(?:[Nn]umber|[Ss]tring|[Bb]oolean|Function|any|mixed|null|void)\b/,
           alias: 'tag'
         }
       ]
     })
-    Prism.languages.flow[
-      'function-variable'
-    ].pattern = /(?!\s)[_$a-z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*=\s*(?:function\b|(?:\([^()]*\)(?:\s*:\s*\w+)?|(?!\s)[_$a-z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*)\s*=>))/i
+    Prism.languages.flow['function-variable'].pattern =
+      /(?!\s)[_$a-z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*=\s*(?:function\b|(?:\([^()]*\)(?:\s*:\s*\w+)?|(?!\s)[_$a-z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*)\s*=>))/i
     delete Prism.languages.flow['parameter']
     Prism.languages.insertBefore('flow', 'operator', {
       'flow-punctuation': {
@@ -33,7 +33,8 @@ function flow(Prism) {
         lookbehind: true
       },
       {
-        pattern: /(^|[^$]\B)\$(?:await|Diff|Exact|Keys|ObjMap|PropertyType|Shape|Record|Supertype|Subtype|Enum)\b(?!\$)/,
+        pattern:
+          /(^|[^$]\B)\$(?:await|Diff|Exact|Keys|ObjMap|PropertyType|Shape|Record|Supertype|Subtype|Enum)\b(?!\$)/,
         lookbehind: true
       }
     )

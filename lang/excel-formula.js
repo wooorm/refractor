@@ -22,7 +22,8 @@ function excelFormula(Prism) {
       // D:\Reports\[Sales.xlsx]Jan!B2:B5
       // '[Sales.xlsx]Jan sales'!B2:B5
       // 'D:\Reports\[Sales.xlsx]Jan sales'!B2:B5
-      pattern: /(?:'[^']*'|(?:[^\s()[\]{}<>*?"';,$&]*\[[^^\s()[\]{}<>*?"']+\])?\w+)!/,
+      pattern:
+        /(?:'[^']*'|(?:[^\s()[\]{}<>*?"';,$&]*\[[^^\s()[\]{}<>*?"']+\])?\w+)!/,
       greedy: true,
       alias: 'string',
       inside: {
@@ -46,7 +47,8 @@ function excelFormula(Prism) {
       alias: 'keyword'
     },
     range: {
-      pattern: /\$?\b(?:[A-Z]+\$?\d+:\$?[A-Z]+\$?\d+|[A-Z]+:\$?[A-Z]+|\d+:\$?\d+)\b/i,
+      pattern:
+        /\$?\b(?:[A-Z]+\$?\d+:\$?[A-Z]+\$?\d+|[A-Z]+:\$?[A-Z]+|\d+:\$?\d+)\b/i,
       alias: 'property',
       inside: {
         operator: /:/,

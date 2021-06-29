@@ -8,7 +8,8 @@ function velocity(Prism) {
     Prism.languages.velocity = Prism.languages.extend('markup', {})
     var velocity = {
       variable: {
-        pattern: /(^|[^\\](?:\\\\)*)\$!?(?:[a-z][\w-]*(?:\([^)]*\))?(?:\.[a-z][\w-]*(?:\([^)]*\))?|\[[^\]]+])*|{[^}]+})/i,
+        pattern:
+          /(^|[^\\](?:\\\\)*)\$!?(?:[a-z][\w-]*(?:\([^)]*\))?(?:\.[a-z][\w-]*(?:\([^)]*\))?|\[[^\]]+])*|{[^}]+})/i,
         lookbehind: true,
         inside: {} // See below
       },
@@ -18,7 +19,8 @@ function velocity(Prism) {
       },
       number: /\b\d+\b/,
       boolean: /\b(?:true|false)\b/,
-      operator: /[=!<>]=?|[+*/%-]|&&|\|\||\.\.|\b(?:eq|g[et]|l[et]|n(?:e|ot))\b/,
+      operator:
+        /[=!<>]=?|[+*/%-]|&&|\|\||\.\.|\b(?:eq|g[et]|l[et]|n(?:e|ot))\b/,
       punctuation: /[(){}[\]:,.]/
     }
     velocity.variable.inside = {
@@ -55,7 +57,8 @@ function velocity(Prism) {
         }
       ],
       directive: {
-        pattern: /(^|[^\\](?:\\\\)*)#@?(?:[a-z][\w-]*|{[a-z][\w-]*})(?:\s*\((?:[^()]|\([^()]*\))*\))?/i,
+        pattern:
+          /(^|[^\\](?:\\\\)*)#@?(?:[a-z][\w-]*|{[a-z][\w-]*})(?:\s*\((?:[^()]|\([^()]*\))*\))?/i,
         lookbehind: true,
         inside: {
           keyword: {

@@ -28,7 +28,8 @@ function phpdoc(Prism) {
           ),
           lookbehind: true,
           inside: {
-            keyword: /\b(?:callback|resource|boolean|integer|double|object|string|array|false|float|mixed|bool|null|self|true|void|int)\b/,
+            keyword:
+              /\b(?:callback|resource|boolean|integer|double|object|string|array|false|float|mixed|bool|null|self|true|void|int)\b/,
             punctuation: /[|\\[\]()]/
           }
         }

@@ -46,7 +46,8 @@ function jq(Prism) {
         pattern: /\b[a-z_]\w*(?=\s*:(?!:))/i,
         alias: 'property'
       },
-      keyword: /\b(?:as|break|catch|def|elif|else|end|foreach|if|import|include|label|module|modulemeta|null|reduce|then|try|while)\b/,
+      keyword:
+        /\b(?:as|break|catch|def|elif|else|end|foreach|if|import|include|label|module|modulemeta|null|reduce|then|try|while)\b/,
       boolean: /\b(?:true|false)\b/,
       number: /(?:\b\d+\.|\B\.)?\b\d+(?:[eE][+-]?\d+)?\b/,
       operator: [

@@ -255,7 +255,8 @@ function mongodb(Prism) {
     Prism.languages.mongodb = Prism.languages.extend('javascript', {})
     Prism.languages.insertBefore('mongodb', 'string', {
       property: {
-        pattern: /(?:(["'])(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1|(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*)(?=\s*:)/,
+        pattern:
+          /(?:(["'])(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1|(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*)(?=\s*:)/,
         greedy: true,
         inside: {
           keyword: RegExp('^([\'"])?' + operatorsSource + '(?:\\1)?$')
@@ -265,12 +266,14 @@ function mongodb(Prism) {
     Prism.languages.mongodb.string.inside = {
       url: {
         // url pattern
-        pattern: /https?:\/\/[-\w@:%.+~#=]{1,256}\.[a-z0-9()]{1,6}\b[-\w()@:%+.~#?&/=]*/i,
+        pattern:
+          /https?:\/\/[-\w@:%.+~#=]{1,256}\.[a-z0-9()]{1,6}\b[-\w()@:%+.~#?&/=]*/i,
         greedy: true
       },
       entity: {
         // ipv4
-        pattern: /\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b/,
+        pattern:
+          /\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b/,
         greedy: true
       }
     }

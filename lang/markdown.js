@@ -25,14 +25,16 @@ function markdown(Prism) {
     }
     var tableCell = /(?:\\.|``(?:[^`\r\n]|`(?!`))+``|`[^`\r\n]+`|[^\\|\r\n`])+/
       .source
-    var tableRow = /\|?__(?:\|__)+\|?(?:(?:\n|\r\n?)|(?![\s\S]))/.source.replace(
-      /__/g,
-      function () {
-        return tableCell
-      }
-    )
-    var tableLine = /\|?[ \t]*:?-{3,}:?[ \t]*(?:\|[ \t]*:?-{3,}:?[ \t]*)+\|?(?:\n|\r\n?)/
-      .source
+    var tableRow =
+      /\|?__(?:\|__)+\|?(?:(?:\n|\r\n?)|(?![\s\S]))/.source.replace(
+        /__/g,
+        function () {
+          return tableCell
+        }
+      )
+    var tableLine =
+      /\|?[ \t]*:?-{3,}:?[ \t]*(?:\|[ \t]*:?-{3,}:?[ \t]*)+\|?(?:\n|\r\n?)/
+        .source
     Prism.languages.markdown = Prism.languages.extend('markup', {})
     Prism.languages.insertBefore('markdown', 'prolog', {
       'front-matter-block': {
@@ -95,7 +97,8 @@ function markdown(Prism) {
       code: [
         {
           // Prefixed by 4 spaces or 1 tab and preceded by an empty line
-          pattern: /((?:^|\n)[ \t]*\n|(?:^|\r\n?)[ \t]*\r\n?)(?: {4}|\t).+(?:(?:\n|\r\n?)(?: {4}|\t).+)*/,
+          pattern:
+            /((?:^|\n)[ \t]*\n|(?:^|\r\n?)[ \t]*\r\n?)(?: {4}|\t).+(?:(?:\n|\r\n?)(?: {4}|\t).+)*/,
           lookbehind: true,
           alias: 'keyword'
         },
@@ -170,13 +173,15 @@ function markdown(Prism) {
         // [id]: http://example.com 'Optional title'
         // [id]: http://example.com (Optional title)
         // [id]: <http://example.com> "Optional title"
-        pattern: /!?\[[^\]]+\]:[\t ]+(?:\S+|<(?:\\.|[^>\\])+>)(?:[\t ]+(?:"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\((?:\\.|[^)\\])*\)))?/,
+        pattern:
+          /!?\[[^\]]+\]:[\t ]+(?:\S+|<(?:\\.|[^>\\])+>)(?:[\t ]+(?:"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\((?:\\.|[^)\\])*\)))?/,
         inside: {
           variable: {
             pattern: /^(!?\[)[^\]]+/,
             lookbehind: true
           },
-          string: /(?:"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\((?:\\.|[^)\\])*\))$/,
+          string:
+            /(?:"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\((?:\\.|[^)\\])*\))$/,
           punctuation: /^[\[\]!:]|[<>]/
         },
         alias: 'url'

@@ -7,7 +7,8 @@ function graphql(Prism) {
   Prism.languages.graphql = {
     comment: /#.*/,
     description: {
-      pattern: /(?:"""(?:[^"]|(?!""")")*"""|"(?:\\.|[^\\"\r\n])*")(?=\s*[a-z_])/i,
+      pattern:
+        /(?:"""(?:[^"]|(?!""")")*"""|"(?:\\.|[^\\"\r\n])*")(?=\s*[a-z_])/i,
       greedy: true,
       alias: 'string',
       inside: {
@@ -34,7 +35,8 @@ function graphql(Prism) {
       greedy: true
     },
     'class-name': {
-      pattern: /(\b(?:enum|implements|interface|on|scalar|type|union)\s+|&\s*)[a-zA-Z_]\w*/,
+      pattern:
+        /(\b(?:enum|implements|interface|on|scalar|type|union)\s+|&\s*)[a-zA-Z_]\w*/,
       lookbehind: true
     },
     fragment: {
@@ -42,7 +44,8 @@ function graphql(Prism) {
       lookbehind: true,
       alias: 'function'
     },
-    keyword: /\b(?:directive|enum|extend|fragment|implements|input|interface|mutation|on|query|repeatable|scalar|schema|subscription|type|union)\b/,
+    keyword:
+      /\b(?:directive|enum|extend|fragment|implements|input|interface|mutation|on|query|repeatable|scalar|schema|subscription|type|union)\b/,
     operator: /[!=|&]|\.{3}/,
     punctuation: /[!(){}\[\]:=,]/,
     constant: /\b(?!ID\b)[A-Z][A-Z_\d]*\b/

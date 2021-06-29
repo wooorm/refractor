@@ -15,7 +15,8 @@ var bundled = require('./bundled')
 
 var root = path.join('node_modules', 'prismjs', 'components')
 var componentsJson = require('prismjs/components.json')
-var anyAliasRegex = /((?:Prism\.languages\.\w+ = )+)Prism\.languages\.(extend\([^)]+\)|\w+);/g
+var anyAliasRegex =
+  /((?:Prism\.languages\.\w+ = )+)Prism\.languages\.(extend\([^)]+\)|\w+);/g
 var aliasRegex = /Prism\.languages\.(\w+) = /g
 var prefix = 'refractor-'
 

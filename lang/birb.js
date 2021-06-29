@@ -13,7 +13,8 @@ function birb(Prism) {
       /\b[A-Z](?:[\d_]*[a-zA-Z]\w*)?\b/, // matches variable and function return types (parameters as well).
       /\b[A-Z]\w*(?=\s+\w+\s*[;,=()])/
     ],
-    keyword: /\b(?:assert|break|case|class|const|default|else|enum|final|follows|for|grab|if|nest|next|new|noSeeb|return|static|switch|throw|var|void|while)\b/,
+    keyword:
+      /\b(?:assert|break|case|class|const|default|else|enum|final|follows|for|grab|if|nest|next|new|noSeeb|return|static|switch|throw|var|void|while)\b/,
     operator: /\+\+|--|&&|\|\||<<=?|>>=?|~(?:\/=?)?|[+\-*\/%&^|=!<>]=?|\?|:/,
     variable: /\b[a-z_]\w*\b/
   })

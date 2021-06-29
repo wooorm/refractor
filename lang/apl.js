@@ -10,7 +10,8 @@ function apl(Prism) {
       pattern: /'(?:[^'\r\n]|'')*'/,
       greedy: true
     },
-    number: /¯?(?:\d*\.?\b\d+(?:e[+¯]?\d+)?|¯|∞)(?:j¯?(?:(?:\d+(?:\.\d+)?|\.\d+)(?:e[+¯]?\d+)?|¯|∞))?/i,
+    number:
+      /¯?(?:\d*\.?\b\d+(?:e[+¯]?\d+)?|¯|∞)(?:j¯?(?:(?:\d+(?:\.\d+)?|\.\d+)(?:e[+¯]?\d+)?|¯|∞))?/i,
     statement: /:[A-Z][a-z][A-Za-z]*\b/,
     'system-function': {
       pattern: /⎕[A-Z]+/i,

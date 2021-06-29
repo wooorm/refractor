@@ -22,13 +22,15 @@ function pug(Prism) {
       // All the tag-related part is in lookbehind
       // so that it can be highlighted by the "tag" pattern
       'multiline-script': {
-        pattern: /(^([\t ]*)script\b.*\.[\t ]*)(?:(?:\r?\n|\r(?!\n))(?:\2[\t ].+|\s*?(?=\r?\n|\r)))+/m,
+        pattern:
+          /(^([\t ]*)script\b.*\.[\t ]*)(?:(?:\r?\n|\r(?!\n))(?:\2[\t ].+|\s*?(?=\r?\n|\r)))+/m,
         lookbehind: true,
         inside: Prism.languages.javascript
       },
       // See at the end of the file for known filters
       filter: {
-        pattern: /(^([\t ]*)):.+(?:(?:\r?\n|\r(?!\n))(?:\2[\t ].+|\s*?(?=\r?\n|\r)))+/m,
+        pattern:
+          /(^([\t ]*)):.+(?:(?:\r?\n|\r(?!\n))(?:\2[\t ].+|\s*?(?=\r?\n|\r)))+/m,
         lookbehind: true,
         inside: {
           'filter-name': {
@@ -38,7 +40,8 @@ function pug(Prism) {
         }
       },
       'multiline-plain-text': {
-        pattern: /(^([\t ]*)[\w\-#.]+\.[\t ]*)(?:(?:\r?\n|\r(?!\n))(?:\2[\t ].+|\s*?(?=\r?\n|\r)))+/m,
+        pattern:
+          /(^([\t ]*)[\w\-#.]+\.[\t ]*)(?:(?:\r?\n|\r(?!\n))(?:\2[\t ].+|\s*?(?=\r?\n|\r)))+/m,
         lookbehind: true
       },
       markup: {
@@ -52,7 +55,8 @@ function pug(Prism) {
       },
       // This handle all conditional and loop keywords
       'flow-control': {
-        pattern: /(^[\t ]*)(?:if|unless|else|case|when|default|each|while)\b(?: .+)?/m,
+        pattern:
+          /(^[\t ]*)(?:if|unless|else|case|when|default|each|while)\b(?: .+)?/m,
         lookbehind: true,
         inside: {
           each: {
@@ -102,7 +106,8 @@ function pug(Prism) {
         inside: Prism.languages.javascript
       },
       'plain-text': {
-        pattern: /(^[\t ]*(?!-)[\w\-#.]*[\w\-](?:(?:&[^(]+)?\([^)]+\))*\/?[\t ]).+/m,
+        pattern:
+          /(^[\t ]*(?!-)[\w\-#.]*[\w\-](?:(?:&[^(]+)?\([^)]+\))*\/?[\t ]).+/m,
         lookbehind: true
       },
       tag: {
@@ -141,8 +146,9 @@ function pug(Prism) {
       ],
       punctuation: /[.\-!=|]+/
     }
-    var filter_pattern = /(^([\t ]*)):{{filter_name}}(?:(?:\r?\n|\r(?!\n))(?:\2[\t ].+|\s*?(?=\r?\n|\r)))+/
-      .source // Non exhaustive list of available filters and associated languages
+    var filter_pattern =
+      /(^([\t ]*)):{{filter_name}}(?:(?:\r?\n|\r(?!\n))(?:\2[\t ].+|\s*?(?=\r?\n|\r)))+/
+        .source // Non exhaustive list of available filters and associated languages
     var filters = [
       {
         filter: 'atpl',

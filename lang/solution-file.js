@@ -31,7 +31,8 @@ function solutionFile(Prism) {
         //   EndBar
         //   Prop = TRUE
         // EndFoo
-        pattern: /^([ \t]*)(?:([A-Z]\w*)\b(?=.*(?:\r\n?|\n)(?:\1[ \t].*(?:\r\n?|\n))*\1End\2(?=[ \t]*$))|End[A-Z]\w*(?=[ \t]*$))/m,
+        pattern:
+          /^([ \t]*)(?:([A-Z]\w*)\b(?=.*(?:\r\n?|\n)(?:\1[ \t].*(?:\r\n?|\n))*\1End\2(?=[ \t]*$))|End[A-Z]\w*(?=[ \t]*$))/m,
         lookbehind: true,
         greedy: true,
         alias: 'keyword'

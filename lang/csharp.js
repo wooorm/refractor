@@ -46,8 +46,7 @@ function csharp(Prism) {
     } // https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/
     var keywordKinds = {
       // keywords which represent a return or variable type
-      type:
-        'bool byte char decimal double dynamic float int long object sbyte short string uint ulong ushort var void',
+      type: 'bool byte char decimal double dynamic float int long object sbyte short string uint ulong ushort var void',
       // keywords which are used to declare a type
       typeDeclaration: 'class enum interface struct',
       // contextual keywords
@@ -212,7 +211,8 @@ function csharp(Prism) {
       ],
       keyword: keywords,
       // https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/lexical-structure#literals
-      number: /(?:\b0(?:x[\da-f_]*[\da-f]|b[01_]*[01])|(?:\B\.\d+(?:_+\d+)*|\b\d+(?:_+\d+)*(?:\.\d+(?:_+\d+)*)?)(?:e[-+]?\d+(?:_+\d+)*)?)(?:ul|lu|[dflmu])?\b/i,
+      number:
+        /(?:\b0(?:x[\da-f_]*[\da-f]|b[01_]*[01])|(?:\B\.\d+(?:_+\d+)*|\b\d+(?:_+\d+)*(?:\.\d+(?:_+\d+)*)?)(?:e[-+]?\d+(?:_+\d+)*)?)(?:ul|lu|[dflmu])?\b/i,
       operator: />>=?|<<=?|[-=]>|([-+&|])\1|~|\?\?=?|[-+*/%&|^!=<>]=?/,
       punctuation: /\?\.?|::|[{}[\];(),.:]/
     })
@@ -322,7 +322,8 @@ alias: 'class-name'
         inside: {
           // highlight preprocessor directives as keywords
           directive: {
-            pattern: /(\s*#)\b(?:define|elif|else|endif|endregion|error|if|line|pragma|region|undef|warning)\b/,
+            pattern:
+              /(\s*#)\b(?:define|elif|else|endif|endregion|error|if|line|pragma|region|undef|warning)\b/,
             lookbehind: true,
             alias: 'keyword'
           }
@@ -340,8 +341,9 @@ alias: 'class-name'
       ]),
       2
     ) // https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/attributes/#attribute-targets
-    var attrTarget = /\b(?:assembly|event|field|method|module|param|property|return|type)\b/
-      .source
+    var attrTarget =
+      /\b(?:assembly|event|field|method|module|param|property|return|type)\b/
+        .source
     var attr = replace(/<<0>>(?:\s*\(<<1>>*\))?/.source, [
       identifier,
       roundExpression

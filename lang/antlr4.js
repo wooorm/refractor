@@ -20,7 +20,8 @@ function antlr4(Prism) {
           lookbehind: true,
           alias: 'punctuation'
         },
-        escape: /\\(?:u(?:[a-fA-F\d]{4}|\{[a-fA-F\d]+\})|[pP]\{[=\w-]+\}|[^\r\nupP])/,
+        escape:
+          /\\(?:u(?:[a-fA-F\d]{4}|\{[a-fA-F\d]+\})|[pP]\{[=\w-]+\}|[^\r\nupP])/,
         punctuation: /[\[\]]/
       }
     },
@@ -37,7 +38,8 @@ function antlr4(Prism) {
       }
     },
     command: {
-      pattern: /(->\s*(?!\s))(?:\s*(?:,\s*)?\b[a-z]\w*(?:\s*\([^()\r\n]*\))?)+(?=\s*;)/i,
+      pattern:
+        /(->\s*(?!\s))(?:\s*(?:,\s*)?\b[a-z]\w*(?:\s*\([^()\r\n]*\))?)+(?=\s*;)/i,
       lookbehind: true,
       inside: {
         function: /\b\w+(?=\s*(?:[,(]|$))/,
@@ -52,7 +54,8 @@ function antlr4(Prism) {
       pattern: /#[ \t]*\w+/,
       alias: 'punctuation'
     },
-    keyword: /\b(?:catch|channels|finally|fragment|grammar|import|lexer|locals|mode|options|parser|returns|throws|tokens)\b/,
+    keyword:
+      /\b(?:catch|channels|finally|fragment|grammar|import|lexer|locals|mode|options|parser|returns|throws|tokens)\b/,
     definition: [
       {
         pattern: /\b[a-z]\w*(?=\s*:)/,

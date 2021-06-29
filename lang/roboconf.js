@@ -7,7 +7,8 @@ function roboconf(Prism) {
   Prism.languages.roboconf = {
     comment: /#.*/,
     keyword: {
-      pattern: /(^|\s)(?:(?:facet|instance of)(?=[ \t]+[\w-]+[ \t]*\{)|(?:external|import)\b)/,
+      pattern:
+        /(^|\s)(?:(?:facet|instance of)(?=[ \t]+[\w-]+[ \t]*\{)|(?:external|import)\b)/,
       lookbehind: true
     },
     component: {

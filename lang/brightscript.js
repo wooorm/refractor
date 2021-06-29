@@ -26,7 +26,8 @@ function brightscript(Prism) {
       }
     },
     property: {
-      pattern: /([\r\n{,][\t ]*)(?:(?!\d)\w+|"(?:[^"\r\n]|"")*"(?!"))(?=[ \t]*:)/,
+      pattern:
+        /([\r\n{,][\t ]*)(?:(?!\d)\w+|"(?:[^"\r\n]|"")*"(?!"))(?=[ \t]*:)/,
       lookbehind: true,
       greedy: true
     },
@@ -38,11 +39,13 @@ function brightscript(Prism) {
       pattern: /(\bAs[\t ]+)\w+/i,
       lookbehind: true
     },
-    keyword: /\b(?:As|Dim|Each|Else|Elseif|End|Exit|For|Function|Goto|If|In|Print|Return|Step|Stop|Sub|Then|To|While)\b/i,
+    keyword:
+      /\b(?:As|Dim|Each|Else|Elseif|End|Exit|For|Function|Goto|If|In|Print|Return|Step|Stop|Sub|Then|To|While)\b/i,
     boolean: /\b(?:true|false)\b/i,
     function: /\b(?!\d)\w+(?=[\t ]*\()/i,
     number: /(?:\b\d+(?:\.\d+)?(?:[ed][+-]\d+)?|&h[a-f\d]+)\b[%&!#]?/i,
-    operator: /--|\+\+|>>=?|<<=?|<>|[-+*/\\<>]=?|[:^=?]|\b(?:and|mod|not|or)\b/i,
+    operator:
+      /--|\+\+|>>=?|<<=?|<>|[-+*/\\<>]=?|[:^=?]|\b(?:and|mod|not|or)\b/i,
     punctuation: /[.,;()[\]{}]/,
     constant: /\b(?:LINE_NUM)\b/i
   }

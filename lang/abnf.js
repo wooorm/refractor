@@ -21,7 +21,8 @@ function abnf(Prism) {
         alias: 'number'
       },
       terminal: {
-        pattern: /%(?:b[01]+(?:\.[01]+)*|d\d+(?:\.\d+)*|x[A-F\d]+(?:\.[A-F\d]+)*)/i,
+        pattern:
+          /%(?:b[01]+(?:\.[01]+)*|d\d+(?:\.\d+)*|x[A-F\d]+(?:\.[A-F\d]+)*)/i,
         alias: 'number'
       },
       repetition: {

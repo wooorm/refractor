@@ -8,8 +8,9 @@ function ftl(Prism) {
   ;(function (Prism) {
     // https://freemarker.apache.org/docs/dgui_template_exp.html
     // FTL expression with 4 levels of nesting supported
-    var FTL_EXPR = /[^<()"']|\((?:<expr>)*\)|<(?!#--)|<#--(?:[^-]|-(?!->))*-->|"(?:[^\\"]|\\.)*"|'(?:[^\\']|\\.)*'/
-      .source
+    var FTL_EXPR =
+      /[^<()"']|\((?:<expr>)*\)|<(?!#--)|<#--(?:[^-]|-(?!->))*-->|"(?:[^\\"]|\\.)*"|'(?:[^\\']|\\.)*'/
+        .source
     for (var i = 0; i < 2; i++) {
       FTL_EXPR = FTL_EXPR.replace(/<expr>/g, function () {
         return FTL_EXPR
@@ -65,7 +66,8 @@ function ftl(Prism) {
       },
       function: /\w+(?=\s*\()/,
       number: /\d+(?:\.\d+)?/,
-      operator: /\.\.[<*!]?|->|--|\+\+|&&|\|\||\?{1,2}|[-+*/%!=<>]=?|\b(?:gt|gte|lt|lte)\b/,
+      operator:
+        /\.\.[<*!]?|->|--|\+\+|&&|\|\||\?{1,2}|[-+*/%!=<>]=?|\b(?:gt|gte|lt|lte)\b/,
       punctuation: /[,;.:()[\]{}]/
     }
     ftl.string[1].inside.interpolation.inside.rest = ftl

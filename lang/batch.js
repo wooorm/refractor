@@ -30,7 +30,8 @@ function batch(Prism) {
       command: [
         {
           // FOR command
-          pattern: /((?:^|[&(])[ \t]*)for(?: \/[a-z?](?:[ :](?:"[^"]*"|[^\s"/]\S*))?)* \S+ in \([^)]+\) do/im,
+          pattern:
+            /((?:^|[&(])[ \t]*)for(?: \/[a-z?](?:[ :](?:"[^"]*"|[^\s"/]\S*))?)* \S+ in \([^)]+\) do/im,
           lookbehind: true,
           inside: {
             keyword: /^for\b|\b(?:in|do)\b/i,
@@ -43,10 +44,12 @@ function batch(Prism) {
         },
         {
           // IF command
-          pattern: /((?:^|[&(])[ \t]*)if(?: \/[a-z?](?:[ :](?:"[^"]*"|[^\s"/]\S*))?)* (?:not )?(?:cmdextversion \d+|defined \w+|errorlevel \d+|exist \S+|(?:"[^"]*"|(?!")(?:(?!==)\S)+)?(?:==| (?:equ|neq|lss|leq|gtr|geq) )(?:"[^"]*"|[^\s"]\S*))/im,
+          pattern:
+            /((?:^|[&(])[ \t]*)if(?: \/[a-z?](?:[ :](?:"[^"]*"|[^\s"/]\S*))?)* (?:not )?(?:cmdextversion \d+|defined \w+|errorlevel \d+|exist \S+|(?:"[^"]*"|(?!")(?:(?!==)\S)+)?(?:==| (?:equ|neq|lss|leq|gtr|geq) )(?:"[^"]*"|[^\s"]\S*))/im,
           lookbehind: true,
           inside: {
-            keyword: /^if\b|\b(?:not|cmdextversion|defined|errorlevel|exist)\b/i,
+            keyword:
+              /^if\b|\b(?:not|cmdextversion|defined|errorlevel|exist)\b/i,
             string: string,
             parameter: parameter,
             variable: variable,
@@ -64,7 +67,8 @@ function batch(Prism) {
         },
         {
           // SET command
-          pattern: /((?:^|[&(])[ \t]*)set(?: \/[a-z](?:[ :](?:"[^"]*"|[^\s"/]\S*))?)* (?:[^^&)\r\n]|\^(?:\r\n|[\s\S]))*/im,
+          pattern:
+            /((?:^|[&(])[ \t]*)set(?: \/[a-z](?:[ :](?:"[^"]*"|[^\s"/]\S*))?)* (?:[^^&)\r\n]|\^(?:\r\n|[\s\S]))*/im,
           lookbehind: true,
           inside: {
             keyword: /^set\b/i,
@@ -78,7 +82,8 @@ function batch(Prism) {
         },
         {
           // Other commands
-          pattern: /((?:^|[&(])[ \t]*@?)\w+\b(?:"(?:[\\"]"|[^"])*"(?!")|[^"^&)\r\n]|\^(?:\r\n|[\s\S]))*/im,
+          pattern:
+            /((?:^|[&(])[ \t]*@?)\w+\b(?:"(?:[\\"]"|[^"])*"(?!")|[^"^&)\r\n]|\^(?:\r\n|[\s\S]))*/im,
           lookbehind: true,
           inside: {
             keyword: /^\w+\b/i,

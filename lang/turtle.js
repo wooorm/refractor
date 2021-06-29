@@ -10,7 +10,8 @@ function turtle(Prism) {
       greedy: true
     },
     'multiline-string': {
-      pattern: /"""(?:(?:""?)?(?:[^"\\]|\\.))*"""|'''(?:(?:''?)?(?:[^'\\]|\\.))*'''/,
+      pattern:
+        /"""(?:(?:""?)?(?:[^"\\]|\\.))*"""|'''(?:(?:''?)?(?:[^'\\]|\\.))*'''/,
       greedy: true,
       alias: 'string',
       inside: {
@@ -22,14 +23,16 @@ function turtle(Prism) {
       greedy: true
     },
     url: {
-      pattern: /<(?:[^\x00-\x20<>"{}|^`\\]|\\(?:u[\da-fA-F]{4}|U[\da-fA-F]{8}))*>/,
+      pattern:
+        /<(?:[^\x00-\x20<>"{}|^`\\]|\\(?:u[\da-fA-F]{4}|U[\da-fA-F]{8}))*>/,
       greedy: true,
       inside: {
         punctuation: /[<>]/
       }
     },
     function: {
-      pattern: /(?:(?![-.\d\xB7])[-.\w\xB7\xC0-\uFFFD]+)?:(?:(?![-.])(?:[-.:\w\xC0-\uFFFD]|%[\da-f]{2}|\\.)+)?/i,
+      pattern:
+        /(?:(?![-.\d\xB7])[-.\w\xB7\xC0-\uFFFD]+)?:(?:(?![-.])(?:[-.:\w\xC0-\uFFFD]|%[\da-f]{2}|\\.)+)?/i,
       inside: {
         'local-name': {
           pattern: /([^:]*:)[\s\S]+/,

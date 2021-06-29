@@ -22,8 +22,10 @@ function php(Prism) {
       /\b[A-Z_][A-Z0-9_]*\b(?!\s*\()/,
       /\b(?:null)\b/i
     ]
-    var number = /\b0b[01]+\b|\b0x[\da-f]+\b|(?:\b\d+(?:_\d+)*(?:\.(?:\d+(?:_\d+)*)?)?|\B\.\d+)(?:e[+-]?\d+)?/i
-    var operator = /<?=>|\?\?=?|\.{3}|\??->|[!=]=?=?|::|\*\*=?|--|\+\+|&&|\|\||<<|>>|[?~]|[/^|%*&<>.+-]=?/
+    var number =
+      /\b0b[01]+\b|\b0x[\da-f]+\b|(?:\b\d+(?:_\d+)*(?:\.(?:\d+(?:_\d+)*)?)?|\B\.\d+)(?:e[+-]?\d+)?/i
+    var operator =
+      /<?=>|\?\?=?|\.{3}|\??->|[!=]=?=?|::|\*\*=?|--|\+\+|&&|\|\||<<|>>|[?~]|[/^|%*&<>.+-]=?/
     var punctuation = /[{}\[\](),:;]/
     Prism.languages.php = {
       delimiter: {
@@ -33,7 +35,8 @@ function php(Prism) {
       comment: comment,
       variable: /\$+(?:\w+\b|(?={))/i,
       package: {
-        pattern: /(namespace\s+|use\s+(?:function\s+)?)(?:\\?\b[a-z_]\w*)+\b(?!\\)/i,
+        pattern:
+          /(namespace\s+|use\s+(?:function\s+)?)(?:\\?\b[a-z_]\w*)+\b(?!\\)/i,
         lookbehind: true,
         inside: {
           punctuation: /\\/
@@ -41,13 +44,15 @@ function php(Prism) {
       },
       keyword: [
         {
-          pattern: /(\(\s*)\b(?:bool|boolean|int|integer|float|string|object|array)\b(?=\s*\))/i,
+          pattern:
+            /(\(\s*)\b(?:bool|boolean|int|integer|float|string|object|array)\b(?=\s*\))/i,
           alias: 'type-casting',
           greedy: true,
           lookbehind: true
         },
         {
-          pattern: /([(,?]\s*)\b(?:bool|int|float|string|object|array(?!\s*\()|mixed|self|static|callable|iterable|(?:null|false)(?=\s*\|))\b(?=\s*\$)/i,
+          pattern:
+            /([(,?]\s*)\b(?:bool|int|float|string|object|array(?!\s*\()|mixed|self|static|callable|iterable|(?:null|false)(?=\s*\|))\b(?=\s*\$)/i,
           alias: 'type-hint',
           greedy: true,
           lookbehind: true
@@ -59,7 +64,8 @@ function php(Prism) {
           lookbehind: true
         },
         {
-          pattern: /(\)\s*:\s*(?:\?\s*)?)\b(?:bool|int|float|string|object|void|array(?!\s*\()|mixed|self|static|callable|iterable|(?:null|false)(?=\s*\|))\b/i,
+          pattern:
+            /(\)\s*:\s*(?:\?\s*)?)\b(?:bool|int|float|string|object|void|array(?!\s*\()|mixed|self|static|callable|iterable|(?:null|false)(?=\s*\|))\b/i,
           alias: 'return-type',
           greedy: true,
           lookbehind: true
@@ -71,7 +77,8 @@ function php(Prism) {
           lookbehind: true
         },
         {
-          pattern: /\b(?:bool|int|float|string|object|void|array(?!\s*\()|mixed|iterable|(?:null|false)(?=\s*\|))\b/i,
+          pattern:
+            /\b(?:bool|int|float|string|object|void|array(?!\s*\()|mixed|iterable|(?:null|false)(?=\s*\|))\b/i,
           alias: 'type-declaration',
           greedy: true
         },
@@ -91,7 +98,8 @@ function php(Prism) {
       'argument-name': /\b[a-z_]\w*(?=\s*:(?!:))/i,
       'class-name': [
         {
-          pattern: /(\b(?:class|interface|extends|implements|trait|instanceof|new(?!\s+self|\s+static))\s+|\bcatch\s*\()\b[a-z_]\w*(?!\\)\b/i,
+          pattern:
+            /(\b(?:class|interface|extends|implements|trait|instanceof|new(?!\s+self|\s+static))\s+|\bcatch\s*\()\b[a-z_]\w*(?!\\)\b/i,
           greedy: true,
           lookbehind: true
         },
@@ -122,7 +130,8 @@ function php(Prism) {
           }
         },
         {
-          pattern: /(\b(?:extends|implements|instanceof|new(?!\s+self\b|\s+static\b))\s+|\bcatch\s*\()(?:\\?\b[a-z_]\w*)+\b(?!\\)/i,
+          pattern:
+            /(\b(?:extends|implements|instanceof|new(?!\s+self\b|\s+static\b))\s+|\bcatch\s*\()(?:\\?\b[a-z_]\w*)+\b(?!\\)/i,
           alias: 'class-name-fully-qualified',
           greedy: true,
           lookbehind: true,
@@ -198,7 +207,8 @@ function php(Prism) {
       punctuation: punctuation
     }
     var string_interpolation = {
-      pattern: /{\$(?:{(?:{[^{}]+}|[^{}]+)}|[^{}])+}|(^|[^\\{])\$+(?:\w+(?:\[[^\r\n\[\]]+\]|->\w+)*)/,
+      pattern:
+        /{\$(?:{(?:{[^{}]+}|[^{}]+)}|[^{}])+}|(^|[^\\{])\$+(?:\w+(?:\[[^\r\n\[\]]+\]|->\w+)*)/,
       lookbehind: true,
       inside: Prism.languages.php
     }
@@ -218,7 +228,8 @@ function php(Prism) {
         }
       },
       {
-        pattern: /<<<(?:"([^"]+)"[\r\n](?:.*[\r\n])*?\1;|([a-z_]\w*)[\r\n](?:.*[\r\n])*?\2;)/i,
+        pattern:
+          /<<<(?:"([^"]+)"[\r\n](?:.*[\r\n])*?\1;|([a-z_]\w*)[\r\n](?:.*[\r\n])*?\2;)/i,
         alias: 'heredoc-string',
         greedy: true,
         inside: {
@@ -256,7 +267,8 @@ function php(Prism) {
     })
     Prism.languages.insertBefore('php', 'variable', {
       attribute: {
-        pattern: /#\[(?:[^"'\/#]|\/(?![*/])|\/\/.*$|#(?!\[).*$|\/\*(?:[^*]|\*(?!\/))*\*\/|"(?:\\[\s\S]|[^\\"])*"|'(?:\\[\s\S]|[^\\'])*')+\](?=\s*[a-z$#])/im,
+        pattern:
+          /#\[(?:[^"'\/#]|\/(?![*/])|\/\/.*$|#(?!\[).*$|\/\*(?:[^*]|\*(?!\/))*\*\/|"(?:\\[\s\S]|[^\\"])*"|'(?:\\[\s\S]|[^\\'])*')+\](?=\s*[a-z$#])/im,
         greedy: true,
         inside: {
           'attribute-content': {
@@ -300,7 +312,8 @@ function php(Prism) {
       if (!/<\?/.test(env.code)) {
         return
       }
-      var phpPattern = /<\?(?:[^"'/#]|\/(?![*/])|("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|(?:\/\/|#(?!\[))(?:[^?\n\r]|\?(?!>))*(?=$|\?>|[\r\n])|#\[|\/\*(?:[^*]|\*(?!\/))*(?:\*\/|$))*?(?:\?>|$)/gi
+      var phpPattern =
+        /<\?(?:[^"'/#]|\/(?![*/])|("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|(?:\/\/|#(?!\[))(?:[^?\n\r]|\?(?!>))*(?=$|\?>|[\r\n])|#\[|\/\*(?:[^*]|\*(?!\/))*(?:\*\/|$))*?(?:\?>|$)/gi
       Prism.languages['markup-templating'].buildPlaceholders(
         env,
         'php',

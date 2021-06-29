@@ -7,10 +7,12 @@ function sml(Prism) {
   // https://smlfamily.github.io/sml97-defn.pdf
   // https://people.mpi-sws.org/~rossberg/sml.html
   ;(function (Prism) {
-    var keywords = /\b(?:abstype|and|andalso|as|case|datatype|do|else|end|eqtype|exception|fn|fun|functor|handle|if|in|include|infix|infixr|let|local|nonfix|of|op|open|orelse|raise|rec|sharing|sig|signature|struct|structure|then|type|val|where|while|with|withtype)\b/i
+    var keywords =
+      /\b(?:abstype|and|andalso|as|case|datatype|do|else|end|eqtype|exception|fn|fun|functor|handle|if|in|include|infix|infixr|let|local|nonfix|of|op|open|orelse|raise|rec|sharing|sig|signature|struct|structure|then|type|val|where|while|with|withtype)\b/i
     Prism.languages.sml = {
       // allow one level of nesting
-      comment: /\(\*(?:[^*(]|\*(?!\))|\((?!\*)|\(\*(?:[^*(]|\*(?!\))|\((?!\*))*\*\))*\*\)/,
+      comment:
+        /\(\*(?:[^*(]|\*(?!\))|\((?!\*)|\(\*(?:[^*(]|\*(?!\))|\((?!\*))*\*\))*\*\)/,
       string: {
         pattern: /#?"(?:[^"\\]|\\.)*"/,
         greedy: true
@@ -45,7 +47,8 @@ function sml(Prism) {
           inside: null // see below
         },
         {
-          pattern: /((?:^|[^\w'])(?:datatype|exception|functor|signature|structure|type)\s+)[a-z_][\w'.]*/i,
+          pattern:
+            /((?:^|[^\w'])(?:datatype|exception|functor|signature|structure|type)\s+)[a-z_][\w'.]*/i,
           lookbehind: true
         }
       ],

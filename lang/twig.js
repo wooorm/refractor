@@ -33,7 +33,8 @@ function twig(Prism) {
         number: /\b0x[\dA-Fa-f]+|(?:\b\d+(?:\.\d*)?|\B\.\d+)(?:[Ee][-+]?\d+)?/,
         operator: [
           {
-            pattern: /(\s)(?:and|b-and|b-xor|b-or|ends with|in|is|matches|not|or|same as|starts with)(?=\s)/,
+            pattern:
+              /(\s)(?:and|b-and|b-xor|b-or|ends with|in|is|matches|not|or|same as|starts with)(?=\s)/,
             lookbehind: true
           },
           /[=<>]=?|!=|\*\*?|\/\/?|\?:?|[-+~%|]/

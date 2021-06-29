@@ -53,7 +53,8 @@ function pascaligo(Prism) {
         }
       ],
       keyword: {
-        pattern: /(^|[^&])\b(?:begin|block|case|const|else|end|fail|for|from|function|if|is|nil|of|remove|return|skip|then|type|var|while|with)\b/i,
+        pattern:
+          /(^|[^&])\b(?:begin|block|case|const|else|end|fail|for|from|function|if|is|nil|of|remove|return|skip|then|type|var|while|with)\b/i,
         lookbehind: true
       },
       boolean: {
@@ -70,7 +71,8 @@ function pascaligo(Prism) {
         /%[01]+|&[0-7]+|\$[a-f\d]+/i, // Decimal
         /\b\d+(?:\.\d+)?(?:e[+-]?\d+)?(?:mtz|n)?/i
       ],
-      operator: /->|=\/=|\.\.|\*\*|:=|<[<=>]?|>[>=]?|[+\-*\/]=?|[@^=|]|\b(?:and|mod|or)\b/,
+      operator:
+        /->|=\/=|\.\.|\*\*|:=|<[<=>]?|>[>=]?|[+\-*\/]=?|[@^=|]|\b(?:and|mod|or)\b/,
       punctuation: /\(\.|\.\)|[()\[\]:;,.{}]/
     })
     var classNameInside = [

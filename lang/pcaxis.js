@@ -7,7 +7,8 @@ function pcaxis(Prism) {
   Prism.languages.pcaxis = {
     string: /"[^"]*"/,
     keyword: {
-      pattern: /((?:^|;)\s*)[-A-Z\d]+(?:\s*\[[-\w]+\])?(?:\s*\("[^"]*"(?:,\s*"[^"]*")*\))?(?=\s*=)/,
+      pattern:
+        /((?:^|;)\s*)[-A-Z\d]+(?:\s*\[[-\w]+\])?(?:\s*\("[^"]*"(?:,\s*"[^"]*")*\))?(?=\s*=)/,
       lookbehind: true,
       greedy: true,
       inside: {
@@ -35,7 +36,8 @@ function pcaxis(Prism) {
     },
     operator: /=/,
     tlist: {
-      pattern: /TLIST\s*\(\s*\w+(?:(?:\s*,\s*"[^"]*")+|\s*,\s*"[^"]*"-"[^"]*")?\s*\)/,
+      pattern:
+        /TLIST\s*\(\s*\w+(?:(?:\s*,\s*"[^"]*")+|\s*,\s*"[^"]*"-"[^"]*")?\s*\)/,
       greedy: true,
       inside: {
         function: /^TLIST/,

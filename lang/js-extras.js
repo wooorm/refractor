@@ -29,7 +29,8 @@ function jsExtras(Prism) {
         {
           // standard built-ins
           // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
-          pattern: /\b(?:(?:(?:Uint|Int)(?:8|16|32)|Uint8Clamped|Float(?:32|64))?Array|ArrayBuffer|BigInt|Boolean|DataView|Date|Error|Function|Intl|JSON|Math|Number|Object|Promise|Proxy|Reflect|RegExp|String|Symbol|(?:Weak)?(?:Set|Map)|WebAssembly)\b/,
+          pattern:
+            /\b(?:(?:(?:Uint|Int)(?:8|16|32)|Uint8Clamped|Float(?:32|64))?Array|ArrayBuffer|BigInt|Boolean|DataView|Date|Error|Function|Intl|JSON|Math|Number|Object|Promise|Proxy|Reflect|RegExp|String|Symbol|(?:Weak)?(?:Set|Map)|WebAssembly)\b/,
           alias: 'class-name'
         },
         {
@@ -80,7 +81,8 @@ function jsExtras(Prism) {
         alias: 'module'
       },
       {
-        pattern: /\b(?:await|break|catch|continue|do|else|for|finally|if|return|switch|throw|try|while|yield)\b/,
+        pattern:
+          /\b(?:await|break|catch|continue|do|else|for|finally|if|return|switch|throw|try|while|yield)\b/,
         alias: 'control-flow'
       },
       {
@@ -113,7 +115,8 @@ function jsExtras(Prism) {
       },
       dom: {
         // this contains only a few commonly used DOM variables
-        pattern: /\b(?:document|location|navigator|performance|(?:local|session)Storage|window)\b/,
+        pattern:
+          /\b(?:document|location|navigator|performance|(?:local|session)Storage|window)\b/,
         alias: 'variable'
       },
       console: {

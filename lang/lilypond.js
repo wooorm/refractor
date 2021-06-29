@@ -6,8 +6,9 @@ lilypond.aliases = []
 function lilypond(Prism) {
   Prism.register(refractorScheme)
   ;(function (Prism) {
-    var schemeExpression = /\((?:[^();"#\\]|\\[\s\S]|;.*(?!.)|"(?:[^"\\]|\\.)*"|#(?:\{(?:(?!#\})[\s\S])*#\}|[^{])|<expr>)*\)/
-      .source // allow for up to pow(2, recursivenessLog2) many levels of recursive brace expressions
+    var schemeExpression =
+      /\((?:[^();"#\\]|\\[\s\S]|;.*(?!.)|"(?:[^"\\]|\\.)*"|#(?:\{(?:(?!#\})[\s\S])*#\}|[^{])|<expr>)*\)/
+        .source // allow for up to pow(2, recursivenessLog2) many levels of recursive brace expressions
     // For some reason, this can't be 4
     var recursivenessLog2 = 5
     for (var i = 0; i < recursivenessLog2; i++) {
@@ -70,7 +71,8 @@ function lilypond(Prism) {
       },
       operator: /[=|]|<<|>>/,
       punctuation: {
-        pattern: /(^|[a-z\d])(?:'+|,+|[_^]?-[_^]?(?:[-+^!>._]|(?=\d))|[_^]\.?|[.!])|[{}()[\]<>^~]|\\[()[\]<>\\!]|--|__/,
+        pattern:
+          /(^|[a-z\d])(?:'+|,+|[_^]?-[_^]?(?:[-+^!>._]|(?=\d))|[_^]\.?|[.!])|[{}()[\]<>^~]|\\[()[\]<>\\!]|--|__/,
         lookbehind: true
       },
       number: /\b\d+(?:\/\d+)?\b/

@@ -262,7 +262,8 @@ function textile(Prism) {
       acronym: phraseInside['acronym'],
       mark: phraseInside['mark']
     } // Only allow alpha-numeric HTML tags, not XML tags
-    textile.tag.pattern = /<\/?(?!\d)[a-z0-9]+(?:\s+[^\s>\/=]+(?:=(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s'">=]+))?)*\s*\/?>/i // Allow some nesting
+    textile.tag.pattern =
+      /<\/?(?!\d)[a-z0-9]+(?:\s+[^\s>\/=]+(?:=(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s'">=]+))?)*\s*\/?>/i // Allow some nesting
     var phraseInlineInside = phraseInside['inline'].inside
     phraseInlineInside['bold'].inside = nestedPatterns
     phraseInlineInside['italic'].inside = nestedPatterns
