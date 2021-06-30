@@ -12,7 +12,7 @@ function sas(Prism) {
       alias: 'number'
     }
     var macroVariable = {
-      pattern: /&[a-z_][a-z_0-9]*/i
+      pattern: /&[a-z_]\w*/i
     }
     var macroKeyword = {
       pattern:
@@ -21,14 +21,14 @@ function sas(Prism) {
       alias: 'keyword'
     }
     var step = {
-      pattern: /(^|\s+)(?:proc\s+\w+|quit|run|data(?!\=))\b/i,
+      pattern: /(^|\s)(?:proc\s+\w+|quit|run|data(?!=))\b/i,
       alias: 'keyword',
       lookbehind: true
     }
     var comment = [
       /\/\*[\s\S]*?\*\//,
       {
-        pattern: /(^\s*|;\s*)\*[^;]*;/m,
+        pattern: /(^[ \t]*|;\s*)\*[^;]*;/m,
         lookbehind: true
       }
     ]
@@ -38,13 +38,13 @@ function sas(Prism) {
     }
     var punctuation = /[$%@.(){}\[\];,\\]/
     var func = {
-      pattern: /%?\w+(?=\()/,
+      pattern: /%?\b\w+(?=\()/,
       alias: 'keyword'
     }
     var args = {
       function: func,
       'arg-value': {
-        pattern: /(\s*=\s*)[A-Z\.]+/i,
+        pattern: /(=\s*)[A-Z\.]+/i,
         lookbehind: true
       },
       operator: /=/,
@@ -61,7 +61,7 @@ function sas(Prism) {
     var format = {
       pattern: /\b(?:format|put)\b=?[\w'$.]+/im,
       inside: {
-        keyword: /^(?:format|put)(?=\=)/i,
+        keyword: /^(?:format|put)(?==)/i,
         equals: /=/,
         format: {
           pattern: /(?:\w|\$\d)+\.\d?/i,
@@ -81,7 +81,7 @@ function sas(Prism) {
     }
     var globalStatements = {
       pattern:
-        /((?:^|[\s])=?)(?:catname|checkpoint execute_always|dm|endsas|filename|footnote|%include|libname|%list|lock|missing|options|page|resetline|%run|sasfile|skip|sysecho|title\d?)\b/i,
+        /((?:^|\s)=?)(?:catname|checkpoint execute_always|dm|endsas|filename|footnote|%include|libname|%list|lock|missing|options|page|resetline|%run|sasfile|skip|sysecho|title\d?)\b/i,
       lookbehind: true,
       alias: 'keyword'
     }
@@ -128,12 +128,12 @@ function sas(Prism) {
     }
     var keywords = {
       pattern:
-        /((?:^|\s)=?)(?:after|analysis|and|array|barchart|barwidth|begingraph|by|call|cas|cbarline|cfill|class(?:lev)?|close|column|computed?|contains|continue|data(?=\=)|define|delete|describe|document|do\s+over|do|dol|drop|dul|end(?:source|comp)?|entryTitle|else|eval(?:uate)?|exec(?:ute)?|exit|fill(?:attrs)?|file(?:name)?|flist|fnc|function(?:list)?|goto|global|group(?:by)?|headline|headskip|histogram|if|infile|keep|keylabel|keyword|label|layout|leave|legendlabel|length|libname|loadactionset|merge|midpoints|name|noobs|nowd|_?null_|ods|options|or|otherwise|out(?:put)?|over(?:lay)?|plot|put|print|raise|ranexp|rannor|rbreak|retain|return|select|set|session|sessref|source|statgraph|sum|summarize|table|temp|terminate|then\s+do|then|title\d?|to|var|when|where|xaxisopts|yaxisopts|y2axisopts)\b/i,
+        /((?:^|\s)=?)(?:after|analysis|and|array|barchart|barwidth|begingraph|by|call|cas|cbarline|cfill|class(?:lev)?|close|column|computed?|contains|continue|data(?==)|define|delete|describe|document|do\s+over|do|dol|drop|dul|end(?:source|comp)?|entryTitle|else|eval(?:uate)?|exec(?:ute)?|exit|fill(?:attrs)?|file(?:name)?|flist|fnc|function(?:list)?|goto|global|group(?:by)?|headline|headskip|histogram|if|infile|keep|keylabel|keyword|label|layout|leave|legendlabel|length|libname|loadactionset|merge|midpoints|name|noobs|nowd|_?null_|ods|options|or|otherwise|out(?:put)?|over(?:lay)?|plot|put|print|raise|ranexp|rannor|rbreak|retain|return|select|set|session|sessref|source|statgraph|sum|summarize|table|temp|terminate|then\s+do|then|title\d?|to|var|when|where|xaxisopts|yaxisopts|y2axisopts)\b/i,
       lookbehind: true
     }
     Prism.languages.sas = {
       datalines: {
-        pattern: /^(\s*)(?:(?:data)?lines|cards);[\s\S]+?^[ \t]*;/im,
+        pattern: /^([ \t]*)(?:(?:data)?lines|cards);[\s\S]+?^[ \t]*;/im,
         lookbehind: true,
         alias: 'string',
         inside: {

@@ -2,7 +2,7 @@
 
 module.exports = ignore
 ignore.displayName = 'ignore'
-ignore.aliases = []
+ignore.aliases = ['gitignore', 'hgignore', 'npmignore']
 function ignore(Prism) {
   ;(function (Prism) {
     Prism.languages.ignore = {

@@ -147,7 +147,7 @@ function pug(Prism) {
       punctuation: /[.\-!=|]+/
     }
     var filter_pattern =
-      /(^([\t ]*)):{{filter_name}}(?:(?:\r?\n|\r(?!\n))(?:\2[\t ].+|\s*?(?=\r?\n|\r)))+/
+      /(^([\t ]*)):<filter_name>(?:(?:\r?\n|\r(?!\n))(?:\2[\t ].+|\s*?(?=\r?\n|\r)))+/
         .source // Non exhaustive list of available filters and associated languages
     var filters = [
       {
@@ -182,7 +182,7 @@ function pug(Prism) {
       if (Prism.languages[filter.language]) {
         all_filters['filter-' + filter.filter] = {
           pattern: RegExp(
-            filter_pattern.replace('{{filter_name}}', function () {
+            filter_pattern.replace('<filter_name>', function () {
               return filter.filter
             }),
             'm'

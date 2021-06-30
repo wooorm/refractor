@@ -48,7 +48,7 @@ function xeora(Prism) {
       },
       'function-block': {
         pattern:
-          /\$XF:{[-\w.]+\?[-\w.]+(?:,(?:(?:@[-#]*\w+\.[\w+.]\.*)*\|)*(?:(?:[\w+]|[-#*.~^]+[\w+]|=\S)(?:[^$=]|=+[^=])*=*|(?:@[-#]*\w+\.[\w+.]\.*)+(?:(?:[\w+]|[-#*~^][-#*.~^]*[\w+]|=\S)(?:[^$=]|=+[^=])*=*)?)?)?}:XF\$/,
+          /\$XF:\{[-\w.]+\?[-\w.]+(?:,(?:(?:@[-#]*\w+\.[\w+.]\.*)*\|)*(?:(?:[\w+]|[-#*.~^]+[\w+]|=\S)(?:[^$=]|=+[^=])*=*|(?:@[-#]*\w+\.[\w+.]\.*)+(?:(?:[\w+]|[-#*~^][-#*.~^]*[\w+]|=\S)(?:[^$=]|=+[^=])*=*)?)?)?\}:XF\$/,
         inside: {
           punctuation: {
             pattern: /[$:{}?.,|]/
@@ -57,7 +57,7 @@ function xeora(Prism) {
         alias: 'function'
       },
       'directive-inline': {
-        pattern: /\$\w(?:#\d+\+?)?(?:\[[-\w.]+])?:[-\/\w.]+\$/,
+        pattern: /\$\w(?:#\d+\+?)?(?:\[[-\w.]+\])?:[-\/\w.]+\$/,
         inside: {
           punctuation: {
             pattern: /\$(?:\w:|C(?:\[|#\d))?|[:{[\]]/,
@@ -72,7 +72,7 @@ function xeora(Prism) {
       },
       'directive-block-open': {
         pattern:
-          /\$\w+:{|\$\w(?:#\d+\+?)?(?:\[[-\w.]+])?:[-\w.]+:{(?:![A-Z]+)?/,
+          /\$\w+:\{|\$\w(?:#\d+\+?)?(?:\[[-\w.]+\])?:[-\w.]+:\{(?:![A-Z]+)?/,
         inside: {
           punctuation: {
             pattern: /\$(?:\w:|C(?:\[|#\d))?|[:{[\]]/,
@@ -95,7 +95,7 @@ function xeora(Prism) {
         alias: 'function'
       },
       'directive-block-separator': {
-        pattern: /}:[-\w.]+:{/,
+        pattern: /\}:[-\w.]+:\{/,
         inside: {
           punctuation: {
             pattern: /[:{}]/
@@ -104,7 +104,7 @@ function xeora(Prism) {
         alias: 'function'
       },
       'directive-block-close': {
-        pattern: /}:[-\w.]+\$/,
+        pattern: /\}:[-\w.]+\$/,
         inside: {
           punctuation: {
             pattern: /[:{}$]/

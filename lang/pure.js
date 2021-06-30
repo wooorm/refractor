@@ -52,6 +52,7 @@ function pure(Prism) {
         alias: 'builtin'
       },
       // Any combination of operator chars can be an operator
+      // eslint-disable-next-line no-misleading-character-class
       operator:
         /(?:[!"#$%&'*+,\-.\/:<=>?@\\^`|~\u00a1-\u00bf\u00d7-\u00f7\u20d0-\u2bff]|\b_+\b)+|\b(?:and|div|mod|not|or)\b/,
       // FIXME: How can we prevent | and , to be highlighted as operator when they are used alone?
@@ -65,7 +66,7 @@ function pure(Prism) {
       },
       'fortran'
     ]
-    var inlineLanguageRe = /%< *-\*- *{lang}\d* *-\*-[\s\S]+?%>/.source
+    var inlineLanguageRe = /%< *-\*- *<lang>\d* *-\*-[\s\S]+?%>/.source
     inlineLanguages.forEach(function (lang) {
       var alias = lang
       if (typeof lang !== 'string') {
@@ -77,7 +78,7 @@ function pure(Prism) {
         o['inline-lang-' + alias] = {
           pattern: RegExp(
             inlineLanguageRe.replace(
-              '{lang}',
+              '<lang>',
               lang.replace(/([.+*?\/\\(){}\[\]])/g, '\\$1')
             ),
             'i'

@@ -15,12 +15,12 @@ function javascript(Prism) {
     ],
     keyword: [
       {
-        pattern: /((?:^|})\s*)(?:catch|finally)\b/,
+        pattern: /((?:^|\})\s*)catch\b/,
         lookbehind: true
       },
       {
         pattern:
-          /(^|[^.]|\.\.\.\s*)\b(?:as|async(?=\s*(?:function\b|\(|[$\w\xA0-\uFFFF]|$))|await|break|case|class|const|continue|debugger|default|delete|do|else|enum|export|extends|for|from|function|(?:get|set)(?=\s*[\[$\w\xA0-\uFFFF])|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)\b/,
+          /(^|[^.]|\.\.\.\s*)\b(?:as|assert(?=\s*\{)|async(?=\s*(?:function\b|\(|[$\w\xA0-\uFFFF]|$))|await|break|case|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally(?=\s*(?:\{|$))|for|from(?=\s*(?:['"]|$))|function|(?:get|set)(?=\s*(?:[#\[$\w\xA0-\uFFFF]|$))|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)\b/,
         lookbehind: true
       }
     ],
@@ -36,8 +36,9 @@ function javascript(Prism) {
     /(\b(?:class|interface|extends|implements|instanceof|new)\s+)[\w.\\]+/
   Prism.languages.insertBefore('javascript', 'keyword', {
     regex: {
+      // eslint-disable-next-line regexp/no-dupe-characters-character-class
       pattern:
-        /((?:^|[^$\w\xA0-\uFFFF."'\])\s]|\b(?:return|yield))\s*)\/(?:\[(?:[^\]\\\r\n]|\\.)*]|\\.|[^/\\\[\r\n])+\/[gimyus]{0,6}(?=(?:\s|\/\*(?:[^*]|\*(?!\/))*\*\/)*(?:$|[\r\n,.;:})\]]|\/\/))/,
+        /((?:^|[^$\w\xA0-\uFFFF."'\])\s]|\b(?:return|yield))\s*)\/(?:\[(?:[^\]\\\r\n]|\\.)*\]|\\.|[^/\\\[\r\n])+\/[dgimyus]{0,7}(?=(?:\s|\/\*(?:[^*]|\*(?!\/))*\*\/)*(?:$|[\r\n,.;:})\]]|\/\/))/,
       lookbehind: true,
       greedy: true,
       inside: {
@@ -47,8 +48,8 @@ function javascript(Prism) {
           alias: 'language-regex',
           inside: Prism.languages.regex
         },
-        'regex-flags': /[a-z]+$/,
-        'regex-delimiter': /^\/|\/$/
+        'regex-delimiter': /^\/|\/$/,
+        'regex-flags': /^[a-z]+$/
       }
     },
     // This must be declared before keyword because we use "function" inside the look-forward
@@ -66,7 +67,8 @@ function javascript(Prism) {
       },
       {
         pattern:
-          /(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*=>)/i,
+          /(^|[^$\w\xA0-\uFFFF])(?!\s)[_$a-z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*=>)/i,
+        lookbehind: true,
         inside: Prism.languages.javascript
       },
       {
@@ -85,9 +87,14 @@ function javascript(Prism) {
     constant: /\b[A-Z](?:[A-Z_]|\dx?)*\b/
   })
   Prism.languages.insertBefore('javascript', 'string', {
+    hashbang: {
+      pattern: /^#!.*/,
+      greedy: true,
+      alias: 'comment'
+    },
     'template-string': {
       pattern:
-        /`(?:\\[\s\S]|\${(?:[^{}]|{(?:[^{}]|{[^}]*})*})+}|(?!\${)[^\\`])*`/,
+        /`(?:\\[\s\S]|\$\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}|(?!\$\{)[^\\`])*`/,
       greedy: true,
       inside: {
         'template-punctuation': {
@@ -95,11 +102,12 @@ function javascript(Prism) {
           alias: 'string'
         },
         interpolation: {
-          pattern: /((?:^|[^\\])(?:\\{2})*)\${(?:[^{}]|{(?:[^{}]|{[^}]*})*})+}/,
+          pattern:
+            /((?:^|[^\\])(?:\\{2})*)\$\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}/,
           lookbehind: true,
           inside: {
             'interpolation-punctuation': {
-              pattern: /^\${|}$/,
+              pattern: /^\$\{|\}$/,
               alias: 'punctuation'
             },
             rest: Prism.languages.javascript
@@ -110,7 +118,13 @@ function javascript(Prism) {
     }
   })
   if (Prism.languages.markup) {
-    Prism.languages.markup.tag.addInlined('script', 'javascript')
+    Prism.languages.markup.tag.addInlined('script', 'javascript') // add attribute support for all DOM events.
+    // https://developer.mozilla.org/en-US/docs/Web/Events#Standard_events
+    Prism.languages.markup.tag.addAttribute(
+      /on(?:abort|blur|change|click|composition(?:end|start|update)|dblclick|error|focus(?:in|out)?|key(?:down|up)|load|mouse(?:down|enter|leave|move|out|over|up)|reset|resize|scroll|select|slotchange|submit|unload|wheel)/
+        .source,
+      'javascript'
+    )
   }
   Prism.languages.js = Prism.languages.javascript
 }

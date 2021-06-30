@@ -2,7 +2,7 @@
 
 module.exports = n4js
 n4js.displayName = 'n4js'
-n4js.aliases = []
+n4js.aliases = ['n4jsd']
 function n4js(Prism) {
   Prism.languages.n4js = Prism.languages.extend('javascript', {
     // Keywords from N4JS language spec: https://numberfour.github.io/n4js/spec/N4JSSpec.html

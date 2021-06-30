@@ -29,7 +29,7 @@ function java(Prism) {
           // variables and parameters
           // this to support class names (or generic parameters) which do not contain a lower case letter (also works for methods)
           pattern: RegExp(
-            classNamePrefix + /[A-Z]\w*(?=\s+\w+\s*[;,=())])/.source
+            classNamePrefix + /[A-Z]\w*(?=\s+\w+\s*[;,=()])/.source
           ),
           lookbehind: true,
           inside: className.inside
@@ -39,7 +39,7 @@ function java(Prism) {
       function: [
         Prism.languages.clike.function,
         {
-          pattern: /(\:\:\s*)[a-z_]\w*/,
+          pattern: /(::\s*)[a-z_]\w*/,
           lookbehind: true
         }
       ],
@@ -67,7 +67,7 @@ function java(Prism) {
       },
       generics: {
         pattern:
-          /<(?:[\w\s,.&?]|<(?:[\w\s,.&?]|<(?:[\w\s,.&?]|<[\w\s,.&?]*>)*>)*>)*>/,
+          /<(?:[\w\s,.?]|&(?!&)|<(?:[\w\s,.?]|&(?!&)|<(?:[\w\s,.?]|&(?!&)|<(?:[\w\s,.?]|&(?!&))*>)*>)*>)*>/,
         inside: {
           'class-name': className,
           keyword: keywords,

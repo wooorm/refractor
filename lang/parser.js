@@ -63,7 +63,7 @@ function parser(Prism) {
         }
       }
     })
-    parser = Prism.languages.insertBefore(
+    Prism.languages.insertBefore(
       'inside',
       'punctuation',
       {

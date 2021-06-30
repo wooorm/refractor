@@ -37,7 +37,7 @@
   "dependencies": {
     "hastscript": "^6.0.0",
     "parse-entities": "^2.0.0",
-    "prismjs": "~1.23.0"
+    "prismjs": "~1.24.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
@@ -49,6 +49,7 @@
     "chalk": "^4.0.0",
     "detab": "^2.0.0",
     "is-hidden": "^1.0.0",
+    "is-keyword": "^1.2.2",
     "mdast-zone": "^4.0.0",
     "not": "^0.1.0",
     "nyc": "^15.0.0",

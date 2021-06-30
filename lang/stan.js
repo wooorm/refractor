@@ -35,7 +35,7 @@ function stan(Prism) {
         },
         property: /\b[a-z]\w*(?=\s*=)/i,
         operator: /=/,
-        punctuation: /^<|>$|[,]/
+        punctuation: /^<|>$|,/
       }
     },
     keyword: [

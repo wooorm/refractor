@@ -11,7 +11,7 @@ function tap(Prism) {
     pragma: /pragma [+-][a-z]+/,
     bailout: /bail out!.*/i,
     version: /TAP version \d+/i,
-    plan: /\d+\.\.\d+(?: +#.*)?/,
+    plan: /\b\d+\.\.\d+(?: +#.*)?/,
     subtest: {
       pattern: /# Subtest(?:: .*)?/,
       greedy: true

@@ -54,10 +54,10 @@ function typoscript(Prism) {
         }
       ],
       string: {
-        pattern: /^([^=]*=[< ]?)(?:(?!]\n).)*/,
+        pattern: /^([^=]*=[< ]?)(?:(?!\]\n).)*/,
         lookbehind: true,
         inside: {
-          function: /{\$.*}/,
+          function: /\{\$.*\}/,
           // constants include
           keyword: keywords,
           number: /^[0-9]+$/,
@@ -67,13 +67,13 @@ function typoscript(Prism) {
       keyword: keywords,
       number: {
         // special highlighting for indexes of arrays in tags
-        pattern: /[0-9]+\s*[.{=]/,
+        pattern: /\b[0-9]+\s*[.{=]/,
         inside: {
           operator: /[.{=]/
         }
       },
       tag: {
-        pattern: /\.?[\w-\\]+\.?/,
+        pattern: /\.?[-\w\\]+\.?/,
         inside: {
           punctuation: /\./
         }

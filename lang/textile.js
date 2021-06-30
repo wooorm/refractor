@@ -28,18 +28,18 @@ function textile(Prism) {
     }
     var modifierTokens = {
       css: {
-        pattern: /\{[^}]+\}/,
+        pattern: /\{[^{}]+\}/,
         inside: {
           rest: Prism.languages.css
         }
       },
       'class-id': {
-        pattern: /(\()[^)]+(?=\))/,
+        pattern: /(\()[^()]+(?=\))/,
         lookbehind: true,
         alias: 'attr-value'
       },
       lang: {
-        pattern: /(\[)[^\]]+(?=\])/,
+        pattern: /(\[)[^\[\]]+(?=\])/,
         lookbehind: true,
         alias: 'attr-value'
       },
@@ -162,11 +162,11 @@ function textile(Prism) {
             pattern: /^\[[^\]]+\]\S+$/m,
             inside: {
               string: {
-                pattern: /(\[)[^\]]+(?=\])/,
+                pattern: /(^\[)[^\]]+(?=\])/,
                 lookbehind: true
               },
               url: {
-                pattern: /(\])\S+$/,
+                pattern: /(^\])\S+$/,
                 lookbehind: true
               },
               punctuation: /[\[\]]/
@@ -236,7 +236,7 @@ function textile(Prism) {
             pattern: /\b[A-Z\d]+\([^)]+\)/,
             inside: {
               comment: {
-                pattern: /(\()[^)]+(?=\))/,
+                pattern: /(\()[^()]+(?=\))/,
                 lookbehind: true
               },
               punctuation: /[()]/

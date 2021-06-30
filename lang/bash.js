@@ -42,7 +42,7 @@ function bash(Prism) {
               /\b0x[\dA-Fa-f]+\b|(?:\b\d+(?:\.\d*)?|\B\.\d+)(?:[Ee]-?\d+)?/,
             // Operators according to https://www.gnu.org/software/bash/manual/bashref.html#Shell-Arithmetic
             operator:
-              /--?|-=|\+\+?|\+=|!=?|~|\*\*?|\*=|\/=?|%=?|<<=?|>>=?|<=?|>=?|==?|&&?|&=|\^=?|\|\|?|\|=|\?|:/,
+              /--|\+\+|\*\*=?|<<=?|>>=?|&&|\|\||[=!+\-*/%<>^&|]=?|[?~:]/,
             // If there is no $ sign at the beginning highlight (( and )) as punctuation
             punctuation: /\(\(?|\)\)?|,|;/
           }
@@ -89,13 +89,13 @@ function bash(Prism) {
         // but not “foo {”
         {
           // a) and c)
-          pattern: /(\bfunction\s+)\w+(?=(?:\s*\(?:\s*\))?\s*\{)/,
+          pattern: /(\bfunction\s+)[\w-]+(?=(?:\s*\(?:\s*\))?\s*\{)/,
           lookbehind: true,
           alias: 'function'
         },
         {
           // b)
-          pattern: /\b\w+(?=\s*\(\s*\)\s*\{)/,
+          pattern: /\b[\w-]+(?=\s*\(\s*\)\s*\{)/,
           alias: 'function'
         }
       ],
@@ -122,7 +122,7 @@ function bash(Prism) {
       string: [
         // Support for Here-documents https://en.wikipedia.org/wiki/Here_document
         {
-          pattern: /((?:^|[^<])<<-?\s*)(\w+?)\s[\s\S]*?(?:\r?\n|\r)\2/,
+          pattern: /((?:^|[^<])<<-?\s*)(\w+)\s[\s\S]*?(?:\r?\n|\r)\2/,
           lookbehind: true,
           greedy: true,
           inside: insideString
@@ -137,11 +137,26 @@ function bash(Prism) {
           }
         }, // “Normal” string
         {
+          // https://www.gnu.org/software/bash/manual/html_node/Double-Quotes.html
           pattern:
-            /(^|[^\\](?:\\\\)*)(["'])(?:\\[\s\S]|\$\([^)]+\)|\$(?!\()|`[^`]+`|(?!\2)[^\\`$])*\2/,
+            /(^|[^\\](?:\\\\)*)"(?:\\[\s\S]|\$\([^)]+\)|\$(?!\()|`[^`]+`|[^"\\`$])*"/,
           lookbehind: true,
           greedy: true,
           inside: insideString
+        },
+        {
+          // https://www.gnu.org/software/bash/manual/html_node/Single-Quotes.html
+          pattern: /(^|[^$\\])'[^']*'/,
+          lookbehind: true,
+          greedy: true
+        },
+        {
+          // https://www.gnu.org/software/bash/manual/html_node/ANSI_002dC-Quoting.html
+          pattern: /\$'(?:[^'\\]|\\[\s\S])*'/,
+          greedy: true,
+          inside: {
+            entity: insideString.entity
+          }
         }
       ],
       environment: {
@@ -178,7 +193,7 @@ function bash(Prism) {
       operator: {
         // Lots of redirections here, but not just that.
         pattern:
-          /\d?<>|>\||\+=|==?|!=?|=~|<<[<-]?|[&\d]?>>|\d?[<>]&?|&[>&]?|\|[&|]?|<=?|>=?/,
+          /\d?<>|>\||\+=|=[=~]?|!=?|<<[<-]?|[&\d]?>>|\d[<>]&?|[<>][&=]?|&[>&]?|\|[&|]?/,
         inside: {
           'file-descriptor': {
             pattern: /^\d/,

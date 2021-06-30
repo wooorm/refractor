@@ -14,7 +14,7 @@ function markup(Prism) {
       greedy: true,
       inside: {
         'internal-subset': {
-          pattern: /(\[)[\s\S]+(?=\]>$)/,
+          pattern: /(^[^\[]*\[)[\s\S]+(?=\]>$)/,
           lookbehind: true,
           greedy: true,
           inside: null // see below
@@ -28,7 +28,7 @@ function markup(Prism) {
         name: /[^\s<>'"]+/
       }
     },
-    cdata: /<!\[CDATA\[[\s\S]*?]]>/i,
+    cdata: /<!\[CDATA\[[\s\S]*?\]\]>/i,
     tag: {
       pattern:
         /<\/?(?!\d)[^\s>\/=$<%]+(?:\s(?:\s*[^\s>\/=]+(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+(?=[\s>]))|(?=[\s/>])))+)?\s*\/?>/,
@@ -41,6 +41,7 @@ function markup(Prism) {
             namespace: /^[^\s>\/:]+:/
           }
         },
+        'special-attr': [],
         'attr-value': {
           pattern: /=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+)/,
           inside: {
@@ -125,6 +126,53 @@ function markup(Prism) {
         inside: inside
       }
       Prism.languages.insertBefore('markup', 'cdata', def)
+    }
+  })
+  Object.defineProperty(Prism.languages.markup.tag, 'addAttribute', {
+    /**
+     * Adds an pattern to highlight languages embedded in HTML attributes.
+     *
+     * An example of an inlined language is CSS with `style` attributes.
+     *
+     * @param {string} attrName The name of the tag that contains the inlined language. This name will be treated as
+     * case insensitive.
+     * @param {string} lang The language key.
+     * @example
+     * addAttribute('style', 'css');
+     */
+    value: function (attrName, lang) {
+      Prism.languages.markup.tag.inside['special-attr'].push({
+        pattern: RegExp(
+          /(^|["'\s])/.source +
+            '(?:' +
+            attrName +
+            ')' +
+            /\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+(?=[\s>]))/.source,
+          'i'
+        ),
+        lookbehind: true,
+        inside: {
+          'attr-name': /^[^\s=]+/,
+          'attr-value': {
+            pattern: /=[\s\S]+/,
+            inside: {
+              value: {
+                pattern: /(^=\s*(["']|(?!["'])))\S[\s\S]*(?=\2$)/,
+                lookbehind: true,
+                alias: [lang, 'language-' + lang],
+                inside: Prism.languages[lang]
+              },
+              punctuation: [
+                {
+                  pattern: /^=/,
+                  alias: 'attr-equals'
+                },
+                /"|'/
+              ]
+            }
+          }
+        }
+      })
     }
   })
   Prism.languages.html = Prism.languages.markup

@@ -26,7 +26,7 @@ function sqf(Prism) {
   })
   Prism.languages.insertBefore('sqf', 'string', {
     macro: {
-      pattern: /(^\s*)#[a-z](?:[^\r\n\\]|\\(?:\r\n|[\s\S]))*/im,
+      pattern: /(^[ \t]*)#[a-z](?:[^\r\n\\]|\\(?:\r\n|[\s\S]))*/im,
       lookbehind: true,
       greedy: true,
       alias: 'property',

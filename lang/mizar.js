@@ -12,7 +12,7 @@ function mizar(Prism) {
       pattern: /\$(?:10|\d)/,
       alias: 'variable'
     },
-    variable: /\w+(?=:)/,
+    variable: /\b\w+(?=:)/,
     number: /(?:\b|-)\d+\b/,
     operator: /\.\.\.|->|&|\.?=/,
     punctuation: /\(#|#\)|[,:;\[\](){}]/

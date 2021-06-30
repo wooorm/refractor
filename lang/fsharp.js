@@ -7,7 +7,7 @@ function fsharp(Prism) {
   Prism.languages.fsharp = Prism.languages.extend('clike', {
     comment: [
       {
-        pattern: /(^|[^\\])\(\*[\s\S]*?\*\)/,
+        pattern: /(^|[^\\])\(\*(?!\))[\s\S]*?\*\)/,
         lookbehind: true
       },
       {
@@ -42,11 +42,12 @@ function fsharp(Prism) {
   })
   Prism.languages.insertBefore('fsharp', 'keyword', {
     preprocessor: {
-      pattern: /^[^\r\n\S]*#.*/m,
+      pattern: /(^[\t ]*)#.*/m,
+      lookbehind: true,
       alias: 'property',
       inside: {
         directive: {
-          pattern: /(\s*#)\b(?:else|endif|if|light|line|nowarn)\b/,
+          pattern: /(^#)\b(?:else|endif|if|light|line|nowarn)\b/,
           lookbehind: true,
           alias: 'keyword'
         }
@@ -55,7 +56,7 @@ function fsharp(Prism) {
   })
   Prism.languages.insertBefore('fsharp', 'punctuation', {
     'computation-expression': {
-      pattern: /[_a-z]\w*(?=\s*\{)/i,
+      pattern: /\b[_a-z]\w*(?=\s*\{)/i,
       alias: 'keyword'
     }
   })

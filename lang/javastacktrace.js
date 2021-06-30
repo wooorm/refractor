@@ -14,7 +14,7 @@ function javastacktrace(Prism) {
     // Suppressed: Resource$CloseFailException: Resource ID = 0
     summary: {
       pattern:
-        /^[\t ]*(?:(?:Caused by:|Suppressed:|Exception in thread "[^"]*")[\t ]+)?[\w$.]+(?:\:.*)?$/m,
+        /^[\t ]*(?:(?:Caused by:|Suppressed:|Exception in thread "[^"]*")[\t ]+)?[\w$.]+(?::.*)?$/m,
       inside: {
         keyword: {
           pattern:
@@ -40,7 +40,7 @@ function javastacktrace(Prism) {
           lookbehind: true,
           alias: 'string'
         },
-        punctuation: /[:]/
+        punctuation: /:/
       }
     },
     // at org.mortbay.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1166)

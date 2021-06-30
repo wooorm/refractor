@@ -8,7 +8,7 @@ function dataweave(Prism) {
     Prism.languages.dataweave = {
       url: /\b[A-Za-z]+:\/\/[\w/:.?=&-]+|\burn:[\w:.?=&-]+/,
       property: {
-        pattern: /(?:\w+#)?(?:"(?:\\.|[^\\"\r\n])*"|\w+)(?=\s*[:@])/,
+        pattern: /(?:\b\w+#)?(?:"(?:\\.|[^\\"\r\n])*"|\b\w+)(?=\s*[:@])/,
         greedy: true
       },
       string: {
@@ -37,10 +37,10 @@ function dataweave(Prism) {
         pattern: /\/(?:[^\\\/\r\n]|\\[^\r\n])+\//,
         greedy: true
       },
-      function: /\b[A-Za-z_]\w*(?=\s*\()/i,
+      function: /\b[A-Z_]\w*(?=\s*\()/i,
       number: /-?\b\d+(?:\.\d+)?(?:e[+-]?\d+)?\b/i,
       punctuation: /[{}[\];(),.:@]/,
-      operator: /<<|>>|->|[<>~=]=?|!=|--?-?|\+\+?|\!|\?/,
+      operator: /<<|>>|->|[<>~=]=?|!=|--?-?|\+\+?|!|\?/,
       boolean: /\b(?:true|false)\b/,
       keyword:
         /\b(?:match|input|output|ns|type|update|null|if|else|using|unless|at|is|as|case|do|fun|var|not|and|or)\b/

@@ -19,7 +19,7 @@ function stylus(Prism) {
         lookbehind: true
       },
       url: {
-        pattern: /url\((["']?).*?\1\)/i,
+        pattern: /\burl\((["']?).*?\1\)/i,
         greedy: true
       },
       string: {
@@ -32,7 +32,7 @@ function stylus(Prism) {
       // See below
       important: /\B!(?:important|optional)\b/i,
       keyword: {
-        pattern: /(^|\s+)(?:(?:if|else|for|return|unless)(?=\s+|$)|@[\w-]+)/,
+        pattern: /(^|\s+)(?:(?:if|else|for|return|unless)(?=\s|$)|@[\w-]+)/,
         lookbehind: true
       },
       hexcode: /#[\da-f]{3,6}/i,
@@ -65,7 +65,7 @@ function stylus(Prism) {
       alias: 'variable',
       inside: {
         delimiter: {
-          pattern: /^{|}$/,
+          pattern: /^\{|\}$/,
           alias: 'punctuation'
         },
         rest: inside
@@ -80,7 +80,7 @@ function stylus(Prism) {
     }
     Prism.languages.stylus = {
       'atrule-declaration': {
-        pattern: /(^\s*)@.+/m,
+        pattern: /(^[ \t]*)@.+/m,
         lookbehind: true,
         inside: {
           atrule: /^@[\w-]+/,
@@ -107,7 +107,7 @@ function stylus(Prism) {
       // It cannot have indented content unless it ended with a semicolon
       'property-declaration': {
         pattern:
-          /((?:^|\{)([ \t]*))(?:[\w-]|\{[^}\r\n]+\})+(?:\s*:\s*|[ \t]+)(?!\s)[^{\r\n]*(?:;|[^{\r\n,](?=$)(?!(?:\r?\n|\r)(?:\{|\2[ \t]+)))/m,
+          /((?:^|\{)([ \t]*))(?:[\w-]|\{[^}\r\n]+\})+(?:\s*:\s*|[ \t]+)(?!\s)[^{\r\n]*(?:;|[^{\r\n,]$(?!(?:\r?\n|\r)(?:\{|\2[ \t])))/m,
         lookbehind: true,
         inside: {
           property: {
@@ -124,7 +124,7 @@ function stylus(Prism) {
       // It must end with a comma or an accolade or have indented content.
       selector: {
         pattern:
-          /(^[ \t]*)(?:(?=\S)(?:[^{}\r\n:()]|::?[\w-]+(?:\([^)\r\n]*\)|(?![\w-]))|\{[^}\r\n]+\})+)(?:(?:\r?\n|\r)(?:\1(?:(?=\S)(?:[^{}\r\n:()]|::?[\w-]+(?:\([^)\r\n]*\)|(?![\w-]))|\{[^}\r\n]+\})+)))*(?:,$|\{|(?=(?:\r?\n|\r)(?:\{|\1[ \t]+)))/m,
+          /(^[ \t]*)(?:(?=\S)(?:[^{}\r\n:()]|::?[\w-]+(?:\([^)\r\n]*\)|(?![\w-]))|\{[^}\r\n]+\})+)(?:(?:\r?\n|\r)(?:\1(?:(?=\S)(?:[^{}\r\n:()]|::?[\w-]+(?:\([^)\r\n]*\)|(?![\w-]))|\{[^}\r\n]+\})+)))*(?:,$|\{|(?=(?:\r?\n|\r)(?:\{|\1[ \t])))/m,
         lookbehind: true,
         inside: {
           interpolation: inside.interpolation,

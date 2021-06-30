@@ -135,7 +135,7 @@ function perl(Prism) {
       /[&*$@%]\{\^[A-Z]+\}/, // $^V
       /[&*$@%]\^[A-Z_]/, // ${...}
       /[&*$@%]#?(?=\{)/, // $foo
-      /[&*$@%]#?(?:(?:::)*'?(?!\d)[\w$]+)+(?:::)*/i, // $1
+      /[&*$@%]#?(?:(?:::)*'?(?!\d)[\w$]+(?![\w$]))+(?:::)*/i, // $1
       /[&*$@%]\d+/, // $_, @_, %!
       // The negative lookahead prevents from breaking the %= operator
       /(?!%=)[$@%][!"#$%&'()*+,\-.\/:;<=>?@[\\\]^_`{|}~]/
@@ -151,7 +151,7 @@ function perl(Prism) {
       alias: 'string'
     },
     function: {
-      pattern: /sub [a-z0-9_]+/i,
+      pattern: /sub \w+/i,
       inside: {
         keyword: /sub/
       }

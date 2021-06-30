@@ -8,7 +8,7 @@ function gedcom(Prism) {
     'line-value': {
       // Preceded by level, optional pointer, and tag
       pattern:
-        /(^\s*\d+ +(?:@\w[\w!"$%&'()*+,\-./:;<=>?[\\\]^`{|}~\x80-\xfe #]*@ +)?\w+ ).+/m,
+        /(^[\t ]*\d+ +(?:@\w[\w!"$%&'()*+,\-./:;<=>?[\\\]^`{|}~\x80-\xfe #]*@ +)?\w+ ).+/m,
       lookbehind: true,
       inside: {
         pointer: {
@@ -20,12 +20,12 @@ function gedcom(Prism) {
     tag: {
       // Preceded by level and optional pointer
       pattern:
-        /(^\s*\d+ +(?:@\w[\w!"$%&'()*+,\-./:;<=>?[\\\]^`{|}~\x80-\xfe #]*@ +)?)\w+/m,
+        /(^[\t ]*\d+ +(?:@\w[\w!"$%&'()*+,\-./:;<=>?[\\\]^`{|}~\x80-\xfe #]*@ +)?)\w+/m,
       lookbehind: true,
       alias: 'string'
     },
     level: {
-      pattern: /(^\s*)\d+/m,
+      pattern: /(^[\t ]*)\d+/m,
       lookbehind: true,
       alias: 'number'
     },

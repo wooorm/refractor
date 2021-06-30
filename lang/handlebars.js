@@ -2,7 +2,7 @@
 var refractorMarkupTemplating = require('./markup-templating.js')
 module.exports = handlebars
 handlebars.displayName = 'handlebars'
-handlebars.aliases = []
+handlebars.aliases = ['hbs']
 function handlebars(Prism) {
   Prism.register(refractorMarkupTemplating)
   ;(function (Prism) {
@@ -44,5 +44,6 @@ function handlebars(Prism) {
         'handlebars'
       )
     })
+    Prism.languages.hbs = Prism.languages.handlebars
   })(Prism)
 }

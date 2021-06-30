@@ -23,6 +23,6 @@ function ada(Prism) {
     operator: /<[=>]?|>=?|=>?|:=|\/=?|\*\*?|[&+-]/,
     punctuation: /\.\.?|[,;():]/,
     char: /'.'/,
-    variable: /\b[a-z](?:[_a-z\d])*\b/i
+    variable: /\b[a-z](?:\w)*\b/i
   }
 }

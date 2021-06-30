@@ -10,12 +10,12 @@ function autoit(Prism) {
       {
         // The multi-line comments delimiters can actually be commented out with ";"
         pattern:
-          /(^\s*)#(?:comments-start|cs)[\s\S]*?^[ \t]*#(?:comments-end|ce)/m,
+          /(^[\t ]*)#(?:comments-start|cs)[\s\S]*?^[ \t]*#(?:comments-end|ce)/m,
         lookbehind: true
       }
     ],
     url: {
-      pattern: /(^\s*#include\s+)(?:<[^\r\n>]+>|"[^\r\n"]+")/m,
+      pattern: /(^[\t ]*#include\s+)(?:<[^\r\n>]+>|"[^\r\n"]+")/m,
       lookbehind: true
     },
     string: {
@@ -26,7 +26,7 @@ function autoit(Prism) {
       }
     },
     directive: {
-      pattern: /(^\s*)#\w+/m,
+      pattern: /(^[\t ]*)#\w+/m,
       lookbehind: true,
       alias: 'keyword'
     },

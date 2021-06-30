@@ -6,7 +6,7 @@ markdown.aliases = ['md']
 function markdown(Prism) {
   ;(function (Prism) {
     // Allow only one line break
-    var inner = /(?:\\.|[^\\\n\r]|(?:\n|\r\n?)(?!\n|\r\n?))/.source
+    var inner = /(?:\\.|[^\\\n\r]|(?:\n|\r\n?)(?![\r\n]))/.source
     /**
      * This function is intended for the creation of the bold or italic pattern.
      *
@@ -100,12 +100,6 @@ function markdown(Prism) {
           pattern:
             /((?:^|\n)[ \t]*\n|(?:^|\r\n?)[ \t]*\r\n?)(?: {4}|\t).+(?:(?:\n|\r\n?)(?: {4}|\t).+)*/,
           lookbehind: true,
-          alias: 'keyword'
-        },
-        {
-          // `code`
-          // ``code``
-          pattern: /``.+?``|`[^`\r\n]+`/,
           alias: 'keyword'
         },
         {
@@ -227,7 +221,8 @@ function markdown(Prism) {
       strike: {
         // ~~strike through~~
         // ~strike~
-        pattern: createInline(/(~~?)(?:(?!~)<inner>)+?\2/.source),
+        // eslint-disable-next-line regexp/strict
+        pattern: createInline(/(~~?)(?:(?!~)<inner>)+\2/.source),
         lookbehind: true,
         greedy: true,
         inside: {
@@ -238,6 +233,15 @@ function markdown(Prism) {
           },
           punctuation: /~~?/
         }
+      },
+      'code-snippet': {
+        // `code`
+        // ``code``
+        pattern:
+          /(^|[^\\`])(?:``[^`\r\n]+(?:`[^`\r\n]+)*``(?!`)|`[^`\r\n]+`(?!`))/,
+        lookbehind: true,
+        greedy: true,
+        alias: ['code', 'keyword']
       },
       url: {
         // [example](http://example.com "Optional title")
@@ -272,7 +276,9 @@ function markdown(Prism) {
       }
     })
     ;['url', 'bold', 'italic', 'strike'].forEach(function (token) {
-      ;['url', 'bold', 'italic', 'strike'].forEach(function (inside) {
+      ;['url', 'bold', 'italic', 'strike', 'code-snippet'].forEach(function (
+        inside
+      ) {
         if (token !== inside) {
           Prism.languages.markdown[token].inside.content.inside[inside] =
             Prism.languages.markdown[inside]
@@ -368,10 +374,10 @@ function markdown(Prism) {
           })
         }
       } else {
-        // reverse Prism.util.encode
-        var code = env.content.value
-          .replace(/&lt;/g, '<')
-          .replace(/&amp;/g, '&')
+        // get the textContent of the given env HTML
+        var tempContainer = document.createElement('div')
+        tempContainer.innerHTML = env.content.value
+        var code = tempContainer.textContent
         env.content = Prism.highlight(code, grammar, codeLang)
       }
     })

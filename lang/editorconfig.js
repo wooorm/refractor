@@ -8,7 +8,7 @@ function editorconfig(Prism) {
     // https://editorconfig-specification.readthedocs.io/en/latest/
     comment: /[;#].*/,
     section: {
-      pattern: /(^[ \t]*)\[.+]/m,
+      pattern: /(^[ \t]*)\[.+\]/m,
       lookbehind: true,
       alias: 'keyword',
       inside: {

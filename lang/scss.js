@@ -27,7 +27,7 @@ function scss(Prism) {
     selector: {
       // Initial look-ahead is used to prevent matching of blank selectors
       pattern:
-        /(?=\S)[^@;{}()]?(?:[^@;{}()\s]|\s+(?!\s)|#\{\$[-\w]+\})+(?=\s*\{(?:\}|\s|[^}][^:{}]*[:{][^}]+))/m,
+        /(?=\S)[^@;{}()]?(?:[^@;{}()\s]|\s+(?!\s)|#\{\$[-\w]+\})+(?=\s*\{(?:\}|\s|[^}][^:{}]*[:{][^}]))/m,
       inside: {
         parent: {
           pattern: /&/,
@@ -48,7 +48,7 @@ function scss(Prism) {
     keyword: [
       /@(?:if|else(?: if)?|forward|for|each|while|import|use|extend|debug|warn|mixin|include|function|return|content)\b/i,
       {
-        pattern: /( +)(?:from|through)(?= )/,
+        pattern: /( )(?:from|through)(?= )/,
         lookbehind: true
       }
     ]

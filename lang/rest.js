@@ -8,7 +8,7 @@ function rest(Prism) {
     table: [
       {
         pattern:
-          /(\s*)(?:\+[=-]+)+\+(?:\r?\n|\r)(?:\1[+|].+[+|](?:\r?\n|\r))+\1(?:\+[=-]+)+\+/,
+          /(^[\t ]*)(?:\+[=-]+)+\+(?:\r?\n|\r)(?:\1[+|].+[+|](?:\r?\n|\r))+\1(?:\+[=-]+)+\+/m,
         lookbehind: true,
         inside: {
           punctuation: /\||(?:\+[=-]+)+\+/
@@ -16,7 +16,7 @@ function rest(Prism) {
       },
       {
         pattern:
-          /(\s*)=+ [ =]*=(?:(?:\r?\n|\r)\1.+)+(?:\r?\n|\r)\1=+ [ =]*=(?=(?:\r?\n|\r){2}|\s*$)/,
+          /(^[\t ]*)=+ [ =]*=(?:(?:\r?\n|\r)\1.+)+(?:\r?\n|\r)\1=+ [ =]*=(?=(?:\r?\n|\r){2}|\s*$)/m,
         lookbehind: true,
         inside: {
           punctuation: /[=-]+/
@@ -25,7 +25,7 @@ function rest(Prism) {
     ],
     // Directive-like patterns
     'substitution-def': {
-      pattern: /(^\s*\.\. )\|(?:[^|\s](?:[^|]*[^|\s])?)\| [^:]+::/m,
+      pattern: /(^[\t ]*\.\. )\|(?:[^|\s](?:[^|]*[^|\s])?)\| [^:]+::/m,
       lookbehind: true,
       inside: {
         substitution: {
@@ -36,7 +36,7 @@ function rest(Prism) {
           }
         },
         directive: {
-          pattern: /( +)(?! )[^:]+::/,
+          pattern: /( )(?! )[^:]+::/,
           lookbehind: true,
           alias: 'function',
           inside: {
@@ -47,7 +47,7 @@ function rest(Prism) {
     },
     'link-target': [
       {
-        pattern: /(^\s*\.\. )\[[^\]]+\]/m,
+        pattern: /(^[\t ]*\.\. )\[[^\]]+\]/m,
         lookbehind: true,
         alias: 'string',
         inside: {
@@ -55,7 +55,7 @@ function rest(Prism) {
         }
       },
       {
-        pattern: /(^\s*\.\. )_(?:`[^`]+`|(?:[^:\\]|\\.)+):/m,
+        pattern: /(^[\t ]*\.\. )_(?:`[^`]+`|(?:[^:\\]|\\.)+):/m,
         lookbehind: true,
         alias: 'string',
         inside: {
@@ -64,7 +64,7 @@ function rest(Prism) {
       }
     ],
     directive: {
-      pattern: /(^\s*\.\. )[^:]+::/m,
+      pattern: /(^[\t ]*\.\. )[^:]+::/m,
       lookbehind: true,
       alias: 'function',
       inside: {
@@ -74,7 +74,7 @@ function rest(Prism) {
     comment: {
       // The two alternatives try to prevent highlighting of blank comments
       pattern:
-        /(^\s*\.\.)(?:(?: .+)?(?:(?:\r?\n|\r).+)+| .+)(?=(?:\r?\n|\r){2}|$)/m,
+        /(^[\t ]*\.\.)(?:(?: .+)?(?:(?:\r?\n|\r).+)+| .+)(?=(?:\r?\n|\r){2}|$)/m,
       lookbehind: true
     },
     title: [
@@ -105,13 +105,13 @@ function rest(Prism) {
       alias: 'punctuation'
     },
     field: {
-      pattern: /(^\s*):[^:\r\n]+:(?= )/m,
+      pattern: /(^[\t ]*):[^:\r\n]+:(?= )/m,
       lookbehind: true,
       alias: 'attr-name'
     },
     'command-line-option': {
       pattern:
-        /(^\s*)(?:[+-][a-z\d]|(?:--|\/)[a-z\d-]+)(?:[ =](?:[a-z][\w-]*|<[^<>]+>))?(?:, (?:[+-][a-z\d]|(?:--|\/)[a-z\d-]+)(?:[ =](?:[a-z][\w-]*|<[^<>]+>))?)*(?=(?:\r?\n|\r)? {2,}\S)/im,
+        /(^[\t ]*)(?:[+-][a-z\d]|(?:--|\/)[a-z\d-]+)(?:[ =](?:[a-z][\w-]*|<[^<>]+>))?(?:, (?:[+-][a-z\d]|(?:--|\/)[a-z\d-]+)(?:[ =](?:[a-z][\w-]*|<[^<>]+>))?)*(?=(?:\r?\n|\r)? {2,}\S)/im,
       lookbehind: true,
       alias: 'symbol'
     },
@@ -136,12 +136,12 @@ function rest(Prism) {
     },
     'list-bullet': {
       pattern:
-        /(^\s*)(?:[*+\-•‣⁃]|\(?(?:\d+|[a-z]|[ivxdclm]+)\)|(?:\d+|[a-z]|[ivxdclm]+)\.)(?= )/im,
+        /(^[\t ]*)(?:[*+\-•‣⁃]|\(?(?:\d+|[a-z]|[ivxdclm]+)\)|(?:\d+|[a-z]|[ivxdclm]+)\.)(?= )/im,
       lookbehind: true,
       alias: 'punctuation'
     },
     'doctest-block': {
-      pattern: /(^\s*)>>> .+(?:(?:\r?\n|\r).+)*/m,
+      pattern: /(^[\t ]*)>>> .+(?:(?:\r?\n|\r).+)*/m,
       lookbehind: true,
       inside: {
         punctuation: /^>>>/
@@ -150,7 +150,7 @@ function rest(Prism) {
     inline: [
       {
         pattern:
-          /(^|[\s\-:\/'"<(\[{])(?::[^:]+:`.*?`|`.*?`:[^:]+:|(\*\*?|``?|\|)(?!\s).*?[^\s]\2(?=[\s\-.,:;!?\\\/'")\]}]|$))/m,
+          /(^|[\s\-:\/'"<(\[{])(?::[^:]+:`.*?`|`.*?`:[^:]+:|(\*\*?|``?|\|)(?!\s)(?:(?!\2).)*\S\2(?=[\s\-.,:;!?\\\/'")\]}]|$))/m,
         lookbehind: true,
         inside: {
           bold: {
@@ -189,7 +189,7 @@ function rest(Prism) {
     ],
     link: [
       {
-        pattern: /\[[^\]]+\]_(?=[\s\-.,:;!?\\\/'")\]}]|$)/,
+        pattern: /\[[^\[\]]+\]_(?=[\s\-.,:;!?\\\/'")\]}]|$)/,
         alias: 'string',
         inside: {
           punctuation: /^\[|\]_$/
@@ -209,7 +209,7 @@ function rest(Prism) {
     // explicit markup start,
     // and anonymous hyperlink target shortcut (__)
     punctuation: {
-      pattern: /(^\s*)(?:\|(?= |$)|(?:---?|—|\.\.|__)(?= )|\.\.$)/m,
+      pattern: /(^[\t ]*)(?:\|(?= |$)|(?:---?|—|\.\.|__)(?= )|\.\.$)/m,
       lookbehind: true
     }
   }

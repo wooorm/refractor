@@ -40,7 +40,7 @@ function yaml(Prism) {
     function createValuePattern(value, flags) {
       flags = (flags || '').replace(/m/g, '') + 'm' // add m flag
       var pattern =
-        /([:\-,[{]\s*(?:\s<<prop>>[ \t]+)?)(?:<<value>>)(?=[ \t]*(?:$|,|]|}|(?:[\r\n]\s*)?#))/.source
+        /([:\-,[{]\s*(?:\s<<prop>>[ \t]+)?)(?:<<value>>)(?=[ \t]*(?:$|,|\]|\}|(?:[\r\n]\s*)?#))/.source
           .replace(/<<prop>>/g, function () {
             return properties
           })
@@ -107,7 +107,7 @@ function yaml(Prism) {
       },
       number: {
         pattern: createValuePattern(
-          /[+-]?(?:0x[\da-f]+|0o[0-7]+|(?:\d+(?:\.\d*)?|\.?\d+)(?:e[+-]?\d+)?|\.inf|\.nan)/
+          /[+-]?(?:0x[\da-f]+|0o[0-7]+|(?:\d+(?:\.\d*)?|\.\d+)(?:e[+-]?\d+)?|\.inf|\.nan)/
             .source,
           'i'
         ),

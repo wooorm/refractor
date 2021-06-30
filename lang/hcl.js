@@ -14,7 +14,7 @@ function hcl(Prism) {
     keyword: [
       {
         pattern:
-          /(?:resource|data)\s+(?:"(?:\\[\s\S]|[^\\"])*")(?=\s+"[\w-]+"\s+{)/i,
+          /(?:resource|data)\s+(?:"(?:\\[\s\S]|[^\\"])*")(?=\s+"[\w-]+"\s+\{)/i,
         inside: {
           type: {
             pattern: /(resource|data|\s+)(?:"(?:\\[\s\S]|[^\\"])*")/i,
@@ -25,7 +25,7 @@ function hcl(Prism) {
       },
       {
         pattern:
-          /(?:provider|provisioner|variable|output|module|backend)\s+(?:[\w-]+|"(?:\\[\s\S]|[^\\"])*")\s+(?={)/i,
+          /(?:provider|provisioner|variable|output|module|backend)\s+(?:[\w-]+|"(?:\\[\s\S]|[^\\"])*")\s+(?=\{)/i,
         inside: {
           type: {
             pattern:
@@ -35,9 +35,9 @@ function hcl(Prism) {
           }
         }
       },
-      /[\w-]+(?=\s+{)/
+      /[\w-]+(?=\s+\{)/
     ],
-    property: [/[\w-\.]+(?=\s*=(?!=))/, /"(?:\\[\s\S]|[^\\"])+"(?=\s*[:=])/],
+    property: [/[-\w\.]+(?=\s*=(?!=))/, /"(?:\\[\s\S]|[^\\"])+"(?=\s*[:=])/],
     string: {
       pattern:
         /"(?:[^\\$"]|\\[\s\S]|\$(?:(?=")|\$+(?!\$)|[^"${])|\$\{(?:[^{}"]|"(?:[^\\"]|\\[\s\S])*")*\})*"/,

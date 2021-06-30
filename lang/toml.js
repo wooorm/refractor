@@ -21,7 +21,9 @@ function toml(Prism) {
       },
       table: {
         pattern: RegExp(
-          insertKey(/(^\s*\[\s*(?:\[\s*)?)__(?:\s*\.\s*__)*(?=\s*\])/.source),
+          insertKey(
+            /(^[\t ]*\[\s*(?:\[\s*)?)__(?:\s*\.\s*__)*(?=\s*\])/.source
+          ),
           'm'
         ),
         lookbehind: true,
@@ -30,7 +32,7 @@ function toml(Prism) {
       },
       key: {
         pattern: RegExp(
-          insertKey(/(^\s*|[{,]\s*)__(?:\s*\.\s*__)*(?=\s*=)/.source),
+          insertKey(/(^[\t ]*|[{,]\s*)__(?:\s*\.\s*__)*(?=\s*=)/.source),
           'm'
         ),
         lookbehind: true,

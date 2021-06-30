@@ -22,7 +22,7 @@ function protobuf(Prism) {
       ],
       keyword:
         /\b(?:enum|extend|extensions|import|message|oneof|option|optional|package|public|repeated|required|reserved|returns|rpc(?=\s+\w)|service|stream|syntax|to)\b(?!\s*=\s*\d)/,
-      function: /[a-z_]\w*(?=\s*\()/i
+      function: /\b[a-z_]\w*(?=\s*\()/i
     })
     Prism.languages.insertBefore('protobuf', 'operator', {
       map: {

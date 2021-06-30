@@ -38,9 +38,10 @@ function d(Prism) {
             // ...
             // IDENT"
             /\bq"((?!\d)\w+)$[\s\S]*?^\1"/.source, // q"//", q"||", etc.
+            // eslint-disable-next-line regexp/strict
             /\bq"(.)[\s\S]*?\2"/.source, // Characters
             // 'a', '\\', '\n', '\xFF', '\377', '\uFFFF', '\U0010FFFF', '\quot'
-            /'(?:\\(?:\W|\w+)|[^\\])'/.source,
+            /'(?:\\(?:\W|\w+)|[^\\])'/.source, // eslint-disable-next-line regexp/strict
             /(["`])(?:\\[\s\S]|(?!\3)[^\\])*\3[cwd]?/.source
           ].join('|'),
           'm'

@@ -12,6 +12,7 @@ var detab = require('detab')
 var diff = require('arr-diff')
 var trim = require('trim-lines')
 var bundled = require('./bundled')
+var toId = require('./to-id')
 
 var root = path.join('node_modules', 'prismjs', 'components')
 var componentsJson = require('prismjs/components.json')
@@ -41,7 +42,7 @@ function done(error, results) {
 }
 
 function generate(name, callback) {
-  var id = camelcase(name)
+  var id = toId(name)
   var out = path.join('lang', name + '.js')
 
   fs.readFile(path.join(root, 'prism-' + name + '.js'), 'utf8', onread)
@@ -88,11 +89,11 @@ function generate(name, callback) {
 }
 
 function load(lang) {
-  return 'var ' + camelcase(prefix + lang) + " = require('./" + lang + ".js');"
+  return 'var ' + toId(prefix + lang) + " = require('./" + lang + ".js');"
 }
 
 function register(lang) {
-  return '  Prism.register(' + camelcase(prefix + lang) + ');'
+  return '  Prism.register(' + toId(prefix + lang) + ');'
 }
 
 function name(fp) {
@@ -109,13 +110,6 @@ function minified(name) {
 
 function core(name) {
   return name === 'core'
-}
-
-function camelcase(string) {
-  return string.replace(/-[a-z]/gi, replace)
-  function replace($0) {
-    return $0.charAt(1).toUpperCase()
-  }
 }
 
 function fixWrapHook() {

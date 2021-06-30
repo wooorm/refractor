@@ -17,11 +17,11 @@ function python(Prism) {
         interpolation: {
           // "{" <expression> <optional "!s", "!r", or "!a"> <optional ":" format specifier> "}"
           pattern:
-            /((?:^|[^{])(?:{{)*){(?!{)(?:[^{}]|{(?!{)(?:[^{}]|{(?!{)(?:[^{}])+})+})+}/,
+            /((?:^|[^{])(?:\{\{)*)\{(?!\{)(?:[^{}]|\{(?!\{)(?:[^{}]|\{(?!\{)(?:[^{}])+\})+\})+\}/,
           lookbehind: true,
           inside: {
             'format-spec': {
-              pattern: /(:)[^:(){}]+(?=}$)/,
+              pattern: /(:)[^:(){}]+(?=\}$)/,
               lookbehind: true
             },
             'conversion-option': {
@@ -52,7 +52,7 @@ function python(Prism) {
       lookbehind: true
     },
     decorator: {
-      pattern: /(^\s*)@\w+(?:\.\w+)*/im,
+      pattern: /(^[\t ]*)@\w+(?:\.\w+)*/im,
       lookbehind: true,
       alias: ['annotation', 'punctuation'],
       inside: {

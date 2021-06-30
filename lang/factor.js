@@ -126,7 +126,7 @@ The values of MMMMMMMMMMMMM and EEEE map directly to the mantissa and exponent f
             number: string_inside.number,
             // trailing semicolon on its own line
             'semicolon-or-setlocal': {
-              pattern: /((?:\n|\r\n)\s*);(?=\s|$)/,
+              pattern: /([\r\n][ \t]*);(?=\s|$)/,
               lookbehind: true,
               alias: 'function'
             }

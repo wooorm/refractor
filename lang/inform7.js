@@ -9,7 +9,7 @@ function inform7(Prism) {
       pattern: /"[^"]*"/,
       inside: {
         substitution: {
-          pattern: /\[[^\]]+\]/,
+          pattern: /\[[^\[\]]+\]/,
           inside: {
             delimiter: {
               pattern: /\[|\]/,
@@ -20,7 +20,7 @@ function inform7(Prism) {
       }
     },
     comment: {
-      pattern: /\[[^\]]+\]/,
+      pattern: /\[[^\[\]]+\]/,
       greedy: true
     },
     title: {

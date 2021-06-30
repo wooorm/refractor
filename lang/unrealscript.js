@@ -22,7 +22,7 @@ function unrealscript(Prism) {
       lookbehind: true,
       greedy: true,
       inside: {
-        property: /\w+(?=\s*=)/,
+        property: /\b\w+(?=\s*=)/,
         operator: /=/,
         punctuation: /[<>|]/
       }
@@ -38,7 +38,7 @@ function unrealscript(Prism) {
     },
     keyword:
       /\b(?:abstract|actor|array|auto|autoexpandcategories|bool|break|byte|case|class|classgroup|client|coerce|collapsecategories|config|const|continue|default|defaultproperties|delegate|dependson|deprecated|do|dontcollapsecategories|editconst|editinlinenew|else|enum|event|exec|export|extends|final|float|for|forcescriptorder|foreach|function|goto|guid|hidecategories|hidedropdown|if|ignores|implements|inherits|input|int|interface|iterator|latent|local|material|name|native|nativereplication|noexport|nontransient|noteditinlinenew|notplaceable|operator|optional|out|pawn|perobjectconfig|perobjectlocalized|placeable|postoperator|preoperator|private|protected|reliable|replication|return|server|showcategories|simulated|singular|state|static|string|struct|structdefault|structdefaultproperties|switch|texture|transient|travel|unreliable|until|var|vector|while|within)\b/,
-    function: /[a-z_]\w*(?=\s*\()/i,
+    function: /\b[a-z_]\w*(?=\s*\()/i,
     boolean: /\b(?:false|true)\b/,
     number: /\b0x[\da-f]+\b|(?:\b\d+(?:\.\d*)?|\B\.\d+)(?:e[+-]?\d+)?/i,
     // https://docs.unrealengine.com/udk/Three/UnrealScriptExpressions.html

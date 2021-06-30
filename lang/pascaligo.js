@@ -7,7 +7,7 @@ function pascaligo(Prism) {
   ;(function (Prism) {
     // Pascaligo is a layer 2 smart contract language for the tezos blockchain
     var braces = /\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/.source
-    var type = /(?:\w+(?:<braces>)?|<braces>)/.source.replace(
+    var type = /(?:\b\w+(?:<braces>)?|<braces>)/.source.replace(
       /<braces>/g,
       function () {
         return braces
@@ -65,7 +65,7 @@ function pascaligo(Prism) {
         pattern: /(^|[^&])\b(?:bool|int|list|map|nat|record|string|unit)\b/i,
         lookbehind: true
       },
-      function: /\w+(?=\s*\()/i,
+      function: /\b\w+(?=\s*\()/i,
       number: [
         // Hexadecimal, octal and binary
         /%[01]+|&[0-7]+|\$[a-f\d]+/i, // Decimal
