@@ -256,11 +256,11 @@ Yields:
 It is not suggested to import `refractor` itself in the browser as that would
 include a 500kb (187kb minzipped) of code.
 
-Instead import `refractor/core.js` and include only the needed syntaxes.
+Instead import `refractor/lib/core.js` and include only the needed syntaxes.
 For example:
 
 ```js
-import {refractor} from 'refractor/core.js'
+import {refractor} from 'refractor/lib/core';
 import jsx from 'refractor/lang/jsx.js'
 
 refractor.register(jsx)
