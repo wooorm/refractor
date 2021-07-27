@@ -260,7 +260,7 @@ Instead import `refractor/lib/core.js` and include only the needed syntaxes.
 For example:
 
 ```js
-import {refractor} from 'refractor/lib/core';
+import {refractor} from 'refractor/lib/core.js';
 import jsx from 'refractor/lang/jsx.js'
 
 refractor.register(jsx)
