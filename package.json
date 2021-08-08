@@ -29,7 +29,10 @@
     "Brian Mearns <bmearns@commercehub.com>",
     "Gray Zhang <otakustay@gmail.com>"
   ],
-  "sideEffects": false,
+  "sideEffects": [
+    "lib/all.js",
+    "lib/common.js"
+  ],
   "type": "module",
   "main": "index.js",
   "types": "index.d.ts",
