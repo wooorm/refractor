@@ -1,6 +1,7 @@
 /**
  * @typedef {import('../lib/core.js').Syntax} Syntax
  * @typedef {import('hast').Node} Node
+ * @typedef {import('prismjs')} Prism
  */
 
 import fs from 'node:fs'
@@ -14,7 +15,7 @@ import {refractor} from '../lib/all.js'
 test('.highlight(value, language)', (t) => {
   t.throws(
     () => {
-      // @ts-ignore runtime.
+      // @ts-expect-error runtime.
       refractor.highlight()
     },
     / Expected `string` for `value`, got `undefined`/,
@@ -23,7 +24,7 @@ test('.highlight(value, language)', (t) => {
 
   t.throws(
     () => {
-      // @ts-ignore runtime.
+      // @ts-expect-error runtime.
       refractor.highlight('')
     },
     /Expected `string` for `name`, got `undefined`/,
@@ -32,7 +33,7 @@ test('.highlight(value, language)', (t) => {
 
   t.throws(
     () => {
-      // @ts-ignore runtime.
+      // @ts-expect-error runtime.
       refractor.highlight(true, 'js')
     },
     /Expected `string` for `value`, got `true`/,
@@ -65,7 +66,7 @@ test('.highlight(value, language)', (t) => {
 test('.register(grammar)', (t) => {
   t.throws(
     () => {
-      // @ts-ignore runtime.
+      // @ts-expect-error runtime.
       refractor.register()
     },
     /Expected `function` for `syntax`, got `undefined`/,
@@ -78,7 +79,7 @@ test('.register(grammar)', (t) => {
 test('.registered(language)', (t) => {
   t.throws(
     () => {
-      // @ts-ignore runtime.
+      // @ts-expect-error runtime.
       refractor.registered()
     },
     /Expected `string` for `language`, got `undefined`/,
@@ -197,6 +198,7 @@ test('listLanguages', (t) => {
     'should return a list of registered languages'
   )
 
+  // @ts-expect-error: hush.
   refractor.register(grammar)
 
   t.deepEqual(

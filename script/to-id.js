@@ -1,3 +1,4 @@
+// @ts-expect-error: untyped.
 import isKeyword from 'is-keyword'
 
 /**

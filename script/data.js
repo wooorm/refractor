@@ -1,5 +1,6 @@
 import fs from 'node:fs'
 import path from 'node:path'
+// @ts-expect-error: untyped.
 import getLoader from 'prismjs/dependencies.js'
 
 /** @type {{languages: Object.<string, unknown>}} */

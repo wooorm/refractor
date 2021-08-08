@@ -23,20 +23,16 @@ const components = JSON.parse(
 
 const prefix = 'refractor-'
 
-async.map(all, generate, done)
-
-/**
- * @param {Error} error
- * @param {Array.<undefined>} [results]
- */
-function done(error, results) {
+async.map(all, generate, (error, results) => {
   bail(error)
-  console.log(chalk.green('✓') + ' wrote ' + results.length + ' languages')
-}
+  console.log(
+    chalk.green('✓') + ' wrote ' + (results || []).length + ' languages'
+  )
+})
 
 /**
  * @param {string} name
- * @param {(error: Error) => void} callback
+ * @param {(error: Error|null) => void} callback
  */
 function generate(name, callback) {
   const id = toId(name)
@@ -56,6 +52,8 @@ function generate(name, callback) {
         typeof info.alias === 'string' ? [info.alias] : info.alias || []
       ).sort(alphaSort())
 
+      /** @type {string} */
+      // @ts-expect-error: TS is wrong.
       const doc = babel.transformSync(String(buf), {
         plugins: [fixWrapHook]
       }).code
@@ -124,7 +122,7 @@ function fixWrapHook() {
             callee.matchesPattern('Prism.highlight') &&
             path.get('left').matchesPattern('env.content')
           ) {
-            // @ts-ignore Mutate.
+            // @ts-expect-error Mutate.
             path.get('left').node.ignoreValueSuffix = true
           }
         }
@@ -135,7 +133,7 @@ function fixWrapHook() {
         enter(path) {
           if (
             this.inWrapHook &&
-            // @ts-ignore Mutate.
+            // @ts-expect-error Mutate.
             !path.node.ignoreValueSuffix &&
             path.matchesPattern('env.content')
           ) {
