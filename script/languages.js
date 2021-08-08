@@ -2,8 +2,8 @@
  * @typedef {import('babel__core').PluginObj} PluginObj
  */
 
-import fs from 'fs'
-import path from 'path'
+import fs from 'node:fs'
+import path from 'node:path'
 import {bail} from 'bail'
 import chalk from 'chalk'
 import async from 'async'
@@ -15,13 +15,13 @@ import {all} from './data.js'
 import {toId} from './to-id.js'
 
 /** @type {{languages: Object.<string, {require: string|string[], alias: string|string[]}>}} */
-var components = JSON.parse(
+const components = JSON.parse(
   String(
     fs.readFileSync(path.join('node_modules', 'prismjs', 'components.json'))
   )
 )
 
-var prefix = 'refractor-'
+const prefix = 'refractor-'
 
 async.map(all, generate, done)
 
@@ -39,24 +39,26 @@ function done(error, results) {
  * @param {(error: Error) => void} callback
  */
 function generate(name, callback) {
-  var id = toId(name)
+  const id = toId(name)
 
   fs.readFile(
     path.join('node_modules', 'prismjs', 'components', 'prism-' + name + '.js'),
-    function (error, buf) {
+    (error, buf) => {
       if (error) {
         return callback(error)
       }
 
-      var info = components.languages[name]
-      var dependency = (
+      const info = components.languages[name]
+      const dependency = (
         typeof info.require === 'string' ? [info.require] : info.require || []
       ).sort(alphaSort())
-      var alias = (
+      const alias = (
         typeof info.alias === 'string' ? [info.alias] : info.alias || []
       ).sort(alphaSort())
 
-      var doc = babel.transformSync(String(buf), {plugins: [fixWrapHook]}).code
+      const doc = babel.transformSync(String(buf), {
+        plugins: [fixWrapHook]
+      }).code
 
       fs.writeFile(
         path.join('lang', name + '.js'),
@@ -87,7 +89,7 @@ function generate(name, callback) {
  * @returns {PluginObj}
  */
 function fixWrapHook() {
-  var t = babel.types
+  const t = babel.types
 
   return {
     visitor: {
@@ -96,7 +98,7 @@ function fixWrapHook() {
         enter(path) {
           if (!path.get('callee').matchesPattern('Prism.hooks.add')) return
 
-          var arg = path.get('arguments.0')
+          const arg = path.get('arguments.0')
 
           if ('type' in arg && arg.isStringLiteral({value: 'wrap'})) {
             this.inWrapHook = true
@@ -105,7 +107,7 @@ function fixWrapHook() {
         exit(path) {
           if (!path.get('callee').matchesPattern('Prism.hooks.add')) return
 
-          var arg = path.get('arguments.0')
+          const arg = path.get('arguments.0')
 
           if ('type' in arg && arg.isStringLiteral({value: 'wrap'})) {
             this.inWrapHook = false
@@ -116,7 +118,7 @@ function fixWrapHook() {
       // add the result to `env.content` instead of `env.content.value`.
       AssignmentExpression: {
         enter(path) {
-          var callee = path.get('right.callee')
+          const callee = path.get('right.callee')
           if (
             'type' in callee &&
             callee.matchesPattern('Prism.highlight') &&

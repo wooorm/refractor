@@ -62,8 +62,8 @@
     "is-keyword": "^1.0.0",
     "mdast-zone": "^5.0.0",
     "prettier": "^2.0.0",
-    "rehype": "^11.0.0",
-    "remark-cli": "^9.0.0",
+    "rehype": "^12.0.0",
+    "remark-cli": "^10.0.0",
     "remark-preset-wooorm": "^8.0.0",
     "rimraf": "^3.0.0",
     "tape": "^5.0.0",
@@ -72,7 +72,7 @@
     "typescript": "^4.0.0",
     "unist-builder": "^3.0.0",
     "unist-util-remove-position": "^4.0.0",
-    "xo": "^0.39.0"
+    "xo": "^0.44.0"
   },
   "scripts": {
     "prepack": "npm run build && npm run format",
@@ -93,11 +93,6 @@
   },
   "xo": {
     "prettier": true,
-    "rules": {
-      "capitalized-comments": "off",
-      "no-var": "off",
-      "prefer-arrow-callback": "off"
-    },
     "ignores": [
       "lang/*.js"
     ]

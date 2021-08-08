@@ -1,15 +1,17 @@
-import fs from 'fs'
-import path from 'path'
+import fs from 'node:fs'
+import path from 'node:path'
 import getLoader from 'prismjs/dependencies.js'
 
 /** @type {{languages: Object.<string, unknown>}} */
-var components = JSON.parse(
+const components = JSON.parse(
   String(
     fs.readFileSync(path.join('node_modules', 'prismjs', 'components.json'))
   )
 )
 
-var allLanguages = Object.keys(components.languages).filter((d) => d !== 'meta')
+const allLanguages = Object.keys(components.languages).filter(
+  (d) => d !== 'meta'
+)
 
 /** @type {Array.<string>} */
 export const all = getLoader(components, allLanguages).getIds()

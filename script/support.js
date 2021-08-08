@@ -9,7 +9,7 @@ import {u} from 'unist-builder'
 import alphaSort from 'alpha-sort'
 import {all, common} from './data.js'
 
-var itemPromises = Promise.all(all.sort(sort).map((d) => one(d)))
+const itemPromises = Promise.all(all.sort(sort).map((d) => one(d)))
 
 export default function syntaxes() {
   return transformer
@@ -19,7 +19,7 @@ export default function syntaxes() {
  * @param {Root} tree
  */
 async function transformer(tree) {
-  var items = await itemPromises
+  const items = await itemPromises
 
   zone(tree, 'support', replace)
 
@@ -34,9 +34,11 @@ async function transformer(tree) {
  */
 async function one(name) {
   /** @type {Array.<string>} */
-  var aliases = (await import('../lang/' + name + '.js')).default.aliases // type-coverage:ignore-line
+  // Unknown stuff to TS.
+  // type-coverage:ignore-next-line
+  const aliases = (await import('../lang/' + name + '.js')).default.aliases
   /** @type {Array.<PhrasingContent>} */
-  var content = [
+  const content = [
     u(
       'link',
       {
@@ -46,7 +48,7 @@ async function one(name) {
       [u('inlineCode', name)]
     )
   ]
-  var index = -1
+  let index = -1
 
   if (aliases.length > 0) {
     content.push(u('text', ' — alias: '))

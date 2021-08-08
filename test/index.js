@@ -3,17 +3,17 @@
  * @typedef {import('hast').Node} Node
  */
 
-import fs from 'fs'
-import path from 'path'
+import fs from 'node:fs'
+import path from 'node:path'
 import test from 'tape'
-import rehype from 'rehype'
+import {rehype} from 'rehype'
 import {isHidden} from 'is-hidden'
 import {removePosition} from 'unist-util-remove-position'
 import {refractor} from '../lib/all.js'
 
-test('.highlight(value, language)', function (t) {
+test('.highlight(value, language)', (t) => {
   t.throws(
-    function () {
+    () => {
       // @ts-ignore runtime.
       refractor.highlight()
     },
@@ -22,7 +22,7 @@ test('.highlight(value, language)', function (t) {
   )
 
   t.throws(
-    function () {
+    () => {
       // @ts-ignore runtime.
       refractor.highlight('')
     },
@@ -31,7 +31,7 @@ test('.highlight(value, language)', function (t) {
   )
 
   t.throws(
-    function () {
+    () => {
       // @ts-ignore runtime.
       refractor.highlight(true, 'js')
     },
@@ -40,7 +40,7 @@ test('.highlight(value, language)', function (t) {
   )
 
   t.throws(
-    function () {
+    () => {
       refractor.highlight('', 'fooscript')
     },
     /Unknown language: `fooscript` is not registered/,
@@ -62,9 +62,9 @@ test('.highlight(value, language)', function (t) {
   t.end()
 })
 
-test('.register(grammar)', function (t) {
+test('.register(grammar)', (t) => {
   t.throws(
-    function () {
+    () => {
       // @ts-ignore runtime.
       refractor.register()
     },
@@ -75,9 +75,9 @@ test('.register(grammar)', function (t) {
   t.end()
 })
 
-test('.registered(language)', function (t) {
+test('.registered(language)', (t) => {
   t.throws(
-    function () {
+    () => {
       // @ts-ignore runtime.
       refractor.registered()
     },
@@ -100,15 +100,15 @@ test('.registered(language)', function (t) {
   t.end()
 })
 
-test('.alias(name, alias)', function (t) {
-  var languages = refractor.languages
-  var input = fs
+test('.alias(name, alias)', (t) => {
+  const languages = refractor.languages
+  const input = fs
     .readFileSync(
       path.join('test', 'fixtures', 'markdown-sublanguage', 'input.txt')
     )
     .toString()
     .trim()
-  var expected = refractor.highlight(input, 'markdown')
+  const expected = refractor.highlight(input, 'markdown')
 
   refractor.alias('markdown', 'mkd')
 
@@ -155,29 +155,23 @@ test('.alias(name, alias)', function (t) {
   t.end()
 })
 
-test('fixtures', function (t) {
-  var root = path.join('test', 'fixtures')
-  var processor = rehype().use({settings: {fragment: true}})
-  var files = fs.readdirSync(root)
-  var index = -1
-  /** @type {string} */
-  var name
-  /** @type {string} */
-  var input
-  /** @type {string} */
-  var lang
-  /** @type {string} */
-  var expected
+test('fixtures', (t) => {
+  const root = path.join('test', 'fixtures')
+  const processor = rehype().use({settings: {fragment: true}})
+  const files = fs.readdirSync(root)
+  let index = -1
 
   while (++index < files.length) {
-    name = files[index]
+    const name = files[index]
 
     /* c8 ignore next */
     if (isHidden(name)) continue
 
-    lang = name.split('-')[0]
-    input = String(fs.readFileSync(path.join(root, name, 'input.txt'))).trim()
-    expected = String(
+    const lang = name.split('-')[0]
+    const input = String(
+      fs.readFileSync(path.join(root, name, 'input.txt'))
+    ).trim()
+    const expected = String(
       fs.readFileSync(path.join(root, name, 'output.html'))
     ).trim()
 
@@ -195,7 +189,7 @@ test('fixtures', function (t) {
   t.end()
 })
 
-test('listLanguages', function (t) {
+test('listLanguages', (t) => {
   grammar.displayName = 'grammar'
 
   t.ok(
