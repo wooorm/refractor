@@ -122,7 +122,7 @@ export default function xquery(Prism) {
           } else if (
             openedTags.length > 0 &&
             token.type === 'punctuation' &&
-            token.content === '{' && // Ignore `{{`
+            token.content === '{' &&
             (!tokens[i + 1] ||
               tokens[i + 1].type !== 'punctuation' ||
               tokens[i + 1].content !== '{') &&

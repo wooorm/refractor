@@ -193,11 +193,7 @@ export default function jsTemplates(Prism) {
           var token = tokens[i]
           if (typeof token === 'string' || typeof token.content === 'string') {
             var placeholder = placeholders[placeholderCounter]
-            var s =
-              typeof token === 'string'
-                ? token
-                : /** @type {string} */
-                  token.content
+            var s = typeof token === 'string' ? token : token.content
             var index = s.indexOf(placeholder)
             if (index !== -1) {
               ++placeholderCounter
