@@ -96,7 +96,7 @@ yields:
 
 ## Demo
 
-Try out an [interactive demo (Replit)](https://replit.com/@karlhorky/refractor-demo#index.js)
+Try out an [interactive demo (Replit)](https://replit.com/@karlhorky/official-refractor-demo#index.js)
 
 ## API
 
