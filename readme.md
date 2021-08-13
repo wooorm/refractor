@@ -94,6 +94,10 @@ yields:
 > **Tip**: Use [`hast-to-hyperscript`][to-hyperscript] to transform to other
 > virtual DOMs, or DIY.
 
+## Demo
+
+Try out an [interactive demo (Replit)](https://replit.com/@karlhorky/refractor-demo#index.js)
+
 ## API
 
 This package exports the following identifiers: `refractor`.
