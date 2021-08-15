@@ -27,6 +27,7 @@ Try [`lowlight`][lowlight]!
 
 *   [Install](#install)
 *   [Use](#use)
+*   [Demo](#demo)
 *   [API](#api)
     *   [`refractor.register(syntax)`](#refractorregistersyntax)
     *   [`refractor.alias(name[, alias])`](#refractoraliasname-alias)
