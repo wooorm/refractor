@@ -11,7 +11,8 @@ export default function sass(Prism) {
       // Sass comments don't need to be closed, only indented
       comment: {
         pattern: /^([ \t]*)\/[\/*].*(?:(?:\r?\n|\r)\1[ \t].+)*/m,
-        lookbehind: true
+        lookbehind: true,
+        greedy: true
       }
     })
     Prism.languages.insertBefore('sass', 'atrule', {
@@ -19,6 +20,7 @@ export default function sass(Prism) {
       'atrule-line': {
         // Includes support for = and + shortcuts
         pattern: /^(?:[ \t]*)[@+=].+/m,
+        greedy: true,
         inside: {
           atrule: /(?:@[\w-]+|[+=])/m
         }
@@ -37,6 +39,7 @@ export default function sass(Prism) {
       // We want to consume the whole line
       'variable-line': {
         pattern: /^[ \t]*\$.+/m,
+        greedy: true,
         inside: {
           punctuation: /:/,
           variable: variable,
@@ -46,6 +49,7 @@ export default function sass(Prism) {
       // We want to consume the whole line
       'property-line': {
         pattern: /^[ \t]*(?:[^:\s]+ *:.*|:[^:\s].*)/m,
+        greedy: true,
         inside: {
           property: [
             /[^:\s]+(?=\s*:)/,
@@ -67,8 +71,9 @@ export default function sass(Prism) {
     Prism.languages.insertBefore('sass', 'punctuation', {
       selector: {
         pattern:
-          /([ \t]*)\S(?:,[^,\r\n]+|[^,\r\n]*)(?:,[^,\r\n]+)*(?:,(?:\r?\n|\r)\1[ \t]+\S(?:,[^,\r\n]+|[^,\r\n]*)(?:,[^,\r\n]+)*)*/,
-        lookbehind: true
+          /^([ \t]*)\S(?:,[^,\r\n]+|[^,\r\n]*)(?:,[^,\r\n]+)*(?:,(?:\r?\n|\r)\1[ \t]+\S(?:,[^,\r\n]+|[^,\r\n]*)(?:,[^,\r\n]+)*)*/m,
+        lookbehind: true,
+        greedy: true
       }
     })
   })(Prism)

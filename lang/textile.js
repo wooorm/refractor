@@ -105,6 +105,7 @@ export default function textile(Prism) {
             }
           },
           inline: {
+            // eslint-disable-next-line regexp/no-super-linear-backtracking
             pattern: withModifier(
               /(^|[^a-zA-Z\d])(\*\*|__|\?\?|[*_%@+\-^~])<MOD>*.+?\2(?![a-zA-Z\d])/
                 .source
@@ -114,38 +115,45 @@ export default function textile(Prism) {
               // Note: superscripts and subscripts are not handled specifically
               // *bold*, **bold**
               bold: {
+                // eslint-disable-next-line regexp/no-super-linear-backtracking
                 pattern: withModifier(/(^(\*\*?)<MOD>*).+?(?=\2)/.source),
                 lookbehind: true
               },
               // _italic_, __italic__
               italic: {
+                // eslint-disable-next-line regexp/no-super-linear-backtracking
                 pattern: withModifier(/(^(__?)<MOD>*).+?(?=\2)/.source),
                 lookbehind: true
               },
               // ??cite??
               cite: {
+                // eslint-disable-next-line regexp/no-super-linear-backtracking
                 pattern: withModifier(/(^\?\?<MOD>*).+?(?=\?\?)/.source),
                 lookbehind: true,
                 alias: 'string'
               },
               // @code@
               code: {
+                // eslint-disable-next-line regexp/no-super-linear-backtracking
                 pattern: withModifier(/(^@<MOD>*).+?(?=@)/.source),
                 lookbehind: true,
                 alias: 'keyword'
               },
               // +inserted+
               inserted: {
+                // eslint-disable-next-line regexp/no-super-linear-backtracking
                 pattern: withModifier(/(^\+<MOD>*).+?(?=\+)/.source),
                 lookbehind: true
               },
               // -deleted-
               deleted: {
+                // eslint-disable-next-line regexp/no-super-linear-backtracking
                 pattern: withModifier(/(^-<MOD>*).+?(?=-)/.source),
                 lookbehind: true
               },
               // %span%
               span: {
+                // eslint-disable-next-line regexp/no-super-linear-backtracking
                 pattern: withModifier(/(^%<MOD>*).+?(?=%)/.source),
                 lookbehind: true
               },
@@ -177,11 +185,13 @@ export default function textile(Prism) {
           // "text":http://example.com
           // "text":link-ref
           link: {
+            // eslint-disable-next-line regexp/no-super-linear-backtracking
             pattern: withModifier(
               /"<MOD>*[^"]+":.+?(?=[^\w/]?(?:\s|$))/.source
             ),
             inside: {
               text: {
+                // eslint-disable-next-line regexp/no-super-linear-backtracking
                 pattern: withModifier(/(^"<MOD>*)[^"]+(?=")/.source),
                 lookbehind: true
               },

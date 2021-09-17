@@ -107,6 +107,7 @@ export default function ftl(Prism) {
       }
     }
     Prism.hooks.add('before-tokenize', function (env) {
+      // eslint-disable-next-line regexp/no-useless-lazy
       var pattern = RegExp(
         /<#--[\s\S]*?-->|<\/?[#@][a-zA-Z](?:<expr>)*?>|\$\{(?:<expr>)*?\}/.source.replace(
           /<expr>/g,
