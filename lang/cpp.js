@@ -78,7 +78,7 @@ function cpp(Prism) {
     })
     Prism.languages.insertBefore('cpp', 'keyword', {
       'generic-function': {
-        pattern: /\b[a-z_]\w*\s*<(?:[^<>]|<(?:[^<>])*>)*>(?=\s*\()/i,
+        pattern: /\b(?!operator\b)[a-z_]\w*\s*<(?:[^<>]|<[^<>]*>)*>(?=\s*\()/i,
         inside: {
           function: /^\w+/,
           generic: {

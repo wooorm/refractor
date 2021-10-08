@@ -14,6 +14,18 @@ function log(Prism) {
       pattern: /"(?:[^"\\\r\n]|\\.)*"|'(?![st] | \w)(?:[^'\\\r\n]|\\.)*'/,
       greedy: true
     },
+    exception: {
+      pattern:
+        /(^|[^\w.])[a-z][\w.]*(?:Exception|Error):.*(?:(?:\r\n?|\n)[ \t]*(?:at[ \t].+|\.{3}.*|Caused by:.*))+(?:(?:\r\n?|\n)[ \t]*\.\.\. .*)?/,
+      lookbehind: true,
+      greedy: true,
+      alias: ['javastacktrace', 'language-javastacktrace'],
+      inside: Prism.languages['javastacktrace'] || {
+        keyword: /\bat\b/,
+        function: /[a-z_][\w$]*(?=\()/,
+        punctuation: /[.:()]/
+      }
+    },
     level: [
       {
         pattern:
