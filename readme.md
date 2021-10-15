@@ -112,7 +112,7 @@ Needed if you’re using [`refractor/core`][browser].
 ###### Example
 
 ```js
-import {refractor} from 'refractor/core.js'
+import {refractor} from 'refractor/lib/core.js'
 import markdown from 'refractor/lang/markdown.js'
 
 refractor.register(markdown)
@@ -151,7 +151,7 @@ Register a new `alias` for the `name` language.
 ###### Example
 
 ```js
-import {refractor} from 'refractor/core.js'
+import {refractor} from 'refractor/lib/core.js'
 import markdown from 'refractor/lang/markdown.js'
 
 refractor.register(markdown)
@@ -176,7 +176,7 @@ Virtual node representing the highlighted value ([`Root`][root]).
 ###### Example
 
 ```js
-import {refractor} from 'refractor/core.js'
+import {refractor} from 'refractor/lib/core.js'
 import css from 'refractor/lang/css.js'
 
 refractor.register(css)
@@ -205,7 +205,7 @@ Check if a `language` ([name or alias][syntax]) is registered.
 ###### Example
 
 ```js
-import {refractor} from 'refractor/core.js'
+import {refractor} from 'refractor/lib/core.js'
 import markdown from 'refractor/lang/markdown.js'
 
 console.log(refractor.registered('markdown'))
@@ -233,7 +233,7 @@ List all registered languages ([names and aliases][syntax]).
 ###### Example
 
 ```js
-import {refractor} from 'refractor/core.js'
+import {refractor} from 'refractor/lib/core.js'
 import markdown from 'refractor/lang/markdown.js'
 
 console.log(refractor.listLanguages())
