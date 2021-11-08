@@ -78,13 +78,13 @@
     "xo": "^0.46.0"
   },
   "scripts": {
-    "prepack": "npm run build && npm run format",
-    "build": "rimraf \"{lang/**,lib/**,script/**,test/**,}*.d.ts\" && tsc && type-coverage",
     "generate": "node script/languages.js && node script/list.js && node script/fixtures.js",
+    "prepublishOnly": "npm run build && npm run format",
+    "build": "rimraf \"{lang,lib,script,test}/**/*.d.ts\" \"*.d.ts\" && tsc && type-coverage",
     "format": "remark . -qfo && prettier . -w --loglevel warn && xo --fix",
-    "test-api": "node test/index.js",
-    "test-coverage": "c8 -x \"lang/*.js\" --check-coverage --branches 100 --functions 100 --lines 100 --statements 100 --reporter lcov node test/index.js",
-    "test": "npm run build && npm run generate && npm run format && npm run test-coverage"
+    "test-api": "node --conditions development test/index.js",
+    "test-coverage": "c8 -x \"lang/*.js\" --check-coverage --branches 100 --functions 100 --lines 100 --statements 100 --reporter lcov npm run test-api",
+    "test": "npm run generate && npm run build && npm run format && npm run test-coverage"
   },
   "prettier": {
     "tabWidth": 2,
@@ -117,6 +117,7 @@
     "atLeast": 100,
     "detail": true,
     "strict": true,
+    "ignoreCatch": true,
     "ignoreFiles": [
       "lang/*.d.ts"
     ]

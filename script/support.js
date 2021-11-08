@@ -33,11 +33,11 @@ async function transformer(tree) {
  * @param {string} name
  */
 async function one(name) {
-  /** @type {Array.<string>} */
+  /** @type {Array<string>} */
   // Unknown stuff to TS.
   // type-coverage:ignore-next-line
   const aliases = (await import('../lang/' + name + '.js')).default.aliases
-  /** @type {Array.<PhrasingContent>} */
+  /** @type {Array<PhrasingContent>} */
   const content = [
     u(
       'link',

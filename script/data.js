@@ -3,7 +3,7 @@ import path from 'node:path'
 // @ts-expect-error: untyped.
 import getLoader from 'prismjs/dependencies.js'
 
-/** @type {{languages: Object.<string, unknown>}} */
+/** @type {{languages: Record<string, unknown>}} */
 const components = JSON.parse(
   String(
     fs.readFileSync(path.join('node_modules', 'prismjs', 'components.json'))
@@ -14,10 +14,10 @@ const allLanguages = Object.keys(components.languages).filter(
   (d) => d !== 'meta'
 )
 
-/** @type {Array.<string>} */
+/** @type {Array<string>} */
 export const all = getLoader(components, allLanguages).getIds()
 
-/** @type {Array.<string>} */
+/** @type {Array<string>} */
 export const common = getLoader(components, [
   // These are alphabetical, but they are exported in registration order.
   // They are based on the languages that lowlight exports as common,

@@ -18,7 +18,7 @@ console.log(
 )
 
 /**
- * @param {Array.<string>} list
+ * @param {Array<string>} list
  */
 function generate(list) {
   return [

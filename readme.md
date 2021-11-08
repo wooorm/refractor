@@ -144,8 +144,8 @@ Register a new `alias` for the `name` language.
 
 *   `name` (`string`) — [Name][names] of a registered language
 *   `alias` (`string`) — New alias for the registered language
-*   `list` (`Array.<alias>`) — List of aliases
-*   `aliases` (`Object.<alias|list>`) — Map where each key is a `name` and each
+*   `list` (`Array<alias>`) — List of aliases
+*   `aliases` (`Record<alias|list>`) — Map where each key is a `name` and each
     value an `alias` or a `list`
 
 ###### Example
@@ -228,7 +228,7 @@ List all registered languages ([names and aliases][syntax]).
 
 ###### Returns
 
-`Array.<string>`.
+`Array<string>`.
 
 ###### Example
 
