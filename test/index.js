@@ -82,7 +82,7 @@ test('.registered(language)', (t) => {
       // @ts-expect-error runtime.
       refractor.registered()
     },
-    /Expected `string` for `language`, got `undefined`/,
+    /Expected `string` for `aliasOrLanguage`, got `undefined`/,
     'should throw when not given a `language`'
   )
 

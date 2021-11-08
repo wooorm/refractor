@@ -1,3 +1,5 @@
+<!--lint disable no-html-->
+
 # refractor
 
 [![Build][build-badge]][build]
@@ -6,11 +8,40 @@
 [![Size][size-badge]][size]
 
 Lightweight, robust, elegant virtual syntax highlighting using [Prism][].
-Useful for virtual DOMs and non-HTML things.
-Perfect for [React][], [VDOM][], and others.
 
-`refractor` is built to work with all syntaxes supported by \[highlight.js]\[].
-There are three builds:
+## Contents
+
+*   [What is this?](#what-is-this)
+*   [When should I use this?](#when-should-i-use-this)
+*   [Playground](#playground)
+*   [Install](#install)
+*   [Use](#use)
+*   [API](#api)
+    *   [`refractor.highlight(value, language)`](#refractorhighlightvalue-language)
+    *   [`refractor.register(syntax)`](#refractorregistersyntax)
+    *   [`refractor.alias(name[, alias])`](#refractoraliasname-alias)
+    *   [`refractor.registered(aliasOrlanguage)`](#refractorregisteredaliasorlanguage)
+    *   [`refractor.listLanguages()`](#refractorlistlanguages)
+*   [Examples](#examples)
+    *   [Example: serializing hast as html](#example-serializing-hast-as-html)
+    *   [Example: turning hast into react nodes](#example-turning-hast-into-react-nodes)
+*   [Types](#types)
+*   [Data](#data)
+*   [CSS](#css)
+*   [Compatibility](#compatibility)
+*   [Security](#security)
+*   [Related](#related)
+*   [Projects](#projects)
+*   [Contribute](#contribute)
+
+## What is this?
+
+This package wraps [Prism][] to output objects (ASTs) instead of a string of
+HTML.
+
+Prism, through refractor, supports 270+ programming languages.
+Supporting all of them requires a lot of code.
+That’s why there are three entry points for refractor:
 
 <!--count start-->
 
@@ -20,47 +51,60 @@ There are three builds:
 
 <!--count end-->
 
-Want to use [`highlight.js`][hljs] instead?
-Try [`lowlight`][lowlight]!
+Bundled, minified, and gzipped, those are roughly 12.7 kB, 40 kB, and 211 kB.
 
-## Contents
+## When should I use this?
 
-*   [Install](#install)
-*   [Use](#use)
-*   [Demo](#demo)
-*   [API](#api)
-    *   [`refractor.register(syntax)`](#refractorregistersyntax)
-    *   [`refractor.alias(name[, alias])`](#refractoraliasname-alias)
-    *   [`refractor.highlight(value, language)`](#refractorhighlightvalue-language)
-    *   [`refractor.registered(language)`](#refractorregisteredlanguage)
-    *   [`refractor.listLanguages()`](#refractorlistlanguages)
-*   [Browser](#browser)
-*   [Plugins](#plugins)
-*   [Syntaxes](#syntaxes)
-*   [Related](#related)
-*   [Projects](#projects)
+This package is useful when you want to perform syntax highlighting in a place
+where serialized HTML wouldn’t work or wouldn’t work well.
+For example, you can use refractor when you want to show code in a CLI by
+rendering to ANSI sequences, when you’re using virtual DOM frameworks (such as
+React or Preact) so that diffing can be performant, or when you’re working with
+ASTs (rehype).
+
+A different package, [`lowlight`][lowlight], does the same as refractor but
+uses [`highlight.js`][hljs] instead.
+
+<!--Old name of the following section:-->
+
+<a name="demo"></a>
+
+## Playground
+
+You can play with refractor on the
+[interactive demo (Replit)](https://replit.com/@karlhorky/official-refractor-demo#index.js).
 
 ## Install
 
-This package is [ESM only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c):
-Node 12+ is needed to use it and it must be `import`ed instead of `require`d.
-
-[npm][]:
+This package is [ESM only][esm].
+In Node.js (version 12.20+, 14.14+, or 16.0+), install with [npm][]:
 
 ```sh
 npm install refractor
 ```
 
-[Use in the browser »][browser]
+In Deno with [Skypack][]:
+
+```js
+import {refractor} from 'https://cdn.skypack.dev/refractor@4?dts'
+```
+
+In browsers with [Skypack][]:
+
+```html
+<script type="module">
+  import {refractor} from 'https://cdn.skypack.dev/refractor@4?min'
+</script>
+```
 
 ## Use
 
 ```js
 import {refractor} from 'refractor'
 
-var root = refractor.highlight('"use strict";', 'js')
+const tree = refractor.highlight('"use strict";', 'js')
 
-console.log(root)
+console.log(tree)
 ```
 
 Yields:
@@ -85,93 +129,25 @@ Yields:
 }
 ```
 
-Which serialized with [`hast-util-to-html`][to-html] (or [`rehype`][rehype])
-yields:
-
-```html
-<span class="token string">"use strict"</span><span class="token punctuation">;</span>
-```
-
-> **Tip**: Use [`hast-to-hyperscript`][to-hyperscript] to transform to other
-> virtual DOMs, or DIY.
-
-## Demo
-
-Try out an [interactive demo (Replit)](https://replit.com/@karlhorky/official-refractor-demo#index.js)
-
 ## API
 
-This package exports the following identifiers: `refractor`.
+This package exports the following identifier: `refractor`.
 There is no default export.
-
-### `refractor.register(syntax)`
-
-Register a [syntax][].
-Needed if you’re using [`refractor/core`][browser].
-
-###### Example
-
-```js
-import {refractor} from 'refractor/lib/core.js'
-import markdown from 'refractor/lang/markdown.js'
-
-refractor.register(markdown)
-
-console.log(refractor.highlight('*Emphasis*', 'markdown'))
-```
-
-Yields:
-
-```js
-{
-  type: 'root',
-  children: [
-    {type: 'element', tagName: 'span', properties: [Object], children: [Array]}
-  ]
-}
-```
-
-### `refractor.alias(name[, alias])`
-
-Register a new `alias` for the `name` language.
-
-###### Signatures
-
-*   `alias(name, alias|list)`
-*   `alias(aliases)`
-
-###### Parameters
-
-*   `name` (`string`) — [Name][names] of a registered language
-*   `alias` (`string`) — New alias for the registered language
-*   `list` (`Array<alias>`) — List of aliases
-*   `aliases` (`Record<alias|list>`) — Map where each key is a `name` and each
-    value an `alias` or a `list`
-
-###### Example
-
-```js
-import {refractor} from 'refractor/lib/core.js'
-import markdown from 'refractor/lang/markdown.js'
-
-refractor.register(markdown)
-
-// refractor.highlight('*Emphasis*', 'mdown')
-// ^ would throw: Error: Unknown language: `mdown` is not registered
-
-refractor.alias({markdown: ['mdown', 'mkdn', 'mdwn', 'ron']})
-refractor.highlight('*Emphasis*', 'mdown')
-// ^ Works!
-```
 
 ### `refractor.highlight(value, language)`
 
-Parse `value` (`string`) according to the `language` ([name or alias][syntax])
-syntax.
+Highlight `value` (code) as `language` (programming language).
+
+###### Parameters
+
+*   `value` (`string`)
+    — code to highlight
+*   `language` (`string` or `Grammar`)
+    — programming language name, alias, or grammar.
 
 ###### Returns
 
-Virtual node representing the highlighted value ([`Root`][root]).
+Node representing highlighted code ([`Root`][root]).
 
 ###### Example
 
@@ -198,9 +174,15 @@ Yields:
 }
 ```
 
-### `refractor.registered(language)`
+### `refractor.register(syntax)`
 
-Check if a `language` ([name or alias][syntax]) is registered.
+Register a syntax.
+
+###### Parameters
+
+*   `syntax` (`Function`)
+    — language function custom made for refractor, as in, the files in
+    `refractor/lang/*.js`
 
 ###### Example
 
@@ -208,23 +190,83 @@ Check if a `language` ([name or alias][syntax]) is registered.
 import {refractor} from 'refractor/lib/core.js'
 import markdown from 'refractor/lang/markdown.js'
 
-console.log(refractor.registered('markdown'))
-
 refractor.register(markdown)
 
-console.log(refractor.registered('markdown'))
+console.log(refractor.highlight('*Emphasis*', 'markdown'))
 ```
 
 Yields:
 
 ```js
-false
-true
+{
+  type: 'root',
+  children: [
+    {type: 'element', tagName: 'span', properties: [Object], children: [Array]}
+  ]
+}
+```
+
+### `refractor.alias(name[, alias])`
+
+Register aliases for already registered languages.
+
+###### Signatures
+
+*   `alias(name, alias|list)`
+*   `alias(aliases)`
+
+###### Parameters
+
+*   `language` (`string`)
+    — programming language [name][names]
+*   `alias` (`string`)
+    — new aliases for the programming language
+*   `list` (`Array<string>`)
+    — list of aliases
+*   `aliases` (`Record<language, alias|list>`)
+    — map of `language`s to `alias`es or `list`s
+
+###### Example
+
+```js
+import {refractor} from 'refractor/lib/core.js'
+import markdown from 'refractor/lang/markdown.js'
+
+refractor.register(markdown)
+
+// refractor.highlight('*Emphasis*', 'mdown')
+// ^ would throw: Error: Unknown language: `mdown` is not registered
+
+refractor.alias({markdown: ['mdown', 'mkdn', 'mdwn', 'ron']})
+refractor.highlight('*Emphasis*', 'mdown')
+// ^ Works!
+```
+
+### `refractor.registered(aliasOrlanguage)`
+
+Check whether an `alias` or `language` is registered.
+
+###### Parameters
+
+*   `aliasOrlanguage` (`string`)
+    — programming language name or alias
+
+###### Example
+
+```js
+import {refractor} from 'refractor/lib/core.js'
+import markdown from 'refractor/lang/markdown.js'
+
+console.log(refractor.registered('markdown')) //=> false
+
+refractor.register(markdown)
+
+console.log(refractor.registered('markdown')) //=> true
 ```
 
 ### `refractor.listLanguages()`
 
-List all registered languages ([names and aliases][syntax]).
+List all registered languages (names and aliases).
 
 ###### Returns
 
@@ -236,7 +278,7 @@ List all registered languages ([names and aliases][syntax]).
 import {refractor} from 'refractor/lib/core.js'
 import markdown from 'refractor/lang/markdown.js'
 
-console.log(refractor.listLanguages())
+console.log(refractor.listLanguages()) //=> []
 
 refractor.register(markdown)
 
@@ -246,7 +288,6 @@ console.log(refractor.listLanguages())
 Yields:
 
 ```js
-[]
 [
   'markup', // Note that `markup` (a lot of xml based languages) is a dep of markdown.
   'html',
@@ -256,47 +297,81 @@ Yields:
 ]
 ```
 
-## Browser
+## Examples
 
-It is not suggested to import `refractor` itself in the browser as that would
-include a 500kb (187kb minzipped) of code.
+### Example: serializing hast as html
 
-Instead import `refractor/lib/core.js` and include only the needed syntaxes.
-For example:
+hast trees as returned by refractor can be serialized with
+[`hast-util-to-html`][hast-util-to-html]:
 
 ```js
-import {refractor} from 'refractor/lib/core.js';
-import jsx from 'refractor/lang/jsx.js'
+import {refractor} from 'refractor'
+import {toHtml} from 'hast-util-to-html'
 
-refractor.register(jsx)
+const tree = refractor.highlight('"use strict";', 'js')
 
-console.log(refractor.highlight('<Dropdown primary />', 'jsx'))
+console.log(toHtml(tree))
 ```
 
-…when using esbuild this results in 35.8kB of code (14kb minzipped).
+Yields:
 
-## Plugins
+```html
+<span class="token string">"use strict"</span><span class="token punctuation">;</span>
+```
 
-`refractor` does not support Prism plugins:
+### Example: turning hast into react nodes
 
-1.  Prism plugins often deal with the DOM, not Prism tokens
-2.  Prism is made using global variables instead of a module format, so all
-    syntaxes below are custom built to work so you can import just what you
-    need
+hast trees as returned by refractor can be turned into React (or Preact) with
+[`hast-to-hyperscript`][hast-to-hyperscript]:
 
-## Syntaxes
+```js
+import {refractor} from 'refractor'
+import {toH} from 'hast-to-hyperscript'
+import React from 'react'
+
+const tree = refractor.highlight('"use strict";', 'js')
+const react = toH(React.createElement, tree)
+
+console.log(react)
+```
+
+Yields:
+
+```js
+{
+  '$$typeof': Symbol(react.element),
+  type: 'div',
+  key: 'h-1',
+  ref: null,
+  props: { children: [ [Object], [Object] ] },
+  _owner: null,
+  _store: {}
+}
+```
+
+## Types
+
+This package is fully typed with [TypeScript][].
+It exports additional `Root`, `Grammar`, and `Syntax` types that model their
+respective interfaces.
+
+<!--Old name of the following section:-->
+
+<a name="syntaxes"></a>
+
+## Data
 
 If you’re using `refractor/lib/core.js`, no syntaxes are included.
-Checked syntaxes are included if you import `refractor` (or
+Checked syntaxes are included if you import `refractor` (or explicitly
 `refractor/lib/common.js`).
 Unchecked syntaxes are available through `refractor/lib/all.js`.
+You can import `core` or `common` and manually add more languages as you please.
 
-Note that Prism works as a singleton.
-That means that if you register a syntax anywhere in your project, it’ll
-become available everywhere!
+Prism operates as a singleton: once you register a language in one place, it’ll
+be available everywhere.
 
 Only these custom built syntaxes will work with `refractor` because Prism’s own
-syntaxes are made to work with global variables and are not requirable.
+syntaxes are made to work with global variables and are not importable.
 
 <!--support start-->
 
@@ -574,18 +649,57 @@ syntaxes are made to work with global variables and are not requirable.
 
 <!--support end-->
 
+## CSS
+
+`refractor` does not inject CSS for the syntax highlighted code (because well,
+refractor doesn’t have to be turned into HTML and might not run in a browser!).
+If you are in a browser, you can use any Prism theme.
+For example, to get Prism Dark from cdnjs:
+
+```html
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-dark.min.css">
+```
+
+<!--Old name of the following section:-->
+
+<a name="plugins"></a>
+
+## Compatibility
+
+This package is at least compatible with all maintained versions of Node.js.
+As of now, that is Node.js 12.20+, 14.14+, and 16.0+.
+It also works in Deno and modern browsers.
+
+Only the custom built syntaxes in `refractor/lang/*.js` will work with
+`refractor` as Prism’s own syntaxes are made to work with global variables and
+are not importable.
+
+refractor also does not support Prism plugins, due to the same limitations, and
+that they almost exclusively deal with the DOM.
+
+## Security
+
+This package is safe.
+
 ## Related
 
-*   [`lowlight`][lowlight] — Same, but based on [`highlight.js`][hljs]
+*   [`lowlight`][lowlight]
+    — the same as refractor but with [`highlight.js`][hljs]
 
 ## Projects
 
-*   [`react-syntax-highlighter`](https://github.com/conorhastings/react-syntax-highlighter)
+*   [`react-syntax-highlighter`](https://github.com/react-syntax-highlighter/react-syntax-highlighter)
     — [React][] component for syntax highlighting
-*   [`rehype-prism`](https://github.com/mapbox/rehype-prism)
-    — Syntax highlighting in [**rehype**](https://github.com/rehypejs/rehype)
+*   [`@mapbox/rehype-prism`](https://github.com/mapbox/rehype-prism)
+    — [**rehype**][rehype] plugin to highlight code
+    blocks
 *   [`react-refractor`](https://github.com/rexxars/react-refractor)
-    — Syntax highlighter for [React][]
+    — syntax highlighter for [React][]
+
+## Contribute
+
+Yes please!
+See [How to Contribute to Open Source][contribute].
 
 ## License
 
@@ -609,11 +723,19 @@ syntaxes are made to work with global variables and are not requirable.
 
 [size]: https://bundlephobia.com/result?p=refractor
 
-[npm]: https://www.npmjs.com/package/refractor/tutorial
+[npm]: https://docs.npmjs.com/cli/install
+
+[skypack]: https://www.skypack.dev
 
 [license]: license
 
 [author]: https://wooorm.com
+
+[esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
+
+[typescript]: https://www.typescriptlang.org
+
+[contribute]: https://opensource.guide/how-to-contribute/
 
 [rehype]: https://github.com/rehypejs/rehype
 
@@ -621,20 +743,14 @@ syntaxes are made to work with global variables and are not requirable.
 
 [react]: https://facebook.github.io/react/
 
-[vdom]: https://github.com/Matt-Esch/virtual-dom
-
-[to-hyperscript]: https://github.com/syntax-tree/hast-to-hyperscript
-
-[to-html]: https://github.com/syntax-tree/hast-util-to-html
-
-[browser]: #browser
-
 [prism]: https://github.com/PrismJS/prism
 
 [lowlight]: https://github.com/wooorm/lowlight
 
-[hljs]: https://github.com/isagalaev/highlight.js
+[hljs]: https://github.com/highlightjs/highlight.js
 
 [root]: https://github.com/syntax-tree/hast#root
 
-[syntax]: #syntaxes
+[hast-util-to-html]: https://github.com/syntax-tree/hast-util-to-html
+
+[hast-to-hyperscript]: https://github.com/syntax-tree/hast-to-hyperscript
