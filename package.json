@@ -46,7 +46,7 @@
     "@types/hast": "^2.0.0",
     "@types/prismjs": "^1.0.0",
     "hastscript": "^7.0.0",
-    "parse-entities": "^3.0.0",
+    "parse-entities": "^4.0.0",
     "prismjs": "~1.25.0"
   },
   "devDependencies": {
