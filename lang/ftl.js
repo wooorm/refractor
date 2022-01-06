@@ -59,7 +59,7 @@ export default function ftl(Prism) {
         }
       ],
       keyword: /\b(?:as)\b/,
-      boolean: /\b(?:true|false)\b/,
+      boolean: /\b(?:false|true)\b/,
       'builtin-function': {
         pattern: /((?:^|[^?])\?\s*)\w+/,
         lookbehind: true,

@@ -256,7 +256,7 @@ export default function textile(Prism) {
           },
           // Prism(C)
           mark: {
-            pattern: /\b\((?:TM|R|C)\)/,
+            pattern: /\b\((?:C|R|TM)\)/,
             alias: 'comment',
             inside: {
               punctuation: /[()]/

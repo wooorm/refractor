@@ -16,7 +16,7 @@ export default function bbcode(Prism) {
           }
         },
         'attr-value': {
-          pattern: /=\s*(?:"[^"]*"|'[^']*'|[^\s'"\]=]+)/i,
+          pattern: /=\s*(?:"[^"]*"|'[^']*'|[^\s'"\]=]+)/,
           inside: {
             punctuation: [
               /^=/,

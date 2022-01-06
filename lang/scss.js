@@ -29,7 +29,7 @@ export default function scss(Prism) {
     selector: {
       // Initial look-ahead is used to prevent matching of blank selectors
       pattern:
-        /(?=\S)[^@;{}()]?(?:[^@;{}()\s]|\s+(?!\s)|#\{\$[-\w]+\})+(?=\s*\{(?:\}|\s|[^}][^:{}]*[:{][^}]))/m,
+        /(?=\S)[^@;{}()]?(?:[^@;{}()\s]|\s+(?!\s)|#\{\$[-\w]+\})+(?=\s*\{(?:\}|\s|[^}][^:{}]*[:{][^}]))/,
       inside: {
         parent: {
           pattern: /&/,
@@ -48,7 +48,7 @@ export default function scss(Prism) {
   })
   Prism.languages.insertBefore('scss', 'atrule', {
     keyword: [
-      /@(?:if|else(?: if)?|forward|for|each|while|import|use|extend|debug|warn|mixin|include|function|return|content)\b/i,
+      /@(?:content|debug|each|else(?: if)?|extend|for|forward|function|if|import|include|mixin|return|use|warn|while)\b/i,
       {
         pattern: /( )(?:from|through)(?= )/,
         lookbehind: true
@@ -61,7 +61,7 @@ export default function scss(Prism) {
   })
   Prism.languages.insertBefore('scss', 'function', {
     'module-modifier': {
-      pattern: /\b(?:as|with|show|hide)\b/i,
+      pattern: /\b(?:as|hide|show|with)\b/i,
       alias: 'keyword'
     },
     placeholder: {
@@ -72,13 +72,13 @@ export default function scss(Prism) {
       pattern: /\B!(?:default|optional)\b/i,
       alias: 'keyword'
     },
-    boolean: /\b(?:true|false)\b/,
+    boolean: /\b(?:false|true)\b/,
     null: {
       pattern: /\bnull\b/,
       alias: 'keyword'
     },
     operator: {
-      pattern: /(\s)(?:[-+*\/%]|[=!]=|<=?|>=?|and|or|not)(?=\s)/,
+      pattern: /(\s)(?:[-+*\/%]|[=!]=|<=?|>=?|and|not|or)(?=\s)/,
       lookbehind: true
     }
   })

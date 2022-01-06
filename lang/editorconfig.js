@@ -5,7 +5,7 @@ editorconfig.aliases = []
 /** @type {import('../core.js').Syntax} */
 export default function editorconfig(Prism) {
   Prism.languages.editorconfig = {
-    // https://editorconfig-specification.readthedocs.io/en/latest/
+    // https://editorconfig-specification.readthedocs.io
     comment: /[;#].*/,
     section: {
       pattern: /(^[ \t]*)\[.+\]/m,
@@ -18,13 +18,14 @@ export default function editorconfig(Prism) {
         punctuation: /[\[\]{},]/
       }
     },
-    property: {
+    key: {
       pattern: /(^[ \t]*)[^\s=]+(?=[ \t]*=)/m,
-      lookbehind: true
+      lookbehind: true,
+      alias: 'attr-name'
     },
     value: {
       pattern: /=.*/,
-      alias: 'string',
+      alias: 'attr-value',
       inside: {
         punctuation: /^=/
       }

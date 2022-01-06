@@ -40,7 +40,8 @@ export default function pug(Prism) {
           'filter-name': {
             pattern: /^:[\w-]+/,
             alias: 'variable'
-          }
+          },
+          text: /\S[\s\S]*/
         }
       },
       'multiline-plain-text': {
@@ -60,7 +61,7 @@ export default function pug(Prism) {
       // This handle all conditional and loop keywords
       'flow-control': {
         pattern:
-          /(^[\t ]*)(?:if|unless|else|case|when|default|each|while)\b(?: .+)?/m,
+          /(^[\t ]*)(?:case|default|each|else|if|unless|when|while)\b(?: .+)?/m,
         lookbehind: true,
         inside: {
           each: {
@@ -71,14 +72,14 @@ export default function pug(Prism) {
             }
           },
           branch: {
-            pattern: /^(?:if|unless|else|case|when|default|while)\b/,
+            pattern: /^(?:case|default|else|if|unless|when|while)\b/,
             alias: 'keyword'
           },
           rest: Prism.languages.javascript
         }
       },
       keyword: {
-        pattern: /(^[\t ]*)(?:block|extends|include|append|prepend)\b.+/m,
+        pattern: /(^[\t ]*)(?:append|block|extends|include|prepend)\b.+/m,
         lookbehind: true
       },
       mixin: [
@@ -197,7 +198,11 @@ export default function pug(Prism) {
               pattern: /^:[\w-]+/,
               alias: 'variable'
             },
-            rest: Prism.languages[filter.language]
+            text: {
+              pattern: /\S[\s\S]*/,
+              alias: [filter.language, 'language-' + filter.language],
+              inside: Prism.languages[filter.language]
+            }
           }
         }
       }

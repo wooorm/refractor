@@ -45,7 +45,7 @@ export default function markdown(Prism) {
         greedy: true,
         inside: {
           punctuation: /^---|---$/,
-          'font-matter': {
+          'front-matter': {
             pattern: /\S+(?:\s+\S+)*/,
             alias: ['yaml', 'language-yaml'],
             inside: Prism.languages.yaml

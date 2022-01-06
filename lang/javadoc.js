@@ -24,7 +24,7 @@ export default function javadoc(Prism) {
     Prism.languages.insertBefore('javadoc', 'keyword', {
       reference: {
         pattern: RegExp(
-          /(@(?:exception|throws|see|link|linkplain|value)\s+(?:\*\s*)?)/
+          /(@(?:exception|link|linkplain|see|throws|value)\s+(?:\*\s*)?)/
             .source +
             '(?:' +
             reference +

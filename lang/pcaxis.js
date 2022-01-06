@@ -55,7 +55,7 @@ export default function pcaxis(Prism) {
       pattern: /(^|\s)\d+(?:\.\d+)?(?!\S)/,
       lookbehind: true
     },
-    boolean: /YES|NO/
+    boolean: /NO|YES/
   }
   Prism.languages.px = Prism.languages.pcaxis
 }

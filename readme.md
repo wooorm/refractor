@@ -47,7 +47,7 @@ That’s why there are three entry points for refractor:
 
 *   `lib/core.js` — 0 languages
 *   `lib/common.js` (default) — 36 languages
-*   `lib/all.js` — 271 languages
+*   `lib/all.js` — 276 languages
 
 <!--count end-->
 
@@ -375,7 +375,7 @@ syntaxes are made to work with global variables and are not importable.
 
 <!--support start-->
 
-*   [x] [`arduino`](https://github.com/wooorm/refractor/blob/main/lang/arduino.js)
+*   [x] [`arduino`](https://github.com/wooorm/refractor/blob/main/lang/arduino.js) — alias: `ino`
 *   [x] [`bash`](https://github.com/wooorm/refractor/blob/main/lang/bash.js) — alias: `shell`
 *   [x] [`basic`](https://github.com/wooorm/refractor/blob/main/lang/basic.js)
 *   [x] [`c`](https://github.com/wooorm/refractor/blob/main/lang/c.js)
@@ -426,6 +426,7 @@ syntaxes are made to work with global variables and are not importable.
 *   [ ] [`arff`](https://github.com/wooorm/refractor/blob/main/lang/arff.js)
 *   [ ] [`asciidoc`](https://github.com/wooorm/refractor/blob/main/lang/asciidoc.js) — alias: `adoc`
 *   [ ] [`asm6502`](https://github.com/wooorm/refractor/blob/main/lang/asm6502.js)
+*   [ ] [`asmatmel`](https://github.com/wooorm/refractor/blob/main/lang/asmatmel.js)
 *   [ ] [`aspnet`](https://github.com/wooorm/refractor/blob/main/lang/aspnet.js)
 *   [ ] [`autohotkey`](https://github.com/wooorm/refractor/blob/main/lang/autohotkey.js)
 *   [ ] [`autoit`](https://github.com/wooorm/refractor/blob/main/lang/autoit.js)
@@ -491,6 +492,7 @@ syntaxes are made to work with global variables and are not importable.
 *   [ ] [`glsl`](https://github.com/wooorm/refractor/blob/main/lang/glsl.js)
 *   [ ] [`gml`](https://github.com/wooorm/refractor/blob/main/lang/gml.js) — alias: `gamemakerlanguage`
 *   [ ] [`gn`](https://github.com/wooorm/refractor/blob/main/lang/gn.js) — alias: `gni`
+*   [ ] [`go-module`](https://github.com/wooorm/refractor/blob/main/lang/go-module.js) — alias: `go-mod`
 *   [ ] [`graphql`](https://github.com/wooorm/refractor/blob/main/lang/graphql.js)
 *   [ ] [`groovy`](https://github.com/wooorm/refractor/blob/main/lang/groovy.js)
 *   [ ] [`haml`](https://github.com/wooorm/refractor/blob/main/lang/haml.js)
@@ -526,6 +528,7 @@ syntaxes are made to work with global variables and are not importable.
 *   [ ] [`jsstacktrace`](https://github.com/wooorm/refractor/blob/main/lang/jsstacktrace.js)
 *   [ ] [`jsx`](https://github.com/wooorm/refractor/blob/main/lang/jsx.js)
 *   [ ] [`julia`](https://github.com/wooorm/refractor/blob/main/lang/julia.js)
+*   [ ] [`keepalived`](https://github.com/wooorm/refractor/blob/main/lang/keepalived.js)
 *   [ ] [`keyman`](https://github.com/wooorm/refractor/blob/main/lang/keyman.js)
 *   [ ] [`kumir`](https://github.com/wooorm/refractor/blob/main/lang/kumir.js) — alias: `kum`
 *   [ ] [`kusto`](https://github.com/wooorm/refractor/blob/main/lang/kusto.js)
@@ -621,6 +624,7 @@ syntaxes are made to work with global variables and are not importable.
 *   [ ] [`tcl`](https://github.com/wooorm/refractor/blob/main/lang/tcl.js)
 *   [ ] [`textile`](https://github.com/wooorm/refractor/blob/main/lang/textile.js)
 *   [ ] [`toml`](https://github.com/wooorm/refractor/blob/main/lang/toml.js)
+*   [ ] [`tremor`](https://github.com/wooorm/refractor/blob/main/lang/tremor.js) — alias: `trickle`, `troy`
 *   [ ] [`tsx`](https://github.com/wooorm/refractor/blob/main/lang/tsx.js)
 *   [ ] [`tt2`](https://github.com/wooorm/refractor/blob/main/lang/tt2.js)
 *   [ ] [`turtle`](https://github.com/wooorm/refractor/blob/main/lang/turtle.js) — alias: `trig`
@@ -637,6 +641,7 @@ syntaxes are made to work with global variables and are not importable.
 *   [ ] [`visual-basic`](https://github.com/wooorm/refractor/blob/main/lang/visual-basic.js) — alias: `vb`, `vba`
 *   [ ] [`warpscript`](https://github.com/wooorm/refractor/blob/main/lang/warpscript.js)
 *   [ ] [`wasm`](https://github.com/wooorm/refractor/blob/main/lang/wasm.js)
+*   [ ] [`web-idl`](https://github.com/wooorm/refractor/blob/main/lang/web-idl.js) — alias: `webidl`
 *   [ ] [`wiki`](https://github.com/wooorm/refractor/blob/main/lang/wiki.js)
 *   [ ] [`wolfram`](https://github.com/wooorm/refractor/blob/main/lang/wolfram.js) — alias: `mathematica`, `nb`, `wl`
 *   [ ] [`wren`](https://github.com/wooorm/refractor/blob/main/lang/wren.js)

@@ -8,7 +8,7 @@ export default function roboconf(Prism) {
     comment: /#.*/,
     keyword: {
       pattern:
-        /(^|\s)(?:(?:facet|instance of)(?=[ \t]+[\w-]+[ \t]*\{)|(?:external|import)\b)/,
+        /(^|\s)(?:(?:external|import)\b|(?:facet|instance of)(?=[ \t]+[\w-]+[ \t]*\{))/,
       lookbehind: true
     },
     component: {

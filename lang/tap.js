@@ -6,6 +6,7 @@ tap.aliases = []
 /** @type {import('../core.js').Syntax} */
 export default function tap(Prism) {
   Prism.register(refractorYaml)
+  // https://en.wikipedia.org/wiki/Test_Anything_Protocol
   Prism.languages.tap = {
     fail: /not ok[^#{\n\r]*/,
     pass: /ok[^#{\n\r]*/,

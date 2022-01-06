@@ -23,7 +23,7 @@ export default function git(Prism) {
     /*
      * a string (double and simple quote)
      */
-    string: /("|')(?:\\.|(?!\1)[^\\\r\n])*\1/m,
+    string: /("|')(?:\\.|(?!\1)[^\\\r\n])*\1/,
     /*
      * a git command. It starts with a random prompt finishing by a $, then "git" then some other parameters
      * For instance:
@@ -38,7 +38,7 @@ export default function git(Prism) {
          * $ git diff --cached
          * $ git log -p
          */
-        parameter: /\s--?\w+/m
+        parameter: /\s--?\w+/
       }
     },
     /*

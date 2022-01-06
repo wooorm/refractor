@@ -72,7 +72,7 @@ export default function smali(Prism) {
       alias: 'variable'
     },
     boolean: {
-      pattern: /(^|[^\w.-])(?:true|false)(?![\w.-])/,
+      pattern: /(^|[^\w.-])(?:false|true)(?![\w.-])/,
       lookbehind: true
     },
     number: {
