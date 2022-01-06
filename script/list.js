@@ -33,9 +33,9 @@ function generate(list) {
     ...list.map(
       (lang) => 'import ' + toId(lang) + " from '../lang/" + lang + ".js'"
     ),
-    '',
-    'export {refractor}',
     ...list.map((lang) => 'refractor.register(' + toId(lang) + ')'),
+    '',
+    "export {refractor} from './core.js'",
     ''
   ].join('\n')
 }
