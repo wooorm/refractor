@@ -29,10 +29,11 @@ function generate(list) {
     " * @typedef {import('./core.js').Grammar} Grammar",
     " * @typedef {import('./core.js').Syntax} Syntax",
     ' */',
-    "import {refractor} from './core.js'",
     ...list.map(
       (lang) => 'import ' + toId(lang) + " from '../lang/" + lang + ".js'"
     ),
+    "import {refractor} from './core.js'",
+    '',
     ...list.map((lang) => 'refractor.register(' + toId(lang) + ')'),
     '',
     "export {refractor} from './core.js'",
