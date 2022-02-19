@@ -663,7 +663,7 @@ If you are in a browser, you can use any Prism theme.
 For example, to get Prism Dark from cdnjs:
 
 ```html
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-dark.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/themes/prism-dark.min.css">
 ```
 
 <!--Old name of the following section:-->
