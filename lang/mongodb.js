@@ -93,7 +93,8 @@ export default function mongodb(Prism) {
       '$sortByCount',
       '$unionWith',
       '$unset',
-      '$unwind', // aggregation pipeline operators
+      '$unwind',
+      '$setWindowFields', // aggregation pipeline operators
       '$abs',
       '$accumulator',
       '$acos',
@@ -223,7 +224,17 @@ export default function mongodb(Prism) {
       '$type',
       '$week',
       '$year',
-      '$zip', // aggregation pipeline query modifiers
+      '$zip',
+      '$count',
+      '$dateAdd',
+      '$dateDiff',
+      '$dateSubtract',
+      '$dateTrunc',
+      '$getField',
+      '$rand',
+      '$sampleRate',
+      '$setField',
+      '$unsetField', // aggregation pipeline query modifiers
       '$comment',
       '$explain',
       '$hint',

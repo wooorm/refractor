@@ -47,7 +47,7 @@ That’s why there are three entry points for refractor:
 
 *   `lib/core.js` — 0 languages
 *   `lib/common.js` (default) — 36 languages
-*   `lib/all.js` — 276 languages
+*   `lib/all.js` — 277 languages
 
 <!--count end-->
 
@@ -631,6 +631,7 @@ syntaxes are made to work with global variables and are not importable.
 *   [ ] [`twig`](https://github.com/wooorm/refractor/blob/main/lang/twig.js)
 *   [ ] [`typoscript`](https://github.com/wooorm/refractor/blob/main/lang/typoscript.js) — alias: `tsconfig`
 *   [ ] [`unrealscript`](https://github.com/wooorm/refractor/blob/main/lang/unrealscript.js) — alias: `uc`, `uscript`
+*   [ ] [`uorazor`](https://github.com/wooorm/refractor/blob/main/lang/uorazor.js)
 *   [ ] [`uri`](https://github.com/wooorm/refractor/blob/main/lang/uri.js) — alias: `url`
 *   [ ] [`v`](https://github.com/wooorm/refractor/blob/main/lang/v.js)
 *   [ ] [`vala`](https://github.com/wooorm/refractor/blob/main/lang/vala.js)

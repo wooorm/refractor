@@ -26,7 +26,7 @@ export default function autoit(Prism) {
       }
     },
     directive: {
-      pattern: /(^[\t ]*)#\w+/m,
+      pattern: /(^[\t ]*)#[\w-]+/m,
       lookbehind: true,
       alias: 'keyword'
     },

@@ -67,7 +67,7 @@ export default function systemd(Prism) {
           }
         }
       },
-      operator: /=/
+      punctuation: /=/
     }
   })(Prism)
 }

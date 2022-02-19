@@ -10,7 +10,7 @@ export default function editorconfig(Prism) {
     section: {
       pattern: /(^[ \t]*)\[.+\]/m,
       lookbehind: true,
-      alias: 'keyword',
+      alias: 'selector',
       inside: {
         regex: /\\\\[\[\]{},!?.*]/,
         // Escape special characters with '\\'
