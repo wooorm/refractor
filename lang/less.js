@@ -35,7 +35,7 @@ A comment before a mixin usage prevents the latter to be properly highlighted.
         variable: /@+[\w-]+/
       }
     },
-    property: /(?:@\{[\w-]+\}|[\w-])+(?:\+_?)?(?=\s*:)/i,
+    property: /(?:@\{[\w-]+\}|[\w-])+(?:\+_?)?(?=\s*:)/,
     operator: /[+\-*\/]/
   })
   Prism.languages.insertBefore('less', 'property', {

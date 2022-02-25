@@ -10,7 +10,7 @@ function autoit(Prism) {
       {
         // The multi-line comments delimiters can actually be commented out with ";"
         pattern:
-          /(^[\t ]*)#(?:comments-start|cs)[\s\S]*?^[ \t]*#(?:comments-end|ce)/m,
+          /(^[\t ]*)#(?:comments-start|cs)[\s\S]*?^[ \t]*#(?:ce|comments-end)/m,
         lookbehind: true
       }
     ],
@@ -26,7 +26,7 @@ function autoit(Prism) {
       }
     },
     directive: {
-      pattern: /(^[\t ]*)#\w+/m,
+      pattern: /(^[\t ]*)#[\w-]+/m,
       lookbehind: true,
       alias: 'keyword'
     },
@@ -36,8 +36,8 @@ function autoit(Prism) {
     keyword:
       /\b(?:Case|Const|Continue(?:Case|Loop)|Default|Dim|Do|Else(?:If)?|End(?:Func|If|Select|Switch|With)|Enum|Exit(?:Loop)?|For|Func|Global|If|In|Local|Next|Null|ReDim|Select|Static|Step|Switch|Then|To|Until|Volatile|WEnd|While|With)\b/i,
     number: /\b(?:0x[\da-f]+|\d+(?:\.\d+)?(?:e[+-]?\d+)?)\b/i,
-    boolean: /\b(?:True|False)\b/i,
-    operator: /<[=>]?|[-+*\/=&>]=?|[?^]|\b(?:And|Or|Not)\b/i,
+    boolean: /\b(?:False|True)\b/i,
+    operator: /<[=>]?|[-+*\/=&>]=?|[?^]|\b(?:And|Not|Or)\b/i,
     punctuation: /[\[\]().,:]/
   }
 }

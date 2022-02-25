@@ -19,11 +19,11 @@ function nasm(Prism) {
         lookbehind: true
       },
       /(?:extern|global)[^;\r\n]*/i,
-      /(?:CPU|FLOAT|DEFAULT).*$/m
+      /(?:CPU|DEFAULT|FLOAT).*$/m
     ],
     register: {
       pattern:
-        /\b(?:st\d|[xyz]mm\d\d?|[cdt]r\d|r\d\d?[bwd]?|[er]?[abcd]x|[abcd][hl]|[er]?(?:bp|sp|si|di)|[cdefgs]s)\b/i,
+        /\b(?:st\d|[xyz]mm\d\d?|[cdt]r\d|r\d\d?[bwd]?|[er]?[abcd]x|[abcd][hl]|[er]?(?:bp|di|si|sp)|[cdefgs]s)\b/i,
       alias: 'variable'
     },
     number:

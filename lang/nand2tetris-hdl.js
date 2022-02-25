@@ -6,8 +6,8 @@ nand2tetrisHdl.aliases = []
 function nand2tetrisHdl(Prism) {
   Prism.languages['nand2tetris-hdl'] = {
     comment: /\/\/.*|\/\*[\s\S]*?(?:\*\/|$)/,
-    keyword: /\b(?:CHIP|IN|OUT|PARTS|BUILTIN|CLOCKED)\b/,
-    boolean: /\b(?:true|false)\b/,
+    keyword: /\b(?:BUILTIN|CHIP|CLOCKED|IN|OUT|PARTS)\b/,
+    boolean: /\b(?:false|true)\b/,
     function: /\b[A-Za-z][A-Za-z0-9]*(?=\()/,
     number: /\b\d+\b/,
     operator: /=|\.\./,

@@ -35,8 +35,7 @@ function rust(Prism) {
       char: {
         pattern:
           /b?'(?:\\(?:x[0-7][\da-fA-F]|u\{(?:[\da-fA-F]_*){1,6}\}|.)|[^\\\r\n\t'])'/,
-        greedy: true,
-        alias: 'string'
+        greedy: true
       },
       attribute: {
         pattern: /#!?\[(?:[^\[\]"]|"(?:\\[\s\S]|[^\\"])*")*\]/,
@@ -75,7 +74,7 @@ function rust(Prism) {
         alias: 'function'
       },
       'type-definition': {
-        pattern: /(\b(?:enum|struct|union)\s+)\w+/,
+        pattern: /(\b(?:enum|struct|trait|type|union)\s+)\w+/,
         lookbehind: true,
         alias: 'class-name'
       },
@@ -97,9 +96,9 @@ function rust(Prism) {
       ],
       keyword: [
         // https://github.com/rust-lang/reference/blob/master/src/keywords.md
-        /\b(?:abstract|as|async|await|become|box|break|const|continue|crate|do|dyn|else|enum|extern|final|fn|for|if|impl|in|let|loop|macro|match|mod|move|mut|override|priv|pub|ref|return|self|Self|static|struct|super|trait|try|type|typeof|union|unsafe|unsized|use|virtual|where|while|yield)\b/, // primitives and str
+        /\b(?:Self|abstract|as|async|await|become|box|break|const|continue|crate|do|dyn|else|enum|extern|final|fn|for|if|impl|in|let|loop|macro|match|mod|move|mut|override|priv|pub|ref|return|self|static|struct|super|trait|try|type|typeof|union|unsafe|unsized|use|virtual|where|while|yield)\b/, // primitives and str
         // https://doc.rust-lang.org/stable/rust-by-example/primitives.html
-        /\b(?:[ui](?:8|16|32|64|128|size)|f(?:32|64)|bool|char|str)\b/
+        /\b(?:bool|char|f(?:32|64)|[ui](?:8|16|32|64|128|size)|str)\b/
       ],
       // functions can technically start with an upper-case letter, but this will introduce a lot of false positives
       // and Rust's naming conventions recommend snake_case anyway.
@@ -119,7 +118,7 @@ function rust(Prism) {
       },
       // Hex, oct, bin, dec numbers with visual separators and type suffix
       number:
-        /\b(?:0x[\dA-Fa-f](?:_?[\dA-Fa-f])*|0o[0-7](?:_?[0-7])*|0b[01](?:_?[01])*|(?:(?:\d(?:_?\d)*)?\.)?\d(?:_?\d)*(?:[Ee][+-]?\d+)?)(?:_?(?:[iu](?:8|16|32|64|size)?|f32|f64))?\b/,
+        /\b(?:0x[\dA-Fa-f](?:_?[\dA-Fa-f])*|0o[0-7](?:_?[0-7])*|0b[01](?:_?[01])*|(?:(?:\d(?:_?\d)*)?\.)?\d(?:_?\d)*(?:[Ee][+-]?\d+)?)(?:_?(?:f32|f64|[iu](?:8|16|32|64|size)?))?\b/,
       boolean: /\b(?:false|true)\b/,
       punctuation: /->|\.\.=|\.{1,3}|::|[{}[\];(),:]/,
       operator: /[-+*\/%!^]=?|=[=>]?|&[&=]?|\|[|=]?|<<?=?|>>?=?|[@?]/

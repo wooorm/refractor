@@ -10,7 +10,8 @@ function nginx(Prism) {
     Prism.languages.nginx = {
       comment: {
         pattern: /(^|[\s{};])#.*/,
-        lookbehind: true
+        lookbehind: true,
+        greedy: true
       },
       directive: {
         pattern:
@@ -22,6 +23,7 @@ function nginx(Prism) {
             pattern:
               /((?:^|[^\\])(?:\\\\)*)(?:"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')/,
             lookbehind: true,
+            greedy: true,
             inside: {
               escape: {
                 pattern: /\\["'\\nrt]/,

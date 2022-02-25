@@ -75,7 +75,10 @@ function qml(Prism) {
         alias: 'language-javascript',
         inside: Prism.languages.javascript
       },
-      string: /"(?:\\.|[^\\"\r\n])*"/,
+      string: {
+        pattern: /"(?:\\.|[^\\"\r\n])*"/,
+        greedy: true
+      },
       keyword: /\b(?:as|import|on)\b/,
       punctuation: /[{}[\]:;,]/
     }

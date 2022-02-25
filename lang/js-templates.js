@@ -55,7 +55,7 @@ function jsTemplates(Prism) {
       // div.innerHTML = `<p></p>`
       createTemplate('html', /\bhtml|\.\s*(?:inner|outer)HTML\s*\+?=/.source), // svg`<path fill="#fff" d="M55.37 ..."/>`
       createTemplate('svg', /\bsvg/.source), // md`# h1`, markdown`## h2`
-      createTemplate('markdown', /\b(?:md|markdown)/.source), // gql`...`, graphql`...`, graphql.experimental`...`
+      createTemplate('markdown', /\b(?:markdown|md)/.source), // gql`...`, graphql`...`, graphql.experimental`...`
       createTemplate(
         'graphql',
         /\b(?:gql|graphql(?:\s*\.\s*experimental)?)/.source

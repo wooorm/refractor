@@ -32,7 +32,7 @@ function bsl(Prism) {
       {
         // EN
         pattern:
-          /\b(?:while|for|new|break|try|except|raise|else|endtry|undefined|function|var|return|endfunction|null|if|elseif|procedure|endprocedure|then|val|export|endif|in|each|true|false|to|do|enddo|execute)\b/i
+          /\b(?:break|do|each|else|elseif|enddo|endfunction|endif|endprocedure|endtry|except|execute|export|false|for|function|if|in|new|null|procedure|raise|return|then|to|true|try|undefined|val|var|while)\b/i
       }
     ],
     number: {
@@ -48,7 +48,7 @@ function bsl(Prism) {
         lookbehind: true
       }, // EN
       {
-        pattern: /\b(?:and|or|not)\b/i
+        pattern: /\b(?:and|not|or)\b/i
       }
     ],
     punctuation: /\(\.|\.\)|[()\[\]:;,.]/,
@@ -56,8 +56,9 @@ function bsl(Prism) {
       // Теги препроцессора вида &Клиент, &Сервер, ...
       // Preprocessor tags of the type &Client, &Server, ...
       {
-        pattern: /^(\s*)&.*/m,
+        pattern: /^([ \t]*)&.*/m,
         lookbehind: true,
+        greedy: true,
         alias: 'important'
       }, // Инструкции препроцессора вида:
       // #Если Сервер Тогда
@@ -68,7 +69,9 @@ function bsl(Prism) {
       // ...
       // #EndIf
       {
-        pattern: /^\s*#.*/gm,
+        pattern: /^([ \t]*)#.*/gm,
+        lookbehind: true,
+        greedy: true,
         alias: 'important'
       }
     ]

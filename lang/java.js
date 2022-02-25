@@ -23,6 +23,11 @@ function java(Prism) {
       }
     }
     Prism.languages.java = Prism.languages.extend('clike', {
+      string: {
+        pattern: /(^|[^\\])"(?:\\.|[^"\\\r\n])*"/,
+        lookbehind: true,
+        greedy: true
+      },
       'class-name': [
         className,
         {
@@ -57,6 +62,10 @@ function java(Prism) {
         pattern: /"""[ \t]*[\r\n](?:(?:"|"")?(?:\\.|[^"\\]))*"""/,
         greedy: true,
         alias: 'string'
+      },
+      char: {
+        pattern: /'(?:\\.|[^'\\\r\n]){1,6}'/,
+        greedy: true
       }
     })
     Prism.languages.insertBefore('java', 'class-name', {

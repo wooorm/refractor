@@ -14,7 +14,7 @@ function hcl(Prism) {
     keyword: [
       {
         pattern:
-          /(?:resource|data)\s+(?:"(?:\\[\s\S]|[^\\"])*")(?=\s+"[\w-]+"\s+\{)/i,
+          /(?:data|resource)\s+(?:"(?:\\[\s\S]|[^\\"])*")(?=\s+"[\w-]+"\s+\{)/i,
         inside: {
           type: {
             pattern: /(resource|data|\s+)(?:"(?:\\[\s\S]|[^\\"])*")/i,
@@ -25,11 +25,11 @@ function hcl(Prism) {
       },
       {
         pattern:
-          /(?:provider|provisioner|variable|output|module|backend)\s+(?:[\w-]+|"(?:\\[\s\S]|[^\\"])*")\s+(?=\{)/i,
+          /(?:backend|module|output|provider|provisioner|variable)\s+(?:[\w-]+|"(?:\\[\s\S]|[^\\"])*")\s+(?=\{)/i,
         inside: {
           type: {
             pattern:
-              /(provider|provisioner|variable|output|module|backend)\s+(?:[\w-]+|"(?:\\[\s\S]|[^\\"])*")\s+/i,
+              /(backend|module|output|provider|provisioner|variable)\s+(?:[\w-]+|"(?:\\[\s\S]|[^\\"])*")\s+/i,
             lookbehind: true,
             alias: 'variable'
           }
@@ -49,11 +49,11 @@ function hcl(Prism) {
           inside: {
             type: {
               pattern:
-                /(\b(?:terraform|var|self|count|module|path|data|local)\b\.)[\w\*]+/i,
+                /(\b(?:count|data|local|module|path|self|terraform|var)\b\.)[\w\*]+/i,
               lookbehind: true,
               alias: 'variable'
             },
-            keyword: /\b(?:terraform|var|self|count|module|path|data|local)\b/i,
+            keyword: /\b(?:count|data|local|module|path|self|terraform|var)\b/i,
             function: /\w+(?=\()/,
             string: {
               pattern: /"(?:\\[\s\S]|[^\\"])*"/,
@@ -66,7 +66,7 @@ function hcl(Prism) {
       }
     },
     number: /\b0x[\da-f]+\b|\b\d+(?:\.\d*)?(?:e[+-]?\d+)?/i,
-    boolean: /\b(?:true|false)\b/i,
+    boolean: /\b(?:false|true)\b/i,
     punctuation: /[=\[\]{}]/
   }
 }

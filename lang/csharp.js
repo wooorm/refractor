@@ -130,11 +130,6 @@ function csharp(Prism) {
           pattern: re(/(^|[^@$\\])<<0>>/.source, [regularString]),
           lookbehind: true,
           greedy: true
-        },
-        {
-          pattern: RegExp(character),
-          greedy: true,
-          alias: 'character'
         }
       ],
       'class-name': [
@@ -212,7 +207,7 @@ function csharp(Prism) {
       keyword: keywords,
       // https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/lexical-structure#literals
       number:
-        /(?:\b0(?:x[\da-f_]*[\da-f]|b[01_]*[01])|(?:\B\.\d+(?:_+\d+)*|\b\d+(?:_+\d+)*(?:\.\d+(?:_+\d+)*)?)(?:e[-+]?\d+(?:_+\d+)*)?)(?:ul|lu|[dflmu])?\b/i,
+        /(?:\b0(?:x[\da-f_]*[\da-f]|b[01_]*[01])|(?:\B\.\d+(?:_+\d+)*|\b\d+(?:_+\d+)*(?:\.\d+(?:_+\d+)*)?)(?:e[-+]?\d+(?:_+\d+)*)?)(?:[dflmu]|lu|ul)?\b/i,
       operator: />>=?|<<=?|[-=]>|([-+&|])\1|~|\?\?=?|[-+*/%&|^!=<>]=?/,
       punctuation: /\?\.?|::|[{}[\];(),.:]/
     })
@@ -245,7 +240,7 @@ function csharp(Prism) {
       'type-expression': {
         // default(Foo), typeof(Foo<Bar>), sizeof(int)
         pattern: re(
-          /(\b(?:default|typeof|sizeof)\s*\(\s*(?!\s))(?:[^()\s]|\s(?!\s)|<<0>>)*(?=\s*\))/
+          /(\b(?:default|sizeof|typeof)\s*\(\s*(?!\s))(?:[^()\s]|\s(?!\s)|<<0>>)*(?=\s*\))/
             .source,
           [nestedRound]
         ),
@@ -458,8 +453,12 @@ alias: 'class-name'
           greedy: true,
           inside: createInterpolationInside(sInterpolation, sInterpolationRound)
         }
-      ]
+      ],
+      char: {
+        pattern: RegExp(character),
+        greedy: true
+      }
     })
+    Prism.languages.dotnet = Prism.languages.cs = Prism.languages.csharp
   })(Prism)
-  Prism.languages.dotnet = Prism.languages.cs = Prism.languages.csharp
 }

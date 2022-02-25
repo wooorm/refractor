@@ -19,8 +19,8 @@ function rego(Prism) {
       greedy: true
     },
     keyword:
-      /\b(?:as|default|else|import|package|not|null|some|with|set(?=\s*\())\b/,
-    boolean: /\b(?:true|false)\b/,
+      /\b(?:as|default|else|import|not|null|package|set(?=\s*\()|some|with)\b/,
+    boolean: /\b(?:false|true)\b/,
     function: {
       pattern: /\b[a-z_]\w*\b(?:\s*\.\s*\b[a-z_]\w*\b)*(?=\s*\()/i,
       inside: {

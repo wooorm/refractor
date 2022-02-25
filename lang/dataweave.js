@@ -16,7 +16,7 @@ function dataweave(Prism) {
         greedy: true
       },
       'mime-type':
-        /\b(?:text|audio|video|application|multipart|image)\/[\w+-]+/,
+        /\b(?:application|audio|image|multipart|text|video)\/[\w+-]+/,
       date: {
         pattern: /\|[\w:+-]+\|/,
         greedy: true
@@ -37,13 +37,13 @@ function dataweave(Prism) {
         pattern: /\/(?:[^\\\/\r\n]|\\[^\r\n])+\//,
         greedy: true
       },
+      keyword:
+        /\b(?:and|as|at|case|do|else|fun|if|input|is|match|not|ns|null|or|output|type|unless|update|using|var)\b/,
       function: /\b[A-Z_]\w*(?=\s*\()/i,
       number: /-?\b\d+(?:\.\d+)?(?:e[+-]?\d+)?\b/i,
       punctuation: /[{}[\];(),.:@]/,
       operator: /<<|>>|->|[<>~=]=?|!=|--?-?|\+\+?|!|\?/,
-      boolean: /\b(?:true|false)\b/,
-      keyword:
-        /\b(?:match|input|output|ns|type|update|null|if|else|using|unless|at|is|as|case|do|fun|var|not|and|or)\b/
+      boolean: /\b(?:false|true)\b/
     }
   })(Prism)
 }

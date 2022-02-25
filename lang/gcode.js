@@ -13,10 +13,11 @@ function gcode(Prism) {
     keyword: /\b[GM]\d+(?:\.\d+)?\b/,
     property: /\b[A-Z]/,
     checksum: {
-      pattern: /\*\d+/,
-      alias: 'punctuation'
+      pattern: /(\*)\d+/,
+      lookbehind: true,
+      alias: 'number'
     },
     // T0:0:0
-    punctuation: /:/
+    punctuation: /[:*]/
   }
 }

@@ -11,7 +11,7 @@ function zig(Prism) {
       }
     }
     var keyword =
-      /\b(?:align|allowzero|and|asm|async|await|break|cancel|catch|comptime|const|continue|defer|else|enum|errdefer|error|export|extern|fn|for|if|inline|linksection|nakedcc|noalias|null|or|orelse|packed|promise|pub|resume|return|stdcallcc|struct|suspend|switch|test|threadlocal|try|undefined|union|unreachable|usingnamespace|var|volatile|while)\b/
+      /\b(?:align|allowzero|and|anyframe|anytype|asm|async|await|break|cancel|catch|comptime|const|continue|defer|else|enum|errdefer|error|export|extern|fn|for|if|inline|linksection|nakedcc|noalias|nosuspend|null|or|orelse|packed|promise|pub|resume|return|stdcallcc|struct|suspend|switch|test|threadlocal|try|undefined|union|unreachable|usingnamespace|var|volatile|while)\b/
     var IDENTIFIER = '\\b(?!' + keyword.source + ')(?!\\d)\\w+\\b'
     var ALIGN = /align\s*\((?:[^()]|\([^()]*\))*\)/.source
     var PREFIX_TYPE_OP =
@@ -45,7 +45,7 @@ function zig(Prism) {
     Prism.languages.zig = {
       comment: [
         {
-          pattern: /\/{3}.*/,
+          pattern: /\/\/[/!].*/,
           alias: 'doc-comment'
         },
         /\/{2}.*/
@@ -62,15 +62,15 @@ function zig(Prism) {
           pattern: /([\r\n])([ \t]+c?\\{2}).*(?:(?:\r\n?|\n)\2.*)*/,
           lookbehind: true,
           greedy: true
-        },
-        {
-          // characters 'a', '\n', '\xFF', '\u{10FFFF}'
-          pattern:
-            /(^|[^\\])'(?:[^'\\\r\n]|\\(?:.|x[a-fA-F\d]{2}|u\{[a-fA-F\d]{1,6}\}))'/,
-          lookbehind: true,
-          greedy: true
         }
       ],
+      char: {
+        // characters 'a', '\n', '\xFF', '\u{10FFFF}'
+        pattern:
+          /(^|[^\\])'(?:[^'\\\r\n]|[\uD800-\uDFFF]{2}|\\(?:.|x[a-fA-F\d]{2}|u\{[a-fA-F\d]{1,6}\}))'/,
+        lookbehind: true,
+        greedy: true
+      },
       builtin: /\B@(?!\d)\w+(?=\s*\()/,
       label: {
         pattern:
@@ -103,9 +103,9 @@ function zig(Prism) {
           inside: null // see below
         }
       ],
-      'builtin-types': {
+      'builtin-type': {
         pattern:
-          /\b(?:anyerror|bool|c_u?(?:short|int|long|longlong)|c_longdouble|c_void|comptime_(?:float|int)|[iu](?:8|16|32|64|128|size)|f(?:16|32|64|128)|noreturn|type|void)\b/,
+          /\b(?:anyerror|bool|c_u?(?:int|long|longlong|short)|c_longdouble|c_void|comptime_(?:float|int)|f(?:16|32|64|128)|[iu](?:8|16|32|64|128|size)|noreturn|type|void)\b/,
         alias: 'keyword'
       },
       keyword: keyword,

@@ -67,7 +67,7 @@ function dot(Prism) {
       },
       keyword: /\b(?:digraph|edge|graph|node|strict|subgraph)\b/i,
       'compass-point': {
-        pattern: /(:[ \t\r\n]*)(?:[ns][ew]?|[ewc_])(?![\w\x80-\uFFFF])/,
+        pattern: /(:[ \t\r\n]*)(?:[ewc_]|[ns][ew]?)(?![\w\x80-\uFFFF])/,
         lookbehind: true,
         alias: 'builtin'
       },

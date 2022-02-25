@@ -11,7 +11,7 @@ function jsdoc(Prism) {
     var javascript = Prism.languages.javascript
     var type = /\{(?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})+\}/.source
     var parameterPrefix =
-      '(@(?:param|arg|argument|property)\\s+(?:' + type + '\\s+)?)'
+      '(@(?:arg|argument|param|property)\\s+(?:' + type + '\\s+)?)'
     Prism.languages.jsdoc = Prism.languages.extend('javadoclike', {
       parameter: {
         // @param {string} foo - foo bar
@@ -52,7 +52,7 @@ function jsdoc(Prism) {
       'class-name': [
         {
           pattern: RegExp(
-            /(@(?:augments|extends|class|interface|memberof!?|template|this|typedef)\s+(?:<TYPE>\s+)?)[A-Z]\w*(?:\.[A-Z]\w*)*/.source.replace(
+            /(@(?:augments|class|extends|interface|memberof!?|template|this|typedef)\s+(?:<TYPE>\s+)?)[A-Z]\w*(?:\.[A-Z]\w*)*/.source.replace(
               /<TYPE>/g,
               function () {
                 return type

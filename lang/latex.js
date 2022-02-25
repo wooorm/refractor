@@ -13,11 +13,11 @@ function latex(Prism) {
       }
     }
     Prism.languages.latex = {
-      comment: /%.*/m,
+      comment: /%.*/,
       // the verbatim environment prints whitespace to the document
       cdata: {
         pattern:
-          /(\\begin\{((?:verbatim|lstlisting)\*?)\})[\s\S]*?(?=\\end\{\2\})/,
+          /(\\begin\{((?:lstlisting|verbatim)\*?)\})[\s\S]*?(?=\\end\{\2\})/,
         lookbehind: true
       },
       /*
@@ -33,7 +33,7 @@ function latex(Prism) {
         },
         {
           pattern:
-            /(\\begin\{((?:equation|math|eqnarray|align|multline|gather)\*?)\})[\s\S]*?(?=\\end\{\2\})/,
+            /(\\begin\{((?:align|eqnarray|equation|gather|math|multline)\*?)\})[\s\S]*?(?=\\end\{\2\})/,
           lookbehind: true,
           inside: insideEqu,
           alias: 'string'
@@ -45,7 +45,7 @@ function latex(Prism) {
        */
       keyword: {
         pattern:
-          /(\\(?:begin|end|ref|cite|label|usepackage|documentclass)(?:\[[^\]]+\])?\{)[^}]+(?=\})/,
+          /(\\(?:begin|cite|documentclass|end|label|ref|usepackage)(?:\[[^\]]+\])?\{)[^}]+(?=\})/,
         lookbehind: true
       },
       url: {
@@ -58,7 +58,7 @@ function latex(Prism) {
        */
       headline: {
         pattern:
-          /(\\(?:part|chapter|section|subsection|frametitle|subsubsection|paragraph|subparagraph|subsubparagraph|subsubsubparagraph)\*?(?:\[[^\]]+\])?\{)[^}]+(?=\})/,
+          /(\\(?:chapter|frametitle|paragraph|part|section|subparagraph|subsection|subsubparagraph|subsubsection|subsubsubparagraph)\*?(?:\[[^\]]+\])?\{)[^}]+(?=\})/,
         lookbehind: true,
         alias: 'class-name'
       },

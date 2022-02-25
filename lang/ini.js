@@ -14,7 +14,7 @@ function ini(Prism) {
       pattern: /(^[ \f\t\v]*)[#;][^\n\r]*/m,
       lookbehind: true
     },
-    header: {
+    section: {
       pattern: /(^[ \f\t\v]*)\[[^\n\r\]]*\]?/m,
       lookbehind: true,
       inside: {

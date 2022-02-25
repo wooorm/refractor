@@ -23,7 +23,7 @@ function json(Prism) {
     number: /-?\b\d+(?:\.\d+)?(?:e[+-]?\d+)?\b/i,
     punctuation: /[{}[\],]/,
     operator: /:/,
-    boolean: /\b(?:true|false)\b/,
+    boolean: /\b(?:false|true)\b/,
     null: {
       pattern: /\bnull\b/,
       alias: 'keyword'

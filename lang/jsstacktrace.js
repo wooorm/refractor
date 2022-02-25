@@ -25,7 +25,7 @@ function jsstacktrace(Prism) {
         },
         function: {
           pattern:
-            /(at\s+(?:new\s+)?)(?!\s)[_$a-zA-Z\xA0-\uFFFF<][.$\w\xA0-\uFFFF<>]*/,
+            /(\bat\s+(?:new\s+)?)(?!\s)[_$a-zA-Z\xA0-\uFFFF<][.$\w\xA0-\uFFFF<>]*/,
           lookbehind: true,
           inside: {
             punctuation: /\./
@@ -38,7 +38,7 @@ function jsstacktrace(Prism) {
           alias: 'variable'
         },
         'line-number': {
-          pattern: /:[0-9]+(?::[0-9]+)?\b/,
+          pattern: /:\d+(?::\d+)?\b/,
           alias: 'number',
           inside: {
             punctuation: /:/

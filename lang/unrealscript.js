@@ -43,7 +43,7 @@ function unrealscript(Prism) {
     number: /\b0x[\da-f]+\b|(?:\b\d+(?:\.\d*)?|\B\.\d+)(?:e[+-]?\d+)?/i,
     // https://docs.unrealengine.com/udk/Three/UnrealScriptExpressions.html
     operator:
-      />>|<<|--|\+\+|\*\*|[-+*/~!=<>$@]=?|&&?|\|\|?|\^\^?|[?:%]|\b(?:Cross|Dot|ClockwiseFrom)\b/,
+      />>|<<|--|\+\+|\*\*|[-+*/~!=<>$@]=?|&&?|\|\|?|\^\^?|[?:%]|\b(?:ClockwiseFrom|Cross|Dot)\b/,
     punctuation: /[()[\]{};,.]/
   }
   Prism.languages.uc = Prism.languages.uscript = Prism.languages.unrealscript

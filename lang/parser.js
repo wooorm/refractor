@@ -54,7 +54,7 @@ function parser(Prism) {
           keyword: parser.keyword,
           variable: parser.variable,
           function: parser.function,
-          boolean: /\b(?:true|false)\b/,
+          boolean: /\b(?:false|true)\b/,
           number: /\b(?:0x[a-f\d]+|\d+(?:\.\d*)?(?:e[+-]?\d+)?)\b/i,
           escape: parser.escape,
           operator:

@@ -7,7 +7,7 @@ function aspnet(Prism) {
   Prism.register(refractorCsharp)
   Prism.languages.aspnet = Prism.languages.extend('markup', {
     'page-directive': {
-      pattern: /<%\s*@.*%>/i,
+      pattern: /<%\s*@.*%>/,
       alias: 'tag',
       inside: {
         'page-directive': {
@@ -19,11 +19,11 @@ function aspnet(Prism) {
       }
     },
     directive: {
-      pattern: /<%.*%>/i,
+      pattern: /<%.*%>/,
       alias: 'tag',
       inside: {
         directive: {
-          pattern: /<%\s*?[$=%#:]{0,2}|%>/i,
+          pattern: /<%\s*?[$=%#:]{0,2}|%>/,
           alias: 'tag'
         },
         rest: Prism.languages.csharp
@@ -31,7 +31,7 @@ function aspnet(Prism) {
     }
   }) // Regexp copied from prism-markup, with a negative look-ahead added
   Prism.languages.aspnet.tag.pattern =
-    /<(?!%)\/?[^\s>\/]+(?:\s+[^\s>\/=]+(?:=(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s'">=]+))?)*\s*\/?>/i // match directives of attribute value foo="<% Bar %>"
+    /<(?!%)\/?[^\s>\/]+(?:\s+[^\s>\/=]+(?:=(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s'">=]+))?)*\s*\/?>/ // match directives of attribute value foo="<% Bar %>"
   Prism.languages.insertBefore(
     'inside',
     'punctuation',

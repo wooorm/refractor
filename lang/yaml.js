@@ -91,7 +91,7 @@ function yaml(Prism) {
         alias: 'number'
       },
       boolean: {
-        pattern: createValuePattern(/true|false/.source, 'i'),
+        pattern: createValuePattern(/false|true/.source, 'i'),
         lookbehind: true,
         alias: 'important'
       },

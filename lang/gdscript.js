@@ -18,7 +18,7 @@ function gdscript(Prism) {
       // const FOO: int = 9, var bar: bool = true
       // func add(reference: Item, amount: int) -> Item:
       pattern:
-        /(^(?:class_name|class|extends)[ \t]+|^export\([ \t]*|\bas[ \t]+|(?:\b(?:const|var)[ \t]|[,(])[ \t]*\w+[ \t]*:[ \t]*|->[ \t]*)[a-zA-Z_]\w*/m,
+        /(^(?:class|class_name|extends)[ \t]+|^export\([ \t]*|\bas[ \t]+|(?:\b(?:const|var)[ \t]|[,(])[ \t]*\w+[ \t]*:[ \t]*|->[ \t]*)[a-zA-Z_]\w*/m,
       lookbehind: true
     },
     keyword:

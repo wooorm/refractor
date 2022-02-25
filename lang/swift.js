@@ -88,7 +88,7 @@ function swift(Prism) {
       alias: 'property',
       inside: {
         'directive-name': /^#\w+/,
-        boolean: /\b(?:true|false)\b/,
+        boolean: /\b(?:false|true)\b/,
         number: /\b\d+(?:\.\d+)*\b/,
         operator: /!|&&|\|\||[<>]=?/,
         punctuation: /[(),]/
@@ -120,8 +120,8 @@ function swift(Prism) {
       alias: 'important'
     },
     keyword:
-      /\b(?:Any|Protocol|Self|Type|actor|as|assignment|associatedtype|associativity|async|await|break|case|catch|class|continue|convenience|default|defer|deinit|didSet|do|dynamic|else|enum|extension|fallthrough|fileprivate|final|for|func|get|guard|higherThan|if|import|in|indirect|infix|init|inout|internal|is|lazy|left|let|lowerThan|mutating|none|nonisolated|nonmutating|open|operator|optional|override|postfix|precedencegroup|prefix|private|protocol|public|repeat|required|rethrows|return|right|safe|self|set|some|static|struct|subscript|super|switch|throw|throws|try|typealias|unowned|unsafe|var|weak|where|while|willSet)\b/,
-    boolean: /\b(?:true|false)\b/,
+      /\b(?:Any|Protocol|Self|Type|actor|as|assignment|associatedtype|associativity|async|await|break|case|catch|class|continue|convenience|default|defer|deinit|didSet|do|dynamic|else|enum|extension|fallthrough|fileprivate|final|for|func|get|guard|higherThan|if|import|in|indirect|infix|init|inout|internal|is|isolated|lazy|left|let|lowerThan|mutating|none|nonisolated|nonmutating|open|operator|optional|override|postfix|precedencegroup|prefix|private|protocol|public|repeat|required|rethrows|return|right|safe|self|set|some|static|struct|subscript|super|switch|throw|throws|try|typealias|unowned|unsafe|var|weak|where|while|willSet)\b/,
+    boolean: /\b(?:false|true)\b/,
     nil: {
       pattern: /\bnil\b/,
       alias: 'constant'

@@ -98,7 +98,7 @@ function icuMessageFormat(Prism) {
                   selector: {
                     pattern: /=\d+|[^{}:=,\s]+/,
                     inside: {
-                      keyword: /^(?:zero|one|two|few|many|other)$/
+                      keyword: /^(?:few|many|one|other|two|zero)$/
                     }
                   }
                 }
@@ -119,7 +119,7 @@ function icuMessageFormat(Prism) {
               },
               keyword: /\b(?:choice|plural|select|selectordinal)\b/,
               'arg-type': {
-                pattern: /\b(?:number|date|time|spellout|ordinal|duration)\b/,
+                pattern: /\b(?:date|duration|number|ordinal|spellout|time)\b/,
                 alias: 'keyword'
               },
               'arg-skeleton': {
@@ -128,7 +128,7 @@ function icuMessageFormat(Prism) {
               },
               'arg-style': {
                 pattern:
-                  /(,\s*)(?:short|medium|long|full|integer|currency|percent)(?=\s*$)/,
+                  /(,\s*)(?:currency|full|integer|long|medium|percent|short)(?=\s*$)/,
                 lookbehind: true
               },
               'arg-style-text': {

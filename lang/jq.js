@@ -7,9 +7,12 @@ function jq(Prism) {
   ;(function (Prism) {
     var interpolation = /\\\((?:[^()]|\([^()]*\))*\)/.source
     var string = RegExp(
-      /"(?:[^"\r\n\\]|\\[^\r\n(]|__)*"/.source.replace(/__/g, function () {
-        return interpolation
-      })
+      /(^|[^\\])"(?:[^"\r\n\\]|\\[^\r\n(]|__)*"/.source.replace(
+        /__/g,
+        function () {
+          return interpolation
+        }
+      )
     )
     var stringInterpolation = {
       interpolation: {
@@ -29,11 +32,13 @@ function jq(Prism) {
       comment: /#.*/,
       property: {
         pattern: RegExp(string.source + /(?=\s*:(?!:))/.source),
+        lookbehind: true,
         greedy: true,
         inside: stringInterpolation
       },
       string: {
         pattern: string,
+        lookbehind: true,
         greedy: true,
         inside: stringInterpolation
       },
@@ -48,14 +53,14 @@ function jq(Prism) {
       },
       keyword:
         /\b(?:as|break|catch|def|elif|else|end|foreach|if|import|include|label|module|modulemeta|null|reduce|then|try|while)\b/,
-      boolean: /\b(?:true|false)\b/,
+      boolean: /\b(?:false|true)\b/,
       number: /(?:\b\d+\.|\B\.)?\b\d+(?:[eE][+-]?\d+)?\b/,
       operator: [
         {
           pattern: /\|=?/,
           alias: 'pipe'
         },
-        /\.\.|[!=<>]?=|\?\/\/|\/\/=?|[-+*/%]=?|[<>?]|\b(?:and|or|not)\b/
+        /\.\.|[!=<>]?=|\?\/\/|\/\/=?|[-+*/%]=?|[<>?]|\b(?:and|not|or)\b/
       ],
       'c-style-function': {
         pattern: /\b[a-z_]\w*(?=\s*\()/i,

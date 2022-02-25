@@ -34,7 +34,7 @@ function batch(Prism) {
             /((?:^|[&(])[ \t]*)for(?: \/[a-z?](?:[ :](?:"[^"]*"|[^\s"/]\S*))?)* \S+ in \([^)]+\) do/im,
           lookbehind: true,
           inside: {
-            keyword: /^for\b|\b(?:in|do)\b/i,
+            keyword: /\b(?:do|in)\b|^for\b/i,
             string: string,
             parameter: parameter,
             variable: variable,
@@ -45,16 +45,16 @@ function batch(Prism) {
         {
           // IF command
           pattern:
-            /((?:^|[&(])[ \t]*)if(?: \/[a-z?](?:[ :](?:"[^"]*"|[^\s"/]\S*))?)* (?:not )?(?:cmdextversion \d+|defined \w+|errorlevel \d+|exist \S+|(?:"[^"]*"|(?!")(?:(?!==)\S)+)?(?:==| (?:equ|neq|lss|leq|gtr|geq) )(?:"[^"]*"|[^\s"]\S*))/im,
+            /((?:^|[&(])[ \t]*)if(?: \/[a-z?](?:[ :](?:"[^"]*"|[^\s"/]\S*))?)* (?:not )?(?:cmdextversion \d+|defined \w+|errorlevel \d+|exist \S+|(?:"[^"]*"|(?!")(?:(?!==)\S)+)?(?:==| (?:equ|geq|gtr|leq|lss|neq) )(?:"[^"]*"|[^\s"]\S*))/im,
           lookbehind: true,
           inside: {
             keyword:
-              /^if\b|\b(?:not|cmdextversion|defined|errorlevel|exist)\b/i,
+              /\b(?:cmdextversion|defined|errorlevel|exist|not)\b|^if\b/i,
             string: string,
             parameter: parameter,
             variable: variable,
             number: number,
-            operator: /\^|==|\b(?:equ|neq|lss|leq|gtr|geq)\b/i
+            operator: /\^|==|\b(?:equ|geq|gtr|leq|lss|neq)\b/i
           }
         },
         {
@@ -83,10 +83,10 @@ function batch(Prism) {
         {
           // Other commands
           pattern:
-            /((?:^|[&(])[ \t]*@?)\w+\b(?:"(?:[\\"]"|[^"])*"(?!")|[^"^&)\r\n]|\^(?:\r\n|[\s\S]))*/im,
+            /((?:^|[&(])[ \t]*@?)\w+\b(?:"(?:[\\"]"|[^"])*"(?!")|[^"^&)\r\n]|\^(?:\r\n|[\s\S]))*/m,
           lookbehind: true,
           inside: {
-            keyword: /^\w+\b/i,
+            keyword: /^\w+\b/,
             string: string,
             parameter: parameter,
             label: {

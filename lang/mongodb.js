@@ -91,7 +91,8 @@ function mongodb(Prism) {
       '$sortByCount',
       '$unionWith',
       '$unset',
-      '$unwind', // aggregation pipeline operators
+      '$unwind',
+      '$setWindowFields', // aggregation pipeline operators
       '$abs',
       '$accumulator',
       '$acos',
@@ -221,7 +222,17 @@ function mongodb(Prism) {
       '$type',
       '$week',
       '$year',
-      '$zip', // aggregation pipeline query modifiers
+      '$zip',
+      '$count',
+      '$dateAdd',
+      '$dateDiff',
+      '$dateSubtract',
+      '$dateTrunc',
+      '$getField',
+      '$rand',
+      '$sampleRate',
+      '$setField',
+      '$unsetField', // aggregation pipeline query modifiers
       '$comment',
       '$explain',
       '$hint',
@@ -273,7 +284,7 @@ function mongodb(Prism) {
       entity: {
         // ipv4
         pattern:
-          /\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b/,
+          /\b(?:(?:[01]?\d\d?|2[0-4]\d|25[0-5])\.){3}(?:[01]?\d\d?|2[0-4]\d|25[0-5])\b/,
         greedy: true
       }
     }

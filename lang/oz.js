@@ -5,7 +5,10 @@ oz.displayName = 'oz'
 oz.aliases = []
 function oz(Prism) {
   Prism.languages.oz = {
-    comment: /\/\*[\s\S]*?\*\/|%.*/,
+    comment: {
+      pattern: /\/\*[\s\S]*?\*\/|%.*/,
+      greedy: true
+    },
     string: {
       pattern: /"(?:[^"\\]|\\[\s\S])*"/,
       greedy: true
@@ -26,8 +29,8 @@ function oz(Prism) {
     ],
     number:
       /\b(?:0[bx][\da-f]+|\d+(?:\.\d*)?(?:e~?\d+)?)\b|&(?:[^\\]|\\(?:\d{3}|.))/i,
-    variable: /\b[A-Z][A-Za-z\d]*|`(?:[^`\\]|\\.)+`/,
-    'attr-name': /\b\w+(?=:)/,
+    variable: /`(?:[^`\\]|\\.)+`/,
+    'attr-name': /\b\w+(?=[ \t]*:(?![:=]))/,
     operator:
       /:(?:=|::?)|<[-:=]?|=(?:=|<?:?)|>=?:?|\\=:?|!!?|[|#+\-*\/,~^@]|\b(?:andthen|div|mod|orelse)\b/,
     punctuation: /[\[\](){}.:;?]/

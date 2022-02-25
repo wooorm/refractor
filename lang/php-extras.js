@@ -6,13 +6,16 @@ phpExtras.aliases = []
 function phpExtras(Prism) {
   Prism.register(refractorPhp)
   Prism.languages.insertBefore('php', 'variable', {
-    this: /\$this\b/,
+    this: {
+      pattern: /\$this\b/,
+      alias: 'keyword'
+    },
     global:
-      /\$(?:_(?:SERVER|GET|POST|FILES|REQUEST|SESSION|ENV|COOKIE)|GLOBALS|HTTP_RAW_POST_DATA|argc|argv|php_errormsg|http_response_header)\b/,
+      /\$(?:GLOBALS|HTTP_RAW_POST_DATA|_(?:COOKIE|ENV|FILES|GET|POST|REQUEST|SERVER|SESSION)|argc|argv|http_response_header|php_errormsg)\b/,
     scope: {
       pattern: /\b[\w\\]+::/,
       inside: {
-        keyword: /static|self|parent/,
+        keyword: /\b(?:parent|self|static)\b/,
         punctuation: /::|\\/
       }
     }

@@ -63,7 +63,7 @@ function wren(Prism) {
     },
     keyword:
       /\b(?:as|break|class|construct|continue|else|for|foreign|if|import|in|is|return|static|super|this|var|while)\b/,
-    boolean: /\b(?:true|false)\b/,
+    boolean: /\b(?:false|true)\b/,
     number: /\b(?:0x[\da-f]+|\d+(?:\.\d+)?(?:e[+-]?\d+)?)\b/i,
     // Functions can be Class.method()
     function: /\b[a-z_]\w*(?=\s*[({])/i,

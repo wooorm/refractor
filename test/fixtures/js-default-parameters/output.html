@@ -11,14 +11,14 @@
   <span class="token keyword control-flow">switch</span> <span class="token punctuation">(</span>action<span class="token punctuation">.</span><span class="token property-access">type</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">case</span> <span class="token string">'ADD_TODO'</span><span class="token operator">:</span>
     <span class="token keyword control-flow">return</span> <span class="token punctuation">[</span><span class="token spread operator">...</span>state<span class="token punctuation">,</span> <span class="token punctuation">{</span>
-      text<span class="token operator">:</span> action<span class="token punctuation">.</span><span class="token property-access">text</span><span class="token punctuation">,</span>
-      completed<span class="token operator">:</span> <span class="token boolean">false</span>
+      <span class="token literal-property property">text</span><span class="token operator">:</span> action<span class="token punctuation">.</span><span class="token property-access">text</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">completed</span><span class="token operator">:</span> <span class="token boolean">false</span>
     <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
   <span class="token keyword">case</span> <span class="token string">'COMPLETE_TODO'</span><span class="token operator">:</span>
     <span class="token keyword control-flow">return</span> <span class="token punctuation">[</span>
       <span class="token spread operator">...</span>state<span class="token punctuation">.</span><span class="token method function property-access">slice</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> action<span class="token punctuation">.</span><span class="token property-access">index</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
       <span class="token known-class-name class-name">Object</span><span class="token punctuation">.</span><span class="token method function property-access">assign</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> state<span class="token punctuation">[</span>action<span class="token punctuation">.</span><span class="token property-access">index</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-        completed<span class="token operator">:</span> <span class="token boolean">true</span>
+        <span class="token literal-property property">completed</span><span class="token operator">:</span> <span class="token boolean">true</span>
       <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
       <span class="token spread operator">...</span>state<span class="token punctuation">.</span><span class="token method function property-access">slice</span><span class="token punctuation">(</span>action<span class="token punctuation">.</span><span class="token property-access">index</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
     <span class="token punctuation">]</span>

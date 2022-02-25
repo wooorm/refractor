@@ -48,8 +48,8 @@ function turtle(Prism) {
     },
     number: /[+-]?\b\d+(?:\.\d*)?(?:e[+-]?\d+)?/i,
     punctuation: /[{}.,;()[\]]|\^\^/,
-    boolean: /\b(?:true|false)\b/,
-    keyword: [/(?:\ba|@prefix|@base)\b|=/, /\b(?:graph|base|prefix)\b/i],
+    boolean: /\b(?:false|true)\b/,
+    keyword: [/(?:\ba|@prefix|@base)\b|=/, /\b(?:base|graph|prefix)\b/i],
     tag: {
       pattern: /@[a-z]+(?:-[a-z\d]+)*/i,
       inside: {

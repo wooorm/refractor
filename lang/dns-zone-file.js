@@ -20,10 +20,10 @@ function dnsZoneFile(Prism) {
         lookbehind: true
       }
     ],
-    keyword: /^\$(?:ORIGIN|INCLUDE|TTL)(?=\s|$)/m,
+    keyword: /^\$(?:INCLUDE|ORIGIN|TTL)(?=\s|$)/m,
     class: {
       // https://tools.ietf.org/html/rfc1035#page-13
-      pattern: /(^|\s)(?:IN|CH|CS|HS)(?=\s|$)/,
+      pattern: /(^|\s)(?:CH|CS|HS|IN)(?=\s|$)/,
       lookbehind: true,
       alias: 'keyword'
     },

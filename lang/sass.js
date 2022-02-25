@@ -20,14 +20,14 @@ function sass(Prism) {
         pattern: /^(?:[ \t]*)[@+=].+/m,
         greedy: true,
         inside: {
-          atrule: /(?:@[\w-]+|[+=])/m
+          atrule: /(?:@[\w-]+|[+=])/
         }
       }
     })
     delete Prism.languages.sass.atrule
     var variable = /\$[-\w]+|#\{\$[-\w]+\}/
     var operator = [
-      /[+*\/%]|[=!]=|<=?|>=?|\b(?:and|or|not)\b/,
+      /[+*\/%]|[=!]=|<=?|>=?|\b(?:and|not|or)\b/,
       {
         pattern: /(\s)-(?=\s)/,
         lookbehind: true

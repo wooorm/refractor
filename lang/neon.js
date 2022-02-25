@@ -26,7 +26,7 @@ function neon(Prism) {
       lookbehind: true
     },
     boolean: {
-      pattern: /(^|[[{(=:,\s])(?:true|false|yes|no)(?=$|[\]}),:=\s])/i,
+      pattern: /(^|[[{(=:,\s])(?:false|no|true|yes)(?=$|[\]}),:=\s])/i,
       lookbehind: true
     },
     null: {

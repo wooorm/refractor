@@ -7,7 +7,8 @@ function elm(Prism) {
   Prism.languages.elm = {
     comment: /--.*|\{-[\s\S]*?-\}/,
     char: {
-      pattern: /'(?:[^\\'\r\n]|\\(?:[abfnrtv\\']|\d+|x[0-9a-fA-F]+))'/,
+      pattern:
+        /'(?:[^\\'\r\n]|\\(?:[abfnrtv\\']|\d+|x[0-9a-fA-F]+|u\{[0-9a-fA-F]+\}))'/,
       greedy: true
     },
     string: [
@@ -29,7 +30,7 @@ function elm(Prism) {
         /(^[\t ]*)import\s+[A-Z]\w*(?:\.[A-Z]\w*)*(?:\s+as\s+(?:[A-Z]\w*)(?:\.[A-Z]\w*)*)?(?:\s+exposing\s+)?/m,
       lookbehind: true,
       inside: {
-        keyword: /\b(?:import|as|exposing)\b/
+        keyword: /\b(?:as|exposing|import)\b/
       }
     },
     keyword:

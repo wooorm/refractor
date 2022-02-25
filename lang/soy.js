@@ -37,7 +37,7 @@ function soy(Prism) {
             /(\{+\/?[^\S\r\n]*)(?:\\[nrt]|alias|call|case|css|default|delcall|delpackage|deltemplate|else(?:if)?|fallbackmsg|for(?:each)?|if(?:empty)?|lb|let|literal|msg|namespace|nil|@?param\??|rb|sp|switch|template|xid)/,
           lookbehind: true
         },
-        /\b(?:any|as|attributes|bool|css|float|in|int|js|html|list|map|null|number|string|uri)\b/
+        /\b(?:any|as|attributes|bool|css|float|html|in|int|js|list|map|null|number|string|uri)\b/
       ],
       delimiter: {
         pattern: /^\{+\/?|\/?\}+$/,
@@ -66,7 +66,7 @@ function soy(Prism) {
           lookbehind: true
         }
       ],
-      boolean: /\b(?:true|false)\b/,
+      boolean: /\b(?:false|true)\b/,
       number: numberPattern,
       operator: /\?:?|<=?|>=?|==?|!=|[+*/%-]|\b(?:and|not|or)\b/,
       punctuation: /[{}()\[\]|.,:]/

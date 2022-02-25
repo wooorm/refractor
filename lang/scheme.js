@@ -21,11 +21,10 @@ function scheme(Prism) {
         pattern: /'[^()\[\]#'\s]+/,
         greedy: true
       },
-      character: {
+      char: {
         pattern:
           /#\\(?:[ux][a-fA-F\d]+\b|[-a-zA-Z]+\b|[\uD800-\uDBFF][\uDC00-\uDFFF]|\S)/,
-        greedy: true,
-        alias: 'string'
+        greedy: true
       },
       'lambda-parameter': [
         // https://www.cs.cmu.edu/Groups/AI/html/r4rs/r4rs_6.html#SEC30
@@ -41,7 +40,7 @@ function scheme(Prism) {
       ],
       keyword: {
         pattern:
-          /((?:^|[^'`#])[(\[])(?:begin|case(?:-lambda)?|cond(?:-expand)?|define(?:-library|-macro|-record-type|-syntax|-values)?|defmacro|delay(?:-force)?|do|else|export|except|guard|if|import|include(?:-ci|-library-declarations)?|lambda|let(?:rec)?(?:-syntax|-values|\*)?|let\*-values|only|parameterize|prefix|(?:quasi-?)?quote|rename|set!|syntax-(?:case|rules)|unless|unquote(?:-splicing)?|when)(?=[()\[\]\s]|$)/,
+          /((?:^|[^'`#])[(\[])(?:begin|case(?:-lambda)?|cond(?:-expand)?|define(?:-library|-macro|-record-type|-syntax|-values)?|defmacro|delay(?:-force)?|do|else|except|export|guard|if|import|include(?:-ci|-library-declarations)?|lambda|let(?:rec)?(?:-syntax|-values|\*)?|let\*-values|only|parameterize|prefix|(?:quasi-?)?quote|rename|set!|syntax-(?:case|rules)|unless|unquote(?:-splicing)?|when)(?=[()\[\]\s]|$)/,
         lookbehind: true
       },
       builtin: {
@@ -82,8 +81,8 @@ function scheme(Prism) {
         // pattern:
         pattern: RegExp(
           SortedBNF({
-            '<ureal dec>': /\d+(?:\/\d+)|(?:\d+(?:\.\d*)?|\.\d+)(?:e[+-]?\d+)?/
-              .source,
+            '<ureal dec>':
+              /\d+(?:\/\d+)|(?:\d+(?:\.\d*)?|\.\d+)(?:[esfdl][+-]?\d+)?/.source,
             '<real dec>': /[+-]?<ureal dec>|[+-](?:inf|nan)\.0/.source,
             '<imaginary dec>': /[+-](?:<ureal dec>|(?:inf|nan)\.0)?i/.source,
             '<complex dec>':

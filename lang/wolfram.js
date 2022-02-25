@@ -14,7 +14,7 @@ function wolfram(Prism) {
     keyword:
       /\b(?:Abs|AbsArg|Accuracy|Block|Do|For|Function|If|Manipulate|Module|Nest|NestList|None|Return|Switch|Table|Which|While)\b/,
     context: {
-      pattern: /\w+`+\w*/,
+      pattern: /\b\w+`+\w*/,
       alias: 'class-name'
     },
     blank: {
@@ -25,12 +25,12 @@ function wolfram(Prism) {
       pattern: /\$\w+/,
       alias: 'variable'
     },
-    boolean: /\b(?:True|False)\b/,
+    boolean: /\b(?:False|True)\b/,
     number:
       /(?:\b(?=\d)|\B(?=\.))(?:0[bo])?(?:(?:\d|0x[\da-f])[\da-f]*(?:\.\d*)?|\.\d+)(?:e[+-]?\d+)?j?\b/i,
     operator:
       /\/\.|;|=\.|\^=|\^:=|:=|<<|>>|<\||\|>|:>|\|->|->|<-|@@@|@@|@|\/@|=!=|===|==|=|\+|-|\^|\[\/-+%=\]=?|!=|\*\*?=?|\/\/?=?|<[<=>]?|>[=>]?|[&|^~]/,
-    punctuation: /[\|{}[\];(),.:]/
+    punctuation: /[{}[\];(),.:]/
   }
   Prism.languages.mathematica = Prism.languages.wolfram
   Prism.languages.wl = Prism.languages.wolfram

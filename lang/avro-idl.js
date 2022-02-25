@@ -11,18 +11,11 @@ function avroIdl(Prism) {
       pattern: /\/\/.*|\/\*[\s\S]*?\*\//,
       greedy: true
     },
-    string: [
-      {
-        pattern: /(^|[^\\])"(?:[^\r\n"\\]|\\.)*"/,
-        lookbehind: true,
-        greedy: true
-      },
-      {
-        pattern: /(^|[^\\])'(?:[^\r\n'\\]|\\(?:[\s\S]|\d{1,3}))'/,
-        lookbehind: true,
-        greedy: true
-      }
-    ],
+    string: {
+      pattern: /(^|[^\\])"(?:[^\r\n"\\]|\\.)*"/,
+      lookbehind: true,
+      greedy: true
+    },
     annotation: {
       pattern: /@(?:[$\w.-]|`[^\r\n`]+`)+/,
       greedy: true,
@@ -51,7 +44,7 @@ function avroIdl(Prism) {
           /(^|[^\w.])-?(?:(?:\d+(?:\.\d*)?|\.\d+)(?:e[+-]?\d+)?|0x(?:[a-f0-9]+(?:\.[a-f0-9]*)?|\.[a-f0-9]+)(?:p[+-]?\d+)?)[dfl]?(?![\w.])/i,
         lookbehind: true
       },
-      /-?\b(?:NaN|Infinity)\b/
+      /-?\b(?:Infinity|NaN)\b/
     ],
     operator: /=/,
     punctuation: /[()\[\]{}<>.:,;-]/

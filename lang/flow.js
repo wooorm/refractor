@@ -10,7 +10,7 @@ function flow(Prism) {
       type: [
         {
           pattern:
-            /\b(?:[Nn]umber|[Ss]tring|[Bb]oolean|Function|any|mixed|null|void)\b/,
+            /\b(?:[Bb]oolean|Function|[Nn]umber|[Ss]tring|any|mixed|null|void)\b/,
           alias: 'tag'
         }
       ]
@@ -29,12 +29,12 @@ function flow(Prism) {
     }
     Prism.languages.flow.keyword.unshift(
       {
-        pattern: /(^|[^$]\b)(?:type|opaque|declare|Class)\b(?!\$)/,
+        pattern: /(^|[^$]\b)(?:Class|declare|opaque|type)\b(?!\$)/,
         lookbehind: true
       },
       {
         pattern:
-          /(^|[^$]\B)\$(?:await|Diff|Exact|Keys|ObjMap|PropertyType|Shape|Record|Supertype|Subtype|Enum)\b(?!\$)/,
+          /(^|[^$]\B)\$(?:Diff|Enum|Exact|Keys|ObjMap|PropertyType|Record|Shape|Subtype|Supertype|await)\b(?!\$)/,
         lookbehind: true
       }
     )

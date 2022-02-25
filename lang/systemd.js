@@ -67,7 +67,7 @@ function systemd(Prism) {
           }
         }
       },
-      operator: /=/
+      punctuation: /=/
     }
   })(Prism)
 }

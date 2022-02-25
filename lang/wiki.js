@@ -42,7 +42,7 @@ function wiki(Prism) {
       alias: 'punctuation'
     },
     url: [
-      /ISBN +(?:97[89][ -]?)?(?:\d[ -]?){9}[\dx]\b|(?:RFC|PMID) +\d+/i,
+      /ISBN +(?:97[89][ -]?)?(?:\d[ -]?){9}[\dx]\b|(?:PMID|RFC) +\d+/i,
       /\[\[.+?\]\]|\[.+?\]/
     ],
     variable: [
