@@ -83,17 +83,17 @@ In Node.js (version 12.20+, 14.14+, or 16.0+), install with [npm][]:
 npm install refractor
 ```
 
-In Deno with [Skypack][]:
+In Deno with [`esm.sh`][esmsh]:
 
 ```js
-import {refractor} from 'https://cdn.skypack.dev/refractor@4?dts'
+import {refractor} from 'https://esm.sh/refractor@4'
 ```
 
-In browsers with [Skypack][]:
+In browsers with [`esm.sh`][esmsh]:
 
 ```html
 <script type="module">
-  import {refractor} from 'https://cdn.skypack.dev/refractor@4?min'
+  import {refractor} from 'https://esm.sh/refractor@4?bundle'
 </script>
 ```
 
@@ -731,7 +731,7 @@ See [How to Contribute to Open Source][contribute].
 
 [npm]: https://docs.npmjs.com/cli/install
 
-[skypack]: https://www.skypack.dev
+[esmsh]: https://esm.sh
 
 [license]: license
 
