@@ -43,7 +43,7 @@ export default function asmatmel(Prism) {
       pattern: /\b[acznvshtixy]\b/i,
       alias: 'variable'
     },
-    operator: />>=?|<<=?|&&?|\|\|?|[-+*/%&|^!=<>?]=?/,
+    operator: />>=?|<<=?|&[&=]?|\|[\|=]?|[-+*/%^!=<>?]=?/,
     punctuation: /[(),:]/
   }
 }

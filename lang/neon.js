@@ -18,7 +18,7 @@ export default function neon(Prism) {
     key: {
       pattern: /(^|[[{(,\s])[^,:=[\]{}()'"\s]+(?=\s*:(?:$|[\]}),\s])|\s*=)/,
       lookbehind: true,
-      alias: 'atrule'
+      alias: 'property'
     },
     number: {
       pattern:

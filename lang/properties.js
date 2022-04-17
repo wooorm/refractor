@@ -6,12 +6,16 @@ properties.aliases = []
 export default function properties(Prism) {
   Prism.languages.properties = {
     comment: /^[ \t]*[#!].*$/m,
-    'attr-value': {
+    value: {
       pattern:
         /(^[ \t]*(?:\\(?:\r\n|[\s\S])|[^\\\s:=])+(?: *[=:] *(?! )| ))(?:\\(?:\r\n|[\s\S])|[^\\\r\n])+/m,
-      lookbehind: true
+      lookbehind: true,
+      alias: 'attr-value'
     },
-    'attr-name': /^[ \t]*(?:\\(?:\r\n|[\s\S])|[^\\\s:=])+(?= *[=:]| )/m,
+    key: {
+      pattern: /^[ \t]*(?:\\(?:\r\n|[\s\S])|[^\\\s:=])+(?= *[=:]| )/m,
+      alias: 'attr-name'
+    },
     punctuation: /[=:]/
   }
 }

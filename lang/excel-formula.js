@@ -44,12 +44,12 @@ export default function excelFormula(Prism) {
     },
     'function-name': {
       pattern: /\b[A-Z]\w*(?=\()/i,
-      alias: 'keyword'
+      alias: 'builtin'
     },
     range: {
       pattern:
         /\$?\b(?:[A-Z]+\$?\d+:\$?[A-Z]+\$?\d+|[A-Z]+:\$?[A-Z]+|\d+:\$?\d+)\b/i,
-      alias: 'property',
+      alias: 'selector',
       inside: {
         operator: /:/,
         cell: /\$?[A-Z]+\$?\d+/i,
@@ -61,7 +61,7 @@ export default function excelFormula(Prism) {
       // Excel is case insensitive, so the string "foo1" could be either a variable or a cell.
       // To combat this, we match cells case insensitive, if the contain at least one "$", and case sensitive otherwise.
       pattern: /\b[A-Z]+\d+\b|\$[A-Za-z]+\$?\d+\b|\b[A-Za-z]+\$\d+\b/,
-      alias: 'property'
+      alias: 'selector'
     },
     number: /(?:\b\d+(?:\.\d+)?|\B\.\d+)(?:e[+-]?\d+)?\b/i,
     boolean: /\b(?:FALSE|TRUE)\b/i,

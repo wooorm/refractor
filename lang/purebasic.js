@@ -20,7 +20,7 @@ slightly changed to pass all tests
     function: /\b\w+(?:\.\w+)?\s*(?=\()/,
     number: /(?:\$[\da-f]+|\b-?(?:\d+(?:\.\d+)?|\.\d+)(?:e[+-]?\d+)?)\b/i,
     operator:
-      /(?:@\*?|\?|\*)\w+|-[>-]?|\+\+?|!=?|<<?=?|>>?=?|==?|&&?|\|?\||[~^%?*/@]/
+      /(?:@\*?|\?|\*)\w+\$?|-[>-]?|\+\+?|!=?|<<?=?|>>?=?|==?|&&?|\|?\||[~^%?*/@]/
   })
   Prism.languages.insertBefore('purebasic', 'keyword', {
     tag: /#\w+\$?/,
