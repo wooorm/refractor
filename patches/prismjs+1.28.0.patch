@@ -1,5 +1,5 @@
 diff --git a/node_modules/prismjs/components/prism-core.js b/node_modules/prismjs/components/prism-core.js
-index 1259f23..5925d2f 100644
+index 1259f23..6427030 100644
 --- a/node_modules/prismjs/components/prism-core.js
 +++ b/node_modules/prismjs/components/prism-core.js
 @@ -1,13 +1,3 @@
@@ -308,7 +308,66 @@ index 1259f23..5925d2f 100644
  
  
  	// Typescript note:
-@@ -1139,79 +881,9 @@ var Prism = (function (_self) {
+@@ -828,58 +570,6 @@ var Prism = (function (_self) {
+ 	 * @public
+ 	 */
+ 
+-	/**
+-	 * Converts the given token or token stream to an HTML representation.
+-	 *
+-	 * The following hooks will be run:
+-	 * 1. `wrap`: On each {@link Token}.
+-	 *
+-	 * @param {string | Token | TokenStream} o The token or token stream to be converted.
+-	 * @param {string} language The name of current language.
+-	 * @returns {string} The HTML representation of the token or token stream.
+-	 * @memberof Token
+-	 * @static
+-	 */
+-	Token.stringify = function stringify(o, language) {
+-		if (typeof o == 'string') {
+-			return o;
+-		}
+-		if (Array.isArray(o)) {
+-			var s = '';
+-			o.forEach(function (e) {
+-				s += stringify(e, language);
+-			});
+-			return s;
+-		}
+-
+-		var env = {
+-			type: o.type,
+-			content: stringify(o.content, language),
+-			tag: 'span',
+-			classes: ['token', o.type],
+-			attributes: {},
+-			language: language
+-		};
+-
+-		var aliases = o.alias;
+-		if (aliases) {
+-			if (Array.isArray(aliases)) {
+-				Array.prototype.push.apply(env.classes, aliases);
+-			} else {
+-				env.classes.push(aliases);
+-			}
+-		}
+-
+-		_.hooks.run('wrap', env);
+-
+-		var attributes = '';
+-		for (var name in env.attributes) {
+-			attributes += ' ' + name + '="' + (env.attributes[name] || '').replace(/"/g, '&quot;') + '"';
+-		}
+-
+-		return '<' + env.tag + ' class="' + env.classes.join(' ') + '"' + attributes + '>' + env.content + '</' + env.tag + '>';
+-	};
+-
+ 	/**
+ 	 * @param {RegExp} pattern
+ 	 * @param {number} pos
+@@ -1139,79 +829,9 @@ var Prism = (function (_self) {
  		return array;
  	}
  
