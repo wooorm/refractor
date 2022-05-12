@@ -1,5 +1,5 @@
 diff --git a/node_modules/prismjs/components/prism-core.js b/node_modules/prismjs/components/prism-core.js
-index 1259f23..12e6ca3 100644
+index 1259f23..44128de 100644
 --- a/node_modules/prismjs/components/prism-core.js
 +++ b/node_modules/prismjs/components/prism-core.js
 @@ -1,1217 +1,758 @@
@@ -530,7 +530,7 @@ index 1259f23..12e6ca3 100644
  
 -				return ret;
 -			},
-+					(/** @type {Array} */(/** @type {any} */(o))).forEach(function (v, i) {
++					o.forEach(function (v, i) {
 +						clone[i] = deepClone(v, visited);
 +					});
  
