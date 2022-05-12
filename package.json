@@ -102,6 +102,7 @@
   "xo": {
     "prettier": true,
     "ignores": [
+      "lib/prism-core.js",
       "lang/*.js"
     ]
   },

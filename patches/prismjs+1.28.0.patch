@@ -1,5 +1,5 @@
 diff --git a/node_modules/prismjs/components/prism-core.js b/node_modules/prismjs/components/prism-core.js
-index 1259f23..6fb788e 100644
+index 1259f23..858e7f7 100644
 --- a/node_modules/prismjs/components/prism-core.js
 +++ b/node_modules/prismjs/components/prism-core.js
 @@ -1,13 +1,3 @@
@@ -25,7 +25,36 @@ index 1259f23..6fb788e 100644
  
  	// Private helper vars
  	var lang = /(?:^|\s)lang(?:uage)?-([\w-]+)(?=\s|$)/i;
-@@ -1202,16 +1192,7 @@ var Prism = (function (_self) {
+@@ -27,28 +17,6 @@ var Prism = (function (_self) {
+ 
+ 
+ 	var _ = {
+-		/**
+-		 * By default, Prism will attempt to highlight all code elements (by calling {@link Prism.highlightAll}) on the
+-		 * current page after the page finished loading. This might be a problem if e.g. you wanted to asynchronously load
+-		 * additional languages or plugins yourself.
+-		 *
+-		 * By setting this value to `true`, Prism will not automatically highlight all code elements on the page.
+-		 *
+-		 * You obviously have to change this value before the automatic highlighting started. To do this, you can add an
+-		 * empty Prism object into the global scope before loading the Prism script like this:
+-		 *
+-		 * ```js
+-		 * window.Prism = window.Prism || {};
+-		 * Prism.manual = true;
+-		 * // add a new <script> to load Prism's script
+-		 * ```
+-		 *
+-		 * @default false
+-		 * @type {boolean}
+-		 * @memberof Prism
+-		 * @public
+-		 */
+-		manual: _self.Prism && _self.Prism.manual,
+ 		/**
+ 		 * By default, if Prism is in a web worker, it assumes that it is in a worker it created itself, so it uses
+ 		 * `addEventListener` to communicate with its parent instance. However, if you're using Prism manually in your
+@@ -1202,16 +1170,7 @@ var Prism = (function (_self) {
  
  	return _;
  
