@@ -83,7 +83,7 @@
     "generate-languages": "node script/languages.js",
     "generate-list": "node script/list.js",
     "generate-fixtures": "node script/fixtures.js",
-    "generate": "npm run generate-languages && npm run generate-list && npm run generate-fixtures",
+    "generate": "npm run generate-core && npm run generate-languages && npm run generate-list && npm run generate-fixtures",
     "prepublishOnly": "npm run build && npm run format",
     "build": "rimraf \"{lang,lib,script,test}/**/*.d.ts\" \"*.d.ts\" && tsc && type-coverage",
     "format": "remark . -qfo && prettier . -w --loglevel warn && xo --fix",

@@ -1,8 +1,8 @@
 diff --git a/node_modules/prismjs/components/prism-core.js b/node_modules/prismjs/components/prism-core.js
-index 1259f23..740bdf7 100644
+index 1259f23..12e6ca3 100644
 --- a/node_modules/prismjs/components/prism-core.js
 +++ b/node_modules/prismjs/components/prism-core.js
-@@ -1,1217 +1,829 @@
+@@ -1,1217 +1,758 @@
 -/// <reference lib="WebWorker"/>
 +// @ts-nocheck
  
@@ -79,7 +79,8 @@ index 1259f23..740bdf7 100644
 -		 * own worker, you don't want it to do this.
 -		 *
 -		 * By setting this value to `true`, Prism will not add its own listeners to the worker.
--		 *
++		 * Returns the name of the type of the given value.
+ 		 *
 -		 * You obviously have to change this value before Prism executes. To do this, you can add an
 -		 * empty Prism object into the global scope before loading the Prism script like this:
 -		 *
@@ -88,8 +89,7 @@ index 1259f23..740bdf7 100644
 -		 * Prism.disableWorkerMessageHandler = true;
 -		 * // Load Prism's script
 -		 * ```
-+		 * Returns the name of the type of the given value.
- 		 *
+-		 *
 -		 * @default false
 -		 * @type {boolean}
 -		 * @memberof Prism
@@ -114,11 +114,11 @@ index 1259f23..740bdf7 100644
  
  		/**
 -		 * A namespace for utility methods.
--		 *
--		 * All function in this namespace that are not explicitly marked as _public_ are for __internal use only__ and may
--		 * change or disappear at any time.
 +		 * Returns a unique number for the given object. Later calls will still return the same number.
  		 *
+-		 * All function in this namespace that are not explicitly marked as _public_ are for __internal use only__ and may
+-		 * change or disappear at any time.
+-		 *
 -		 * @namespace
 -		 * @memberof Prism
 +		 * @param {Object} obj
@@ -525,26 +525,26 @@ index 1259f23..740bdf7 100644
 +						return visited[id];
  					}
 -				});
--
--				return ret;
--			},
--
--			// Traverse a language definition with Depth First Search
--			DFS: function DFS(o, callback, type, visited) {
--				visited = visited || {};
 +					clone = [];
 +					visited[id] = clone;
  
--				var objId = _.util.objId;
+-				return ret;
+-			},
 +					(/** @type {Array} */(/** @type {any} */(o))).forEach(function (v, i) {
 +						clone[i] = deepClone(v, visited);
 +					});
  
+-			// Traverse a language definition with Depth First Search
+-			DFS: function DFS(o, callback, type, visited) {
+-				visited = visited || {};
++					return /** @type {any} */ (clone);
+ 
+-				var objId = _.util.objId;
+-
 -				for (var i in o) {
 -					if (o.hasOwnProperty(i)) {
 -						callback.call(o, i, o[i], type || i);
-+					return /** @type {any} */ (clone);
- 
+-
 -						var property = o[i];
 -						var propertyType = _.util.type(property);
 -
@@ -561,210 +561,10 @@ index 1259f23..740bdf7 100644
 +					return o;
  			}
  		},
++	},
  
 -		plugins: {},
 -
- 		/**
--		 * This is the most high-level function in Prism’s API.
--		 * It fetches all the elements that have a `.language-xxxx` class and then calls {@link Prism.highlightElement} on
--		 * each one of them.
-+		 * Returns the Prism language of the given element set by a `language-xxxx` or `lang-xxxx` class.
- 		 *
--		 * This is equivalent to `Prism.highlightAllUnder(document, async, callback)`.
-+		 * If no language is set for the element or the element is `null` or `undefined`, `none` will be returned.
- 		 *
--		 * @param {boolean} [async=false] Same as in {@link Prism.highlightAllUnder}.
--		 * @param {HighlightCallback} [callback] Same as in {@link Prism.highlightAllUnder}.
--		 * @memberof Prism
--		 * @public
-+		 * @param {Element} element
-+		 * @returns {string}
- 		 */
--		highlightAll: function (async, callback) {
--			_.highlightAllUnder(document, async, callback);
-+		getLanguage: function (element) {
-+			while (element) {
-+				var m = lang.exec(element.className);
-+				if (m) {
-+					return m[1].toLowerCase();
-+				}
-+				element = element.parentElement;
-+			}
-+			return 'none';
- 		},
- 
- 		/**
--		 * Fetches all the descendants of `container` that have a `.language-xxxx` class and then calls
--		 * {@link Prism.highlightElement} on each one of them.
--		 *
--		 * The following hooks will be run:
--		 * 1. `before-highlightall`
--		 * 2. `before-all-elements-highlight`
--		 * 3. All hooks of {@link Prism.highlightElement} for each element.
-+		 * Sets the Prism `language-xxxx` class of the given element.
- 		 *
--		 * @param {ParentNode} container The root element, whose descendants that have a `.language-xxxx` class will be highlighted.
--		 * @param {boolean} [async=false] Whether each element is to be highlighted asynchronously using Web Workers.
--		 * @param {HighlightCallback} [callback] An optional callback to be invoked on each element after its highlighting is done.
--		 * @memberof Prism
--		 * @public
-+		 * @param {Element} element
-+		 * @param {string} language
-+		 * @returns {void}
- 		 */
--		highlightAllUnder: function (container, async, callback) {
--			var env = {
--				callback: callback,
--				container: container,
--				selector: 'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'
--			};
--
--			_.hooks.run('before-highlightall', env);
--
--			env.elements = Array.prototype.slice.apply(env.container.querySelectorAll(env.selector));
--
--			_.hooks.run('before-all-elements-highlight', env);
--
--			for (var i = 0, element; (element = env.elements[i++]);) {
--				_.highlightElement(element, async === true, env.callback);
--			}
-+		setLanguage: function (element, language) {
-+			// remove all `language-xxxx` classes
-+			// (this might leave behind a leading space)
-+			element.className = element.className.replace(RegExp(lang, 'gi'), '');
-+
-+			// add the new `language-xxxx` class
-+			// (using `classList` will automatically clean up spaces for us)
-+			element.classList.add('language-' + language);
- 		},
- 
- 		/**
--		 * Highlights the code inside a single element.
-+		 * Returns whether a given class is active for `element`.
- 		 *
--		 * The following hooks will be run:
--		 * 1. `before-sanity-check`
--		 * 2. `before-highlight`
--		 * 3. All hooks of {@link Prism.highlight}. These hooks will be run by an asynchronous worker if `async` is `true`.
--		 * 4. `before-insert`
--		 * 5. `after-highlight`
--		 * 6. `complete`
-+		 * The class can be activated if `element` or one of its ancestors has the given class and it can be deactivated
-+		 * if `element` or one of its ancestors has the negated version of the given class. The _negated version_ of the
-+		 * given class is just the given class with a `no-` prefix.
- 		 *
--		 * Some the above hooks will be skipped if the element doesn't contain any text or there is no grammar loaded for
--		 * the element's language.
-+		 * Whether the class is active is determined by the closest ancestor of `element` (where `element` itself is
-+		 * closest ancestor) that has the given class or the negated version of it. If neither `element` nor any of its
-+		 * ancestors have the given class or the negated version of it, then the default activation will be returned.
- 		 *
--		 * @param {Element} element The element containing the code.
--		 * It must have a class of `language-xxxx` to be processed, where `xxxx` is a valid language identifier.
--		 * @param {boolean} [async=false] Whether the element is to be highlighted asynchronously using Web Workers
--		 * to improve performance and avoid blocking the UI when highlighting very large chunks of code. This option is
--		 * [disabled by default](https://prismjs.com/faq.html#why-is-asynchronous-highlighting-disabled-by-default).
-+		 * In the paradoxical situation where the closest ancestor contains __both__ the given class and the negated
-+		 * version of it, the class is considered active.
- 		 *
--		 * Note: All language definitions required to highlight the code must be included in the main `prism.js` file for
--		 * asynchronous highlighting to work. You can build your own bundle on the
--		 * [Download page](https://prismjs.com/download.html).
--		 * @param {HighlightCallback} [callback] An optional callback to be invoked after the highlighting is done.
--		 * Mostly useful when `async` is `true`, since in that case, the highlighting is done asynchronously.
--		 * @memberof Prism
--		 * @public
-+		 * @param {Element} element
-+		 * @param {string} className
-+		 * @param {boolean} [defaultActivation=false]
-+		 * @returns {boolean}
- 		 */
--		highlightElement: function (element, async, callback) {
--			// Find language
--			var language = _.util.getLanguage(element);
--			var grammar = _.languages[language];
--
--			// Set language on the element, if not present
--			_.util.setLanguage(element, language);
--
--			// Set language on the parent, for styling
--			var parent = element.parentElement;
--			if (parent && parent.nodeName.toLowerCase() === 'pre') {
--				_.util.setLanguage(parent, language);
--			}
--
--			var code = element.textContent;
--
--			var env = {
--				element: element,
--				language: language,
--				grammar: grammar,
--				code: code
--			};
--
--			function insertHighlightedCode(highlightedCode) {
--				env.highlightedCode = highlightedCode;
--
--				_.hooks.run('before-insert', env);
-+		isActive: function (element, className, defaultActivation) {
-+			var no = 'no-' + className;
- 
--				env.element.innerHTML = env.highlightedCode;
--
--				_.hooks.run('after-highlight', env);
--				_.hooks.run('complete', env);
--				callback && callback.call(env.element);
--			}
--
--			_.hooks.run('before-sanity-check', env);
--
--			// plugins may change/add the parent/element
--			parent = env.element.parentElement;
--			if (parent && parent.nodeName.toLowerCase() === 'pre' && !parent.hasAttribute('tabindex')) {
--				parent.setAttribute('tabindex', '0');
--			}
--
--			if (!env.code) {
--				_.hooks.run('complete', env);
--				callback && callback.call(env.element);
--				return;
--			}
--
--			_.hooks.run('before-highlight', env);
--
--			if (!env.grammar) {
--				insertHighlightedCode(_.util.encode(env.code));
--				return;
-+			while (element) {
-+				var classList = element.classList;
-+				if (classList.contains(className)) {
-+					return true;
-+				}
-+				if (classList.contains(no)) {
-+					return false;
-+				}
-+				element = element.parentElement;
- 			}
-+			return !!defaultActivation;
-+		}
-+	},
- 
--			if (async && _self.Worker) {
--				var worker = new Worker(_.filename);
--
--				worker.onmessage = function (evt) {
--					insertHighlightedCode(evt.data);
--				};
--
--				worker.postMessage(JSON.stringify({
--					language: env.language,
--					code: env.code,
--					immediateClose: true
--				}));
--			} else {
--				insertHighlightedCode(_.highlight(env.code, env.grammar, env.language));
--			}
--		},
 +	/**
 +	 * This namespace contains all currently loaded languages and the some helper functions to create and modify languages.
 +	 *
@@ -773,34 +573,45 @@ index 1259f23..740bdf7 100644
 +	 * @public
 +	 */
 +	languages: {
-+		/**
+ 		/**
+-		 * This is the most high-level function in Prism’s API.
+-		 * It fetches all the elements that have a `.language-xxxx` class and then calls {@link Prism.highlightElement} on
+-		 * each one of them.
+-		 *
+-		 * This is equivalent to `Prism.highlightAllUnder(document, async, callback)`.
+-		 *
+-		 * @param {boolean} [async=false] Same as in {@link Prism.highlightAllUnder}.
+-		 * @param {HighlightCallback} [callback] Same as in {@link Prism.highlightAllUnder}.
+-		 * @memberof Prism
+-		 * @public
 +		 * The grammar for plain, unformatted text.
-+		 */
+ 		 */
+-		highlightAll: function (async, callback) {
+-			_.highlightAllUnder(document, async, callback);
+-		},
 +		plain: plainTextGrammar,
 +		plaintext: plainTextGrammar,
 +		text: plainTextGrammar,
 +		txt: plainTextGrammar,
  
  		/**
--		 * Low-level function, only use if you know what you’re doing. It accepts a string of text as input
--		 * and the language definitions to use, and returns a string with the HTML produced.
+-		 * Fetches all the descendants of `container` that have a `.language-xxxx` class and then calls
+-		 * {@link Prism.highlightElement} on each one of them.
 +		 * Creates a deep copy of the language with the given id and appends the given tokens.
  		 *
 -		 * The following hooks will be run:
--		 * 1. `before-tokenize`
--		 * 2. `after-tokenize`
--		 * 3. `wrap`: On each {@link Token}.
+-		 * 1. `before-highlightall`
+-		 * 2. `before-all-elements-highlight`
+-		 * 3. All hooks of {@link Prism.highlightElement} for each element.
 +		 * If a token in `redef` also appears in the copied language, then the existing token in the copied language
 +		 * will be overwritten at its original position.
  		 *
--		 * @param {string} text A string with the code to be highlighted.
--		 * @param {Grammar} grammar An object containing the tokens to use.
-+		 * ## Best practices
- 		 *
--		 * Usually a language definition like `Prism.languages.markup`.
--		 * @param {string} language The name of the language definition passed to `grammar`.
--		 * @returns {string} The highlighted HTML.
+-		 * @param {ParentNode} container The root element, whose descendants that have a `.language-xxxx` class will be highlighted.
+-		 * @param {boolean} [async=false] Whether each element is to be highlighted asynchronously using Web Workers.
+-		 * @param {HighlightCallback} [callback] An optional callback to be invoked on each element after its highlighting is done.
 -		 * @memberof Prism
++		 * ## Best practices
++		 *
 +		 * Since the position of overwriting tokens (token in `redef` that overwrite tokens in the copied language)
 +		 * doesn't matter, they can technically be in any order. However, this can be confusing to others that trying to
 +		 * understand the language definition because, normally, the order of tokens matters in Prism grammars.
@@ -812,8 +623,7 @@ index 1259f23..740bdf7 100644
 +		 * @param {Grammar} redef The new tokens to append.
 +		 * @returns {Grammar} The new language created.
  		 * @public
- 		 * @example
--		 * Prism.highlight('var foo = true;', Prism.languages.javascript, 'javascript');
++		 * @example
 +		 * Prism.languages['css-with-colors'] = Prism.languages.extend('css', {
 +		 *     // Prism.languages.css already has a 'comment' token, so this token will overwrite CSS' 'comment' token
 +		 *     // at its original position
@@ -822,61 +632,55 @@ index 1259f23..740bdf7 100644
 +		 *     'color': /\b(?:red|green|blue)\b/
 +		 * });
  		 */
--		highlight: function (text, grammar, language) {
+-		highlightAllUnder: function (container, async, callback) {
 -			var env = {
--				code: text,
--				grammar: grammar,
--				language: language
+-				callback: callback,
+-				container: container,
+-				selector: 'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'
 -			};
--			_.hooks.run('before-tokenize', env);
--			if (!env.grammar) {
--				throw new Error('The language "' + env.language + '" has no grammar.');
 +		extend: function (id, redef) {
 +			var lang = _.util.clone(_.languages[id]);
-+
+ 
+-			_.hooks.run('before-highlightall', env);
+-
+-			env.elements = Array.prototype.slice.apply(env.container.querySelectorAll(env.selector));
+-
+-			_.hooks.run('before-all-elements-highlight', env);
+-
+-			for (var i = 0, element; (element = env.elements[i++]);) {
+-				_.highlightElement(element, async === true, env.callback);
 +			for (var key in redef) {
 +				lang[key] = redef[key];
  			}
--			env.tokens = _.tokenize(env.code, env.grammar);
--			_.hooks.run('after-tokenize', env);
--			return Token.stringify(_.util.encode(env.tokens), env.language);
 +
 +			return lang;
  		},
  
  		/**
--		 * This is the heart of Prism, and the most low-level function you can use. It accepts a string of text as input
--		 * and the language definitions to use, and returns an array with the tokenized code.
+-		 * Highlights the code inside a single element.
 +		 * Inserts tokens _before_ another token in a language definition or any other grammar.
- 		 *
--		 * When the language definition includes nested tokens, the function is called recursively on each of these tokens.
++		 *
 +		 * ## Usage
- 		 *
--		 * This method could be useful in other contexts as well, as a very crude parser.
++		 *
 +		 * This helper method makes it easy to modify existing languages. For example, the CSS language definition
 +		 * not only defines CSS highlighting for CSS documents, but also needs to define highlighting for CSS embedded
 +		 * in HTML through `<style>` elements. To do this, it needs to modify `Prism.languages.markup` and add the
 +		 * appropriate tokens. However, `Prism.languages.markup` is a regular JavaScript object literal, so if you do
 +		 * this:
  		 *
--		 * @param {string} text A string with the code to be highlighted.
--		 * @param {Grammar} grammar An object containing the tokens to use.
+-		 * The following hooks will be run:
+-		 * 1. `before-sanity-check`
+-		 * 2. `before-highlight`
+-		 * 3. All hooks of {@link Prism.highlight}. These hooks will be run by an asynchronous worker if `async` is `true`.
+-		 * 4. `before-insert`
+-		 * 5. `after-highlight`
+-		 * 6. `complete`
 +		 * ```js
 +		 * Prism.languages.markup.style = {
 +		 *     // token
 +		 * };
 +		 * ```
- 		 *
--		 * Usually a language definition like `Prism.languages.markup`.
--		 * @returns {TokenStream} An array of strings and tokens, a token stream.
--		 * @memberof Prism
--		 * @public
--		 * @example
--		 * let code = `var foo = 0;`;
--		 * let tokens = Prism.tokenize(code, Prism.languages.javascript);
--		 * tokens.forEach(token => {
--		 *     if (token instanceof Prism.Token && token.type === 'number') {
--		 *         console.log(`Found numeric literal: ${token.content}`);
++		 *
 +		 * then the `style` token will be added (and processed) at the end. `insertBefore` allows you to insert tokens
 +		 * before existing tokens. For the CSS example above, you would use it like this:
 +		 *
@@ -884,8 +688,8 @@ index 1259f23..740bdf7 100644
 +		 * Prism.languages.insertBefore('markup', 'cdata', {
 +		 *     'style': {
 +		 *         // token
- 		 *     }
- 		 * });
++		 *     }
++		 * });
 +		 * ```
 +		 *
 +		 * ## Special cases
@@ -901,14 +705,27 @@ index 1259f23..740bdf7 100644
 +		 *     // tokens after 'comment'
 +		 * });
 +		 * ```
-+		 *
+ 		 *
+-		 * Some the above hooks will be skipped if the element doesn't contain any text or there is no grammar loaded for
+-		 * the element's language.
 +		 * ## Limitations
-+		 *
+ 		 *
+-		 * @param {Element} element The element containing the code.
+-		 * It must have a class of `language-xxxx` to be processed, where `xxxx` is a valid language identifier.
+-		 * @param {boolean} [async=false] Whether the element is to be highlighted asynchronously using Web Workers
+-		 * to improve performance and avoid blocking the UI when highlighting very large chunks of code. This option is
+-		 * [disabled by default](https://prismjs.com/faq.html#why-is-asynchronous-highlighting-disabled-by-default).
 +		 * The main problem `insertBefore` has to solve is iteration order. Since ES2015, the iteration order for object
 +		 * properties is guaranteed to be the insertion order (except for integer keys) but some browsers behave
 +		 * differently when keys are deleted and re-inserted. So `insertBefore` can't be implemented by temporarily
 +		 * deleting properties which is necessary to insert at arbitrary positions.
-+		 *
+ 		 *
+-		 * Note: All language definitions required to highlight the code must be included in the main `prism.js` file for
+-		 * asynchronous highlighting to work. You can build your own bundle on the
+-		 * [Download page](https://prismjs.com/download.html).
+-		 * @param {HighlightCallback} [callback] An optional callback to be invoked after the highlighting is done.
+-		 * Mostly useful when `async` is `true`, since in that case, the highlighting is done asynchronously.
+-		 * @memberof Prism
 +		 * To solve this problem, `insertBefore` doesn't actually insert the given tokens into the target object.
 +		 * Instead, it will create a new object and replace all references to the target object with the new one. This
 +		 * can be done without temporarily deleting properties, so the iteration order is well-defined.
@@ -933,14 +750,20 @@ index 1259f23..740bdf7 100644
 +		 *
 +		 * Defaults to `Prism.languages`.
 +		 * @returns {Grammar} The new grammar object.
-+		 * @public
+ 		 * @public
  		 */
--		tokenize: function (text, grammar) {
--			var rest = grammar.rest;
--			if (rest) {
--				for (var token in rest) {
--					grammar[token] = rest[token];
--				}
+-		highlightElement: function (element, async, callback) {
+-			// Find language
+-			var language = _.util.getLanguage(element);
+-			var grammar = _.languages[language];
+-
+-			// Set language on the element, if not present
+-			_.util.setLanguage(element, language);
+-
+-			// Set language on the parent, for styling
+-			var parent = element.parentElement;
+-			if (parent && parent.nodeName.toLowerCase() === 'pre') {
+-				_.util.setLanguage(parent, language);
 +		insertBefore: function (inside, before, insert, root) {
 +			root = root || /** @type {any} */ (_.languages);
 +			var grammar = root[inside];
@@ -957,8 +780,7 @@ index 1259f23..740bdf7 100644
 +							}
 +						}
 +					}
- 
--				delete grammar.rest;
++
 +					// Do not insert token which also occur in insert. See #1525
 +					if (!insert.hasOwnProperty(token)) {
 +						ret[token] = grammar[token];
@@ -966,12 +788,16 @@ index 1259f23..740bdf7 100644
 +				}
  			}
  
--			var tokenList = new LinkedList();
--			addAfter(tokenList, tokenList.head, text);
+-			var code = element.textContent;
 +			var old = root[inside];
 +			root[inside] = ret;
  
--			matchGrammar(text, tokenList, grammar, tokenList.head, 0);
+-			var env = {
+-				element: element,
+-				language: language,
+-				grammar: grammar,
+-				code: code
+-			};
 +			// Update references in other language definitions
 +			_.languages.DFS(_.languages, function (key, value) {
 +				if (value === old && key != inside) {
@@ -979,15 +805,254 @@ index 1259f23..740bdf7 100644
 +				}
 +			});
  
--			return toArray(tokenList);
+-			function insertHighlightedCode(highlightedCode) {
+-				env.highlightedCode = highlightedCode;
 +			return ret;
- 		},
++		},
+ 
+-				_.hooks.run('before-insert', env);
++		// Traverse a language definition with Depth First Search
++		DFS: function DFS(o, callback, type, visited) {
++			visited = visited || {};
+ 
+-				env.element.innerHTML = env.highlightedCode;
++			var objId = _.util.objId;
+ 
+-				_.hooks.run('after-highlight', env);
+-				_.hooks.run('complete', env);
+-				callback && callback.call(env.element);
+-			}
++			for (var i in o) {
++				if (o.hasOwnProperty(i)) {
++					callback.call(o, i, o[i], type || i);
+ 
+-			_.hooks.run('before-sanity-check', env);
++					var property = o[i];
++					var propertyType = _.util.type(property);
+ 
+-			// plugins may change/add the parent/element
+-			parent = env.element.parentElement;
+-			if (parent && parent.nodeName.toLowerCase() === 'pre' && !parent.hasAttribute('tabindex')) {
+-				parent.setAttribute('tabindex', '0');
++					if (propertyType === 'Object' && !visited[objId(property)]) {
++						visited[objId(property)] = true;
++						DFS(property, callback, null, visited);
++					} else if (propertyType === 'Array' && !visited[objId(property)]) {
++						visited[objId(property)] = true;
++						DFS(property, callback, i, visited);
++					}
++				}
+ 			}
++		}
++	},
+ 
+-			if (!env.code) {
+-				_.hooks.run('complete', env);
+-				callback && callback.call(env.element);
+-				return;
+-			}
++	plugins: {},
+ 
+-			_.hooks.run('before-highlight', env);
++	/**
++	 * Low-level function, only use if you know what you’re doing. It accepts a string of text as input
++	 * and the language definitions to use, and returns a string with the HTML produced.
++	 *
++	 * The following hooks will be run:
++	 * 1. `before-tokenize`
++	 * 2. `after-tokenize`
++	 * 3. `wrap`: On each {@link Token}.
++	 *
++	 * @param {string} text A string with the code to be highlighted.
++	 * @param {Grammar} grammar An object containing the tokens to use.
++	 *
++	 * Usually a language definition like `Prism.languages.markup`.
++	 * @param {string} language The name of the language definition passed to `grammar`.
++	 * @returns {string} The highlighted HTML.
++	 * @memberof Prism
++	 * @public
++	 * @example
++	 * Prism.highlight('var foo = true;', Prism.languages.javascript, 'javascript');
++	 */
++	highlight: function (text, grammar, language) {
++		var env = {
++			code: text,
++			grammar: grammar,
++			language: language
++		};
++		_.hooks.run('before-tokenize', env);
++		if (!env.grammar) {
++			throw new Error('The language "' + env.language + '" has no grammar.');
++		}
++		env.tokens = _.tokenize(env.code, env.grammar);
++		_.hooks.run('after-tokenize', env);
++		return Token.stringify(_.util.encode(env.tokens), env.language);
++	},
+ 
+-			if (!env.grammar) {
+-				insertHighlightedCode(_.util.encode(env.code));
+-				return;
++	/**
++	 * This is the heart of Prism, and the most low-level function you can use. It accepts a string of text as input
++	 * and the language definitions to use, and returns an array with the tokenized code.
++	 *
++	 * When the language definition includes nested tokens, the function is called recursively on each of these tokens.
++	 *
++	 * This method could be useful in other contexts as well, as a very crude parser.
++	 *
++	 * @param {string} text A string with the code to be highlighted.
++	 * @param {Grammar} grammar An object containing the tokens to use.
++	 *
++	 * Usually a language definition like `Prism.languages.markup`.
++	 * @returns {TokenStream} An array of strings and tokens, a token stream.
++	 * @memberof Prism
++	 * @public
++	 * @example
++	 * let code = `var foo = 0;`;
++	 * let tokens = Prism.tokenize(code, Prism.languages.javascript);
++	 * tokens.forEach(token => {
++	 *     if (token instanceof Prism.Token && token.type === 'number') {
++	 *         console.log(`Found numeric literal: ${token.content}`);
++	 *     }
++	 * });
++	 */
++	tokenize: function (text, grammar) {
++		var rest = grammar.rest;
++		if (rest) {
++			for (var token in rest) {
++				grammar[token] = rest[token];
+ 			}
+ 
+-			if (async && _self.Worker) {
+-				var worker = new Worker(_.filename);
++			delete grammar.rest;
++		}
+ 
+-				worker.onmessage = function (evt) {
+-					insertHighlightedCode(evt.data);
+-				};
++		var tokenList = new LinkedList();
++		addAfter(tokenList, tokenList.head, text);
+ 
+-				worker.postMessage(JSON.stringify({
+-					language: env.language,
+-					code: env.code,
+-					immediateClose: true
+-				}));
+-			} else {
+-				insertHighlightedCode(_.highlight(env.code, env.grammar, env.language));
+-			}
+-		},
++		matchGrammar(text, tokenList, grammar, tokenList.head, 0);
  
 -		/**
--		 * @namespace
+-		 * Low-level function, only use if you know what you’re doing. It accepts a string of text as input
+-		 * and the language definitions to use, and returns a string with the HTML produced.
+-		 *
+-		 * The following hooks will be run:
+-		 * 1. `before-tokenize`
+-		 * 2. `after-tokenize`
+-		 * 3. `wrap`: On each {@link Token}.
+-		 *
+-		 * @param {string} text A string with the code to be highlighted.
+-		 * @param {Grammar} grammar An object containing the tokens to use.
+-		 *
+-		 * Usually a language definition like `Prism.languages.markup`.
+-		 * @param {string} language The name of the language definition passed to `grammar`.
+-		 * @returns {string} The highlighted HTML.
 -		 * @memberof Prism
 -		 * @public
+-		 * @example
+-		 * Prism.highlight('var foo = true;', Prism.languages.javascript, 'javascript');
 -		 */
+-		highlight: function (text, grammar, language) {
+-			var env = {
+-				code: text,
+-				grammar: grammar,
+-				language: language
+-			};
+-			_.hooks.run('before-tokenize', env);
+-			if (!env.grammar) {
+-				throw new Error('The language "' + env.language + '" has no grammar.');
+-			}
+-			env.tokens = _.tokenize(env.code, env.grammar);
+-			_.hooks.run('after-tokenize', env);
+-			return Token.stringify(_.util.encode(env.tokens), env.language);
+-		},
++		return toArray(tokenList);
++	},
++
++	/**
++	 * @namespace
++	 * @memberof Prism
++	 * @public
++	 */
++	hooks: {
++		all: {},
+ 
+ 		/**
+-		 * This is the heart of Prism, and the most low-level function you can use. It accepts a string of text as input
+-		 * and the language definitions to use, and returns an array with the tokenized code.
+-		 *
+-		 * When the language definition includes nested tokens, the function is called recursively on each of these tokens.
++		 * Adds the given callback to the list of callbacks for the given hook.
+ 		 *
+-		 * This method could be useful in other contexts as well, as a very crude parser.
++		 * The callback will be invoked when the hook it is registered for is run.
++		 * Hooks are usually directly run by a highlight function but you can also run hooks yourself.
+ 		 *
+-		 * @param {string} text A string with the code to be highlighted.
+-		 * @param {Grammar} grammar An object containing the tokens to use.
++		 * One callback function can be registered to multiple hooks and the same hook multiple times.
+ 		 *
+-		 * Usually a language definition like `Prism.languages.markup`.
+-		 * @returns {TokenStream} An array of strings and tokens, a token stream.
+-		 * @memberof Prism
++		 * @param {string} name The name of the hook.
++		 * @param {HookCallback} callback The callback function which is given environment variables.
+ 		 * @public
+-		 * @example
+-		 * let code = `var foo = 0;`;
+-		 * let tokens = Prism.tokenize(code, Prism.languages.javascript);
+-		 * tokens.forEach(token => {
+-		 *     if (token instanceof Prism.Token && token.type === 'number') {
+-		 *         console.log(`Found numeric literal: ${token.content}`);
+-		 *     }
+-		 * });
+ 		 */
+-		tokenize: function (text, grammar) {
+-			var rest = grammar.rest;
+-			if (rest) {
+-				for (var token in rest) {
+-					grammar[token] = rest[token];
+-				}
+-
+-				delete grammar.rest;
+-			}
+-
+-			var tokenList = new LinkedList();
+-			addAfter(tokenList, tokenList.head, text);
++		add: function (name, callback) {
++			var hooks = _.hooks.all;
+ 
+-			matchGrammar(text, tokenList, grammar, tokenList.head, 0);
++			hooks[name] = hooks[name] || [];
+ 
+-			return toArray(tokenList);
++			hooks[name].push(callback);
+ 		},
+ 
+ 		/**
+-		 * @namespace
+-		 * @memberof Prism
++		 * Runs a hook invoking all registered callbacks with the given environment variables.
++		 *
++		 * Callbacks will be invoked synchronously and in the order in which they were registered.
++		 *
++		 * @param {string} name The name of the hook.
++		 * @param {Object<string, any>} env The environment variables of the hook passed to all callbacks registered.
+ 		 * @public
+ 		 */
 -		hooks: {
 -			all: {},
 -
@@ -1026,193 +1091,20 @@ index 1259f23..740bdf7 100644
 -				if (!callbacks || !callbacks.length) {
 -					return;
 -				}
-+		// Traverse a language definition with Depth First Search
-+		DFS: function DFS(o, callback, type, visited) {
-+			visited = visited || {};
-+
-+			var objId = _.util.objId;
++		run: function (name, env) {
++			var callbacks = _.hooks.all[name];
  
 -				for (var i = 0, callback; (callback = callbacks[i++]);) {
 -					callback(env);
-+			for (var i in o) {
-+				if (o.hasOwnProperty(i)) {
-+					callback.call(o, i, o[i], type || i);
-+
-+					var property = o[i];
-+					var propertyType = _.util.type(property);
-+
-+					if (propertyType === 'Object' && !visited[objId(property)]) {
-+						visited[objId(property)] = true;
-+						DFS(property, callback, null, visited);
-+					} else if (propertyType === 'Array' && !visited[objId(property)]) {
-+						visited[objId(property)] = true;
-+						DFS(property, callback, i, visited);
-+					}
- 				}
+-				}
++			if (!callbacks || !callbacks.length) {
++				return;
  			}
 -		},
--
+ 
 -		Token: Token
 -	};
 -	_self.Prism = _;
-+		}
-+	},
- 
-+	plugins: {},
- 
--	// Typescript note:
--	// The following can be used to import the Token type in JSDoc:
--	//
--	//   @typedef {InstanceType<import("./prism-core")["Token"]>} Token
-+	/**
-+	 * Low-level function, only use if you know what you’re doing. It accepts a string of text as input
-+	 * and the language definitions to use, and returns a string with the HTML produced.
-+	 *
-+	 * The following hooks will be run:
-+	 * 1. `before-tokenize`
-+	 * 2. `after-tokenize`
-+	 * 3. `wrap`: On each {@link Token}.
-+	 *
-+	 * @param {string} text A string with the code to be highlighted.
-+	 * @param {Grammar} grammar An object containing the tokens to use.
-+	 *
-+	 * Usually a language definition like `Prism.languages.markup`.
-+	 * @param {string} language The name of the language definition passed to `grammar`.
-+	 * @returns {string} The highlighted HTML.
-+	 * @memberof Prism
-+	 * @public
-+	 * @example
-+	 * Prism.highlight('var foo = true;', Prism.languages.javascript, 'javascript');
-+	 */
-+	highlight: function (text, grammar, language) {
-+		var env = {
-+			code: text,
-+			grammar: grammar,
-+			language: language
-+		};
-+		_.hooks.run('before-tokenize', env);
-+		if (!env.grammar) {
-+			throw new Error('The language "' + env.language + '" has no grammar.');
-+		}
-+		env.tokens = _.tokenize(env.code, env.grammar);
-+		_.hooks.run('after-tokenize', env);
-+		return Token.stringify(_.util.encode(env.tokens), env.language);
-+	},
- 
- 	/**
--	 * Creates a new token.
-+	 * This is the heart of Prism, and the most low-level function you can use. It accepts a string of text as input
-+	 * and the language definitions to use, and returns an array with the tokenized code.
-+	 *
-+	 * When the language definition includes nested tokens, the function is called recursively on each of these tokens.
- 	 *
--	 * @param {string} type See {@link Token#type type}
--	 * @param {string | TokenStream} content See {@link Token#content content}
--	 * @param {string|string[]} [alias] The alias(es) of the token.
--	 * @param {string} [matchedStr=""] A copy of the full string this token was created from.
--	 * @class
--	 * @global
-+	 * This method could be useful in other contexts as well, as a very crude parser.
-+	 *
-+	 * @param {string} text A string with the code to be highlighted.
-+	 * @param {Grammar} grammar An object containing the tokens to use.
-+	 *
-+	 * Usually a language definition like `Prism.languages.markup`.
-+	 * @returns {TokenStream} An array of strings and tokens, a token stream.
-+	 * @memberof Prism
- 	 * @public
-+	 * @example
-+	 * let code = `var foo = 0;`;
-+	 * let tokens = Prism.tokenize(code, Prism.languages.javascript);
-+	 * tokens.forEach(token => {
-+	 *     if (token instanceof Prism.Token && token.type === 'number') {
-+	 *         console.log(`Found numeric literal: ${token.content}`);
-+	 *     }
-+	 * });
- 	 */
--	function Token(type, content, alias, matchedStr) {
-+	tokenize: function (text, grammar) {
-+		var rest = grammar.rest;
-+		if (rest) {
-+			for (var token in rest) {
-+				grammar[token] = rest[token];
-+			}
-+
-+			delete grammar.rest;
-+		}
-+
-+		var tokenList = new LinkedList();
-+		addAfter(tokenList, tokenList.head, text);
-+
-+		matchGrammar(text, tokenList, grammar, tokenList.head, 0);
-+
-+		return toArray(tokenList);
-+	},
-+
-+	/**
-+	 * @namespace
-+	 * @memberof Prism
-+	 * @public
-+	 */
-+	hooks: {
-+		all: {},
-+
- 		/**
--		 * The type of the token.
-+		 * Adds the given callback to the list of callbacks for the given hook.
- 		 *
--		 * This is usually the key of a pattern in a {@link Grammar}.
-+		 * The callback will be invoked when the hook it is registered for is run.
-+		 * Hooks are usually directly run by a highlight function but you can also run hooks yourself.
- 		 *
--		 * @type {string}
--		 * @see GrammarToken
--		 * @public
--		 */
--		this.type = type;
--		/**
--		 * The strings or tokens contained by this token.
-+		 * One callback function can be registered to multiple hooks and the same hook multiple times.
- 		 *
--		 * This will be a token stream if the pattern matched also defined an `inside` grammar.
--		 *
--		 * @type {string | TokenStream}
-+		 * @param {string} name The name of the hook.
-+		 * @param {HookCallback} callback The callback function which is given environment variables.
- 		 * @public
- 		 */
--		this.content = content;
-+		add: function (name, callback) {
-+			var hooks = _.hooks.all;
-+
-+			hooks[name] = hooks[name] || [];
-+
-+			hooks[name].push(callback);
-+		},
-+
- 		/**
--		 * The alias(es) of the token.
-+		 * Runs a hook invoking all registered callbacks with the given environment variables.
- 		 *
--		 * @type {string|string[]}
--		 * @see GrammarToken
-+		 * Callbacks will be invoked synchronously and in the order in which they were registered.
-+		 *
-+		 * @param {string} name The name of the hook.
-+		 * @param {Object<string, any>} env The environment variables of the hook passed to all callbacks registered.
- 		 * @public
- 		 */
--		this.alias = alias;
--		// Copy of the full string this token was created from
--		this.length = (matchedStr || '').length | 0;
--	}
-+		run: function (name, env) {
-+			var callbacks = _.hooks.all[name];
-+
-+			if (!callbacks || !callbacks.length) {
-+				return;
-+			}
-+
 +			for (var i = 0, callback; (callback = callbacks[i++]);) {
 +				callback(env);
 +			}
@@ -1221,12 +1113,16 @@ index 1259f23..740bdf7 100644
  
 +	Token: Token
 +};
-+
+ 
+-	// Typescript note:
+-	// The following can be used to import the Token type in JSDoc:
+-	//
+-	//   @typedef {InstanceType<import("./prism-core")["Token"]>} Token
 +// Typescript note:
 +// The following can be used to import the Token type in JSDoc:
 +//
 +//   @typedef {InstanceType<import("./prism-core")["Token"]>} Token
-+
+ 
 +/**
 + * Creates a new token.
 + *
@@ -1240,26 +1136,67 @@ index 1259f23..740bdf7 100644
 + */
 +function Token(type, content, alias, matchedStr) {
  	/**
--	 * A token stream is an array of strings and {@link Token Token} objects.
+-	 * Creates a new token.
 +	 * The type of the token.
+ 	 *
+-	 * @param {string} type See {@link Token#type type}
+-	 * @param {string | TokenStream} content See {@link Token#content content}
+-	 * @param {string|string[]} [alias] The alias(es) of the token.
+-	 * @param {string} [matchedStr=""] A copy of the full string this token was created from.
+-	 * @class
+-	 * @global
++	 * This is usually the key of a pattern in a {@link Grammar}.
++	 *
++	 * @type {string}
++	 * @see GrammarToken
+ 	 * @public
+ 	 */
+-	function Token(type, content, alias, matchedStr) {
+-		/**
+-		 * The type of the token.
+-		 *
+-		 * This is usually the key of a pattern in a {@link Grammar}.
+-		 *
+-		 * @type {string}
+-		 * @see GrammarToken
+-		 * @public
+-		 */
+-		this.type = type;
+-		/**
+-		 * The strings or tokens contained by this token.
+-		 *
+-		 * This will be a token stream if the pattern matched also defined an `inside` grammar.
+-		 *
+-		 * @type {string | TokenStream}
+-		 * @public
+-		 */
+-		this.content = content;
+-		/**
+-		 * The alias(es) of the token.
+-		 *
+-		 * @type {string|string[]}
+-		 * @see GrammarToken
+-		 * @public
+-		 */
+-		this.alias = alias;
+-		// Copy of the full string this token was created from
+-		this.length = (matchedStr || '').length | 0;
+-	}
+-
++	this.type = type;
+ 	/**
+-	 * A token stream is an array of strings and {@link Token Token} objects.
++	 * The strings or tokens contained by this token.
  	 *
 -	 * Token streams have to fulfill a few properties that are assumed by most functions (mostly internal ones) that process
 -	 * them.
-+	 * This is usually the key of a pattern in a {@link Grammar}.
++	 * This will be a token stream if the pattern matched also defined an `inside` grammar.
  	 *
 -	 * 1. No adjacent strings.
 -	 * 2. No empty strings.
-+	 * @type {string}
-+	 * @see GrammarToken
-+	 * @public
-+	 */
-+	this.type = type;
-+	/**
-+	 * The strings or tokens contained by this token.
- 	 *
+-	 *
 -	 *    The only exception here is the token stream that only contains the empty string and nothing else.
-+	 * This will be a token stream if the pattern matched also defined an `inside` grammar.
- 	 *
+-	 *
 -	 * @typedef {Array<string | Token>} TokenStream
 -	 * @global
 +	 * @type {string | TokenStream}
