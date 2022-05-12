@@ -1,0 +1,45 @@
+diff --git a/node_modules/prismjs/components/prism-core.js b/node_modules/prismjs/components/prism-core.js
+index 1259f23..6fb788e 100644
+--- a/node_modules/prismjs/components/prism-core.js
++++ b/node_modules/prismjs/components/prism-core.js
+@@ -1,13 +1,3 @@
+-/// <reference lib="WebWorker"/>
+-
+-var _self = (typeof window !== 'undefined')
+-	? window   // if in browser
+-	: (
+-		(typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope)
+-			? self // if in worker
+-			: {}   // if in node js
+-	);
+-
+ /**
+  * Prism: Lightweight, robust, elegant syntax highlighting
+  *
+@@ -16,7 +6,7 @@ var _self = (typeof window !== 'undefined')
+  * @namespace
+  * @public
+  */
+-var Prism = (function (_self) {
++export const Prism = (function (_self) {
+ 
+ 	// Private helper vars
+ 	var lang = /(?:^|\s)lang(?:uage)?-([\w-]+)(?=\s|$)/i;
+@@ -1202,16 +1192,7 @@ var Prism = (function (_self) {
+ 
+ 	return _;
+ 
+-}(_self));
+-
+-if (typeof module !== 'undefined' && module.exports) {
+-	module.exports = Prism;
+-}
+-
+-// hack for components to work correctly in node.js
+-if (typeof global !== 'undefined') {
+-	global.Prism = Prism;
+-}
++}({}));
+ 
+ // some additional documentation/types
+ 
