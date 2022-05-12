@@ -88,7 +88,7 @@
     "build": "rimraf \"{lang,lib,script,test}/**/*.d.ts\" \"*.d.ts\" && tsc && type-coverage",
     "format": "remark . -qfo && prettier . -w --loglevel warn && xo --fix",
     "test-api": "node --conditions development test/index.js",
-    "test-coverage": "c8 -x \"lang/*.js\" --check-coverage --branches 100 --functions 100 --lines 100 --statements 100 --reporter lcov npm run test-api",
+    "test-coverage": "c8 -x \"lang/*.js\" -x \"lib/prism-core.js\" --check-coverage --100 --reporter lcov npm run test-api",
     "test": "npm run generate && npm run build && npm run format && npm run test-coverage"
   },
   "prettier": {
