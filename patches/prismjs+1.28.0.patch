@@ -1,8 +1,8 @@
 diff --git a/node_modules/prismjs/components/prism-core.js b/node_modules/prismjs/components/prism-core.js
-index 1259f23..6acbe1a 100644
+index 1259f23..740bdf7 100644
 --- a/node_modules/prismjs/components/prism-core.js
 +++ b/node_modules/prismjs/components/prism-core.js
-@@ -1,12 +1,7 @@
+@@ -1,1217 +1,829 @@
 -/// <reference lib="WebWorker"/>
 +// @ts-nocheck
  
@@ -16,27 +16,29 @@ index 1259f23..6acbe1a 100644
 +// This is a slimmed down version of `prism-core.js`, to remove globals,
 +// document, workers, `util.encode`, `Token.stringify`
  
- /**
-  * Prism: Lightweight, robust, elegant syntax highlighting
-@@ -16,1202 +11,826 @@ var _self = (typeof window !== 'undefined')
-  * @namespace
-  * @public
-  */
+-/**
+- * Prism: Lightweight, robust, elegant syntax highlighting
+- *
+- * @license MIT <https://opensource.org/licenses/MIT>
+- * @author Lea Verou <https://lea.verou.me>
+- * @namespace
+- * @public
+- */
 -var Prism = (function (_self) {
+-
+-	// Private helper vars
+-	var lang = /(?:^|\s)lang(?:uage)?-([\w-]+)(?=\s|$)/i;
+-	var uniqueId = 0;
 +// Private helper vars
 +var lang = /(?:^|\s)lang(?:uage)?-([\w-]+)(?=\s|$)/i;
 +var uniqueId = 0;
  
--	// Private helper vars
--	var lang = /(?:^|\s)lang(?:uage)?-([\w-]+)(?=\s|$)/i;
--	var uniqueId = 0;
+-	// The grammar object for plaintext
+-	var plainTextGrammar = {};
 +// The grammar object for plaintext
 +var plainTextGrammar = {};
  
--	// The grammar object for plaintext
--	var plainTextGrammar = {};
--
--
+ 
 -	var _ = {
 -		/**
 -		 * By default, Prism will attempt to highlight all code elements (by calling {@link Prism.highlightAll}) on the
@@ -80,14 +82,14 @@ index 1259f23..6acbe1a 100644
 -		 *
 -		 * You obviously have to change this value before Prism executes. To do this, you can add an
 -		 * empty Prism object into the global scope before loading the Prism script like this:
-+		 * Returns the name of the type of the given value.
- 		 *
+-		 *
 -		 * ```js
 -		 * window.Prism = window.Prism || {};
 -		 * Prism.disableWorkerMessageHandler = true;
 -		 * // Load Prism's script
 -		 * ```
--		 *
++		 * Returns the name of the type of the given value.
+ 		 *
 -		 * @default false
 -		 * @type {boolean}
 -		 * @memberof Prism
@@ -526,23 +528,23 @@ index 1259f23..6acbe1a 100644
 -
 -				return ret;
 -			},
-+					clone = [];
-+					visited[id] = clone;
- 
+-
 -			// Traverse a language definition with Depth First Search
 -			DFS: function DFS(o, callback, type, visited) {
 -				visited = visited || {};
++					clone = [];
++					visited[id] = clone;
+ 
+-				var objId = _.util.objId;
 +					(/** @type {Array} */(/** @type {any} */(o))).forEach(function (v, i) {
 +						clone[i] = deepClone(v, visited);
 +					});
  
--				var objId = _.util.objId;
-+					return /** @type {any} */ (clone);
- 
 -				for (var i in o) {
 -					if (o.hasOwnProperty(i)) {
 -						callback.call(o, i, o[i], type || i);
--
++					return /** @type {any} */ (clone);
+ 
 -						var property = o[i];
 -						var propertyType = _.util.type(property);
 -
@@ -704,7 +706,9 @@ index 1259f23..6acbe1a 100644
 -				env.highlightedCode = highlightedCode;
 -
 -				_.hooks.run('before-insert', env);
--
++		isActive: function (element, className, defaultActivation) {
++			var no = 'no-' + className;
+ 
 -				env.element.innerHTML = env.highlightedCode;
 -
 -				_.hooks.run('after-highlight', env);
@@ -713,9 +717,7 @@ index 1259f23..6acbe1a 100644
 -			}
 -
 -			_.hooks.run('before-sanity-check', env);
-+		isActive: function (element, className, defaultActivation) {
-+			var no = 'no-' + className;
- 
+-
 -			// plugins may change/add the parent/element
 -			parent = env.element.parentElement;
 -			if (parent && parent.nodeName.toLowerCase() === 'pre' && !parent.hasAttribute('tabindex')) {
@@ -783,26 +785,26 @@ index 1259f23..6acbe1a 100644
 -		 * Low-level function, only use if you know what you’re doing. It accepts a string of text as input
 -		 * and the language definitions to use, and returns a string with the HTML produced.
 +		 * Creates a deep copy of the language with the given id and appends the given tokens.
-+		 *
-+		 * If a token in `redef` also appears in the copied language, then the existing token in the copied language
-+		 * will be overwritten at its original position.
  		 *
 -		 * The following hooks will be run:
 -		 * 1. `before-tokenize`
 -		 * 2. `after-tokenize`
 -		 * 3. `wrap`: On each {@link Token}.
-+		 * ## Best practices
++		 * If a token in `redef` also appears in the copied language, then the existing token in the copied language
++		 * will be overwritten at its original position.
  		 *
 -		 * @param {string} text A string with the code to be highlighted.
 -		 * @param {Grammar} grammar An object containing the tokens to use.
-+		 * Since the position of overwriting tokens (token in `redef` that overwrite tokens in the copied language)
-+		 * doesn't matter, they can technically be in any order. However, this can be confusing to others that trying to
-+		 * understand the language definition because, normally, the order of tokens matters in Prism grammars.
++		 * ## Best practices
  		 *
 -		 * Usually a language definition like `Prism.languages.markup`.
 -		 * @param {string} language The name of the language definition passed to `grammar`.
 -		 * @returns {string} The highlighted HTML.
 -		 * @memberof Prism
++		 * Since the position of overwriting tokens (token in `redef` that overwrite tokens in the copied language)
++		 * doesn't matter, they can technically be in any order. However, this can be confusing to others that trying to
++		 * understand the language definition because, normally, the order of tokens matters in Prism grammars.
++		 *
 +		 * Therefore, it is encouraged to order overwriting tokens according to the positions of the overwritten tokens.
 +		 * Furthermore, all non-overwriting tokens should be placed after the overwriting ones.
 +		 *
@@ -1027,11 +1029,11 @@ index 1259f23..6acbe1a 100644
 +		// Traverse a language definition with Depth First Search
 +		DFS: function DFS(o, callback, type, visited) {
 +			visited = visited || {};
++
++			var objId = _.util.objId;
  
 -				for (var i = 0, callback; (callback = callbacks[i++]);) {
 -					callback(env);
-+			var objId = _.util.objId;
-+
 +			for (var i in o) {
 +				if (o.hasOwnProperty(i)) {
 +					callback.call(o, i, o[i], type || i);
@@ -1103,11 +1105,6 @@ index 1259f23..6acbe1a 100644
 +	 * and the language definitions to use, and returns an array with the tokenized code.
 +	 *
 +	 * When the language definition includes nested tokens, the function is called recursively on each of these tokens.
-+	 *
-+	 * This method could be useful in other contexts as well, as a very crude parser.
-+	 *
-+	 * @param {string} text A string with the code to be highlighted.
-+	 * @param {Grammar} grammar An object containing the tokens to use.
  	 *
 -	 * @param {string} type See {@link Token#type type}
 -	 * @param {string | TokenStream} content See {@link Token#content content}
@@ -1115,6 +1112,11 @@ index 1259f23..6acbe1a 100644
 -	 * @param {string} [matchedStr=""] A copy of the full string this token was created from.
 -	 * @class
 -	 * @global
++	 * This method could be useful in other contexts as well, as a very crude parser.
++	 *
++	 * @param {string} text A string with the code to be highlighted.
++	 * @param {Grammar} grammar An object containing the tokens to use.
++	 *
 +	 * Usually a language definition like `Prism.languages.markup`.
 +	 * @returns {TokenStream} An array of strings and tokens, a token stream.
 +	 * @memberof Prism
@@ -1191,11 +1193,11 @@ index 1259f23..6acbe1a 100644
  		/**
 -		 * The alias(es) of the token.
 +		 * Runs a hook invoking all registered callbacks with the given environment variables.
-+		 *
-+		 * Callbacks will be invoked synchronously and in the order in which they were registered.
  		 *
 -		 * @type {string|string[]}
 -		 * @see GrammarToken
++		 * Callbacks will be invoked synchronously and in the order in which they were registered.
++		 *
 +		 * @param {string} name The name of the hook.
 +		 * @param {Object<string, any>} env The environment variables of the hook passed to all callbacks registered.
  		 * @public
@@ -1206,7 +1208,7 @@ index 1259f23..6acbe1a 100644
 -	}
 +		run: function (name, env) {
 +			var callbacks = _.hooks.all[name];
- 
++
 +			if (!callbacks || !callbacks.length) {
 +				return;
 +			}
@@ -1216,9 +1218,9 @@ index 1259f23..6acbe1a 100644
 +			}
 +		}
 +	},
-+
+ 
 +	Token: Token
-+}
++};
 +
 +// Typescript note:
 +// The following can be used to import the Token type in JSDoc:
@@ -1885,20 +1887,3 @@ index 1259f23..6acbe1a 100644
  
  // some additional documentation/types
  
-@@ -1244,16 +863,6 @@ if (typeof global !== 'undefined') {
-  * @public
-  */
- 
--/**
-- * A function which will invoked after an element was successfully highlighted.
-- *
-- * @callback HighlightCallback
-- * @param {Element} element The element successfully highlighted.
-- * @returns {void}
-- * @global
-- * @public
-- */
--
- /**
-  * @callback HookCallback
-  * @param {Object<string, any>} env The environment variables of the hook.
