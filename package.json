@@ -125,7 +125,9 @@
     "strict": true,
     "ignoreCatch": true,
     "ignoreFiles": [
-      "lang/*.d.ts"
+      "lang/*.d.ts",
+      "lib/prism-core.d.ts",
+      "lib/prism-core.js"
     ]
   }
 }
