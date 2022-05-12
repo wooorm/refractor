@@ -1,5 +1,5 @@
 diff --git a/node_modules/prismjs/components/prism-core.js b/node_modules/prismjs/components/prism-core.js
-index 1259f23..eb68db7 100644
+index 1259f23..aa90a1d 100644
 --- a/node_modules/prismjs/components/prism-core.js
 +++ b/node_modules/prismjs/components/prism-core.js
 @@ -1,13 +1,3 @@
@@ -77,7 +77,56 @@ index 1259f23..eb68db7 100644
  		/**
  		 * A namespace for utility methods.
  		 *
-@@ -1146,20 +1091,18 @@ var Prism = (function (_self) {
+@@ -211,48 +156,6 @@ var Prism = (function (_self) {
+ 				element.classList.add('language-' + language);
+ 			},
+ 
+-			/**
+-			 * Returns the script element that is currently executing.
+-			 *
+-			 * This does __not__ work for line script element.
+-			 *
+-			 * @returns {HTMLScriptElement | null}
+-			 */
+-			currentScript: function () {
+-				if (typeof document === 'undefined') {
+-					return null;
+-				}
+-				if ('currentScript' in document && 1 < 2 /* hack to trip TS' flow analysis */) {
+-					return /** @type {any} */ (document.currentScript);
+-				}
+-
+-				// IE11 workaround
+-				// we'll get the src of the current script by parsing IE11's error stack trace
+-				// this will not work for inline scripts
+-
+-				try {
+-					throw new Error();
+-				} catch (err) {
+-					// Get file src url from stack. Specifically works with the format of stack traces in IE.
+-					// A stack will look like this:
+-					//
+-					// Error
+-					//    at _.util.currentScript (http://localhost/components/prism-core.js:119:5)
+-					//    at Global code (http://localhost/components/prism-core.js:606:1)
+-
+-					var src = (/at [^(\r\n]*\((.*):[^:]+:[^:]+\)$/i.exec(err.stack) || [])[1];
+-					if (src) {
+-						var scripts = document.getElementsByTagName('script');
+-						for (var i in scripts) {
+-							if (scripts[i].src == src) {
+-								return scripts[i];
+-							}
+-						}
+-					}
+-					return null;
+-				}
+-			},
+-
+ 			/**
+ 			 * Returns whether a given class is active for `element`.
+ 			 *
+@@ -1146,72 +1049,25 @@ var Prism = (function (_self) {
  			return _;
  		}
  
@@ -95,26 +144,22 @@ index 1259f23..eb68db7 100644
 -				}
 -			}, false);
 -		}
+-
+-		return _;
+-	}
+-
+-	// Get current script and highlight
+-	var script = _.util.currentScript();
+-
+-	if (script) {
+-		_.filename = script.src;
 +		// In worker
 +		_self.addEventListener('message', function (evt) {
 +			var message = JSON.parse(evt.data);
 +			var lang = message.language;
 +			var code = message.code;
 +			var immediateClose = message.immediateClose;
-+
-+			_self.postMessage(_.highlight(code, _.languages[lang], lang));
-+			if (immediateClose) {
-+				_self.close();
-+			}
-+		}, false);
  
- 		return _;
- 	}
-@@ -1169,49 +1112,11 @@ var Prism = (function (_self) {
- 
- 	if (script) {
- 		_.filename = script.src;
--
 -		if (script.hasAttribute('data-manual')) {
 -			_.manual = true;
 -		}
@@ -141,8 +186,14 @@ index 1259f23..eb68db7 100644
 -				window.requestAnimationFrame(highlightAutomaticallyCallback);
 -			} else {
 -				window.setTimeout(highlightAutomaticallyCallback, 16);
--			}
++			_self.postMessage(_.highlight(code, _.languages[lang], lang));
++			if (immediateClose) {
++				_self.close();
+ 			}
 -		}
++		}, false);
++
++		return _;
  	}
  
  	return _;
