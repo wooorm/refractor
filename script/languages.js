@@ -14,7 +14,7 @@ import alphaSort from 'alpha-sort'
 import {all} from './data.js'
 import {toId} from './to-id.js'
 
-/** @type {{languages: Record<string, {require: string|string[], alias: string|string[]}>}} */
+/** @type {{languages: Record<string, {require: string|Array<string>, alias: string|Array<string>}>}} */
 const components = JSON.parse(
   String(
     fs.readFileSync(path.join('node_modules', 'prismjs', 'components.json'))
