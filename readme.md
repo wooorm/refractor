@@ -64,6 +64,8 @@ ASTs (rehype).
 
 A different package, [`lowlight`][lowlight], does the same as refractor but
 uses [`highlight.js`][hljs] instead.
+If you’re looking for a *really good* (but rather heavy) highlighter, try
+[`starry-night`][starry-night].
 
 <!--Old name of the following section:-->
 
@@ -704,6 +706,8 @@ This package is safe.
 
 *   [`lowlight`][lowlight]
     — the same as refractor but with [`highlight.js`][hljs]
+*   [`starry-night`][starry-night]
+    — similar but like GitHub and really good
 
 ## Projects
 
@@ -767,6 +771,8 @@ See [How to Contribute to Open Source][contribute].
 [lowlight]: https://github.com/wooorm/lowlight
 
 [hljs]: https://github.com/highlightjs/highlight.js
+
+[starry-night]: https://github.com/wooorm/starry-night
 
 [root]: https://github.com/syntax-tree/hast#root
 
