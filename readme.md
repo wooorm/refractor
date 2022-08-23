@@ -47,7 +47,7 @@ That’s why there are three entry points for refractor:
 
 *   `lib/core.js` — 0 languages
 *   `lib/common.js` (default) — 36 languages
-*   `lib/all.js` — 290 languages
+*   `lib/all.js` — 297 languages
 
 <!--count end-->
 
@@ -378,7 +378,7 @@ syntaxes are made to work with global variables and are not importable.
 <!--support start-->
 
 *   [x] [`arduino`](https://github.com/wooorm/refractor/blob/main/lang/arduino.js) — alias: `ino`
-*   [x] [`bash`](https://github.com/wooorm/refractor/blob/main/lang/bash.js) — alias: `shell`
+*   [x] [`bash`](https://github.com/wooorm/refractor/blob/main/lang/bash.js) — alias: `sh`, `shell`
 *   [x] [`basic`](https://github.com/wooorm/refractor/blob/main/lang/basic.js)
 *   [x] [`c`](https://github.com/wooorm/refractor/blob/main/lang/c.js)
 *   [x] [`clike`](https://github.com/wooorm/refractor/blob/main/lang/clike.js)
@@ -439,10 +439,12 @@ syntaxes are made to work with global variables and are not importable.
 *   [ ] [`awk`](https://github.com/wooorm/refractor/blob/main/lang/awk.js) — alias: `gawk`
 *   [ ] [`batch`](https://github.com/wooorm/refractor/blob/main/lang/batch.js)
 *   [ ] [`bbcode`](https://github.com/wooorm/refractor/blob/main/lang/bbcode.js) — alias: `shortcode`
+*   [ ] [`bbj`](https://github.com/wooorm/refractor/blob/main/lang/bbj.js)
 *   [ ] [`bicep`](https://github.com/wooorm/refractor/blob/main/lang/bicep.js)
 *   [ ] [`birb`](https://github.com/wooorm/refractor/blob/main/lang/birb.js)
 *   [ ] [`bison`](https://github.com/wooorm/refractor/blob/main/lang/bison.js)
 *   [ ] [`bnf`](https://github.com/wooorm/refractor/blob/main/lang/bnf.js) — alias: `rbnf`
+*   [ ] [`bqn`](https://github.com/wooorm/refractor/blob/main/lang/bqn.js)
 *   [ ] [`brainfuck`](https://github.com/wooorm/refractor/blob/main/lang/brainfuck.js)
 *   [ ] [`brightscript`](https://github.com/wooorm/refractor/blob/main/lang/brightscript.js)
 *   [ ] [`bro`](https://github.com/wooorm/refractor/blob/main/lang/bro.js)
@@ -450,6 +452,8 @@ syntaxes are made to work with global variables and are not importable.
 *   [ ] [`cfscript`](https://github.com/wooorm/refractor/blob/main/lang/cfscript.js) — alias: `cfc`
 *   [ ] [`chaiscript`](https://github.com/wooorm/refractor/blob/main/lang/chaiscript.js)
 *   [ ] [`cil`](https://github.com/wooorm/refractor/blob/main/lang/cil.js)
+*   [ ] [`cilkc`](https://github.com/wooorm/refractor/blob/main/lang/cilkc.js) — alias: `cilk-c`
+*   [ ] [`cilkcpp`](https://github.com/wooorm/refractor/blob/main/lang/cilkcpp.js) — alias: `cilk`, `cilk-cpp`
 *   [ ] [`clojure`](https://github.com/wooorm/refractor/blob/main/lang/clojure.js)
 *   [ ] [`cmake`](https://github.com/wooorm/refractor/blob/main/lang/cmake.js)
 *   [ ] [`cobol`](https://github.com/wooorm/refractor/blob/main/lang/cobol.js)
@@ -501,6 +505,7 @@ syntaxes are made to work with global variables and are not importable.
 *   [ ] [`gml`](https://github.com/wooorm/refractor/blob/main/lang/gml.js) — alias: `gamemakerlanguage`
 *   [ ] [`gn`](https://github.com/wooorm/refractor/blob/main/lang/gn.js) — alias: `gni`
 *   [ ] [`go-module`](https://github.com/wooorm/refractor/blob/main/lang/go-module.js) — alias: `go-mod`
+*   [ ] [`gradle`](https://github.com/wooorm/refractor/blob/main/lang/gradle.js)
 *   [ ] [`graphql`](https://github.com/wooorm/refractor/blob/main/lang/graphql.js)
 *   [ ] [`groovy`](https://github.com/wooorm/refractor/blob/main/lang/groovy.js)
 *   [ ] [`haml`](https://github.com/wooorm/refractor/blob/main/lang/haml.js)
@@ -556,6 +561,7 @@ syntaxes are made to work with global variables and are not importable.
 *   [ ] [`maxscript`](https://github.com/wooorm/refractor/blob/main/lang/maxscript.js)
 *   [ ] [`mel`](https://github.com/wooorm/refractor/blob/main/lang/mel.js)
 *   [ ] [`mermaid`](https://github.com/wooorm/refractor/blob/main/lang/mermaid.js)
+*   [ ] [`metafont`](https://github.com/wooorm/refractor/blob/main/lang/metafont.js)
 *   [ ] [`mizar`](https://github.com/wooorm/refractor/blob/main/lang/mizar.js)
 *   [ ] [`mongodb`](https://github.com/wooorm/refractor/blob/main/lang/mongodb.js)
 *   [ ] [`monkey`](https://github.com/wooorm/refractor/blob/main/lang/monkey.js)
@@ -658,6 +664,7 @@ syntaxes are made to work with global variables and are not importable.
 *   [ ] [`warpscript`](https://github.com/wooorm/refractor/blob/main/lang/warpscript.js)
 *   [ ] [`wasm`](https://github.com/wooorm/refractor/blob/main/lang/wasm.js)
 *   [ ] [`web-idl`](https://github.com/wooorm/refractor/blob/main/lang/web-idl.js) — alias: `webidl`
+*   [ ] [`wgsl`](https://github.com/wooorm/refractor/blob/main/lang/wgsl.js)
 *   [ ] [`wiki`](https://github.com/wooorm/refractor/blob/main/lang/wiki.js)
 *   [ ] [`wolfram`](https://github.com/wooorm/refractor/blob/main/lang/wolfram.js) — alias: `mathematica`, `nb`, `wl`
 *   [ ] [`wren`](https://github.com/wooorm/refractor/blob/main/lang/wren.js)

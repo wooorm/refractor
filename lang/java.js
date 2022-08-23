@@ -76,7 +76,8 @@ export default function java(Prism) {
         pattern:
           /(^|[^.])(?:<<=?|>>>?=?|->|--|\+\+|&&|\|\||::|[?:~]|[-+*/%&|^!=<>]=?)/m,
         lookbehind: true
-      }
+      },
+      constant: /\b[A-Z][A-Z_\d]+\b/
     })
     Prism.languages.insertBefore('java', 'string', {
       'triple-quoted-string': {

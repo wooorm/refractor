@@ -10,7 +10,7 @@ export default function hoon(Prism) {
       greedy: true
     },
     string: {
-      pattern: /"[^"]*"|'[^']*'/,
+      pattern: /"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'/,
       greedy: true
     },
     constant: /%(?:\.[ny]|[\w-]+)/,

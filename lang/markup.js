@@ -59,7 +59,10 @@ export default function markup(Prism) {
                 pattern: /^=/,
                 alias: 'attr-equals'
               },
-              /"|'/
+              {
+                pattern: /^(\s*)["']|["']$/,
+                lookbehind: true
+              }
             ]
           }
         },

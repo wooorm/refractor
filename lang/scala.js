@@ -17,7 +17,7 @@ export default function scala(Prism) {
       greedy: true
     },
     keyword:
-      /<-|=>|\b(?:abstract|case|catch|class|def|do|else|extends|final|finally|for|forSome|if|implicit|import|lazy|match|new|null|object|override|package|private|protected|return|sealed|self|super|this|throw|trait|try|type|val|var|while|with|yield)\b/,
+      /<-|=>|\b(?:abstract|case|catch|class|def|derives|do|else|enum|extends|extension|final|finally|for|forSome|given|if|implicit|import|infix|inline|lazy|match|new|null|object|opaque|open|override|package|private|protected|return|sealed|self|super|this|throw|trait|transparent|try|type|using|val|var|while|with|yield)\b/,
     number:
       /\b0x(?:[\da-f]*\.)?[\da-f]+|(?:\b\d+(?:\.\d*)?|\B\.\d+)(?:e\d+)?[dfl]?/i,
     builtin:
@@ -57,4 +57,5 @@ export default function scala(Prism) {
   })
   delete Prism.languages.scala['class-name']
   delete Prism.languages.scala['function']
+  delete Prism.languages.scala['constant']
 }
