@@ -105,11 +105,13 @@ export default function webIdl(Prism) {
       operator: /\.{3}|[=:?<>-]/,
       punctuation: /[(){}[\].,;]/
     }
+
     for (var key in Prism.languages['web-idl']) {
       if (key !== 'class-name') {
         typeInside[key] = Prism.languages['web-idl'][key]
       }
     }
+
     Prism.languages['webidl'] = Prism.languages['web-idl']
   })(Prism)
 }

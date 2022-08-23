@@ -18,6 +18,7 @@ export default function diff(Prism) {
      *
      * @type {Object<string, string>}
      */
+
     var PREFIXES = {
       'deleted-sign': '-',
       'deleted-arrow': '<',
@@ -26,16 +27,20 @@ export default function diff(Prism) {
       unchanged: ' ',
       diff: '!'
     } // add a token for each prefix
+
     Object.keys(PREFIXES).forEach(function (name) {
       var prefix = PREFIXES[name]
       var alias = []
+
       if (!/^\w+$/.test(name)) {
         // "deleted-sign" -> "deleted"
         alias.push(/\w+/.exec(name)[0])
       }
+
       if (name === 'diff') {
         alias.push('bold')
       }
+
       Prism.languages.diff[name] = {
         pattern: RegExp(
           '^(?:[' + prefix + '].*(?:\r\n?|\n|(?![\\s\\S])))+',
@@ -54,6 +59,7 @@ export default function diff(Prism) {
         }
       }
     }) // make prefixes available to Diff plugin
+
     Object.defineProperty(Prism.languages.diff, 'PREFIXES', {
       value: PREFIXES
     })

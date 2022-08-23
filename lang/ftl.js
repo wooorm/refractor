@@ -12,11 +12,13 @@ export default function ftl(Prism) {
     var FTL_EXPR =
       /[^<()"']|\((?:<expr>)*\)|<(?!#--)|<#--(?:[^-]|-(?!->))*-->|"(?:[^\\"]|\\.)*"|'(?:[^\\']|\\.)*'/
         .source
+
     for (var i = 0; i < 2; i++) {
       FTL_EXPR = FTL_EXPR.replace(/<expr>/g, function () {
         return FTL_EXPR
       })
     }
+
     FTL_EXPR = FTL_EXPR.replace(/<expr>/g, /[^\s\S]/.source)
     var ftl = {
       comment: /<#--[\s\S]*?-->/,

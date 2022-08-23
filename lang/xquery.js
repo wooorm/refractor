@@ -77,20 +77,26 @@ export default function xquery(Prism) {
       inside: Prism.languages.xquery,
       alias: 'language-xquery'
     } // The following will handle plain text inside tags
+
     var stringifyToken = function (token) {
       if (typeof token === 'string') {
         return token
       }
+
       if (typeof token.content === 'string') {
         return token.content
       }
+
       return token.content.map(stringifyToken).join('')
     }
+
     var walkTokens = function (tokens) {
       var openedTags = []
+
       for (var i = 0; i < tokens.length; i++) {
         var token = tokens[i]
         var notTagNorBrace = false
+
         if (typeof token !== 'string') {
           if (
             token.type === 'tag' &&
@@ -144,6 +150,7 @@ export default function xquery(Prism) {
             notTagNorBrace = true
           }
         }
+
         if (notTagNorBrace || typeof token === 'string') {
           if (
             openedTags.length > 0 &&
@@ -152,6 +159,7 @@ export default function xquery(Prism) {
             // Here we are inside a tag, and not inside an XQuery expression.
             // That's plain text: drop any tokens matched.
             var plainText = stringifyToken(token) // And merge text with adjacent text
+
             if (
               i < tokens.length - 1 &&
               (typeof tokens[i + 1] === 'string' ||
@@ -160,6 +168,7 @@ export default function xquery(Prism) {
               plainText += stringifyToken(tokens[i + 1])
               tokens.splice(i + 1, 1)
             }
+
             if (
               i > 0 &&
               (typeof tokens[i - 1] === 'string' ||
@@ -169,6 +178,7 @@ export default function xquery(Prism) {
               tokens.splice(i - 1, 1)
               i--
             }
+
             if (/^\s+$/.test(plainText)) {
               tokens[i] = plainText
             } else {
@@ -181,15 +191,18 @@ export default function xquery(Prism) {
             }
           }
         }
+
         if (token.content && typeof token.content !== 'string') {
           walkTokens(token.content)
         }
       }
     }
+
     Prism.hooks.add('after-tokenize', function (env) {
       if (env.language !== 'xquery') {
         return
       }
+
       walkTokens(env.tokens)
     })
   })(Prism)

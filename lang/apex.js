@@ -19,6 +19,7 @@ export default function apex(Prism) {
         }
       )
     /** @param {string} pattern */
+
     function insertClassName(pattern) {
       return RegExp(
         pattern.replace(/<CLASS-NAME>/g, function () {
@@ -27,6 +28,7 @@ export default function apex(Prism) {
         'i'
       )
     }
+
     var classNameInside = {
       keyword: keywords,
       punctuation: /[()\[\]{};,:.<>]/

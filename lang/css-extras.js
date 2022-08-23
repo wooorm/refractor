@@ -83,6 +83,7 @@ export default function cssExtras(Prism) {
       pattern: /(\b\d+)(?:%|[a-z]+(?![\w-]))/,
       lookbehind: true
     } // 123 -123 .123 -.123 12.3 -12.3
+
     var number = {
       pattern: /(^|[^\w.-])-?(?:\d+(?:\.\d+)?|\.\d+)/,
       lookbehind: true

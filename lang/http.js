@@ -12,6 +12,7 @@ export default function http(Prism) {
     function headerValueOf(name) {
       return RegExp('(^(?:' + name + '):[ \t]*(?![ \t]))[^]+', 'i')
     }
+
     Prism.languages.http = {
       'request-line': {
         pattern:
@@ -94,6 +95,7 @@ export default function http(Prism) {
         }
       }
     } // Create a mapping of Content-Type headers to language definitions
+
     var langs = Prism.languages
     var httpLanguages = {
       'application/javascript': langs.javascript,
@@ -104,6 +106,7 @@ export default function http(Prism) {
       'text/css': langs.css,
       'text/plain': langs.plain
     } // Declare which types can also be suffixes
+
     var suffixTypes = {
       'application/json': true,
       'application/xml': true
@@ -114,13 +117,16 @@ export default function http(Prism) {
      * @param {string} contentType
      * @returns {string}
      */
+
     function getSuffixPattern(contentType) {
       var suffix = contentType.replace(/^[a-z]+\//, '')
       var suffixPattern = '\\w+/(?:[\\w.-]+\\+)+' + suffix + '(?![+\\w.-])'
       return '(?:' + contentType + '|' + suffixPattern + ')'
     } // Insert each content type parser that has its associated language
     // currently loaded.
+
     var options
+
     for (var contentType in httpLanguages) {
       if (httpLanguages[contentType]) {
         options = options || {}
@@ -146,6 +152,7 @@ export default function http(Prism) {
         }
       }
     }
+
     if (options) {
       Prism.languages.insertBefore('http', 'header', options)
     }

@@ -12,8 +12,10 @@ export default function actionscript(Prism) {
     operator: /\+\+|--|(?:[+\-*\/%^]|&&?|\|\|?|<<?|>>?>?|[!=]=?)=?|[~?@]/
   })
   Prism.languages.actionscript['class-name'].alias = 'function' // doesn't work with AS because AS is too complex
+
   delete Prism.languages.actionscript['parameter']
   delete Prism.languages.actionscript['literal-property']
+
   if (Prism.languages.markup) {
     Prism.languages.insertBefore('actionscript', 'string', {
       xml: {

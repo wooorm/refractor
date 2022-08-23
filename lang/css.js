@@ -71,6 +71,7 @@ export default function css(Prism) {
     }
     Prism.languages.css['atrule'].inside.rest = Prism.languages.css
     var markup = Prism.languages.markup
+
     if (markup) {
       markup.tag.addInlined('style', 'css')
       markup.tag.addAttribute('style', 'css')

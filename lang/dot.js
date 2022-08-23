@@ -30,6 +30,7 @@ export default function dot(Prism) {
      * @param {string} flags
      * @returns {RegExp}
      */
+
     function withID(source, flags) {
       return RegExp(
         source.replace(/<ID>/g, function () {
@@ -38,6 +39,7 @@ export default function dot(Prism) {
         flags
       )
     }
+
     Prism.languages.dot = {
       comment: {
         pattern: /\/\/.*|\/\*[\s\S]*?\*\/|^#.*/m,

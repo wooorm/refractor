@@ -78,6 +78,7 @@ export default function graphql(Prism) {
      * @typedef {InstanceType<import("./prism-core")["Token"]>} Token
      * @type {Token[]}
      */
+
     var validTokens = env.tokens.filter(function (token) {
       return (
         typeof token !== 'string' &&
@@ -92,6 +93,7 @@ export default function graphql(Prism) {
      * @param {number} offset
      * @returns {Token | undefined}
      */
+
     function getToken(offset) {
       return validTokens[currentIndex + offset]
     }
@@ -102,14 +104,18 @@ export default function graphql(Prism) {
      * @param {number} [offset=0]
      * @returns {boolean}
      */
+
     function isTokenType(types, offset) {
       offset = offset || 0
+
       for (var i = 0; i < types.length; i++) {
         var token = getToken(i + offset)
+
         if (!token || token.type !== types[i]) {
           return false
         }
       }
+
       return true
     }
     /**
@@ -123,22 +129,27 @@ export default function graphql(Prism) {
      * @param {RegExp} close
      * @returns {number}
      */
+
     function findClosingBracket(open, close) {
       var stackHeight = 1
+
       for (var i = currentIndex; i < validTokens.length; i++) {
         var token = validTokens[i]
         var content = token.content
+
         if (token.type === 'punctuation' && typeof content === 'string') {
           if (open.test(content)) {
             stackHeight++
           } else if (close.test(content)) {
             stackHeight--
+
             if (stackHeight === 0) {
               return i
             }
           }
         }
       }
+
       return -1
     }
     /**
@@ -148,52 +159,69 @@ export default function graphql(Prism) {
      * @param {string} alias
      * @returns {void}
      */
+
     function addAlias(token, alias) {
       var aliases = token.alias
+
       if (!aliases) {
         token.alias = aliases = []
       } else if (!Array.isArray(aliases)) {
         token.alias = aliases = [aliases]
       }
+
       aliases.push(alias)
     }
+
     for (; currentIndex < validTokens.length; ) {
       var startToken = validTokens[currentIndex++] // add special aliases for mutation tokens
+
       if (startToken.type === 'keyword' && startToken.content === 'mutation') {
         // any array of the names of all input variables (if any)
         var inputVariables = []
+
         if (
           isTokenType(['definition-mutation', 'punctuation']) &&
           getToken(1).content === '('
         ) {
           // definition
           currentIndex += 2 // skip 'definition-mutation' and 'punctuation'
+
           var definitionEnd = findClosingBracket(/^\($/, /^\)$/)
+
           if (definitionEnd === -1) {
             continue
           } // find all input variables
+
           for (; currentIndex < definitionEnd; currentIndex++) {
             var t = getToken(0)
+
             if (t.type === 'variable') {
               addAlias(t, 'variable-input')
               inputVariables.push(t.content)
             }
           }
+
           currentIndex = definitionEnd + 1
         }
+
         if (
           isTokenType(['punctuation', 'property-query']) &&
           getToken(0).content === '{'
         ) {
           currentIndex++ // skip opening bracket
+
           addAlias(getToken(0), 'property-mutation')
+
           if (inputVariables.length > 0) {
             var mutationEnd = findClosingBracket(/^\{$/, /^\}$/)
+
             if (mutationEnd === -1) {
               continue
             } // give references to input variables a special alias
+
             for (var i = currentIndex; i < mutationEnd; i++) {
               var varToken = validTokens[i]
+
               if (
                 varToken.type === 'variable' &&
                 inputVariables.indexOf(varToken.content) >= 0

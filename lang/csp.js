@@ -25,6 +25,7 @@ export default function csp(Prism) {
         'i'
       )
     }
+
     Prism.languages.csp = {
       directive: {
         pattern:

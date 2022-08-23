@@ -11,9 +11,11 @@ export default function avisynth(Prism) {
         return replacements[+index]
       })
     }
+
     function re(pattern, replacements, flags) {
       return RegExp(replace(pattern, replacements), flags || '')
     }
+
     var types = /bool|clip|float|int|string|val/.source
     var internals = [
       // bools

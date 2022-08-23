@@ -49,6 +49,7 @@ export default function powershell(Prism) {
       },
       punctuation: /[|{}[\];(),.]/
     }) // Variable interpolation inside strings, and nested expressions
+
     powershell.string[0].inside = {
       function: {
         // Allow for one level of nesting

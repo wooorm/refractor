@@ -26,9 +26,11 @@ export default function flow(Prism) {
         alias: 'punctuation'
       }
     })
+
     if (!Array.isArray(Prism.languages.flow.keyword)) {
       Prism.languages.flow.keyword = [Prism.languages.flow.keyword]
     }
+
     Prism.languages.flow.keyword.unshift(
       {
         pattern: /(^|[^$]\b)(?:Class|declare|opaque|type)\b(?!\$)/,

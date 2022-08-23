@@ -30,5 +30,6 @@ export default function reason(Prism) {
       alias: 'symbol'
     }
   }) // We can't match functions property, so let's not even try.
+
   delete Prism.languages.reason.function
 }

@@ -6,12 +6,14 @@ rust.aliases = []
 export default function rust(Prism) {
   ;(function (Prism) {
     var multilineComment = /\/\*(?:[^*/]|\*(?!\/)|\/(?!\*)|<self>)*\*\//.source
+
     for (var i = 0; i < 2; i++) {
       // support 4 levels of nested comments
       multilineComment = multilineComment.replace(/<self>/g, function () {
         return multilineComment
       })
     }
+
     multilineComment = multilineComment.replace(/<self>/g, function () {
       return /[^\s\S]/.source
     })

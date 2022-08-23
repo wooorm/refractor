@@ -162,6 +162,7 @@ The values of MMMMMMMMMMMMM and EEEE map directly to the mantissa and exponent f
           }
         }
       },
+
       /* this description of stack effect literal syntax is not complete and not as specific as theoretically possible
 trying to do better is more work and regex-computation-time than it's worth though.
 - we'd like to have the "delimiter" parts of the stack effect [ (, --, and ) ] be a different (less-important or comment-like) colour to the stack effect contents
@@ -227,6 +228,7 @@ the old pattern, which may be later useful, was: (^|\s)(?:call|execute|eval)?\((
         lookbehind: true,
         alias: 'operator'
       },
+
       /*
 full list of supported word naming conventions: (the convention appears outside of the [brackets])
 set-[x]
@@ -302,6 +304,7 @@ see <https://docs.factorcode.org/content/article-conventions.html>
         pattern: /(^|\s)[^"\s]\S*(?=\s|$)/,
         lookbehind: true
       },
+
       /*
 basic first-class string "a"
 with escaped double-quote "a\""
@@ -323,12 +326,15 @@ this is fine for a regex-only implementation.
         inside: string_inside
       }
     }
+
     var escape = function (str) {
       return (str + '').replace(/([.?*+\^$\[\]\\(){}|\-])/g, '\\$1')
     }
+
     var arrToWordsRegExp = function (arr) {
       return new RegExp('(^|\\s)(?:' + arr.map(escape).join('|') + ')(?=\\s|$)')
     }
+
     var builtins = {
       'kernel-builtin': [
         'or',

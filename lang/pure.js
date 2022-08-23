@@ -69,10 +69,12 @@ export default function pure(Prism) {
     var inlineLanguageRe = /%< *-\*- *<lang>\d* *-\*-[\s\S]+?%>/.source
     inlineLanguages.forEach(function (lang) {
       var alias = lang
+
       if (typeof lang !== 'string') {
         alias = lang.alias
         lang = lang.lang
       }
+
       if (Prism.languages[alias]) {
         var o = {}
         o['inline-lang-' + alias] = {
@@ -91,6 +93,7 @@ export default function pure(Prism) {
         Prism.languages.insertBefore('pure', 'inline-lang', o)
       }
     }) // C is the default inline language
+
     if (Prism.languages.c) {
       Prism.languages.pure['inline-lang'].inside.rest = Prism.util.clone(
         Prism.languages.c

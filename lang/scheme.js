@@ -126,12 +126,14 @@ export default function scheme(Prism) {
      * @param {Record<string, string>} grammar
      * @returns {string}
      */
+
     function SortedBNF(grammar) {
       for (var key in grammar) {
         grammar[key] = grammar[key].replace(/<[\w\s]+>/g, function (key) {
           return '(?:' + grammar[key].trim() + ')'
         })
       } // return the last item
+
       return grammar[key]
     }
   })(Prism)

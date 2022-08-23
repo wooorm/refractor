@@ -168,14 +168,17 @@ export default function javascript(Prism) {
       alias: 'property'
     }
   })
+
   if (Prism.languages.markup) {
     Prism.languages.markup.tag.addInlined('script', 'javascript') // add attribute support for all DOM events.
     // https://developer.mozilla.org/en-US/docs/Web/Events#Standard_events
+
     Prism.languages.markup.tag.addAttribute(
       /on(?:abort|blur|change|click|composition(?:end|start|update)|dblclick|error|focus(?:in|out)?|key(?:down|up)|load|mouse(?:down|enter|leave|move|out|over|up)|reset|resize|scroll|select|slotchange|submit|unload|wheel)/
         .source,
       'javascript'
     )
   }
+
   Prism.languages.js = Prism.languages.javascript
 }

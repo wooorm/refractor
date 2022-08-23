@@ -19,9 +19,11 @@ export default function kumir(Prism) {
      * @param {string} [flags] The regular expression flags.
      * @returns {RegExp} A wrapped regular expression for identifiers.
      */
+
     function wrapId(pattern, flags) {
       return RegExp(pattern.replace(/<nonId>/g, nonId), flags)
     }
+
     Prism.languages.kumir = {
       comment: {
         pattern: /\|.*/
@@ -65,6 +67,7 @@ export default function kumir(Prism) {
           alias: 'important'
         }
       ],
+
       /**
        * Should be performed after searching for type names because of "таб".
        * "таб" is a reserved word, but never used without a preceding type name.
@@ -77,6 +80,7 @@ export default function kumir(Prism) {
         ),
         lookbehind: true
       },
+
       /** Should be performed after searching for reserved words. */
       name: {
         // eslint-disable-next-line regexp/no-super-linear-backtracking
@@ -86,6 +90,7 @@ export default function kumir(Prism) {
         ),
         lookbehind: true
       },
+
       /** Should be performed after searching for names. */
       number: {
         pattern: wrapId(
@@ -95,8 +100,10 @@ export default function kumir(Prism) {
         ),
         lookbehind: true
       },
+
       /** Should be performed after searching for words. */
       punctuation: /:=|[(),:;\[\]]/,
+
       /**
        * Should be performed after searching for
        * - numeric constants (because of "+" and "-");

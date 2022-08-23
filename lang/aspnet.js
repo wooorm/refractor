@@ -33,8 +33,10 @@ export default function aspnet(Prism) {
       }
     }
   }) // Regexp copied from prism-markup, with a negative look-ahead added
+
   Prism.languages.aspnet.tag.pattern =
     /<(?!%)\/?[^\s>\/]+(?:\s+[^\s>\/=]+(?:=(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s'">=]+))?)*\s*\/?>/ // match directives of attribute value foo="<% Bar %>"
+
   Prism.languages.insertBefore(
     'inside',
     'punctuation',
@@ -49,6 +51,7 @@ export default function aspnet(Prism) {
       alias: ['asp', 'comment']
     }
   }) // script runat="server" contains csharp, not javascript
+
   Prism.languages.insertBefore(
     'aspnet',
     Prism.languages.javascript ? 'script' : 'tag',

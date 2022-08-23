@@ -7,11 +7,13 @@ export default function coq(Prism) {
   ;(function (Prism) {
     // https://github.com/coq/coq
     var commentSource = /\(\*(?:[^(*]|\((?!\*)|\*(?!\))|<self>)*\*\)/.source
+
     for (var i = 0; i < 2; i++) {
       commentSource = commentSource.replace(/<self>/g, function () {
         return commentSource
       })
     }
+
     commentSource = commentSource.replace(/<self>/g, '[]')
     Prism.languages.coq = {
       comment: RegExp(commentSource),

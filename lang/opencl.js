@@ -58,7 +58,9 @@ export default function opencl(Prism) {
       }
     }
     /* OpenCL host API */
+
     Prism.languages.insertBefore('c', 'keyword', attributes) // C++ includes everything from the OpenCL C host API plus the classes defined in cl2.h
+
     if (Prism.languages.cpp) {
       // Extracted from doxygen class list http://github.khronos.org/OpenCL-CLHPP/annotated.html
       attributes['type-opencl-host-cpp'] = {

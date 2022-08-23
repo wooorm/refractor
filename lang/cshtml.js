@@ -25,17 +25,20 @@ export default function cshtml(Prism) {
      * @param {number} depthLog2
      * @returns {string}
      */
+
     function nested(pattern, depthLog2) {
       for (var i = 0; i < depthLog2; i++) {
         pattern = pattern.replace(/<self>/g, function () {
           return '(?:' + pattern + ')'
         })
       }
+
       return pattern
         .replace(/<self>/g, '[^\\s\\S]')
         .replace(/<str>/g, '(?:' + stringLike + ')')
         .replace(/<comment>/g, '(?:' + commentLike + ')')
     }
+
     var round = nested(/\((?:[^()'"@/]|<str>|<comment>|<self>)*\)/.source, 2)
     var square = nested(/\[(?:[^\[\]'"@/]|<str>|<comment>|<self>)*\]/.source, 1)
     var curly = nested(/\{(?:[^{}'"@/]|<str>|<comment>|<self>)*\}/.source, 2)
@@ -69,6 +72,7 @@ export default function cshtml(Prism) {
     //
     // To somewhat alleviate the problem a bit, the patterns for characters (e.g. 'a') is very permissive, it also
     // allows invalid characters to support HTML expressions like this: <p>That's it!</p>.
+
     var tagAttrInlineCs = /@(?![\w()])/.source + '|' + inlineCs
     var tagAttrValue =
       '(?:' +
@@ -127,6 +131,7 @@ export default function cshtml(Prism) {
     //
     // In the below code, both CSHTML and C#+HTML will be create as separate language definitions that reference each
     // other. However, only CSHTML will be exported via `Prism.languages`.
+
     Prism.languages.cshtml = Prism.languages.extend('markup', {})
     var csharpWithHtml = Prism.languages.insertBefore(
       'csharp',

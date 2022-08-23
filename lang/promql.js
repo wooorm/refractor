@@ -24,6 +24,7 @@ export default function promql(Prism) {
       'quantile'
     ] // PromQL vector matching + the by and without clauses
     // (https://prometheus.io/docs/prometheus/latest/querying/operators/#vector-matching)
+
     var vectorMatching = [
       'on',
       'ignoring',
@@ -33,6 +34,7 @@ export default function promql(Prism) {
       'without'
     ] // PromQL offset modifier
     // (https://prometheus.io/docs/prometheus/latest/querying/basics/#offset-modifier)
+
     var offsetModifier = ['offset']
     var keywords = aggregations.concat(vectorMatching, offsetModifier)
     Prism.languages.promql = {

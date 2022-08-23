@@ -108,6 +108,7 @@ export default function smarty(Prism) {
         ),
       'g'
     ) // Tokenize all inline Smarty expressions
+
     Prism.hooks.add('before-tokenize', function (env) {
       var smartyLiteralStart = '{literal}'
       var smartyLiteralEnd = '{/literal}'
@@ -121,16 +122,20 @@ export default function smarty(Prism) {
           if (match === smartyLiteralEnd) {
             smartyLiteralMode = false
           }
+
           if (!smartyLiteralMode) {
             if (match === smartyLiteralStart) {
               smartyLiteralMode = true
             }
+
             return true
           }
+
           return false
         }
       )
     }) // Re-insert the tokens after tokenizing
+
     Prism.hooks.add('after-tokenize', function (env) {
       Prism.languages['markup-templating'].tokenizePlaceholders(env, 'smarty')
     })

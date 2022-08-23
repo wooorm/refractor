@@ -21,6 +21,7 @@ export default function regex(Prism) {
     }
     var rangeChar = '(?:[^\\\\-]|' + escape.source + ')'
     var range = RegExp(rangeChar + '-' + rangeChar) // the name of a capturing group
+
     var groupName = {
       pattern: /(<|')[^<>']+(?=[>']$)/,
       lookbehind: true,

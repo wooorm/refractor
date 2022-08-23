@@ -19,12 +19,14 @@ export default function markdown(Prism) {
      * @param {string} pattern
      * @returns {RegExp}
      */
+
     function createInline(pattern) {
       pattern = pattern.replace(/<inner>/g, function () {
         return inner
       })
       return RegExp(/((?:^|[^\\])(?:\\{2})*)/.source + '(?:' + pattern + ')')
     }
+
     var tableCell = /(?:\\.|``(?:[^`\r\n]|`(?!`))+``|`[^`\r\n]+`|[^\\|\r\n`])+/
       .source
     var tableRow =
@@ -291,12 +293,15 @@ export default function markdown(Prism) {
       if (env.language !== 'markdown' && env.language !== 'md') {
         return
       }
+
       function walkTokens(tokens) {
         if (!tokens || typeof tokens === 'string') {
           return
         }
+
         for (var i = 0, l = tokens.length; i < l; i++) {
           var token = tokens[i]
+
           if (token.type !== 'code') {
             walkTokens(token.content)
             continue
@@ -314,8 +319,10 @@ export default function markdown(Prism) {
            *     <span class="punctuation">```</span>
            * ];
            */
+
           var codeLang = token.content[1]
           var codeBlock = token.content[3]
+
           if (
             codeLang &&
             codeBlock &&
@@ -328,8 +335,10 @@ export default function markdown(Prism) {
             var lang = codeLang.content
               .replace(/\b#/g, 'sharp')
               .replace(/\b\+\+/g, 'pp') // only use the first word
+
             lang = (/[a-z][\w-]*/i.exec(lang) || [''])[0].toLowerCase()
             var alias = 'language-' + lang // add alias
+
             if (!codeBlock.alias) {
               codeBlock.alias = [alias]
             } else if (typeof codeBlock.alias === 'string') {
@@ -340,22 +349,28 @@ export default function markdown(Prism) {
           }
         }
       }
+
       walkTokens(env.tokens)
     })
     Prism.hooks.add('wrap', function (env) {
       if (env.type !== 'code-block') {
         return
       }
+
       var codeLang = ''
+
       for (var i = 0, l = env.classes.length; i < l; i++) {
         var cls = env.classes[i]
         var match = /language-(.+)/.exec(cls)
+
         if (match) {
           codeLang = match[1]
           break
         }
       }
+
       var grammar = Prism.languages[codeLang]
+
       if (!grammar) {
         if (codeLang && codeLang !== 'none' && Prism.plugins.autoloader) {
           var id =
@@ -366,6 +381,7 @@ export default function markdown(Prism) {
           env.attributes['id'] = id
           Prism.plugins.autoloader.loadLanguages(codeLang, function () {
             var ele = document.getElementById(id)
+
             if (ele) {
               ele.innerHTML = Prism.highlight(
                 ele.textContent,
@@ -391,12 +407,14 @@ export default function markdown(Prism) {
      *
      * @see {@link https://github.com/lodash/lodash/blob/2da024c3b4f9947a48517639de7560457cd4ec6c/unescape.js#L2}
      */
+
     var KNOWN_ENTITY_NAMES = {
       amp: '&',
       lt: '<',
       gt: '>',
       quot: '"'
     } // IE 11 doesn't support `String.fromCodePoint`
+
     var fromCodePoint = String.fromCodePoint || String.fromCharCode
     /**
      * Returns the text content of a given HTML source code string.
@@ -404,29 +422,37 @@ export default function markdown(Prism) {
      * @param {string} html
      * @returns {string}
      */
+
     function textContent(html) {
       // remove all tags
       var text = html.replace(tagPattern, '') // decode known entities
+
       text = text.replace(/&(\w{1,8}|#x?[\da-f]{1,8});/gi, function (m, code) {
         code = code.toLowerCase()
+
         if (code[0] === '#') {
           var value
+
           if (code[1] === 'x') {
             value = parseInt(code.slice(2), 16)
           } else {
             value = Number(code.slice(1))
           }
+
           return fromCodePoint(value)
         } else {
           var known = KNOWN_ENTITY_NAMES[code]
+
           if (known) {
             return known
           } // unable to decode
+
           return m
         }
       })
       return text
     }
+
     Prism.languages.md = Prism.languages.markdown
   })(Prism)
 }

@@ -196,14 +196,18 @@ They are, in order: __emphasis__, **strong**, ++monospace++, +++passthrough+++, 
         alias: 'punctuation'
       }
     }) // Allow some nesting. There is no recursion though, so cloning should not be needed.
+
     function copyFromAsciiDoc(keys) {
       keys = keys.split(' ')
       var o = {}
+
       for (var i = 0, l = keys.length; i < l; i++) {
         o[keys[i]] = asciidoc[keys[i]]
       }
+
       return o
     }
+
     attributes.inside['interpreted'].inside.rest = copyFromAsciiDoc(
       'macro inline replacement entity'
     )
@@ -218,6 +222,7 @@ They are, in order: __emphasis__, **strong**, ++monospace++, +++passthrough+++, 
     asciidoc['title'].inside.rest = copyFromAsciiDoc(
       'macro inline replacement entity'
     ) // Plugin to make entity title show the real entity, idea by Roman Komarov
+
     Prism.hooks.add('wrap', function (env) {
       if (env.type === 'entity') {
         env.attributes['title'] = env.content.value.replace(/&amp;/, '&')

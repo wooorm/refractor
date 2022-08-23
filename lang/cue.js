@@ -8,6 +8,7 @@ export default function cue(Prism) {
     // https://cuelang.org/docs/references/spec/
     // eslint-disable-next-line regexp/strict
     var stringEscape = /\\(?:(?!\2)|\2(?:[^()\r\n]|\([^()]*\)))/.source // eslint-disable-next-line regexp/strict
+
     var stringTypes =
       /"""(?:[^\\"]|"(?!""\2)|<esc>)*"""/.source + // eslint-disable-next-line regexp/strict
       '|' +

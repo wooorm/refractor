@@ -17,15 +17,18 @@ export default function robotframework(Prism) {
         punctuation: /^[$@&%]\{|\}$/
       }
     }
+
     function createSection(name, inside) {
       var extendecInside = {}
       extendecInside['section-header'] = {
         pattern: /^ ?\*{3}.+?\*{3}/,
         alias: 'keyword'
       } // copy inside tokens
+
       for (var token in inside) {
         extendecInside[token] = inside[token]
       }
+
       extendecInside['tag'] = {
         pattern: /([\r\n](?: {2}|\t)[ \t]*)\[[-\w]+\]/,
         lookbehind: true,
@@ -49,6 +52,7 @@ export default function robotframework(Prism) {
         inside: extendecInside
       }
     }
+
     var docTag = {
       pattern:
         /(\[Documentation\](?: {2}|\t)[ \t]*)(?![ \t]|#)(?:.|(?:\r\n?|\n)[ \t]*\.{3})+/,

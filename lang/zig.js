@@ -10,6 +10,7 @@ export default function zig(Prism) {
         return str
       }
     }
+
     var keyword =
       /\b(?:align|allowzero|and|anyframe|anytype|asm|async|await|break|cancel|catch|comptime|const|continue|defer|else|enum|errdefer|error|export|extern|fn|for|if|inline|linksection|nakedcc|noalias|nosuspend|null|or|orelse|packed|promise|pub|resume|return|stdcallcc|struct|suspend|switch|test|threadlocal|try|undefined|union|unreachable|usingnamespace|var|volatile|while)\b/
     var IDENTIFIER = '\\b(?!' + keyword.source + ')(?!\\d)\\w+\\b'
@@ -42,6 +43,7 @@ export default function zig(Prism) {
      * IDENTIFIER = \b (?! KEYWORD ) [a-zA-Z_] \w* \b
      *
      */
+
     Prism.languages.zig = {
       comment: [
         {

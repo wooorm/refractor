@@ -21,6 +21,7 @@ export default function icuMessageFormat(Prism) {
         })
       }
     }
+
     var stringPattern = /'[{}:=,](?:[^']|'')*'(?!')/
     var escape = {
       pattern: /''/,

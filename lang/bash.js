@@ -209,6 +209,7 @@ export default function bash(Prism) {
     }
     commandAfterHeredoc.inside = Prism.languages.bash
     /* Patterns in command substitution. */
+
     var toBeCopied = [
       'comment',
       'function-name',
@@ -226,9 +227,11 @@ export default function bash(Prism) {
       'number'
     ]
     var inside = insideString.variable[1].inside
+
     for (var i = 0; i < toBeCopied.length; i++) {
       inside[toBeCopied[i]] = Prism.languages.bash[toBeCopied[i]]
     }
+
     Prism.languages.shell = Prism.languages.bash
   })(Prism)
 }

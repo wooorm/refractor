@@ -9,11 +9,13 @@ export default function toml(Prism) {
     /**
      * @param {string} pattern
      */
+
     function insertKey(pattern) {
       return pattern.replace(/__/g, function () {
         return key
       })
     }
+
     Prism.languages.toml = {
       comment: {
         pattern: /#.*/,

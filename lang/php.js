@@ -342,6 +342,7 @@ export default function php(Prism) {
       if (!/<\?/.test(env.code)) {
         return
       }
+
       var phpPattern =
         /<\?(?:[^"'/#]|\/(?![*/])|("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|(?:\/\/|#(?!\[))(?:[^?\n\r]|\?(?!>))*(?=$|\?>|[\r\n])|#\[|\/\*(?:[^*]|\*(?!\/))*(?:\*\/|$))*?(?:\?>|$)/g
       Prism.languages['markup-templating'].buildPlaceholders(
