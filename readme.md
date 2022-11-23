@@ -79,7 +79,7 @@ You can play with refractor on the
 ## Install
 
 This package is [ESM only][esm].
-In Node.js (version 12.20+, 14.14+, or 16.0+), install with [npm][]:
+In Node.js (version 14.14+, 16.0+), install with [npm][]:
 
 ```sh
 npm install refractor
@@ -133,7 +133,7 @@ Yields:
 
 ## API
 
-This package exports the following identifier: `refractor`.
+This package exports the identifier `refractor`.
 There is no default export.
 
 ### `refractor.highlight(value, language)`
@@ -354,8 +354,7 @@ Yields:
 ## Types
 
 This package is fully typed with [TypeScript][].
-It exports additional `Root`, `Grammar`, and `Syntax` types that model their
-respective interfaces.
+It exports the additional types `Root`, `Grammar`, and `Syntax`.
 
 <!--Old name of the following section:-->
 
@@ -695,7 +694,7 @@ For example, to get Prism Dark from cdnjs:
 ## Compatibility
 
 This package is at least compatible with all maintained versions of Node.js.
-As of now, that is Node.js 12.20+, 14.14+, and 16.0+.
+As of now, that is Node.js 14.14+ and 16.0+.
 It also works in Deno and modern browsers.
 
 Only the custom built syntaxes in `refractor/lang/*.js` will work with
