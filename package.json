@@ -79,13 +79,13 @@
     "xo": "^0.53.0"
   },
   "scripts": {
+    "prepack": "npm run generate && npm run build && npm run format",
     "generate-core": "patch-package && cp node_modules/prismjs/components/prism-core.js lib/prism-core.js",
-    "generate-languages": "node script/languages.js",
-    "generate-list": "node script/list.js",
-    "generate-fixtures": "node script/fixtures.js",
+    "generate-languages": "node --conditions development script/languages.js",
+    "generate-list": "node --conditions development script/list.js",
+    "generate-fixtures": "node --conditions development script/fixtures.js",
     "generate": "npm run generate-core && npm run generate-languages && npm run generate-list && npm run generate-fixtures",
-    "prepublishOnly": "npm run build && npm run format",
-    "build": "rimraf \"{lang,lib,script,test}/**/*.d.ts\" \"*.d.ts\" && tsc && type-coverage",
+    "build": "tsc --build --clean && tsc --build && type-coverage",
     "format": "remark . -qfo && prettier . -w --loglevel warn && xo --fix",
     "test-api": "node --conditions development test/index.js",
     "test-coverage": "c8 -x \"lang/*.js\" -x \"lib/prism-core.js\" --check-coverage --100 --reporter lcov npm run test-api",
