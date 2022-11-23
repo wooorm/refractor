@@ -25,6 +25,7 @@ export default function brightscript(Prism) {
         }
       }
     },
+
     property: {
       pattern:
         /([\r\n{,][\t ]*)(?:(?!\d)\w+|"(?:[^"\r\n]|"")*"(?!"))(?=[ \t]*:)/,

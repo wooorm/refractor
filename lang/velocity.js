@@ -15,6 +15,7 @@ export default function velocity(Prism) {
         lookbehind: true,
         inside: {} // See below
       },
+
       string: {
         pattern: /"[^"]*"|'[^']*'/,
         greedy: true

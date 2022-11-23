@@ -5,6 +5,7 @@ goModule.aliases = ['go-mod']
 /** @type {import('../core.js').Syntax} */
 export default function goModule(Prism) {
   // https://go.dev/ref/mod#go-mod-file-module
+
   Prism.languages['go-mod'] = Prism.languages['go-module'] = {
     comment: {
       pattern: /\/\/.*/,

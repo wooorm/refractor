@@ -9,15 +9,14 @@ export default function textile(Prism) {
   ;(function (Prism) {
     // We don't allow for pipes inside parentheses
     // to not break table pattern |(. foo |). bar |
-    var modifierRegex = /\([^|()\n]+\)|\[[^\]\n]+\]|\{[^}\n]+\}/.source // Opening and closing parentheses which are not a modifier
+    var modifierRegex = /\([^|()\n]+\)|\[[^\]\n]+\]|\{[^}\n]+\}/.source
+    // Opening and closing parentheses which are not a modifier
     // This pattern is necessary to prevent exponential backtracking
-
     var parenthesesRegex = /\)|\((?![^|()\n]+\))/.source
     /**
      * @param {string} source
      * @param {string} [flags]
      */
-
     function withModifier(source, flags) {
       return RegExp(
         source
@@ -30,7 +29,6 @@ export default function textile(Prism) {
         flags || ''
       )
     }
-
     var modifierTokens = {
       css: {
         pattern: /\{[^{}]+\}/,
@@ -116,6 +114,7 @@ export default function textile(Prism) {
             lookbehind: true,
             inside: {
               // Note: superscripts and subscripts are not handled specifically
+
               // *bold*, **bold**
               bold: {
                 // eslint-disable-next-line regexp/no-super-linear-backtracking
@@ -276,18 +275,21 @@ export default function textile(Prism) {
       footnote: phraseInside['footnote'],
       acronym: phraseInside['acronym'],
       mark: phraseInside['mark']
-    } // Only allow alpha-numeric HTML tags, not XML tags
+    }
 
+    // Only allow alpha-numeric HTML tags, not XML tags
     textile.tag.pattern =
-      /<\/?(?!\d)[a-z0-9]+(?:\s+[^\s>\/=]+(?:=(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s'">=]+))?)*\s*\/?>/i // Allow some nesting
+      /<\/?(?!\d)[a-z0-9]+(?:\s+[^\s>\/=]+(?:=(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s'">=]+))?)*\s*\/?>/i
 
+    // Allow some nesting
     var phraseInlineInside = phraseInside['inline'].inside
     phraseInlineInside['bold'].inside = nestedPatterns
     phraseInlineInside['italic'].inside = nestedPatterns
     phraseInlineInside['inserted'].inside = nestedPatterns
     phraseInlineInside['deleted'].inside = nestedPatterns
-    phraseInlineInside['span'].inside = nestedPatterns // Allow some styles inside table cells
+    phraseInlineInside['span'].inside = nestedPatterns
 
+    // Allow some styles inside table cells
     var phraseTableInside = phraseInside['table'].inside
     phraseTableInside['inline'] = nestedPatterns['inline']
     phraseTableInside['link'] = nestedPatterns['link']

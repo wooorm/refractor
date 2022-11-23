@@ -12,9 +12,11 @@ Handle multiline code after tag
 multiline |
 code |
 */
+
   ;(function (Prism) {
     Prism.languages.haml = {
       // Multiline stuff should appear before the rest
+
       'multiline-comment': {
         pattern:
           /((?:^|\r?\n|\r)([\t ]*))(?:\/|-#).*(?:(?:\r?\n|\r)\2[\t ].+)*/,
@@ -114,8 +116,9 @@ code |
       }
     }
     var filter_pattern =
-      '((?:^|\\r?\\n|\\r)([\\t ]*)):{{filter_name}}(?:(?:\\r?\\n|\\r)(?:\\2[\\t ].+|\\s*?(?=\\r?\\n|\\r)))+' // Non exhaustive list of available filters and associated languages
+      '((?:^|\\r?\\n|\\r)([\\t ]*)):{{filter_name}}(?:(?:\\r?\\n|\\r)(?:\\2[\\t ].+|\\s*?(?=\\r?\\n|\\r)))+'
 
+    // Non exhaustive list of available filters and associated languages
     var filters = [
       'css',
       {
@@ -131,7 +134,6 @@ code |
       'textile'
     ]
     var all_filters = {}
-
     for (var i = 0, l = filters.length; i < l; i++) {
       var filter = filters[i]
       filter =
@@ -141,7 +143,6 @@ code |
               language: filter
             }
           : filter
-
       if (Prism.languages[filter.language]) {
         all_filters['filter-' + filter.filter] = {
           pattern: RegExp(
@@ -164,7 +165,6 @@ code |
         }
       }
     }
-
     Prism.languages.insertBefore('haml', 'filter', all_filters)
   })(Prism)
 }

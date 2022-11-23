@@ -20,8 +20,9 @@ export default function regex(Prism) {
       alias: 'class-name'
     }
     var rangeChar = '(?:[^\\\\-]|' + escape.source + ')'
-    var range = RegExp(rangeChar + '-' + rangeChar) // the name of a capturing group
+    var range = RegExp(rangeChar + '-' + rangeChar)
 
+    // the name of a capturing group
     var groupName = {
       pattern: /(<|')[^<>']+(?=[>']$)/,
       lookbehind: true,
@@ -81,6 +82,7 @@ export default function regex(Prism) {
         {
           // https://docs.oracle.com/javase/10/docs/api/java/util/regex/Pattern.html
           // https://docs.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference?view=netframework-4.7.2#grouping-constructs
+
           // (), (?<name>), (?'name'), (?>), (?:), (?=), (?!), (?<=), (?<!), (?is-m), (?i-m:)
           pattern:
             /\((?:\?(?:<[^<>']+>|'[^<>']+'|[>:]|<?[=!]|[idmnsuxU]+(?:-[idmnsuxU]+)?:?))?/,

@@ -17,7 +17,6 @@ export default function markupTemplating(Prism) {
     function getPlaceholder(language, index) {
       return '___' + language.toUpperCase() + index + '___'
     }
-
     Object.defineProperties((Prism.languages['markup-templating'] = {}), {
       buildPlaceholders: {
         /**
@@ -35,27 +34,28 @@ export default function markupTemplating(Prism) {
           if (env.language !== language) {
             return
           }
-
           var tokenStack = (env.tokenStack = [])
           env.code = env.code.replace(placeholderPattern, function (match) {
             if (typeof replaceFilter === 'function' && !replaceFilter(match)) {
               return match
             }
-
             var i = tokenStack.length
-            var placeholder // Check for existing strings
+            var placeholder
 
+            // Check for existing strings
             while (
               env.code.indexOf((placeholder = getPlaceholder(language, i))) !==
               -1
             ) {
               ++i
-            } // Create a sparse array
+            }
 
+            // Create a sparse array
             tokenStack[i] = match
             return placeholder
-          }) // Switch the grammar to markup
+          })
 
+          // Switch the grammar to markup
           env.grammar = Prism.languages.markup
         }
       },
@@ -69,21 +69,19 @@ export default function markupTemplating(Prism) {
         value: function (env, language) {
           if (env.language !== language || !env.tokenStack) {
             return
-          } // Switch the grammar back
+          }
 
+          // Switch the grammar back
           env.grammar = Prism.languages[language]
           var j = 0
           var keys = Object.keys(env.tokenStack)
-
           function walkTokens(tokens) {
             for (var i = 0; i < tokens.length; i++) {
               // all placeholders are replaced already
               if (j >= keys.length) {
                 break
               }
-
               var token = tokens[i]
-
               if (
                 typeof token === 'string' ||
                 (token.content && typeof token.content === 'string')
@@ -93,7 +91,6 @@ export default function markupTemplating(Prism) {
                 var s = typeof token === 'string' ? token : token.content
                 var placeholder = getPlaceholder(language, k)
                 var index = s.indexOf(placeholder)
-
                 if (index > -1) {
                   ++j
                   var before = s.substring(0, index)
@@ -105,17 +102,13 @@ export default function markupTemplating(Prism) {
                   )
                   var after = s.substring(index + placeholder.length)
                   var replacement = []
-
                   if (before) {
                     replacement.push.apply(replacement, walkTokens([before]))
                   }
-
                   replacement.push(middle)
-
                   if (after) {
                     replacement.push.apply(replacement, walkTokens([after]))
                   }
-
                   if (typeof token === 'string') {
                     tokens.splice.apply(tokens, [i, 1].concat(replacement))
                   } else {
@@ -123,16 +116,13 @@ export default function markupTemplating(Prism) {
                   }
                 }
               } else if (
-                token.content
-                /* && typeof token.content !== 'string' */
+                token.content /* && typeof token.content !== 'string' */
               ) {
                 walkTokens(token.content)
               }
             }
-
             return tokens
           }
-
           walkTokens(env.tokens)
         }
       }

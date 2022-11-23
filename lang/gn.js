@@ -5,6 +5,7 @@ gn.aliases = ['gni']
 /** @type {import('../core.js').Syntax} */
 export default function gn(Prism) {
   // https://gn.googlesource.com/gn/+/refs/heads/main/docs/reference.md#grammar
+
   Prism.languages.gn = {
     comment: {
       pattern: /#.*/,
@@ -32,6 +33,7 @@ export default function gn(Prism) {
             }
           }
         },
+
         string: /[\s\S]+/
       }
     },

@@ -9,6 +9,7 @@ export default function hpkp(Prism) {
    *
    * Reference: https://scotthelme.co.uk/hpkp-cheat-sheet/
    */
+
   Prism.languages.hpkp = {
     directive: {
       pattern:

@@ -6,6 +6,7 @@ javastacktrace.aliases = []
 export default function javastacktrace(Prism) {
   // Specification:
   // https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Throwable.html#printStackTrace()
+
   Prism.languages.javastacktrace = {
     // java.sql.SQLException: Violation of unique constraint MY_ENTITY_UK_1: duplicate value(s) for column(s) MY_COLUMN in statement [...]
     // Caused by: java.sql.SQLException: Violation of unique constraint MY_ENTITY_UK_1: duplicate value(s) for column(s) MY_COLUMN in statement [...]
@@ -87,7 +88,8 @@ export default function javastacktrace(Prism) {
                 alias: 'number'
               }
             }
-          }, // (Unknown Source)
+          },
+          // (Unknown Source)
           // (Native Method)
           // (...something...)
           {

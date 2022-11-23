@@ -21,6 +21,7 @@ export default function nix(Prism) {
         }
       }
     },
+
     url: [
       /\b(?:[a-z]{3,7}:\/\/)[\w\-+%~\/.:#=?&]+/,
       {

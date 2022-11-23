@@ -24,6 +24,7 @@ export default function jq(Prism) {
             lookbehind: true,
             inside: null // see below
           },
+
           punctuation: /^\\\(|\)$/
         }
       }

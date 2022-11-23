@@ -24,6 +24,7 @@ export default function rest(Prism) {
       }
     ],
     // Directive-like patterns
+
     'substitution-def': {
       pattern: /(^[\t ]*\.\. )\|(?:[^|\s](?:[^|]*[^|\s])?)\| [^:]+::/m,
       lookbehind: true,
@@ -87,7 +88,8 @@ export default function rest(Prism) {
             /^[!"#$%&'()*+,\-.\/:;<=>?@\[\\\]^_`{|}~]+|[!"#$%&'()*+,\-.\/:;<=>?@\[\\\]^_`{|}~]+$/,
           important: /.+/
         }
-      }, // Underlined only
+      },
+      // Underlined only
       {
         pattern:
           /(^|(?:\r?\n|\r){2}).+(?:\r?\n|\r)([!"#$%&'()*+,\-.\/:;<=>?@\[\\\]^_`{|}~])\2+(?=\r?\n|\r|$)/,

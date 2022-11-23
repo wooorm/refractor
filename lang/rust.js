@@ -6,14 +6,12 @@ rust.aliases = []
 export default function rust(Prism) {
   ;(function (Prism) {
     var multilineComment = /\/\*(?:[^*/]|\*(?!\/)|\/(?!\*)|<self>)*\*\//.source
-
     for (var i = 0; i < 2; i++) {
       // support 4 levels of nested comments
       multilineComment = multilineComment.replace(/<self>/g, function () {
         return multilineComment
       })
     }
-
     multilineComment = multilineComment.replace(/<self>/g, function () {
       return /[^\s\S]/.source
     })
@@ -47,6 +45,7 @@ export default function rust(Prism) {
           string: null // see below
         }
       },
+
       // Closure params should not be confused with bitwise OR |
       'closure-params': {
         pattern: /([=(,:]\s*|\bmove\s*)\|[^|]*\||\|[^|]*\|(?=\s*(?:\{|->))/,
@@ -60,6 +59,7 @@ export default function rust(Prism) {
           rest: null // see below
         }
       },
+
       'lifetime-annotation': {
         pattern: /'\w+/,
         alias: 'symbol'
@@ -98,7 +98,8 @@ export default function rust(Prism) {
       ],
       keyword: [
         // https://github.com/rust-lang/reference/blob/master/src/keywords.md
-        /\b(?:Self|abstract|as|async|await|become|box|break|const|continue|crate|do|dyn|else|enum|extern|final|fn|for|if|impl|in|let|loop|macro|match|mod|move|mut|override|priv|pub|ref|return|self|static|struct|super|trait|try|type|typeof|union|unsafe|unsized|use|virtual|where|while|yield)\b/, // primitives and str
+        /\b(?:Self|abstract|as|async|await|become|box|break|const|continue|crate|do|dyn|else|enum|extern|final|fn|for|if|impl|in|let|loop|macro|match|mod|move|mut|override|priv|pub|ref|return|self|static|struct|super|trait|try|type|typeof|union|unsafe|unsized|use|virtual|where|while|yield)\b/,
+        // primitives and str
         // https://doc.rust-lang.org/stable/rust-by-example/primitives.html
         /\b(?:bool|char|f(?:32|64)|[ui](?:8|16|32|64|128|size)|str)\b/
       ],

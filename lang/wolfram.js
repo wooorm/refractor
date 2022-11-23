@@ -5,8 +5,9 @@ wolfram.aliases = ['mathematica', 'nb', 'wl']
 /** @type {import('../core.js').Syntax} */
 export default function wolfram(Prism) {
   Prism.languages.wolfram = {
-    // Allow one level of nesting - note: regex taken from applescipt
-    comment: /\(\*(?:\(\*(?:[^*]|\*(?!\)))*\*\)|(?!\(\*)[\s\S])*?\*\)/,
+    comment:
+      // Allow one level of nesting - note: regex taken from applescipt
+      /\(\*(?:\(\*(?:[^*]|\*(?!\)))*\*\)|(?!\(\*)[\s\S])*?\*\)/,
     string: {
       pattern: /"(?:\\.|[^"\\\r\n])*"/,
       greedy: true

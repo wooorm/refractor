@@ -5,6 +5,7 @@ wren.aliases = []
 /** @type {import('../core.js').Syntax} */
 export default function wren(Prism) {
   // https://wren.io/
+
   Prism.languages.wren = {
     // Multiline comments in Wren can have nested multiline comments
     // Comments: // and /* */
@@ -51,7 +52,8 @@ export default function wren(Prism) {
         // class Meta {}
         pattern: /(\bclass\s+)\w+/,
         lookbehind: true
-      }, // A class must always start with an uppercase.
+      },
+      // A class must always start with an uppercase.
       // File.read
       /\b[A-Z][a-z\d_]*\b/
     ],

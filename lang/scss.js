@@ -14,9 +14,11 @@ export default function scss(Prism) {
     atrule: {
       pattern: /@[\w-](?:\([^()]+\)|[^()\s]|\s+(?!\s))*?(?=\s+[{;])/,
       inside: {
-        rule: /@[\w-]+/ // See rest below
+        rule: /@[\w-]+/
+        // See rest below
       }
     },
+
     // url, compassified
     url: /(?:[-a-z]+-)?url(?=\()/i,
     // CSS selector regex is not appropriate for Sass

@@ -13,6 +13,7 @@ At-rules (e.g. import) containing interpolations are buggy.
 Detached rulesets are highlighted as at-rules.
 A comment before a mixin usage prevents the latter to be properly highlighted.
 */
+
   Prism.languages.less = Prism.languages.extend('css', {
     comment: [
       /\/\*[\s\S]*?\*\//,
@@ -48,7 +49,8 @@ A comment before a mixin usage prevents the latter to be properly highlighted.
         inside: {
           punctuation: /:/
         }
-      }, // Variable usage
+      },
+      // Variable usage
       /@@?[\w-]+/
     ],
     'mixin-usage': {

@@ -27,13 +27,16 @@ export default function cpp(Prism) {
             )
           ),
           lookbehind: true
-        }, // This is intended to capture the class name of method implementations like:
+        },
+        // This is intended to capture the class name of method implementations like:
         //   void foo::bar() const {}
         // However! The `foo` in the above example could also be a namespace, so we only capture the class name if
         // it starts with an uppercase letter. This approximation should give decent results.
-        /\b[A-Z]\w*(?=\s*::\s*\w+\s*\()/, // This will capture the class name before destructors like:
+        /\b[A-Z]\w*(?=\s*::\s*\w+\s*\()/,
+        // This will capture the class name before destructors like:
         //   Foo::~Foo() {}
-        /\b[A-Z_]\w*(?=\s*::\s*~\w+\s*\()/i, // This also intends to capture the class name of method implementations but here the class has template
+        /\b[A-Z_]\w*(?=\s*::\s*~\w+\s*\()/i,
+        // This also intends to capture the class name of method implementations but here the class has template
         // parameters, so it can't be a namespace (until C++ adds generic namespaces).
         /\b\w+(?=\s*<(?:[^<>]|<(?:[^<>]|<[^<>]*>)*>)*>\s*::\s*\w+\s*\()/
       ],
@@ -52,9 +55,11 @@ export default function cpp(Prism) {
         // https://en.cppreference.com/w/cpp/language/modules
         pattern: RegExp(
           /(\b(?:import|module)\s+)/.source +
-            '(?:' + // header-name
+            '(?:' +
+            // header-name
             /"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"|<[^<>\r\n]*>/.source +
-            '|' + // module name or partition or both
+            '|' +
+            // module name or partition or both
             /<mod-name>(?:\s*:\s*<mod-name>)?|:\s*<mod-name>/.source.replace(
               /<mod-name>/g,
               function () {

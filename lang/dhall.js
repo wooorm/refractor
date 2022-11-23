@@ -6,6 +6,7 @@ dhall.aliases = []
 export default function dhall(Prism) {
   // ABNF grammar:
   // https://github.com/dhall-lang/dhall-lang/blob/master/standard/dhall.abnf
+
   Prism.languages.dhall = {
     // Multi-line comments can be nested. E.g. {- foo {- bar -} -}
     // The multi-line pattern is essentially this:
@@ -25,6 +26,7 @@ export default function dhall(Prism) {
               alias: 'language-dhall',
               inside: null // see blow
             },
+
             punctuation: /\$\{|\}/
           }
         }

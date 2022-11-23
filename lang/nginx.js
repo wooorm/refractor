@@ -42,6 +42,7 @@ export default function nginx(Prism) {
             greedy: true
           },
           // other patterns
+
           boolean: {
             pattern: /(\s)(?:off|on)(?!\S)/,
             lookbehind: true

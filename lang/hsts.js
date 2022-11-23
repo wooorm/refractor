@@ -9,6 +9,7 @@ export default function hsts(Prism) {
    *
    * Reference: https://scotthelme.co.uk/hsts-cheat-sheet/
    */
+
   Prism.languages.hsts = {
     directive: {
       pattern: /\b(?:includeSubDomains|max-age|preload)(?=[\s;=]|$)/i,

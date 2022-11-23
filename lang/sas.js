@@ -283,7 +283,6 @@ export default function sas(Prism) {
         lookbehind: true,
         inside: args
       },
-
       /*Special keywords within macros*/
       'macro-keyword': macroKeyword,
       'macro-variable': macroVariable,
@@ -316,7 +315,6 @@ export default function sas(Prism) {
           keyword: /%mend/i
         }
       },
-
       /*%_zscore(headcir, _lhc, _mhc, _shc, headcz, headcpct, _Fheadcz); */
       macro: {
         pattern: /%_\w+(?=\()/,

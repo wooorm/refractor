@@ -5,14 +5,18 @@ dot.aliases = ['gv']
 /** @type {import('../core.js').Syntax} */
 export default function dot(Prism) {
   // https://www.graphviz.org/doc/info/lang.html
+
   ;(function (Prism) {
     var ID =
       '(?:' +
       [
         // an identifier
-        /[a-zA-Z_\x80-\uFFFF][\w\x80-\uFFFF]*/.source, // a number
-        /-?(?:\.\d+|\d+(?:\.\d*)?)/.source, // a double-quoted string
-        /"[^"\\]*(?:\\[\s\S][^"\\]*)*"/.source, // HTML-like string
+        /[a-zA-Z_\x80-\uFFFF][\w\x80-\uFFFF]*/.source,
+        // a number
+        /-?(?:\.\d+|\d+(?:\.\d*)?)/.source,
+        // a double-quoted string
+        /"[^"\\]*(?:\\[\s\S][^"\\]*)*"/.source,
+        // HTML-like string
         /<(?:[^<>]|(?!<!--)<(?:[^<>"']|"[^"]*"|'[^']*')+>|<!--(?:[^-]|-(?!->))*-->)*>/
           .source
       ].join('|') +
@@ -25,12 +29,12 @@ export default function dot(Prism) {
         inside: Prism.languages.markup
       }
     }
+
     /**
      * @param {string} source
      * @param {string} flags
      * @returns {RegExp}
      */
-
     function withID(source, flags) {
       return RegExp(
         source.replace(/<ID>/g, function () {
@@ -39,7 +43,6 @@ export default function dot(Prism) {
         flags
       )
     }
-
     Prism.languages.dot = {
       comment: {
         pattern: /\/\/.*|\/\*[\s\S]*?\*\/|^#.*/m,

@@ -10,7 +10,6 @@ export default function zig(Prism) {
         return str
       }
     }
-
     var keyword =
       /\b(?:align|allowzero|and|anyframe|anytype|asm|async|await|break|cancel|catch|comptime|const|continue|defer|else|enum|errdefer|error|export|extern|fn|for|if|inline|linksection|nakedcc|noalias|nosuspend|null|or|orelse|packed|promise|pub|resume|return|stdcallcc|struct|suspend|switch|test|threadlocal|try|undefined|union|unreachable|usingnamespace|var|volatile|while)\b/
     var IDENTIFIER = '\\b(?!' + keyword.source + ')(?!\\d)\\w+\\b'
@@ -27,6 +26,7 @@ export default function zig(Prism) {
       )
     var TYPE =
       '(?!\\s)(?:!?\\s*(?:' + PREFIX_TYPE_OP + '\\s*)*' + SUFFIX_EXPR + ')+'
+
     /*
      * A simplified grammar for Zig compile time type literals:
      *
@@ -105,6 +105,7 @@ export default function zig(Prism) {
           inside: null // see below
         }
       ],
+
       'builtin-type': {
         pattern:
           /\b(?:anyerror|bool|c_u?(?:int|long|longlong|short)|c_longdouble|c_void|comptime_(?:float|int)|f(?:16|32|64|128)|[iu](?:8|16|32|64|128|size)|noreturn|type|void)\b/,

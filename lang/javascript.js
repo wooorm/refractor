@@ -32,17 +32,23 @@ export default function javascript(Prism) {
     number: {
       pattern: RegExp(
         /(^|[^\w$])/.source +
-          '(?:' + // constant
+          '(?:' +
+          // constant
           (/NaN|Infinity/.source +
-            '|' + // binary integer
+            '|' +
+            // binary integer
             /0[bB][01]+(?:_[01]+)*n?/.source +
-            '|' + // octal integer
+            '|' +
+            // octal integer
             /0[oO][0-7]+(?:_[0-7]+)*n?/.source +
-            '|' + // hexadecimal integer
+            '|' +
+            // hexadecimal integer
             /0[xX][\dA-Fa-f]+(?:_[\dA-Fa-f]+)*n?/.source +
-            '|' + // decimal bigint
+            '|' +
+            // decimal bigint
             /\d+(?:_\d+)*n/.source +
-            '|' + // decimal number (integer or float) but no bigint
+            '|' +
+            // decimal number (integer or float) but no bigint
             /(?:\d+(?:_\d+)*(?:\.(?:\d+(?:_\d+)*)?)?|\.\d+(?:_\d+)*)(?:[Ee][+-]?\d+(?:_\d+)*)?/
               .source) +
           ')' +
@@ -60,7 +66,8 @@ export default function javascript(Prism) {
       pattern: RegExp(
         // lookbehind
         // eslint-disable-next-line regexp/no-dupe-characters-character-class
-        /((?:^|[^$\w\xA0-\uFFFF."'\])\s]|\b(?:return|yield))\s*)/.source + // Regex pattern:
+        /((?:^|[^$\w\xA0-\uFFFF."'\])\s]|\b(?:return|yield))\s*)/.source +
+          // Regex pattern:
           // There are 2 regex patterns here. The RegExp set notation proposal added support for nested character
           // classes if the `v` flag is present. Unfortunately, nested CCs are both context-free and incompatible
           // with the only syntax, so we have to define 2 different regex patterns.
@@ -68,10 +75,12 @@ export default function javascript(Prism) {
           '(?:' +
           /(?:\[(?:[^\]\\\r\n]|\\.)*\]|\\.|[^/\\\[\r\n])+\/[dgimyus]{0,7}/
             .source +
-          '|' + // `v` flag syntax. This supports 3 levels of nested character classes.
+          '|' +
+          // `v` flag syntax. This supports 3 levels of nested character classes.
           /(?:\[(?:[^[\]\\\r\n]|\\.|\[(?:[^[\]\\\r\n]|\\.|\[(?:[^[\]\\\r\n]|\\.)*\])*\])*\]|\\.|[^/\\\[\r\n])+\/[dgimyus]{0,7}v[dgimyus]{0,7}/
             .source +
-          ')' + // lookahead
+          ')' +
+          // lookahead
           /(?=(?:\s|\/\*(?:[^*]|\*(?!\/))*\*\/)*(?:$|[\r\n,.;:})\]]|\/\/))/
             .source
       ),
@@ -168,17 +177,16 @@ export default function javascript(Prism) {
       alias: 'property'
     }
   })
-
   if (Prism.languages.markup) {
-    Prism.languages.markup.tag.addInlined('script', 'javascript') // add attribute support for all DOM events.
-    // https://developer.mozilla.org/en-US/docs/Web/Events#Standard_events
+    Prism.languages.markup.tag.addInlined('script', 'javascript')
 
+    // add attribute support for all DOM events.
+    // https://developer.mozilla.org/en-US/docs/Web/Events#Standard_events
     Prism.languages.markup.tag.addAttribute(
       /on(?:abort|blur|change|click|composition(?:end|start|update)|dblclick|error|focus(?:in|out)?|key(?:down|up)|load|mouse(?:down|enter|leave|move|out|over|up)|reset|resize|scroll|select|slotchange|submit|unload|wheel)/
         .source,
       'javascript'
     )
   }
-
   Prism.languages.js = Prism.languages.javascript
 }

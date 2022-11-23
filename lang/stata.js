@@ -12,6 +12,7 @@ export default function stata(Prism) {
   Prism.register(refractorPython)
   // https://www.stata.com/manuals/u.pdf
   // https://www.stata.com/manuals/p.pdf
+
   Prism.languages.stata = {
     comment: [
       {
@@ -39,6 +40,7 @@ export default function stata(Prism) {
             }
           }
         },
+
         string: /[\s\S]+/
       }
     },

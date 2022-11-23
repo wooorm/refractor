@@ -26,7 +26,8 @@ export default function aql(Prism) {
         pattern: /(\bWITH\s+)COUNT(?=\s+INTO\b)/i,
         lookbehind: true
       },
-      /\b(?:AGGREGATE|ALL|AND|ANY|ASC|COLLECT|DESC|DISTINCT|FILTER|FOR|GRAPH|IN|INBOUND|INSERT|INTO|K_PATHS|K_SHORTEST_PATHS|LET|LIKE|LIMIT|NONE|NOT|NULL|OR|OUTBOUND|REMOVE|REPLACE|RETURN|SHORTEST_PATH|SORT|UPDATE|UPSERT|WINDOW|WITH)\b/i, // pseudo keywords get a lookbehind to avoid false positives
+      /\b(?:AGGREGATE|ALL|AND|ANY|ASC|COLLECT|DESC|DISTINCT|FILTER|FOR|GRAPH|IN|INBOUND|INSERT|INTO|K_PATHS|K_SHORTEST_PATHS|LET|LIKE|LIMIT|NONE|NOT|NULL|OR|OUTBOUND|REMOVE|REPLACE|RETURN|SHORTEST_PATH|SORT|UPDATE|UPSERT|WINDOW|WITH)\b/i,
+      // pseudo keywords get a lookbehind to avoid false positives
       {
         pattern: /(^|[^\w.[])(?:KEEP|PRUNE|SEARCH|TO)\b/i,
         lookbehind: true

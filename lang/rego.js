@@ -5,6 +5,7 @@ rego.aliases = []
 /** @type {import('../core.js').Syntax} */
 export default function rego(Prism) {
   // https://www.openpolicyagent.org/docs/latest/policy-reference/
+
   Prism.languages.rego = {
     comment: /#.*/,
     property: {

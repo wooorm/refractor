@@ -27,7 +27,6 @@ export default function arturo(Prism) {
         }
       }
     }
-
     Prism.languages.arturo = {
       comment: {
         pattern: /;.*/,

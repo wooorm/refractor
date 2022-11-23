@@ -5,6 +5,7 @@ ocaml.aliases = []
 /** @type {import('../core.js').Syntax} */
 export default function ocaml(Prism) {
   // https://ocaml.org/manual/lex.html
+
   Prism.languages.ocaml = {
     comment: {
       pattern: /\(\*[\s\S]*?\*\)/,
@@ -26,8 +27,10 @@ export default function ocaml(Prism) {
     ],
     number: [
       // binary and octal
-      /\b(?:0b[01][01_]*|0o[0-7][0-7_]*)\b/i, // hexadecimal
-      /\b0x[a-f0-9][a-f0-9_]*(?:\.[a-f0-9_]*)?(?:p[+-]?\d[\d_]*)?(?!\w)/i, // decimal
+      /\b(?:0b[01][01_]*|0o[0-7][0-7_]*)\b/i,
+      // hexadecimal
+      /\b0x[a-f0-9][a-f0-9_]*(?:\.[a-f0-9_]*)?(?:p[+-]?\d[\d_]*)?(?!\w)/i,
+      // decimal
       /\b\d[\d_]*(?:\.[\d_]*)?(?:e[+-]?\d[\d_]*)?(?!\w)/i
     ],
     directive: {

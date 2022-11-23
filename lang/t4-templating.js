@@ -22,7 +22,6 @@ export default function t4Templating(Prism) {
         }
       }
     }
-
     function createT4(insideLang) {
       var grammar = Prism.languages[insideLang]
       var className = 'language-' + insideLang
@@ -47,7 +46,6 @@ export default function t4Templating(Prism) {
         }
       }
     }
-
     Prism.languages['t4-templating'] = Object.defineProperty({}, 'createT4', {
       value: createT4
     })

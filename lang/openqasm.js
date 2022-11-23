@@ -5,6 +5,7 @@ openqasm.aliases = ['qasm']
 /** @type {import('../core.js').Syntax} */
 export default function openqasm(Prism) {
   // https://qiskit.github.io/openqasm/grammar/index.html
+
   Prism.languages.openqasm = {
     comment: /\/\*[\s\S]*?\*\/|\/\/.*/,
     string: {

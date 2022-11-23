@@ -6,6 +6,7 @@ stan.aliases = []
 export default function stan(Prism) {
   ;(function (Prism) {
     // https://mc-stan.org/docs/2_28/reference-manual/bnf-grammars.html
+
     var higherOrderFunctions =
       /\b(?:algebra_solver|algebra_solver_newton|integrate_1d|integrate_ode|integrate_ode_bdf|integrate_ode_rk45|map_rect|ode_(?:adams|bdf|ckrk|rk45)(?:_tol)?|ode_adjoint_tol_ctl|reduce_sum|reduce_sum_static)\b/
     Prism.languages.stan = {
@@ -41,6 +42,7 @@ export default function stan(Prism) {
             lookbehind: true,
             inside: null // see below
           },
+
           property: /\b[a-z]\w*(?=\s*=)/i,
           operator: /=/,
           punctuation: /^<|>$|,/
@@ -52,7 +54,8 @@ export default function stan(Prism) {
             /\bdata(?=\s*\{)|\b(?:functions|generated|model|parameters|quantities|transformed)\b/,
           alias: 'program-block'
         },
-        /\b(?:array|break|cholesky_factor_corr|cholesky_factor_cov|complex|continue|corr_matrix|cov_matrix|data|else|for|if|in|increment_log_prob|int|matrix|ordered|positive_ordered|print|real|reject|return|row_vector|simplex|target|unit_vector|vector|void|while)\b/, // these are functions that are known to take another function as their first argument.
+        /\b(?:array|break|cholesky_factor_corr|cholesky_factor_cov|complex|continue|corr_matrix|cov_matrix|data|else|for|if|in|increment_log_prob|int|matrix|ordered|positive_ordered|print|real|reject|return|row_vector|simplex|target|unit_vector|vector|void|while)\b/,
+        // these are functions that are known to take another function as their first argument.
         higherOrderFunctions
       ],
       function: /\b[a-z]\w*(?=\s*\()/i,

@@ -66,9 +66,10 @@ export default function sass(Prism) {
       }
     })
     delete Prism.languages.sass.property
-    delete Prism.languages.sass.important // Now that whole lines for other patterns are consumed,
-    // what's left should be selectors
+    delete Prism.languages.sass.important
 
+    // Now that whole lines for other patterns are consumed,
+    // what's left should be selectors
     Prism.languages.insertBefore('sass', 'punctuation', {
       selector: {
         pattern:

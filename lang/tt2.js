@@ -43,8 +43,9 @@ export default function tt2(Prism) {
           }
         }
       }
-    }) // The different types of TT2 strings "replace" the C-like standard string
+    })
 
+    // The different types of TT2 strings "replace" the C-like standard string
     delete Prism.languages.tt2.string
     Prism.hooks.add('before-tokenize', function (env) {
       var tt2Pattern = /\[%[\s\S]+?%\]/g

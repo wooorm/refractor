@@ -6,16 +6,15 @@ toml.aliases = []
 export default function toml(Prism) {
   ;(function (Prism) {
     var key = /(?:[\w-]+|'[^'\n\r]*'|"(?:\\.|[^\\"\r\n])*")/.source
+
     /**
      * @param {string} pattern
      */
-
     function insertKey(pattern) {
       return pattern.replace(/__/g, function () {
         return key
       })
     }
-
     Prism.languages.toml = {
       comment: {
         pattern: /#.*/,

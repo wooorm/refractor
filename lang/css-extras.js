@@ -67,6 +67,7 @@ export default function cssExtras(Prism) {
         // the `tag` token has been existed and removed.
         // because we can't find a perfect tokenize to match it.
         // if you want to add it, please read https://github.com/PrismJS/prism/pull/2373 first.
+
         punctuation: /[(),]/
       })
     }
@@ -82,8 +83,8 @@ export default function cssExtras(Prism) {
     var unit = {
       pattern: /(\b\d+)(?:%|[a-z]+(?![\w-]))/,
       lookbehind: true
-    } // 123 -123 .123 -.123 12.3 -12.3
-
+    }
+    // 123 -123 .123 -.123 12.3 -12.3
     var number = {
       pattern: /(^|[^\w.-])-?(?:\d+(?:\.\d+)?|\.\d+)/,
       lookbehind: true

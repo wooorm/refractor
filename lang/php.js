@@ -106,7 +106,8 @@ export default function php(Prism) {
           // yield from
           pattern: /(\byield\s+)from\b/i,
           lookbehind: true
-        }, // `class` is always a keyword unlike other keywords
+        },
+        // `class` is always a keyword unlike other keywords
         /\bclass\b/i,
         {
           // https://www.php.net/manual/en/reserved.keywords.php
@@ -342,7 +343,6 @@ export default function php(Prism) {
       if (!/<\?/.test(env.code)) {
         return
       }
-
       var phpPattern =
         /<\?(?:[^"'/#]|\/(?![*/])|("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|(?:\/\/|#(?!\[))(?:[^?\n\r]|\?(?!>))*(?=$|\?>|[\r\n])|#\[|\/\*(?:[^*]|\*(?!\/))*(?:\*\/|$))*?(?:\?>|$)/g
       Prism.languages['markup-templating'].buildPlaceholders(

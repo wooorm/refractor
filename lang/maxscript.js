@@ -24,11 +24,14 @@ export default function maxscript(Prism) {
       },
       'function-call': {
         pattern: RegExp(
-          '((?:' + // start of line
+          '((?:' +
+            // start of line
             (/^/.source +
-              '|' + // operators and other language constructs
+              '|' +
+              // operators and other language constructs
               /[;=<>+\-*/^({\[]/.source +
-              '|' + // keywords as part of statements
+              '|' +
+              // keywords as part of statements
               /\b(?:and|by|case|catch|collect|do|else|if|in|not|or|return|then|to|try|where|while|with)\b/
                 .source) +
             ')[ \t]*)' +
@@ -36,14 +39,17 @@ export default function maxscript(Prism) {
             keywords.source +
             ')' +
             /[a-z_]\w*\b/.source +
-            '(?=[ \t]*(?:' + // variable
+            '(?=[ \t]*(?:' +
+            // variable
             ('(?!' +
               keywords.source +
               ')' +
               /[a-z_]/.source +
-              '|' + // number
+              '|' +
+              // number
               /\d|-\.?\d/.source +
-              '|' + // other expressions or literals
+              '|' +
+              // other expressions or literals
               /[({'"$@#?]/.source) +
             '))',
           'im'

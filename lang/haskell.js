@@ -48,7 +48,8 @@ export default function haskell(Prism) {
         // function composition
         pattern: /(\s)\.(?=\s)/,
         lookbehind: true
-      }, // Most of this is needed because of the meaning of a single '.'.
+      },
+      // Most of this is needed because of the meaning of a single '.'.
       // If it stands alone freely, it is the function composition.
       // It may also be a separator between a module name and an identifier => no
       // operator. If it comes together with other special characters it is an

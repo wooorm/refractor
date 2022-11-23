@@ -15,18 +15,15 @@ export default function git(Prism) {
      * nothing to commit (working directory clean)
      */
     comment: /^#.*/m,
-
     /*
      * Regexp to match the changed lines in a git diff output. Check the example below.
      */
     deleted: /^[-–].*/m,
     inserted: /^\+.*/m,
-
     /*
      * a string (double and simple quote)
      */
     string: /("|')(?:\\.|(?!\1)[^\\\r\n])*\1/,
-
     /*
      * a git command. It starts with a random prompt finishing by a $, then "git" then some other parameters
      * For instance:
@@ -44,7 +41,6 @@ export default function git(Prism) {
         parameter: /\s--?\w+/
       }
     },
-
     /*
      * Coordinates displayed in a git diff command
      * For instance:
@@ -59,7 +55,6 @@ export default function git(Prism) {
      * +And this is the second line
      */
     coord: /^@@.*@@$/m,
-
     /*
      * Match a "commit [SHA1]" line in a git log output.
      * For instance:

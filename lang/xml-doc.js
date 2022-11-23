@@ -20,7 +20,6 @@ export default function xmlDoc(Prism) {
         })
       }
     }
-
     var tag = Prism.languages.markup.tag
     var slashDocComment = {
       pattern: /\/\/\/.*/,

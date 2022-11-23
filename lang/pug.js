@@ -16,8 +16,10 @@ export default function pug(Prism) {
     // - Add support for tag interpolation #[]
     // - Add explicit support for plain text using |
     // - Add support for markup embedded in plain text
+
     Prism.languages.pug = {
       // Multiline stuff should appear before the rest
+
       // This handles both single-line and multi-line comments
       comment: {
         pattern: /(^([\t ]*))\/\/.*(?:(?:\r?\n|\r)\2[\t ].+)*/m,
@@ -92,7 +94,8 @@ export default function pug(Prism) {
             function: /\w+(?=\s*\(|\s*$)/,
             punctuation: /[(),.]/
           }
-        }, // Usage
+        },
+        // Usage
         {
           pattern: /(^[\t ]*)\+.+/m,
           lookbehind: true,
@@ -153,8 +156,9 @@ export default function pug(Prism) {
     }
     var filter_pattern =
       /(^([\t ]*)):<filter_name>(?:(?:\r?\n|\r(?!\n))(?:\2[\t ].+|\s*?(?=\r?\n|\r)))+/
-        .source // Non exhaustive list of available filters and associated languages
+        .source
 
+    // Non exhaustive list of available filters and associated languages
     var filters = [
       {
         filter: 'atpl',
@@ -176,7 +180,6 @@ export default function pug(Prism) {
       'stylus'
     ]
     var all_filters = {}
-
     for (var i = 0, l = filters.length; i < l; i++) {
       var filter = filters[i]
       filter =
@@ -186,7 +189,6 @@ export default function pug(Prism) {
               language: filter
             }
           : filter
-
       if (Prism.languages[filter.language]) {
         all_filters['filter-' + filter.filter] = {
           pattern: RegExp(
@@ -210,7 +212,6 @@ export default function pug(Prism) {
         }
       }
     }
-
     Prism.languages.insertBefore('pug', 'filter', all_filters)
   })(Prism)
 }

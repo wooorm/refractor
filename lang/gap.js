@@ -6,6 +6,7 @@ gap.aliases = []
 export default function gap(Prism) {
   // https://www.gap-system.org/Manuals/doc/ref/chap4.html
   // https://www.gap-system.org/Manuals/doc/ref/chap27.html
+
   Prism.languages.gap = {
     shell: {
       pattern: /^gap>[\s\S]*?(?=^gap>|$(?![\s\S]))/m,
@@ -16,6 +17,7 @@ export default function gap(Prism) {
           lookbehind: true,
           inside: null // see below
         },
+
         punctuation: /^gap>/
       }
     },

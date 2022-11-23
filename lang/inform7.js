@@ -14,11 +14,13 @@ export default function inform7(Prism) {
             delimiter: {
               pattern: /\[|\]/,
               alias: 'punctuation'
-            } // See rest below
+            }
+            // See rest below
           }
         }
       }
     },
+
     comment: {
       pattern: /\[[^\[\]]+\]/,
       greedy: true
@@ -64,8 +66,8 @@ export default function inform7(Prism) {
     punctuation: /[.,:;(){}]/
   }
   Prism.languages.inform7['string'].inside['substitution'].inside.rest =
-    Prism.languages.inform7 // We don't want the remaining text in the substitution to be highlighted as the string.
-
+    Prism.languages.inform7
+  // We don't want the remaining text in the substitution to be highlighted as the string.
   Prism.languages.inform7['string'].inside['substitution'].inside.rest.text = {
     pattern: /\S(?:\s*\S)*/,
     alias: 'comment'

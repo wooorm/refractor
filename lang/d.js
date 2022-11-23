@@ -20,8 +20,10 @@ export default function d(Prism) {
             [
               // /+ comment +/
               // Allow one level of nesting
-              /\/\+(?:\/\+(?:[^+]|\+(?!\/))*\+\/|(?!\/\+)[\s\S])*?\+\//.source, // // comment
-              /\/\/.*/.source, // /* comment */
+              /\/\+(?:\/\+(?:[^+]|\+(?!\/))*\+\/|(?!\/\+)[\s\S])*?\+\//.source,
+              // // comment
+              /\/\/.*/.source,
+              // /* comment */
               /\/\*[\s\S]*?\*\//.source
             ].join('|') +
             ')'
@@ -35,13 +37,17 @@ export default function d(Prism) {
         pattern: RegExp(
           [
             // r"", x""
-            /\b[rx]"(?:\\[\s\S]|[^\\"])*"[cwd]?/.source, // q"[]", q"()", q"<>", q"{}"
-            /\bq"(?:\[[\s\S]*?\]|\([\s\S]*?\)|<[\s\S]*?>|\{[\s\S]*?\})"/.source, // q"IDENT
+            /\b[rx]"(?:\\[\s\S]|[^\\"])*"[cwd]?/.source,
+            // q"[]", q"()", q"<>", q"{}"
+            /\bq"(?:\[[\s\S]*?\]|\([\s\S]*?\)|<[\s\S]*?>|\{[\s\S]*?\})"/.source,
+            // q"IDENT
             // ...
             // IDENT"
-            /\bq"((?!\d)\w+)$[\s\S]*?^\1"/.source, // q"//", q"||", etc.
+            /\bq"((?!\d)\w+)$[\s\S]*?^\1"/.source,
+            // q"//", q"||", etc.
             // eslint-disable-next-line regexp/strict
-            /\bq"(.)[\s\S]*?\2"/.source, // eslint-disable-next-line regexp/strict
+            /\bq"(.)[\s\S]*?\2"/.source,
+            // eslint-disable-next-line regexp/strict
             /(["`])(?:\\[\s\S]|(?!\3)[^\\])*\3[cwd]?/.source
           ].join('|'),
           'm'

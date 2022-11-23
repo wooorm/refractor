@@ -30,9 +30,11 @@ export default function perl(Prism) {
               '(?:' +
               [
                 // q/.../
-                /([^a-zA-Z0-9\s{(\[<])(?:(?!\1)[^\\]|\\[\s\S])*\1/.source, // q a...a
+                /([^a-zA-Z0-9\s{(\[<])(?:(?!\1)[^\\]|\\[\s\S])*\1/.source,
+                // q a...a
                 // eslint-disable-next-line regexp/strict
-                /([a-zA-Z0-9])(?:(?!\2)[^\\]|\\[\s\S])*\2/.source, // q(...)
+                /([a-zA-Z0-9])(?:(?!\2)[^\\]|\\[\s\S])*\2/.source,
+                // q(...)
                 // q{...}
                 // q[...]
                 // q<...>
@@ -41,11 +43,13 @@ export default function perl(Prism) {
               ')'
           ),
           greedy: true
-        }, // "...", `...`
+        },
+        // "...", `...`
         {
           pattern: /("|`)(?:(?!\1)[^\\]|\\[\s\S])*\1/,
           greedy: true
-        }, // '...'
+        },
+        // '...'
         // FIXME Multi-line single-quoted strings are not supported as they would break variables containing '
         {
           pattern: /'(?:[^'\\\r\n]|\\.)*'/,
@@ -59,9 +63,11 @@ export default function perl(Prism) {
               '(?:' +
               [
                 // m/.../
-                /([^a-zA-Z0-9\s{(\[<])(?:(?!\1)[^\\]|\\[\s\S])*\1/.source, // m a...a
+                /([^a-zA-Z0-9\s{(\[<])(?:(?!\1)[^\\]|\\[\s\S])*\1/.source,
+                // m a...a
                 // eslint-disable-next-line regexp/strict
-                /([a-zA-Z0-9])(?:(?!\2)[^\\]|\\[\s\S])*\2/.source, // m(...)
+                /([a-zA-Z0-9])(?:(?!\2)[^\\]|\\[\s\S])*\2/.source,
+                // m(...)
                 // m{...}
                 // m[...]
                 // m<...>
@@ -71,7 +77,8 @@ export default function perl(Prism) {
               /[msixpodualngc]*/.source
           ),
           greedy: true
-        }, // The lookbehinds prevent -s from breaking
+        },
+        // The lookbehinds prevent -s from breaking
         {
           pattern: RegExp(
             /(^|[^-])\b(?:s|tr|y)(?![a-zA-Z0-9])\s*/.source +
@@ -80,10 +87,12 @@ export default function perl(Prism) {
                 // s/.../.../
                 // eslint-disable-next-line regexp/strict
                 /([^a-zA-Z0-9\s{(\[<])(?:(?!\2)[^\\]|\\[\s\S])*\2(?:(?!\2)[^\\]|\\[\s\S])*\2/
-                  .source, // s a...a...a
+                  .source,
+                // s a...a...a
                 // eslint-disable-next-line regexp/strict
                 /([a-zA-Z0-9])(?:(?!\3)[^\\]|\\[\s\S])*\3(?:(?!\3)[^\\]|\\[\s\S])*\3/
-                  .source, // s(...)(...)
+                  .source,
+                // s(...)(...)
                 // s{...}{...}
                 // s[...][...]
                 // s<...><...>
@@ -95,7 +104,8 @@ export default function perl(Prism) {
           ),
           lookbehind: true,
           greedy: true
-        }, // /.../
+        },
+        // /.../
         // The look-ahead tries to prevent two divisions on
         // the same line from being highlighted as regex.
         // This does not support multi-line regex.
@@ -108,11 +118,16 @@ export default function perl(Prism) {
       // FIXME Not sure about the handling of ::, ', and #
       variable: [
         // ${^POSTMATCH}
-        /[&*$@%]\{\^[A-Z]+\}/, // $^V
-        /[&*$@%]\^[A-Z_]/, // ${...}
-        /[&*$@%]#?(?=\{)/, // $foo
-        /[&*$@%]#?(?:(?:::)*'?(?!\d)[\w$]+(?![\w$]))+(?:::)*/, // $1
-        /[&*$@%]\d+/, // $_, @_, %!
+        /[&*$@%]\{\^[A-Z]+\}/,
+        // $^V
+        /[&*$@%]\^[A-Z_]/,
+        // ${...}
+        /[&*$@%]#?(?=\{)/,
+        // $foo
+        /[&*$@%]#?(?:(?:::)*'?(?!\d)[\w$]+(?![\w$]))+(?:::)*/,
+        // $1
+        /[&*$@%]\d+/,
+        // $_, @_, %!
         // The negative lookahead prevents from breaking the %= operator
         /(?!%=)[$@%][!"#$%&'()*+,\-.\/:;<=>?@[\\\]^_`{|}~]/
       ],

@@ -59,10 +59,8 @@ export default function liquid(Prism) {
       liquidPattern,
       function (match) {
         var tagMatch = /^\{%-?\s*(\w+)/.exec(match)
-
         if (tagMatch) {
           var tag = tagMatch[1]
-
           if (tag === 'raw' && !insideRaw) {
             insideRaw = true
             return true
@@ -71,7 +69,6 @@ export default function liquid(Prism) {
             return true
           }
         }
-
         return !insideRaw
       }
     )

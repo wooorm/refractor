@@ -6,15 +6,19 @@ cue.aliases = []
 export default function cue(Prism) {
   ;(function (Prism) {
     // https://cuelang.org/docs/references/spec/
-    // eslint-disable-next-line regexp/strict
-    var stringEscape = /\\(?:(?!\2)|\2(?:[^()\r\n]|\([^()]*\)))/.source // eslint-disable-next-line regexp/strict
 
+    // eslint-disable-next-line regexp/strict
+    var stringEscape = /\\(?:(?!\2)|\2(?:[^()\r\n]|\([^()]*\)))/.source
+    // eslint-disable-next-line regexp/strict
     var stringTypes =
-      /"""(?:[^\\"]|"(?!""\2)|<esc>)*"""/.source + // eslint-disable-next-line regexp/strict
+      /"""(?:[^\\"]|"(?!""\2)|<esc>)*"""/.source +
+      // eslint-disable-next-line regexp/strict
       '|' +
-      /'''(?:[^\\']|'(?!''\2)|<esc>)*'''/.source + // eslint-disable-next-line regexp/strict
+      /'''(?:[^\\']|'(?!''\2)|<esc>)*'''/.source +
+      // eslint-disable-next-line regexp/strict
       '|' +
-      /"(?:[^\\\r\n"]|"(?!\2)|<esc>)*"/.source + // eslint-disable-next-line regexp/strict
+      /"(?:[^\\\r\n"]|"(?!\2)|<esc>)*"/.source +
+      // eslint-disable-next-line regexp/strict
       '|' +
       /'(?:[^\\\r\n']|'(?!\2)|<esc>)*'/.source
     var stringLiteral =

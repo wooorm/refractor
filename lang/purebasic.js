@@ -12,6 +12,7 @@ Original Code by Bas Groothedde
 ==> https://codepen.io/ImagineProgramming/details/JYydBy/
 slightly changed to pass all tests
 */
+
   // PureBasic support, steal stuff from ansi-c
   Prism.languages.purebasic = Prism.languages.extend('clike', {
     comment: /;.*/,

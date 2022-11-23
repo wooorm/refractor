@@ -17,8 +17,10 @@ export default function go(Prism) {
     boolean: /\b(?:_|false|iota|nil|true)\b/,
     number: [
       // binary and octal integers
-      /\b0(?:b[01_]+|o[0-7_]+)i?\b/i, // hexadecimal integers and floats
-      /\b0x(?:[a-f\d_]+(?:\.[a-f\d_]*)?|\.[a-f\d_]+)(?:p[+-]?\d+(?:_\d+)*)?i?(?!\w)/i, // decimal integers and floats
+      /\b0(?:b[01_]+|o[0-7_]+)i?\b/i,
+      // hexadecimal integers and floats
+      /\b0x(?:[a-f\d_]+(?:\.[a-f\d_]*)?|\.[a-f\d_]+)(?:p[+-]?\d+(?:_\d+)*)?i?(?!\w)/i,
+      // decimal integers and floats
       /(?:\b\d[\d_]*(?:\.[\d_]*)?|\B\.\d[\d_]*)(?:e[+-]?[\d_]+)?i?(?!\w)/i
     ],
     operator:

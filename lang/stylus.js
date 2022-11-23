@@ -8,8 +8,8 @@ export default function stylus(Prism) {
     var unit = {
       pattern: /(\b\d+)(?:%|[a-z]+)/,
       lookbehind: true
-    } // 123 -123 .123 -.123 12.3 -12.3
-
+    }
+    // 123 -123 .123 -.123 12.3 -12.3
     var number = {
       pattern: /(^|[^\w.-])-?(?:\d+(?:\.\d+)?|\.\d+)/,
       lookbehind: true

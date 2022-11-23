@@ -16,12 +16,14 @@ export default function excelFormula(Prism) {
     },
     reference: {
       // https://www.ablebits.com/office-addins-blog/2015/12/08/excel-reference-another-sheet-workbook/
+
       // Sales!B2
       // 'Winter sales'!B2
       // [Sales.xlsx]Jan!B2:B5
       // D:\Reports\[Sales.xlsx]Jan!B2:B5
       // '[Sales.xlsx]Jan sales'!B2:B5
       // 'D:\Reports\[Sales.xlsx]Jan sales'!B2:B5
+
       pattern:
         /(?:'[^']*'|(?:[^\s()[\]{}<>*?"';,$&]*\[[^^\s()[\]{}<>*?"']+\])?\w+)!/,
       greedy: true,

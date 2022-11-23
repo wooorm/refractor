@@ -18,6 +18,7 @@ export default function bash(Prism) {
       // this looks reasonably well in all themes
       inside: null // see below
     }
+
     var insideString = {
       bash: commandAfterHeredoc,
       environment: {
@@ -46,14 +47,16 @@ export default function bash(Prism) {
             // If there is no $ sign at the beginning highlight (( and )) as punctuation
             punctuation: /\(\(?|\)\)?|,|;/
           }
-        }, // [1]: Command Substitution
+        },
+        // [1]: Command Substitution
         {
           pattern: /\$\((?:\([^)]+\)|[^()])+\)|`[^`]+`/,
           greedy: true,
           inside: {
             variable: /^\$\(|^`|\)$|`$/
           }
-        }, // [2]: Brace expansion
+        },
+        // [2]: Brace expansion
         {
           pattern: /\$\{[^}]+\}/,
           greedy: true,
@@ -132,7 +135,8 @@ export default function bash(Prism) {
           lookbehind: true,
           greedy: true,
           inside: insideString
-        }, // Here-document with quotes around the tag
+        },
+        // Here-document with quotes around the tag
         // → No expansion (so no “inside”).
         {
           pattern: /((?:^|[^<])<<-?\s*)(["'])(\w+)\2\s[\s\S]*?(?:\r?\n|\r)\3/,
@@ -141,7 +145,8 @@ export default function bash(Prism) {
           inside: {
             bash: commandAfterHeredoc
           }
-        }, // “Normal” string
+        },
+        // “Normal” string
         {
           // https://www.gnu.org/software/bash/manual/html_node/Double-Quotes.html
           pattern:
@@ -214,8 +219,8 @@ export default function bash(Prism) {
       }
     }
     commandAfterHeredoc.inside = Prism.languages.bash
-    /* Patterns in command substitution. */
 
+    /* Patterns in command substitution. */
     var toBeCopied = [
       'comment',
       'function-name',
@@ -234,11 +239,9 @@ export default function bash(Prism) {
       'number'
     ]
     var inside = insideString.variable[1].inside
-
     for (var i = 0; i < toBeCopied.length; i++) {
       inside[toBeCopied[i]] = Prism.languages.bash[toBeCopied[i]]
     }
-
     Prism.languages.sh = Prism.languages.bash
     Prism.languages.shell = Prism.languages.bash
   })(Prism)

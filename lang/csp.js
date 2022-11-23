@@ -14,6 +14,7 @@ export default function csp(Prism) {
    *  - https://www.w3.org/TR/CSP2/
    *  - https://www.w3.org/TR/CSP3/
    */
+
   ;(function (Prism) {
     /**
      * @param {string} source
@@ -25,7 +26,6 @@ export default function csp(Prism) {
         'i'
       )
     }
-
     Prism.languages.csp = {
       directive: {
         pattern:

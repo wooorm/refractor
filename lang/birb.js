@@ -12,7 +12,8 @@ export default function birb(Prism) {
       greedy: true
     },
     'class-name': [
-      /\b[A-Z](?:[\d_]*[a-zA-Z]\w*)?\b/, // matches variable and function return types (parameters as well).
+      /\b[A-Z](?:[\d_]*[a-zA-Z]\w*)?\b/,
+      // matches variable and function return types (parameters as well).
       /\b(?:[A-Z]\w*|(?!(?:var|void)\b)[a-z]\w*)(?=\s+\w+\s*[;,=()])/
     ],
     keyword:

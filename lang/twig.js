@@ -40,7 +40,6 @@ export default function twig(Prism) {
     if (env.language !== 'twig') {
       return
     }
-
     var pattern = /\{(?:#[\s\S]*?#|%[\s\S]*?%|\{[\s\S]*?\})\}/g
     Prism.languages['markup-templating'].buildPlaceholders(env, 'twig', pattern)
   })

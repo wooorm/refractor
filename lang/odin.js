@@ -29,7 +29,6 @@ export default function odin(Prism) {
           greedy: true
         }
       ],
-
       /**
        * Should be found before strings because of '"'"- and '`'`-like sequences.
        */
@@ -69,7 +68,6 @@ export default function odin(Prism) {
       },
       keyword:
         /\b(?:asm|auto_cast|bit_set|break|case|cast|context|continue|defer|distinct|do|dynamic|else|enum|fallthrough|for|foreign|if|import|in|map|matrix|not_in|or_else|or_return|package|proc|return|struct|switch|transmute|typeid|union|using|when|where)\b/,
-
       /**
        * false, nil, true can be used as procedure names. "_" and keywords can't.
        */

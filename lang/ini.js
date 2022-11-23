@@ -10,6 +10,7 @@ export default function ini(Prism) {
      *
      * @see {@link https://github.com/PrismJS/prism/issues/2775#issuecomment-787477723}
      */
+
     comment: {
       pattern: /(^[ \f\t\v]*)[#;][^\n\r]*/m,
       lookbehind: true

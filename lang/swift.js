@@ -17,10 +17,12 @@ export default function swift(Prism) {
       {
         pattern: RegExp(
           /(^|[^"#])/.source +
-            '(?:' + // single-line string
+            '(?:' +
+            // single-line string
             /"(?:\\(?:\((?:[^()]|\([^()]*\))*\)|\r\n|[^(])|[^\\\r\n"])*"/
               .source +
-            '|' + // multi-line string
+            '|' +
+            // multi-line string
             /"""(?:\\(?:\((?:[^()]|\([^()]*\))*\)|[^(])|[^\\"]|"(?!""))*"""/
               .source +
             ')' +
@@ -34,6 +36,7 @@ export default function swift(Prism) {
             lookbehind: true,
             inside: null // see below
           },
+
           'interpolation-punctuation': {
             pattern: /^\)|\\\($/,
             alias: 'punctuation'
@@ -45,10 +48,12 @@ export default function swift(Prism) {
       {
         pattern: RegExp(
           /(^|[^"#])(#+)/.source +
-            '(?:' + // single-line string
+            '(?:' +
+            // single-line string
             /"(?:\\(?:#+\((?:[^()]|\([^()]*\))*\)|\r\n|[^#])|[^\\\r\n])*?"/
               .source +
-            '|' + // multi-line string
+            '|' +
+            // multi-line string
             /"""(?:\\(?:#+\((?:[^()]|\([^()]*\))*\)|[^#])|[^\\])*?"""/.source +
             ')' +
             '\\2'
@@ -61,6 +66,7 @@ export default function swift(Prism) {
             lookbehind: true,
             inside: null // see below
           },
+
           'interpolation-punctuation': {
             pattern: /^\)|\\#+\($/,
             alias: 'punctuation'
@@ -75,7 +81,8 @@ export default function swift(Prism) {
         /#/.source +
           '(?:' +
           (/(?:elseif|if)\b/.source +
-            '(?:[ \t]*' + // This regex is a little complex. It's equivalent to this:
+            '(?:[ \t]*' +
+            // This regex is a little complex. It's equivalent to this:
             //   (?:![ \t]*)?(?:\b\w+\b(?:[ \t]*<round>)?|<round>)(?:[ \t]*(?:&&|\|\|))?
             // where <round> is a general parentheses expression.
             /(?:![ \t]*)?(?:\b\w+\b(?:[ \t]*\((?:[^()]|\([^()]*\))*\))?|\((?:[^()]|\([^()]*\))*\))(?:[ \t]*(?:&&|\|\|))?/

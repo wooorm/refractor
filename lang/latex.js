@@ -20,7 +20,6 @@ export default function latex(Prism) {
           /(\\begin\{((?:lstlisting|verbatim)\*?)\})[\s\S]*?(?=\\end\{\2\})/,
         lookbehind: true
       },
-
       /*
        * equations can be between $$ $$ or $ $ or \( \) or \[ \]
        * (all are multiline)
@@ -40,7 +39,6 @@ export default function latex(Prism) {
           alias: 'string'
         }
       ],
-
       /*
        * arguments which are keywords or references are highlighted
        * as keywords
@@ -54,7 +52,6 @@ export default function latex(Prism) {
         pattern: /(\\url\{)[^}]+(?=\})/,
         lookbehind: true
       },
-
       /*
        * section or chapter headlines are highlighted as bold so that
        * they stand out more

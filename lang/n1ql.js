@@ -5,6 +5,7 @@ n1ql.aliases = []
 /** @type {import('../core.js').Syntax} */
 export default function n1ql(Prism) {
   // https://docs.couchbase.com/server/current/n1ql/n1ql-language-reference/index.html
+
   Prism.languages.n1ql = {
     comment: {
       pattern: /\/\*[\s\S]*?(?:$|\*\/)|--.*/,

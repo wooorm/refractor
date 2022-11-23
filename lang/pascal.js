@@ -9,6 +9,7 @@ export default function pascal(Prism) {
   /* TODO
 Support inline asm ?
 */
+
   Prism.languages.pascal = {
     directive: {
       pattern: /\{\$[\s\S]*?\}/,
@@ -29,6 +30,7 @@ Support inline asm ?
       greedy: true,
       inside: null // see below
     },
+
     keyword: [
       {
         // Turbo Pascal
@@ -56,7 +58,8 @@ Support inline asm ?
     ],
     number: [
       // Hexadecimal, octal and binary
-      /(?:[&%]\d+|\$[a-f\d]+)/i, // Decimal
+      /(?:[&%]\d+|\$[a-f\d]+)/i,
+      // Decimal
       /\b\d+(?:\.\d+)?(?:e[+-]?\d+)?/i
     ],
     operator: [

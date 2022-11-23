@@ -17,7 +17,8 @@ export default function haxe(Prism) {
         pattern:
           /(\b(?:abstract|class|enum|extends|implements|interface|new|typedef)\s+)[A-Z_]\w*/,
         lookbehind: true
-      }, // based on naming convention
+      },
+      // based on naming convention
       /\b[A-Z]\w*/
     ],
     // The final look-ahead prevents highlighting of keywords if expressions such as "haxe.macro.Expr"

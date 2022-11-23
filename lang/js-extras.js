@@ -42,6 +42,7 @@ export default function jsExtras(Prism) {
         }
       ]
     })
+
     /**
      * Replaces the `<ID>` placeholder in the given pattern with a pattern for general JS identifiers.
      *
@@ -49,7 +50,6 @@ export default function jsExtras(Prism) {
      * @param {string} [flags]
      * @returns {RegExp}
      */
-
     function withId(source, flags) {
       return RegExp(
         source.replace(/<ID>/g, function () {
@@ -58,7 +58,6 @@ export default function jsExtras(Prism) {
         flags
       )
     }
-
     Prism.languages.insertBefore('javascript', 'keyword', {
       imports: {
         // https://tc39.es/ecma262/#sec-imports
@@ -127,8 +126,9 @@ export default function jsExtras(Prism) {
         pattern: /\bconsole(?=\s*\.)/,
         alias: 'class-name'
       }
-    }) // add 'maybe-class-name' to tokens which might be a class name
+    })
 
+    // add 'maybe-class-name' to tokens which might be a class name
     var maybeClassNameTokens = [
       'function',
       'function-variable',
@@ -136,16 +136,18 @@ export default function jsExtras(Prism) {
       'method-variable',
       'property-access'
     ]
-
     for (var i = 0; i < maybeClassNameTokens.length; i++) {
       var token = maybeClassNameTokens[i]
-      var value = Prism.languages.javascript[token] // convert regex to object
+      var value = Prism.languages.javascript[token]
 
+      // convert regex to object
       if (Prism.util.type(value) === 'RegExp') {
         value = Prism.languages.javascript[token] = {
           pattern: value
         }
-      } // keep in mind that we don't support arrays
+      }
+
+      // keep in mind that we don't support arrays
 
       var inside = value.inside || {}
       value.inside = inside

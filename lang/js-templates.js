@@ -7,13 +7,15 @@ jsTemplates.aliases = []
 export default function jsTemplates(Prism) {
   Prism.register(refractorJavascript)
   ;(function (Prism) {
-    var templateString = Prism.languages.javascript['template-string'] // see the pattern in prism-javascript.js
+    var templateString = Prism.languages.javascript['template-string']
 
+    // see the pattern in prism-javascript.js
     var templateLiteralPattern = templateString.pattern.source
     var interpolationObject = templateString.inside['interpolation']
     var interpolationPunctuationObject =
       interpolationObject.inside['interpolation-punctuation']
     var interpolationPattern = interpolationObject.pattern.source
+
     /**
      * Creates a new pattern to match a template string with a special tag.
      *
@@ -25,12 +27,10 @@ export default function jsTemplates(Prism) {
      * @example
      * createTemplate('css', /\bcss/.source);
      */
-
     function createTemplate(language, tag) {
       if (!Prism.languages[language]) {
         return undefined
       }
-
       return {
         pattern: RegExp('((?:' + tag + ')\\s*)' + templateLiteralPattern),
         lookbehind: true,
@@ -47,7 +47,6 @@ export default function jsTemplates(Prism) {
         }
       }
     }
-
     Prism.languages.javascript['template-string'] = [
       // styled-jsx:
       //   css`a { color: #25F; }`
@@ -57,18 +56,25 @@ export default function jsTemplates(Prism) {
         'css',
         /\b(?:styled(?:\([^)]*\))?(?:\s*\.\s*\w+(?:\([^)]*\))*)*|css(?:\s*\.\s*(?:global|resolve))?|createGlobalStyle|keyframes)/
           .source
-      ), // html`<p></p>`
+      ),
+      // html`<p></p>`
       // div.innerHTML = `<p></p>`
-      createTemplate('html', /\bhtml|\.\s*(?:inner|outer)HTML\s*\+?=/.source), // svg`<path fill="#fff" d="M55.37 ..."/>`
-      createTemplate('svg', /\bsvg/.source), // md`# h1`, markdown`## h2`
-      createTemplate('markdown', /\b(?:markdown|md)/.source), // gql`...`, graphql`...`, graphql.experimental`...`
+      createTemplate('html', /\bhtml|\.\s*(?:inner|outer)HTML\s*\+?=/.source),
+      // svg`<path fill="#fff" d="M55.37 ..."/>`
+      createTemplate('svg', /\bsvg/.source),
+      // md`# h1`, markdown`## h2`
+      createTemplate('markdown', /\b(?:markdown|md)/.source),
+      // gql`...`, graphql`...`, graphql.experimental`...`
       createTemplate(
         'graphql',
         /\b(?:gql|graphql(?:\s*\.\s*experimental)?)/.source
-      ), // sql`...`
-      createTemplate('sql', /\bsql/.source), // vanilla template string
+      ),
+      // sql`...`
+      createTemplate('sql', /\bsql/.source),
+      // vanilla template string
       templateString
     ].filter(Boolean)
+
     /**
      * Returns a specific placeholder literal for the given language.
      *
@@ -76,10 +82,10 @@ export default function jsTemplates(Prism) {
      * @param {string} language
      * @returns {string}
      */
-
     function getPlaceholder(counter, language) {
       return '___' + language.toUpperCase() + '_' + counter + '___'
     }
+
     /**
      * Returns the tokens of `Prism.tokenize` but also runs the `before-tokenize` and `after-tokenize` hooks.
      *
@@ -88,7 +94,6 @@ export default function jsTemplates(Prism) {
      * @param {string} language
      * @returns {(string|Token)[]}
      */
-
     function tokenizeWithHooks(code, grammar, language) {
       var env = {
         code: code,
@@ -100,20 +105,19 @@ export default function jsTemplates(Prism) {
       Prism.hooks.run('after-tokenize', env)
       return env.tokens
     }
+
     /**
      * Returns the token of the given JavaScript interpolation expression.
      *
      * @param {string} expression The code of the expression. E.g. `"${42}"`
      * @returns {Token}
      */
-
     function tokenizeInterpolationExpression(expression) {
       var tempGrammar = {}
       tempGrammar['interpolation-punctuation'] = interpolationPunctuationObject
+
       /** @type {Array} */
-
       var tokens = Prism.tokenize(expression, tempGrammar)
-
       if (tokens.length === 3) {
         /**
          * The token array will look like this
@@ -123,6 +127,7 @@ export default function jsTemplates(Prism) {
          *     ["interpolation-punctuation", "}"]
          * ]
          */
+
         var args = [1, 1]
         args.push.apply(
           args,
@@ -130,7 +135,6 @@ export default function jsTemplates(Prism) {
         )
         tokens.splice.apply(tokens, args)
       }
-
       return new Prism.Token(
         'interpolation',
         tokens,
@@ -138,6 +142,7 @@ export default function jsTemplates(Prism) {
         expression
       )
     }
+
     /**
      * Tokenizes the given code with support for JavaScript interpolation expressions mixed in.
      *
@@ -155,24 +160,22 @@ export default function jsTemplates(Prism) {
      * @param {string} language
      * @returns {Token}
      */
-
     function tokenizeEmbedded(code, grammar, language) {
       // 1. First filter out all interpolations
-      // because they might be escaped, we need a lookbehind, so we use Prism
 
+      // because they might be escaped, we need a lookbehind, so we use Prism
       /** @type {(Token|string)[]} */
       var _tokens = Prism.tokenize(code, {
         interpolation: {
           pattern: RegExp(interpolationPattern),
           lookbehind: true
         }
-      }) // replace all interpolations with a placeholder which is not in the code already
+      })
 
+      // replace all interpolations with a placeholder which is not in the code already
       var placeholderCounter = 0
       /** @type {Object<string, string>} */
-
       var placeholderMap = {}
-
       var embeddedCode = _tokens
         .map(function (token) {
           if (typeof token === 'string') {
@@ -180,7 +183,6 @@ export default function jsTemplates(Prism) {
           } else {
             var interpolationExpression = token.content
             var placeholder
-
             while (
               code.indexOf(
                 (placeholder = getPlaceholder(placeholderCounter++, language))
@@ -188,40 +190,39 @@ export default function jsTemplates(Prism) {
             ) {
               /* noop */
             }
-
             placeholderMap[placeholder] = interpolationExpression
             return placeholder
           }
         })
-        .join('') // 2. Tokenize the embedded code
+        .join('')
 
-      var embeddedTokens = tokenizeWithHooks(embeddedCode, grammar, language) // 3. Re-insert the interpolation
+      // 2. Tokenize the embedded code
+
+      var embeddedTokens = tokenizeWithHooks(embeddedCode, grammar, language)
+
+      // 3. Re-insert the interpolation
 
       var placeholders = Object.keys(placeholderMap)
       placeholderCounter = 0
+
       /**
        *
        * @param {(Token|string)[]} tokens
        * @returns {void}
        */
-
       function walkTokens(tokens) {
         for (var i = 0; i < tokens.length; i++) {
           if (placeholderCounter >= placeholders.length) {
             return
           }
-
           var token = tokens[i]
-
           if (typeof token === 'string' || typeof token.content === 'string') {
             var placeholder = placeholders[placeholderCounter]
             var s =
               typeof token === 'string'
                 ? token
-                : /** @type {string} */
-                  token.content
+                : /** @type {string} */ token.content
             var index = s.indexOf(placeholder)
-
             if (index !== -1) {
               ++placeholderCounter
               var before = s.substring(0, index)
@@ -230,19 +231,15 @@ export default function jsTemplates(Prism) {
               )
               var after = s.substring(index + placeholder.length)
               var replacement = []
-
               if (before) {
                 replacement.push(before)
               }
-
               replacement.push(middle)
-
               if (after) {
                 var afterTokens = [after]
                 walkTokens(afterTokens)
                 replacement.push.apply(replacement, afterTokens)
               }
-
               if (typeof token === 'string') {
                 tokens.splice.apply(tokens, [i, 1].concat(replacement))
                 i += replacement.length - 1
@@ -252,7 +249,6 @@ export default function jsTemplates(Prism) {
             }
           } else {
             var content = token.content
-
             if (Array.isArray(content)) {
               walkTokens(content)
             } else {
@@ -261,7 +257,6 @@ export default function jsTemplates(Prism) {
           }
         }
       }
-
       walkTokens(embeddedTokens)
       return new Prism.Token(
         language,
@@ -270,12 +265,12 @@ export default function jsTemplates(Prism) {
         code
       )
     }
+
     /**
      * The languages for which JS templating will handle tagged template literals.
      *
      * JS templating isn't active for only JavaScript but also related languages like TypeScript, JSX, and TSX.
      */
-
     var supportedLanguages = {
       javascript: true,
       js: true,
@@ -288,31 +283,26 @@ export default function jsTemplates(Prism) {
       if (!(env.language in supportedLanguages)) {
         return
       }
+
       /**
        * Finds and tokenizes all template strings with an embedded languages.
        *
        * @param {(Token | string)[]} tokens
        * @returns {void}
        */
-
       function findTemplateStrings(tokens) {
         for (var i = 0, l = tokens.length; i < l; i++) {
           var token = tokens[i]
-
           if (typeof token === 'string') {
             continue
           }
-
           var content = token.content
-
           if (!Array.isArray(content)) {
             if (typeof content !== 'string') {
               findTemplateStrings([content])
             }
-
             continue
           }
-
           if (token.type === 'template-string') {
             /**
              * A JavaScript template-string token will look like this:
@@ -328,8 +318,8 @@ export default function jsTemplates(Prism) {
              *     ["template-punctuation", "`"]
              * ]]
              */
-            var embedded = content[1]
 
+            var embedded = content[1]
             if (
               content.length === 3 &&
               typeof embedded !== 'string' &&
@@ -340,12 +330,10 @@ export default function jsTemplates(Prism) {
               var alias = embedded.alias
               var language = Array.isArray(alias) ? alias[0] : alias
               var grammar = Prism.languages[language]
-
               if (!grammar) {
                 // the embedded language isn't registered.
                 continue
               }
-
               content[1] = tokenizeEmbedded(code, grammar, language)
             }
           } else {
@@ -353,16 +341,15 @@ export default function jsTemplates(Prism) {
           }
         }
       }
-
       findTemplateStrings(env.tokens)
     })
+
     /**
      * Returns the string content of a token or token stream.
      *
      * @param {string | Token | (string | Token)[]} value
      * @returns {string}
      */
-
     function stringContent(value) {
       if (typeof value === 'string') {
         return value

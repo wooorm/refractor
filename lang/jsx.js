@@ -13,11 +13,11 @@ export default function jsx(Prism) {
     var space = /(?:\s|\/\/.*(?!.)|\/\*(?:[^*]|\*(?!\/))\*\/)/.source
     var braces = /(?:\{(?:\{(?:\{[^{}]*\}|[^{}])*\}|[^{}])*\})/.source
     var spread = /(?:\{<S>*\.{3}(?:[^{}]|<BRACES>)*\})/.source
+
     /**
      * @param {string} source
      * @param {string} [flags]
      */
-
     function re(source, flags) {
       source = source
         .replace(/<S>/g, function () {
@@ -31,7 +31,6 @@ export default function jsx(Prism) {
         })
       return RegExp(source, flags)
     }
-
     spread = re(spread).source
     Prism.languages.jsx = Prism.languages.extend('markup', javascript)
     Prism.languages.jsx.tag.pattern = re(
@@ -73,31 +72,26 @@ export default function jsx(Prism) {
         }
       },
       Prism.languages.jsx.tag
-    ) // The following will handle plain text inside tags
+    )
 
+    // The following will handle plain text inside tags
     var stringifyToken = function (token) {
       if (!token) {
         return ''
       }
-
       if (typeof token === 'string') {
         return token
       }
-
       if (typeof token.content === 'string') {
         return token.content
       }
-
       return token.content.map(stringifyToken).join('')
     }
-
     var walkTokens = function (tokens) {
       var openedTags = []
-
       for (var i = 0; i < tokens.length; i++) {
         var token = tokens[i]
         var notTagNorBrace = false
-
         if (typeof token !== 'string') {
           if (
             token.type === 'tag' &&
@@ -105,6 +99,7 @@ export default function jsx(Prism) {
             token.content[0].type === 'tag'
           ) {
             // We found a tag, now find its kind
+
             if (token.content[0].content[0].content === '</') {
               // Closing tag
               if (
@@ -145,7 +140,6 @@ export default function jsx(Prism) {
             notTagNorBrace = true
           }
         }
-
         if (notTagNorBrace || typeof token === 'string') {
           if (
             openedTags.length > 0 &&
@@ -153,8 +147,9 @@ export default function jsx(Prism) {
           ) {
             // Here we are inside a tag, and not inside a JSX context.
             // That's plain text: drop any tokens matched.
-            var plainText = stringifyToken(token) // And merge text with adjacent text
+            var plainText = stringifyToken(token)
 
+            // And merge text with adjacent text
             if (
               i < tokens.length - 1 &&
               (typeof tokens[i + 1] === 'string' ||
@@ -163,7 +158,6 @@ export default function jsx(Prism) {
               plainText += stringifyToken(tokens[i + 1])
               tokens.splice(i + 1, 1)
             }
-
             if (
               i > 0 &&
               (typeof tokens[i - 1] === 'string' ||
@@ -173,7 +167,6 @@ export default function jsx(Prism) {
               tokens.splice(i - 1, 1)
               i--
             }
-
             tokens[i] = new Prism.Token(
               'plain-text',
               plainText,
@@ -182,18 +175,15 @@ export default function jsx(Prism) {
             )
           }
         }
-
         if (token.content && typeof token.content !== 'string') {
           walkTokens(token.content)
         }
       }
     }
-
     Prism.hooks.add('after-tokenize', function (env) {
       if (env.language !== 'jsx' && env.language !== 'tsx') {
         return
       }
-
       walkTokens(env.tokens)
     })
   })(Prism)

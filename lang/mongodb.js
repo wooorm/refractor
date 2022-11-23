@@ -43,7 +43,8 @@ export default function mongodb(Prism) {
       '$comment',
       '$elemMatch',
       '$meta',
-      '$slice', // update
+      '$slice',
+      // update
       '$currentDate',
       '$inc',
       '$min',
@@ -62,7 +63,8 @@ export default function mongodb(Prism) {
       '$position',
       '$slice',
       '$sort',
-      '$bit', // aggregation pipeline stages
+      '$bit',
+      // aggregation pipeline stages
       '$addFields',
       '$bucket',
       '$bucketAuto',
@@ -94,7 +96,8 @@ export default function mongodb(Prism) {
       '$unionWith',
       '$unset',
       '$unwind',
-      '$setWindowFields', // aggregation pipeline operators
+      '$setWindowFields',
+      // aggregation pipeline operators
       '$abs',
       '$accumulator',
       '$acos',
@@ -234,7 +237,8 @@ export default function mongodb(Prism) {
       '$rand',
       '$sampleRate',
       '$setField',
-      '$unsetField', // aggregation pipeline query modifiers
+      '$unsetField',
+      // aggregation pipeline query modifiers
       '$comment',
       '$explain',
       '$hint',

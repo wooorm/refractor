@@ -6,6 +6,7 @@ smali.aliases = []
 export default function smali(Prism) {
   // Test files for the parser itself:
   // https://github.com/JesusFreke/smali/tree/master/smali/src/test/resources/LexerTest
+
   Prism.languages.smali = {
     comment: /#.*/,
     string: {
