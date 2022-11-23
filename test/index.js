@@ -1,16 +1,15 @@
 /**
- * @typedef {import('../lib/core.js').Syntax} Syntax
- * @typedef {import('hast').Node} Node
  * @typedef {import('prismjs')} Prism
  */
 
-import fs from 'node:fs'
-import path from 'node:path'
+import fs from 'node:fs/promises'
 import test from 'tape'
 import {rehype} from 'rehype'
 import {isHidden} from 'is-hidden'
 import {removePosition} from 'unist-util-remove-position'
 import {refractor} from '../lib/all.js'
+
+/* eslint-disable no-await-in-loop */
 
 test('.highlight(value, language)', (t) => {
   t.throws(
@@ -104,8 +103,8 @@ test('.registered(language)', (t) => {
 test('.alias(name, alias)', (t) => {
   const languages = refractor.languages
   const input = fs
-    .readFileSync(
-      path.join('test', 'fixtures', 'markdown-sublanguage', 'input.txt')
+    .readFile(
+      new URL('fixtures/markdown-sublanguage/input.txt', import.meta.url)
     )
     .toString()
     .trim()
@@ -156,10 +155,10 @@ test('.alias(name, alias)', (t) => {
   t.end()
 })
 
-test('fixtures', (t) => {
-  const root = path.join('test', 'fixtures')
+test('fixtures', async (t) => {
+  const root = new URL('fixtures/', import.meta.url)
   const processor = rehype().use({settings: {fragment: true}})
-  const files = fs.readdirSync(root)
+  const files = await fs.readdir(root)
   let index = -1
 
   while (++index < files.length) {
@@ -170,10 +169,10 @@ test('fixtures', (t) => {
 
     const lang = name.split('-')[0]
     const input = String(
-      fs.readFileSync(path.join(root, name, 'input.txt'))
+      await fs.readFile(new URL(name + '/input.txt', root))
     ).trim()
     const expected = String(
-      fs.readFileSync(path.join(root, name, 'output.html'))
+      await fs.readFile(new URL(name + '/output.html', root))
     ).trim()
 
     t.deepEqual(
@@ -218,3 +217,5 @@ test('listLanguages', (t) => {
     prism.languages.bravo = {}
   }
 })
+
+/* eslint-enable no-await-in-loop */

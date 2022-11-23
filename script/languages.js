@@ -2,11 +2,8 @@
  * @typedef {import('babel__core').PluginObj} PluginObj
  */
 
-import fs from 'node:fs'
-import path from 'node:path'
-import {bail} from 'bail'
+import fs from 'node:fs/promises'
 import chalk from 'chalk'
-import async from 'async'
 import babel from '@babel/core'
 import {detab} from 'detab'
 import {trimLines} from 'trim-lines'
@@ -17,69 +14,63 @@ import {toId} from './to-id.js'
 /** @type {{languages: Record<string, {require: string|Array<string>, alias: string|Array<string>}>}} */
 const components = JSON.parse(
   String(
-    fs.readFileSync(path.join('node_modules', 'prismjs', 'components.json'))
+    await fs.readFile(
+      new URL('../node_modules/prismjs/components.json', import.meta.url)
+    )
   )
 )
 
 const prefix = 'refractor-'
 
-async.map(all, generate, (error, results) => {
-  bail(error)
-  console.log(
-    chalk.green('✓') + ' wrote ' + (results || []).length + ' languages'
-  )
-})
+const results = await Promise.all(all.map((d) => generate(d)))
+
+console.log(chalk.green('✓') + ' wrote ' + results.length + ' languages')
 
 /**
  * @param {string} name
- * @param {(error: Error|null) => void} callback
  */
-function generate(name, callback) {
+async function generate(name) {
   const id = toId(name)
 
-  fs.readFile(
-    path.join('node_modules', 'prismjs', 'components', 'prism-' + name + '.js'),
-    (error, buf) => {
-      if (error) {
-        return callback(error)
-      }
+  const buf = await fs.readFile(
+    new URL(
+      '../node_modules/prismjs/components/prism-' + name + '.js',
+      import.meta.url
+    )
+  )
 
-      const info = components.languages[name]
-      const dependency = (
-        typeof info.require === 'string' ? [info.require] : info.require || []
-      ).sort(alphaSort())
-      const alias = (
-        typeof info.alias === 'string' ? [info.alias] : info.alias || []
-      ).sort(alphaSort())
+  const info = components.languages[name]
+  const dependency = (
+    typeof info.require === 'string' ? [info.require] : info.require || []
+  ).sort(alphaSort())
+  const alias = (
+    typeof info.alias === 'string' ? [info.alias] : info.alias || []
+  ).sort(alphaSort())
 
-      /** @type {string} */
-      // @ts-expect-error: TS is wrong.
-      const doc = babel.transformSync(String(buf), {
-        plugins: [fixWrapHook]
-      }).code
+  /** @type {string} */
+  // @ts-expect-error: TS is wrong.
+  const doc = babel.transformSync(String(buf), {
+    plugins: [fixWrapHook]
+  }).code
 
-      fs.writeFile(
-        path.join('lang', name + '.js'),
-        [
-          '// @ts-nocheck',
-          ...dependency.map(
-            (lang) =>
-              'import ' + toId(prefix + lang) + " from './" + lang + ".js'"
-          ),
-          id + ".displayName = '" + name + "'",
-          id + '.aliases = ' + JSON.stringify(alias),
-          '',
-          "/** @type {import('../core.js').Syntax} */",
-          'export default function ' + id + '(Prism) {',
-          ...dependency.map(
-            (lang) => '  Prism.register(' + toId(prefix + lang) + ');'
-          ),
-          trimLines(detab(doc)),
-          '}'
-        ].join('\n'),
-        callback
-      )
-    }
+  await fs.writeFile(
+    new URL('../lang/' + name + '.js', import.meta.url),
+    [
+      '// @ts-nocheck',
+      ...dependency.map(
+        (lang) => 'import ' + toId(prefix + lang) + " from './" + lang + ".js'"
+      ),
+      id + ".displayName = '" + name + "'",
+      id + '.aliases = ' + JSON.stringify(alias),
+      '',
+      "/** @type {import('../core.js').Syntax} */",
+      'export default function ' + id + '(Prism) {',
+      ...dependency.map(
+        (lang) => '  Prism.register(' + toId(prefix + lang) + ');'
+      ),
+      trimLines(detab(doc)),
+      '}'
+    ].join('\n')
   )
 }
 

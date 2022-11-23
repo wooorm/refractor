@@ -1,13 +1,14 @@
-import fs from 'node:fs'
-import path from 'node:path'
+import fs from 'node:fs/promises'
 import Prism from 'prismjs'
 import {rehype} from 'rehype'
 import loadLanguages from 'prismjs/components/index.js'
 
+/* eslint-disable no-await-in-loop */
+
 loadLanguages()
 
-const root = path.join('test', 'fixtures')
-const files = fs.readdirSync(root)
+const root = new URL('../test/fixtures/', import.meta.url)
+const files = await fs.readdir(root)
 const processor = rehype().use({settings: {fragment: true}})
 let index = -1
 
@@ -15,12 +16,12 @@ while (++index < files.length) {
   const name = files[index]
   const lang = name.split('-')[0]
 
-  fs.writeFileSync(
-    path.join(root, name, 'output.html'),
+  await fs.writeFile(
+    new URL(name + '/output.html', root),
     String(
       processor.processSync(
         Prism.highlight(
-          String(fs.readFileSync(path.join(root, name, 'input.txt'))).trim(),
+          String(await fs.readFile(new URL(name + '/input.txt', root))).trim(),
           Prism.languages[lang],
           lang
         )
@@ -28,3 +29,5 @@ while (++index < files.length) {
     ) + '\n'
   )
 }
+
+/* eslint-enable no-await-in-loop */

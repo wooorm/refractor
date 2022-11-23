@@ -1,11 +1,13 @@
-import fs from 'node:fs'
-import path from 'node:path'
+import fs from 'node:fs/promises'
 import chalk from 'chalk'
 import {toId} from './to-id.js'
 import {all, common} from './data.js'
 
-fs.writeFileSync(path.join('lib', 'all.js'), generate(all))
-fs.writeFileSync(path.join('lib', 'common.js'), generate(common))
+await fs.writeFile(new URL('../lib/all.js', import.meta.url), generate(all))
+await fs.writeFile(
+  new URL('../lib/common.js', import.meta.url),
+  generate(common)
+)
 
 console.log(
   chalk.green('✓') + ' wrote `lib/all.js` for ' + all.length + ' languages'

@@ -1,7 +1,7 @@
 /**
  * @typedef {import('mdast').Root} Root
+ * @typedef {import('mdast').ListItem} ListItem
  * @typedef {import('mdast').PhrasingContent} PhrasingContent
- * @typedef {import('mdast-zone').Handler} Handler
  */
 
 import {zone} from 'mdast-zone'
@@ -9,33 +9,23 @@ import {u} from 'unist-builder'
 import alphaSort from 'alpha-sort'
 import {all, common} from './data.js'
 
-const itemPromises = Promise.all(all.sort(sort).map((d) => one(d)))
+const items = await Promise.all(all.sort(sort).map((d) => one(d)))
 
+/** @type {import('unified').Plugin<[], Root>} */
 export default function syntaxes() {
-  return transformer
-}
-
-/**
- * @param {Root} tree
- */
-async function transformer(tree) {
-  const items = await itemPromises
-
-  zone(tree, 'support', replace)
-
-  /** @type {Handler} */
-  function replace(start, _, end) {
-    return [start, u('list', {spread: false, ordered: false}, items), end]
+  return async function (tree) {
+    zone(tree, 'support', function (start, _, end) {
+      return [start, u('list', {spread: false, ordered: false}, items), end]
+    })
   }
 }
 
 /**
  * @param {string} name
+ * @returns {Promise<ListItem>}
  */
 async function one(name) {
   /** @type {{default: {aliases: Array<string>}}} */
-  // Unknown stuff to TS.
-  // type-coverage:ignore-next-line
   const mod = await import('../lang/' + name + '.js')
   const aliases = mod.default.aliases
   /** @type {Array<PhrasingContent>} */

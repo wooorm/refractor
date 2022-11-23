@@ -1,12 +1,13 @@
-import fs from 'node:fs'
-import path from 'node:path'
+import fs from 'node:fs/promises'
 // @ts-expect-error: untyped.
 import getLoader from 'prismjs/dependencies.js'
 
 /** @type {{languages: Record<string, unknown>}} */
 const components = JSON.parse(
   String(
-    fs.readFileSync(path.join('node_modules', 'prismjs', 'components.json'))
+    await fs.readFile(
+      new URL('../node_modules/prismjs/components.json', import.meta.url)
+    )
   )
 )
 
