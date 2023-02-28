@@ -57,20 +57,19 @@
     "c8": "^7.0.0",
     "chalk": "^5.0.0",
     "detab": "^3.0.0",
+    "hast-util-to-html": "^8.0.0",
     "is-hidden": "^2.0.0",
     "is-keyword": "^1.0.0",
     "mdast-zone": "^5.0.0",
     "patch-package": "^6.0.0",
     "prettier": "^2.0.0",
     "prismjs": "~1.29.0",
-    "rehype": "^12.0.0",
     "remark-cli": "^11.0.0",
     "remark-preset-wooorm": "^9.0.0",
     "trim-lines": "^3.0.0",
     "type-coverage": "^2.0.0",
     "typescript": "^4.0.0",
     "unist-builder": "^3.0.0",
-    "unist-util-remove-position": "^4.0.0",
     "xo": "^0.53.0"
   },
   "scripts": {
@@ -83,7 +82,7 @@
     "build": "tsc --build --clean && tsc --build && type-coverage",
     "format": "remark . -qfo && prettier . -w --loglevel warn && xo --fix",
     "test-api": "node --conditions development test/index.js",
-    "test-coverage": "c8 -x \"lang/*.js\" -x \"lib/prism-core.js\" --check-coverage --100 --reporter lcov npm run test-api",
+    "test-coverage": "c8 -x \"lang/\" -x \"test/\" -x \"lib/prism-core.js\" --check-coverage --100 --reporter lcov npm run test-api",
     "test": "npm run generate && npm run build && npm run format && npm run test-coverage"
   },
   "prettier": {

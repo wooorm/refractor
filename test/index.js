@@ -4,10 +4,10 @@
 
 import assert from 'node:assert/strict'
 import fs from 'node:fs/promises'
+import process from 'node:process'
 import test from 'node:test'
-import {rehype} from 'rehype'
+import {toHtml} from 'hast-util-to-html'
 import {isHidden} from 'is-hidden'
-import {removePosition} from 'unist-util-remove-position'
 import {refractor} from '../lib/all.js'
 
 /* eslint-disable no-await-in-loop */
@@ -150,7 +150,6 @@ test('.alias(name, alias)', () => {
 
 test('fixtures', async () => {
   const root = new URL('fixtures/', import.meta.url)
-  const processor = rehype().use({settings: {fragment: true}})
   const files = await fs.readdir(root)
   let index = -1
 
@@ -161,22 +160,25 @@ test('fixtures', async () => {
     if (isHidden(name)) continue
 
     const lang = name.split('-')[0]
-    const input = String(
-      await fs.readFile(new URL(name + '/input.txt', root))
-    ).trim()
-    const expected = String(
-      await fs.readFile(new URL(name + '/output.html', root))
-    ).trim()
+    const inputUrl = new URL(name + '/input.txt', root)
+    const outputUrl = new URL(name + '/output.html', root)
+    const input = String(await fs.readFile(inputUrl)).trim()
+    const actual = toHtml(refractor.highlight(input, lang))
+    /** @type {string} */
+    let expected
 
-    assert.deepEqual(
-      Object.assign(refractor.highlight(input, lang), {
-        data: undefined
-      }),
-      Object.assign(removePosition(processor.parse(expected), true), {
-        data: undefined
-      }),
-      name
-    )
+    try {
+      expected = String(await fs.readFile(outputUrl)).trim()
+
+      if ('UPDATE' in process.env) {
+        throw new Error('Update!')
+      }
+    } catch {
+      expected = actual
+      await fs.writeFile(outputUrl, actual + '\n')
+    }
+
+    assert.equal(actual, expected, name)
   }
 })
 
