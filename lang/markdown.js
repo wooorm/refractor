@@ -390,11 +390,7 @@ export default function markdown(Prism) {
           })
         }
       } else {
-        env.content = Prism.highlight(
-          textContent(env.content.value),
-          grammar,
-          codeLang
-        )
+        env.content = Prism.highlight(env.content.value, grammar, codeLang)
       }
     })
     var tagPattern = RegExp(Prism.languages.markup.tag.pattern.source, 'gi')

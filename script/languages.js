@@ -2,6 +2,7 @@
  * @typedef {import('babel__core').PluginObj} PluginObj
  */
 
+import assert from 'node:assert/strict'
 import fs from 'node:fs/promises'
 import chalk from 'chalk'
 import babel from '@babel/core'
@@ -47,11 +48,18 @@ async function generate(name) {
     typeof info.alias === 'string' ? [info.alias] : info.alias || []
   ).sort(alphaSort())
 
-  /** @type {string} */
-  // @ts-expect-error: TS is wrong.
-  const doc = babel.transformSync(String(buf), {
+  const result = babel.transformSync(String(buf), {
     plugins: [fixWrapHook]
-  }).code
+  })
+  assert(result, 'expected `result`')
+  let doc = result.code
+  assert(doc, 'expected `doc`')
+
+  if (id === 'markdown') {
+    // A useless function only used in `markdown` for us: our `value` is
+    // already text content.
+    doc = doc.replace(/textContent\(env\.content\.value\)/, 'env.content.value')
+  }
 
   await fs.writeFile(
     new URL('../lang/' + name + '.js', import.meta.url),
@@ -105,6 +113,7 @@ function fixWrapHook() {
       },
       // If a syntax is assigning `Prism.highlight` to `env.content`, we should
       // add the result to `env.content` instead of `env.content.value`.
+      // This is currently only done for markdown.
       AssignmentExpression: {
         enter(path) {
           const callee = path.get('right.callee')
@@ -113,7 +122,7 @@ function fixWrapHook() {
             callee.matchesPattern('Prism.highlight') &&
             path.get('left').matchesPattern('env.content')
           ) {
-            // @ts-expect-error Mutate.
+            // @ts-expect-error Patch custom field, handled next.
             path.get('left').node.ignoreValueSuffix = true
           }
         }
@@ -124,7 +133,7 @@ function fixWrapHook() {
         enter(path) {
           if (
             this.inWrapHook &&
-            // @ts-expect-error Mutate.
+            // @ts-expect-error Patched custom field.
             !path.node.ignoreValueSuffix &&
             path.matchesPattern('env.content')
           ) {
