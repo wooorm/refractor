@@ -597,7 +597,7 @@ syntaxes are made to work with global variables and are not importable.
 *   [ ] [`prolog`](https://github.com/wooorm/refractor/blob/main/lang/prolog.js)
 *   [ ] [`promql`](https://github.com/wooorm/refractor/blob/main/lang/promql.js)
 *   [ ] [`properties`](https://github.com/wooorm/refractor/blob/main/lang/properties.js)
-*   [ ] [`protobuf`](https://github.com/wooorm/refractor/blob/main/lang/protobuf.js)
+*   [ ] [`protobuf`](https://github.com/wooorm/refractor/blob/main/lang/protobuf.js) — alias: `proto`
 *   [ ] [`psl`](https://github.com/wooorm/refractor/blob/main/lang/psl.js)
 *   [ ] [`pug`](https://github.com/wooorm/refractor/blob/main/lang/pug.js)
 *   [ ] [`puppet`](https://github.com/wooorm/refractor/blob/main/lang/puppet.js)

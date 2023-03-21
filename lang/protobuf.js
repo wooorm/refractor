@@ -1,7 +1,7 @@
 // @ts-nocheck
 import refractorClike from './clike.js'
 protobuf.displayName = 'protobuf'
-protobuf.aliases = []
+protobuf.aliases = ['proto']
 
 /** @type {import('../core.js').Syntax} */
 export default function protobuf(Prism) {
