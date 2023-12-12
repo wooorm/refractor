@@ -13,7 +13,7 @@ export default function latex(Prism) {
       }
     }
     Prism.languages.latex = {
-      comment: /%.*/,
+      comment: /(?<!\\)%.*/,
       // the verbatim environment prints whitespace to the document
       cdata: {
         pattern:
