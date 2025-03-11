@@ -1,6 +1,5 @@
+*.html
+*.md
 coverage/
 refractor.js
 refractor.min.js
-*.html
-*.json
-*.md
