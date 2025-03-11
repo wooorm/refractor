@@ -111,7 +111,6 @@
     ],
     "strict": true
   },
-  "types": "index.d.ts",
   "type": "module",
   "version": "4.9.0",
   "xo": {
