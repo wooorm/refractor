@@ -11,9 +11,9 @@
     "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)"
   ],
   "dependencies": {
-    "@types/hast": "^2.0.0",
+    "@types/hast": "^3.0.0",
     "@types/prismjs": "^1.0.0",
-    "hastscript": "^7.0.0",
+    "hastscript": "^9.0.0",
     "parse-entities": "^4.0.0"
   },
   "description": "Lightweight, robust, elegant virtual syntax highlighting using Prism",

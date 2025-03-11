@@ -174,7 +174,6 @@ test('fixtures', async function (t) {
       const outputUrl = new URL(name + '/output.html', root)
       const input_ = await fs.readFile(inputUrl, 'utf8')
       const input = input_.trim()
-      // @ts-expect-error: to do: update `@types/hast` in dependencies.
       const actual = toHtml(refractor.highlight(input, lang))
       /** @type {string} */
       let expected

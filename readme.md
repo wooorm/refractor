@@ -20,7 +20,6 @@ and elegant virtual syntax highlighting using [Prism][github-prism].
 * [Use](#use)
 * [API](#api)
   * [`refractor`](#refractor-1)
-  * [`Root`](#root)
   * [`Syntax`](#syntax)
 * [Examples](#examples)
   * [Example: serializing hast as html](#example-serializing-hast-as-html)
