@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 j.displayName = 'j'
 j.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function j(Prism) {
   Prism.languages.j = {
     comment: {

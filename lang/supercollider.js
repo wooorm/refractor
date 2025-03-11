@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 supercollider.displayName = 'supercollider'
 supercollider.aliases = ['sclang']
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function supercollider(Prism) {
   Prism.languages.supercollider = {
     comment: {

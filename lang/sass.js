@@ -1,9 +1,12 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 import refractorCss from './css.js'
 sass.displayName = 'sass'
 sass.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function sass(Prism) {
   Prism.register(refractorCss)
   ;(function (Prism) {

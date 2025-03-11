@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 avroIdl.displayName = 'avro-idl'
 avroIdl.aliases = ['avdl']
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function avroIdl(Prism) {
   // GitHub: https://github.com/apache/avro
   // Docs: https://avro.apache.org/docs/current/idl.html

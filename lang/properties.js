@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 properties.displayName = 'properties'
 properties.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function properties(Prism) {
   Prism.languages.properties = {
     comment: /^[ \t]*[#!].*$/m,

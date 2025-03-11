@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 neon.displayName = 'neon'
 neon.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function neon(Prism) {
   Prism.languages.neon = {
     comment: {

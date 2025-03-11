@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 concurnas.displayName = 'concurnas'
 concurnas.aliases = ['conc']
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function concurnas(Prism) {
   Prism.languages.concurnas = {
     comment: {

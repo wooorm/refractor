@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 makefile.displayName = 'makefile'
 makefile.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function makefile(Prism) {
   Prism.languages.makefile = {
     comment: {

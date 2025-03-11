@@ -1,9 +1,12 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 import refractorMarkup from './markup.js'
 velocity.displayName = 'velocity'
 velocity.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function velocity(Prism) {
   Prism.register(refractorMarkup)
   ;(function (Prism) {

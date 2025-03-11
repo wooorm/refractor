@@ -1,10 +1,13 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 import refractorCsharp from './csharp.js'
 import refractorT4Templating from './t4-templating.js'
 t4Cs.displayName = 't4-cs'
 t4Cs.aliases = ['t4']
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function t4Cs(Prism) {
   Prism.register(refractorCsharp)
   Prism.register(refractorT4Templating)

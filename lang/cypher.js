@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 cypher.displayName = 'cypher'
 cypher.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function cypher(Prism) {
   Prism.languages.cypher = {
     // https://neo4j.com/docs/cypher-manual/current/syntax/comments/

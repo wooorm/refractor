@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 arturo.displayName = 'arturo'
 arturo.aliases = ['art']
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function arturo(Prism) {
   ;(function (Prism) {
     /**

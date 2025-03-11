@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 ocaml.displayName = 'ocaml'
 ocaml.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function ocaml(Prism) {
   // https://ocaml.org/manual/lex.html
 

@@ -1,9 +1,12 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 import refractorC from './c.js'
 cpp.displayName = 'cpp'
 cpp.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function cpp(Prism) {
   Prism.register(refractorC)
   ;(function (Prism) {

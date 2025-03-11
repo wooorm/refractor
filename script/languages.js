@@ -1,43 +1,52 @@
 /**
- * @typedef {import('babel__core').PluginObj} PluginObj
+ * @import {PluginObj} from 'babel__core'
  */
 
 import assert from 'node:assert/strict'
 import fs from 'node:fs/promises'
-import chalk from 'chalk'
 import babel from '@babel/core'
+import alphaSort from 'alpha-sort'
+import chalk from 'chalk'
 import {detab} from 'detab'
 import {trimLines} from 'trim-lines'
-import alphaSort from 'alpha-sort'
 import {all} from './data.js'
 import {toId} from './to-id.js'
 
-/** @type {{languages: Record<string, {require: string|Array<string>, alias: string|Array<string>}>}} */
+/** @type {{languages: Record<string, {alias: Array<string> | string, require: Array<string> | string}>}} */
 const components = JSON.parse(
-  String(
-    await fs.readFile(
-      new URL('../node_modules/prismjs/components.json', import.meta.url)
-    )
+  await fs.readFile(
+    new URL('../node_modules/prismjs/components.json', import.meta.url),
+    'utf8'
   )
 )
 
 const prefix = 'refractor-'
 
-const results = await Promise.all(all.map((d) => generate(d)))
+/** @type {Array<Promise<undefined>>} */
+const promises = []
 
-console.log(chalk.green('✓') + ' wrote ' + results.length + ' languages')
+for (const d of all) {
+  promises.push(generate(d))
+}
+
+await Promise.all(promises)
+
+console.log(chalk.green('✓') + ' wrote ' + promises.length + ' languages')
 
 /**
  * @param {string} name
+ *   Language name.
+ * @returns {Promise<undefined>}
+ *   Promise to nothing.
  */
 async function generate(name) {
   const id = toId(name)
-
-  const buf = await fs.readFile(
+  const input = await fs.readFile(
     new URL(
       '../node_modules/prismjs/components/prism-' + name + '.js',
       import.meta.url
-    )
+    ),
+    'utf8'
   )
 
   const info = components.languages[name]
@@ -48,9 +57,7 @@ async function generate(name) {
     typeof info.alias === 'string' ? [info.alias] : info.alias || []
   ).sort(alphaSort())
 
-  const result = babel.transformSync(String(buf), {
-    plugins: [fixWrapHook]
-  })
+  const result = babel.transformSync(input, {plugins: [fixWrapHook]})
   assert(result, 'expected `result`')
   let code = result.code
   assert(code, 'expected `code`')
@@ -64,35 +71,62 @@ async function generate(name) {
     )
   }
 
+  const lines = [
+    '// @ts-nocheck',
+    '/**',
+    " * @import {Syntax} from '../core.js'",
+    ' */'
+  ]
+
+  for (const lang of dependency) {
+    lines.push('import ' + toId(prefix + lang) + " from './" + lang + ".js'")
+  }
+
+  lines.push(
+    id + ".displayName = '" + name + "'",
+    id + '.aliases = ' + JSON.stringify(alias),
+    '',
+    '/** @type {Syntax} */',
+    'export default function ' + id + '(Prism) {'
+  )
+
+  for (const lang of dependency) {
+    lines.push('  Prism.register(' + toId(prefix + lang) + ');')
+  }
+
+  lines.push(trimLines(detab(code)), '}', '')
+
   await fs.writeFile(
     new URL('../lang/' + name + '.js', import.meta.url),
-    [
-      '// @ts-nocheck',
-      ...dependency.map(
-        (lang) => 'import ' + toId(prefix + lang) + " from './" + lang + ".js'"
-      ),
-      id + ".displayName = '" + name + "'",
-      id + '.aliases = ' + JSON.stringify(alias),
-      '',
-      "/** @type {import('../core.js').Syntax} */",
-      'export default function ' + id + '(Prism) {',
-      ...dependency.map(
-        (lang) => '  Prism.register(' + toId(prefix + lang) + ');'
-      ),
-      trimLines(detab(code)),
-      '}'
-    ].join('\n')
+    lines.join('\n')
   )
 }
 
 /**
  * @returns {PluginObj}
+ *   Babel plugin.
  */
 function fixWrapHook() {
   const t = babel.types
 
   return {
     visitor: {
+      // If a syntax is assigning `Prism.highlight` to `env.content`, we should
+      // add the result to `env.content` instead of `env.content.value`.
+      // This is currently only done for markdown.
+      AssignmentExpression: {
+        enter(path) {
+          const callee = path.get('right.callee')
+          if (
+            'type' in callee &&
+            callee.matchesPattern('Prism.highlight') &&
+            path.get('left').matchesPattern('env.content')
+          ) {
+            // @ts-expect-error Patch custom field, handled next.
+            path.get('left').node.ignoreValueSuffix = true
+          }
+        }
+      },
       // We only perform the later changes inside `wrap` hooks, just to be safe.
       CallExpression: {
         enter(path) {
@@ -111,22 +145,6 @@ function fixWrapHook() {
 
           if ('type' in head && head.isStringLiteral({value: 'wrap'})) {
             this.inWrapHook = false
-          }
-        }
-      },
-      // If a syntax is assigning `Prism.highlight` to `env.content`, we should
-      // add the result to `env.content` instead of `env.content.value`.
-      // This is currently only done for markdown.
-      AssignmentExpression: {
-        enter(path) {
-          const callee = path.get('right.callee')
-          if (
-            'type' in callee &&
-            callee.matchesPattern('Prism.highlight') &&
-            path.get('left').matchesPattern('env.content')
-          ) {
-            // @ts-expect-error Patch custom field, handled next.
-            path.get('left').node.ignoreValueSuffix = true
           }
         }
       },

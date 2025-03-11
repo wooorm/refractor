@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 elm.displayName = 'elm'
 elm.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function elm(Prism) {
   Prism.languages.elm = {
     comment: /--.*|\{-[\s\S]*?-\}/,

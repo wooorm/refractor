@@ -120,6 +120,18 @@
       "lang/*.js",
       "lib/prism-core.js"
     ],
+    "overrides": [
+      {
+        "files": [
+          "script/**/*.js",
+          "test/**/*.js"
+        ],
+        "rules": {
+          "no-await-in-loop": "off",
+          "unicorn/prefer-top-level-await": "off"
+        }
+      }
+    ],
     "prettier": true,
     "rules": {
       "unicorn/prefer-string-replace-all": "off"

@@ -1,10 +1,13 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 import refractorJavascript from './javascript.js'
 import refractorMarkup from './markup.js'
 jsx.displayName = 'jsx'
 jsx.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function jsx(Prism) {
   Prism.register(refractorJavascript)
   Prism.register(refractorMarkup)

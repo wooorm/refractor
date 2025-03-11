@@ -1,9 +1,12 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 import refractorHaskell from './haskell.js'
 idris.displayName = 'idris'
 idris.aliases = ['idr']
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function idris(Prism) {
   Prism.register(refractorHaskell)
   Prism.languages.idris = Prism.languages.extend('haskell', {

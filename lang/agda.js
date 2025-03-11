@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 agda.displayName = 'agda'
 agda.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function agda(Prism) {
   ;(function (Prism) {
     Prism.languages.agda = {

@@ -1,9 +1,12 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 import refractorCpp from './cpp.js'
 cilkcpp.displayName = 'cilkcpp'
 cilkcpp.aliases = ['cilk', 'cilk-cpp']
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function cilkcpp(Prism) {
   Prism.register(refractorCpp)
   Prism.languages.cilkcpp = Prism.languages.insertBefore('cpp', 'function', {

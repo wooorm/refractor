@@ -1,9 +1,12 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 import refractorClike from './clike.js'
 haxe.displayName = 'haxe'
 haxe.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function haxe(Prism) {
   Prism.register(refractorClike)
   Prism.languages.haxe = Prism.languages.extend('clike', {

@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 plantUml.displayName = 'plant-uml'
 plantUml.aliases = ['plantuml']
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function plantUml(Prism) {
   ;(function (Prism) {
     var variable = /\$\w+|%[a-z]+%/

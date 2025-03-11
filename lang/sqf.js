@@ -1,9 +1,12 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 import refractorClike from './clike.js'
 sqf.displayName = 'sqf'
 sqf.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function sqf(Prism) {
   Prism.register(refractorClike)
   Prism.languages.sqf = Prism.languages.extend('clike', {

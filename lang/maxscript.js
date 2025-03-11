@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 maxscript.displayName = 'maxscript'
 maxscript.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function maxscript(Prism) {
   ;(function (Prism) {
     var keywords =

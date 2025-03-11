@@ -1,10 +1,13 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 import refractorJsx from './jsx.js'
 import refractorTypescript from './typescript.js'
 tsx.displayName = 'tsx'
 tsx.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function tsx(Prism) {
   Prism.register(refractorJsx)
   Prism.register(refractorTypescript)

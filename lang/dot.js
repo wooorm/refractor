@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 dot.displayName = 'dot'
 dot.aliases = ['gv']
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function dot(Prism) {
   // https://www.graphviz.org/doc/info/lang.html
 

@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 diff.displayName = 'diff'
 diff.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function diff(Prism) {
   ;(function (Prism) {
     Prism.languages.diff = {

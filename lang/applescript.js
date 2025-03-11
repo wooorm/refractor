@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 applescript.displayName = 'applescript'
 applescript.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function applescript(Prism) {
   Prism.languages.applescript = {
     comment: [

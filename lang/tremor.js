@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 tremor.displayName = 'tremor'
 tremor.aliases = ['trickle', 'troy']
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function tremor(Prism) {
   ;(function (Prism) {
     Prism.languages.tremor = {

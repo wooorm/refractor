@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 coq.displayName = 'coq'
 coq.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function coq(Prism) {
   ;(function (Prism) {
     // https://github.com/coq/coq

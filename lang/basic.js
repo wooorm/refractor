@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 basic.displayName = 'basic'
 basic.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function basic(Prism) {
   Prism.languages.basic = {
     comment: {

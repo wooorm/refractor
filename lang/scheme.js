@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 scheme.displayName = 'scheme'
 scheme.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function scheme(Prism) {
   ;(function (Prism) {
     Prism.languages.scheme = {

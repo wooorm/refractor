@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 bro.displayName = 'bro'
 bro.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function bro(Prism) {
   Prism.languages.bro = {
     comment: {

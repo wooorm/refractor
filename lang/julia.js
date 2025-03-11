@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 julia.displayName = 'julia'
 julia.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function julia(Prism) {
   Prism.languages.julia = {
     comment: {

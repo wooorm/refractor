@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 linkerScript.displayName = 'linker-script'
 linkerScript.aliases = ['ld']
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function linkerScript(Prism) {
   Prism.languages['linker-script'] = {
     comment: {

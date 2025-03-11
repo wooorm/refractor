@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 turtle.displayName = 'turtle'
 turtle.aliases = ['trig']
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function turtle(Prism) {
   Prism.languages.turtle = {
     comment: {

@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 verilog.displayName = 'verilog'
 verilog.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function verilog(Prism) {
   Prism.languages.verilog = {
     comment: {

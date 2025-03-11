@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 latex.displayName = 'latex'
 latex.aliases = ['context', 'tex']
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function latex(Prism) {
   ;(function (Prism) {
     var funcPattern = /\\(?:[^a-z()[\]]|[a-z*]+)/i

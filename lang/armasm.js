@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 armasm.displayName = 'armasm'
 armasm.aliases = ['arm-asm']
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function armasm(Prism) {
   Prism.languages.armasm = {
     comment: {

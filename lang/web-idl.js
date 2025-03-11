@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 webIdl.displayName = 'web-idl'
 webIdl.aliases = ['webidl']
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function webIdl(Prism) {
   ;(function (Prism) {
     var id = /(?:\B-|\b_|\b)[A-Za-z][\w-]*(?![\w-])/.source

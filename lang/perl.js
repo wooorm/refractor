@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 perl.displayName = 'perl'
 perl.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function perl(Prism) {
   ;(function (Prism) {
     var brackets =

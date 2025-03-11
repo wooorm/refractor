@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 gdscript.displayName = 'gdscript'
 gdscript.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function gdscript(Prism) {
   Prism.languages.gdscript = {
     comment: /#.*/,

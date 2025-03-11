@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 smalltalk.displayName = 'smalltalk'
 smalltalk.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function smalltalk(Prism) {
   Prism.languages.smalltalk = {
     comment: {

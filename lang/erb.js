@@ -1,10 +1,13 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 import refractorMarkupTemplating from './markup-templating.js'
 import refractorRuby from './ruby.js'
 erb.displayName = 'erb'
 erb.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function erb(Prism) {
   Prism.register(refractorMarkupTemplating)
   Prism.register(refractorRuby)

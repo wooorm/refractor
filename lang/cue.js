@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 cue.displayName = 'cue'
 cue.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function cue(Prism) {
   ;(function (Prism) {
     // https://cuelang.org/docs/references/spec/

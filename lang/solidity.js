@@ -1,9 +1,12 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 import refractorClike from './clike.js'
 solidity.displayName = 'solidity'
 solidity.aliases = ['sol']
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function solidity(Prism) {
   Prism.register(refractorClike)
   Prism.languages.solidity = Prism.languages.extend('clike', {

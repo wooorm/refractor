@@ -1,9 +1,12 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 import refractorClike from './clike.js'
 csharp.displayName = 'csharp'
 csharp.aliases = ['cs', 'dotnet']
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function csharp(Prism) {
   Prism.register(refractorClike)
   ;(function (Prism) {

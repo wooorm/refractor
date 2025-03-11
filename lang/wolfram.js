@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 wolfram.displayName = 'wolfram'
 wolfram.aliases = ['mathematica', 'nb', 'wl']
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function wolfram(Prism) {
   Prism.languages.wolfram = {
     comment:

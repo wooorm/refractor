@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 lisp.displayName = 'lisp'
 lisp.aliases = ['elisp', 'emacs', 'emacs-lisp']
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function lisp(Prism) {
   ;(function (Prism) {
     /**

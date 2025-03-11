@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 splunkSpl.displayName = 'splunk-spl'
 splunkSpl.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function splunkSpl(Prism) {
   Prism.languages['splunk-spl'] = {
     comment: /`comment\("(?:\\.|[^\\"])*"\)`/,

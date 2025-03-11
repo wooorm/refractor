@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 rip.displayName = 'rip'
 rip.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function rip(Prism) {
   Prism.languages.rip = {
     comment: {

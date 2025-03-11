@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 wasm.displayName = 'wasm'
 wasm.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function wasm(Prism) {
   Prism.languages.wasm = {
     comment: [

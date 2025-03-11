@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 bicep.displayName = 'bicep'
 bicep.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function bicep(Prism) {
   // based loosely upon: https://github.com/Azure/bicep/blob/main/src/textmate/bicep.tmlanguage
   Prism.languages.bicep = {

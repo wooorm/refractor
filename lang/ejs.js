@@ -1,10 +1,13 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 import refractorJavascript from './javascript.js'
 import refractorMarkupTemplating from './markup-templating.js'
 ejs.displayName = 'ejs'
 ejs.aliases = ['eta']
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function ejs(Prism) {
   Prism.register(refractorJavascript)
   Prism.register(refractorMarkupTemplating)

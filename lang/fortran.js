@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 fortran.displayName = 'fortran'
 fortran.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function fortran(Prism) {
   Prism.languages.fortran = {
     'quoted-number': {

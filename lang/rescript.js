@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 rescript.displayName = 'rescript'
 rescript.aliases = ['res']
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function rescript(Prism) {
   Prism.languages.rescript = {
     comment: {

@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 factor.displayName = 'factor'
 factor.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function factor(Prism) {
   ;(function (Prism) {
     var comment_inside = {

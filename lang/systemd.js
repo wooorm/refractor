@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 systemd.displayName = 'systemd'
 systemd.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function systemd(Prism) {
   // https://www.freedesktop.org/software/systemd/man/systemd.syntax.html
 

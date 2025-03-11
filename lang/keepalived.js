@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 keepalived.displayName = 'keepalived'
 keepalived.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function keepalived(Prism) {
   Prism.languages.keepalived = {
     comment: {

@@ -1,9 +1,12 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 import refractorC from './c.js'
 glsl.displayName = 'glsl'
 glsl.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function glsl(Prism) {
   Prism.register(refractorC)
   Prism.languages.glsl = Prism.languages.extend('c', {

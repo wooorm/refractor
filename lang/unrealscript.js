@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 unrealscript.displayName = 'unrealscript'
 unrealscript.aliases = ['uc', 'uscript']
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function unrealscript(Prism) {
   Prism.languages.unrealscript = {
     comment: /\/\/.*|\/\*[\s\S]*?\*\//,

@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 clojure.displayName = 'clojure'
 clojure.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function clojure(Prism) {
   // Copied from https://github.com/jeluard/prism-clojure
   Prism.languages.clojure = {

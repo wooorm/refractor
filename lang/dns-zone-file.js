@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 dnsZoneFile.displayName = 'dns-zone-file'
 dnsZoneFile.aliases = ['dns-zone']
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function dnsZoneFile(Prism) {
   Prism.languages['dns-zone-file'] = {
     comment: /;.*/,

@@ -1,9 +1,12 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 import refractorJavascript from './javascript.js'
 jsExtras.displayName = 'js-extras'
 jsExtras.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function jsExtras(Prism) {
   Prism.register(refractorJavascript)
   ;(function (Prism) {

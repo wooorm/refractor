@@ -1,9 +1,12 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 import refractorMarkup from './markup.js'
 textile.displayName = 'textile'
 textile.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function textile(Prism) {
   Prism.register(refractorMarkup)
   ;(function (Prism) {

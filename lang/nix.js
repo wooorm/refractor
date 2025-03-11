@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 nix.displayName = 'nix'
 nix.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function nix(Prism) {
   Prism.languages.nix = {
     comment: {

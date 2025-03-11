@@ -4,21 +4,25 @@ import getLoader from 'prismjs/dependencies.js'
 
 /** @type {{languages: Record<string, unknown>}} */
 const components = JSON.parse(
-  String(
-    await fs.readFile(
-      new URL('../node_modules/prismjs/components.json', import.meta.url)
-    )
+  await fs.readFile(
+    new URL('../node_modules/prismjs/components.json', import.meta.url),
+    'utf8'
   )
 )
 
-const allLanguages = Object.keys(components.languages).filter(
-  (d) => d !== 'meta'
-)
+/** @type {Set<string>} */
+const allLanguages = new Set()
 
-/** @type {Array<string>} */
-export const all = getLoader(components, allLanguages).getIds()
+for (const d of Object.keys(components.languages)) {
+  if (d !== 'meta') {
+    allLanguages.add(d)
+  }
+}
 
-/** @type {Array<string>} */
+/** @type {ReadonlyArray<string>} */
+export const all = getLoader(components, [...allLanguages]).getIds()
+
+/** @type {ReadonlyArray<string>} */
 export const common = getLoader(components, [
   // These are alphabetical, but they are exported in registration order.
   // They are based on the languages that lowlight exports as common,

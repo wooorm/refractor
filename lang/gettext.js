@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 gettext.displayName = 'gettext'
 gettext.aliases = ['po']
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function gettext(Prism) {
   Prism.languages.gettext = {
     comment: [

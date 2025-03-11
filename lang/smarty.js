@@ -1,9 +1,12 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 import refractorMarkupTemplating from './markup-templating.js'
 smarty.displayName = 'smarty'
 smarty.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function smarty(Prism) {
   Prism.register(refractorMarkupTemplating)
   ;(function (Prism) {

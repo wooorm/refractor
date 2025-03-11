@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 sml.displayName = 'sml'
 sml.aliases = ['smlnj']
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function sml(Prism) {
   // https://smlfamily.github.io/sml97-defn.pdf
   // https://people.mpi-sws.org/~rossberg/sml.html

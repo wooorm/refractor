@@ -215,7 +215,7 @@ Register aliases for already registered languages.
 
 ###### Signatures
 
-* `alias(name, alias|list)`
+* `alias(name, alias | list)`
 * `alias(aliases)`
 
 ###### Parameters
@@ -226,7 +226,7 @@ Register aliases for already registered languages.
   — new aliases for the programming language
 * `list` (`Array<string>`)
   — list of aliases
-* `aliases` (`Record<language, alias|list>`)
+* `aliases` (`Record<language, alias | list>`)
   — map of `language`s to `alias`es or `list`s
 
 ###### Example

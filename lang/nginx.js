@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 nginx.displayName = 'nginx'
 nginx.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function nginx(Prism) {
   ;(function (Prism) {
     var variable =

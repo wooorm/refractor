@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 pure.displayName = 'pure'
 pure.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function pure(Prism) {
   ;(function (Prism) {
     // https://agraef.github.io/pure-docs/pure.html#lexical-matters

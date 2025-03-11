@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 asmatmel.displayName = 'asmatmel'
 asmatmel.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function asmatmel(Prism) {
   Prism.languages.asmatmel = {
     comment: {

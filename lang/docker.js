@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 docker.displayName = 'docker'
 docker.aliases = ['dockerfile']
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function docker(Prism) {
   ;(function (Prism) {
     // Many of the following regexes will contain negated lookaheads like `[ \t]+(?![ \t])`. This is a trick to ensure

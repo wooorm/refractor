@@ -1,9 +1,12 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 import refractorScheme from './scheme.js'
 racket.displayName = 'racket'
 racket.aliases = ['rkt']
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function racket(Prism) {
   Prism.register(refractorScheme)
   Prism.languages.racket = Prism.languages.extend('scheme', {

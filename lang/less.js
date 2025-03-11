@@ -1,9 +1,12 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 import refractorCss from './css.js'
 less.displayName = 'less'
 less.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function less(Prism) {
   Prism.register(refractorCss)
   /* FIXME :

@@ -1,9 +1,12 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 import refractorScheme from './scheme.js'
 lilypond.displayName = 'lilypond'
 lilypond.aliases = ['ly']
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function lilypond(Prism) {
   Prism.register(refractorScheme)
   ;(function (Prism) {

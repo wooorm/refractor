@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 apacheconf.displayName = 'apacheconf'
 apacheconf.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function apacheconf(Prism) {
   Prism.languages.apacheconf = {
     comment: /#.*/,

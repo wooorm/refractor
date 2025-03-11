@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 q.displayName = 'q'
 q.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function q(Prism) {
   Prism.languages.q = {
     string: /"(?:\\.|[^"\\\r\n])*"/,

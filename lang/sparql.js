@@ -1,9 +1,12 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 import refractorTurtle from './turtle.js'
 sparql.displayName = 'sparql'
 sparql.aliases = ['rq']
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function sparql(Prism) {
   Prism.register(refractorTurtle)
   Prism.languages.sparql = Prism.languages.extend('turtle', {

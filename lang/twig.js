@@ -1,9 +1,12 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 import refractorMarkupTemplating from './markup-templating.js'
 twig.displayName = 'twig'
 twig.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function twig(Prism) {
   Prism.register(refractorMarkupTemplating)
   Prism.languages.twig = {

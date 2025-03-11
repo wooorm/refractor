@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 cooklang.displayName = 'cooklang'
 cooklang.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function cooklang(Prism) {
   ;(function (Prism) {
     // see https://github.com/cooklang/spec/blob/main/EBNF.md

@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 wgsl.displayName = 'wgsl'
 wgsl.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function wgsl(Prism) {
   Prism.languages.wgsl = {
     comment: {

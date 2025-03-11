@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 antlr4.displayName = 'antlr4'
 antlr4.aliases = ['g4']
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function antlr4(Prism) {
   Prism.languages.antlr4 = {
     comment: /\/\/.*|\/\*[\s\S]*?(?:\*\/|$)/,

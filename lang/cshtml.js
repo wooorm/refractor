@@ -1,10 +1,13 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 import refractorCsharp from './csharp.js'
 import refractorMarkup from './markup.js'
 cshtml.displayName = 'cshtml'
 cshtml.aliases = ['razor']
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function cshtml(Prism) {
   Prism.register(refractorCsharp)
   Prism.register(refractorMarkup)

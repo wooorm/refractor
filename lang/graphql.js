@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 graphql.displayName = 'graphql'
 graphql.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function graphql(Prism) {
   Prism.languages.graphql = {
     comment: /#.*/,

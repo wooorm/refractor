@@ -1,9 +1,12 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 import refractorRuby from './ruby.js'
 crystal.displayName = 'crystal'
 crystal.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function crystal(Prism) {
   Prism.register(refractorRuby)
   ;(function (Prism) {

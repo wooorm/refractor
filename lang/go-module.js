@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 goModule.displayName = 'go-module'
 goModule.aliases = ['go-mod']
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function goModule(Prism) {
   // https://go.dev/ref/mod#go-mod-file-module
 

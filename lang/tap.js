@@ -1,9 +1,12 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 import refractorYaml from './yaml.js'
 tap.displayName = 'tap'
 tap.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function tap(Prism) {
   Prism.register(refractorYaml)
   // https://en.wikipedia.org/wiki/Test_Anything_Protocol

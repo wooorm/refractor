@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 bsl.displayName = 'bsl'
 bsl.aliases = ['oscript']
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function bsl(Prism) {
   /* eslint-disable no-misleading-character-class */
 

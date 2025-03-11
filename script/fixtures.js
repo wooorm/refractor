@@ -1,9 +1,7 @@
 import fs from 'node:fs/promises'
+import loadLanguages from 'prismjs/components/index.js'
 import Prism from 'prismjs'
 import {rehype} from 'rehype'
-import loadLanguages from 'prismjs/components/index.js'
-
-/* eslint-disable no-await-in-loop */
 
 loadLanguages()
 
@@ -15,19 +13,12 @@ let index = -1
 while (++index < files.length) {
   const name = files[index]
   const lang = name.split('-')[0]
+  const input = await fs.readFile(new URL(name + '/input.txt', root), 'utf8')
 
   await fs.writeFile(
     new URL(name + '/output.html', root),
-    String(
-      processor.processSync(
-        Prism.highlight(
-          String(await fs.readFile(new URL(name + '/input.txt', root))).trim(),
-          Prism.languages[lang],
-          lang
-        )
-      )
-    ) + '\n'
+    processor
+      .processSync(Prism.highlight(input.trim(), Prism.languages[lang], lang))
+      .toString() + '\n'
   )
 }
-
-/* eslint-enable no-await-in-loop */

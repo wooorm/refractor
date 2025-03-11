@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 kusto.displayName = 'kusto'
 kusto.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function kusto(Prism) {
   Prism.languages.kusto = {
     comment: {

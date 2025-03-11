@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 hoon.displayName = 'hoon'
 hoon.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function hoon(Prism) {
   Prism.languages.hoon = {
     comment: {

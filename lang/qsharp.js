@@ -1,9 +1,12 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 import refractorClike from './clike.js'
 qsharp.displayName = 'qsharp'
 qsharp.aliases = ['qs']
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function qsharp(Prism) {
   Prism.register(refractorClike)
   ;(function (Prism) {

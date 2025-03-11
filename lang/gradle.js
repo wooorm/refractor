@@ -1,9 +1,12 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 import refractorClike from './clike.js'
 gradle.displayName = 'gradle'
 gradle.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function gradle(Prism) {
   Prism.register(refractorClike)
   ;(function (Prism) {

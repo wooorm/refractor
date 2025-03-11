@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 asciidoc.displayName = 'asciidoc'
 asciidoc.aliases = ['adoc']
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function asciidoc(Prism) {
   ;(function (Prism) {
     var attributes = {

@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 tcl.displayName = 'tcl'
 tcl.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function tcl(Prism) {
   Prism.languages.tcl = {
     comment: {

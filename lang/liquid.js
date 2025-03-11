@@ -1,9 +1,12 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 import refractorMarkupTemplating from './markup-templating.js'
 liquid.displayName = 'liquid'
 liquid.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function liquid(Prism) {
   Prism.register(refractorMarkupTemplating)
   Prism.languages.liquid = {

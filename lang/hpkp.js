@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 hpkp.displayName = 'hpkp'
 hpkp.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function hpkp(Prism) {
   /**
    * Original by Scott Helme.

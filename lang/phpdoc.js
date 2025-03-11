@@ -1,10 +1,13 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 import refractorJavadoclike from './javadoclike.js'
 import refractorPhp from './php.js'
 phpdoc.displayName = 'phpdoc'
 phpdoc.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function phpdoc(Prism) {
   Prism.register(refractorJavadoclike)
   Prism.register(refractorPhp)

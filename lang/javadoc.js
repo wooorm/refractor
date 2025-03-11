@@ -1,11 +1,14 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 import refractorJava from './java.js'
 import refractorJavadoclike from './javadoclike.js'
 import refractorMarkup from './markup.js'
 javadoc.displayName = 'javadoc'
 javadoc.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function javadoc(Prism) {
   Prism.register(refractorJava)
   Prism.register(refractorJavadoclike)

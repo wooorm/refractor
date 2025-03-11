@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 monkey.displayName = 'monkey'
 monkey.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function monkey(Prism) {
   Prism.languages.monkey = {
     comment: {

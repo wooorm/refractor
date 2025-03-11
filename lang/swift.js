@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 swift.displayName = 'swift'
 swift.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function swift(Prism) {
   Prism.languages.swift = {
     comment: {

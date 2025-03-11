@@ -1,9 +1,12 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 import refractorJavascript from './javascript.js'
 flow.displayName = 'flow'
 flow.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function flow(Prism) {
   Prism.register(refractorJavascript)
   ;(function (Prism) {

@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 puppet.displayName = 'puppet'
 puppet.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function puppet(Prism) {
   ;(function (Prism) {
     Prism.languages.puppet = {

@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises'
 import chalk from 'chalk'
-import {toId} from './to-id.js'
 import {all, common} from './data.js'
+import {toId} from './to-id.js'
 
 await fs.writeFile(new URL('../lib/all.js', import.meta.url), generate(all))
 await fs.writeFile(
@@ -20,25 +20,35 @@ console.log(
 )
 
 /**
- * @param {Array<string>} list
+ * @param {ReadonlyArray<string>} list
+ *   List of languages.
+ * @returns {string}
+ *   Document.
  */
 function generate(list) {
-  return [
+  const lines = [
     '/**',
-    " * @typedef {import('./core.js').RefractorRoot} RefractorRoot",
-    " * @typedef {import('./core.js').RefractorElement} RefractorElement",
-    " * @typedef {import('./core.js').Text} Text",
-    " * @typedef {import('./core.js').Grammar} Grammar",
-    " * @typedef {import('./core.js').Syntax} Syntax",
-    ' */',
-    ...list.map(
-      (lang) => 'import ' + toId(lang) + " from '../lang/" + lang + ".js'"
-    ),
-    "import {refractor} from './core.js'",
-    '',
-    ...list.map((lang) => 'refractor.register(' + toId(lang) + ')'),
-    '',
-    "export {refractor} from './core.js'",
-    ''
-  ].join('\n')
+    ' * @import {',
+    ' *   Grammar,',
+    ' *   RefractorElement,',
+    ' *   RefractorRoot,',
+    ' *   Syntax,',
+    ' *   Text',
+    " * } from './core.js'",
+    ' */'
+  ]
+
+  for (const lang of list) {
+    lines.push('import ' + toId(lang) + " from '../lang/" + lang + ".js'")
+  }
+
+  lines.push("import {refractor} from './core.js'", '')
+
+  for (const lang of list) {
+    lines.push('refractor.register(' + toId(lang) + ')')
+  }
+
+  lines.push('', "export {refractor} from './core.js'", '')
+
+  return lines.join('\n')
 }

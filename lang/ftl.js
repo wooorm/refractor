@@ -1,9 +1,12 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 import refractorMarkupTemplating from './markup-templating.js'
 ftl.displayName = 'ftl'
 ftl.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function ftl(Prism) {
   Prism.register(refractorMarkupTemplating)
   ;(function (Prism) {

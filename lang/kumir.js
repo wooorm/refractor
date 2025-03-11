@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 kumir.displayName = 'kumir'
 kumir.aliases = ['kum']
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function kumir(Prism) {
   /* eslint-disable regexp/no-dupe-characters-character-class */
   ;(function (Prism) {

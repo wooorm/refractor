@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 renpy.displayName = 'renpy'
 renpy.aliases = ['rpy']
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function renpy(Prism) {
   Prism.languages.renpy = {
     comment: {

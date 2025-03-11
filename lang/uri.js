@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 uri.displayName = 'uri'
 uri.aliases = ['url']
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function uri(Prism) {
   // https://tools.ietf.org/html/rfc3986#appendix-A
 

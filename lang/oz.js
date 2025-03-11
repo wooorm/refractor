@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 oz.displayName = 'oz'
 oz.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function oz(Prism) {
   Prism.languages.oz = {
     comment: {

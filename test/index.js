@@ -1,5 +1,5 @@
 /**
- * @typedef {import('prismjs')} Prism
+ * @import {default as Prism} from 'prismjs'
  */
 
 import assert from 'node:assert/strict'
@@ -10,92 +10,99 @@ import {toHtml} from 'hast-util-to-html'
 import {isHidden} from 'is-hidden'
 import {refractor} from '../lib/all.js'
 
-/* eslint-disable no-await-in-loop */
+test('refractor', async function (t) {
+  await t.test('should expose the public api', async function () {
+    assert.deepEqual(Object.keys(await import('../index.js')).sort(), [
+      'refractor'
+    ])
+  })
+})
 
-test('.highlight(value, language)', () => {
-  assert.throws(
-    () => {
-      // @ts-expect-error runtime.
+test('.highlight(value, language)', async function (t) {
+  await t.test('should throw when not given a `value`', async function () {
+    assert.throws(function () {
+      // @ts-expect-error: check how the runtime handles a missing value.
       refractor.highlight()
-    },
-    / Expected `string` for `value`, got `undefined`/,
-    'should throw when not given a `value`'
-  )
+    }, /Expected `string` for `value`, got `undefined`/)
+  })
 
-  assert.throws(
-    () => {
-      // @ts-expect-error runtime.
+  await t.test('should throw when not given a `name`', async function () {
+    assert.throws(function () {
+      // @ts-expect-error: check how the runtime handles a missing name.
       refractor.highlight('')
-    },
-    /Expected `string` for `name`, got `undefined`/,
-    'should throw when not given a `name`'
+    }, /Expected `string` for `name`, got `undefined`/)
+  })
+
+  await t.test(
+    'should throw when not given `string` for `value`',
+    async function () {
+      assert.throws(function () {
+        // @ts-expect-error: check how the runtime handles a non-string value.
+        refractor.highlight(true, 'js')
+      }, /Expected `string` for `value`, got `true`/)
+    }
   )
 
-  assert.throws(
-    () => {
-      // @ts-expect-error runtime.
-      refractor.highlight(true, 'js')
-    },
-    /Expected `string` for `value`, got `true`/,
-    'should throw when not given `string` for `value`'
+  await t.test(
+    'should throw when given an unknown `language`',
+    async function () {
+      assert.throws(function () {
+        refractor.highlight('', 'fooscript')
+      }, /Unknown language: `fooscript` is not registered/)
+    }
   )
 
-  assert.throws(
-    () => {
-      refractor.highlight('', 'fooscript')
-    },
-    /Unknown language: `fooscript` is not registered/,
-    'should throw when given an unknown `language`'
+  await t.test(
+    'should return an empty array when given an empty `value`',
+    async function () {
+      assert.deepEqual(refractor.highlight('', 'js'), {
+        type: 'root',
+        children: []
+      })
+    }
   )
 
-  assert.deepEqual(
-    refractor.highlight('', 'js'),
-    {type: 'root', children: []},
-    'should return an empty array when given an empty `value`'
-  )
-
-  assert.deepEqual(
-    refractor.highlight('# foo', 'js'),
-    {type: 'root', children: [{type: 'text', value: '# foo'}]},
-    'should silently ignore illegals'
-  )
+  await t.test('should silently ignore illegals', async function () {
+    assert.deepEqual(refractor.highlight('# foo', 'js'), {
+      type: 'root',
+      children: [{type: 'text', value: '# foo'}]
+    })
+  })
 })
 
-test('.register(grammar)', () => {
-  assert.throws(
-    () => {
-      // @ts-expect-error runtime.
+test('.register(grammar)', async function (t) {
+  await t.test('should throw when not given a `value`', async function () {
+    assert.throws(function () {
+      // @ts-expect-error: check how the runtime handles a missing grammar.
       refractor.register()
-    },
-    /Expected `function` for `syntax`, got `undefined`/,
-    'should throw when not given a `value`'
-  )
+    }, /Expected `function` for `syntax`, got `undefined`/)
+  })
 })
 
-test('.registered(language)', () => {
-  assert.throws(
-    () => {
-      // @ts-expect-error runtime.
+test('.registered(language)', async function (t) {
+  await t.test('should throw when not given a `language`', async function () {
+    assert.throws(function () {
+      // @ts-expect-error: check how the runtime handles a missing value.
       refractor.registered()
-    },
-    /Expected `string` for `aliasOrLanguage`, got `undefined`/,
-    'should throw when not given a `language`'
+    }, /Expected `string` for `aliasOrLanguage`, got `undefined`/)
+  })
+
+  await t.test(
+    'should return false when `language` is not registered',
+    async function () {
+      assert.equal(refractor.registered('notalanguage'), false)
+    }
   )
 
-  assert.equal(
-    refractor.registered('notalanguage'),
-    false,
-    'should return false when `language` is not registered'
-  )
-
-  assert.equal(
-    refractor.registered('markdown'),
-    true,
-    'should return true when `language` is registered'
+  await t.test(
+    'should return true when `language` is registered',
+    async function () {
+      assert.equal(refractor.registered('markdown'), true)
+    }
   )
 })
 
-test('.alias(name, alias)', () => {
+test('.alias(name, alias)', async function (t) {
   const languages = refractor.languages
   const input = fs
     .readFile(
@@ -105,50 +112,54 @@ test('.alias(name, alias)', () => {
     .trim()
   const expected = refractor.highlight(input, 'markdown')
 
-  refractor.alias('markdown', 'mkd')
+  await t.test(
+    'should parse alias like original language (string)',
+    async function () {
+      refractor.alias('markdown', 'mkd')
 
-  assert.deepEqual(
-    refractor.highlight(input, 'mkd'),
-    expected,
-    'alias must be parsed like original language'
+      assert.deepEqual(refractor.highlight(input, 'mkd'), expected)
+
+      delete languages.mkd
+    }
   )
 
-  delete languages.mkd
+  await t.test(
+    'should parse alias like original language (array)',
+    async function () {
+      refractor.alias('markdown', ['mmkd', 'mmkdown'])
 
-  refractor.alias('markdown', ['mmkd', 'mmkdown'])
+      assert.deepEqual(refractor.highlight(input, 'mmkd'), expected)
 
-  assert.deepEqual(
-    refractor.highlight(input, 'mmkd'),
-    expected,
-    'alias must be parsed like original language'
+      delete languages.mmkd
+      delete languages.mmkdown
+    }
   )
 
-  delete languages.mmkd
-  delete languages.mmkdown
+  await t.test(
+    'should parse alias must be parsed like original language (object of string)',
+    async function () {
+      refractor.alias({markdown: 'mdown'})
 
-  refractor.alias({markdown: 'mdown'})
+      assert.deepEqual(refractor.highlight(input, 'mdown'), expected)
 
-  assert.deepEqual(
-    refractor.highlight(input, 'mdown'),
-    expected,
-    'alias must be parsed like original language'
+      delete languages.mdown
+    }
   )
 
-  delete languages.mdown
+  await t.test(
+    'should parse alias must be parsed like original language (object of array)',
+    async function () {
+      refractor.alias({markdown: ['mmdown', 'mark']})
 
-  refractor.alias({markdown: ['mmdown', 'mark']})
+      assert.deepEqual(refractor.highlight(input, 'mark'), expected)
 
-  assert.deepEqual(
-    refractor.highlight(input, 'mark'),
-    expected,
-    'alias must be parsed like original language'
+      delete languages.mmdown
+      delete languages.mark
+    }
   )
-
-  delete languages.mmdown
-  delete languages.mark
 })
 
-test('fixtures', async () => {
+test('fixtures', async function (t) {
   const root = new URL('fixtures/', import.meta.url)
   const files = await fs.readdir(root)
   let index = -1
@@ -156,51 +167,61 @@ test('fixtures', async () => {
   while (++index < files.length) {
     const name = files[index]
 
-    /* c8 ignore next */
     if (isHidden(name)) continue
 
-    const lang = name.split('-')[0]
-    const inputUrl = new URL(name + '/input.txt', root)
-    const outputUrl = new URL(name + '/output.html', root)
-    const input = String(await fs.readFile(inputUrl)).trim()
-    // @ts-expect-error: to do: update `@types/hast` in dependencies.
-    const actual = toHtml(refractor.highlight(input, lang))
-    /** @type {string} */
-    let expected
+    await t.test(name, async function () {
+      const lang = name.split('-')[0]
+      const inputUrl = new URL(name + '/input.txt', root)
+      const outputUrl = new URL(name + '/output.html', root)
+      const input_ = await fs.readFile(inputUrl, 'utf8')
+      const input = input_.trim()
+      // @ts-expect-error: to do: update `@types/hast` in dependencies.
+      const actual = toHtml(refractor.highlight(input, lang))
+      /** @type {string} */
+      let expected
 
-    try {
-      expected = String(await fs.readFile(outputUrl)).trim()
+      try {
+        const output = await fs.readFile(outputUrl, 'utf8')
 
-      if ('UPDATE' in process.env) {
-        throw new Error('Update!')
+        expected = output.trim()
+
+        if ('UPDATE' in process.env) {
+          throw new Error('Update!')
+        }
+      } catch {
+        expected = actual
+        await fs.writeFile(outputUrl, actual + '\n')
       }
-    } catch {
-      expected = actual
-      await fs.writeFile(outputUrl, actual + '\n')
-    }
 
-    assert.equal(actual, expected, name)
+      assert.equal(actual, expected, name)
+    })
   }
 })
 
-test('listLanguages', () => {
+test('listLanguages', async function (t) {
   grammar.displayName = 'grammar'
 
-  assert.ok(
-    Array.isArray(refractor.listLanguages().sort()),
-    'should return a list of registered languages'
+  await t.test(
+    'should return a list of registered languages',
+    async function () {
+      assert.ok(Array.isArray(refractor.listLanguages().sort()))
+    }
   )
 
-  // @ts-expect-error: hush.
-  refractor.register(grammar)
+  await t.test(
+    'should support multiple languages from one grammar',
+    async function () {
+      // @ts-expect-error: hush.
+      refractor.register(grammar)
 
-  assert.deepEqual(
-    [
-      refractor.listLanguages().includes('alpha'),
-      refractor.listLanguages().includes('bravo')
-    ],
-    [true, true],
-    'should support multiple languages from one grammar'
+      assert.deepEqual(
+        [
+          refractor.listLanguages().includes('alpha'),
+          refractor.listLanguages().includes('bravo')
+        ],
+        [true, true]
+      )
+    }
   )
 
   /** @param {Prism} prism */
@@ -209,5 +230,3 @@ test('listLanguages', () => {
     prism.languages.bravo = {}
   }
 })
-
-/* eslint-enable no-await-in-loop */

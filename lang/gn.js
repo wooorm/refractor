@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 gn.displayName = 'gn'
 gn.aliases = ['gni']
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function gn(Prism) {
   // https://gn.googlesource.com/gn/+/refs/heads/main/docs/reference.md#grammar
 

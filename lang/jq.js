@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 jq.displayName = 'jq'
 jq.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function jq(Prism) {
   ;(function (Prism) {
     var interpolation = /\\\((?:[^()]|\([^()]*\))*\)/.source

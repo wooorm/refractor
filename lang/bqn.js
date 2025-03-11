@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 bqn.displayName = 'bqn'
 bqn.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function bqn(Prism) {
   Prism.languages.bqn = {
     shebang: {

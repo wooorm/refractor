@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 mata.displayName = 'mata'
 mata.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function mata(Prism) {
   // https://www.stata.com/manuals/m.pdf
 

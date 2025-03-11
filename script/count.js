@@ -1,13 +1,18 @@
 /**
- * @typedef {import('mdast').Root} Root
+ * @import {Root} from 'mdast'
  */
 
 import {zone} from 'mdast-zone'
 import {u} from 'unist-builder'
 import {all, common} from './data.js'
 
-/** @type {import('unified').Plugin<[], Root>} */
 export default function count() {
+  /**
+   * @param {Root} tree
+   *   Tree.
+   * @returns {undefined}
+   *   Nothing.
+   */
   return function (tree) {
     zone(tree, 'count', function (start, _, end) {
       return [

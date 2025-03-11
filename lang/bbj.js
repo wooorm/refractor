@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 bbj.displayName = 'bbj'
 bbj.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function bbj(Prism) {
   ;(function (Prism) {
     Prism.languages.bbj = {

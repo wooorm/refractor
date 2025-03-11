@@ -1,9 +1,12 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 import refractorClike from './clike.js'
 processing.displayName = 'processing'
 processing.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function processing(Prism) {
   Prism.register(refractorClike)
   Prism.languages.processing = Prism.languages.extend('clike', {

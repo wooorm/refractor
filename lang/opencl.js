@@ -1,9 +1,12 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 import refractorC from './c.js'
 opencl.displayName = 'opencl'
 opencl.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function opencl(Prism) {
   Prism.register(refractorC)
   ;(function (Prism) {

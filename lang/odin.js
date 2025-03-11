@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 odin.displayName = 'odin'
 odin.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function odin(Prism) {
   ;(function (Prism) {
     var escapes =

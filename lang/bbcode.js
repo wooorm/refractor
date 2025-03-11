@@ -1,8 +1,11 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 bbcode.displayName = 'bbcode'
 bbcode.aliases = ['shortcode']
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function bbcode(Prism) {
   Prism.languages.bbcode = {
     tag: {

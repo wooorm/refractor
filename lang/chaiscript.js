@@ -1,10 +1,13 @@
 // @ts-nocheck
+/**
+ * @import {Syntax} from '../core.js'
+ */
 import refractorClike from './clike.js'
 import refractorCpp from './cpp.js'
 chaiscript.displayName = 'chaiscript'
 chaiscript.aliases = []
 
-/** @type {import('../core.js').Syntax} */
+/** @type {Syntax} */
 export default function chaiscript(Prism) {
   Prism.register(refractorClike)
   Prism.register(refractorCpp)
