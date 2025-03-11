@@ -343,15 +343,15 @@ Yields:
 ### Example: turning hast into react nodes
 
 hast trees as returned by refractor can be turned into React (or Preact) with
-[`hast-to-hyperscript`][github-hast-to-hyperscript]:
+[`hast-util-to-jsx-runtime`][github-hast-util-to-jsx-runtime]:
 
 ```js
+import {toJsxRuntime} from 'hast-util-to-jsx-runtime'
+import {Fragment, jsxs, jsx} from 'react/jsx-runtime'
 import {refractor} from 'refractor'
-import {toH} from 'hast-to-hyperscript'
-import React from 'react'
 
 const tree = refractor.highlight('"use strict";', 'js')
-const react = toH(React.createElement, tree)
+const reactNode = toJsxRuntime(tree, {Fragment, jsxs, jsx})
 
 console.log(react)
 ```
@@ -789,9 +789,9 @@ See [How to Contribute to Open Source][opensource-guide].
 
 [github-hast-root]: https://github.com/syntax-tree/hast#root
 
-[github-hast-to-hyperscript]: https://github.com/syntax-tree/hast-to-hyperscript
-
 [github-hast-util-to-html]: https://github.com/syntax-tree/hast-util-to-html
+
+[github-hast-util-to-jsx-runtime]: https://github.com/syntax-tree/hast-util-to-jsx-runtime
 
 [github-highlightjs]: https://github.com/highlightjs/highlight.js
 
