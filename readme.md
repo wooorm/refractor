@@ -100,14 +100,14 @@ npm install refractor
 In Deno with [`esm.sh`][esmsh]:
 
 ```js
-import {refractor} from 'https://esm.sh/refractor@4'
+import {refractor} from 'https://esm.sh/refractor@5'
 ```
 
 In browsers with [`esm.sh`][esmsh]:
 
 ```html
 <script type="module">
-  import {refractor} from 'https://esm.sh/refractor@4?bundle'
+  import {refractor} from 'https://esm.sh/refractor@5?bundle'
 </script>
 ```
 
