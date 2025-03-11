@@ -41,6 +41,7 @@
     "xo": "^0.60.0"
   },
   "files": [
+    "index.d.ts.map",
     "index.d.ts",
     "index.js",
     "lang/",
