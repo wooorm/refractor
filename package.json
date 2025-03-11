@@ -1,46 +1,14 @@
 {
-  "name": "refractor",
-  "version": "4.8.1",
-  "description": "Lightweight, robust, elegant virtual syntax highlighting using Prism",
-  "license": "MIT",
-  "keywords": [
-    "syntax",
-    "code",
-    "ast",
-    "virtual",
-    "dom",
-    "highlight",
-    "highlighting",
-    "prism"
-  ],
-  "repository": "wooorm/refractor",
-  "bugs": "https://github.com/wooorm/refractor/issues",
-  "funding": {
-    "type": "github",
-    "url": "https://github.com/sponsors/wooorm"
-  },
   "author": "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)",
+  "bugs": "https://github.com/wooorm/refractor/issues",
   "contributors": [
-    "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)",
+    "Brian Mearns <bmearns@commercehub.com>",
     "Conor Hastings <hastings.conorm@gmail.com>",
     "Daniel Stefanovic <daniel.stefanovic@gmail.com>",
+    "Gray Zhang <otakustay@gmail.com>",
     "Mike Kruk <tamagokun@gmail.com>",
     "Peter Williams <peterwilliams@gmail.com>",
-    "Brian Mearns <bmearns@commercehub.com>",
-    "Gray Zhang <otakustay@gmail.com>"
-  ],
-  "sideEffects": [
-    "lib/all.js",
-    "lib/common.js"
-  ],
-  "type": "module",
-  "main": "index.js",
-  "types": "index.d.ts",
-  "files": [
-    "lang/",
-    "lib/",
-    "index.d.ts",
-    "index.js"
+    "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)"
   ],
   "dependencies": {
     "@types/hast": "^2.0.0",
@@ -48,6 +16,7 @@
     "hastscript": "^7.0.0",
     "parse-entities": "^4.0.0"
   },
+  "description": "Lightweight, robust, elegant virtual syntax highlighting using Prism",
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@types/babel__core": "^7.0.0",
@@ -73,42 +42,42 @@
     "unist-builder": "^4.0.0",
     "xo": "^0.60.0"
   },
-  "scripts": {
-    "prepack": "npm run generate && npm run build && npm run format",
-    "generate-core": "patch-package && cp node_modules/prismjs/components/prism-core.js lib/prism-core.js",
-    "generate-languages": "node --conditions development script/languages.js",
-    "generate-list": "node --conditions development script/list.js",
-    "generate-fixtures": "node --conditions development script/fixtures.js",
-    "generate": "npm run generate-core && npm run generate-languages && npm run generate-list && npm run generate-fixtures",
-    "build": "tsc --build --clean && tsc --build && type-coverage",
-    "format": "remark . -qfo && prettier . -w --log-level warn && xo --fix",
-    "test-api": "node --conditions development test/index.js",
-    "test-coverage": "c8 -x \"lang/\" -x \"test/\" -x \"lib/prism-core.js\" --check-coverage --100 --reporter lcov npm run test-api",
-    "test": "npm run generate && npm run build && npm run format && npm run test-coverage"
+  "files": [
+    "index.d.ts",
+    "index.js",
+    "lang/",
+    "lib/"
+  ],
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/wooorm"
   },
+  "keywords": [
+    "ast",
+    "code",
+    "dom",
+    "highlighting",
+    "highlight",
+    "prism",
+    "syntax",
+    "virtual"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "refractor",
   "prettier": {
-    "tabWidth": 2,
-    "useTabs": false,
-    "singleQuote": true,
     "bracketSpacing": false,
     "semi": false,
-    "trailingComma": "none"
-  },
-  "xo": {
-    "prettier": true,
-    "rules": {
-      "unicorn/prefer-string-replace-all": "off"
-    },
-    "ignores": [
-      "lib/prism-core.js",
-      "lang/*.js"
-    ]
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "none",
+    "useTabs": false
   },
   "remarkConfig": {
     "plugins": [
-      "preset-wooorm",
+      "remark-preset-wooorm",
       [
-        "toc",
+        "remark-toc",
         {
           "skip": "license"
         }
@@ -117,15 +86,43 @@
       "./script/support.js"
     ]
   },
+  "repository": "wooorm/refractor",
+  "scripts": {
+    "build": "tsc --build --clean && tsc --build && type-coverage",
+    "format": "remark --frail --output --quiet -- . && prettier --log-level warn --write -- . && xo --fix",
+    "generate-core": "patch-package && cp node_modules/prismjs/components/prism-core.js lib/prism-core.js",
+    "generate-fixtures": "node --conditions development script/fixtures.js",
+    "generate-languages": "node --conditions development script/languages.js",
+    "generate-list": "node --conditions development script/list.js",
+    "generate": "npm run generate-core && npm run generate-languages && npm run generate-list && npm run generate-fixtures",
+    "test-api": "node --conditions development test/index.js",
+    "test-coverage": "c8 --100 --check-coverage --exclude \"lang/\" --exclude \"test/\" --exclude \"lib/prism-core.js\" --reporter lcov -- npm run test-api",
+    "test": "npm run generate && npm run build && npm run format && npm run test-coverage"
+  },
+  "sideEffects": [
+    "lib/all.js",
+    "lib/common.js"
+  ],
   "typeCoverage": {
     "atLeast": 100,
-    "detail": true,
-    "strict": true,
-    "ignoreCatch": true,
     "ignoreFiles": [
       "lang/*.d.ts",
       "lib/prism-core.d.ts",
       "lib/prism-core.js"
-    ]
+    ],
+    "strict": true
+  },
+  "types": "index.d.ts",
+  "type": "module",
+  "version": "4.8.1",
+  "xo": {
+    "ignores": [
+      "lang/*.js",
+      "lib/prism-core.js"
+    ],
+    "prettier": true,
+    "rules": {
+      "unicorn/prefer-string-replace-all": "off"
+    }
   }
 }
