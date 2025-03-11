@@ -6,11 +6,10 @@
     "declaration": true,
     "emitDeclarationOnly": true,
     "exactOptionalPropertyTypes": true,
-    "lib": ["dom", "es2020"],
+    "lib": ["dom", "es2022"],
     "module": "node16",
-    "skipLibCheck": true,
     "strict": true,
-    "target": "es2020"
+    "target": "es2022"
   },
   "exclude": ["coverage/", "lang/", "node_modules/"],
   "include": ["**/*.js"]
