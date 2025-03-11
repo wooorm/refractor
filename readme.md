@@ -19,15 +19,13 @@ and elegant virtual syntax highlighting using [Prism][github-prism].
 * [Install](#install)
 * [Use](#use)
 * [API](#api)
-  * [`refractor.highlight(value, language)`](#refractorhighlightvalue-language)
-  * [`refractor.register(syntax)`](#refractorregistersyntax)
-  * [`refractor.alias(name[, alias])`](#refractoraliasname-alias)
-  * [`refractor.registered(aliasOrlanguage)`](#refractorregisteredaliasorlanguage)
-  * [`refractor.listLanguages()`](#refractorlistlanguages)
+  * [`refractor`](#refractor-1)
+  * [`Grammar`](#grammar)
+  * [`Root`](#root)
+  * [`Syntax`](#syntax)
 * [Examples](#examples)
   * [Example: serializing hast as html](#example-serializing-hast-as-html)
   * [Example: turning hast into react nodes](#example-turning-hast-into-react-nodes)
-* [Types](#types)
 * [Data](#data)
 * [CSS](#css)
 * [Compatibility](#compatibility)
@@ -149,10 +147,17 @@ Yields:
 
 ## API
 
-This package exports the identifier `refractor`.
+This package exports the identifier [`refractor`][api-refractor].
+It also exports the [TypeScript][] types
+[`Grammar`][api-grammar],
+[`Root`][api-root],
+and
+[`Syntax`][api-syntax].
 There is no default export.
 
-### `refractor.highlight(value, language)`
+### `refractor`
+
+#### `refractor.highlight(value, language)`
 
 Highlight `value` (code) as `language` (programming language).
 
@@ -172,8 +177,8 @@ Node representing highlighted code ([`Root`][github-hast-root]).
 ###### Example
 
 ```js
-import {refractor} from 'refractor/lib/core.js'
 import css from 'refractor/lang/css.js'
+import {refractor} from 'refractor/lib/core.js'
 
 refractor.register(css)
 console.log(refractor.highlight('em { color: red }', 'css'))
@@ -194,7 +199,7 @@ Yields:
 }
 ```
 
-### `refractor.register(syntax)`
+#### `refractor.register(syntax)`
 
 Register a syntax.
 
@@ -208,8 +213,8 @@ Register a syntax.
 ###### Example
 
 ```js
-import {refractor} from 'refractor/lib/core.js'
 import markdown from 'refractor/lang/markdown.js'
+import {refractor} from 'refractor/lib/core.js'
 
 refractor.register(markdown)
 
@@ -227,7 +232,7 @@ Yields:
 }
 ```
 
-### `refractor.alias(name[, alias])`
+#### `refractor.alias(name[, alias])`
 
 Register aliases for already registered languages.
 
@@ -250,8 +255,8 @@ Register aliases for already registered languages.
 ###### Example
 
 ```js
-import {refractor} from 'refractor/lib/core.js'
 import markdown from 'refractor/lang/markdown.js'
+import {refractor} from 'refractor/lib/core.js'
 
 refractor.register(markdown)
 
@@ -263,7 +268,7 @@ refractor.highlight('*Emphasis*', 'mdown')
 // ^ Works!
 ```
 
-### `refractor.registered(aliasOrlanguage)`
+#### `refractor.registered(aliasOrlanguage)`
 
 Check whether an `alias` or `language` is registered.
 
@@ -275,8 +280,8 @@ Check whether an `alias` or `language` is registered.
 ###### Example
 
 ```js
-import {refractor} from 'refractor/lib/core.js'
 import markdown from 'refractor/lang/markdown.js'
+import {refractor} from 'refractor/lib/core.js'
 
 console.log(refractor.registered('markdown')) //=> false
 
@@ -285,7 +290,7 @@ refractor.register(markdown)
 console.log(refractor.registered('markdown')) //=> true
 ```
 
-### `refractor.listLanguages()`
+#### `refractor.listLanguages()`
 
 List all registered languages (names and aliases).
 
@@ -296,8 +301,8 @@ List all registered languages (names and aliases).
 ###### Example
 
 ```js
-import {refractor} from 'refractor/lib/core.js'
 import markdown from 'refractor/lang/markdown.js'
+import {refractor} from 'refractor/lib/core.js'
 
 console.log(refractor.listLanguages()) //=> []
 
@@ -318,6 +323,39 @@ Yields:
 ]
 ```
 
+### `Grammar`
+
+Grammar.
+
+###### Type
+
+```ts
+export type {Grammar} from 'prismjs'
+```
+
+### `Root`
+
+Tree representing HTML.
+
+###### Type
+
+```ts
+export type {Root} from 'hast'
+```
+
+### `Syntax`
+
+Refractor syntax function.
+
+###### Type
+
+```ts
+export type Syntax = ((prism: Refractor) => undefined | void) & {
+  aliases?: Array<string> | undefined
+  displayName: string
+}
+```
+
 ## Examples
 
 ### Example: serializing hast as html
@@ -326,8 +364,8 @@ hast trees as returned by refractor can be serialized with
 [`hast-util-to-html`][github-hast-util-to-html]:
 
 ```js
-import {refractor} from 'refractor'
 import {toHtml} from 'hast-util-to-html'
+import {refractor} from 'refractor'
 
 const tree = refractor.highlight('"use strict";', 'js')
 
@@ -369,14 +407,6 @@ Yields:
   _store: {}
 }
 ```
-
-## Types
-
-This package is fully typed with [TypeScript][].
-It exports the additional types
-`Grammar`,
-`Root`,
-and `Syntax`.
 
 <!--Old name of the following section:-->
 
@@ -764,6 +794,14 @@ See [How to Contribute to Open Source][opensource-guide].
 [MIT][file-license] © [Titus Wormer][wooorm]
 
 <!-- Definitions -->
+
+[api-grammar]: #grammar
+
+[api-refractor]: #refractor
+
+[api-root]: #root
+
+[api-syntax]: #syntax
 
 [badge-build-image]: https://github.com/wooorm/refractor/workflows/main/badge.svg
 
