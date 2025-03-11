@@ -20,7 +20,6 @@ export default function inform7(Prism) {
         }
       }
     },
-
     comment: {
       pattern: /\[[^\[\]]+\]/,
       greedy: true

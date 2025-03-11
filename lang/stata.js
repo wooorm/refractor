@@ -40,7 +40,6 @@ export default function stata(Prism) {
             }
           }
         },
-
         string: /[\s\S]+/
       }
     },

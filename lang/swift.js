@@ -36,7 +36,6 @@ export default function swift(Prism) {
             lookbehind: true,
             inside: null // see below
           },
-
           'interpolation-punctuation': {
             pattern: /^\)|\\\($/,
             alias: 'punctuation'
@@ -66,7 +65,6 @@ export default function swift(Prism) {
             lookbehind: true,
             inside: null // see below
           },
-
           'interpolation-punctuation': {
             pattern: /^\)|\\#+\($/,
             alias: 'punctuation'

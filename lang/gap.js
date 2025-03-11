@@ -17,7 +17,6 @@ export default function gap(Prism) {
           lookbehind: true,
           inside: null // see below
         },
-
         punctuation: /^gap>/
       }
     },

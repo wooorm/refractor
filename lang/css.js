@@ -33,7 +33,6 @@ export default function css(Prism) {
           // See rest below
         }
       },
-
       url: {
         // https://drafts.csswg.org/css-values-3/#urls
         pattern: RegExp(

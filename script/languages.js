@@ -52,13 +52,16 @@ async function generate(name) {
     plugins: [fixWrapHook]
   })
   assert(result, 'expected `result`')
-  let doc = result.code
-  assert(doc, 'expected `doc`')
+  let code = result.code
+  assert(code, 'expected `code`')
 
   if (id === 'markdown') {
     // A useless function only used in `markdown` for us: our `value` is
     // already text content.
-    doc = doc.replace(/textContent\(env\.content\.value\)/, 'env.content.value')
+    code = code.replace(
+      /textContent\(env\.content\.value\)/,
+      'env.content.value'
+    )
   }
 
   await fs.writeFile(
@@ -76,7 +79,7 @@ async function generate(name) {
       ...dependency.map(
         (lang) => '  Prism.register(' + toId(prefix + lang) + ');'
       ),
-      trimLines(detab(doc)),
+      trimLines(detab(code)),
       '}'
     ].join('\n')
   )
@@ -95,18 +98,18 @@ function fixWrapHook() {
         enter(path) {
           if (!path.get('callee').matchesPattern('Prism.hooks.add')) return
 
-          const arg = path.get('arguments.0')
+          const head = path.get('arguments.0')
 
-          if ('type' in arg && arg.isStringLiteral({value: 'wrap'})) {
+          if ('type' in head && head.isStringLiteral({value: 'wrap'})) {
             this.inWrapHook = true
           }
         },
         exit(path) {
           if (!path.get('callee').matchesPattern('Prism.hooks.add')) return
 
-          const arg = path.get('arguments.0')
+          const head = path.get('arguments.0')
 
-          if ('type' in arg && arg.isStringLiteral({value: 'wrap'})) {
+          if ('type' in head && head.isStringLiteral({value: 'wrap'})) {
             this.inWrapHook = false
           }
         }

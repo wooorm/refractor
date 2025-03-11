@@ -53,7 +53,6 @@ export default function pascaligo(Prism) {
           inside: null // see below
         }
       ],
-
       keyword: {
         pattern:
           /(^|[^&])\b(?:begin|block|case|const|else|end|fail|for|from|function|if|is|nil|of|remove|return|skip|then|type|var|while|with)\b/i,

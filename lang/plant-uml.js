@@ -73,7 +73,6 @@ export default function plantUml(Prism) {
             lookbehind: true,
             inside: null // see below
           },
-
           punctuation: /\[(?=$|\])|^\]/
         }
       },

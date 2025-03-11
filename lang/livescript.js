@@ -37,7 +37,6 @@ export default function livescript(Prism) {
             // See rest below
           }
         },
-
         string: /[\s\S]+/
       }
     },

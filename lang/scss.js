@@ -18,7 +18,6 @@ export default function scss(Prism) {
         // See rest below
       }
     },
-
     // url, compassified
     url: /(?:[-a-z]+-)?url(?=\()/i,
     // CSS selector regex is not appropriate for Sass

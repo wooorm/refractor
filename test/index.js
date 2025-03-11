@@ -163,6 +163,7 @@ test('fixtures', async () => {
     const inputUrl = new URL(name + '/input.txt', root)
     const outputUrl = new URL(name + '/output.html', root)
     const input = String(await fs.readFile(inputUrl)).trim()
+    // @ts-expect-error: to do: update `@types/hast` in dependencies.
     const actual = toHtml(refractor.highlight(input, lang))
     /** @type {string} */
     let expected

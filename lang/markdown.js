@@ -201,7 +201,6 @@ export default function markdown(Prism) {
             lookbehind: true,
             inside: {} // see below
           },
-
           punctuation: /\*\*|__/
         }
       },
@@ -222,7 +221,6 @@ export default function markdown(Prism) {
             lookbehind: true,
             inside: {} // see below
           },
-
           punctuation: /[*_]/
         }
       },
@@ -239,7 +237,6 @@ export default function markdown(Prism) {
             lookbehind: true,
             inside: {} // see below
           },
-
           punctuation: /~~?/
         }
       },
@@ -269,7 +266,6 @@ export default function markdown(Prism) {
             lookbehind: true,
             inside: {} // see below
           },
-
           variable: {
             pattern: /(^\][ \t]?\[)[^\]]+(?=\]$)/,
             lookbehind: true
@@ -286,14 +282,14 @@ export default function markdown(Prism) {
       }
     })
     ;['url', 'bold', 'italic', 'strike'].forEach(function (token) {
-      ;['url', 'bold', 'italic', 'strike', 'code-snippet'].forEach(function (
-        inside
-      ) {
-        if (token !== inside) {
-          Prism.languages.markdown[token].inside.content.inside[inside] =
-            Prism.languages.markdown[inside]
+      ;['url', 'bold', 'italic', 'strike', 'code-snippet'].forEach(
+        function (inside) {
+          if (token !== inside) {
+            Prism.languages.markdown[token].inside.content.inside[inside] =
+              Prism.languages.markdown[inside]
+          }
         }
-      })
+      )
     })
     Prism.hooks.add('after-tokenize', function (env) {
       if (env.language !== 'markdown' && env.language !== 'md') {

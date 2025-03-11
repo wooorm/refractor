@@ -26,8 +26,8 @@ export default function syntaxes() {
  */
 async function one(name) {
   /** @type {{default: {aliases: Array<string>}}} */
-  const mod = await import('../lang/' + name + '.js')
-  const aliases = mod.default.aliases
+  const moduleExports = await import('../lang/' + name + '.js')
+  const aliases = moduleExports.default.aliases
   /** @type {Array<PhrasingContent>} */
   const content = [
     u(

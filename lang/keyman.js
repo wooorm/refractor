@@ -19,19 +19,16 @@ export default function keyman(Prism) {
       greedy: true,
       alias: 'function' // alias for styles
     },
-
     // https://help.keyman.com/developer/language/guide/headers
     'header-keyword': {
       pattern: /&\w+/,
       alias: 'bold' // alias for styles
     },
-
     'header-statement': {
       pattern:
         /\b(?:bitmap|bitmaps|caps always off|caps on only|copyright|hotkey|language|layout|message|name|shift frees caps|version)\b/i,
       alias: 'bold' // alias for styles
     },
-
     'rule-keyword': {
       pattern:
         /\b(?:any|baselayout|beep|call|context|deadkey|dk|if|index|layer|notany|nul|outs|platform|reset|return|save|set|store|use)\b/i,

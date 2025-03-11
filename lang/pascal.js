@@ -30,7 +30,6 @@ Support inline asm ?
       greedy: true,
       inside: null // see below
     },
-
     keyword: [
       {
         // Turbo Pascal

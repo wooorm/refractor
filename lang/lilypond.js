@@ -51,7 +51,6 @@ export default function lilypond(Prism) {
                   }
                 }
               },
-
               rest: Prism.languages.scheme
             }
           },

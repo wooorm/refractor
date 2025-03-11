@@ -15,7 +15,6 @@ export default function typescript(Prism) {
         greedy: true,
         inside: null // see below
       },
-
       builtin:
         /\b(?:Array|Function|Promise|any|boolean|console|never|number|string|symbol|unknown)\b/
     })

@@ -42,7 +42,6 @@ export default function stan(Prism) {
             lookbehind: true,
             inside: null // see below
           },
-
           property: /\b[a-z]\w*(?=\s*=)/i,
           operator: /=/,
           punctuation: /^<|>$|,/

@@ -21,7 +21,6 @@ export default function groovy(Prism) {
         }
       }
     }
-
     Prism.languages.groovy = Prism.languages.extend('clike', {
       string: {
         // https://groovy-lang.org/syntax.html#_dollar_slashy_string

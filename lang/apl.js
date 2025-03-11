@@ -18,7 +18,8 @@ export default function apl(Prism) {
       alias: 'function'
     },
     constant: /[⍬⌾#⎕⍞]/,
-    function: /[-+×÷⌈⌊∣|⍳⍸?*⍟○!⌹<≤=>≥≠≡≢∊⍷∪∩~∨∧⍱⍲⍴,⍪⌽⊖⍉↑↓⊂⊃⊆⊇⌷⍋⍒⊤⊥⍕⍎⊣⊢⍁⍂≈⍯↗¤→]/,
+    function:
+      /[-+×÷⌈⌊∣|⍳⍸?*⍟○!⌹<≤=>≥≠≡≢∊⍷∪∩~∨∧⍱⍲⍴,⍪⌽⊖⍉↑↓⊂⊃⊆⊇⌷⍋⍒⊤⊥⍕⍎⊣⊢⍁⍂≈⍯↗¤→]/,
     'monadic-operator': {
       pattern: /[\\\/⌿⍀¨⍨⌶&∥]/,
       alias: 'operator'

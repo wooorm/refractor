@@ -23,7 +23,6 @@ export default function asciidoc(Prism) {
             // See rest below
           }
         },
-
         string: /"(?:[^"\\]|\\.)*"/,
         variable: /\w+(?==)/,
         punctuation: /^\[|\]$|,/,
@@ -52,7 +51,6 @@ export default function asciidoc(Prism) {
           // See rest below
         }
       },
-
       'passthrough-block': {
         pattern: /^(\+{4,})$[\s\S]*?^\1$/m,
         inside: {
@@ -60,7 +58,6 @@ export default function asciidoc(Prism) {
           // See rest below
         }
       },
-
       // Literal blocks and listing blocks
       'literal-block': {
         pattern: /^(-{4,}|\.{4,})$[\s\S]*?^\1$/m,
@@ -69,7 +66,6 @@ export default function asciidoc(Prism) {
           // See rest below
         }
       },
-
       // Sidebar blocks, quote blocks, example blocks and open blocks
       'other-block': {
         pattern: /^(--|\*{4,}|_{4,}|={4,})$[\s\S]*?^\1$/m,
@@ -78,7 +74,6 @@ export default function asciidoc(Prism) {
           // See rest below
         }
       },
-
       // list-punctuation and list-label must appear before indented-block
       'list-punctuation': {
         pattern:
@@ -105,7 +100,6 @@ export default function asciidoc(Prism) {
           // See rest below
         }
       },
-
       'attribute-entry': {
         pattern: /^:[^:\r\n]+:(?: .*?(?: \+(?:\r?\n|\r).*?)*)?$/m,
         alias: 'tag'

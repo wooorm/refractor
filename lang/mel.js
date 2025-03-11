@@ -24,7 +24,6 @@ export default function mel(Prism) {
         }
       }
     },
-
     string: {
       pattern: /"(?:\\.|[^\\"\r\n])*"/,
       greedy: true

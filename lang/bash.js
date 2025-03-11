@@ -18,7 +18,6 @@ export default function bash(Prism) {
       // this looks reasonably well in all themes
       inside: null // see below
     }
-
     var insideString = {
       bash: commandAfterHeredoc,
       environment: {

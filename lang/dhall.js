@@ -26,7 +26,6 @@ export default function dhall(Prism) {
               alias: 'language-dhall',
               inside: null // see blow
             },
-
             punctuation: /\$\{|\}/
           }
         }

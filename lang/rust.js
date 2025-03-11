@@ -45,7 +45,6 @@ export default function rust(Prism) {
           string: null // see below
         }
       },
-
       // Closure params should not be confused with bitwise OR |
       'closure-params': {
         pattern: /([=(,:]\s*|\bmove\s*)\|[^|]*\||\|[^|]*\|(?=\s*(?:\{|->))/,
@@ -59,7 +58,6 @@ export default function rust(Prism) {
           rest: null // see below
         }
       },
-
       'lifetime-annotation': {
         pattern: /'\w+/,
         alias: 'symbol'

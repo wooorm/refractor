@@ -702,7 +702,6 @@ this is fine for a regex-only implementation.
       ]
       // that's all for now
     }
-
     Object.keys(builtins).forEach(function (k) {
       factor[k].pattern = arrToWordsRegExp(builtins[k])
     })
@@ -929,7 +928,6 @@ this is fine for a regex-only implementation.
       'output>sequence'
       // tafn
     ]
-
     factor.combinators.pattern = arrToWordsRegExp(combinators)
     Prism.languages.factor = factor
   })(Prism)

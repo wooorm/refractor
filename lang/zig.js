@@ -105,7 +105,6 @@ export default function zig(Prism) {
           inside: null // see below
         }
       ],
-
       'builtin-type': {
         pattern:
           /\b(?:anyerror|bool|c_u?(?:int|long|longlong|short)|c_longdouble|c_void|comptime_(?:float|int)|f(?:16|32|64|128)|[iu](?:8|16|32|64|128|size)|noreturn|type|void)\b/,

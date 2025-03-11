@@ -25,7 +25,6 @@ export default function markup(Prism) {
           greedy: true,
           inside: null // see below
         },
-
         string: {
           pattern: /"[^"]*"|'[^']*'/,
           greedy: true

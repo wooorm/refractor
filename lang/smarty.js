@@ -20,7 +20,6 @@ export default function smarty(Prism) {
             pattern: /^\{php\}|\{\/php\}$/,
             inside: null // see below
           },
-
           php: {
             pattern: /[\s\S]+/,
             alias: 'language-php',
@@ -46,7 +45,6 @@ export default function smarty(Prism) {
                 }
               }
             },
-
             variable: /\$\w+/
           }
         },

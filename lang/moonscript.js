@@ -23,7 +23,6 @@ export default function moonscript(Prism) {
                 lookbehind: true,
                 inside: null // see beow
               },
-
               'interpolation-punctuation': {
                 pattern: /#\{|\}/,
                 alias: 'punctuation'

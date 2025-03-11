@@ -33,7 +33,6 @@ export default function gn(Prism) {
             }
           }
         },
-
         string: /[\s\S]+/
       }
     },

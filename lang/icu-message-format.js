@@ -52,7 +52,6 @@ export default function icuMessageFormat(Prism) {
           lookbehind: true,
           inside: null // see below
         },
-
         'message-delimiter': {
           pattern: /./,
           alias: 'punctuation'
@@ -89,7 +88,6 @@ export default function icuMessageFormat(Prism) {
                   rest: null // see below
                 }
               },
-
               'plural-style': {
                 // https://unicode-org.github.io/icu-docs/apidoc/released/icu4j/com/ibm/icu/text/PluralFormat.html#:~:text=Patterns%20and%20Their%20Interpretation
                 pattern:
