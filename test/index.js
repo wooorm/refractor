@@ -7,7 +7,6 @@ import fs from 'node:fs/promises'
 import process from 'node:process'
 import test from 'node:test'
 import {toHtml} from 'hast-util-to-html'
-import {isHidden} from 'is-hidden'
 import {refractor} from '../lib/all.js'
 
 test('refractor', async function (t) {
@@ -167,7 +166,7 @@ test('fixtures', async function (t) {
   while (++index < files.length) {
     const name = files[index]
 
-    if (isHidden(name)) continue
+    if (name.charAt(0) === '.') continue
 
     await t.test(name, async function () {
       const lang = name.split('-')[0]

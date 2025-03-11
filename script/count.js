@@ -3,7 +3,6 @@
  */
 
 import {zone} from 'mdast-zone'
-import {u} from 'unist-builder'
 import {all, common} from './data.js'
 
 export default function count() {
@@ -17,26 +16,51 @@ export default function count() {
     zone(tree, 'count', function (start, _, end) {
       return [
         start,
-        u('list', {spread: false}, [
-          u('listItem', [
-            u('paragraph', [
-              u('inlineCode', 'lib/all.js'),
-              u('text', ' — ' + all.length + ' languages')
-            ])
-          ]),
-          u('listItem', [
-            u('paragraph', [
-              u('inlineCode', 'lib/common.js'),
-              u('text', ' (default) — ' + common.length + ' languages')
-            ])
-          ]),
-          u('listItem', [
-            u('paragraph', [
-              u('inlineCode', 'lib/core.js'),
-              u('text', ' — 0 languages')
-            ])
-          ])
-        ]),
+        {
+          type: 'list',
+          spread: false,
+          children: [
+            {
+              type: 'listItem',
+              children: [
+                {
+                  type: 'paragraph',
+                  children: [
+                    {type: 'inlineCode', value: 'lib/all.js'},
+                    {type: 'text', value: ' — ' + all.length + ' languages'}
+                  ]
+                }
+              ]
+            },
+            {
+              type: 'listItem',
+              children: [
+                {
+                  type: 'paragraph',
+                  children: [
+                    {type: 'inlineCode', value: 'lib/common.js'},
+                    {
+                      type: 'text',
+                      value: ' (default) — ' + common.length + ' languages'
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              type: 'listItem',
+              children: [
+                {
+                  type: 'paragraph',
+                  children: [
+                    {type: 'inlineCode', value: 'lib/core.js'},
+                    {type: 'text', value: ' — 0 languages'}
+                  ]
+                }
+              ]
+            }
+          ]
+        },
         end
       ]
     })

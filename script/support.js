@@ -4,7 +4,6 @@
 
 import alphaSort from 'alpha-sort'
 import {zone} from 'mdast-zone'
-import {u} from 'unist-builder'
 import {all, common} from './data.js'
 
 /** @type {Array<Promise<ListItem>>} */
@@ -25,7 +24,11 @@ export default function syntaxes() {
    */
   return function (tree) {
     zone(tree, 'support', function (start, _, end) {
-      return [start, u('list', {ordered: false, spread: false}, items), end]
+      return [
+        start,
+        {type: 'list', ordered: false, spread: false, children: items},
+        end
+      ]
     })
   }
 }
@@ -42,30 +45,31 @@ async function one(name) {
   const aliases = moduleExports.default.aliases
   /** @type {Array<PhrasingContent>} */
   const content = [
-    u(
-      'link',
-      {
-        url:
-          'https://github.com/wooorm/refractor/blob/main/lang/' + name + '.js'
-      },
-      [u('inlineCode', name)]
-    )
+    {
+      type: 'link',
+      url: 'https://github.com/wooorm/refractor/blob/main/lang/' + name + '.js',
+      children: [{type: 'inlineCode', value: name}]
+    }
   ]
   let index = -1
 
   if (aliases.length > 0) {
-    content.push(u('text', ' — alias: '))
+    content.push({type: 'text', value: ' — alias: '})
 
     while (++index < aliases.length) {
       if (index !== 0) {
-        content.push(u('text', ', '))
+        content.push({type: 'text', value: ', '})
       }
 
-      content.push(u('inlineCode', aliases[index]))
+      content.push({type: 'inlineCode', value: aliases[index]})
     }
   }
 
-  return u('listItem', {checked: included(name)}, [u('paragraph', content)])
+  return {
+    type: 'listItem',
+    checked: included(name),
+    children: [{type: 'paragraph', children: content}]
+  }
 }
 
 /**
