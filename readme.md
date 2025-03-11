@@ -149,8 +149,7 @@ Yields:
 
 This package exports the identifier [`refractor`][api-refractor].
 It also exports the [TypeScript][] types
-[`Grammar`][api-grammar],
-[`Root`][api-root],
+[`Grammar`][api-grammar]
 and
 [`Syntax`][api-syntax].
 There is no default export.
@@ -798,8 +797,6 @@ See [How to Contribute to Open Source][opensource-guide].
 [api-grammar]: #grammar
 
 [api-refractor]: #refractor
-
-[api-root]: #root
 
 [api-syntax]: #syntax
 
