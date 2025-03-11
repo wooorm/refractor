@@ -20,7 +20,6 @@ and elegant virtual syntax highlighting using [Prism][github-prism].
 * [Use](#use)
 * [API](#api)
   * [`refractor`](#refractor-1)
-  * [`Grammar`](#grammar)
   * [`Root`](#root)
   * [`Syntax`](#syntax)
 * [Examples](#examples)
@@ -148,9 +147,7 @@ Yields:
 ## API
 
 This package exports the identifier [`refractor`][api-refractor].
-It also exports the [TypeScript][] types
-[`Grammar`][api-grammar]
-and
+It also exports the [TypeScript][] type
 [`Syntax`][api-syntax].
 There is no default export.
 
@@ -320,26 +317,6 @@ Yields:
   'markdown',
   'md'
 ]
-```
-
-### `Grammar`
-
-Grammar.
-
-###### Type
-
-```ts
-export type {Grammar} from 'prismjs'
-```
-
-### `Root`
-
-Tree representing HTML.
-
-###### Type
-
-```ts
-export type {Root} from 'hast'
 ```
 
 ### `Syntax`
@@ -793,8 +770,6 @@ See [How to Contribute to Open Source][opensource-guide].
 [MIT][file-license] © [Titus Wormer][wooorm]
 
 <!-- Definitions -->
-
-[api-grammar]: #grammar
 
 [api-refractor]: #refractor
 
