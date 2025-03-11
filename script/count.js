@@ -20,8 +20,8 @@ export default function count() {
         u('list', {spread: false}, [
           u('listItem', [
             u('paragraph', [
-              u('inlineCode', 'lib/core.js'),
-              u('text', ' — 0 languages')
+              u('inlineCode', 'lib/all.js'),
+              u('text', ' — ' + all.length + ' languages')
             ])
           ]),
           u('listItem', [
@@ -32,8 +32,8 @@ export default function count() {
           ]),
           u('listItem', [
             u('paragraph', [
-              u('inlineCode', 'lib/all.js'),
-              u('text', ' — ' + all.length + ' languages')
+              u('inlineCode', 'lib/core.js'),
+              u('text', ' — 0 languages')
             ])
           ])
         ]),

@@ -7,8 +7,9 @@
 [![Downloads][badge-downloads-image]][badge-downloads-url]
 [![Size][badge-size-image]][badge-size-url]
 
-Lightweight, robust, elegant virtual syntax highlighting using
-[Prism][github-prism].
+Lightweight,
+robust,
+and elegant virtual syntax highlighting using [Prism][github-prism].
 
 ## Contents
 
@@ -40,33 +41,46 @@ Lightweight, robust, elegant virtual syntax highlighting using
 This package wraps [Prism][github-prism] to output objects (ASTs) instead of a
 string of HTML.
 
-Prism, through refractor, supports 270+ programming languages.
+Prism,
+through refractor,
+supports 290+ programming languages.
 Supporting all of them requires a lot of code.
 That’s why there are three entry points for refractor:
 
 <!--count start-->
 
-* `lib/core.js` — 0 languages
-* `lib/common.js` (default) — 36 languages
 * `lib/all.js` — 297 languages
+* `lib/common.js` (default) — 36 languages
+* `lib/core.js` — 0 languages
 
 <!--count end-->
 
-Bundled, minified, and gzipped, those are roughly 12.7 kB, 40 kB, and 211 kB.
+Bundled,
+minified,
+and gzipped,
+those are roughly 12.7 kB,
+40 kB,
+and 211 kB.
 
 ## When should I use this?
 
 This package is useful when you want to perform syntax highlighting in a place
 where serialized HTML wouldn’t work or wouldn’t work well.
-For example, you can use refractor when you want to show code in a CLI by
-rendering to ANSI sequences, when you’re using virtual DOM frameworks (such as
-React or Preact) so that diffing can be performant, or when you’re working with
-ASTs (rehype).
+For example,
+you can use refractor when you want to show code in a CLI by rendering to ANSI
+sequences,
+when you’re using virtual DOM frameworks
+(such as React or Preact)
+so that diffing can be performant,
+or when you’re working with ASTs
+(rehype).
 
-A different package, [`lowlight`][github-lowlight], does the same as refractor
-but uses [`highlight.js`][github-highlightjs] instead.
-If you’re looking for a *really good* (but rather heavy) highlighter, try
-[`starry-night`][github-starry-night].
+A different package,
+[`lowlight`][github-lowlight],
+does the same as refractor but uses [`highlight.js`][github-highlightjs]
+instead.
+If you’re looking for a *really good* but rather heavy highlighter,
+try [`starry-night`][github-starry-night].
 
 <!--Old name of the following section:-->
 
@@ -80,7 +94,8 @@ You can play with refractor on the
 ## Install
 
 This package is [ESM only][github-gist-esm].
-In Node.js (version 14+), install with [npm][npmjs-install]:
+In Node.js (version 14+),
+install with [npm][npmjs-install]:
 
 ```sh
 npm install refractor
@@ -146,7 +161,9 @@ Highlight `value` (code) as `language` (programming language).
 * `value` (`string`)
   — code to highlight
 * `language` (`string` or `Grammar`)
-  — programming language name, alias, or grammar.
+  — programming language name,
+  alias,
+  or grammar
 
 ###### Returns
 
@@ -184,8 +201,9 @@ Register a syntax.
 ###### Parameters
 
 * `syntax` (`Function`)
-  — language function custom made for refractor, as in, the files in
-  `refractor/lang/*.js`
+  — language function custom made for refractor,
+  as in,
+  the files in `refractor/lang/*.js`
 
 ###### Example
 
@@ -355,7 +373,10 @@ Yields:
 ## Types
 
 This package is fully typed with [TypeScript][].
-It exports the additional types `Root`, `Grammar`, and `Syntax`.
+It exports the additional types
+`Grammar`,
+`Root`,
+and `Syntax`.
 
 <!--Old name of the following section:-->
 
@@ -363,14 +384,16 @@ It exports the additional types `Root`, `Grammar`, and `Syntax`.
 
 ## Data
 
-If you’re using `refractor/lib/core.js`, no syntaxes are included.
-Checked syntaxes are included if you import `refractor` (or explicitly
-`refractor/lib/common.js`).
+If you’re using `refractor/lib/core.js`,
+no syntaxes are included.
+Checked syntaxes are included if you import `refractor`
+(or explicitly `refractor/lib/common.js`).
 Unchecked syntaxes are available through `refractor/lib/all.js`.
 You can import `core` or `common` and manually add more languages as you please.
 
-Prism operates as a singleton: once you register a language in one place, it’ll
-be available everywhere.
+Prism operates as a singleton:
+once you register a language in one place,
+it’ll be available everywhere.
 
 Only these custom built syntaxes will work with `refractor` because Prism’s own
 syntaxes are made to work with global variables and are not importable.
@@ -679,13 +702,16 @@ syntaxes are made to work with global variables and are not importable.
 
 ## CSS
 
-`refractor` does not inject CSS for the syntax highlighted code (because well,
-refractor doesn’t have to be turned into HTML and might not run in a browser!).
-If you are in a browser, you can use any Prism theme.
-For example, to get Prism Dark from cdnjs:
+`refractor` does not inject CSS for the syntax highlighted code.
+It does not make sense: refractor doesn’t have to be turned into HTML and might
+not run in a browser!
+If you are in a browser,
+you can use any Prism theme.
+For example,
+to get Prism Dark from [`esm.sh`][esmsh]:
 
 ```html
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/themes/prism-dark.min.css">
+<link rel="stylesheet" href="https://esm.sh/prismjs@1.30.0/themes/prism-dark.css">
 ```
 
 <!--Old name of the following section:-->
@@ -695,15 +721,17 @@ For example, to get Prism Dark from cdnjs:
 ## Compatibility
 
 This package is at least compatible with all maintained versions of Node.js.
-As of now, that is Node.js 14.14+ and 16.0+.
+As of now,
+that is Node.js 14+.
 It also works in Deno and modern browsers.
 
 Only the custom built syntaxes in `refractor/lang/*.js` will work with
 `refractor` as Prism’s own syntaxes are made to work with global variables and
 are not importable.
 
-refractor also does not support Prism plugins, due to the same limitations, and
-that they almost exclusively deal with the DOM.
+refractor also does not support Prism plugins,
+due to the same limitations,
+and that they almost exclusively deal with the DOM.
 
 ## Security
 
