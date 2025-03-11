@@ -1,7 +1,8 @@
-coverage/
-node_modules/
 *.d.ts
 *.log
+*.tsbuildinfo
 .DS_Store
+coverage/
+node_modules/
 package-lock.json
 yarn.lock
