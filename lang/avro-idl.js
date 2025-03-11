@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 avroIdl.displayName = 'avro-idl'
 avroIdl.aliases = ['avdl']
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function avroIdl(Prism) {
   // GitHub: https://github.com/apache/avro
   // Docs: https://avro.apache.org/docs/current/idl.html

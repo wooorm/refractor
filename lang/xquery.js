@@ -1,12 +1,12 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 import refractorMarkup from './markup.js'
 xquery.displayName = 'xquery'
 xquery.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function xquery(Prism) {
   Prism.register(refractorMarkup)
   ;(function (Prism) {

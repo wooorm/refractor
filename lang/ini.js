@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 ini.displayName = 'ini'
 ini.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function ini(Prism) {
   Prism.languages.ini = {
     /**

@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 gn.displayName = 'gn'
 gn.aliases = ['gni']
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function gn(Prism) {
   // https://gn.googlesource.com/gn/+/refs/heads/main/docs/reference.md#grammar
 

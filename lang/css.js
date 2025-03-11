@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 css.displayName = 'css'
 css.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function css(Prism) {
   ;(function (Prism) {
     var string =

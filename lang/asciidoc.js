@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 asciidoc.displayName = 'asciidoc'
 asciidoc.aliases = ['adoc']
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function asciidoc(Prism) {
   ;(function (Prism) {
     var attributes = {

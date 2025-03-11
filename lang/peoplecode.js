@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 peoplecode.displayName = 'peoplecode'
 peoplecode.aliases = ['pcode']
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function peoplecode(Prism) {
   Prism.languages.peoplecode = {
     comment: RegExp(

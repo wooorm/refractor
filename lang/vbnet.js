@@ -1,12 +1,12 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 import refractorBasic from './basic.js'
 vbnet.displayName = 'vbnet'
 vbnet.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function vbnet(Prism) {
   Prism.register(refractorBasic)
   Prism.languages.vbnet = Prism.languages.extend('basic', {

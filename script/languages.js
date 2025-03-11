@@ -74,7 +74,7 @@ async function generate(name) {
   const lines = [
     '// @ts-nocheck',
     '/**',
-    " * @import {Syntax} from '../core.js'",
+    " * @import {Refractor} from '../lib/core.js'",
     ' */'
   ]
 
@@ -86,7 +86,7 @@ async function generate(name) {
     id + ".displayName = '" + name + "'",
     id + '.aliases = ' + JSON.stringify(alias),
     '',
-    '/** @type {Syntax} */',
+    '/** @param {Refractor} Prism */',
     'export default function ' + id + '(Prism) {'
   )
 

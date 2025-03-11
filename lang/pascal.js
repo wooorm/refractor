@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 pascal.displayName = 'pascal'
 pascal.aliases = ['objectpascal']
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function pascal(Prism) {
   // Based on Free Pascal
 

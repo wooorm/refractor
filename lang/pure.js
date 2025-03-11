@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 pure.displayName = 'pure'
 pure.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function pure(Prism) {
   ;(function (Prism) {
     // https://agraef.github.io/pure-docs/pure.html#lexical-matters

@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 bro.displayName = 'bro'
 bro.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function bro(Prism) {
   Prism.languages.bro = {
     comment: {

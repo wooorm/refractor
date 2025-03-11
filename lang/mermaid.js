@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 mermaid.displayName = 'mermaid'
 mermaid.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function mermaid(Prism) {
   Prism.languages.mermaid = {
     comment: {

@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 icon.displayName = 'icon'
 icon.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function icon(Prism) {
   Prism.languages.icon = {
     comment: /#.*/,

@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 pcaxis.displayName = 'pcaxis'
 pcaxis.aliases = ['px']
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function pcaxis(Prism) {
   Prism.languages.pcaxis = {
     string: /"[^"]*"/,

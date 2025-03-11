@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 jexl.displayName = 'jexl'
 jexl.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function jexl(Prism) {
   Prism.languages.jexl = {
     string: /(["'])(?:\\[\s\S]|(?!\1)[^\\])*\1/,

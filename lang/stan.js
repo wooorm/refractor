@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 stan.displayName = 'stan'
 stan.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function stan(Prism) {
   ;(function (Prism) {
     // https://mc-stan.org/docs/2_28/reference-manual/bnf-grammars.html

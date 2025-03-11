@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 avisynth.displayName = 'avisynth'
 avisynth.aliases = ['avs']
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function avisynth(Prism) {
   // http://avisynth.nl/index.php/The_full_AviSynth_grammar
   ;(function (Prism) {

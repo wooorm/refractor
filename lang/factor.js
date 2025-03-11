@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 factor.displayName = 'factor'
 factor.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function factor(Prism) {
   ;(function (Prism) {
     var comment_inside = {

@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 al.displayName = 'al'
 al.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function al(Prism) {
   // based on https://github.com/microsoft/AL/blob/master/grammar/alsyntax.tmlanguage
 

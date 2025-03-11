@@ -1,12 +1,12 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 import refractorClike from './clike.js'
 jolie.displayName = 'jolie'
 jolie.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function jolie(Prism) {
   Prism.register(refractorClike)
   Prism.languages.jolie = Prism.languages.extend('clike', {

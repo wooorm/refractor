@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 inform7.displayName = 'inform7'
 inform7.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function inform7(Prism) {
   Prism.languages.inform7 = {
     string: {

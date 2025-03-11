@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 webIdl.displayName = 'web-idl'
 webIdl.aliases = ['webidl']
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function webIdl(Prism) {
   ;(function (Prism) {
     var id = /(?:\B-|\b_|\b)[A-Za-z][\w-]*(?![\w-])/.source

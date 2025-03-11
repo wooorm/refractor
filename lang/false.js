@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 $false.displayName = 'false'
 $false.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function $false(Prism) {
   ;(function (Prism) {
     /**

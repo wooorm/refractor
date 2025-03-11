@@ -1,13 +1,13 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 import refractorCsharp from './csharp.js'
 import refractorMarkup from './markup.js'
 aspnet.displayName = 'aspnet'
 aspnet.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function aspnet(Prism) {
   Prism.register(refractorCsharp)
   Prism.register(refractorMarkup)

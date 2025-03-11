@@ -1,12 +1,12 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 import refractorC from './c.js'
 hlsl.displayName = 'hlsl'
 hlsl.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function hlsl(Prism) {
   Prism.register(refractorC)
   Prism.languages.hlsl = Prism.languages.extend('c', {

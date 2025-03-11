@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 latex.displayName = 'latex'
 latex.aliases = ['context', 'tex']
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function latex(Prism) {
   ;(function (Prism) {
     var funcPattern = /\\(?:[^a-z()[\]]|[a-z*]+)/i

@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 cue.displayName = 'cue'
 cue.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function cue(Prism) {
   ;(function (Prism) {
     // https://cuelang.org/docs/references/spec/

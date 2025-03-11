@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 lua.displayName = 'lua'
 lua.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function lua(Prism) {
   Prism.languages.lua = {
     comment: /^#!.+|--(?:\[(=*)\[[\s\S]*?\]\1\]|.*)/m,

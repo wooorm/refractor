@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 ichigojam.displayName = 'ichigojam'
 ichigojam.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function ichigojam(Prism) {
   // according to the offical reference (EN)
   // https://ichigojam.net/IchigoJam-en.html

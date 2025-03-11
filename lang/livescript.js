@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 livescript.displayName = 'livescript'
 livescript.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function livescript(Prism) {
   Prism.languages.livescript = {
     comment: [

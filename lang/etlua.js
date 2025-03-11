@@ -1,13 +1,13 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 import refractorLua from './lua.js'
 import refractorMarkupTemplating from './markup-templating.js'
 etlua.displayName = 'etlua'
 etlua.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function etlua(Prism) {
   Prism.register(refractorLua)
   Prism.register(refractorMarkupTemplating)

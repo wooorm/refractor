@@ -1,6 +1,6 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 import refractorJava from './java.js'
 import refractorMata from './mata.js'
@@ -8,7 +8,7 @@ import refractorPython from './python.js'
 stata.displayName = 'stata'
 stata.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function stata(Prism) {
   Prism.register(refractorJava)
   Prism.register(refractorMata)

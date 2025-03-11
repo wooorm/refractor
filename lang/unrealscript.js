@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 unrealscript.displayName = 'unrealscript'
 unrealscript.aliases = ['uc', 'uscript']
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function unrealscript(Prism) {
   Prism.languages.unrealscript = {
     comment: /\/\/.*|\/\*[\s\S]*?\*\//,

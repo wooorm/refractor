@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 hpkp.displayName = 'hpkp'
 hpkp.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function hpkp(Prism) {
   /**
    * Original by Scott Helme.

@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 puppet.displayName = 'puppet'
 puppet.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function puppet(Prism) {
   ;(function (Prism) {
     Prism.languages.puppet = {

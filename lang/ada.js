@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 ada.displayName = 'ada'
 ada.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function ada(Prism) {
   Prism.languages.ada = {
     comment: /--.*/,

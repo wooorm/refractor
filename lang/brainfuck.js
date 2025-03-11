@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 brainfuck.displayName = 'brainfuck'
 brainfuck.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function brainfuck(Prism) {
   Prism.languages.brainfuck = {
     pointer: {

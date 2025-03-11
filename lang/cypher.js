@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 cypher.displayName = 'cypher'
 cypher.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function cypher(Prism) {
   Prism.languages.cypher = {
     // https://neo4j.com/docs/cypher-manual/current/syntax/comments/

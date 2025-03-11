@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 vim.displayName = 'vim'
 vim.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function vim(Prism) {
   Prism.languages.vim = {
     string: /"(?:[^"\\\r\n]|\\.)*"|'(?:[^'\r\n]|'')*'/,

@@ -1,12 +1,12 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 import refractorMarkup from './markup.js'
 markdown.displayName = 'markdown'
 markdown.aliases = ['md']
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function markdown(Prism) {
   Prism.register(refractorMarkup)
   ;(function (Prism) {

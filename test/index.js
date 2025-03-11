@@ -7,11 +7,11 @@ import fs from 'node:fs/promises'
 import process from 'node:process'
 import test from 'node:test'
 import {toHtml} from 'hast-util-to-html'
-import {refractor} from '../lib/all.js'
+import {refractor} from 'refractor/all'
 
 test('refractor', async function (t) {
   await t.test('should expose the public api', async function () {
-    assert.deepEqual(Object.keys(await import('../index.js')).sort(), [
+    assert.deepEqual(Object.keys(await import('refractor')).sort(), [
       'refractor'
     ])
   })

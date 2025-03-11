@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 autoit.displayName = 'autoit'
 autoit.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function autoit(Prism) {
   Prism.languages.autoit = {
     comment: [

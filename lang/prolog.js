@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 prolog.displayName = 'prolog'
 prolog.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function prolog(Prism) {
   Prism.languages.prolog = {
     // Syntax depends on the implementation

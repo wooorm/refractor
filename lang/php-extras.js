@@ -1,12 +1,12 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 import refractorPhp from './php.js'
 phpExtras.displayName = 'php-extras'
 phpExtras.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function phpExtras(Prism) {
   Prism.register(refractorPhp)
   Prism.languages.insertBefore('php', 'variable', {

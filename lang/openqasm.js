@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 openqasm.displayName = 'openqasm'
 openqasm.aliases = ['qasm']
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function openqasm(Prism) {
   // https://qiskit.github.io/openqasm/grammar/index.html
 

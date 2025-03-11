@@ -1,12 +1,12 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 import refractorJson from './json.js'
 json5.displayName = 'json5'
 json5.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function json5(Prism) {
   Prism.register(refractorJson)
   ;(function (Prism) {

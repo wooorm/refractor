@@ -1,12 +1,12 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 import refractorClike from './clike.js'
 squirrel.displayName = 'squirrel'
 squirrel.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function squirrel(Prism) {
   Prism.register(refractorClike)
   Prism.languages.squirrel = Prism.languages.extend('clike', {

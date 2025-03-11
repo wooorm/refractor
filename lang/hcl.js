@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 hcl.displayName = 'hcl'
 hcl.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function hcl(Prism) {
   Prism.languages.hcl = {
     comment: /(?:\/\/|#).*|\/\*[\s\S]*?(?:\*\/|$)/,

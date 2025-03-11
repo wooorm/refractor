@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 properties.displayName = 'properties'
 properties.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function properties(Prism) {
   Prism.languages.properties = {
     comment: /^[ \t]*[#!].*$/m,

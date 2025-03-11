@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 ignore.displayName = 'ignore'
 ignore.aliases = ['gitignore', 'hgignore', 'npmignore']
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function ignore(Prism) {
   ;(function (Prism) {
     Prism.languages.ignore = {

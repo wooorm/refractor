@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 gherkin.displayName = 'gherkin'
 gherkin.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function gherkin(Prism) {
   ;(function (Prism) {
     var tableRow = /(?:\r?\n|\r)[ \t]*\|.+\|(?:(?!\|).)*/.source

@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 abnf.displayName = 'abnf'
 abnf.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function abnf(Prism) {
   ;(function (Prism) {
     var coreRules =

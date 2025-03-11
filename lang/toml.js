@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 toml.displayName = 'toml'
 toml.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function toml(Prism) {
   ;(function (Prism) {
     var key = /(?:[\w-]+|'[^'\n\r]*'|"(?:\\.|[^\\"\r\n])*")/.source

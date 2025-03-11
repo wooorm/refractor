@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 xojo.displayName = 'xojo'
 xojo.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function xojo(Prism) {
   Prism.languages.xojo = {
     comment: {

@@ -1,12 +1,12 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 import refractorClike from './clike.js'
 cfscript.displayName = 'cfscript'
 cfscript.aliases = ['cfc']
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function cfscript(Prism) {
   Prism.register(refractorClike)
   // https://cfdocs.org/script

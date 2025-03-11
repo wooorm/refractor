@@ -1,12 +1,12 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 import refractorMarkupTemplating from './markup-templating.js'
 handlebars.displayName = 'handlebars'
 handlebars.aliases = ['hbs', 'mustache']
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function handlebars(Prism) {
   Prism.register(refractorMarkupTemplating)
   ;(function (Prism) {

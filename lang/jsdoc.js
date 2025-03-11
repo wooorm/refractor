@@ -1,6 +1,6 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 import refractorJavadoclike from './javadoclike.js'
 import refractorJavascript from './javascript.js'
@@ -8,7 +8,7 @@ import refractorTypescript from './typescript.js'
 jsdoc.displayName = 'jsdoc'
 jsdoc.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function jsdoc(Prism) {
   Prism.register(refractorJavadoclike)
   Prism.register(refractorJavascript)

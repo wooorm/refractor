@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 magma.displayName = 'magma'
 magma.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function magma(Prism) {
   Prism.languages.magma = {
     output: {

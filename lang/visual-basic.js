@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 visualBasic.displayName = 'visual-basic'
 visualBasic.aliases = ['vb', 'vba']
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function visualBasic(Prism) {
   Prism.languages['visual-basic'] = {
     comment: {

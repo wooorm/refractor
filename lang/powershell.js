@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 powershell.displayName = 'powershell'
 powershell.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function powershell(Prism) {
   ;(function (Prism) {
     var powershell = (Prism.languages.powershell = {

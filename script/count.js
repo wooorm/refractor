@@ -26,7 +26,7 @@ export default function count() {
                 {
                   type: 'paragraph',
                   children: [
-                    {type: 'inlineCode', value: 'lib/all.js'},
+                    {type: 'inlineCode', value: 'refractor/all'},
                     {type: 'text', value: ' — ' + all.length + ' languages'}
                   ]
                 }
@@ -38,11 +38,8 @@ export default function count() {
                 {
                   type: 'paragraph',
                   children: [
-                    {type: 'inlineCode', value: 'lib/common.js'},
-                    {
-                      type: 'text',
-                      value: ' (default) — ' + common.length + ' languages'
-                    }
+                    {type: 'inlineCode', value: 'refractor/core'},
+                    {type: 'text', value: ' — 0 languages'}
                   ]
                 }
               ]
@@ -53,8 +50,12 @@ export default function count() {
                 {
                   type: 'paragraph',
                   children: [
-                    {type: 'inlineCode', value: 'lib/core.js'},
-                    {type: 'text', value: ' — 0 languages'}
+                    {type: 'inlineCode', value: 'refractor'},
+                    {
+                      type: 'text',
+                      value:
+                        ' (default) — ' + common.length + ' common languages'
+                    }
                   ]
                 }
               ]

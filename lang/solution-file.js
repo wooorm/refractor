@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 solutionFile.displayName = 'solution-file'
 solutionFile.aliases = ['sln']
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function solutionFile(Prism) {
   ;(function (Prism) {
     var guid = {

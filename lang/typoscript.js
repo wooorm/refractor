@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 typoscript.displayName = 'typoscript'
 typoscript.aliases = ['tsconfig']
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function typoscript(Prism) {
   ;(function (Prism) {
     var keywords =

@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 wolfram.displayName = 'wolfram'
 wolfram.aliases = ['mathematica', 'nb', 'wl']
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function wolfram(Prism) {
   Prism.languages.wolfram = {
     comment:

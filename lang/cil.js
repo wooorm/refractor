@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 cil.displayName = 'cil'
 cil.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function cil(Prism) {
   Prism.languages.cil = {
     comment: /\/\/.*/,

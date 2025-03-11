@@ -1,12 +1,12 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 import refractorSql from './sql.js'
 plsql.displayName = 'plsql'
 plsql.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function plsql(Prism) {
   Prism.register(refractorSql)
   Prism.languages.plsql = Prism.languages.extend('sql', {

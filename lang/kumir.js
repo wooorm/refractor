@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 kumir.displayName = 'kumir'
 kumir.aliases = ['kum']
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function kumir(Prism) {
   /* eslint-disable regexp/no-dupe-characters-character-class */
   ;(function (Prism) {

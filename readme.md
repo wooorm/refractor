@@ -45,18 +45,18 @@ That’s why there are three entry points for refractor:
 
 <!--count start-->
 
-* `lib/all.js` — 297 languages
-* `lib/common.js` (default) — 36 languages
-* `lib/core.js` — 0 languages
+* `refractor/all` — 297 languages
+* `refractor/core` — 0 languages
+* `refractor` (default) — 36 common languages
 
 <!--count end-->
 
 Bundled,
 minified,
 and gzipped,
-those are roughly 12.7 kB,
-40 kB,
-and 211 kB.
+those are roughly 12.7 kB (core),
+40 kB (default),
+and 211 kB (all).
 
 ## When should I use this?
 
@@ -145,10 +145,17 @@ Yields:
 
 ## API
 
-This package exports the identifier [`refractor`][api-refractor].
-It also exports the [TypeScript][] type
-[`Syntax`][api-syntax].
-There is no default export.
+`refractor` has several entries in its export map:
+
+* `refractor`,
+  which exports `refractor` and registers common grammars
+* `refractor/all`,
+  which exports `refractor` and registers all grammars
+* `refractor/core`,
+  which exports `refractor` and registers no grammars
+* `refractor/*`,
+  where `*` is a language name such as `markdown`,
+  which exports a [syntax function][api-syntax] as the default export
 
 ### `refractor`
 
@@ -172,8 +179,8 @@ Node representing highlighted code ([`Root`][github-hast-root]).
 ###### Example
 
 ```js
-import css from 'refractor/lang/css.js'
-import {refractor} from 'refractor/lib/core.js'
+import css from 'refractor/css'
+import {refractor} from 'refractor/core'
 
 refractor.register(css)
 console.log(refractor.highlight('em { color: red }', 'css'))
@@ -203,13 +210,13 @@ Register a syntax.
 * `syntax` (`Function`)
   — language function custom made for refractor,
   as in,
-  the files in `refractor/lang/*.js`
+  the files in `refractor/*`
 
 ###### Example
 
 ```js
-import markdown from 'refractor/lang/markdown.js'
-import {refractor} from 'refractor/lib/core.js'
+import markdown from 'refractor/markdown'
+import {refractor} from 'refractor/core'
 
 refractor.register(markdown)
 
@@ -250,8 +257,8 @@ Register aliases for already registered languages.
 ###### Example
 
 ```js
-import markdown from 'refractor/lang/markdown.js'
-import {refractor} from 'refractor/lib/core.js'
+import markdown from 'refractor/markdown'
+import {refractor} from 'refractor/core'
 
 refractor.register(markdown)
 
@@ -275,8 +282,8 @@ Check whether an `alias` or `language` is registered.
 ###### Example
 
 ```js
-import markdown from 'refractor/lang/markdown.js'
-import {refractor} from 'refractor/lib/core.js'
+import markdown from 'refractor/markdown'
+import {refractor} from 'refractor/core'
 
 console.log(refractor.registered('markdown')) //=> false
 
@@ -296,8 +303,8 @@ List all registered languages (names and aliases).
 ###### Example
 
 ```js
-import markdown from 'refractor/lang/markdown.js'
-import {refractor} from 'refractor/lib/core.js'
+import markdown from 'refractor/markdown'
+import {refractor} from 'refractor/core'
 
 console.log(refractor.listLanguages()) //=> []
 
@@ -320,7 +327,7 @@ Yields:
 
 ### `Syntax`
 
-Refractor syntax function.
+Refractor syntax function (TypeScript type).
 
 ###### Type
 
@@ -389,12 +396,12 @@ Yields:
 
 ## Data
 
-If you’re using `refractor/lib/core.js`,
+If you’re using `refractor/core`,
 no syntaxes are included.
-Checked syntaxes are included if you import `refractor`
-(or explicitly `refractor/lib/common.js`).
-Unchecked syntaxes are available through `refractor/lib/all.js`.
-You can import `core` or `common` and manually add more languages as you please.
+Checked syntaxes are included if you import `refractor`.
+Unchecked syntaxes are available through `refractor/all`.
+You can import `refractor/core` or `refractor` and manually add more languages
+as you please.
 
 Prism operates as a singleton:
 once you register a language in one place,
@@ -730,7 +737,7 @@ As of now,
 that is Node.js 16+.
 It also works in Deno and modern browsers.
 
-Only the custom built syntaxes in `refractor/lang/*.js` will work with
+Only the custom built syntaxes in `refractor/*` will work with
 `refractor` as Prism’s own syntaxes are made to work with global variables and
 are not importable.
 
@@ -769,8 +776,6 @@ See [How to Contribute to Open Source][opensource-guide].
 [MIT][file-license] © [Titus Wormer][wooorm]
 
 <!-- Definitions -->
-
-[api-refractor]: #refractor
 
 [api-syntax]: #syntax
 
@@ -819,7 +824,5 @@ See [How to Contribute to Open Source][opensource-guide].
 [prismjs-languages]: https://prismjs.com/#languages-list
 
 [react]: https://react.dev
-
-[typescript]: https://www.typescriptlang.org
 
 [wooorm]: https://wooorm.com

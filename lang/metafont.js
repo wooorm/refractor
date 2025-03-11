@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 metafont.displayName = 'metafont'
 metafont.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function metafont(Prism) {
   Prism.languages.metafont = {
     // Syntax of METAFONT with the added (public) elements of PlainMETAFONT. Except for internal quantities they are expected to be rarely redefined. Freely inspired by the syntax of Christophe Grandsire for the Crimson Editor.

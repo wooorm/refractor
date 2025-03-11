@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 nasm.displayName = 'nasm'
 nasm.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function nasm(Prism) {
   Prism.languages.nasm = {
     comment: /;.*$/m,

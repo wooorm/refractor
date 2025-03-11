@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 mel.displayName = 'mel'
 mel.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function mel(Prism) {
   Prism.languages.mel = {
     comment: {

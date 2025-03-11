@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 cmake.displayName = 'cmake'
 cmake.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function cmake(Prism) {
   Prism.languages.cmake = {
     comment: /#.*/,

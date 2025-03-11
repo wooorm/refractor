@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 lolcode.displayName = 'lolcode'
 lolcode.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function lolcode(Prism) {
   Prism.languages.lolcode = {
     comment: [/\bOBTW\s[\s\S]*?\sTLDR\b/, /\bBTW.+/],

@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 n1ql.displayName = 'n1ql'
 n1ql.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function n1ql(Prism) {
   // https://docs.couchbase.com/server/current/n1ql/n1ql-language-reference/index.html
 

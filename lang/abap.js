@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 abap.displayName = 'abap'
 abap.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function abap(Prism) {
   Prism.languages.abap = {
     comment: /^\*.*/m,

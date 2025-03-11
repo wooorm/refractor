@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 io.displayName = 'io'
 io.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function io(Prism) {
   Prism.languages.io = {
     comment: {

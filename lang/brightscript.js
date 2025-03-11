@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 brightscript.displayName = 'brightscript'
 brightscript.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function brightscript(Prism) {
   Prism.languages.brightscript = {
     comment: /(?:\brem|').*/i,

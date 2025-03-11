@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 rego.displayName = 'rego'
 rego.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function rego(Prism) {
   // https://www.openpolicyagent.org/docs/latest/policy-reference/
 

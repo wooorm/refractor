@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 supercollider.displayName = 'supercollider'
 supercollider.aliases = ['sclang']
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function supercollider(Prism) {
   Prism.languages.supercollider = {
     comment: {

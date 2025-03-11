@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 haskell.displayName = 'haskell'
 haskell.aliases = ['hs']
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function haskell(Prism) {
   Prism.languages.haskell = {
     comment: {

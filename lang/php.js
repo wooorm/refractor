@@ -1,12 +1,12 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 import refractorMarkupTemplating from './markup-templating.js'
 php.displayName = 'php'
 php.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function php(Prism) {
   Prism.register(refractorMarkupTemplating)
   /**

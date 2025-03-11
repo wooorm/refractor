@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 hoon.displayName = 'hoon'
 hoon.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function hoon(Prism) {
   Prism.languages.hoon = {
     comment: {

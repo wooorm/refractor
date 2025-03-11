@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 zig.displayName = 'zig'
 zig.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function zig(Prism) {
   ;(function (Prism) {
     function literal(str) {

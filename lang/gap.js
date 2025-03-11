@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 gap.displayName = 'gap'
 gap.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function gap(Prism) {
   // https://www.gap-system.org/Manuals/doc/ref/chap4.html
   // https://www.gap-system.org/Manuals/doc/ref/chap27.html

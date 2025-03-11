@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 smalltalk.displayName = 'smalltalk'
 smalltalk.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function smalltalk(Prism) {
   Prism.languages.smalltalk = {
     comment: {

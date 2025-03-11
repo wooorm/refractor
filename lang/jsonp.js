@@ -1,12 +1,12 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 import refractorJson from './json.js'
 jsonp.displayName = 'jsonp'
 jsonp.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function jsonp(Prism) {
   Prism.register(refractorJson)
   Prism.languages.jsonp = Prism.languages.extend('json', {

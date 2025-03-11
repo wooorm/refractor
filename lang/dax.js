@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 dax.displayName = 'dax'
 dax.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function dax(Prism) {
   Prism.languages.dax = {
     comment: {

@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 csp.displayName = 'csp'
 csp.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function csp(Prism) {
   /**
    * Original by Scott Helme.

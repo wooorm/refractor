@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 llvm.displayName = 'llvm'
 llvm.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function llvm(Prism) {
   ;(function (Prism) {
     Prism.languages.llvm = {

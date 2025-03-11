@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 javastacktrace.displayName = 'javastacktrace'
 javastacktrace.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function javastacktrace(Prism) {
   // Specification:
   // https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Throwable.html#printStackTrace()

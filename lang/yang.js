@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 yang.displayName = 'yang'
 yang.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function yang(Prism) {
   Prism.languages.yang = {
     // https://tools.ietf.org/html/rfc6020#page-34

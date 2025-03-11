@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 bbcode.displayName = 'bbcode'
 bbcode.aliases = ['shortcode']
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function bbcode(Prism) {
   Prism.languages.bbcode = {
     tag: {

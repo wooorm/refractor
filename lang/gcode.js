@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 gcode.displayName = 'gcode'
 gcode.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function gcode(Prism) {
   Prism.languages.gcode = {
     comment: /;.*|\B\(.*?\)\B/,

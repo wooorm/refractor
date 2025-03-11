@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 perl.displayName = 'perl'
 perl.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function perl(Prism) {
   ;(function (Prism) {
     var brackets =

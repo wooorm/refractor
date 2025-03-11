@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 uorazor.displayName = 'uorazor'
 uorazor.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function uorazor(Prism) {
   Prism.languages.uorazor = {
     'comment-hash': {

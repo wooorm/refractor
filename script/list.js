@@ -28,14 +28,9 @@ console.log(
 function generate(list) {
   const lines = [
     '/**',
-    ' * @import {',
-    ' *   Grammar,',
-    ' *   RefractorElement,',
-    ' *   RefractorRoot,',
-    ' *   Syntax,',
-    ' *   Text',
-    " * } from './core.js'",
-    ' */'
+    " * @typedef {import('./core.js').Syntax} Syntax",
+    ' */',
+    ''
   ]
 
   for (const lang of list) {

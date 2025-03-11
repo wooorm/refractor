@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 parigp.displayName = 'parigp'
 parigp.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function parigp(Prism) {
   Prism.languages.parigp = {
     comment: /\/\*[\s\S]*?\*\/|\\\\.*/,

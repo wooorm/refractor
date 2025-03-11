@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 eiffel.displayName = 'eiffel'
 eiffel.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function eiffel(Prism) {
   Prism.languages.eiffel = {
     comment: /--.*/,

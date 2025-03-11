@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 rest.displayName = 'rest'
 rest.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function rest(Prism) {
   Prism.languages.rest = {
     table: [

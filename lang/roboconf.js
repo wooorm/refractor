@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 roboconf.displayName = 'roboconf'
 roboconf.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function roboconf(Prism) {
   Prism.languages.roboconf = {
     comment: /#.*/,

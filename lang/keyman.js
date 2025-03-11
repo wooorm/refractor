@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 keyman.displayName = 'keyman'
 keyman.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function keyman(Prism) {
   Prism.languages.keyman = {
     comment: {

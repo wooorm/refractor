@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 icuMessageFormat.displayName = 'icu-message-format'
 icuMessageFormat.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function icuMessageFormat(Prism) {
   // https://unicode-org.github.io/icu/userguide/format_parse/messages/
   // https://unicode-org.github.io/icu-docs/apidoc/released/icu4j/com/ibm/icu/text/MessageFormat.html

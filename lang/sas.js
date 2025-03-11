@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 sas.displayName = 'sas'
 sas.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function sas(Prism) {
   ;(function (Prism) {
     var stringPattern = /(?:"(?:""|[^"])*"(?!")|'(?:''|[^'])*'(?!'))/.source

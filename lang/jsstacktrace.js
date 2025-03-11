@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 jsstacktrace.displayName = 'jsstacktrace'
 jsstacktrace.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function jsstacktrace(Prism) {
   Prism.languages.jsstacktrace = {
     'error-message': {

@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 clike.displayName = 'clike'
 clike.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function clike(Prism) {
   Prism.languages.clike = {
     comment: [

@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 nsis.displayName = 'nsis'
 nsis.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function nsis(Prism) {
   /**
    * Original by Jan T. Sott (http://github.com/idleberg)

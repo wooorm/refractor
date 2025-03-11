@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 bash.displayName = 'bash'
 bash.aliases = ['sh', 'shell']
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function bash(Prism) {
   ;(function (Prism) {
     // $ set | grep '^[A-Z][^[:space:]]*=' | cut -d= -f1 | tr '\n' '|'

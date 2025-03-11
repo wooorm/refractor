@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 naniscript.displayName = 'naniscript'
 naniscript.aliases = ['nani']
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function naniscript(Prism) {
   ;(function (Prism) {
     var expressionDef = /\{[^\r\n\[\]{}]*\}/

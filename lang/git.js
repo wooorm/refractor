@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 git.displayName = 'git'
 git.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function git(Prism) {
   Prism.languages.git = {
     /*

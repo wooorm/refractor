@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 odin.displayName = 'odin'
 odin.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function odin(Prism) {
   ;(function (Prism) {
     var escapes =

@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 dhall.displayName = 'dhall'
 dhall.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function dhall(Prism) {
   // ABNF grammar:
   // https://github.com/dhall-lang/dhall-lang/blob/master/standard/dhall.abnf

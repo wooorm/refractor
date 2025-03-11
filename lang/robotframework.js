@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 robotframework.displayName = 'robotframework'
 robotframework.aliases = ['robot']
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function robotframework(Prism) {
   ;(function (Prism) {
     var comment = {

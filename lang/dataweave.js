@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 dataweave.displayName = 'dataweave'
 dataweave.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function dataweave(Prism) {
   ;(function (Prism) {
     Prism.languages.dataweave = {

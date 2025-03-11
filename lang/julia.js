@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 julia.displayName = 'julia'
 julia.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function julia(Prism) {
   Prism.languages.julia = {
     comment: {

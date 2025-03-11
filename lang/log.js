@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 log.displayName = 'log'
 log.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function log(Prism) {
   // This is a language definition for generic log files.
   // Since there is no one log format, this language definition has to support all formats to some degree.

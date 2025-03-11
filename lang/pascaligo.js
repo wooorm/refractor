@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 pascaligo.displayName = 'pascaligo'
 pascaligo.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function pascaligo(Prism) {
   ;(function (Prism) {
     // Pascaligo is a layer 2 smart contract language for the tezos blockchain

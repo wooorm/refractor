@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 bsl.displayName = 'bsl'
 bsl.aliases = ['oscript']
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function bsl(Prism) {
   /* eslint-disable no-misleading-character-class */
 

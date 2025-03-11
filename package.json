@@ -40,10 +40,13 @@
     "typescript": "^5.0.0",
     "xo": "^0.60.0"
   },
+  "exports": {
+    ".": "./lib/common.js",
+    "./all": "./lib/all.js",
+    "./core": "./lib/core.js",
+    "./*": "./lang/*.js"
+  },
   "files": [
-    "index.d.ts.map",
-    "index.d.ts",
-    "index.js",
     "lang/",
     "lib/"
   ],
@@ -62,7 +65,6 @@
     "virtual"
   ],
   "license": "MIT",
-  "main": "index.js",
   "name": "refractor",
   "prettier": {
     "bracketSpacing": false,

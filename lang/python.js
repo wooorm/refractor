@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 python.displayName = 'python'
 python.aliases = ['py']
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function python(Prism) {
   Prism.languages.python = {
     comment: {

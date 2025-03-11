@@ -1,12 +1,12 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 import refractorJava from './java.js'
 scala.displayName = 'scala'
 scala.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function scala(Prism) {
   Prism.register(refractorJava)
   Prism.languages.scala = Prism.languages.extend('java', {

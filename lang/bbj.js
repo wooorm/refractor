@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 bbj.displayName = 'bbj'
 bbj.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function bbj(Prism) {
   ;(function (Prism) {
     Prism.languages.bbj = {

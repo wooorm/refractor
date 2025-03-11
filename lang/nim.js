@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 nim.displayName = 'nim'
 nim.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function nim(Prism) {
   Prism.languages.nim = {
     comment: {

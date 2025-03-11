@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 goModule.displayName = 'go-module'
 goModule.aliases = ['go-mod']
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function goModule(Prism) {
   // https://go.dev/ref/mod#go-mod-file-module
 

@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 arturo.displayName = 'arturo'
 arturo.aliases = ['art']
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function arturo(Prism) {
   ;(function (Prism) {
     /**

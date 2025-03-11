@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 psl.displayName = 'psl'
 psl.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function psl(Prism) {
   Prism.languages.psl = {
     comment: {

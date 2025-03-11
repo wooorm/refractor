@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 cobol.displayName = 'cobol'
 cobol.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function cobol(Prism) {
   Prism.languages.cobol = {
     comment: {

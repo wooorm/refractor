@@ -1,12 +1,12 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 import refractorJavascript from './javascript.js'
 mongodb.displayName = 'mongodb'
 mongodb.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function mongodb(Prism) {
   Prism.register(refractorJavascript)
   ;(function (Prism) {

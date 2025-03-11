@@ -1,12 +1,12 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 import refractorCss from './css.js'
 cssExtras.displayName = 'css-extras'
 cssExtras.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function cssExtras(Prism) {
   Prism.register(refractorCss)
   ;(function (Prism) {

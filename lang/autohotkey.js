@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 autohotkey.displayName = 'autohotkey'
 autohotkey.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function autohotkey(Prism) {
   // NOTES - follows first-first highlight method, block is locked after highlight, different from SyntaxHl
   Prism.languages.autohotkey = {

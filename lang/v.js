@@ -1,12 +1,12 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 import refractorClike from './clike.js'
 v.displayName = 'v'
 v.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function v(Prism) {
   Prism.register(refractorClike)
   ;(function (Prism) {

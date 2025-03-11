@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 ebnf.displayName = 'ebnf'
 ebnf.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function ebnf(Prism) {
   Prism.languages.ebnf = {
     comment: /\(\*[\s\S]*?\*\)/,

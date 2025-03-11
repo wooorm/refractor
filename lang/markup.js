@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 markup.displayName = 'markup'
 markup.aliases = ['atom', 'html', 'mathml', 'rss', 'ssml', 'svg', 'xml']
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function markup(Prism) {
   Prism.languages.markup = {
     comment: {

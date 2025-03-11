@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 editorconfig.displayName = 'editorconfig'
 editorconfig.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function editorconfig(Prism) {
   Prism.languages.editorconfig = {
     // https://editorconfig-specification.readthedocs.io

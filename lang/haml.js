@@ -1,12 +1,12 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 import refractorRuby from './ruby.js'
 haml.displayName = 'haml'
 haml.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function haml(Prism) {
   Prism.register(refractorRuby)
   /* TODO

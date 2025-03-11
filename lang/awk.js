@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 awk.displayName = 'awk'
 awk.aliases = ['gawk']
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function awk(Prism) {
   Prism.languages.awk = {
     hashbang: {

@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 json.displayName = 'json'
 json.aliases = ['webmanifest']
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function json(Prism) {
   // https://www.json.org/json-en.html
   Prism.languages.json = {

@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 sql.displayName = 'sql'
 sql.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function sql(Prism) {
   Prism.languages.sql = {
     comment: {

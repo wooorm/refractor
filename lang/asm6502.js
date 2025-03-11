@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 asm6502.displayName = 'asm6502'
 asm6502.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function asm6502(Prism) {
   Prism.languages.asm6502 = {
     comment: /;.*/,

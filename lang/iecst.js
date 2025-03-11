@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 iecst.displayName = 'iecst'
 iecst.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function iecst(Prism) {
   Prism.languages.iecst = {
     comment: [

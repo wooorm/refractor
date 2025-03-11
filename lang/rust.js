@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * @import {Syntax} from '../core.js'
+ * @import {Refractor} from '../lib/core.js'
  */
 rust.displayName = 'rust'
 rust.aliases = []
 
-/** @type {Syntax} */
+/** @param {Refractor} Prism */
 export default function rust(Prism) {
   ;(function (Prism) {
     var multilineComment = /\/\*(?:[^*/]|\*(?!\/)|\/(?!\*)|<self>)*\*\//.source
