@@ -1,0 +1,14 @@
+# comment
+bare-key = 1
+"quoted key" = true
+'other' = false
+ dotted.key = 2
+[table.with-dash]
+key = "value"
+[[array.table]]
+a = 1
+inline = { x = 1, y = 2 }
+arr = [1, 0x10, 0o7, 0b10]
+datetime = 1979-05-27T07:32:00Z
+local = 1979-05-27 07:32:00-07:00
+time = 07:32:00.999

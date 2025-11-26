@@ -1,0 +1,5 @@
+# comment
+[table.header]
+key = "value"
+[[array.table]]
+a = 1

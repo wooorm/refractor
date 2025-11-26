@@ -9,36 +9,24 @@ toml.aliases = []
 export default function toml(Prism) {
   ;(function (Prism) {
     var key = /(?:[\w-]+|'[^'\n\r]*'|"(?:\\.|[^\\"\r\n])*")/.source
+    var dottedKey = key + '(?:\\s*\\.\\s*' + key + ')*'
 
-    /**
-     * @param {string} pattern
-     */
-    function insertKey(pattern) {
-      return pattern.replace(/__/g, function () {
-        return key
-      })
-    }
     Prism.languages.toml = {
       comment: {
         pattern: /#.*/,
         greedy: true
       },
       table: {
+        // keep entire table header (including brackets) as one token to avoid split spans
         pattern: RegExp(
-          insertKey(
-            /(^[\t ]*\[\s*(?:\[\s*)?)__(?:\s*\.\s*__)*(?=\s*\])/.source
-          ),
+          '^[\\t ]*\\[\\[?\\s*' + dottedKey + '\\s*\\]\\]?[ \\t]*(?:\\r?\\n)?',
           'm'
         ),
-        lookbehind: true,
         greedy: true,
         alias: 'class-name'
       },
       key: {
-        pattern: RegExp(
-          insertKey(/(^[\t ]*|[{,]\s*)__(?:\s*\.\s*__)*(?=\s*=)/.source),
-          'm'
-        ),
+        pattern: RegExp('(^[\\t ]*|[{,]\\s*)' + dottedKey + '(?=\\s*=)', 'm'),
         lookbehind: true,
         greedy: true,
         alias: 'property'
@@ -64,7 +52,7 @@ export default function toml(Prism) {
       number:
         /(?:\b0(?:x[\da-zA-Z]+(?:_[\da-zA-Z]+)*|o[0-7]+(?:_[0-7]+)*|b[10]+(?:_[10]+)*))\b|[-+]?\b\d+(?:_\d+)*(?:\.\d+(?:_\d+)*)?(?:[eE][+-]?\d+(?:_\d+)*)?\b|[-+]?\b(?:inf|nan)\b/,
       boolean: /\b(?:false|true)\b/,
-      punctuation: /[.,=[\]{}]/
+      punctuation: /[.,=\[\]{}]/
     }
   })(Prism)
 }
