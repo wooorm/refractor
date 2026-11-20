@@ -34,9 +34,29 @@ function cshtml(Prism) {
         .replace(/<comment>/g, '(?:' + commentLike + ')')
     }
     var round = nested(/\((?:[^()'"@/]|<str>|<comment>|<self>)*\)/.source, 2)
-    var square = nested(/\[(?:[^\[\]'"@/]|<str>|<comment>|<self>)*\]/.source, 2)
+    var square = nested(/\[(?:[^\[\]'"@/]|<str>|<comment>|<self>)*\]/.source, 1)
     var curly = nested(/\{(?:[^{}'"@/]|<str>|<comment>|<self>)*\}/.source, 2)
-    var angle = nested(/<(?:[^<>'"@/]|<str>|<comment>|<self>)*>/.source, 2) // Note about the above bracket patterns:
+    var angle = nested(/<(?:[^<>'"@/]|<comment>|<self>)*>/.source, 1)
+    var inlineCs =
+      /@/.source +
+      /(?:await\b\s*)?/.source +
+      '(?:' +
+      /(?!await\b)\w+\b/.source +
+      '|' +
+      round +
+      ')' +
+      '(?:' +
+      /[?!]?\.\w+\b/.source +
+      '|' +
+      '(?:' +
+      angle +
+      ')?' +
+      round +
+      '|' +
+      square +
+      ')*' +
+      /(?![?!\.(\[]|<(?!\/))/.source
+    // Note about the above bracket patterns:
     // They all ignore HTML expressions that might be in the C# code. This is a problem because HTML (like strings and
     // comments) is parsed differently. This is a huge problem because HTML might contain brackets and quotes which
     // messes up the bracket and string counting implemented by the above patterns.
@@ -47,9 +67,20 @@ function cshtml(Prism) {
     //
     // To somewhat alleviate the problem a bit, the patterns for characters (e.g. 'a') is very permissive, it also
     // allows invalid characters to support HTML expressions like this: <p>That's it!</p>.
+    var tagAttrInlineCs = /@(?![\w()])/.source + '|' + inlineCs
+    var tagAttrValue =
+      '(?:' +
+      /"[^"@]*"|'[^'@]*'|[^\s'"@>=]+(?=[\s>])/.source +
+      '|' +
+      '["\'][^"\'@]*(?:(?:' +
+      tagAttrInlineCs +
+      ')[^"\'@]*)+["\']' +
+      ')'
     var tagAttrs =
-      /(?:\s(?:\s*[^\s>\/=]+(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+(?=[\s>]))|(?=[\s/>])))+)?/
-        .source
+      /(?:\s(?:\s*[^\s>\/=]+(?:\s*=\s*<tagAttrValue>|(?=[\s/>])))+)?/.source.replace(
+        /<tagAttrValue>/,
+        tagAttrValue
+      )
     var tagContent = /(?!\d)[^\s>\/=$<%]+/.source + tagAttrs + /\s*\/?>/.source
     var tagRegion =
       /\B@?/.source +
@@ -59,11 +90,13 @@ function cshtml(Prism) {
       /\s*>/.source +
       '(?:' +
       (/[^<]/.source +
-        '|' + // all tags that are not the start tag
+        '|' +
+        // all tags that are not the start tag
         // eslint-disable-next-line regexp/strict
         /<\/?(?!\1\b)/.source +
         tagContent +
-        '|' + // nested start tag
+        '|' +
+        // nested start tag
         nested(
           // eslint-disable-next-line regexp/strict
           /<\1/.source +
@@ -71,22 +104,26 @@ function cshtml(Prism) {
             /\s*>/.source +
             '(?:' +
             (/[^<]/.source +
-              '|' + // all tags that are not the start tag
+              '|' +
+              // all tags that are not the start tag
               // eslint-disable-next-line regexp/strict
               /<\/?(?!\1\b)/.source +
               tagContent +
               '|' +
               '<self>') +
-            ')*' + // eslint-disable-next-line regexp/strict
+            ')*' +
+            // eslint-disable-next-line regexp/strict
             /<\/\1\s*>/.source,
           2
         )) +
-      ')*' + // eslint-disable-next-line regexp/strict
+      ')*' +
+      // eslint-disable-next-line regexp/strict
       /<\/\1\s*>/.source +
       '|' +
       /</.source +
       tagContent +
-      ')' // Now for the actual language definition(s):
+      ')'
+    // Now for the actual language definition(s):
     //
     // Razor as a language has 2 parts:
     //  1) CSHTML: A markup-like language that has been extended with inline C# code expressions and blocks.
@@ -114,6 +151,28 @@ function cshtml(Prism) {
       alias: 'language-csharp',
       inside: csharpWithHtml
     }
+    var inlineValue = {
+      pattern: RegExp(/(^|[^@])/.source + inlineCs),
+      lookbehind: true,
+      greedy: true,
+      alias: 'variable',
+      inside: {
+        keyword: /^@/,
+        csharp: cs
+      }
+    }
+    Prism.languages.cshtml.tag.pattern = RegExp(/<\/?/.source + tagContent)
+    Prism.languages.cshtml.tag.inside['attr-value'].pattern = RegExp(
+      /=\s*/.source + tagAttrValue
+    )
+    Prism.languages.insertBefore(
+      'inside',
+      'punctuation',
+      {
+        value: inlineValue
+      },
+      Prism.languages.cshtml.tag.inside['attr-value']
+    )
     Prism.languages.insertBefore('cshtml', 'prolog', {
       'razor-comment': {
         pattern: /@\*[\s\S]*?\*@/,
@@ -126,17 +185,21 @@ function cshtml(Prism) {
             '(?:' +
             [
               // @{ ... }
-              curly, // @code{ ... }
-              /(?:code|functions)\s*/.source + curly, // @for (...) { ... }
+              curly,
+              // @code{ ... }
+              /(?:code|functions)\s*/.source + curly,
+              // @for (...) { ... }
               /(?:for|foreach|lock|switch|using|while)\s*/.source +
                 round +
                 /\s*/.source +
-                curly, // @do { ... } while (...);
+                curly,
+              // @do { ... } while (...);
               /do\s*/.source +
                 curly +
                 /\s*while\s*/.source +
                 round +
-                /(?:\s*;)?/.source, // @try { ... } catch (...) { ... } finally { ... }
+                /(?:\s*;)?/.source,
+              // @try { ... } catch (...) { ... } finally { ... }
               /try\s*/.source +
                 curly +
                 /\s*catch\s*/.source +
@@ -144,7 +207,8 @@ function cshtml(Prism) {
                 /\s*/.source +
                 curly +
                 /\s*finally\s*/.source +
-                curly, // @if (...) {...} else if (...) {...} else {...}
+                curly,
+              // @if (...) {...} else if (...) {...} else {...}
               /if\s*/.source +
                 round +
                 /\s*/.source +
@@ -157,7 +221,9 @@ function cshtml(Prism) {
                 ')?' +
                 /\s*/.source +
                 curly +
-                ')*'
+                ')*',
+              // @helper Ident(params) { ... }
+              /helper\s+\w+\s*/.source + round + /\s*/.source + curly
             ].join('|') +
             ')'
         ),
@@ -178,34 +244,7 @@ function cshtml(Prism) {
           csharp: cs
         }
       },
-      value: {
-        pattern: RegExp(
-          /(^|[^@])@/.source +
-            /(?:await\b\s*)?/.source +
-            '(?:' +
-            /\w+\b/.source +
-            '|' +
-            round +
-            ')' +
-            '(?:' +
-            /[?!]?\.\w+\b/.source +
-            '|' +
-            round +
-            '|' +
-            square +
-            '|' +
-            angle +
-            round +
-            ')*'
-        ),
-        lookbehind: true,
-        greedy: true,
-        alias: 'variable',
-        inside: {
-          keyword: /^@/,
-          csharp: cs
-        }
-      },
+      value: inlineValue,
       'delegate-operator': {
         pattern: /(^|[^@])@(?=<)/,
         lookbehind: true,

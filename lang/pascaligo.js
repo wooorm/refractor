@@ -68,7 +68,8 @@ function pascaligo(Prism) {
       function: /\b\w+(?=\s*\()/,
       number: [
         // Hexadecimal, octal and binary
-        /%[01]+|&[0-7]+|\$[a-f\d]+/i, // Decimal
+        /%[01]+|&[0-7]+|\$[a-f\d]+/i,
+        // Decimal
         /\b\d+(?:\.\d+)?(?:e[+-]?\d+)?(?:mtz|n)?/i
       ],
       operator:

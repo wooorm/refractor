@@ -7,9 +7,11 @@ function yaml(Prism) {
   ;(function (Prism) {
     // https://yaml.org/spec/1.2/spec.html#c-ns-anchor-property
     // https://yaml.org/spec/1.2/spec.html#c-ns-alias-node
-    var anchorOrAlias = /[*&][^\s[\]{},]+/ // https://yaml.org/spec/1.2/spec.html#c-ns-tag-property
+    var anchorOrAlias = /[*&][^\s[\]{},]+/
+    // https://yaml.org/spec/1.2/spec.html#c-ns-tag-property
     var tag =
-      /!(?:<[\w\-%#;/?:@&=+$,.!~*'()[\]]+>|(?:[a-zA-Z\d-]*!)?[\w\-%#;/?:@&=+$.~*'()]+)?/ // https://yaml.org/spec/1.2/spec.html#c-ns-properties(n,c)
+      /!(?:<[\w\-%#;/?:@&=+$,.!~*'()[\]]+>|(?:[a-zA-Z\d-]*!)?[\w\-%#;/?:@&=+$.~*'()]+)?/
+    // https://yaml.org/spec/1.2/spec.html#c-ns-properties(n,c)
     var properties =
       '(?:' +
       tag.source +
@@ -19,7 +21,8 @@ function yaml(Prism) {
       anchorOrAlias.source +
       '(?:[ \t]+' +
       tag.source +
-      ')?)' // https://yaml.org/spec/1.2/spec.html#ns-plain(n,c)
+      ')?)'
+    // https://yaml.org/spec/1.2/spec.html#ns-plain(n,c)
     // This is a simplified version that doesn't support "#" and multiline keys
     // All these long scarry character classes are simplified versions of YAML's characters
     var plainKey =

@@ -25,13 +25,17 @@ function lisp(Prism) {
       return RegExp(
         /([\s([])/.source + '(?:' + pattern + ')' + /(?=[\s)])/.source
       )
-    } // Patterns in regular expressions
+    }
+    // Patterns in regular expressions
     // Symbol name. See https://www.gnu.org/software/emacs/manual/html_node/elisp/Symbol-Type.html
     // & and : are excluded as they are usually used for special purposes
-    var symbol = /(?!\d)[-+*/~!@$%^=<>{}\w]+/.source // symbol starting with & used in function arguments
-    var marker = '&' + symbol // Open parenthesis for look-behind
+    var symbol = /(?!\d)[-+*/~!@$%^=<>{}\w]+/.source
+    // symbol starting with & used in function arguments
+    var marker = '&' + symbol
+    // Open parenthesis for look-behind
     var par = '(\\()'
-    var endpar = '(?=\\))' // End the pattern with look-ahead space
+    var endpar = '(?=\\))'
+    // End the pattern with look-ahead space
     var space = '(?=\\s)'
     var nestedPar =
       /(?:[^()]|\((?:[^()]|\((?:[^()]|\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\))*\))*\))*/
@@ -156,7 +160,8 @@ function lisp(Prism) {
       },
       punctuation: [
         // open paren, brackets, and close paren
-        /(?:['`,]?\(|[)\[\]])/, // cons
+        /(?:['`,]?\(|[)\[\]])/,
+        // cons
         {
           pattern: /(\s)\.(?=\s)/,
           lookbehind: true

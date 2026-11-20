@@ -113,7 +113,8 @@ code |
       }
     }
     var filter_pattern =
-      '((?:^|\\r?\\n|\\r)([\\t ]*)):{{filter_name}}(?:(?:\\r?\\n|\\r)(?:\\2[\\t ].+|\\s*?(?=\\r?\\n|\\r)))+' // Non exhaustive list of available filters and associated languages
+      '((?:^|\\r?\\n|\\r)([\\t ]*)):{{filter_name}}(?:(?:\\r?\\n|\\r)(?:\\2[\\t ].+|\\s*?(?=\\r?\\n|\\r)))+'
+    // Non exhaustive list of available filters and associated languages
     var filters = [
       'css',
       {

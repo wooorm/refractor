@@ -90,7 +90,8 @@ function pure(Prism) {
         )
         Prism.languages.insertBefore('pure', 'inline-lang', o)
       }
-    }) // C is the default inline language
+    })
+    // C is the default inline language
     if (Prism.languages.c) {
       Prism.languages.pure['inline-lang'].inside.rest = Prism.util.clone(
         Prism.languages.c

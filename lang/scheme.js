@@ -131,7 +131,8 @@ function scheme(Prism) {
         grammar[key] = grammar[key].replace(/<[\w\s]+>/g, function (key) {
           return '(?:' + grammar[key].trim() + ')'
         })
-      } // return the last item
+      }
+      // return the last item
       return grammar[key]
     }
   })(Prism)

@@ -12,7 +12,8 @@ function scss(Prism) {
     atrule: {
       pattern: /@[\w-](?:\([^()]+\)|[^()\s]|\s+(?!\s))*?(?=\s+[{;])/,
       inside: {
-        rule: /@[\w-]+/ // See rest below
+        rule: /@[\w-]+/
+        // See rest below
       }
     },
     // url, compassified

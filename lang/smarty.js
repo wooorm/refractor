@@ -96,9 +96,11 @@ function smarty(Prism) {
     var smartyPattern = RegExp(
       // comments
       /\{\*[\s\S]*?\*\}/.source +
-        '|' + // php tags
+        '|' +
+        // php tags
         /\{php\}[\s\S]*?\{\/php\}/.source +
-        '|' + // smarty blocks
+        '|' +
+        // smarty blocks
         /\{(?:[^{}"']|<str>|\{(?:[^{}"']|<str>|\{(?:[^{}"']|<str>)*\})*\})*\}/.source.replace(
           /<str>/g,
           function () {
@@ -106,7 +108,8 @@ function smarty(Prism) {
           }
         ),
       'g'
-    ) // Tokenize all inline Smarty expressions
+    )
+    // Tokenize all inline Smarty expressions
     Prism.hooks.add('before-tokenize', function (env) {
       var smartyLiteralStart = '{literal}'
       var smartyLiteralEnd = '{/literal}'
@@ -129,7 +132,8 @@ function smarty(Prism) {
           return false
         }
       )
-    }) // Re-insert the tokens after tokenizing
+    })
+    // Re-insert the tokens after tokenizing
     Prism.hooks.add('after-tokenize', function (env) {
       Prism.languages['markup-templating'].tokenizePlaceholders(env, 'smarty')
     })

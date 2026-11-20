@@ -22,7 +22,8 @@ function promql(Prism) {
       'bottomk',
       'topk',
       'quantile'
-    ] // PromQL vector matching + the by and without clauses
+    ]
+    // PromQL vector matching + the by and without clauses
     // (https://prometheus.io/docs/prometheus/latest/querying/operators/#vector-matching)
     var vectorMatching = [
       'on',
@@ -31,7 +32,8 @@ function promql(Prism) {
       'group_left',
       'by',
       'without'
-    ] // PromQL offset modifier
+    ]
+    // PromQL offset modifier
     // (https://prometheus.io/docs/prometheus/latest/querying/basics/#offset-modifier)
     var offsetModifier = ['offset']
     var keywords = aggregations.concat(vectorMatching, offsetModifier)

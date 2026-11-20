@@ -74,7 +74,8 @@ function xquery(Prism) {
       pattern: /\{(?!\{)(?:\{(?:\{[^{}]*\}|[^{}])*\}|[^{}])+\}/,
       inside: Prism.languages.xquery,
       alias: 'language-xquery'
-    } // The following will handle plain text inside tags
+    }
+    // The following will handle plain text inside tags
     var stringifyToken = function (token) {
       if (typeof token === 'string') {
         return token
@@ -120,7 +121,8 @@ function xquery(Prism) {
           } else if (
             openedTags.length > 0 &&
             token.type === 'punctuation' &&
-            token.content === '{' && // Ignore `{{`
+            token.content === '{' &&
+            // Ignore `{{`
             (!tokens[i + 1] ||
               tokens[i + 1].type !== 'punctuation' ||
               tokens[i + 1].content !== '{') &&
@@ -149,7 +151,8 @@ function xquery(Prism) {
           ) {
             // Here we are inside a tag, and not inside an XQuery expression.
             // That's plain text: drop any tokens matched.
-            var plainText = stringifyToken(token) // And merge text with adjacent text
+            var plainText = stringifyToken(token)
+            // And merge text with adjacent text
             if (
               i < tokens.length - 1 &&
               (typeof tokens[i + 1] === 'string' ||

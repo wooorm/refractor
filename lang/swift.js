@@ -17,10 +17,12 @@ function swift(Prism) {
       {
         pattern: RegExp(
           /(^|[^"#])/.source +
-            '(?:' + // single-line string
+            '(?:' +
+            // single-line string
             /"(?:\\(?:\((?:[^()]|\([^()]*\))*\)|\r\n|[^(])|[^\\\r\n"])*"/
               .source +
-            '|' + // multi-line string
+            '|' +
+            // multi-line string
             /"""(?:\\(?:\((?:[^()]|\([^()]*\))*\)|[^(])|[^\\"]|"(?!""))*"""/
               .source +
             ')' +
@@ -45,10 +47,12 @@ function swift(Prism) {
       {
         pattern: RegExp(
           /(^|[^"#])(#+)/.source +
-            '(?:' + // single-line string
+            '(?:' +
+            // single-line string
             /"(?:\\(?:#+\((?:[^()]|\([^()]*\))*\)|\r\n|[^#])|[^\\\r\n])*?"/
               .source +
-            '|' + // multi-line string
+            '|' +
+            // multi-line string
             /"""(?:\\(?:#+\((?:[^()]|\([^()]*\))*\)|[^#])|[^\\])*?"""/.source +
             ')' +
             '\\2'
@@ -75,7 +79,8 @@ function swift(Prism) {
         /#/.source +
           '(?:' +
           (/(?:elseif|if)\b/.source +
-            '(?:[ \t]*' + // This regex is a little complex. It's equivalent to this:
+            '(?:[ \t]*' +
+            // This regex is a little complex. It's equivalent to this:
             //   (?:![ \t]*)?(?:\b\w+\b(?:[ \t]*<round>)?|<round>)(?:[ \t]*(?:&&|\|\|))?
             // where <round> is a general parentheses expression.
             /(?:![ \t]*)?(?:\b\w+\b(?:[ \t]*\((?:[^()]|\([^()]*\))*\))?|\((?:[^()]|\([^()]*\))*\))(?:[ \t]*(?:&&|\|\|))?/

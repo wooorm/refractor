@@ -49,7 +49,8 @@ function django(Prism) {
     })
     Prism.hooks.add('after-tokenize', function (env) {
       markupTemplating.tokenizePlaceholders(env, 'django')
-    }) // Add an Jinja2 alias
+    })
+    // Add an Jinja2 alias
     Prism.languages.jinja2 = Prism.languages.django
     Prism.hooks.add('before-tokenize', function (env) {
       markupTemplating.buildPlaceholders(env, 'jinja2', pattern)

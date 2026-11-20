@@ -43,7 +43,8 @@ function csharp(Prism) {
         })
       }
       return pattern.replace(/<<self>>/g, '[^\\s\\S]')
-    } // https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/
+    }
+    // https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/
     var keywordKinds = {
       // keywords which represent a return or variable type
       type: 'bool byte char decimal double dynamic float int long object sbyte short string uint ulong ushort var void',
@@ -56,7 +57,8 @@ function csharp(Prism) {
       // all other keywords
       other:
         'abstract as base break case catch checked const continue default delegate do else event explicit extern finally fixed for foreach goto if implicit in internal is lock namespace new null operator out override params private protected public readonly ref return sealed sizeof stackalloc static switch this throw try typeof unchecked unsafe using virtual volatile while yield'
-    } // keywords
+    }
+    // keywords
     function keywordsToPattern(words) {
       return '\\b(?:' + words.trim().replace(/ /g, '|') + ')\\b'
     }
@@ -87,7 +89,8 @@ function csharp(Prism) {
         keywordKinds.typeDeclaration +
         ' ' +
         keywordKinds.other
-    ) // types
+    )
+    // types
     var generic = nested(/<(?:[^<>;=+\-*/%&|^]|<<self>>)*>/.source, 2) // the idea behind the other forbidden characters is to prevent false positives. Same for tupleElement.
     var nestedRound = nested(/\((?:[^()]|<<self>>)*\)/.source, 2)
     var name = /@?\b[A-Za-z_]\w*\b/.source
@@ -113,7 +116,8 @@ function csharp(Prism) {
     var typeInside = {
       keyword: keywords,
       punctuation: /[<>()?,.:[\]]/
-    } // strings & characters
+    }
+    // strings & characters
     // https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/lexical-structure#character-literals
     // https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/lexical-structure#string-literals
     var character = /'(?:[^\r\n'\\]|\\.|\\[Uux][\da-fA-F]{1,8})'/.source // simplified pattern
@@ -335,7 +339,8 @@ alias: 'class-name'
           }
         }
       }
-    }) // attributes
+    })
+    // attributes
     var regularStringOrCharacter = regularString + '|' + character
     var regularStringCharacterOrComment = replace(
       /\/(?![*/])|\/\/[^\r\n]*[\r\n]|\/\*(?:[^*]|\*(?!\/))*\*\/|<<0>>/.source,
@@ -346,7 +351,8 @@ alias: 'class-name'
         regularStringCharacterOrComment
       ]),
       2
-    ) // https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/attributes/#attribute-targets
+    )
+    // https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/attributes/#attribute-targets
     var attrTarget =
       /\b(?:assembly|event|field|method|module|param|property|return|type)\b/
         .source
@@ -383,8 +389,10 @@ alias: 'class-name'
           punctuation: /[:,]/
         }
       }
-    }) // string interpolation
-    var formatString = /:[^}\r\n]+/.source // multi line
+    })
+    // string interpolation
+    var formatString = /:[^}\r\n]+/.source
+    // multi line
     var mInterpolationRound = nested(
       replace(/[^"'/()]|<<0>>|\(<<self>>*\)/.source, [
         regularStringCharacterOrComment
@@ -394,7 +402,8 @@ alias: 'class-name'
     var mInterpolation = replace(/\{(?!\{)(?:(?![}:])<<0>>)*<<1>>?\}/.source, [
       mInterpolationRound,
       formatString
-    ]) // single line
+    ])
+    // single line
     var sInterpolationRound = nested(
       replace(
         /[^"'/()]|\/(?!\*)|\/\*(?:[^*]|\*(?!\/))*\*\/|<<0>>|\(<<self>>*\)/

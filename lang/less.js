@@ -46,7 +46,8 @@ A comment before a mixin usage prevents the latter to be properly highlighted.
         inside: {
           punctuation: /:/
         }
-      }, // Variable usage
+      },
+      // Variable usage
       /@@?[\w-]+/
     ],
     'mixin-usage': {

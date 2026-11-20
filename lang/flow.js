@@ -10,8 +10,8 @@ function flow(Prism) {
       type: [
         {
           pattern:
-            /\b(?:[Bb]oolean|Function|[Nn]umber|[Ss]tring|any|mixed|null|void)\b/,
-          alias: 'tag'
+            /\b(?:[Bb]oolean|Function|[Nn]umber|[Ss]tring|[Ss]ymbol|any|mixed|null|void)\b/,
+          alias: 'class-name'
         }
       ]
     })

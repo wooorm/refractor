@@ -87,7 +87,8 @@ function javastacktrace(Prism) {
                 alias: 'number'
               }
             }
-          }, // (Unknown Source)
+          },
+          // (Unknown Source)
           // (Native Method)
           // (...something...)
           {

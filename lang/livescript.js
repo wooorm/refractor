@@ -33,7 +33,8 @@ function livescript(Prism) {
             'interpolation-punctuation': {
               pattern: /^#\{|\}$/,
               alias: 'variable'
-            } // See rest below
+            }
+            // See rest below
           }
         },
         string: /[\s\S]+/
@@ -94,7 +95,8 @@ function livescript(Prism) {
       {
         pattern: /( )\.(?= )/,
         lookbehind: true
-      }, // Full list, in order:
+      },
+      // Full list, in order:
       // .= .~ .. ...
       // .&. .^. .<<. .>>. .>>>.
       // := :: ::=

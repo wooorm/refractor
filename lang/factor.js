@@ -19,8 +19,7 @@ function factor(Prism) {
           pattern: /(^|\s)(?:! .*|!$)/,
           lookbehind: true,
           inside: comment_inside
-        },
-        /* from basis/multiline: */
+        } /* from basis/multiline: */,
         {
           // /* comment */, /* comment*/
           pattern: /(^|\s)\/\*\s[\s\S]*?\*\/(?=\s|$)/,
@@ -434,7 +433,8 @@ this is fine for a regex-only implementation.
         '>>>>>>>',
         'call-next-method',
         '<<',
-        'foldable', // literals
+        'foldable',
+        // literals
         '$',
         '$[',
         '${'
@@ -698,7 +698,8 @@ this is fine for a regex-only implementation.
         'real?',
         'rational?',
         'numerator'
-      ] // that's all for now
+      ]
+      // that's all for now
     }
     Object.keys(builtins).forEach(function (k) {
       factor[k].pattern = arrToWordsRegExp(builtins[k])
@@ -761,7 +762,8 @@ this is fine for a regex-only implementation.
       'while*',
       'dip',
       'composed',
-      'bi-curry@', // sequences
+      'bi-curry@',
+      // sequences
       'find-last-from',
       'trim-head-slice',
       'map-as',
@@ -842,7 +844,8 @@ this is fine for a regex-only implementation.
       'trim',
       'trim-head',
       'cartesian-find',
-      'map-index', // math
+      'map-index',
+      // math
       'if-zero',
       'each-integer',
       'unless-zero',
@@ -853,13 +856,15 @@ this is fine for a regex-only implementation.
       'times',
       '(each-integer)',
       'find-integer',
-      'all-integers?', // math.combinators
+      'all-integers?',
+      // math.combinators
       'unless-negative',
       'if-positive',
       'when-positive',
       'when-negative',
       'unless-positive',
-      'if-negative', // combinators
+      'if-negative',
+      // combinators
       'case',
       '2cleave',
       'cond>quot',
@@ -873,7 +878,8 @@ this is fine for a regex-only implementation.
       'call-effect',
       'recursive-hashcode',
       'spread',
-      'deep-spread>quot', // combinators.short-circuit
+      'deep-spread>quot',
+      // combinators.short-circuit
       '2||',
       '0||',
       'n||',
@@ -883,7 +889,8 @@ this is fine for a regex-only implementation.
       '1||',
       '1&&',
       'n&&',
-      '3&&', // combinators.smart
+      '3&&',
+      // combinators.smart
       'smart-unless*',
       'keep-inputs',
       'reduce-outputs',
@@ -917,7 +924,8 @@ this is fine for a regex-only implementation.
       'smart-if*',
       'sum-outputs',
       'input<sequence-unsafe',
-      'output>sequence' // tafn
+      'output>sequence'
+      // tafn
     ]
     factor.combinators.pattern = arrToWordsRegExp(combinators)
     Prism.languages.factor = factor

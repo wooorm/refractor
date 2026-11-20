@@ -158,7 +158,8 @@ function graphql(Prism) {
       aliases.push(alias)
     }
     for (; currentIndex < validTokens.length; ) {
-      var startToken = validTokens[currentIndex++] // add special aliases for mutation tokens
+      var startToken = validTokens[currentIndex++]
+      // add special aliases for mutation tokens
       if (startToken.type === 'keyword' && startToken.content === 'mutation') {
         // any array of the names of all input variables (if any)
         var inputVariables = []
@@ -171,7 +172,8 @@ function graphql(Prism) {
           var definitionEnd = findClosingBracket(/^\($/, /^\)$/)
           if (definitionEnd === -1) {
             continue
-          } // find all input variables
+          }
+          // find all input variables
           for (; currentIndex < definitionEnd; currentIndex++) {
             var t = getToken(0)
             if (t.type === 'variable') {
@@ -191,7 +193,8 @@ function graphql(Prism) {
             var mutationEnd = findClosingBracket(/^\{$/, /^\}$/)
             if (mutationEnd === -1) {
               continue
-            } // give references to input variables a special alias
+            }
+            // give references to input variables a special alias
             for (var i = currentIndex; i < mutationEnd; i++) {
               var varToken = validTokens[i]
               if (

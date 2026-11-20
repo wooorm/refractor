@@ -22,7 +22,8 @@ function robotframework(Prism) {
       extendecInside['section-header'] = {
         pattern: /^ ?\*{3}.+?\*{3}/,
         alias: 'keyword'
-      } // copy inside tokens
+      }
+      // copy inside tokens
       for (var token in inside) {
         extendecInside[token] = inside[token]
       }
