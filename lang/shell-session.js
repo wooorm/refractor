@@ -12,7 +12,8 @@ function shellSession(Prism) {
       // normal string
       /"(?:\\[\s\S]|\$\([^)]+\)|\$(?!\()|`[^`]+`|[^"\\`$])*"/.source,
       /'[^']*'/.source,
-      /\$'(?:[^'\\]|\\[\s\S])*'/.source, // here doc
+      /\$'(?:[^'\\]|\\[\s\S])*'/.source,
+      // here doc
       // 2 capturing groups
       /<<-?\s*(["']?)(\w+)\1\s[\s\S]*?[\r\n]\2/.source
     ].join('|')
@@ -21,15 +22,19 @@ function shellSession(Prism) {
         pattern: RegExp(
           // user info
           /^/.source +
-            '(?:' + // <user> ":" ( <path> )?
+            '(?:' +
+            // <user> ":" ( <path> )?
             (/[^\s@:$#%*!/\\]+@[^\r\n@:$#%*!/\\]+(?::[^\0-\x1F$#%*?"<>:;|]+)?/
               .source +
-              '|' + // <path>
+              '|' +
+              // <path>
               // Since the path pattern is quite general, we will require it to start with a special character to
               // prevent false positives.
               /[/~.][^\0-\x1F$#%*?"<>@:;|]*/.source) +
-            ')?' + // shell symbol
-            /[$#%](?=\s)/.source + // bash command
+            ')?' +
+            // shell symbol
+            /[$#%](?=\s)/.source +
+            // bash command
             /(?:[^\\\r\n \t'"<$]|[ \t](?:(?!#)|#.*$)|\\(?:[^\r]|\r\n?)|\$(?!')|<(?!<)|<<str>>)+/.source.replace(
               /<<str>>/g,
               function () {

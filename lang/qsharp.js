@@ -43,7 +43,8 @@ function qsharp(Prism) {
         })
       }
       return pattern.replace(/<<self>>/g, '[^\\s\\S]')
-    } // https://docs.microsoft.com/en-us/azure/quantum/user-guide/language/typesystem/
+    }
+    // https://docs.microsoft.com/en-us/azure/quantum/user-guide/language/typesystem/
     // https://github.com/microsoft/qsharp-language/tree/main/Specifications/Language/5_Grammar
     var keywordKinds = {
       // keywords which represent a return or variable type
@@ -51,19 +52,22 @@ function qsharp(Prism) {
       // all other keywords
       other:
         'Adjoint adjoint apply as auto body borrow borrowing Controlled controlled distribute elif else fail fixup for function if in internal intrinsic invert is let mutable namespace new newtype open operation repeat return self set until use using while within'
-    } // keywords
+    }
+    // keywords
     function keywordsToPattern(words) {
       return '\\b(?:' + words.trim().replace(/ /g, '|') + ')\\b'
     }
     var keywords = RegExp(
       keywordsToPattern(keywordKinds.type + ' ' + keywordKinds.other)
-    ) // types
+    )
+    // types
     var identifier = /\b[A-Za-z_]\w*\b/.source
     var qualifiedName = replace(/<<0>>(?:\s*\.\s*<<0>>)*/.source, [identifier])
     var typeInside = {
       keyword: keywords,
       punctuation: /[<>()?,.:[\]]/
-    } // strings
+    }
+    // strings
     var regularString = /"(?:\\.|[^\\"])*"/.source
     Prism.languages.qsharp = Prism.languages.extend('clike', {
       comment: /\/\/.*/,
@@ -103,7 +107,8 @@ function qsharp(Prism) {
         pattern: /\.\./,
         alias: 'operator'
       }
-    }) // single line
+    })
+    // single line
     var interpolationExpr = nested(
       replace(/\{(?:[^"{}]|<<0>>|<<self>>)*\}/.source, [regularString]),
       2

@@ -51,7 +51,8 @@ function wren(Prism) {
         // class Meta {}
         pattern: /(\bclass\s+)\w+/,
         lookbehind: true
-      }, // A class must always start with an uppercase.
+      },
+      // A class must always start with an uppercase.
       // File.read
       /\b[A-Z][a-z\d_]*\b/
     ],

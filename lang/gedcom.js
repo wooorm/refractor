@@ -17,12 +17,12 @@ function gedcom(Prism) {
         }
       }
     },
-    tag: {
+    record: {
       // Preceded by level and optional pointer
       pattern:
         /(^[\t ]*\d+ +(?:@\w[\w!"$%&'()*+,\-./:;<=>?[\\\]^`{|}~\x80-\xfe #]*@ +)?)\w+/m,
       lookbehind: true,
-      alias: 'string'
+      alias: 'tag'
     },
     level: {
       pattern: /(^[\t ]*)\d+/m,

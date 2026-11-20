@@ -16,7 +16,8 @@ function bsl(Prism) {
       {
         pattern: /"(?:[^"]|"")*"(?!")/,
         greedy: true
-      }, // Дата и время
+      },
+      // Дата и время
       // Date & time
       {
         pattern: /'(?:[^'\r\n\\]|\\.)*'/
@@ -41,12 +42,14 @@ function bsl(Prism) {
       lookbehind: true
     },
     operator: [
-      /[<>+\-*/]=?|[%=]/, // RU
+      /[<>+\-*/]=?|[%=]/,
+      // RU
       {
         pattern:
           /(^|[^\w\u0400-\u0484\u0487-\u052f\u1d2b\u1d78\u2de0-\u2dff\ua640-\ua69f\ufe2e\ufe2f])(?:и|или|не)(?![\w\u0400-\u0484\u0487-\u052f\u1d2b\u1d78\u2de0-\u2dff\ua640-\ua69f\ufe2e\ufe2f])/i,
         lookbehind: true
-      }, // EN
+      },
+      // EN
       {
         pattern: /\b(?:and|not|or)\b/i
       }
@@ -60,7 +63,8 @@ function bsl(Prism) {
         lookbehind: true,
         greedy: true,
         alias: 'important'
-      }, // Инструкции препроцессора вида:
+      },
+      // Инструкции препроцессора вида:
       // #Если Сервер Тогда
       // ...
       // #КонецЕсли

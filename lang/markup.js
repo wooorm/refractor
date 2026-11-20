@@ -59,7 +59,10 @@ function markup(Prism) {
                 pattern: /^=/,
                 alias: 'attr-equals'
               },
-              /"|'/
+              {
+                pattern: /^(\s*)["']|["']$/,
+                lookbehind: true
+              }
             ]
           }
         },
@@ -83,7 +86,8 @@ function markup(Prism) {
   Prism.languages.markup['tag'].inside['attr-value'].inside['entity'] =
     Prism.languages.markup['entity']
   Prism.languages.markup['doctype'].inside['internal-subset'].inside =
-    Prism.languages.markup // Plugin to make entity title show the real entity, idea by Roman Komarov
+    Prism.languages.markup
+  // Plugin to make entity title show the real entity, idea by Roman Komarov
   Prism.hooks.add('wrap', function (env) {
     if (env.type === 'entity') {
       env.attributes['title'] = env.content.value.replace(/&amp;/, '&')

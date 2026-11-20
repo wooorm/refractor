@@ -325,9 +325,11 @@ function markdown(Prism) {
             // do some replacements to support C++, C#, and F#
             var lang = codeLang.content
               .replace(/\b#/g, 'sharp')
-              .replace(/\b\+\+/g, 'pp') // only use the first word
+              .replace(/\b\+\+/g, 'pp')
+            // only use the first word
             lang = (/[a-z][\w-]*/i.exec(lang) || [''])[0].toLowerCase()
-            var alias = 'language-' + lang // add alias
+            var alias = 'language-' + lang
+            // add alias
             if (!codeBlock.alias) {
               codeBlock.alias = [alias]
             } else if (typeof codeBlock.alias === 'string') {
@@ -394,7 +396,8 @@ function markdown(Prism) {
       lt: '<',
       gt: '>',
       quot: '"'
-    } // IE 11 doesn't support `String.fromCodePoint`
+    }
+    // IE 11 doesn't support `String.fromCodePoint`
     var fromCodePoint = String.fromCodePoint || String.fromCharCode
     /**
      * Returns the text content of a given HTML source code string.
@@ -404,7 +407,8 @@ function markdown(Prism) {
      */
     function textContent(html) {
       // remove all tags
-      var text = html.replace(tagPattern, '') // decode known entities
+      var text = html.replace(tagPattern, '')
+      // decode known entities
       text = text.replace(/&(\w{1,8}|#x?[\da-f]{1,8});/gi, function (m, code) {
         code = code.toLowerCase()
         if (code[0] === '#') {
@@ -419,7 +423,8 @@ function markdown(Prism) {
           var known = KNOWN_ENTITY_NAMES[code]
           if (known) {
             return known
-          } // unable to decode
+          }
+          // unable to decode
           return m
         }
       })

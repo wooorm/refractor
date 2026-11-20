@@ -56,6 +56,19 @@ test('.highlight(value, language)', function (t) {
   )
 
   t.deepEqual(
+    refractor.highlight('true', refractor.languages.javascript),
+    [
+      {
+        type: 'element',
+        tagName: 'span',
+        properties: {className: ['token', 'boolean']},
+        children: [{type: 'text', value: 'true'}]
+      }
+    ],
+    'should accept a grammar object instead of a language name'
+  )
+
+  t.deepEqual(
     refractor.highlight('# foo', 'js'),
     [{type: 'text', value: '# foo'}],
     'should silently ignore illegals'

@@ -8,7 +8,8 @@ function docker(Prism) {
     // Many of the following regexes will contain negated lookaheads like `[ \t]+(?![ \t])`. This is a trick to ensure
     // that quantifiers behave *atomically*. Atomic quantifiers are necessary to prevent exponential backtracking.
     var spaceAfterBackSlash =
-      /\\[\r\n](?:\s|\\[\r\n]|#.*(?!.))*(?![\s#]|\\[\r\n])/.source // At least one space, comment, or line break
+      /\\[\r\n](?:\s|\\[\r\n]|#.*(?!.))*(?![\s#]|\\[\r\n])/.source
+    // At least one space, comment, or line break
     var space = /(?:[ \t]+(?![ \t])(?:<SP_BS>)?|<SP_BS>)/.source.replace(
       /<SP_BS>/g,
       function () {

@@ -88,7 +88,8 @@ function pug(Prism) {
             function: /\w+(?=\s*\(|\s*$)/,
             punctuation: /[(),.]/
           }
-        }, // Usage
+        },
+        // Usage
         {
           pattern: /(^[\t ]*)\+.+/m,
           lookbehind: true,
@@ -149,7 +150,8 @@ function pug(Prism) {
     }
     var filter_pattern =
       /(^([\t ]*)):<filter_name>(?:(?:\r?\n|\r(?!\n))(?:\2[\t ].+|\s*?(?=\r?\n|\r)))+/
-        .source // Non exhaustive list of available filters and associated languages
+        .source
+    // Non exhaustive list of available filters and associated languages
     var filters = [
       {
         filter: 'atpl',

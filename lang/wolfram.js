@@ -5,8 +5,9 @@ wolfram.displayName = 'wolfram'
 wolfram.aliases = ['mathematica', 'wl', 'nb']
 function wolfram(Prism) {
   Prism.languages.wolfram = {
-    // Allow one level of nesting - note: regex taken from applescipt
-    comment: /\(\*(?:\(\*(?:[^*]|\*(?!\)))*\*\)|(?!\(\*)[\s\S])*?\*\)/,
+    comment:
+      // Allow one level of nesting - note: regex taken from applescipt
+      /\(\*(?:\(\*(?:[^*]|\*(?!\)))*\*\)|(?!\(\*)[\s\S])*?\*\)/,
     string: {
       pattern: /"(?:\\.|[^"\\\r\n])*"/,
       greedy: true
@@ -29,7 +30,7 @@ function wolfram(Prism) {
     number:
       /(?:\b(?=\d)|\B(?=\.))(?:0[bo])?(?:(?:\d|0x[\da-f])[\da-f]*(?:\.\d*)?|\.\d+)(?:e[+-]?\d+)?j?\b/i,
     operator:
-      /\/\.|;|=\.|\^=|\^:=|:=|<<|>>|<\||\|>|:>|\|->|->|<-|@@@|@@|@|\/@|=!=|===|==|=|\+|-|\^|\[\/-+%=\]=?|!=|\*\*?=?|\/\/?=?|<[<=>]?|>[=>]?|[&|^~]/,
+      /\/\.|;|=\.|\^=|\^:=|:=|<<|>>|<\||\|>|:>|\|->|->|<-|@@@|@@|@|\/@|=!=|===|==|=|\+|-|\[\/-+%=\]=?|!=|\*\*?=?|\/\/?=?|<[<=>]?|>[=>]?|[&|^~]/,
     punctuation: /[{}[\];(),.:]/
   }
   Prism.languages.mathematica = Prism.languages.wolfram

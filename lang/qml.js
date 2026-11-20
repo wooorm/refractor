@@ -14,7 +14,8 @@ function qml(Prism) {
         })
         .replace(/<comment>/g, function () {
           return jsComment
-        }) // the pattern will blow up, so only a few iterations
+        })
+    // the pattern will blow up, so only a few iterations
     for (var i = 0; i < 2; i++) {
       jsExpr = jsExpr.replace(/<expr>/g, function () {
         return jsExpr

@@ -36,16 +36,20 @@ function systemd(Prism) {
         //  2) Line continuations.
         //     After line continuations, empty lines and comments are ignored so we have to consume them.
         pattern: RegExp(
-          /(=[ \t]*(?!\s))/.source + // the value either starts with quotes or not
+          /(=[ \t]*(?!\s))/.source +
+            // the value either starts with quotes or not
             '(?:' +
             quotesSource +
-            '|(?=[^"\r\n]))' + // main loop
+            '|(?=[^"\r\n]))' +
+            // main loop
             '(?:' +
-            (/[^\s\\]/.source + // handle spaces separately because of quotes
+            (/[^\s\\]/.source +
+              // handle spaces separately because of quotes
               '|' +
               '[ \t]+(?:(?![ \t"])|' +
               quotesSource +
-              ')' + // line continuation
+              ')' +
+              // line continuation
               '|' +
               /\\[\r\n]+(?:[#;].*[\r\n]+)*(?![#;])/.source) +
             ')*'

@@ -46,7 +46,8 @@ function wiki(Prism) {
       /\[\[.+?\]\]|\[.+?\]/
     ],
     variable: [
-      /__[A-Z]+__/, // FIXME Nested structures should be handled
+      /__[A-Z]+__/,
+      // FIXME Nested structures should be handled
       // {{formatnum:{{#expr:{{{3}}}}}}}
       /\{{3}.+?\}{3}/,
       /\{\{.+?\}\}/

@@ -10,7 +10,14 @@ function css(Prism) {
     Prism.languages.css = {
       comment: /\/\*[\s\S]*?\*\//,
       atrule: {
-        pattern: /@[\w-](?:[^;{\s]|\s+(?![\s{]))*(?:;|(?=\s*\{))/,
+        pattern: RegExp(
+          '@[\\w-](?:' +
+            /[^;{\s"']|\s+(?!\s)/.source +
+            '|' +
+            string.source +
+            ')*?' +
+            /(?:;|(?=\s*\{))/.source
+        ),
         inside: {
           rule: /^@[\w-]+/,
           'selector-function-argument': {
@@ -22,7 +29,8 @@ function css(Prism) {
           keyword: {
             pattern: /(^|[^\w-])(?:and|not|only|or)(?![\w-])/,
             lookbehind: true
-          } // See rest below
+          }
+          // See rest below
         }
       },
       url: {

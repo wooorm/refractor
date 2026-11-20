@@ -36,7 +36,8 @@ function moonscript(Prism) {
       {
         pattern: /(\b(?:class|extends)[ \t]+)\w+/,
         lookbehind: true
-      }, // class-like names start with a capital letter
+      },
+      // class-like names start with a capital letter
       /\b[A-Z]\w*/
     ],
     keyword:
